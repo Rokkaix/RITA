@@ -1,0 +1,17 @@
+{
+ "name": "RITA · Rical Takip Asistanı",
+ "short_name": "RITA",
+ "description": "THY İstanbul → Esenboğa seferleri için rical sırası ve koltuk yönetimi",
+ "lang": "tr",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#eef1f6",
+ "theme_color": "#1d3461",
+ "icons": [
+  {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+  {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+  {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+ ]
+}

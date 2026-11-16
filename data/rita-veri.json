@@ -1,0 +1,439 @@
+{
+ "surum": 1,
+ "guncelleme": "2026-11-16T09:30",
+ "seferler": {
+  "gun-2026-11-16": {
+   "alindi": "2026-11-16T08:59",
+   "durum": "onaylandi",
+   "ekleyen": "claude-gunluk",
+   "kaynak": "FlightStats",
+   "onay": "2026-11-16T06:02:57.587Z",
+   "tarih": "2026-11-16",
+   "ucuslar": [
+    {
+     "ad": "",
+     "inis": "02:10",
+     "kalkis": "01:00",
+     "no": "TK2190",
+     "tip": "73H"
+    },
+    {
+     "ad": "",
+     "inis": "03:10",
+     "kalkis": "02:00",
+     "no": "TK2192",
+     "tip": "7M8"
+    },
+    {
+     "ad": "",
+     "inis": "08:10",
+     "kalkis": "07:00",
+     "no": "TK2122",
+     "tip": "321"
+    },
+    {
+     "ad": "",
+     "inis": "09:10",
+     "kalkis": "08:00",
+     "no": "TK2126",
+     "tip": "32A"
+    },
+    {
+     "ad": "",
+     "inis": "10:10",
+     "kalkis": "09:00",
+     "no": "TK2134",
+     "tip": "73H"
+    },
+    {
+     "ad": "",
+     "inis": "11:10",
+     "kalkis": "10:00",
+     "no": "TK2138",
+     "tip": "32N"
+    },
+    {
+     "ad": "",
+     "inis": "12:10",
+     "kalkis": "11:00",
+     "no": "TK2142",
+     "tip": "319"
+    },
+    {
+     "ad": "",
+     "inis": "13:10",
+     "kalkis": "12:00",
+     "no": "TK2146",
+     "tip": "32Q"
+    },
+    {
+     "ad": "",
+     "inis": "14:10",
+     "kalkis": "13:00",
+     "no": "TK2150",
+     "tip": "7M8"
+    },
+    {
+     "ad": "",
+     "inis": "15:10",
+     "kalkis": "14:00",
+     "no": "TK2154",
+     "tip": "320"
+    },
+    {
+     "ad": "",
+     "inis": "17:10",
+     "kalkis": "16:00",
+     "no": "TK2162",
+     "tip": "32Q"
+    },
+    {
+     "ad": "",
+     "inis": "19:10",
+     "kalkis": "18:00",
+     "no": "TK2170",
+     "tip": "73J"
+    },
+    {
+     "ad": "",
+     "inis": "20:10",
+     "kalkis": "19:00",
+     "no": "TK2174",
+     "tip": "789"
+    },
+    {
+     "ad": "",
+     "inis": "22:10",
+     "kalkis": "21:00",
+     "no": "TK2182",
+     "tip": "321"
+    },
+    {
+     "ad": "",
+     "inis": "23:10",
+     "kalkis": "22:00",
+     "no": "TK2184",
+     "tip": "320"
+    }
+   ]
+  },
+  "gun-2026-11-17": {
+   "alindi": "2026-11-16T08:59",
+   "durum": "onaylandi",
+   "ekleyen": "claude-gunluk",
+   "kaynak": "FlightStats",
+   "onay": "2026-11-16T06:03:00.916Z",
+   "tarih": "2026-11-17",
+   "ucuslar": [
+    {
+     "ad": "",
+     "inis": "02:10",
+     "kalkis": "01:00",
+     "no": "TK2190",
+     "tip": "73J"
+    },
+    {
+     "ad": "",
+     "inis": "03:10",
+     "kalkis": "02:00",
+     "no": "TK2192",
+     "tip": "7M9"
+    },
+    {
+     "ad": "",
+     "inis": "08:10",
+     "kalkis": "07:00",
+     "no": "TK2122",
+     "tip": "321"
+    },
+    {
+     "ad": "",
+     "inis": "09:10",
+     "kalkis": "08:00",
+     "no": "TK2126",
+     "tip": "77W"
+    },
+    {
+     "ad": "",
+     "inis": "10:10",
+     "kalkis": "09:00",
+     "no": "TK2134",
+     "tip": "320"
+    },
+    {
+     "ad": "",
+     "inis": "11:10",
+     "kalkis": "10:00",
+     "no": "TK2138",
+     "tip": "320"
+    },
+    {
+     "ad": "",
+     "inis": "12:10",
+     "kalkis": "11:00",
+     "no": "TK2142",
+     "tip": "320"
+    },
+    {
+     "ad": "",
+     "inis": "13:10",
+     "kalkis": "12:00",
+     "no": "TK2146",
+     "tip": "32R"
+    },
+    {
+     "ad": "",
+     "inis": "14:10",
+     "kalkis": "13:00",
+     "no": "TK2150",
+     "tip": "320"
+    },
+    {
+     "ad": "",
+     "inis": "15:10",
+     "kalkis": "14:00",
+     "no": "TK2154",
+     "tip": "320"
+    },
+    {
+     "ad": "",
+     "inis": "17:10",
+     "kalkis": "16:00",
+     "no": "TK2162",
+     "tip": "320"
+    },
+    {
+     "ad": "",
+     "inis": "19:10",
+     "kalkis": "18:00",
+     "no": "TK2170",
+     "tip": "320"
+    },
+    {
+     "ad": "",
+     "inis": "20:10",
+     "kalkis": "19:00",
+     "no": "TK2174",
+     "tip": "359"
+    },
+    {
+     "ad": "",
+     "inis": "22:10",
+     "kalkis": "21:00",
+     "no": "TK2182",
+     "tip": "321"
+    },
+    {
+     "ad": "",
+     "inis": "23:10",
+     "kalkis": "22:00",
+     "no": "TK2184",
+     "tip": "320"
+    }
+   ]
+  }
+ },
+ "degisiklikler": {
+  "rg-20261111-bddk-baskani-kavcioglu-istifa": {
+   "durum": "uygulandi",
+   "ekleyen": "claude-haftalik",
+   "eski": "Şahap Kavcıoğlu",
+   "kaynak": "Cumhuriyet, 11.11.2026; Memurlar.net, 11.11.2026",
+   "makam": "Bankacılık Düzenleme ve Denetleme Kurumu (BDDK) Başkanı",
+   "r": 0,
+   "sebep": "Fon soruşturması kapsamındaki iddialar üzerine Cumhurbaşkanı'ndan görevden affını istedi (X hesabından duyurdu); yerine henüz atama yapılmadı, Resmî Gazete kararı bekleniyor",
+   "tarih": "2026-11-11",
+   "tur": "istifa",
+   "yeni": ""
+  }
+ },
+ "ucaktipleri": {
+  "319": {
+   "ad": "Airbus A319",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 3,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 23,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "320": {
+   "ad": "Airbus A320",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "321": {
+   "ad": "Airbus A321",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 32,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "32A": {
+   "ad": "Airbus A320",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "32N": {
+   "ad": "Airbus A320neo",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "32Q": {
+   "ad": "Airbus A321neo",
+   "b": "AB EF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 32,
+   "stub": 0,
+   "tarih": "2026-11-16"
+  },
+  "32R": {
+   "ad": "Airbus A321",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 32,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "333": {
+   "ad": "Airbus A330-300",
+   "b": "AC DG HK",
+   "bblk": "",
+   "biz": 7,
+   "dog": true,
+   "e": "AC DEFG HK",
+   "last": 40,
+   "stub": 0,
+   "tarih": "2026-11-16"
+  },
+  "359": {
+   "ad": "Airbus A350-900",
+   "b": "A DG K",
+   "bblk": "",
+   "biz": 8,
+   "dog": true,
+   "e": "ABC DEF HJK",
+   "last": 41,
+   "stub": 0,
+   "tarih": "2026-11-16"
+  },
+  "738": {
+   "ad": "Boeing 737-800",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 4,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "739": {
+   "ad": "Boeing 737-900ER",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 4,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "73H": {
+   "ad": "Boeing 737-800",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 4,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "73J": {
+   "ad": "Boeing 737-900ER",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 4,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "77W": {
+   "ad": "Boeing 777-300ER",
+   "b": "AC DG HK",
+   "bblk": "",
+   "biz": 9,
+   "dog": true,
+   "e": "ABC DEFG HJK",
+   "last": 50,
+   "stub": 0,
+   "tarih": "2026-11-16"
+  },
+  "789": {
+   "ad": "Boeing 787-9",
+   "b": "A DG K",
+   "bblk": "",
+   "biz": 8,
+   "dog": true,
+   "e": "ABC DEF HJK",
+   "last": 38,
+   "stub": 0,
+   "tarih": "2026-11-16"
+  },
+  "7M8": {
+   "ad": "Boeing 737 MAX 8",
+   "b": "AB EF",
+   "bblk": "",
+   "biz": 4,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "7M9": {
+   "ad": "Boeing 737 MAX 9",
+   "b": "AB EF",
+   "bblk": "",
+   "biz": 4,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 30,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  }
+ }
+}

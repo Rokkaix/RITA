@@ -1,0 +1,61 @@
+name: RITA site ve günlük sefer taraması
+
+on:
+  push:
+    branches: ["claude/bn-depo-usage-issue-3ucip6"]
+  schedule:
+    - cron: "43 2 * * *"   # her gün 05:43 (İstanbul)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: rita
+  cancel-in-progress: false
+
+jobs:
+  tarama:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Seferleri topla
+        run: python tools/gunluk_seferler.py
+      - name: Kaydet
+        run: |
+          if ! git diff --quiet data/; then
+            git config user.name "RITA günlük tarama"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/rita-veri.json
+            git commit -m "Günlük sefer taraması $(TZ=Europe/Istanbul date +%F)"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            git push
+          fi
+
+  yayin:
+    needs: tarama
+    if: always() && needs.tarama.result != 'failure'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Siteyi kur
+        run: python3 tools/build_site.py
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4
