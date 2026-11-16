@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-16T12:23:44.712Z",
+ "guncelleme": "2026-11-16T12:23:54.918Z",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -426,7 +426,7 @@
    "yeni": "Fatih Çakmak",
    "sebep": "Cumhurbaşkanlığı Kararı 2026/275 ile DHMİ Genel Müdür Yardımcısı Fatih Çakmak, DHMİ Genel Müdürü ve Yönetim Kurulu Başkanı oldu. Rehberdeki \"Enes Çakmak\" kaydı muhtemelen aynı kişinin yanlış yazılmış adı; onaylarsanız ad düzeltilmiş olur.",
    "kaynak": "Resmî Gazete 31.08.2026 (Habertürk, BirGün, MGM basın bülteni 09.09.2026)",
-   "durum": "beklemede",
+   "durum": "uygulandi",
    "ekleyen": "claude",
    "r": 0
   },
