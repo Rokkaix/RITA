@@ -564,14 +564,16 @@
   },
   "77W": {
    "ad": "Boeing 777-300ER",
-   "b": "AC DG HK",
+   "b": "A DE FG K",
    "bblk": "",
-   "biz": 9,
-   "dog": true,
-   "e": "ABC DEFG HJK",
-   "last": 50,
+   "biz": 8,
+   "stag": 1,
+   "dog": false,
+   "e": "ABC DEG HJK",
+   "last": 45,
    "stub": 0,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-16",
+   "not": "TK0003 koltuk görünümü fotoğrafına göre; son sıra doğrulanacak"
   },
   "7M8": {
    "ad": "Boeing 737 MAX 8",
