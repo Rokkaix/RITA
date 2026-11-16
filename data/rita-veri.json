@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-16T09:30+03:00",
+ "guncelleme": "2026-11-16T06:53:43.669Z",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -236,7 +236,7 @@
    "tarih": "2026-11-16",
    "kaynak": "FlightStats",
    "alindi": "2026-11-16T09:30",
-   "durum": "beklemede",
+   "durum": "onaylandi",
    "ekleyen": "gunluk-tarama",
    "ucuslar": [
     {
@@ -344,7 +344,8 @@
      "tip": "320",
      "ad": ""
     }
-   ]
+   ],
+   "onay": "2026-11-16T06:53:42.877Z"
   }
  },
  "degisiklikler": {
@@ -385,50 +386,6 @@
    "tarih": "2026-11-16"
   },
   "321": {
-   "ad": "Airbus A321",
-   "b": "AC DF",
-   "bblk": "",
-   "biz": 5,
-   "dog": true,
-   "e": "ABC DEF",
-   "last": 32,
-   "stub": 1,
-   "tarih": "2026-11-16"
-  },
-  "32A": {
-   "ad": "Airbus A320",
-   "b": "AC DF",
-   "bblk": "",
-   "biz": 5,
-   "dog": true,
-   "e": "ABC DEF",
-   "last": 27,
-   "stub": 1,
-   "tarih": "2026-11-16"
-  },
-  "32N": {
-   "ad": "Airbus A320neo",
-   "b": "AC DF",
-   "bblk": "",
-   "biz": 5,
-   "dog": true,
-   "e": "ABC DEF",
-   "last": 27,
-   "stub": 1,
-   "tarih": "2026-11-16"
-  },
-  "32Q": {
-   "ad": "Airbus A321neo",
-   "b": "AB EF",
-   "bblk": "",
-   "biz": 5,
-   "dog": true,
-   "e": "ABC DEF",
-   "last": 32,
-   "stub": 0,
-   "tarih": "2026-11-16"
-  },
-  "32R": {
    "ad": "Airbus A321",
    "b": "AC DF",
    "bblk": "",
@@ -483,6 +440,61 @@
    "stub": 1,
    "tarih": "2026-11-16"
   },
+  "789": {
+   "ad": "Boeing 787-9",
+   "b": "A DG K",
+   "bblk": "",
+   "biz": 8,
+   "dog": true,
+   "e": "ABC DEF HJK",
+   "last": 38,
+   "stub": 0,
+   "tarih": "2026-11-16"
+  },
+  "32A": {
+   "ad": "Airbus A320",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "32N": {
+   "ad": "Airbus A320neo",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 27,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
+  "32Q": {
+   "ad": "Airbus A321neo",
+   "b": "AB EF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 32,
+   "stub": 0,
+   "tarih": "2026-11-16"
+  },
+  "32R": {
+   "ad": "Airbus A321",
+   "b": "AC DF",
+   "bblk": "",
+   "biz": 5,
+   "dog": true,
+   "e": "ABC DEF",
+   "last": 32,
+   "stub": 1,
+   "tarih": "2026-11-16"
+  },
   "73H": {
    "ad": "Boeing 737-800",
    "b": "AC DF",
@@ -513,17 +525,6 @@
    "dog": true,
    "e": "ABC DEFG HJK",
    "last": 50,
-   "stub": 0,
-   "tarih": "2026-11-16"
-  },
-  "789": {
-   "ad": "Boeing 787-9",
-   "b": "A DG K",
-   "bblk": "",
-   "biz": 8,
-   "dog": true,
-   "e": "ABC DEF HJK",
-   "last": 38,
    "stub": 0,
    "tarih": "2026-11-16"
   },
