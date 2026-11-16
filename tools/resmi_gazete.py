@@ -35,7 +35,10 @@ def pdf_text(b):
         print('PDF metni okunamadı:', e)
     if 'atan' not in t and 'görevden' not in t and len(b) > 1000:
         o = ocr_pdf(b)
-        if o: print('   (OCR ile okundu)'); t = t + '\n' + o
+        if o:
+            print('   (OCR ile okundu)')
+            if os.environ.get('RG_KURU'): print('      OCR:', re.sub(r'\s+', ' ', o)[:2500])
+            t = t + '\n' + o
     return t
 
 UP = r"[A-ZÇĞİÖŞÜÂÎÛ]"
