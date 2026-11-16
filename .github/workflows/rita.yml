@@ -38,11 +38,12 @@ jobs:
           if [ $(( 10#$(date -u +%H) % 3 )) -eq 0 ] && [ $(( 10#$(date -u +%M) )) -lt 30 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             python tools/canli_tbmm.py
           fi
-      - name: Resmî Gazete atama kararları (2 saatte bir, onaya düşer)
+      - name: Resmî Gazete atama kararları (2 saatte bir; teyitliler otomatik işlenir)
         continue-on-error: true
         run: |
           if [ $(( 10#$(date -u +%H) % 2 )) -eq 1 ] && [ $(( 10#$(date -u +%M) )) -lt 30 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             pip install --quiet pypdf
+            sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-tur poppler-utils >/dev/null
             RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_gunler }}" python tools/resmi_gazete.py
           fi
       - name: Kaydet

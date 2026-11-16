@@ -12,12 +12,31 @@ def get(url, binary=False):
     r = subprocess.run(['curl', '-sL', '-m', '60', '-A', 'Mozilla/5.0', url], capture_output=True)
     return r.stdout if binary else r.stdout.decode('utf-8', 'ignore')
 
+def ocr_pdf(b):
+    """Atama kararları PDF'te resim olarak durur: sayfaları resme çevirip Türkçe OCR ile okur (pdftoppm + tesseract)."""
+    import tempfile, glob, shutil
+    if not shutil.which('pdftoppm') or not shutil.which('tesseract'):
+        print('OCR araçları yok (pdftoppm/tesseract)'); return ''
+    d = tempfile.mkdtemp(); f = os.path.join(d, 'k.pdf'); open(f, 'wb').write(b)
+    subprocess.run(['pdftoppm', '-r', '300', '-gray', '-png', f, os.path.join(d, 's')], capture_output=True)
+    out = []
+    for img in sorted(glob.glob(os.path.join(d, 's*.png'))):
+        r = subprocess.run(['tesseract', img, '-', '-l', 'tur', '--psm', '6'], capture_output=True, text=True)
+        out.append(r.stdout)
+    shutil.rmtree(d, ignore_errors=True)
+    return '\n'.join(out)
+
 def pdf_text(b):
+    t = ''
     try:
         from pypdf import PdfReader
-        return '\n'.join((p.extract_text() or '') for p in PdfReader(io.BytesIO(b)).pages)
+        t = '\n'.join((p.extract_text() or '') for p in PdfReader(io.BytesIO(b)).pages)
     except Exception as e:
-        print('PDF okunamadı:', e); return ''
+        print('PDF metni okunamadı:', e)
+    if 'atan' not in t and 'görevden' not in t and len(b) > 1000:
+        o = ocr_pdf(b)
+        if o: print('   (OCR ile okundu)'); t = t + '\n' + o
+    return t
 
 UP = r"[A-ZÇĞİÖŞÜÂÎÛ]"
 GW = rf"(?!\S*(?:ğına|ğine|ğuna|ğüne)\b)(?!(?:Müdürü|Başkanı|Valisi|Rektörü|Büyükelçisi|Sekreteri|Yardımcısı|Üyesi|Komutanı|Başsavcısı|Başkanvekili|Temsilcisi|Müsteşarı)\b){UP}[a-zçğıöşüâîû]+\.?"
