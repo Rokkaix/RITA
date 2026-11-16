@@ -45,10 +45,10 @@ UP = r"[A-ZÇĞİÖŞÜÂÎÛ]"
 GW = rf"(?!\S*(?:ğına|ğine|ğuna|ğüne)\b)(?!(?:Müdürü|Başkanı|Valisi|Rektörü|Büyükelçisi|Sekreteri|Yardımcısı|Üyesi|Komutanı|Başsavcısı|Başkanvekili|Temsilcisi|Müsteşarı)\b){UP}[a-zçğıöşüâîû]+\.?"
 NAME = rf"((?:{GW} ){{1,3}}(?:{UP}{{2,}}[\-’']?)(?: {UP}{{2,}})?)"
 # makam ekini sadeleştir: "Genel Müdürlüğüne" -> "Genel Müdürü"
-EK = [(r'Bakan Yardımcılığına$', 'Bakan Yardımcısı'), (r'Genel Müdürlüğüne$', 'Genel Müdürü'), (r'Başkanlığına$', 'Başkanı'),
+EK = [(r'Bakan Yardımcılığına$', 'Bakan Yardımcısı'), (r'Yardımcılığına$', 'Yardımcısı'), (r'Genel Müdürlüğüne$', 'Genel Müdürü'), (r'Başkanlığına$', 'Başkanı'),
       (r'Valiliğine$', 'Valisi'), (r'Rektörlüğüne$', 'Rektörü'), (r'Büyükelçiliğine$', 'Büyükelçisi'), (r'Genel Sekreterliğine$', 'Genel Sekreteri'),
       (r'Üyeliğine$', 'Üyesi'), (r'Başsavcılığına$', 'Başsavcısı'), (r'Komutanlığına$', 'Komutanı'), (r'Müsteşarlığına$', 'Müsteşarı'),
-      (r'Daimi Temsilciliğine$', 'Daimi Temsilcisi'), (r'Başkan Vekilliğine$', 'Başkanvekili'), (r'Başkanvekilliğine$', 'Başkanvekili')]
+      (r'Daimi Temsilciliğine$', 'Daimi Temsilcisi'), (r'Başkan Vekilliğine$', 'Başkanvekili'), (r'Müdürlüğüne$', 'Müdürü'), (r'Başkanvekilliğine$', 'Başkanvekili')]
 ALAKA = re.compile(r'Bakan Yardımcısı|Genel Müdürü|Başkanı|Valisi|Rektörü|Büyükelçisi|Genel Sekreteri|Başsavcısı|Komutanı|Müsteşarı|Daimi Temsilcisi|Başkanvekili|Kurulu Üyesi|Kurul Üyesi')
 DISLA = re.compile(r'Daire Başkan|Bölge Müdür|İl Müdür|İlçe|Müftü|Hastane|Genel Müdür Yardımc|Başkan Yardımc|Şube|Kaymakam|Dekan|Müdür Yardımc|Başhekim|Grup Başkan')
 
@@ -67,19 +67,58 @@ def sade(m):
 def tc(n):
     return ' '.join(w if not (w.isupper() and len(w) > 1) else w[0] + w[1:].replace('I', 'ı').replace('İ', 'i').lower() for w in n.split())
 
+AW = r"(?!\S*(?:ğına|ğine|ğuna|ğüne|lığı|liği|luğu|lüğü)\b)(?!(?:Müdürü|Müdür|Başkanı|Başkan|Valisi|Rektörü|Büyükelçisi|Sekreteri|Yardımcısı|Üyesi|Komutanı|Başsavcısı|Başkanvekili|Vekili|Temsilcisi|Müsteşarı|Genel|İl|Bölge|Kurulu|Kurumu|Ofisi|İdaresi|Daire|Dairesi|Denetim|Bakanı|Bakan)\b)[A-ZÇĞİÖŞÜÂÎÛ][a-zçğıöşüâîû]+\.?"
+SON_AD = re.compile(rf"((?:{AW} ){{1,3}}[A-ZÇĞİÖŞÜÂÎÛ]{{2,}}(?:[\-' ][A-ZÇĞİÖŞÜÂÎÛ]{{2,}})?)\s*,?\s*$")
+YASAL = re.compile(r",?\s*(?:\d+ sayılı [^,;]*?(?:\d+(?:, \d+)*(?: ve \d+)? ?(?:nci|ncı|üncü|uncu|inci|ıncı|ncü|ncu|'?[ıiuü]nc[ıiuü]) )?madde(?:si|leri)(?: ile )?)+\s*gereğince,?\s*")
+
+def _org(prefix):
+    """'Aile ve Sosyal Hizmetler Bakanlığında açık bulunan;' -> 'Aile ve Sosyal Hizmetler Bakanlığı'"""
+    p = re.sub(r'\s*(?:açık|boş) bulunan\s*;?\s*$', '', prefix.strip(' ;,'))
+    p = re.sub(r'(lığı|liği|luğu|lüğü|ğı|ği|ğu|ğü)nda$|(lığı|liği|luğu|lüğü)nde$', lambda m: (m.group(1) or m.group(2)), p)
+    p = re.sub(r'(Bakanlığı|Kurumu|Kurulu|Müdürlüğü|Başkanlığı|Ofisi|İdaresi)n[ad]$', r'\1', p)
+    return p.strip(' ;,')
+
+def _kalem(org, item, tur):
+    """Bir madde: 'Kırşehir İl Müdürlüğüne, Karabük İl Müdürü Abdurrahman BİLGİÇ' -> (makam, kişi)"""
+    item = item.strip(' ,;—–-')
+    m = SON_AD.search(item)
+    if not m: return None
+    ad = tc(m.group(1)); rest = item[:m.start()].strip(' ,')
+    if tur == 'atama':
+        mk = rest.split(',')[0].strip()                      # "…Müdürlüğüne" (virgülden sonrası kişinin eski görevi)
+    else:
+        mk = rest
+    if org and not re.match(r'^' + re.escape(org[:12]), mk): mk = (org + ' ' + mk).strip()
+    return sade(mk), ad
+
 def ayikla(txt):
-    """Metinden (tur, makam, eski, yeni) kayıtları."""
+    """Resmî Gazete atama kararları metninden (tur, makam, eski, yeni) kayıtları."""
     t = re.sub(r'-\n', '', txt); t = re.sub(r'\s+', ' ', t)
     out = []
-    for s in re.split(r'(?<=(?:mıştır|miştir|muştur|müştür)\.)\s*', t):
-        s = s.strip()
-        if not s: continue
-        m = re.search(rf'^(.*?) {NAME} görevden alın(?:mış|arak)[, ]+yerine {NAME} atanmıştır\.$', s)
-        if m: out.append(('atama', sade(m.group(1)), tc(m.group(2)), tc(m.group(3)))); continue
-        m = re.search(rf'^(.*?) {NAME} (?:görevden alınmıştır|görevinden alınmıştır)\.$', s)
-        if m: out.append(('gorevden_alma', sade(m.group(1)), tc(m.group(2)), '')); continue
-        m = re.search(rf'^(.*?) {NAME} (?:atanmıştır|görevlendirilmiştir)\.$', s)
-        if m: out.append(('atama', sade(m.group(1)), '', tc(m.group(2)))); continue
+    for blok in re.split(r'Karar\s*:\s*\d{4}/\d+', t)[1:]:
+        blok = re.split(r'\d{1,2} (?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık) \d{4} Recep Tayyip', blok)[0]
+        blok = YASAL.sub(' ', blok).strip()
+        _m = re.search(r'^(.*(?:atanmıştır|alınmıştır|görevlendirilmiştir)\.?)', blok)
+        if _m: blok = _m.group(1)
+        blok = re.sub(r'\s+', ' ', blok)
+        # "… X görevden alınmış, yerine Y atanmıştır."
+        m = re.match(r'^(.*?)\s*,?\s*görevden alın(?:mış|arak)[, ]+yerine (.*?) atanmıştır\.?$', blok)
+        if m:
+            k = _kalem('', m.group(1), 'gorevden_alma'); a = SON_AD.search(m.group(2).strip(' ,'))
+            if k and a: out.append(('atama', k[0], k[1], tc(a.group(1))))
+            continue
+        if re.search(r'görevden alınmıştır\.?$', blok): tur, govde = 'gorevden_alma', re.sub(r',?\s*görevden alınmıştır\.?$', '', blok)
+        elif re.search(r'(atanmıştır|görevlendirilmiştir)\.?$', blok): tur, govde = 'atama', re.sub(r',?\s*(atanmıştır|görevlendirilmiştir)\.?$', '', blok)
+        else: continue
+        parts = re.split(r'\s+[—–-]\s+|\s*[—–]\s*', govde)
+        if len(parts) > 1:                                # maddeli liste: ilk parça kurum
+            org = _org(parts[0])
+            for it in parts[1:]:
+                k = _kalem(org, it, tur)
+                if k: out.append((tur, k[0], k[1] if tur != 'atama' else '', k[1] if tur == 'atama' else ''))
+        else:
+            k = _kalem('', govde, tur)
+            if k: out.append((tur, k[0], k[1] if tur != 'atama' else '', k[1] if tur == 'atama' else ''))
     return [o for o in out if ALAKA.search(o[1]) and not DISLA.search(o[1]) and len(o[1]) < 160]
 
 # ---- teyit: makam RITA'nın bildiği bir makamla eşleşmeli, isimler düzgün olmalı ----
@@ -89,6 +128,7 @@ def _norm(t):
     t = ''.join(c for c in unicodedata.normalize('NFD', t) if unicodedata.category(c) != 'Mn')
     return re.sub(r'\s+', ' ', re.sub(r'[^a-z0-9 ]', ' ', t)).strip()
 _BIL = None
+_ORG = set()
 def bilinen():
     """RITA'daki makamlar: rehber unvanları, kurum listesi, valilikler, üniversiteler, bakanlıklar."""
     global _BIL
@@ -122,6 +162,8 @@ def bilinen():
         for suf in (' Başkanı', ' Genel Müdürü'):
             if _norm(kisa + suf) in M: M[_norm(uzun + suf)] = M[_norm(kisa + suf)]
     M.pop('', None)
+    global _ORG
+    _ORG = {_norm(r['b']) for r in G['rows'] if 'Bakanlığı' in r['b'] or r['b'] == 'Cumhurbaşkanlığı'} | {_norm(u) for u in ABBR}
     _BIL = M
     return _BIL
 GENEL = set('genel muduru mudur baskani baskan sekreteri yardimcisi bakan rektoru valisi buyukelcisi uyesi kurulu kurumu baskanvekili komutani bassavcisi mustesari ve daimi temsilcisi'.split())
@@ -137,6 +179,9 @@ def teyit(makam, eski, yeni):
     for k in sorted(B, key=len, reverse=True):
         if len(k) >= 10 and set(k.split()) - GENEL and (nm == k or nm.endswith(' ' + k) or (len(set(nm.split()) - GENEL) >= 1 and k.endswith(' ' + nm))):
             return 'otomatik', B[k], 'Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti'
+    for o in sorted(_ORG, key=len, reverse=True):
+        if nm.startswith(o + ' ') and re.search(r'(genel muduru|baskani|baskanvekili|uyesi|bakan yardimcisi)$', nm):
+            return 'otomatik', makam, 'Resmî Gazete metni; RITA\'da tanımlı kurumun makamı'
     return 'beklemede', makam, 'makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli'
 
 def gun(d):
@@ -184,11 +229,11 @@ def main():
         except Exception as e: print('Okunamadı', d, e); continue
         print(d, len(ks), 'kayıt')
         for tur, makam, eski, ynn, url, kno in ks:
-            key = (re.sub(r'\W', '', makam.lower()), (ynn or eski).lower())
-            if key in var: continue
+            durum, makam2, aciklama = teyit(makam, eski, ynn)
+            key = (re.sub(r'\W', '', makam2.lower()), (ynn or eski).lower())
+            if key in var or (re.sub(r'\W', '', makam.lower()), (ynn or eski).lower()) in var: continue
             var.add(key)
             did = 'rg-' + d + '-' + hashlib.sha1((makam + eski + ynn).encode()).hexdigest()[:8]
-            durum, makam2, aciklama = teyit(makam, eski, ynn)
             C[did] = {'rg_metin': makam, 'tarih': f'{d[:4]}-{d[4:6]}-{d[6:]}', 'tur': tur, 'makam': makam2, 'eski': eski, 'yeni': ynn,
                       'sebep': 'Resmî Gazete atama kararı' + (f' ({kno})' if kno else ''), 'kaynak': f'Resmî Gazete {d[6:]}.{d[4:6]}.{d[:4]} · {url}',
                       'durum': durum, 'teyit': aciklama, 'ekleyen': 'resmi-gazete', 'eklendi': datetime.datetime.now(TR).isoformat(timespec='seconds'), 'r': 0}
