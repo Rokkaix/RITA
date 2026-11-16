@@ -1,63 +1,8 @@
 {
-"guncelleme": "2026-11-16T22:41+03:00",
+"guncelleme": "2026-11-16T22:51+03:00",
 "kaynak": "FlightStats",
 "kalkis": "IST",
 "ucuslar": {
-"TK399-20261116": {
-"no": "TK399",
-"hat": "IST-LED",
-"sehir": "Saint Petersburg",
-"kalkis": "19:45",
-"inis": "23:35",
-"zaman": "2026-11-16T19:45+03:00",
-"tip": "321",
-"ad": "Airbus A321",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK1083-20261116": {
-"no": "TK1083",
-"hat": "IST-BEG",
-"sehir": "Belgrade",
-"kalkis": "19:45",
-"inis": "19:30",
-"zaman": "2026-11-16T19:45+03:00",
-"tip": "320",
-"ad": "Airbus A320",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK1019-20261116": {
-"no": "TK1019",
-"hat": "IST-PRN",
-"sehir": "Prishtina",
-"kalkis": "19:45",
-"inis": "19:25",
-"zaman": "2026-11-16T19:45+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK2524-20261116": {
-"no": "TK2524",
-"hat": "IST-BJV",
-"sehir": "Bodrum",
-"kalkis": "19:45",
-"inis": "21:00",
-"zaman": "2026-11-16T19:45+03:00",
-"tip": "320",
-"ad": "Airbus A320",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK962-20261116": {
-"no": "TK962",
-"hat": "IST-ECN",
-"sehir": "Ercan",
-"kalkis": "19:50",
-"inis": "20:30",
-"zaman": "2026-11-16T19:50+03:00",
-"tip": "320",
-"ad": "Airbus A320",
-"kontrol": "2026-11-16T19:07+03:00"
-},
 "TK868-20261116": {
 "no": "TK868",
 "hat": "IST-AUH",
