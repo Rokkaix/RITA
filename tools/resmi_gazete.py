@@ -185,6 +185,8 @@ def teyit(makam, eski, yeni):
     for n in (eski, yeni):
         if n and not ad.match(n): return 'beklemede', makam, 'isim okunamadı: ' + n
     nm = _norm(makam)
+    if re.search(r'(universitesi|enstitusu) rektoru$', nm) and len(nm.split()) >= 3:
+        return 'otomatik', makam, 'Resmî Gazete metni; rektör ataması'
     if re.search(r'buyukelcisi$', nm) and re.search(r'nezdinde|buyukelciligine|buyukelcisi', nm):
         return 'otomatik', makam, 'Resmî Gazete metni; büyükelçi ataması'
     B = bilinen()
@@ -195,6 +197,25 @@ def teyit(makam, eski, yeni):
         if nm.startswith(o + ' ') and re.search(r'(genel muduru|baskani|baskanvekili|uyesi|bakan yardimcisi)$', nm):
             return 'otomatik', makam, 'Resmî Gazete metni; RITA\'da tanımlı kurumun makamı'
     return 'beklemede', makam, 'makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli'
+
+_ADLAR = None
+def ad_duzelt(n, makam=''):
+    """OCR harf hatalarını rehberdeki kayıtlı isimle düzeltir (ör. Erkilıç -> Erkılıç). Yalnız çok yakın eşleşmede."""
+    global _ADLAR
+    import difflib
+    if not n: return n
+    if _ADLAR is None:
+        src = open(os.path.join(R, 'index.html'), encoding='utf-8').read()
+        i = src.index('K0='); K = json.JSONDecoder().raw_decode(src[i + 3:])[0]
+        _ADLAR = [(re.sub(r'^(?:Prof\. |Doç\. |Dr\. |Av\. )+', '', x[0]), _norm(x[1])) for x in K]
+        try: _ADLAR += [(m['n'], _norm(m['il'] + ' milletvekili')) for m in json.load(open(os.path.join(R, 'data', 'tbmm.json'), encoding='utf-8'))['mv']]
+        except Exception: pass
+    nn = _norm(n); best, bs = None, 0
+    for a, t in _ADLAR:
+        sc = difflib.SequenceMatcher(None, nn, _norm(a)).ratio()
+        if makam and _norm(makam)[:20] in t: sc += 0.05
+        if sc > bs: best, bs = a, sc
+    return best if best and bs >= 0.9 and best != n else n
 
 def gun(d):
     """Bir günün gazetesindeki atama kararı belgeleri -> kayıtlar."""
@@ -241,6 +262,7 @@ def main():
         except Exception as e: print('Okunamadı', d, e); continue
         print(d, len(ks), 'kayıt')
         for tur, makam, eski, ynn, url, kno in ks:
+            eski, ynn = ad_duzelt(eski, makam), ad_duzelt(ynn, makam)
             durum, makam2, aciklama = teyit(makam, eski, ynn)
             key = (re.sub(r'\W', '', makam2.lower()), (ynn or eski).lower())
             if key in var or (re.sub(r'\W', '', makam.lower()), (ynn or eski).lower()) in var: continue
@@ -250,6 +272,16 @@ def main():
                       'sebep': 'Resmî Gazete atama kararı' + (f' ({kno})' if kno else ''), 'kaynak': f'Resmî Gazete {d[6:]}.{d[4:6]}.{d[:4]} · {url}',
                       'durum': durum, 'teyit': aciklama, 'ekleyen': 'resmi-gazete', 'eklendi': datetime.datetime.now(TR).isoformat(timespec='seconds'), 'r': 0}
             yeni += 1
+    for k, v in C.items():
+        if v.get('ekleyen') == 'resmi-gazete' and v.get('durum') == 'beklemede':
+            e2, y2 = ad_duzelt(v.get('eski', ''), v.get('rg_metin', '')), ad_duzelt(v.get('yeni', ''), v.get('rg_metin', ''))
+            du, mk, ac = teyit(v.get('rg_metin') or v['makam'], e2, y2)
+            if du == 'otomatik':
+                v.update(durum='otomatik', makam=mk, eski=e2, yeni=y2, teyit=ac + ' (yeniden kontrol)'); yeni += 1
+        elif v.get('ekleyen') == 'resmi-gazete' and v.get('durum') == 'otomatik':
+            for f in ('eski', 'yeni'):
+                d2 = ad_duzelt(v.get(f, ''), v.get('rg_metin', ''))
+                if d2 != v.get(f, ''): v[f] = d2; v['teyit'] = v.get('teyit', '') + ' · isim rehberdeki kayda göre düzeltildi'; yeni += 1
     if os.environ.get('RG_KURU'):
         for k, v in C.items():
             if v.get('ekleyen') == 'resmi-gazete' and k.startswith('rg-'): pass

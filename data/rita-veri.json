@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-16T23:10:28+03:00",
+ "guncelleme": "2026-11-16T23:16:53+03:00",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -448,11 +448,11 @@
    "tur": "atama",
    "makam": "Erciyes Üniversitesi Rektörü",
    "eski": "",
-   "yeni": "Kuddusi Erkilıç",
+   "yeni": "Kuddusi Erkılıç",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 07.11.2026 · https://www.resmigazete.gov.tr/eskiler/2026/11/20261107-1.pdf",
    "durum": "otomatik",
-   "teyit": "Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti",
+   "teyit": "Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti · isim rehberdeki kayda göre düzeltildi",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:08:20+03:00",
    "r": 0
@@ -511,8 +511,8 @@
    "yeni": "Mustafa Orçan",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 07.11.2026 · https://www.resmigazete.gov.tr/eskiler/2026/11/20261107-1.pdf",
-   "durum": "beklemede",
-   "teyit": "makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli",
+   "durum": "otomatik",
+   "teyit": "Resmî Gazete metni; rektör ataması (yeniden kontrol)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:08:20+03:00",
    "r": 0
@@ -556,8 +556,8 @@
    "yeni": "Turhan Kaçar",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 07.11.2026 · https://www.resmigazete.gov.tr/eskiler/2026/11/20261107-1.pdf",
-   "durum": "beklemede",
-   "teyit": "makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli",
+   "durum": "otomatik",
+   "teyit": "Resmî Gazete metni; rektör ataması (yeniden kontrol)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:08:20+03:00",
    "r": 0
@@ -586,8 +586,8 @@
    "yeni": "İbrahim Baz",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 07.11.2026 · https://www.resmigazete.gov.tr/eskiler/2026/11/20261107-1.pdf",
-   "durum": "beklemede",
-   "teyit": "makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli",
+   "durum": "otomatik",
+   "teyit": "Resmî Gazete metni; rektör ataması (yeniden kontrol)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:08:20+03:00",
    "r": 0
