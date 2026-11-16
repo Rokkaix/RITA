@@ -125,6 +125,7 @@ def gun(d):
     print(f'  {d}: fihrist {len(idx)} bayt, ATAMA geçiyor: {"ATAMA" in idx.upper()}')
     if 'ATAMA' not in idx.upper(): return []
     sec = idx.upper().find('ATAMA KARAR'); part = idx[sec:sec + 20000] if sec >= 0 else idx
+    if os.environ.get('RG_KURU'): print('  FİHRİST:', re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', idx[max(0, sec - 200):sec + 1500])))
     links = []
     for m in re.finditer(r'href="([^"]+?(?:\.pdf|\.htm))"', part, re.I):
         u = m.group(1)
@@ -138,6 +139,7 @@ def gun(d):
         if not re.search(rf'{d}-\d+', full): continue
         body = pdf_text(get(full, True)) if full.lower().endswith('.pdf') else html.unescape(re.sub(r'<[^>]+>', ' ', get(full)))
         print(f'   {full}: {len(body)} karakter')
+        if os.environ.get('RG_KURU'): print('      ÖRNEK:', re.sub(r'\s+', ' ', body)[:700])
         if 'atan' not in body and 'görevden' not in body: continue
         ks = re.search(r'Karar Sayısı\s*:\s*([0-9/]+)', body)
         for k in ayikla(body):

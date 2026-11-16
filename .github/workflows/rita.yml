@@ -58,7 +58,7 @@ jobs:
               cp data/ucuslar.json /tmp/u.json; [ -f data/tbmm.json ] && cp data/tbmm.json /tmp/t.json
               git fetch origin "$GITHUB_REF_NAME" && git reset --hard "origin/$GITHUB_REF_NAME"
               cp /tmp/u.json data/ucuslar.json; [ -f /tmp/t.json ] && cp /tmp/t.json data/tbmm.json
-              python tools/resmi_gazete.py || true
+              RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_gunler }}" python tools/resmi_gazete.py || true
               git add data/ucuslar.json data/tbmm.json data/rita-veri.json
               git commit -m "Canlı veri $(TZ=Europe/Istanbul date '+%F %H:%M')" || true
             fi
