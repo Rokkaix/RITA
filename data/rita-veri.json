@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-16T06:53:43.669Z",
+ "guncelleme": "2026-11-16T12:30",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -405,6 +405,42 @@
    "tarih": "2026-11-11",
    "tur": "istifa",
    "yeni": ""
+  },
+  "rg-20261101-spk-baskani-muhsin-atci": {
+   "tarih": "2026-11-01",
+   "tur": "atama",
+   "makam": "SPK Başkanı",
+   "eski": "Mahmut Sütcü",
+   "yeni": "Muhsin Atcı",
+   "sebep": "Mahmut Sütcü görevden alındı; Vergi Denetim Kurulu Başkanı Muhsin Atcı SPK Başkanlığına atandı",
+   "kaynak": "Resmî Gazete 01.11.2026, sayı 33417 (NTV, CNBC-e, Habertürk)",
+   "durum": "beklemede",
+   "ekleyen": "claude",
+   "r": 0
+  },
+  "rg-20260831-dhmi-genel-muduru-fatih-cakmak": {
+   "tarih": "2026-08-31",
+   "tur": "atama",
+   "makam": "DHMİ Genel Müdürü",
+   "eski": "Enes Çakmak",
+   "yeni": "Fatih Çakmak",
+   "sebep": "Cumhurbaşkanlığı Kararı 2026/275 ile DHMİ Genel Müdür Yardımcısı Fatih Çakmak, DHMİ Genel Müdürü ve Yönetim Kurulu Başkanı oldu. Rehberdeki \"Enes Çakmak\" kaydı muhtemelen aynı kişinin yanlış yazılmış adı; onaylarsanız ad düzeltilmiş olur.",
+   "kaynak": "Resmî Gazete 31.08.2026 (Habertürk, BirGün, MGM basın bülteni 09.09.2026)",
+   "durum": "beklemede",
+   "ekleyen": "claude",
+   "r": 0
+  },
+  "rg-20260330-mhp-gby-arastirma-strateji": {
+   "tarih": "2026-03-30",
+   "tur": "gorev_degisikligi",
+   "makam": "MHP Genel Başkan Yardımcısı (Araştırma ve Strateji)",
+   "eski": "İzzet Ulvi Yönter",
+   "yeni": "Özgür Bayraktar",
+   "sebep": "İzzet Ulvi Yönter 27.03.2026 tarihinde istifa etti; görev 30.03.2026 tarihinde Özgür Bayraktar'a verildi",
+   "kaynak": "MHP açıklaması 30.03.2026 (Bengütürk, TGRT Haber)",
+   "durum": "beklemede",
+   "ekleyen": "claude",
+   "r": 0
   }
  },
  "ucaktipleri": {
@@ -601,6 +637,116 @@
  "hatlar": {
   "IST-ESB": {
    "eklendi": "2026-11-16"
+  }
+ },
+ "dogrulama": {
+  "dg-20261116": {
+   "tarih": "2026-11-16",
+   "durum": "beklemede",
+   "ekleyen": "claude",
+   "aciklama": "Bu kişilerin görevde olduğu 2026 tarihli haber veya resmî kaynaklarla doğrulandı. Onaylarsanız rehberdeki “doğrulayın” etiketleri kalkar.",
+   "kisiler": [
+    {
+     "n": "Zeki Yiğit",
+     "g": "Danıştay Başkanı",
+     "kaynak": "2024’te yeniden seçildi, görev 2028’e kadar (NTV, CNN Türk)"
+    },
+    {
+     "n": "Ömer Kerkez",
+     "g": "Yargıtay Başkanı",
+     "kaynak": "2026-2027 adli yıl açılış konuşmasını yaptı (Eylül 2026)"
+    },
+    {
+     "n": "Ali Çardakcı",
+     "g": "Jandarma Genel Komutanı",
+     "kaynak": "2026 Jandarma atama haberleri"
+    },
+    {
+     "n": "Mahmut Demirtaş",
+     "g": "Emniyet Genel Müdürü",
+     "kaynak": "2026’da değişiklik kaydı yok"
+    },
+    {
+     "n": "Fatih Karahan",
+     "g": "Merkez Bankası Başkanı",
+     "kaynak": "12.11.2026 Enflasyon Raporu sunumu"
+    },
+    {
+     "n": "Kemal Yüksek",
+     "g": "Sivil Havacılık Genel Müdürü",
+     "kaynak": "SHGM 2026 Performans Programı"
+    },
+    {
+     "n": "Prof. Dr. Mehmet Zahid Sobacı",
+     "g": "TRT Genel Müdürü",
+     "kaynak": "2026 haberleri"
+    },
+    {
+     "n": "Mustafa Levent Sungur",
+     "g": "TOKİ Başkanı",
+     "kaynak": "TBMM KİT Komisyonu, Ekim 2026"
+    },
+    {
+     "n": "Leyla Şahin Usta",
+     "g": "AK Parti Grup Başkanvekili",
+     "kaynak": "TBMM Genel Kurulu, Temmuz 2026"
+    },
+    {
+     "n": "Erkan Akçay",
+     "g": "MHP Grup Başkanvekili",
+     "kaynak": "TBMM Genel Kurulu, Temmuz 2026"
+    },
+    {
+     "n": "Gülistan Kılıç Koçyiğit",
+     "g": "DEM Parti Grup Başkanvekili",
+     "kaynak": "TBMM Genel Kurulu, Haziran–Temmuz 2026"
+    },
+    {
+     "n": "Uğur Poyraz",
+     "g": "İYİ Parti Grup Başkanvekili",
+     "kaynak": "TBMM Genel Kurulu, Temmuz 2026"
+    },
+    {
+     "n": "Feti Yıldız",
+     "g": "MHP Genel Başkan Yardımcısı",
+     "kaynak": "2026 haberleri"
+    },
+    {
+     "n": "Edip Semih Yalçın",
+     "g": "MHP Genel Başkan Yardımcısı",
+     "kaynak": "Haziran 2026 haberleri"
+    },
+    {
+     "n": "Fatih Erbakan",
+     "g": "Yeniden Refah Partisi Genel Başkanı",
+     "kaynak": "Ağustos–Eylül 2026 haberleri"
+    },
+    {
+     "n": "Mahmut Arıkan",
+     "g": "Saadet Partisi Genel Başkanı",
+     "kaynak": "Ağustos 2026 haberleri"
+    },
+    {
+     "n": "Erkan Baş",
+     "g": "TİP Genel Başkanı",
+     "kaynak": "Ağustos 2026 haberleri"
+    },
+    {
+     "n": "Burak Akçapar",
+     "g": "Hollanda Büyükelçisi",
+     "kaynak": "Resmî Gazete, Ağustos 2026 büyükelçi kararnamesi"
+    },
+    {
+     "n": "Kaan Esener",
+     "g": "Filipinler Büyükelçisi",
+     "kaynak": "Resmî Gazete büyükelçi kararnamesi 2026"
+    },
+    {
+     "n": "Necati Sancaktutan",
+     "g": "Bahreyn Büyükelçisi",
+     "kaynak": "Cumhuriyet, 2026"
+    }
+   ]
   }
  }
 }
