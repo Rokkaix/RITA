@@ -6,6 +6,8 @@
 "Vali": "icisleri.gov.tr/valilikler",
 "Kaymakam": "icisleri.gov.tr il detayları",
 "Cumhurbaşkanı ailesi": "kamuya açık bilgiler",
+"Yüksek yargı": "yargitay.gov.tr",
+"Rektör": "tr.wikipedia.org üniversite bilgi kutuları (yalnız eksikler)",
 "Belediye Başkanı": "tr.wikipedia.org belediye bilgi kutuları + haber kaynakları (Mersin, Tokat)"
 },
 "ekle": [
@@ -257,119 +259,119 @@
 {
 "n": "Hazal Aras",
 "t": "Ağrı Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Turgay Sevindi",
 "t": "Amasya Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Bilgehan Erdem",
 "t": "Artvin Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Melek Mızrak Subaşı",
 "t": "Bilecik Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Erdal Arıkan",
 "t": "Bingöl Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Nesrullah Tanğlay",
 "t": "Bitlis Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Mehmet Tuna Özcan",
 "t": "Bolu Belediye Başkan Vekili",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Ali Orkun Ercengiz",
 "t": "Burdur Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "İsmail Hakkı Esen",
 "t": "Çankırı Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Halil İbrahim Aşgın",
 "t": "Çorum Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Filiz Gencan",
 "t": "Edirne Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Şahin Şerifoğulları",
 "t": "Elazığ Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Bekir Aksun",
 "t": "Erzincan Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Fuat Köse",
 "t": "Giresun Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Vedat Soner Başer",
 "t": "Gümüşhane Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "İbrahim Taşyapan",
 "t": "Hakkari Belediye Başkan Vekili (kayyum)",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Şükrü Başdeğirmen",
 "t": "Isparta Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
@@ -383,170 +385,919 @@
 {
 "n": "Ötüken Senger",
 "t": "Kars Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Derya Bulut",
 "t": "Kırklareli Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Selahattin Ekicioğlu",
 "t": "Kırşehir Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Eyüp Kahveci",
 "t": "Kütahya Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Sırrı Söylemez",
 "t": "Muş Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Rasim Arı",
 "t": "Nevşehir Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Emrah Özdemir",
 "t": "Niğde Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Rahmi Metin",
 "t": "Rize Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Metin Gürbüz",
 "t": "Sinop Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Adem Uzun",
 "t": "Sivas Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Mehmet Kemal Yazıcıoğlu",
 "t": "Tokat Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Hatice Terekeci Özkan",
 "t": "Uşak Belediye Başkan Vekili",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Tahsin Erdem",
 "t": "Zonguldak Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Evren Dinçer",
 "t": "Aksaray Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Mete Memiş",
 "t": "Bayburt Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Savaş Kalaycı",
 "t": "Karaman Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Ekrem Canalp",
 "t": "Batman Belediye Başkan Vekili (kayyum)",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Mehmet Yarka",
 "t": "Şırnak Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Faruk Demir",
 "t": "Ardahan Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Mehmet Nuri Güneş",
 "t": "Iğdır Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Mehmet Gürel",
 "t": "Yalova Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Özkan Çetinkaya",
 "t": "Karabük Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "Hakan Bilecen",
 "t": "Kilis Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
 },
 {
 "n": "İbrahim Çenet",
 "t": "Osmaniye Belediye Başkanı",
-"r": 999,
+"r": 91,
 "u": "",
 "kat": "Belediye Başkanı"
+},
+{
+"n": "Adnan Sözen",
+"t": "Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Mehmet Karakaş",
+"t": "Afyon Kocatepe Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Adem Aslan",
+"t": "Afyonkarahisar Sağlık Bilimleri Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Erhan Özden",
+"t": "Ankara Müzik ve Güzel Sanatlar Üniversitesi Rektörü · doğrulayın",
+"r": 41,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Musa Kazım Arıcan",
+"t": "Ankara Sosyal Bilimler Üniversitesi Rektörü · doğrulayın",
+"r": 41,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ali Cengiz Köseoğlu",
+"t": "Ankara Yıldırım Beyazıt Üniversitesi Rektörü · doğrulayın",
+"r": 41,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Yavuz Demir",
+"t": "Ankara Bilim Üniversitesi Rektörü · doğrulayın",
+"r": 41,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Tolga Tolunay",
+"t": "Ankara Medipol Üniversitesi Rektörü · doğrulayın",
+"r": 41,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Fatih Gültekin",
+"t": "Lokman Hekim Üniversitesi Rektörü · doğrulayın",
+"r": 41,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Murat Yülek",
+"t": "Ostim Teknik Üniversitesi Rektörü · doğrulayın",
+"r": 41,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Rahmi Er",
+"t": "Türk Hava Kurumu Üniversitesi Rektörü · doğrulayın",
+"r": 41,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Şebnem Kavaklı",
+"t": "Yüksek İhtisas Üniversitesi Rektörü · doğrulayın",
+"r": 41,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Kenan Ahmet Türkdoğan",
+"t": "Alanya Alaaddin Keykubat Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Turan Sağer",
+"t": "Alanya Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Abdullah Kuzu",
+"t": "Antalya Belek Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "İsmail Boz",
+"t": "Bandırma Onyedi Eylül Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Naci Çağlar",
+"t": "Bursa Teknik Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ahmet Kesik",
+"t": "Mudanya Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Bülent Çakmak",
+"t": "Erzurum Teknik Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Adnan Özcan",
+"t": "Eskişehir Teknik Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Sait Mesut Doğan",
+"t": "Gaziantep Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Şehmus Demir",
+"t": "Gaziantep İslam Bilim ve Teknoloji Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Gül Rengin Küçükerdoğan",
+"t": "Hasan Kalyoncu Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Güner Dağlı",
+"t": "Sanko Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Mehmet Duruel",
+"t": "İskenderun Teknik Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Veysel Eren",
+"t": "Hatay Mustafa Kemal Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Mehmet Saltan",
+"t": "Süleyman Demirel Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Yılmaz Çatal",
+"t": "Isparta Uygulamalı Bilimler Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Abdurrahman Muhammed Uludağ",
+"t": "Galatasaray Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Gülfettin Çelik",
+"t": "İstanbul Medeniyet Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Erhan Afyoncu",
+"t": "Milli Savunma Üniversitesi (Askerî) Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ahmet Sacit Açıkgözoğlu",
+"t": "Mimar Sinan Güzel Sanatlar Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Cemal Yıldız",
+"t": "Türk-Alman Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Adem Akçakaya",
+"t": "Bezmialem Vakıf Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Çavlan Çiftçi",
+"t": "Demiroğlu Bilim Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ahmet Alkan Çelik",
+"t": "Doğuş Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Nevzat Şimşek",
+"t": "Fatih Sultan Mehmet Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Fatma Kanca",
+"t": "Fenerbahçe Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Atilla Arkan",
+"t": "İbn Haldun Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Mustafa Sinanoğlu",
+"t": "İstanbul 29 Mayıs Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ersin Göse",
+"t": "İstanbul Arel Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ersoy Kocabıçak",
+"t": "İstanbul Atlas Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Süleyman Özdemir",
+"t": "İstanbul Esenyurt Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Şeyma Aydınoğlu",
+"t": "İstanbul Galata Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Feriha Erfan Kuyumcu",
+"t": "İstanbul Gedik Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Necmettin Atsü",
+"t": "İstanbul Kent Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Fadime Uney Yuksektepe",
+"t": "İstanbul Kültür Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ayşegül Komsuoğlu Çıtıpıtıoğlu",
+"t": "İstanbul Nişantaşı Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Güliz Muğan",
+"t": "İstanbul Okan Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Mustafa Kara",
+"t": "İstanbul Rumeli Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ahmet Cevat Acar",
+"t": "İstanbul Sabahattin Zaim Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Buğra Özen",
+"t": "İstanbul Sağlık ve Teknoloji Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Emre Alkin",
+"t": "İstanbul Topkapı Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "İ. Yaşar Hacısalihoğlu",
+"t": "İstanbul Yeni Yüzyıl Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ayşe Başar",
+"t": "Kadir Has Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Yusuf Baran",
+"t": "İzmir Yüksek Teknoloji Enstitüsü Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Rasim Akpınar",
+"t": "İzmir Bakırçay Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Selim Karahasanoğlu",
+"t": "İzmir Demokrasi Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Mustafa Güvençer",
+"t": "İzmir Tınaztepe Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "İbrahim Taner Okumuş",
+"t": "Kahramanmaraş Sütçü İmam Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "İsmail Bakan",
+"t": "Kahramanmaraş İstiklal Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Cengiz Yılmaz",
+"t": "Abdullah Gül Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Kurtuluş Karamustafa",
+"t": "Kayseri Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ahmet Fazıl Özsoylu",
+"t": "Nuh Naci Yazgan Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Nuh Zafer Cantürk",
+"t": "Kocaeli Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Osman Nuri Çelik",
+"t": "Konya Teknik Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Erol Turan",
+"t": "Konya Gıda ve Tarım Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Atilla Özütok",
+"t": "KTO Karatay Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Süleyman Kızıltoprak",
+"t": "Kütahya Dumlupınar Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ahmet Tekin",
+"t": "Kütahya Sağlık Bilimleri Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Nusret Akpolat",
+"t": "İnönü Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Recep Bentli",
+"t": "Malatya Turgut Özal Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Rana Kibar",
+"t": "Manisa Celal Bayar Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Erol Yaşar",
+"t": "Mersin Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ali Özen",
+"t": "Tarsus Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Semih Aktekin",
+"t": "Nevşehir Hacı Bektaş Veli Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Zafer Tatlı",
+"t": "Sakarya Uygulamalı Bilimler Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Mahmut Aydın",
+"t": "Samsun Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Ahmet Şengönül",
+"t": "Sivas Cumhuriyet Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Mehmet Kul",
+"t": "Sivas Bilim ve Teknoloji Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Emin Aşıkkutlu",
+"t": "Trabzon Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Mahir Kadakal",
+"t": "Avrasya Üniversitesi Rektörü · doğrulayın",
+"r": 58,
+"u": "",
+"kat": "Rektör"
+},
+{
+"n": "Adem Albayrak",
+"t": "Yargıtay Birinci Başkanvekili",
+"r": 27,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Ahmet Ömeroğlu",
+"t": "Yargıtay Birinci Başkanvekili",
+"r": 27,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Öznur Kakillioğlu",
+"t": "Yargıtay 1. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Mehmet Kasım Çetin",
+"t": "Yargıtay 2. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Battal Yılmaz",
+"t": "Yargıtay 3. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Kadri Özerdoğan",
+"t": "Yargıtay 4. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Ümran Görmez",
+"t": "Yargıtay 5. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Mahmut Coşkun",
+"t": "Yargıtay 6. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Hikmet Onat",
+"t": "Yargıtay 7. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Fahri Akçin",
+"t": "Yargıtay 8. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Şerafettin Özyürür",
+"t": "Yargıtay 10. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Orhan Sekmen",
+"t": "Yargıtay 11. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Ayhan Tuncal",
+"t": "Yargıtay 12. Hukuk Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Hüseyin Canan",
+"t": "Yargıtay 1. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Yusuf Kuzu",
+"t": "Yargıtay 2. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Mustafa Kurtaran",
+"t": "Yargıtay 3. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Ziya Dinler",
+"t": "Yargıtay 4. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Hüseyin Kocabey",
+"t": "Yargıtay 6. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Aytekin Sakarya",
+"t": "Yargıtay 7. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "İhsan Baştürk",
+"t": "Yargıtay 8. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Mehmet Osmanoğlu",
+"t": "Yargıtay 9. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Yüksel Kocamış",
+"t": "Yargıtay 10. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Hanefi Keskin",
+"t": "Yargıtay 11. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Ali Ünsat",
+"t": "Yargıtay 12. Ceza Dairesi Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Aydın Şimşek",
+"t": "Yargıtay Genel Sekreteri",
+"r": 999,
+"u": "",
+"kat": "Yüksek yargı"
 },
 {
 "n": "Tayfun Yılmaz",
@@ -12285,6 +13036,22 @@
 "u": "Eski Bakanlar Kurulu Üyeleri ve Eşleri",
 "kat": "Belediye Başkanı",
 "tam_ad": "Faruk Özlü"
+},
+{
+"n": "Ömer Kerkez",
+"t_old": "Yargıtay Başkanı · doğrulayın",
+"t_new": "Yargıtay Başkanı",
+"r": 7,
+"u": "Yüksek Yargı Organlarının Başkanları (Anayasa Mahkemesi, Yargıtay, Sayıştay, Danıştay, Uyuşmazlık Mahkemesi, Yüksek Seçim Kurulu, Seçmen Kütüğü Genel Müdürü) ve Eşleri",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Yaşar Şimşek",
+"t_old": "Yargıtay 5. Ceza Dairesi · Birinci Başkanlık Kurulu Üyesi",
+"t_new": "Yargıtay 5. Ceza Dairesi Başkanı · Birinci Başkanlık Kurulu Üyesi",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
 },
 {
 "n": "Berat Albayrak",
