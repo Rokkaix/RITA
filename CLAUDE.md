@@ -17,3 +17,8 @@ bu işi hızlandırmak ve doğru yapmak için vardır. Yeni özellik eklerken ö
 - `data/rita-veri.json` — ortak veri (görev değişiklikleri, uçak tipi kabin düzenleri, öne çıkan hatlar).
 - `data/ucuslar.json` — İstanbul'dan kalkan tüm THY uçuşları; `tools/canli_ucuslar.py` her 30 dakikada günceller.
 - `site/vendor/ocr/` — cihazda çalışan Tesseract.js; check-in ekranı fotoğrafından dolu koltuk okuma.
+
+## Planlanan (sonraki aşama)
+- **Personel girişi:** THY veya TGS sicil numarası + kişinin kendi oluşturduğu şifre. Yeni kayıtlar yönetici onayıyla açılır.
+  Şifresiz "Personel olarak devam et" kaldırılacak. Gerçek koruma için veriler herkese açık dosyadan çıkarılıp
+  girişten sonra sunulmalı (statik sayfada istemci tarafı kontrol tek başına yeterli değil).
