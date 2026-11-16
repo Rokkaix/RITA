@@ -5,7 +5,8 @@
 "Milletvekili": "tbmm.gov.tr/milletvekili/AllList",
 "Vali": "icisleri.gov.tr/valilikler",
 "Kaymakam": "icisleri.gov.tr il detayları",
-"Cumhurbaşkanı ailesi": "kamuya açık bilgiler"
+"Cumhurbaşkanı ailesi": "kamuya açık bilgiler",
+"Belediye Başkanı": "tr.wikipedia.org belediye bilgi kutuları + haber kaynakları (Mersin, Tokat)"
 },
 "ekle": [
 {
@@ -252,6 +253,300 @@
 "r": 60,
 "u": "İl Valileri ve Eşleri",
 "kat": "Vali"
+},
+{
+"n": "Hazal Aras",
+"t": "Ağrı Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Turgay Sevindi",
+"t": "Amasya Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Bilgehan Erdem",
+"t": "Artvin Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Melek Mızrak Subaşı",
+"t": "Bilecik Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Erdal Arıkan",
+"t": "Bingöl Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Nesrullah Tanğlay",
+"t": "Bitlis Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Mehmet Tuna Özcan",
+"t": "Bolu Belediye Başkan Vekili",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Ali Orkun Ercengiz",
+"t": "Burdur Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "İsmail Hakkı Esen",
+"t": "Çankırı Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Halil İbrahim Aşgın",
+"t": "Çorum Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Filiz Gencan",
+"t": "Edirne Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Şahin Şerifoğulları",
+"t": "Elazığ Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Bekir Aksun",
+"t": "Erzincan Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Fuat Köse",
+"t": "Giresun Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Vedat Soner Başer",
+"t": "Gümüşhane Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "İbrahim Taşyapan",
+"t": "Hakkari Belediye Başkan Vekili (kayyum)",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Şükrü Başdeğirmen",
+"t": "Isparta Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Gülşah Yıldırım Genç",
+"t": "Mersin Büyükşehir Belediye Başkan Vekili",
+"r": 61,
+"u": "Büyükşehir Belediye Başkanları ve Eşleri",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Ötüken Senger",
+"t": "Kars Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Derya Bulut",
+"t": "Kırklareli Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Selahattin Ekicioğlu",
+"t": "Kırşehir Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Eyüp Kahveci",
+"t": "Kütahya Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Sırrı Söylemez",
+"t": "Muş Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Rasim Arı",
+"t": "Nevşehir Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Emrah Özdemir",
+"t": "Niğde Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Rahmi Metin",
+"t": "Rize Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Metin Gürbüz",
+"t": "Sinop Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Adem Uzun",
+"t": "Sivas Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Mehmet Kemal Yazıcıoğlu",
+"t": "Tokat Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Hatice Terekeci Özkan",
+"t": "Uşak Belediye Başkan Vekili",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Tahsin Erdem",
+"t": "Zonguldak Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Evren Dinçer",
+"t": "Aksaray Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Mete Memiş",
+"t": "Bayburt Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Savaş Kalaycı",
+"t": "Karaman Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Ekrem Canalp",
+"t": "Batman Belediye Başkan Vekili (kayyum)",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Mehmet Yarka",
+"t": "Şırnak Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Faruk Demir",
+"t": "Ardahan Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Mehmet Nuri Güneş",
+"t": "Iğdır Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Mehmet Gürel",
+"t": "Yalova Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Özkan Çetinkaya",
+"t": "Karabük Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Hakan Bilecen",
+"t": "Kilis Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "İbrahim Çenet",
+"t": "Osmaniye Belediye Başkanı",
+"r": 999,
+"u": "",
+"kat": "Belediye Başkanı"
 },
 {
 "n": "Tayfun Yılmaz",
@@ -11790,10 +12085,11 @@
 {
 "n": "Ozan Balcı",
 "t_old": "Van Büyükşehir Belediye Başkan Vekili",
-"t_new": "Van Valisi · Van Büyükşehir Belediye Başkan Vekili",
+"t_new": "Van Valisi · Van Büyükşehir Belediye Başkan Vekili (kayyum)",
 "r": 60,
 "u": "İl Valileri ve Eşleri",
-"kat": "Vali"
+"kat": "Vali + Belediye Başkanı",
+"tam_ad": "Ozan Balcı"
 },
 {
 "n": "Murat Duru",
@@ -11868,6 +12164,129 @@
 "kat": "Vali"
 },
 {
+"n": "Abdurrahman Tutdere",
+"t_old": "Eski Milletvekili · 27. Dönem · Adıyaman",
+"t_new": "Adıyaman Belediye Başkanı · Eski Milletvekili · 27. Dönem · Adıyaman",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Belediye Başkanı",
+"tam_ad": "Abdurrahman Tutdere"
+},
+{
+"n": "Burcu Köksal",
+"t_old": "Eski Milletvekili · 27. Dönem · Afyonkarahisar",
+"t_new": "Afyonkarahisar Belediye Başkanı · Eski Milletvekili · 27. Dönem · Afyonkarahisar",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Belediye Başkanı",
+"tam_ad": "Burcu Köksal"
+},
+{
+"n": "Ahmet Akın",
+"t_old": "Eski Milletvekili · 27. Dönem · Balıkesir",
+"t_new": "Balıkesir Büyükşehir Belediye Başkanı · Eski Milletvekili · 27. Dönem · Balıkesir",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Belediye Başkanı",
+"tam_ad": "Ahmet Akın"
+},
+{
+"n": "Muharrem Erkek",
+"t_old": "Eski Milletvekili · 27. Dönem · Çanakkale",
+"t_new": "Çanakkale Belediye Başkanı · Eski Milletvekili · 27. Dönem · Çanakkale",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Belediye Başkanı",
+"tam_ad": "Muharrem Erkek"
+},
+{
+"n": "Fatma Şahin",
+"t_old": "Eski Aile ve Sosyal Hizmetler Bakanı",
+"t_new": "Gaziantep Büyükşehir Belediye Başkanı · Eski Aile ve Sosyal Hizmetler Bakanı",
+"r": 10.5,
+"u": "Eski Bakanlar Kurulu Üyeleri ve Eşleri",
+"kat": "Belediye Başkanı",
+"tam_ad": "Fatma Şahin"
+},
+{
+"n": "Hasan Baltacı",
+"t_old": "Milletvekili · Kastamonu",
+"t_new": "Kastamonu Belediye Başkanı · Eski Milletvekili · Kastamonu",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Milletvekili + Belediye Başkanı",
+"tam_ad": "Hasan Baltacı"
+},
+{
+"n": "Tuncay Akkoyun",
+"t_old": "Mardin Valisi",
+"t_new": "Mardin Valisi · Mardin Büyükşehir Belediye Başkan Vekili (kayyum)",
+"r": 60,
+"u": "İl Valileri ve Eşleri",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Mehmet Hilmi Güler",
+"t_old": "Eski Enerji ve Tabii Kaynaklar Bakanı",
+"t_new": "Ordu Büyükşehir Belediye Başkanı · Eski Enerji ve Tabii Kaynaklar Bakanı",
+"r": 10.5,
+"u": "Eski Bakanlar Kurulu Üyeleri ve Eşleri",
+"kat": "Belediye Başkanı",
+"tam_ad": "Mehmet Hilmi Güler"
+},
+{
+"n": "Kemal Kızılkaya",
+"t_old": "Siirt Valisi",
+"t_new": "Siirt Valisi · Siirt Belediye Başkan Vekili (kayyum)",
+"r": 60,
+"u": "İl Valileri ve Eşleri",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Şefik Aygöl",
+"t_old": "Tunceli Valisi",
+"t_new": "Tunceli Valisi · Tunceli Belediye Başkan Vekili (kayyum)",
+"r": 60,
+"u": "İl Valileri ve Eşleri",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Kazım Arslan",
+"t_old": "Eski Milletvekili · 27. Dönem · Denizli",
+"t_new": "Yozgat Belediye Başkanı · Eski Milletvekili · 27. Dönem · Denizli",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Belediye Başkanı",
+"tam_ad": "Kazım Arslan"
+},
+{
+"n": "Ahmet Önal",
+"t_old": "Milletvekili · Kırıkkale",
+"t_new": "Kırıkkale Belediye Başkanı · Eski Milletvekili · Kırıkkale",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Milletvekili + Belediye Başkanı",
+"tam_ad": "Ahmet Önal"
+},
+{
+"n": "Muhammet Rıza Yalçınkaya",
+"t_old": "Eski Milletvekili · 26. Dönem · Bartın",
+"t_new": "Bartın Belediye Başkanı · Eski Milletvekili · 26. Dönem · Bartın",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Belediye Başkanı",
+"tam_ad": "Muhammet Rıza Yalçınkaya"
+},
+{
+"n": "Faruk Özlü",
+"t_old": "Eski Sanayi ve Teknoloji Bakanı",
+"t_new": "Düzce Belediye Başkanı · Eski Sanayi ve Teknoloji Bakanı",
+"r": 10.5,
+"u": "Eski Bakanlar Kurulu Üyeleri ve Eşleri",
+"kat": "Belediye Başkanı",
+"tam_ad": "Faruk Özlü"
+},
+{
 "n": "Berat Albayrak",
 "t_old": "Eski Enerji ve Tabii Kaynaklar Bakanı",
 "t_new": "Eski Enerji ve Tabii Kaynaklar Bakanı · Cumhurbaşkanı ailesi · Cumhurbaşkanı'nın damadı",
@@ -11894,22 +12313,6 @@
 "kat": "Milletvekili"
 },
 {
-"n": "Ahmet Önal",
-"t_old": "Milletvekili · Kırıkkale",
-"t_new": "Eski Milletvekili · Kırıkkale",
-"r": 21.9,
-"u": "TBMM Eski Üyeleri ve Eşleri",
-"kat": "Milletvekili"
-},
-{
-"n": "Hasan Baltacı",
-"t_old": "Milletvekili · Kastamonu",
-"t_new": "Eski Milletvekili · Kastamonu",
-"r": 21.9,
-"u": "TBMM Eski Üyeleri ve Eşleri",
-"kat": "Milletvekili"
-},
-{
 "n": "Selcan Hamşıoğlu",
 "t_old": "Milletvekili · Tekirdağ",
 "t_new": "Eski Milletvekili · Tekirdağ",
@@ -11932,6 +12335,62 @@
 "r": 82,
 "u": "",
 "kat": "Vali"
+},
+{
+"n": "Zeydan Karalar",
+"t_old": "Adana Büyükşehir Belediye Başkanı · görev durumu kontrol edin",
+"t_new": "Adana Büyükşehir Belediye Başkanı (görevden uzaklaştırıldı)",
+"r": 82,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Muhittin Böcek",
+"t_old": "Antalya Büyükşehir Belediye Başkanı · görev durumu kontrol edin",
+"t_new": "Antalya Büyükşehir Belediye Başkanı (görevden uzaklaştırıldı)",
+"r": 82,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Mustafa Bozbey",
+"t_old": "Bursa Büyükşehir Belediye Başkanı · görev durumu kontrol edin",
+"t_new": "Bursa Büyükşehir Belediye Başkanı (görevden uzaklaştırıldı)",
+"r": 82,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Vahap Seçer",
+"t_old": "Mersin Büyükşehir Belediye Başkanı",
+"t_new": "Mersin Büyükşehir Belediye Başkanı (görevden uzaklaştırıldı)",
+"r": 82,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Ekrem İmamoğlu",
+"t_old": "İstanbul Büyükşehir Belediye Başkanı · görev durumu kontrol edin",
+"t_new": "İstanbul Büyükşehir Belediye Başkanı (görevden uzaklaştırıldı)",
+"r": 82,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Ahmet Türk",
+"t_old": "Mardin Büyükşehir Belediye Başkanı · görev durumu kontrol edin",
+"t_new": "Mardin Büyükşehir Belediye Başkanı (görevden uzaklaştırıldı)",
+"r": 82,
+"u": "",
+"kat": "Belediye Başkanı"
+},
+{
+"n": "Abdullah Zeydan",
+"t_old": "Van Büyükşehir Belediye Başkanı · görev durumu kontrol edin",
+"t_new": "Van Büyükşehir Belediye Başkanı (görevden uzaklaştırıldı)",
+"r": 82,
+"u": "",
+"kat": "Belediye Başkanı"
 }
 ]
 }

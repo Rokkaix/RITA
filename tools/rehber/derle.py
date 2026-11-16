@@ -111,6 +111,53 @@ for k, L in by.items():
             if m and not norm(p).startswith('eski') and m.group(1) in cur and cur[m.group(1)] != k:
                 t_new = ' · '.join(('Eski ' + q if q == p else q) for q in segs)
                 eskit.append({'n': x[0], 't_old': x[1], 't_new': re.sub(r'\s*\(\d\d\.\d\d\.\d{4} kararnamesi\)', '', t_new), 'r': 82 if x[2] in (39, 60) else x[2], 'u': '' if x[3] == 'İl Valileri ve Eşleri' else x[3], 'kat': 'Vali'})
+# --- Belediye başkanları (30 büyükşehir + 51 il merkezi)
+def bekleyen(x):  # bu kayıt için önceki bölümlerde hazırlanmış değişiklik (aynı kayda iki ayrı değişiklik çıkmasın)
+    for L in (guncelle, eskit):
+        for e in L:
+            if e['n'] == x[0] and e['t_old'] == x[1]: return L, e
+    return None, None
+def degistir(x, t_new, r, u, kat, liste, extra=None):
+    L, e = bekleyen(x)
+    if e:
+        e['t_new'] = t_new; e['r'] = min(e['r'], r) if isinstance(e['r'], (int, float)) else r; e['kat'] = e['kat'] + ' + ' + kat
+        if L is eskit and liste is guncelle: eskit.remove(e); guncelle.append(e)
+    else:
+        e = {'n': x[0], 't_old': x[1], 't_new': t_new, 'r': r, 'u': u, 'kat': kat}; liste.append(e)
+    if extra: e.update(extra)
+BEL = json.load(open(os.path.join(K, 'belediye-baskanlari.json'), encoding='utf-8'))
+for b in BEL:
+    il = b['il']; bb = b['bb']; kurum = f"{il} {'Büyükşehir ' if bb else ''}Belediye"
+    role = kurum + (' Başkanı' if b['durum'] == 'seçilmiş' else ' Başkan Vekili' + (' (kayyum)' if b['durum'] == 'kayyum' else ''))
+    r = (43 if il == 'Ankara' else 61) if bb else 999
+    u = 'Büyükşehir Belediye Başkanları ve Eşleri' if bb else ''
+    kr = norm(kurum) + r' baskan'
+    k = nk(b['n'])
+    same = lambda x: nk(x[0]) == k or nk(x[0]).startswith(k + ' ') or k.startswith(nk(x[0]) + ' ')
+    xs = by.get(k) or [x for L in by.values() for x in L if re.search(kr, norm(x[1])) and same(x)]
+    if not xs:
+        ekle.append({'n': b['n'], 't': role, 'r': r, 'u': u, 'kat': 'Belediye Başkanı'})
+    else:
+        x = xs[0]; _, e = bekleyen(x); base = e['t_new'] if e else x[1]; segs = base.split(' · ')
+        if re.search(r'valisi', norm(base)) and not re.search(kr, norm(base)):   # kayyum vali: vali unvanı önde kalır
+            degistir(x, base + ' · ' + role, x[2], x[3], 'Belediye Başkanı', guncelle)
+        elif norm(segs[0]) != norm(role) or 'kontrol' in norm(base) or re.search(r'(?<!eski )milletvekili', norm(base)):
+            rest = [q for q in segs if not re.search(r'belediye baskan|kontrol edin|dogrulayin', norm(q))]
+            mv = [q for q in rest if re.match(r'(?!eski)(\w+ )?milletvekili', norm(q))]
+            rest = [('Eski ' + q if q in mv else q) for q in rest]   # belediye başkanı milletvekili olamaz
+            r0 = 21.5 if x[2] == 21 and 'milletvekili' in norm(base) else x[2]; u0 = 'TBMM Eski Üyeleri ve Eşleri' if 'milletvekili' in norm(base) and x[3] == 'TBMM Üyeleri ve Eşleri' else x[3]
+            vs = [q for q in rest if re.search(r'valisi', norm(q)) and not norm(q).startswith('eski')]
+            t_new = ' · '.join(vs + [role] + [q for q in rest if q not in vs])
+            degistir(x, t_new, min(r0, r) if isinstance(r0, (int, float)) else r, u0 or u, 'Belediye Başkanı', guncelle, {'tam_ad': b['n']})
+    # aynı belediyede başka biri hâlâ görevli görünüyorsa: görevden uzaklaştırıldı / ayrıldı
+    for L in by.values():
+        for x in L:
+            if same(x): continue
+            segs = x[1].split(' · ')
+            if any(re.match(kr, norm(q)) for q in segs):
+                ek = ' (görevden uzaklaştırıldı)' if b['durum'] != 'seçilmiş' and 'vekili' not in norm(x[1]) else ''
+                t_new = ' · '.join(((q + ek) if ek else 'Eski ' + q) if re.match(kr, norm(q)) else q for q in segs if 'kontrol edin' not in q)
+                degistir(x, t_new, 82 if x[2] in (43, 61) else x[2], '' if x[3] == u else x[3], 'Belediye Başkanı', eskit)
 # --- Kaymakamlar (rical listesinde sıra numarası yok; aranabilir kayıt)
 for p in json.load(open(os.path.join(K, 'kaymakamlar.json'), encoding='utf-8')):
     if nk(p['n']) not in by:
@@ -132,7 +179,7 @@ for e in ekle:
     if k in seen: continue
     seen.add(k); E2.append(e)
 out = {'tarih': datetime.date.today().isoformat(),
-       'kaynaklar': {'Kabine': 'tccb.gov.tr/kabine', 'Milletvekili': 'tbmm.gov.tr/milletvekili/AllList', 'Vali': 'icisleri.gov.tr/valilikler', 'Kaymakam': 'icisleri.gov.tr il detayları', 'Cumhurbaşkanı ailesi': 'kamuya açık bilgiler'},
+       'kaynaklar': {'Kabine': 'tccb.gov.tr/kabine', 'Milletvekili': 'tbmm.gov.tr/milletvekili/AllList', 'Vali': 'icisleri.gov.tr/valilikler', 'Kaymakam': 'icisleri.gov.tr il detayları', 'Cumhurbaşkanı ailesi': 'kamuya açık bilgiler', 'Belediye Başkanı': 'tr.wikipedia.org belediye bilgi kutuları + haber kaynakları (Mersin, Tokat)'},
        'ekle': E2, 'guncelle': guncelle, 'eskit': eskit}
 json.dump(out, open(os.path.join(R, 'data', 'rehber.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 from collections import Counter

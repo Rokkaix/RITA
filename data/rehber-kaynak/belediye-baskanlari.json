@@ -1,0 +1,650 @@
+[
+{
+"il": "Adana",
+"bb": true,
+"n": "Güngör Geçer",
+"ham": "Güngör Geçer (vekâleten) ( CHP )",
+"kaynak": "tr.wikipedia.org/wiki/Adana_Büyükşehir_Belediyesi",
+"durum": "vekil"
+},
+{
+"il": "Adıyaman",
+"bb": false,
+"n": "Abdurrahman Tutdere",
+"ham": "Abdurrahman Tutdere ( CHP )",
+"kaynak": "tr.wikipedia.org/wiki/Adıyaman",
+"durum": "seçilmiş"
+},
+{
+"il": "Afyonkarahisar",
+"bb": false,
+"n": "Burcu Köksal",
+"ham": "Burcu Köksal ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Afyonkarahisar",
+"durum": "seçilmiş"
+},
+{
+"il": "Ağrı",
+"bb": false,
+"n": "Hazal Aras",
+"ham": "Hazal Aras ( DEM Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Ağrı",
+"durum": "seçilmiş"
+},
+{
+"il": "Amasya",
+"bb": false,
+"n": "Turgay Sevindi",
+"ham": "Turgay Sevindi ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Amasya",
+"durum": "seçilmiş"
+},
+{
+"il": "Ankara",
+"bb": true,
+"n": "Mansur Yavaş",
+"ham": "Mansur Yavaş ( CHP )",
+"kaynak": "tr.wikipedia.org/wiki/Ankara_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Antalya",
+"bb": true,
+"n": "Büşra Özdemir",
+"ham": "Büşra Özdemir (vekâleten) ( CHP )",
+"kaynak": "tr.wikipedia.org/wiki/Antalya_Büyükşehir_Belediyesi",
+"durum": "vekil"
+},
+{
+"il": "Artvin",
+"bb": false,
+"n": "Bilgehan Erdem",
+"ham": "Bilgehan Erdem ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Artvin",
+"durum": "seçilmiş"
+},
+{
+"il": "Aydın",
+"bb": true,
+"n": "Özlem Çerçioğlu",
+"ham": "Özlem Çerçioğlu ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Aydın_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Balıkesir",
+"bb": true,
+"n": "Ahmet Akın",
+"ham": "Ahmet Akın ( CHP )",
+"kaynak": "tr.wikipedia.org/wiki/Balıkesir_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Bilecik",
+"bb": false,
+"n": "Melek Mızrak Subaşı",
+"ham": "Melek Mızrak Subaşı ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Bilecik",
+"durum": "seçilmiş"
+},
+{
+"il": "Bingöl",
+"bb": false,
+"n": "Erdal Arıkan",
+"ham": "Erdal Arıkan ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Bingöl",
+"durum": "seçilmiş"
+},
+{
+"il": "Bitlis",
+"bb": false,
+"n": "Nesrullah Tanğlay",
+"ham": "Nesrullah Tanğlay ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Bitlis",
+"durum": "seçilmiş"
+},
+{
+"il": "Bolu",
+"bb": false,
+"n": "Mehmet Tuna Özcan",
+"ham": "Mehmet Tuna Özcan (vekâleten) ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Bolu",
+"durum": "vekil"
+},
+{
+"il": "Burdur",
+"bb": false,
+"n": "Ali Orkun Ercengiz",
+"ham": "Ali Orkun Ercengiz ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Burdur",
+"durum": "seçilmiş"
+},
+{
+"il": "Bursa",
+"bb": true,
+"n": "Şahin Biba",
+"ham": "Şahin Biba (kayyum) ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Bursa_Büyükşehir_Belediyesi",
+"durum": "vekil"
+},
+{
+"il": "Çanakkale",
+"bb": false,
+"n": "Muharrem Erkek",
+"ham": "Muharrem Erkek",
+"kaynak": "tr.wikipedia.org/wiki/Çanakkale_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Çankırı",
+"bb": false,
+"n": "İsmail Hakkı Esen",
+"ham": "İsmail Hakkı Esen ( MHP )",
+"kaynak": "tr.wikipedia.org/wiki/Çankırı",
+"durum": "seçilmiş"
+},
+{
+"il": "Çorum",
+"bb": false,
+"n": "Halil İbrahim Aşgın",
+"ham": "Halil İbrahim Aşgın ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Çorum",
+"durum": "seçilmiş"
+},
+{
+"il": "Denizli",
+"bb": true,
+"n": "Bülent Nuri Çavuşoğlu",
+"ham": "Bülent Nuri Çavuşoğlu ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Denizli_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Diyarbakır",
+"bb": true,
+"n": "Ayşe Serra Bucak",
+"ham": "Ayşe Serra Bucak ( DEM Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Diyarbakır_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Edirne",
+"bb": false,
+"n": "Filiz Gencan",
+"ham": "Filiz Gencan ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Edirne",
+"durum": "seçilmiş"
+},
+{
+"il": "Elazığ",
+"bb": false,
+"n": "Şahin Şerifoğulları",
+"ham": "Şahin Şerifoğulları ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Elazığ_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Erzincan",
+"bb": false,
+"n": "Bekir Aksun",
+"ham": "Bekir Aksun ( MHP )",
+"kaynak": "tr.wikipedia.org/wiki/Erzincan",
+"durum": "seçilmiş"
+},
+{
+"il": "Erzurum",
+"bb": true,
+"n": "Mehmet Sekmen",
+"ham": "Mehmet Sekmen ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Erzurum_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Eskişehir",
+"bb": true,
+"n": "Ayşe Ünlüce",
+"ham": "Ayşe Ünlüce ( CHP )",
+"kaynak": "tr.wikipedia.org/wiki/Eskişehir_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Gaziantep",
+"bb": true,
+"n": "Fatma Şahin",
+"ham": "Fatma Şahin ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Gaziantep_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Giresun",
+"bb": false,
+"n": "Fuat Köse",
+"ham": "Fuat Köse ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Giresun",
+"durum": "seçilmiş"
+},
+{
+"il": "Gümüşhane",
+"bb": false,
+"n": "Vedat Soner Başer",
+"ham": "Vedat Soner Başer ( MHP )",
+"kaynak": "tr.wikipedia.org/wiki/Gümüşhane",
+"durum": "seçilmiş"
+},
+{
+"il": "Hakkari",
+"bb": false,
+"n": "İbrahim Taşyapan",
+"ham": "İbrahim Taşyapan ( Kayyım )",
+"kaynak": "tr.wikipedia.org/wiki/Hakkari",
+"durum": "kayyum"
+},
+{
+"il": "Hatay",
+"bb": true,
+"n": "Mehmet Öntürk",
+"ham": "Mehmet Öntürk ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Hatay_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Isparta",
+"bb": false,
+"n": "Şükrü Başdeğirmen",
+"ham": "Şükrü Başdeğirmen ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Isparta",
+"durum": "seçilmiş"
+},
+{
+"il": "Mersin",
+"bb": true,
+"n": "Gülşah Yıldırım Genç",
+"ham": "13.10.2026 meclis seçimi; Vahap Seçer 06.10.2026 görevden uzaklaştırıldı",
+"kaynak": "haberler.com / karar.com (13.10.2026)",
+"durum": "vekil"
+},
+{
+"il": "İstanbul",
+"bb": true,
+"n": "Nuri Aslan",
+"ham": "Nuri Aslan (vekâleten) ( CHP ) 26 Mart 2025'ten beri",
+"kaynak": "tr.wikipedia.org/wiki/İstanbul_Büyükşehir_Belediyesi",
+"durum": "vekil"
+},
+{
+"il": "İzmir",
+"bb": true,
+"n": "Cemil Tugay",
+"ham": "Cemil Tugay ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/İzmir_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Kars",
+"bb": false,
+"n": "Ötüken Senger",
+"ham": "Ötüken Senger ( MHP )",
+"kaynak": "tr.wikipedia.org/wiki/Kars",
+"durum": "seçilmiş"
+},
+{
+"il": "Kastamonu",
+"bb": false,
+"n": "Hasan Baltacı",
+"ham": "Hasan Baltacı ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Kastamonu",
+"durum": "seçilmiş"
+},
+{
+"il": "Kayseri",
+"bb": true,
+"n": "Memduh Büyükkılıç",
+"ham": "Memduh Büyükkılıç ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Kayseri_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Kırklareli",
+"bb": false,
+"n": "Derya Bulut",
+"ham": "Derya Bulut ( MHP )",
+"kaynak": "tr.wikipedia.org/wiki/Kırklareli",
+"durum": "seçilmiş"
+},
+{
+"il": "Kırşehir",
+"bb": false,
+"n": "Selahattin Ekicioğlu",
+"ham": "Selahattin Ekicioğlu ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Kırşehir",
+"durum": "seçilmiş"
+},
+{
+"il": "Kocaeli",
+"bb": true,
+"n": "Tahir Büyükakın",
+"ham": "Tahir Büyükakın ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Kocaeli_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Konya",
+"bb": true,
+"n": "Uğur İbrahim Altay",
+"ham": "Uğur İbrahim Altay ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Konya_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Kütahya",
+"bb": false,
+"n": "Eyüp Kahveci",
+"ham": "Eyüp Kahveci ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Kütahya",
+"durum": "seçilmiş"
+},
+{
+"il": "Malatya",
+"bb": true,
+"n": "Sami Er",
+"ham": "Sami Er ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Malatya_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Manisa",
+"bb": true,
+"n": "Besim Dutlulu",
+"ham": "Besim Dutlulu ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Manisa_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Kahramanmaraş",
+"bb": true,
+"n": "Fırat Görgel",
+"ham": "Fırat Görgel ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Kahramanmaraş_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Mardin",
+"bb": true,
+"n": "Tuncay Akkoyun",
+"ham": "Tuncay Akkoyun ( Kayyum )",
+"kaynak": "tr.wikipedia.org/wiki/Mardin_Büyükşehir_Belediyesi",
+"durum": "kayyum"
+},
+{
+"il": "Muğla",
+"bb": true,
+"n": "Ahmet Aras",
+"ham": "Ahmet Aras ( Bağımsız )",
+"kaynak": "tr.wikipedia.org/wiki/Muğla_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Muş",
+"bb": false,
+"n": "Sırrı Söylemez",
+"ham": "Sırrı Söylemez ( DEM Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Muş",
+"durum": "seçilmiş"
+},
+{
+"il": "Nevşehir",
+"bb": false,
+"n": "Rasim Arı",
+"ham": "Rasim Arı ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Nevşehir",
+"durum": "seçilmiş"
+},
+{
+"il": "Niğde",
+"bb": false,
+"n": "Emrah Özdemir",
+"ham": "Emrah Özdemir ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Niğde",
+"durum": "seçilmiş"
+},
+{
+"il": "Ordu",
+"bb": true,
+"n": "Mehmet Hilmi Güler",
+"ham": "Mehmet Hilmi Güler ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Ordu_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Rize",
+"bb": false,
+"n": "Rahmi Metin",
+"ham": "Rahmi Metin ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Rize",
+"durum": "seçilmiş"
+},
+{
+"il": "Sakarya",
+"bb": true,
+"n": "Yusuf Alemdar",
+"ham": "Yusuf Alemdar ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Sakarya_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Samsun",
+"bb": true,
+"n": "Halit Doğan",
+"ham": "Halit Doğan ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Samsun_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Siirt",
+"bb": false,
+"n": "Kemal Kızılkaya",
+"ham": "Kemal Kızılkaya ( Kayyum )",
+"kaynak": "tr.wikipedia.org/wiki/Siirt",
+"durum": "kayyum"
+},
+{
+"il": "Sinop",
+"bb": false,
+"n": "Metin Gürbüz",
+"ham": "Metin Gürbüz ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Sinop",
+"durum": "seçilmiş"
+},
+{
+"il": "Sivas",
+"bb": false,
+"n": "Adem Uzun",
+"ham": "Adem Uzun ( BBP )",
+"kaynak": "tr.wikipedia.org/wiki/Sivas_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Tekirdağ",
+"bb": true,
+"n": "Candan Yüceer",
+"ham": "Candan Yüceer ( CHP )",
+"kaynak": "tr.wikipedia.org/wiki/Tekirdağ_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Tokat",
+"bb": false,
+"n": "Mehmet Kemal Yazıcıoğlu",
+"ham": "Tokat Belediye Başkanı",
+"kaynak": "benguturk.com (Haziran 2026)",
+"durum": "seçilmiş"
+},
+{
+"il": "Trabzon",
+"bb": true,
+"n": "Ahmet Metin Genç",
+"ham": "Ahmet Metin Genç ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Trabzon_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Tunceli",
+"bb": false,
+"n": "Şefik Aygöl",
+"ham": "Şefik Aygöl ( Kayyım )",
+"kaynak": "tr.wikipedia.org/wiki/Tunceli",
+"durum": "kayyum"
+},
+{
+"il": "Şanlıurfa",
+"bb": true,
+"n": "Mehmet Kasım Gülpınar",
+"ham": "Mehmet Kasım Gülpınar ( Bağımsız )",
+"kaynak": "tr.wikipedia.org/wiki/Şanlıurfa_Büyükşehir_Belediyesi",
+"durum": "seçilmiş"
+},
+{
+"il": "Uşak",
+"bb": false,
+"n": "Hatice Terekeci Özkan",
+"ham": "Hatice Terekeci Özkan ( vekaleten ) ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Uşak",
+"durum": "vekil"
+},
+{
+"il": "Van",
+"bb": true,
+"n": "Ozan Balcı",
+"ham": "Ozan Balcı ( Kayyım )",
+"kaynak": "tr.wikipedia.org/wiki/Van_Büyükşehir_Belediyesi",
+"durum": "kayyum"
+},
+{
+"il": "Yozgat",
+"bb": false,
+"n": "Kazım Arslan",
+"ham": "Kazım Arslan ( YRP )",
+"kaynak": "tr.wikipedia.org/wiki/Yozgat",
+"durum": "seçilmiş"
+},
+{
+"il": "Zonguldak",
+"bb": false,
+"n": "Tahsin Erdem",
+"ham": "Tahsin Erdem ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Zonguldak",
+"durum": "seçilmiş"
+},
+{
+"il": "Aksaray",
+"bb": false,
+"n": "Evren Dinçer",
+"ham": "Evren Dinçer ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Aksaray",
+"durum": "seçilmiş"
+},
+{
+"il": "Bayburt",
+"bb": false,
+"n": "Mete Memiş",
+"ham": "Mete Memiş ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Bayburt",
+"durum": "seçilmiş"
+},
+{
+"il": "Karaman",
+"bb": false,
+"n": "Savaş Kalaycı",
+"ham": "Savaş Kalaycı ( MHP )",
+"kaynak": "tr.wikipedia.org/wiki/Karaman",
+"durum": "seçilmiş"
+},
+{
+"il": "Kırıkkale",
+"bb": false,
+"n": "Ahmet Önal",
+"ham": "Ahmet Önal ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Kırıkkale",
+"durum": "seçilmiş"
+},
+{
+"il": "Batman",
+"bb": false,
+"n": "Ekrem Canalp",
+"ham": "Ekrem Canalp ( Kayyum )",
+"kaynak": "tr.wikipedia.org/wiki/Batman_Belediyesi",
+"durum": "kayyum"
+},
+{
+"il": "Şırnak",
+"bb": false,
+"n": "Mehmet Yarka",
+"ham": "Mehmet Yarka ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Şırnak",
+"durum": "seçilmiş"
+},
+{
+"il": "Bartın",
+"bb": false,
+"n": "Muhammet Rıza Yalçınkaya",
+"ham": "Muhammet Rıza Yalçınkaya ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Bartın",
+"durum": "seçilmiş"
+},
+{
+"il": "Ardahan",
+"bb": false,
+"n": "Faruk Demir",
+"ham": "Faruk Demir ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Ardahan",
+"durum": "seçilmiş"
+},
+{
+"il": "Iğdır",
+"bb": false,
+"n": "Mehmet Nuri Güneş",
+"ham": "Mehmet Nuri Güneş ( DEM Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Iğdır",
+"durum": "seçilmiş"
+},
+{
+"il": "Yalova",
+"bb": false,
+"n": "Mehmet Gürel",
+"ham": "Mehmet Gürel ( Yeni Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Yalova",
+"durum": "seçilmiş"
+},
+{
+"il": "Karabük",
+"bb": false,
+"n": "Özkan Çetinkaya",
+"ham": "Özkan Çetinkaya ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Karabük",
+"durum": "seçilmiş"
+},
+{
+"il": "Kilis",
+"bb": false,
+"n": "Hakan Bilecen",
+"ham": "Hakan Bilecen ( CHP )",
+"kaynak": "tr.wikipedia.org/wiki/Kilis",
+"durum": "seçilmiş"
+},
+{
+"il": "Osmaniye",
+"bb": false,
+"n": "İbrahim Çenet",
+"ham": "İbrahim Çenet ( MHP )",
+"kaynak": "tr.wikipedia.org/wiki/Osmaniye",
+"durum": "seçilmiş"
+},
+{
+"il": "Düzce",
+"bb": false,
+"n": "Faruk Özlü",
+"ham": "Faruk Özlü ( AK Parti )",
+"kaynak": "tr.wikipedia.org/wiki/Düzce",
+"durum": "seçilmiş"
+}
+]
