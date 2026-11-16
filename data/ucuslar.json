@@ -1,298 +1,8 @@
 {
-"guncelleme": "2026-11-17T00:23+03:00",
+"guncelleme": "2026-11-17T01:22+03:00",
 "kaynak": "FlightStats",
 "kalkis": "IST",
 "ucuslar": {
-"TK710-20261116": {
-"no": "TK710",
-"hat": "IST-ISB",
-"sehir": "Islamabad",
-"kalkis": "21:25",
-"inis": "04:45",
-"zaman": "2026-11-16T21:25+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK1987-20261116": {
-"no": "TK1987",
-"hat": "IST-LHR",
-"sehir": "London",
-"kalkis": "21:25",
-"inis": "22:30",
-"zaman": "2026-11-16T21:25+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK136-20261116": {
-"no": "TK136",
-"hat": "IST-MED",
-"sehir": "Madinah",
-"kalkis": "21:25",
-"inis": "00:50",
-"zaman": "2026-11-16T21:25+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK1929-20261116": {
-"no": "TK1929",
-"hat": "IST-LGW",
-"sehir": "London",
-"kalkis": "21:30",
-"inis": "22:35",
-"zaman": "2026-11-16T21:30+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK1889-20261116": {
-"no": "TK1889",
-"hat": "IST-VIE",
-"sehir": "Vienna",
-"kalkis": "21:35",
-"inis": "21:55",
-"zaman": "2026-11-16T21:35+03:00",
-"tip": "32B",
-"ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-16T21:24+03:00",
-"onceki_tip": "32Q",
-"degisti": "2026-11-16T21:24+03:00"
-},
-"TK421-20261116": {
-"no": "TK421",
-"hat": "IST-VKO",
-"sehir": "Moscow",
-"kalkis": "21:35",
-"inis": "01:40",
-"zaman": "2026-11-16T21:35+03:00",
-"tip": "32B",
-"ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK758-20261116": {
-"no": "TK758",
-"hat": "IST-DXB",
-"sehir": "Dubai",
-"kalkis": "21:45",
-"inis": "03:10",
-"zaman": "2026-11-16T21:45+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK740-20261116": {
-"no": "TK740",
-"hat": "IST-MLE",
-"sehir": "Male",
-"kalkis": "21:50",
-"inis": "07:25",
-"zaman": "2026-11-16T21:50+03:00",
-"tip": "789",
-"ad": "Boeing 787-9",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK364-20261116": {
-"no": "TK364",
-"hat": "IST-TAS",
-"sehir": "Tashkent",
-"kalkis": "21:50",
-"inis": "04:35",
-"zaman": "2026-11-16T21:50+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK1851-20261116": {
-"no": "TK1851",
-"hat": "IST-BCN",
-"sehir": "Barcelona",
-"kalkis": "21:55",
-"inis": "23:50",
-"zaman": "2026-11-16T21:55+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK2184-20261116": {
-"no": "TK2184",
-"hat": "IST-ESB",
-"sehir": "Ankara",
-"kalkis": "22:00",
-"inis": "23:10",
-"zaman": "2026-11-16T22:00+03:00",
-"tip": "320",
-"ad": "Airbus A320",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK2432-20261116": {
-"no": "TK2432",
-"hat": "IST-AYT",
-"sehir": "Antalya",
-"kalkis": "22:10",
-"inis": "23:30",
-"zaman": "2026-11-16T22:10+03:00",
-"tip": "321",
-"ad": "Airbus A321",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK336-20261116": {
-"no": "TK336",
-"hat": "IST-GYD",
-"sehir": "Baku",
-"kalkis": "22:15",
-"inis": "02:10",
-"zaman": "2026-11-16T22:15+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK372-20261116": {
-"no": "TK372",
-"hat": "IST-SKD",
-"sehir": "Samarkand",
-"kalkis": "22:15",
-"inis": "04:40",
-"zaman": "2026-11-16T22:15+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK302-20261116": {
-"no": "TK302",
-"hat": "IST-BGW",
-"sehir": "Baghdad",
-"kalkis": "22:15",
-"inis": "01:15",
-"zaman": "2026-11-16T22:15+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK358-20261116": {
-"no": "TK358",
-"hat": "IST-EVN",
-"sehir": "Yerevan",
-"kalkis": "22:15",
-"inis": "01:35",
-"zaman": "2026-11-16T22:15+03:00",
-"tip": "321",
-"ad": "Airbus A321",
-"kontrol": "2026-11-16T21:24+03:00",
-"onceki_tip": "32Q",
-"degisti": "2026-11-16T21:24+03:00"
-},
-"TK844-20261116": {
-"no": "TK844",
-"hat": "IST-ALP",
-"sehir": "Aleppo",
-"kalkis": "22:15",
-"inis": "00:10",
-"zaman": "2026-11-16T22:15+03:00",
-"tip": "73J",
-"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK316-20261116": {
-"no": "TK316",
-"hat": "IST-EBL",
-"sehir": "Erbil",
-"kalkis": "22:15",
-"inis": "00:50",
-"zaman": "2026-11-16T22:15+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK657-20261116": {
-"no": "TK657",
-"hat": "IST-TUN",
-"sehir": "Tunis",
-"kalkis": "22:20",
-"inis": "23:20",
-"zaman": "2026-11-16T22:20+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK386-20261116": {
-"no": "TK386",
-"hat": "IST-TBS",
-"sehir": "Tbilisi",
-"kalkis": "22:20",
-"inis": "01:40",
-"zaman": "2026-11-16T22:20+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK812-20261116": {
-"no": "TK812",
-"hat": "IST-AMM",
-"sehir": "Amman",
-"kalkis": "22:20",
-"inis": "00:40",
-"zaman": "2026-11-16T22:20+03:00",
-"tip": "73J",
-"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK848-20261116": {
-"no": "TK848",
-"hat": "IST-DAM",
-"sehir": "Damascus",
-"kalkis": "22:20",
-"inis": "00:30",
-"zaman": "2026-11-16T22:20+03:00",
-"tip": "73J",
-"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK686-20261116": {
-"no": "TK686",
-"hat": "IST-CAI",
-"sehir": "Cairo",
-"kalkis": "22:25",
-"inis": "23:55",
-"zaman": "2026-11-16T22:25+03:00",
-"tip": "32B",
-"ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK738-20261116": {
-"no": "TK738",
-"hat": "IST-SEZ",
-"sehir": "Mahe Island",
-"kalkis": "22:25",
-"inis": "07:30",
-"zaman": "2026-11-16T22:25+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK808-20261116": {
-"no": "TK808",
-"hat": "IST-ISU",
-"sehir": "Sulaimaniyah",
-"kalkis": "22:30",
-"inis": "01:10",
-"zaman": "2026-11-16T22:30+03:00",
-"tip": "73J",
-"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-16T21:24+03:00"
-},
-"TK2344-20261116": {
-"no": "TK2344",
-"hat": "IST-ADB",
-"sehir": "Izmir",
-"kalkis": "23:00",
-"inis": "00:10",
-"zaman": "2026-11-16T23:00+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-16T21:24+03:00"
-},
 "TK744-20261117": {
 "no": "TK744",
 "hat": "IST-LHE",
@@ -315,15 +25,15 @@
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK750-20261117": {
-"no": "TK750",
-"hat": "IST-ISB",
-"sehir": "Islamabad",
+"TK407-20261117": {
+"no": "TK407",
+"hat": "IST-VKO",
+"sehir": "Moscow",
 "kalkis": "01:20",
-"inis": "08:40",
+"inis": "05:20",
 "zaman": "2026-11-17T01:20+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
+"tip": "32B",
+"ad": "Airbus A321 (sharklets)",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK352-20261117": {
@@ -337,6 +47,17 @@
 "ad": "Airbus A321neo",
 "kontrol": "2026-11-16T23:36+03:00"
 },
+"TK750-20261117": {
+"no": "TK750",
+"hat": "IST-ISB",
+"sehir": "Islamabad",
+"kalkis": "01:20",
+"inis": "08:40",
+"zaman": "2026-11-17T01:20+03:00",
+"tip": "333",
+"ad": "Airbus A330-300",
+"kontrol": "2026-11-16T23:36+03:00"
+},
 "TK96-20261117": {
 "no": "TK96",
 "hat": "IST-JED",
@@ -348,23 +69,12 @@
 "ad": "Airbus A330-300",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK407-20261117": {
-"no": "TK407",
-"hat": "IST-VKO",
-"sehir": "Moscow",
-"kalkis": "01:20",
-"inis": "05:20",
-"zaman": "2026-11-17T01:20+03:00",
-"tip": "32B",
-"ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-16T23:36+03:00"
-},
-"TK344-20261117": {
-"no": "TK344",
-"hat": "IST-FRU",
-"sehir": "Bishkek",
+"TK368-20261117": {
+"no": "TK368",
+"hat": "IST-TAS",
+"sehir": "Tashkent",
 "kalkis": "01:25",
-"inis": "09:25",
+"inis": "08:15",
 "zaman": "2026-11-17T01:25+03:00",
 "tip": "332",
 "ad": "Airbus A330-200",
@@ -381,26 +91,26 @@
 "ad": "Airbus A321neo",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK368-20261117": {
-"no": "TK368",
-"hat": "IST-TAS",
-"sehir": "Tashkent",
+"TK344-20261117": {
+"no": "TK344",
+"hat": "IST-FRU",
+"sehir": "Bishkek",
 "kalkis": "01:25",
-"inis": "08:15",
+"inis": "09:25",
 "zaman": "2026-11-17T01:25+03:00",
 "tip": "332",
 "ad": "Airbus A330-200",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK405-20261117": {
-"no": "TK405",
-"hat": "IST-LED",
-"sehir": "Saint Petersburg",
+"TK646-20261117": {
+"no": "TK646",
+"hat": "IST-MGQ",
+"sehir": "Mogadishu",
 "kalkis": "01:30",
-"inis": "05:20",
+"inis": "08:10",
 "zaman": "2026-11-17T01:30+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"tip": "7M8",
+"ad": "Boeing 737MAX 8 Passenger",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK726-20261117": {
@@ -425,15 +135,15 @@
 "ad": "Airbus A330-300",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK646-20261117": {
-"no": "TK646",
-"hat": "IST-MGQ",
-"sehir": "Mogadishu",
+"TK405-20261117": {
+"no": "TK405",
+"hat": "IST-LED",
+"sehir": "Saint Petersburg",
 "kalkis": "01:30",
-"inis": "08:10",
+"inis": "05:20",
 "zaman": "2026-11-17T01:30+03:00",
-"tip": "7M8",
-"ad": "Boeing 737MAX 8 Passenger",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK828-20261117": {
@@ -502,15 +212,15 @@
 "ad": "Boeing 777-300ER",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK964-20261117": {
-"no": "TK964",
-"hat": "IST-ECN",
-"sehir": "Ercan",
+"TK26-20261117": {
+"no": "TK26",
+"hat": "IST-PVG",
+"sehir": "Shanghai",
 "kalkis": "01:50",
-"inis": "02:30",
+"inis": "17:10",
 "zaman": "2026-11-17T01:50+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
+"tip": "77W",
+"ad": "Boeing 777-300ER",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK54-20261117": {
@@ -524,17 +234,6 @@
 "ad": "Airbus A350-900",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK26-20261117": {
-"no": "TK26",
-"hat": "IST-PVG",
-"sehir": "Shanghai",
-"kalkis": "01:50",
-"inis": "17:10",
-"zaman": "2026-11-17T01:50+03:00",
-"tip": "77W",
-"ad": "Boeing 777-300ER",
-"kontrol": "2026-11-16T23:36+03:00"
-},
 "TK60-20261117": {
 "no": "TK60",
 "hat": "IST-KUL",
@@ -544,6 +243,17 @@
 "zaman": "2026-11-17T01:50+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
+"kontrol": "2026-11-16T23:36+03:00"
+},
+"TK964-20261117": {
+"no": "TK964",
+"hat": "IST-ECN",
+"sehir": "Ercan",
+"kalkis": "01:50",
+"inis": "02:30",
+"zaman": "2026-11-17T01:50+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK24-20261117": {
@@ -579,28 +289,6 @@
 "ad": "Airbus A350-900",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK2192-20261117": {
-"no": "TK2192",
-"hat": "IST-ESB",
-"sehir": "Ankara",
-"kalkis": "02:00",
-"inis": "03:10",
-"zaman": "2026-11-17T02:00+03:00",
-"tip": "7M9",
-"ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-16T23:36+03:00"
-},
-"TK2354-20261117": {
-"no": "TK2354",
-"hat": "IST-ADB",
-"sehir": "Izmir",
-"kalkis": "02:00",
-"inis": "03:15",
-"zaman": "2026-11-17T02:00+03:00",
-"tip": "73J",
-"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-16T23:36+03:00"
-},
 "TK44-20261117": {
 "no": "TK44",
 "hat": "IST-CPT",
@@ -623,6 +311,28 @@
 "ad": "Airbus A330-300",
 "kontrol": "2026-11-16T23:36+03:00"
 },
+"TK2354-20261117": {
+"no": "TK2354",
+"hat": "IST-ADB",
+"sehir": "Izmir",
+"kalkis": "02:00",
+"inis": "03:15",
+"zaman": "2026-11-17T02:00+03:00",
+"tip": "73J",
+"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
+"kontrol": "2026-11-16T23:36+03:00"
+},
+"TK2192-20261117": {
+"no": "TK2192",
+"hat": "IST-ESB",
+"sehir": "Ankara",
+"kalkis": "02:00",
+"inis": "03:10",
+"zaman": "2026-11-17T02:00+03:00",
+"tip": "7M9",
+"ad": "Boeing 737MAX 9 Passenger",
+"kontrol": "2026-11-16T23:36+03:00"
+},
 "TK160-20261117": {
 "no": "TK160",
 "hat": "IST-MRU",
@@ -630,28 +340,6 @@
 "kalkis": "02:00",
 "inis": "12:35",
 "zaman": "2026-11-17T02:00+03:00",
-"tip": "359",
-"ad": "Airbus A350-900",
-"kontrol": "2026-11-16T23:36+03:00"
-},
-"TK2474-20261117": {
-"no": "TK2474",
-"hat": "IST-COV",
-"sehir": "Mersin",
-"kalkis": "02:05",
-"inis": "03:45",
-"zaman": "2026-11-17T02:05+03:00",
-"tip": "7M9",
-"ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-16T23:36+03:00"
-},
-"TK38-20261117": {
-"no": "TK38",
-"hat": "IST-JNB",
-"sehir": "Johannesburg",
-"kalkis": "02:05",
-"inis": "11:00",
-"zaman": "2026-11-17T02:05+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
 "kontrol": "2026-11-16T23:36+03:00"
@@ -667,6 +355,17 @@
 "ad": "Airbus A321",
 "kontrol": "2026-11-16T23:36+03:00"
 },
+"TK38-20261117": {
+"no": "TK38",
+"hat": "IST-JNB",
+"sehir": "Johannesburg",
+"kalkis": "02:05",
+"inis": "11:00",
+"zaman": "2026-11-17T02:05+03:00",
+"tip": "359",
+"ad": "Airbus A350-900",
+"kontrol": "2026-11-16T23:36+03:00"
+},
 "TK802-20261117": {
 "no": "TK802",
 "hat": "IST-BGW",
@@ -678,13 +377,16 @@
 "ad": "Airbus A321neo",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK814-20261117": {
-"no": "TK814",
-"hat": "IST-AMM",
-"sehir": "Amman",
-"kalkis": "02:10",
-"inis": "04:40",
-"zaman": "2026-11-17T02:10+03:00"
+"TK2474-20261117": {
+"no": "TK2474",
+"hat": "IST-COV",
+"sehir": "Mersin",
+"kalkis": "02:05",
+"inis": "03:45",
+"zaman": "2026-11-17T02:05+03:00",
+"tip": "7M9",
+"ad": "Boeing 737MAX 9 Passenger",
+"kontrol": "2026-11-16T23:36+03:00"
 },
 "TK157-20261117": {
 "no": "TK157",
@@ -695,28 +397,6 @@
 "zaman": "2026-11-17T02:10+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-16T23:36+03:00"
-},
-"TK338-20261117": {
-"no": "TK338",
-"hat": "IST-GYD",
-"sehir": "Baku",
-"kalkis": "02:10",
-"inis": "06:05",
-"zaman": "2026-11-17T02:10+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T23:36+03:00"
-},
-"TK88-20261117": {
-"no": "TK88",
-"hat": "IST-PEK",
-"sehir": "Beijing",
-"kalkis": "02:10",
-"inis": "16:15",
-"zaman": "2026-11-17T02:10+03:00",
-"tip": "77W",
-"ad": "Boeing 777-300ER",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK2240-20261117": {
@@ -730,15 +410,34 @@
 "ad": "Airbus A319",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK692-20261117": {
-"no": "TK692",
-"hat": "IST-CAI",
-"sehir": "Cairo",
-"kalkis": "02:15",
-"inis": "03:40",
-"zaman": "2026-11-17T02:15+03:00",
-"tip": "332",
-"ad": "Airbus A330-200",
+"TK88-20261117": {
+"no": "TK88",
+"hat": "IST-PEK",
+"sehir": "Beijing",
+"kalkis": "02:10",
+"inis": "16:15",
+"zaman": "2026-11-17T02:10+03:00",
+"tip": "77W",
+"ad": "Boeing 777-300ER",
+"kontrol": "2026-11-16T23:36+03:00"
+},
+"TK814-20261117": {
+"no": "TK814",
+"hat": "IST-AMM",
+"sehir": "Amman",
+"kalkis": "02:10",
+"inis": "04:40",
+"zaman": "2026-11-17T02:10+03:00"
+},
+"TK338-20261117": {
+"no": "TK338",
+"hat": "IST-GYD",
+"sehir": "Baku",
+"kalkis": "02:10",
+"inis": "06:05",
+"zaman": "2026-11-17T02:10+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK164-20261117": {
@@ -752,6 +451,28 @@
 "ad": "Airbus A350-900",
 "kontrol": "2026-11-16T23:36+03:00"
 },
+"TK692-20261117": {
+"no": "TK692",
+"hat": "IST-CAI",
+"sehir": "Cairo",
+"kalkis": "02:15",
+"inis": "03:40",
+"zaman": "2026-11-17T02:15+03:00",
+"tip": "332",
+"ad": "Airbus A330-200",
+"kontrol": "2026-11-16T23:36+03:00"
+},
+"TK56-20261117": {
+"no": "TK56",
+"hat": "IST-CGK",
+"sehir": "Jakarta",
+"kalkis": "02:20",
+"inis": "18:00",
+"zaman": "2026-11-17T02:20+03:00",
+"tip": "359",
+"ad": "Airbus A350-900",
+"kontrol": "2026-11-16T23:36+03:00"
+},
 "TK90-20261117": {
 "no": "TK90",
 "hat": "IST-ICN",
@@ -761,17 +482,6 @@
 "zaman": "2026-11-17T02:20+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-16T23:36+03:00"
-},
-"TK182-20261117": {
-"no": "TK182",
-"hat": "IST-MEX",
-"sehir": "Mexico City",
-"kalkis": "02:20",
-"inis": "08:00",
-"zaman": "2026-11-17T02:20+03:00",
-"tip": "789",
-"ad": "Boeing 787-9",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK419-20261117": {
@@ -796,15 +506,15 @@
 "ad": "Airbus A321neo",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK56-20261117": {
-"no": "TK56",
-"hat": "IST-CGK",
-"sehir": "Jakarta",
+"TK182-20261117": {
+"no": "TK182",
+"hat": "IST-MEX",
+"sehir": "Mexico City",
 "kalkis": "02:20",
-"inis": "18:00",
+"inis": "08:00",
 "zaman": "2026-11-17T02:20+03:00",
-"tip": "359",
-"ad": "Airbus A350-900",
+"tip": "789",
+"ad": "Boeing 787-9",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK162-20261117": {
@@ -816,17 +526,6 @@
 "zaman": "2026-11-17T02:25+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-16T23:36+03:00"
-},
-"TK86-20261117": {
-"no": "TK86",
-"hat": "IST-KIX",
-"sehir": "Osaka",
-"kalkis": "02:25",
-"inis": "19:10",
-"zaman": "2026-11-17T02:25+03:00",
-"tip": "789",
-"ad": "Boeing 787-9",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK734-20261117": {
@@ -846,6 +545,17 @@
 "sehir": "Denpasar",
 "kalkis": "02:25",
 "inis": "20:05",
+"zaman": "2026-11-17T02:25+03:00",
+"tip": "789",
+"ad": "Boeing 787-9",
+"kontrol": "2026-11-16T23:36+03:00"
+},
+"TK86-20261117": {
+"no": "TK86",
+"hat": "IST-KIX",
+"sehir": "Osaka",
+"kalkis": "02:25",
+"inis": "19:10",
 "zaman": "2026-11-17T02:25+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
@@ -892,17 +602,6 @@
 "ad": "Airbus A320",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK2826-20261117": {
-"no": "TK2826",
-"hat": "IST-TZX",
-"sehir": "Trabzon",
-"kalkis": "07:00",
-"inis": "08:45",
-"zaman": "2026-11-17T07:00+03:00",
-"tip": "73J",
-"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-16T23:06+03:00"
-},
 "TK2122-20261117": {
 "no": "TK2122",
 "hat": "IST-ESB",
@@ -912,18 +611,7 @@
 "zaman": "2026-11-17T07:00+03:00",
 "tip": "321",
 "ad": "Airbus A321",
-"kontrol": "2026-11-16T23:06+03:00"
-},
-"TK2310-20261117": {
-"no": "TK2310",
-"hat": "IST-ADB",
-"sehir": "Izmir",
-"kalkis": "07:00",
-"inis": "08:05",
-"zaman": "2026-11-17T07:00+03:00",
-"tip": "73J",
-"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-16T23:06+03:00"
+"kontrol": "2026-11-17T01:22+03:00"
 },
 "TK2536-20261117": {
 "no": "TK2536",
@@ -934,40 +622,29 @@
 "zaman": "2026-11-17T07:00+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-16T23:06+03:00"
+"kontrol": "2026-11-17T01:22+03:00"
 },
-"TK2452-20261117": {
-"no": "TK2452",
-"hat": "IST-COV",
-"sehir": "Mersin",
-"kalkis": "07:05",
-"inis": "08:40",
-"zaman": "2026-11-17T07:05+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T23:06+03:00"
+"TK2310-20261117": {
+"no": "TK2310",
+"hat": "IST-ADB",
+"sehir": "Izmir",
+"kalkis": "07:00",
+"inis": "08:05",
+"zaman": "2026-11-17T07:00+03:00",
+"tip": "73J",
+"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
+"kontrol": "2026-11-17T01:22+03:00"
 },
-"TK2220-20261117": {
-"no": "TK2220",
-"hat": "IST-GZT",
-"sehir": "Gaziantep",
-"kalkis": "07:05",
-"inis": "08:50",
-"zaman": "2026-11-17T07:05+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-16T23:06+03:00"
-},
-"TK2408-20261117": {
-"no": "TK2408",
-"hat": "IST-AYT",
-"sehir": "Antalya",
-"kalkis": "07:05",
-"inis": "08:25",
-"zaman": "2026-11-17T07:05+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
-"kontrol": "2026-11-16T23:06+03:00"
+"TK2826-20261117": {
+"no": "TK2826",
+"hat": "IST-TZX",
+"sehir": "Trabzon",
+"kalkis": "07:00",
+"inis": "08:45",
+"zaman": "2026-11-17T07:00+03:00",
+"tip": "73J",
+"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
+"kontrol": "2026-11-17T01:22+03:00"
 },
 "TK2032-20261117": {
 "no": "TK2032",
@@ -978,17 +655,50 @@
 "zaman": "2026-11-17T07:05+03:00",
 "tip": "319",
 "ad": "Airbus A319",
-"kontrol": "2026-11-16T23:06+03:00"
+"kontrol": "2026-11-17T01:22+03:00"
 },
-"TK851-20261117": {
-"no": "TK851",
-"hat": "IST-ALG",
-"sehir": "Algiers",
-"kalkis": "07:25",
-"inis": "09:15",
-"zaman": "2026-11-17T07:25+03:00",
+"TK2408-20261117": {
+"no": "TK2408",
+"hat": "IST-AYT",
+"sehir": "Antalya",
+"kalkis": "07:05",
+"inis": "08:25",
+"zaman": "2026-11-17T07:05+03:00",
+"tip": "333",
+"ad": "Airbus A330-300",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2452-20261117": {
+"no": "TK2452",
+"hat": "IST-COV",
+"sehir": "Mersin",
+"kalkis": "07:05",
+"inis": "08:40",
+"zaman": "2026-11-17T07:05+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2220-20261117": {
+"no": "TK2220",
+"hat": "IST-GZT",
+"sehir": "Gaziantep",
+"kalkis": "07:05",
+"inis": "08:50",
+"zaman": "2026-11-17T07:05+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2674-20261117": {
+"no": "TK2674",
+"hat": "IST-MQM",
+"sehir": "Mardin",
+"kalkis": "07:25",
+"inis": "09:25",
+"zaman": "2026-11-17T07:25+03:00",
+"tip": "32A",
+"ad": "Airbus A320 (sharklets)",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK2806-20261117": {
@@ -1002,15 +712,15 @@
 "ad": "Airbus A321 (sharklets)",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK2674-20261117": {
-"no": "TK2674",
-"hat": "IST-MQM",
-"sehir": "Mardin",
+"TK851-20261117": {
+"no": "TK851",
+"hat": "IST-ALG",
+"sehir": "Algiers",
 "kalkis": "07:25",
-"inis": "09:25",
+"inis": "09:15",
 "zaman": "2026-11-17T07:25+03:00",
-"tip": "32A",
-"ad": "Airbus A320 (sharklets)",
+"tip": "32Q",
+"ad": "Airbus A321neo",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK2848-20261117": {
@@ -1022,6 +732,17 @@
 "zaman": "2026-11-17T07:30+03:00",
 "tip": "319",
 "ad": "Airbus A319",
+"kontrol": "2026-11-16T23:36+03:00"
+},
+"TK2000-20261117": {
+"no": "TK2000",
+"hat": "IST-NAV",
+"sehir": "Nevsehir",
+"kalkis": "07:30",
+"inis": "08:50",
+"zaman": "2026-11-17T07:30+03:00",
+"tip": "32A",
+"ad": "Airbus A320 (sharklets)",
 "kontrol": "2026-11-16T23:36+03:00"
 },
 "TK2242-20261117": {
@@ -1046,17 +767,6 @@
 "ad": "Airbus A320",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK2000-20261117": {
-"no": "TK2000",
-"hat": "IST-NAV",
-"sehir": "Nevsehir",
-"kalkis": "07:30",
-"inis": "08:50",
-"zaman": "2026-11-17T07:30+03:00",
-"tip": "32A",
-"ad": "Airbus A320 (sharklets)",
-"kontrol": "2026-11-16T23:36+03:00"
-},
 "TK2010-20261117": {
 "no": "TK2010",
 "hat": "IST-ASR",
@@ -1079,17 +789,6 @@
 "ad": "Boeing 787-9",
 "kontrol": "2026-11-16T23:36+03:00"
 },
-"TK960-20261117": {
-"no": "TK960",
-"hat": "IST-ECN",
-"sehir": "Ercan",
-"kalkis": "07:40",
-"inis": "08:20",
-"zaman": "2026-11-17T07:40+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-17T00:23+03:00"
-},
 "TK2504-20261117": {
 "no": "TK2504",
 "hat": "IST-BJV",
@@ -1101,13 +800,13 @@
 "ad": "Airbus A320",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK2552-20261117": {
-"no": "TK2552",
-"hat": "IST-DLM",
-"sehir": "Dalaman",
-"kalkis": "07:45",
-"inis": "09:05",
-"zaman": "2026-11-17T07:45+03:00",
+"TK960-20261117": {
+"no": "TK960",
+"hat": "IST-ECN",
+"sehir": "Ercan",
+"kalkis": "07:40",
+"inis": "08:20",
+"zaman": "2026-11-17T07:40+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
 "kontrol": "2026-11-17T00:23+03:00"
@@ -1123,48 +822,15 @@
 "ad": "Boeing 737MAX 8 Passenger",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK1821-20261117": {
-"no": "TK1821",
-"hat": "IST-CDG",
-"sehir": "Paris",
-"kalkis": "07:55",
-"inis": "09:35",
-"zaman": "2026-11-17T07:55+03:00",
-"tip": "359",
-"ad": "Airbus A350-900",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK314-20261117": {
-"no": "TK314",
-"hat": "IST-EBL",
-"sehir": "Erbil",
-"kalkis": "07:55",
-"inis": "10:30",
-"zaman": "2026-11-17T07:55+03:00",
-"tip": "7M9",
-"ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK830-20261117": {
-"no": "TK830",
-"hat": "IST-BEY",
-"sehir": "Beirut",
-"kalkis": "07:55",
-"inis": "08:45",
-"zaman": "2026-11-17T07:55+03:00",
-"tip": "32R",
-"ad": "Airbus A320 Short Range",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK1975-20261117": {
-"no": "TK1975",
-"hat": "IST-DUB",
-"sehir": "Dublin",
-"kalkis": "07:55",
-"inis": "09:35",
-"zaman": "2026-11-17T07:55+03:00",
-"tip": "7M8",
-"ad": "Boeing 737MAX 8 Passenger",
+"TK2552-20261117": {
+"no": "TK2552",
+"hat": "IST-DLM",
+"sehir": "Dalaman",
+"kalkis": "07:45",
+"inis": "09:05",
+"zaman": "2026-11-17T07:45+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
 "kontrol": "2026-11-17T00:23+03:00"
 },
 "TK378-20261117": {
@@ -1178,48 +844,15 @@
 "ad": "Airbus A321neo",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK764-20261117": {
-"no": "TK764",
-"hat": "IST-DXB",
-"sehir": "Dubai",
+"TK830-20261117": {
+"no": "TK830",
+"hat": "IST-BEY",
+"sehir": "Beirut",
 "kalkis": "07:55",
-"inis": "13:30",
+"inis": "08:45",
 "zaman": "2026-11-17T07:55+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK1857-20261117": {
-"no": "TK1857",
-"hat": "IST-MAD",
-"sehir": "Madrid",
-"kalkis": "07:55",
-"inis": "10:25",
-"zaman": "2026-11-17T07:55+03:00",
-"tip": "789",
-"ad": "Boeing 787-9",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK1449-20261117": {
-"no": "TK1449",
-"hat": "IST-OPO",
-"sehir": "Porto",
-"kalkis": "07:55",
-"inis": "09:55",
-"zaman": "2026-11-17T07:55+03:00",
-"tip": "7M9",
-"ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK690-20261117": {
-"no": "TK690",
-"hat": "IST-CAI",
-"sehir": "Cairo",
-"kalkis": "07:55",
-"inis": "09:20",
-"zaman": "2026-11-17T07:55+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
+"tip": "32R",
+"ad": "Airbus A320 Short Range",
 "kontrol": "2026-11-17T00:23+03:00"
 },
 "TK1917-20261117": {
@@ -1233,6 +866,50 @@
 "ad": "Airbus A350-900",
 "kontrol": "2026-11-17T00:23+03:00"
 },
+"TK764-20261117": {
+"no": "TK764",
+"hat": "IST-DXB",
+"sehir": "Dubai",
+"kalkis": "07:55",
+"inis": "13:30",
+"zaman": "2026-11-17T07:55+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK1975-20261117": {
+"no": "TK1975",
+"hat": "IST-DUB",
+"sehir": "Dublin",
+"kalkis": "07:55",
+"inis": "09:35",
+"zaman": "2026-11-17T07:55+03:00",
+"tip": "7M8",
+"ad": "Boeing 737MAX 8 Passenger",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK1857-20261117": {
+"no": "TK1857",
+"hat": "IST-MAD",
+"sehir": "Madrid",
+"kalkis": "07:55",
+"inis": "10:25",
+"zaman": "2026-11-17T07:55+03:00",
+"tip": "789",
+"ad": "Boeing 787-9",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK314-20261117": {
+"no": "TK314",
+"hat": "IST-EBL",
+"sehir": "Erbil",
+"kalkis": "07:55",
+"inis": "10:30",
+"zaman": "2026-11-17T07:55+03:00",
+"tip": "7M9",
+"ad": "Boeing 737MAX 9 Passenger",
+"kontrol": "2026-11-17T00:23+03:00"
+},
 "TK283-20261117": {
 "no": "TK283",
 "hat": "IST-MSQ",
@@ -1244,26 +921,37 @@
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK1767-20261117": {
-"no": "TK1767",
-"hat": "IST-PRG",
-"sehir": "Prague",
-"kalkis": "08:00",
-"inis": "08:35",
-"zaman": "2026-11-17T08:00+03:00",
+"TK690-20261117": {
+"no": "TK690",
+"hat": "IST-CAI",
+"sehir": "Cairo",
+"kalkis": "07:55",
+"inis": "09:20",
+"zaman": "2026-11-17T07:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK1271-20261117": {
-"no": "TK1271",
-"hat": "IST-KRK",
-"sehir": "Krakow",
-"kalkis": "08:00",
-"inis": "08:20",
-"zaman": "2026-11-17T08:00+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"TK1821-20261117": {
+"no": "TK1821",
+"hat": "IST-CDG",
+"sehir": "Paris",
+"kalkis": "07:55",
+"inis": "09:35",
+"zaman": "2026-11-17T07:55+03:00",
+"tip": "359",
+"ad": "Airbus A350-900",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK1449-20261117": {
+"no": "TK1449",
+"hat": "IST-OPO",
+"sehir": "Porto",
+"kalkis": "07:55",
+"inis": "09:55",
+"zaman": "2026-11-17T07:55+03:00",
+"tip": "7M9",
+"ad": "Boeing 737MAX 9 Passenger",
 "kontrol": "2026-11-17T00:23+03:00"
 },
 "TK4950-20261117": {
@@ -1288,6 +976,39 @@
 "ad": "Boeing 777-300ER",
 "kontrol": "2026-11-17T00:23+03:00"
 },
+"TK1271-20261117": {
+"no": "TK1271",
+"hat": "IST-KRK",
+"sehir": "Krakow",
+"kalkis": "08:00",
+"inis": "08:20",
+"zaman": "2026-11-17T08:00+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK1767-20261117": {
+"no": "TK1767",
+"hat": "IST-PRG",
+"sehir": "Prague",
+"kalkis": "08:00",
+"inis": "08:35",
+"zaman": "2026-11-17T08:00+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK1523-20261117": {
+"no": "TK1523",
+"hat": "IST-DUS",
+"sehir": "Dusseldorf",
+"kalkis": "08:00",
+"inis": "09:20",
+"zaman": "2026-11-17T08:00+03:00",
+"tip": "333",
+"ad": "Airbus A330-300",
+"kontrol": "2026-11-17T00:23+03:00"
+},
 "TK1369-20261117": {
 "no": "TK1369",
 "hat": "IST-MLA",
@@ -1305,17 +1026,6 @@
 "zaman": "2026-11-17T08:00+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK1523-20261117": {
-"no": "TK1523",
-"hat": "IST-DUS",
-"sehir": "Dusseldorf",
-"kalkis": "08:00",
-"inis": "09:20",
-"zaman": "2026-11-17T08:00+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
 "kontrol": "2026-11-17T00:23+03:00"
 },
 "TK2312-20261117": {
@@ -1362,17 +1072,6 @@
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK900-20261117": {
-"no": "TK900",
-"hat": "IST-BOG",
-"sehir": "Bogota",
-"kalkis": "08:05",
-"inis": "13:45",
-"zaman": "2026-11-17T08:05+03:00",
-"tip": "359",
-"ad": "Airbus A350-900",
-"kontrol": "2026-11-17T00:23+03:00"
-},
 "TK3-20261117": {
 "no": "TK3",
 "hat": "IST-JFK",
@@ -1382,6 +1081,17 @@
 "zaman": "2026-11-17T08:05+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK900-20261117": {
+"no": "TK900",
+"hat": "IST-BOG",
+"sehir": "Bogota",
+"kalkis": "08:05",
+"inis": "13:45",
+"zaman": "2026-11-17T08:05+03:00",
+"tip": "359",
+"ad": "Airbus A350-900",
 "kontrol": "2026-11-17T00:23+03:00"
 },
 "TK1981-20261117": {
@@ -1401,28 +1111,6 @@
 "sehir": "Budapest",
 "kalkis": "08:10",
 "inis": "08:15",
-"zaman": "2026-11-17T08:10+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK1073-20261117": {
-"no": "TK1073",
-"hat": "IST-TIA",
-"sehir": "Tirana",
-"kalkis": "08:10",
-"inis": "08:00",
-"zaman": "2026-11-17T08:10+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK1587-20261117": {
-"no": "TK1587",
-"hat": "IST-FRA",
-"sehir": "Frankfurt",
-"kalkis": "08:10",
-"inis": "09:30",
 "zaman": "2026-11-17T08:10+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
@@ -1450,12 +1138,34 @@
 "ad": "Boeing 737MAX 9 Passenger",
 "kontrol": "2026-11-17T00:23+03:00"
 },
+"TK1073-20261117": {
+"no": "TK1073",
+"hat": "IST-TIA",
+"sehir": "Tirana",
+"kalkis": "08:10",
+"inis": "08:00",
+"zaman": "2026-11-17T08:10+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T00:23+03:00"
+},
 "TK1265-20261117": {
 "no": "TK1265",
 "hat": "IST-WAW",
 "sehir": "Warsaw",
 "kalkis": "08:10",
 "inis": "08:40",
+"zaman": "2026-11-17T08:10+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK1587-20261117": {
+"no": "TK1587",
+"hat": "IST-FRA",
+"sehir": "Frankfurt",
+"kalkis": "08:10",
+"inis": "09:30",
 "zaman": "2026-11-17T08:10+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
@@ -1470,6 +1180,17 @@
 "zaman": "2026-11-17T08:10+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK1053-20261117": {
+"no": "TK1053",
+"hat": "IST-ZAG",
+"sehir": "Zagreb",
+"kalkis": "08:15",
+"inis": "08:30",
+"zaman": "2026-11-17T08:15+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
 "kontrol": "2026-11-17T00:23+03:00"
 },
 "TK1993-20261117": {
@@ -1505,15 +1226,26 @@
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK1053-20261117": {
-"no": "TK1053",
-"hat": "IST-ZAG",
-"sehir": "Zagreb",
-"kalkis": "08:15",
-"inis": "08:30",
-"zaman": "2026-11-17T08:15+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"TK1331-20261117": {
+"no": "TK1331",
+"hat": "IST-BRE",
+"sehir": "Bremen",
+"kalkis": "08:20",
+"inis": "09:50",
+"zaman": "2026-11-17T08:20+03:00",
+"tip": "73J",
+"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK1043-20261117": {
+"no": "TK1043",
+"hat": "IST-OTP",
+"sehir": "Bucharest",
+"kalkis": "08:20",
+"inis": "08:40",
+"zaman": "2026-11-17T08:20+03:00",
+"tip": "359",
+"ad": "Airbus A350-900",
 "kontrol": "2026-11-17T00:23+03:00"
 },
 "TK1661-20261117": {
@@ -1522,39 +1254,6 @@
 "sehir": "Hamburg",
 "kalkis": "08:20",
 "inis": "09:35",
-"zaman": "2026-11-17T08:20+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK1883-20261117": {
-"no": "TK1883",
-"hat": "IST-VIE",
-"sehir": "Vienna",
-"kalkis": "08:20",
-"inis": "08:40",
-"zaman": "2026-11-17T08:20+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK651-20261117": {
-"no": "TK651",
-"hat": "IST-ALG",
-"sehir": "Algiers",
-"kalkis": "08:20",
-"inis": "10:10",
-"zaman": "2026-11-17T08:20+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-17T00:23+03:00"
-},
-"TK1755-20261117": {
-"no": "TK1755",
-"hat": "IST-LIS",
-"sehir": "Lisbon",
-"kalkis": "08:20",
-"inis": "10:30",
 "zaman": "2026-11-17T08:20+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
@@ -1571,15 +1270,26 @@
 "ad": "Airbus A321neo",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK1331-20261117": {
-"no": "TK1331",
-"hat": "IST-BRE",
-"sehir": "Bremen",
+"TK1883-20261117": {
+"no": "TK1883",
+"hat": "IST-VIE",
+"sehir": "Vienna",
 "kalkis": "08:20",
-"inis": "09:50",
+"inis": "08:40",
 "zaman": "2026-11-17T08:20+03:00",
-"tip": "73J",
-"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T00:23+03:00"
+},
+"TK1755-20261117": {
+"no": "TK1755",
+"hat": "IST-LIS",
+"sehir": "Lisbon",
+"kalkis": "08:20",
+"inis": "10:30",
+"zaman": "2026-11-17T08:20+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
 "kontrol": "2026-11-17T00:23+03:00"
 },
 "TK332-20261117": {
@@ -1593,6 +1303,17 @@
 "ad": "Airbus A321neo",
 "kontrol": "2026-11-17T00:23+03:00"
 },
+"TK651-20261117": {
+"no": "TK651",
+"hat": "IST-ALG",
+"sehir": "Algiers",
+"kalkis": "08:20",
+"inis": "10:10",
+"zaman": "2026-11-17T08:20+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T00:23+03:00"
+},
 "TK1027-20261117": {
 "no": "TK1027",
 "hat": "IST-SOF",
@@ -1604,16 +1325,610 @@
 "ad": "Airbus A321neo",
 "kontrol": "2026-11-17T00:23+03:00"
 },
-"TK1043-20261117": {
-"no": "TK1043",
-"hat": "IST-OTP",
-"sehir": "Bucharest",
-"kalkis": "08:20",
-"inis": "08:40",
-"zaman": "2026-11-17T08:20+03:00",
+"TK1389-20261117": {
+"no": "TK1389",
+"hat": "IST-BOD",
+"sehir": "Bordeaux",
+"kalkis": "08:25",
+"inis": "10:30",
+"zaman": "2026-11-17T08:25+03:00",
+"tip": "7M8",
+"ad": "Boeing 737MAX 8 Passenger",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1721-20261117": {
+"no": "TK1721",
+"hat": "IST-BER",
+"sehir": "Berlin",
+"kalkis": "08:25",
+"inis": "09:25",
+"zaman": "2026-11-17T08:25+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK108-20261117": {
+"no": "TK108",
+"hat": "IST-MED",
+"sehir": "Madinah",
+"kalkis": "08:25",
+"inis": "11:50",
+"zaman": "2026-11-17T08:25+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-17T00:23+03:00"
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1003-20261117": {
+"no": "TK1003",
+"hat": "IST-SKP",
+"sehir": "Skopje",
+"kalkis": "08:25",
+"inis": "07:55",
+"zaman": "2026-11-17T08:25+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1315-20261117": {
+"no": "TK1315",
+"hat": "IST-BIO",
+"sehir": "Bilbao",
+"kalkis": "08:30",
+"inis": "10:55",
+"zaman": "2026-11-17T08:30+03:00",
+"tip": "7M9",
+"ad": "Boeing 737MAX 9 Passenger",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1907-20261117": {
+"no": "TK1907",
+"hat": "IST-ZRH",
+"sehir": "Zurich",
+"kalkis": "08:30",
+"inis": "09:30",
+"zaman": "2026-11-17T08:30+03:00",
+"tip": "333",
+"ad": "Airbus A330-300",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK413-20261117": {
+"no": "TK413",
+"hat": "IST-VKO",
+"sehir": "Moscow",
+"kalkis": "08:30",
+"inis": "12:30",
+"zaman": "2026-11-17T08:30+03:00",
+"tip": "333",
+"ad": "Airbus A330-300",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1757-20261117": {
+"no": "TK1757",
+"hat": "IST-RIX",
+"sehir": "Riga",
+"kalkis": "08:30",
+"inis": "10:45",
+"zaman": "2026-11-17T08:30+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK269-20261117": {
+"no": "TK269",
+"hat": "IST-KIV",
+"sehir": "Chisinau",
+"kalkis": "08:30",
+"inis": "09:10",
+"zaman": "2026-11-17T08:30+03:00",
+"tip": "32B",
+"ad": "Airbus A321 (sharklets)",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1701-20261117": {
+"no": "TK1701",
+"hat": "IST-STR",
+"sehir": "Stuttgart",
+"kalkis": "08:30",
+"inis": "09:35",
+"zaman": "2026-11-17T08:30+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1303-20261117": {
+"no": "TK1303",
+"hat": "IST-AGP",
+"sehir": "Malaga",
+"kalkis": "08:30",
+"inis": "11:10",
+"zaman": "2026-11-17T08:30+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK4952-20261117": {
+"no": "TK4952",
+"hat": "IST-AYT",
+"sehir": "Antalya",
+"kalkis": "08:30",
+"inis": "09:50",
+"zaman": "2026-11-17T08:30+03:00",
+"tip": "321",
+"ad": "Airbus A321",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1751-20261117": {
+"no": "TK1751",
+"hat": "IST-OSL",
+"sehir": "Oslo",
+"kalkis": "08:30",
+"inis": "10:30",
+"zaman": "2026-11-17T08:30+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1017-20261117": {
+"no": "TK1017",
+"hat": "IST-PRN",
+"sehir": "Prishtina",
+"kalkis": "08:35",
+"inis": "08:20",
+"zaman": "2026-11-17T08:35+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1761-20261117": {
+"no": "TK1761",
+"hat": "IST-HEL",
+"sehir": "Helsinki",
+"kalkis": "08:35",
+"inis": "11:20",
+"zaman": "2026-11-17T08:35+03:00",
+"tip": "7M9",
+"ad": "Boeing 737MAX 9 Passenger",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1793-20261117": {
+"no": "TK1793",
+"hat": "IST-ARN",
+"sehir": "Stockholm",
+"kalkis": "08:40",
+"inis": "10:20",
+"zaman": "2026-11-17T08:40+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK92-20261117": {
+"no": "TK92",
+"hat": "IST-JED",
+"sehir": "Jeddah",
+"kalkis": "08:40",
+"inis": "12:25",
+"zaman": "2026-11-17T08:40+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1979-20261117": {
+"no": "TK1979",
+"hat": "IST-LHR",
+"sehir": "London",
+"kalkis": "08:40",
+"inis": "09:45",
+"zaman": "2026-11-17T08:40+03:00",
+"tip": "359",
+"ad": "Airbus A350-900",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1923-20261117": {
+"no": "TK1923",
+"hat": "IST-BSL",
+"sehir": "Basel, Switzerland/Mulhouse",
+"kalkis": "08:40",
+"inis": "09:50",
+"zaman": "2026-11-17T08:40+03:00",
+"tip": "7M9",
+"ad": "Boeing 737MAX 9 Passenger",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1071-20261117": {
+"no": "TK1071",
+"hat": "IST-VAR",
+"sehir": "Varna",
+"kalkis": "08:45",
+"inis": "08:50",
+"zaman": "2026-11-17T08:45+03:00",
+"tip": "73J",
+"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK700-20261117": {
+"no": "TK700",
+"hat": "IST-SSH",
+"sehir": "Sharm el Sheikh",
+"kalkis": "08:50",
+"inis": "10:40",
+"zaman": "2026-11-17T08:50+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1301-20261117": {
+"no": "TK1301",
+"hat": "IST-VLC",
+"sehir": "Valencia",
+"kalkis": "08:50",
+"inis": "10:55",
+"zaman": "2026-11-17T08:50+03:00",
+"tip": "321",
+"ad": "Airbus A321",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1407-20261117": {
+"no": "TK1407",
+"hat": "IST-VNO",
+"sehir": "Vilnius",
+"kalkis": "08:50",
+"inis": "10:50",
+"zaman": "2026-11-17T08:50+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1813-20261117": {
+"no": "TK1813",
+"hat": "IST-NCE",
+"sehir": "Nice",
+"kalkis": "08:50",
+"inis": "10:00",
+"zaman": "2026-11-17T08:50+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1365-20261117": {
+"no": "TK1365",
+"hat": "IST-MRS",
+"sehir": "Marseille",
+"kalkis": "08:55",
+"inis": "10:25",
+"zaman": "2026-11-17T08:55+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1873-20261117": {
+"no": "TK1873",
+"hat": "IST-MXP",
+"sehir": "Milan",
+"kalkis": "08:55",
+"inis": "10:00",
+"zaman": "2026-11-17T08:55+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK639-20261117": {
+"no": "TK639",
+"hat": "IST-MJI",
+"sehir": "Mitiga, Tripoli",
+"kalkis": "08:55",
+"inis": "11:05",
+"zaman": "2026-11-17T08:55+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK661-20261117": {
+"no": "TK661",
+"hat": "IST-TUN",
+"sehir": "Tunis",
+"kalkis": "08:55",
+"inis": "10:00",
+"zaman": "2026-11-17T08:55+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1951-20261117": {
+"no": "TK1951",
+"hat": "IST-AMS",
+"sehir": "Amsterdam",
+"kalkis": "08:55",
+"inis": "10:40",
+"zaman": "2026-11-17T08:55+03:00",
+"tip": "359",
+"ad": "Airbus A350-900",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1309-20261117": {
+"no": "TK1309",
+"hat": "IST-TRN",
+"sehir": "Turin",
+"kalkis": "09:00",
+"inis": "10:10",
+"zaman": "2026-11-17T09:00+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK133-20261117": {
+"no": "TK133",
+"hat": "IST-IAH",
+"sehir": "Houston",
+"kalkis": "09:00",
+"inis": "13:10",
+"zaman": "2026-11-17T09:00+03:00",
+"tip": "789",
+"ad": "Boeing 787-9",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2134-20261117": {
+"no": "TK2134",
+"hat": "IST-ESB",
+"sehir": "Ankara",
+"kalkis": "09:00",
+"inis": "10:10",
+"zaman": "2026-11-17T09:00+03:00",
+"tip": "320",
+"ad": "Airbus A320",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1861-20261117": {
+"no": "TK1861",
+"hat": "IST-FCO",
+"sehir": "Rome",
+"kalkis": "09:00",
+"inis": "09:45",
+"zaman": "2026-11-17T09:00+03:00",
+"tip": "32B",
+"ad": "Airbus A321 (sharklets)",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1629-20261117": {
+"no": "TK1629",
+"hat": "IST-MUC",
+"sehir": "Munich",
+"kalkis": "09:00",
+"inis": "09:50",
+"zaman": "2026-11-17T09:00+03:00",
+"tip": "32B",
+"ad": "Airbus A321 (sharklets)",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK641-20261117": {
+"no": "TK641",
+"hat": "IST-BEN",
+"sehir": "Benghazi",
+"kalkis": "09:00",
+"inis": "10:30",
+"zaman": "2026-11-17T09:00+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK429-20261117": {
+"no": "TK429",
+"hat": "IST-KZN",
+"sehir": "Kazan",
+"kalkis": "09:00",
+"inis": "13:55",
+"zaman": "2026-11-17T09:00+03:00",
+"tip": "738",
+"ad": "Boeing 737-800 Passenger",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK401-20261117": {
+"no": "TK401",
+"hat": "IST-LED",
+"sehir": "Saint Petersburg",
+"kalkis": "09:00",
+"inis": "12:50",
+"zaman": "2026-11-17T09:00+03:00",
+"tip": "321",
+"ad": "Airbus A321",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1937-20261117": {
+"no": "TK1937",
+"hat": "IST-BRU",
+"sehir": "Brussels",
+"kalkis": "09:00",
+"inis": "10:35",
+"zaman": "2026-11-17T09:00+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1831-20261117": {
+"no": "TK1831",
+"hat": "IST-CDG",
+"sehir": "Paris",
+"kalkis": "09:05",
+"inis": "10:55",
+"zaman": "2026-11-17T09:05+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1671-20261117": {
+"no": "TK1671",
+"hat": "IST-CGN",
+"sehir": "Cologne",
+"kalkis": "09:05",
+"inis": "10:30",
+"zaman": "2026-11-17T09:05+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2252-20261117": {
+"no": "TK2252",
+"hat": "IST-HTY",
+"sehir": "Antakya",
+"kalkis": "09:10",
+"inis": "11:05",
+"zaman": "2026-11-17T09:10+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2630-20261117": {
+"no": "TK2630",
+"hat": "IST-MLX",
+"sehir": "Malatya",
+"kalkis": "09:10",
+"inis": "11:00",
+"zaman": "2026-11-17T09:10+03:00",
+"tip": "32A",
+"ad": "Airbus A320 (sharklets)",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2004-20261117": {
+"no": "TK2004",
+"hat": "IST-NAV",
+"sehir": "Nevsehir",
+"kalkis": "09:10",
+"inis": "10:30",
+"zaman": "2026-11-17T09:10+03:00",
+"tip": "32A",
+"ad": "Airbus A320 (sharklets)",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2746-20261117": {
+"no": "TK2746",
+"hat": "IST-VAN",
+"sehir": "Van",
+"kalkis": "09:10",
+"inis": "11:20",
+"zaman": "2026-11-17T09:10+03:00",
+"tip": "321",
+"ad": "Airbus A321",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2642-20261117": {
+"no": "TK2642",
+"hat": "IST-EZS",
+"sehir": "Elazig",
+"kalkis": "09:10",
+"inis": "11:05",
+"zaman": "2026-11-17T09:10+03:00",
+"tip": "321",
+"ad": "Airbus A321",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1321-20261117": {
+"no": "TK1321",
+"hat": "IST-BLQ",
+"sehir": "Bologna",
+"kalkis": "09:10",
+"inis": "09:55",
+"zaman": "2026-11-17T09:10+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK1853-20261117": {
+"no": "TK1853",
+"hat": "IST-BCN",
+"sehir": "Barcelona",
+"kalkis": "09:10",
+"inis": "10:55",
+"zaman": "2026-11-17T09:10+03:00",
+"tip": "333",
+"ad": "Airbus A330-300",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2410-20261117": {
+"no": "TK2410",
+"hat": "IST-AYT",
+"sehir": "Antalya",
+"kalkis": "09:10",
+"inis": "10:30",
+"zaman": "2026-11-17T09:10+03:00",
+"tip": "359",
+"ad": "Airbus A350-900",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2012-20261117": {
+"no": "TK2012",
+"hat": "IST-ASR",
+"sehir": "Kayseri",
+"kalkis": "09:15",
+"inis": "10:45",
+"zaman": "2026-11-17T09:15+03:00",
+"tip": "321",
+"ad": "Airbus A321",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2658-20261117": {
+"no": "TK2658",
+"hat": "IST-VAS",
+"sehir": "Sivas",
+"kalkis": "09:15",
+"inis": "10:50",
+"zaman": "2026-11-17T09:15+03:00",
+"tip": "319",
+"ad": "Airbus A319",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2582-20261117": {
+"no": "TK2582",
+"hat": "IST-TJK",
+"sehir": "Tokat",
+"kalkis": "09:15",
+"inis": "10:50",
+"zaman": "2026-11-17T09:15+03:00",
+"tip": "320",
+"ad": "Airbus A320",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2200-20261117": {
+"no": "TK2200",
+"hat": "IST-KCM",
+"sehir": "Kahramanmaras",
+"kalkis": "09:15",
+"inis": "11:00",
+"zaman": "2026-11-17T09:15+03:00",
+"tip": "319",
+"ad": "Airbus A319",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2652-20261117": {
+"no": "TK2652",
+"hat": "IST-ERC",
+"sehir": "Erzincan",
+"kalkis": "09:15",
+"inis": "11:10",
+"zaman": "2026-11-17T09:15+03:00",
+"tip": "320",
+"ad": "Airbus A320",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2576-20261117": {
+"no": "TK2576",
+"hat": "IST-DNZ",
+"sehir": "Denizli",
+"kalkis": "09:20",
+"inis": "10:30",
+"zaman": "2026-11-17T09:20+03:00",
+"tip": "320",
+"ad": "Airbus A320",
+"kontrol": "2026-11-17T01:22+03:00"
+},
+"TK2828-20261117": {
+"no": "TK2828",
+"hat": "IST-TZX",
+"sehir": "Trabzon",
+"kalkis": "09:20",
+"inis": "11:10",
+"zaman": "2026-11-17T09:20+03:00",
+"tip": "73J",
+"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
+"kontrol": "2026-11-17T01:22+03:00"
 }
 }
 }
