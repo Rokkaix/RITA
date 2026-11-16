@@ -67,7 +67,7 @@ def sade(m):
 def tc(n):
     return ' '.join(w if not (w.isupper() and len(w) > 1) else w[0] + w[1:].replace('I', 'ı').replace('İ', 'i').lower() for w in n.split())
 
-AW = r"(?!\S*(?:ğına|ğine|ğuna|ğüne|lığı|liği|luğu|lüğü)\b)(?!(?:Müdürü|Müdür|Başkanı|Başkan|Valisi|Rektörü|Büyükelçisi|Sekreteri|Yardımcısı|Üyesi|Komutanı|Başsavcısı|Başkanvekili|Vekili|Temsilcisi|Müsteşarı|Genel|İl|Bölge|Kurulu|Kurumu|Ofisi|İdaresi|Daire|Dairesi|Denetim|Bakanı|Bakan)\b)[A-ZÇĞİÖŞÜÂÎÛ][a-zçğıöşüâîû]+\.?"
+AW = r"(?!\S*(?:ğına|ğine|ğuna|ğüne|lığı|liği|luğu|lüğü)\b)(?!(?:Prof|Doç|Dr|Av|Savcısı|Danışmanı|Cumhurbaşkanı|Sayıştay|Uzmanı|Müşaviri|Başmüşaviri|Hâkimi|Hakimi|Elçisi|Konsolosu|Başkonsolosu|Müfettişi|Başmüfettişi|Denetçisi|Kaymakamı|Ataşesi|Rektörü|Dekanı|Müdürü|Müdür|Başkanı|Başkan|Valisi|Rektörü|Büyükelçisi|Sekreteri|Yardımcısı|Üyesi|Komutanı|Başsavcısı|Başkanvekili|Vekili|Temsilcisi|Müsteşarı|Genel|İl|Bölge|Kurulu|Kurumu|Ofisi|İdaresi|Daire|Dairesi|Denetim|Bakanı|Bakan)\b)[A-ZÇĞİÖŞÜÂÎÛ][a-zçğıöşüâîû]+\.?"
 SON_AD = re.compile(rf"((?:{AW} ){{1,3}}[A-ZÇĞİÖŞÜÂÎÛ]{{2,}}(?:[\-' ][A-ZÇĞİÖŞÜÂÎÛ]{{2,}})?)\s*,?\s*$")
 YASAL = re.compile(r",?\s*(?:\d+ sayılı [^,;]*?(?:\d+(?:, \d+)*(?: ve \d+)? ?(?:nci|ncı|üncü|uncu|inci|ıncı|ncü|ncu|'?[ıiuü]nc[ıiuü]) )?madde(?:si|leri)(?: ile )?)+\s*gereğince,?\s*")
 
@@ -88,6 +88,7 @@ def _kalem(org, item, tur):
         mk = rest.split(',')[0].strip()                      # "…Müdürlüğüne" (virgülden sonrası kişinin eski görevi)
     else:
         mk = rest
+    mk = re.sub(r'\s*(?:(?:Prof|Doç|Dr|Av|Öğr|Üyesi)\.?\s*)+$', '', mk).strip(' ,')
     if org and not re.match(r'^' + re.escape(org[:12]), mk): mk = (org + ' ' + mk).strip()
     return sade(mk), ad
 
@@ -101,6 +102,14 @@ def ayikla(txt):
         _m = re.search(r'^(.*(?:atanmıştır|alınmıştır|görevlendirilmiştir)\.?)', blok)
         if _m: blok = _m.group(1)
         blok = re.sub(r'\s+', ' ', blok)
+        # "… X görevden alınmış ve bu suretle boşalan Z'ye Y atanmıştır."
+        m = re.match(r'^(.*?)\s*,?\s*görevden alınmış(?:tır)?[,]? ve bu suretle boşalan (.*?)\s*,?\s*atanmıştır\.?$', blok)
+        if m:
+            k = _kalem('', m.group(1), 'gorevden_alma'); a = SON_AD.search(m.group(2).strip(' ,'))
+            if k and a:
+                yeni_mk = m.group(2)[:a.start()].split(',')[0].strip(' ,')
+                out.append(('atama', sade(yeni_mk) if yeni_mk else k[0], k[1], tc(a.group(1))))
+            continue
         # "… X görevden alınmış, yerine Y atanmıştır."
         m = re.match(r'^(.*?)\s*,?\s*görevden alın(?:mış|arak)[, ]+yerine (.*?) atanmıştır\.?$', blok)
         if m:
@@ -145,6 +154,9 @@ def bilinen():
                 add(q)
                 if '(' in str(x[1]): pass
     G = arr('GMC')
+    for t in arr('RS'):
+        for q in re.split(r'\s*[,/—]\s*', t):
+            if re.search(r'(Başkanı|Genel Müdürü|Genel Sekreteri|Valisi|Başsavcısı|Komutanı)$', q) and len(q) > 10: add(q)
     for r in G['rows']: add(r['u'])
     bak = {_norm(r['b']) for r in G['rows'] if 'Bakanlığı' in r['b']}
     K = os.path.join(R, 'data', 'rehber-kaynak')
@@ -157,7 +169,7 @@ def bilinen():
     ABBR = {'Bankacılık Düzenleme ve Denetleme Kurumu': 'BDDK', 'Sermaye Piyasası Kurulu': 'SPK', 'Enerji Piyasası Düzenleme Kurumu': 'EPDK',
             'Bilgi Teknolojileri ve İletişim Kurumu': 'BTK', 'Kamu İhale Kurumu': 'KİK', 'Radyo ve Televizyon Üst Kurulu': 'RTÜK',
             'Kişisel Verileri Koruma Kurumu': 'KVKK', 'Tasarruf Mevduatı Sigorta Fonu': 'TMSF', 'Kamu Gözetimi, Muhasebe ve Denetim Standartları Kurumu': 'KGK',
-            'Sosyal Güvenlik Kurumu': 'SGK', 'Türkiye İstatistik Kurumu': 'TÜİK', 'Türkiye Cumhuriyet Merkez Bankası': 'TCMB', 'Devlet Hava Meydanları İşletmesi': 'DHMİ'}
+            'Sosyal Güvenlik Kurumu': 'SGK', 'Rekabet Kurulu': 'Rekabet', 'Rekabet Kurumu': 'Rekabet', 'Türkiye İstatistik Kurumu': 'TÜİK', 'Türkiye Cumhuriyet Merkez Bankası': 'TCMB', 'Devlet Hava Meydanları İşletmesi': 'DHMİ'}
     for uzun, kisa in ABBR.items():
         for suf in (' Başkanı', ' Genel Müdürü'):
             if _norm(kisa + suf) in M: M[_norm(uzun + suf)] = M[_norm(kisa + suf)]
