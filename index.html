@@ -260,7 +260,7 @@ const RS=["Cumhurbaşkanı", "TBMM Başkanı — ardından Cumhurbaşkanı Yard�
 /* eski (THY 185 madde) sıra numarasını yeni protokol numarasına çevirir */
 const o2n=r=>{r=+r;if(!(r>0)||r>=900)return 999;if(r>=186&&r<300)return Math.round((r+114)*1e4)/1e4;if(r>=300)return r;const k=String(Math.round(r*10)/10);if(O2N[k]!=null)return O2N[k];const b=Math.floor(r);return O2N[b]!=null?Math.round((O2N[b]+(r-b)/10)*1e3)/1e3:999};
 const ADMIN_USER='yakup.kayabas',ADMIN_HASH='e8aa81c5233b08344a80f9a21144657b6b7deda188614adebfcd2c403b7b771c',DATA_VER='16.11.2026';
-const FL0="2190 01:00|2192 02:00|2122 07:00|2126 08:00|2134 09:00|2138 10:00|2142 11:00|2146 12:00|2150 13:00|2154 14:00|2162 16:00|2170 18:00|2174 19:00|2182 21:00|2184 22:00".split('|').map(x=>'TK'+x.split(' ')[0]+' IST-ESB '+x.split(' ')[1]);
+const FL0=[];/* sefer listesi artık yalnızca onaylanan günlük THY verisinden gelir */
 const ORG={'':'Devlet',THY:'THY',TGS:'TGS',TSS:'TSS',DOCO:'DO&CO'};
 const $=id=>document.getElementById(id);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -274,7 +274,7 @@ const tlRank=c=>Math.round((300+(TLC[c]||24)/100)*100)/100;
 
 /* ---------- durum ---------- */
 const KEY='priora';
-function fresh(){return{v:7,R:RS.slice(),F:FL0.slice(),cur:'TK2170 IST-ESB 18:00',S:{},P:{},C:{},U:UP0.slice(),add:[],del:[],EQ:{},lock:10,cred:null,N:{},C9:{b:[],s:[]},m9:1,GMn:{},PO:{},CH:[],CHx:{},AC:{}}}
+function fresh(){return{v:7,R:RS.slice(),F:FL0.slice(),cur:'',S:{},P:{},C:{},U:UP0.slice(),add:[],del:[],EQ:{},lock:10,cred:null,N:{},C9:{b:[],s:[]},m9:1,GMn:{},PO:{},CH:[],CHx:{},AC:{}}}
 let D=fresh();
 function load(){let o=null;try{o=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
   if(o){['R','F','cur','S','P','C','EQ','lock','cred','N','C9','GMn','PO','CH','CHx','AC'].forEach(k=>{if(o[k]!=null)D[k]=o[k]});
@@ -285,7 +285,7 @@ function load(){let o=null;try{o=JSON.parse(localStorage.getItem(KEY)||'null')}c
     Object.values(D.N||{}).forEach(x=>{if(x.pr)x.pr=Math.floor(o2n(x.pr))});
     Object.values(D.P).forEach(L=>L.forEach(p=>{p.rank=o2n(p.rank);delete p.over;p.seat=null;p.comp=[]}));D.rmig=1}
   D.m9=1;
-  if(!D.F.length)D.F=FL0.slice();if(D.F.indexOf(D.cur)<0)D.cur=D.F[0];
+  if(!D.m10){D.F=D.F.filter(f=>(D.AC||{})[String(f).split(' ')[0]]||((D.P[f]||[]).length));D.m10=1}if(D.F.indexOf(D.cur)<0)D.cur=D.F[0]||'';
   Object.values(D.P).forEach(L=>L.forEach(p=>{if(!p.pax)p.pax=1;if(p.o==null)p.o=''}));
   if(!D.m8){const ph=JSON.stringify(Object.fromEntries(Object.entries(photo()).sort()));Object.keys(D.S).forEach(f=>{if(JSON.stringify(Object.fromEntries(Object.entries(D.S[f]).sort()))===ph)D.S[f]={}});D.m8=1;Object.values(D.P).forEach(L=>L.forEach(p=>{p.seat=null;p.comp=[]}))}}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(D))}catch(e){}}
@@ -458,7 +458,7 @@ function addResults(text){const T=toks(text);if(!T.length)return[];const out=[];
 const ICON={ucus:'<path d="M3 13l18-7-7 18-2.5-8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',rical:'<path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',kurum:'<path d="M4 21V7l8-4 8 4v14M9 21v-5h6v5M8 10h.01M12 10h.01M16 10h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',c90:'<path d="M4 5h16M4 10h16M4 15h10M4 20h7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M17 15l2 2 3-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',not:'<path d="M6 3h9l4 4v14H6z M14 3v5h5 M9 12h7 M9 16h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>',ayar:'<circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>'};
 const TABS=()=>[['ucus','Uçuş'],['rical','Rical'],['kurum','Kurumsal'],['not','Notlar'],['c90','CIC90'],['ayar',isAdmin()?'Yönetim'+((n=>n?'<span class="bdg">'+n+'</span>':'')(alerts().n)):'Hesap']];
 function render(){$('tabs').innerHTML=TABS().map(([k,l])=>'<button type="button" role="tab" data-a="tab" data-k="'+k+'" aria-selected="'+(tab===k)+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+ICON[k]+'</svg>'+l+'</button>').join('');
-  $('topfl').textContent=D.cur.split(' ')[0]+' · '+D.cur.split(' ').pop();$('role').textContent=isAdmin()?'YÖNETİCİ':'PERSONEL';$('role').className='role'+(isAdmin()?' adm':'');
+  $('topfl').textContent=!D.cur?'Sefer seçilmedi':D.cur.split(' ')[0]+' · '+D.cur.split(' ').pop();$('role').textContent=isAdmin()?'YÖNETİCİ':'PERSONEL';$('role').className='role'+(isAdmin()?' adm':'');
   $('view').dataset.tab=tab;({ucus:vUcus,rical:vRical,kurum:vKurum,not:vNot,c90:vC90,ayar:vAyar})[tab]()}
 const rkHtml=(r,o,alt)=>'<span class="rk'+(alt?' alt':r>=300&&r<900?' c':'')+'">'+esc(lab(r,o))+'</span>';
 const legal=()=>'<p class="legal">© 2026 Yakup KAYABAŞ · Tüm hakları saklıdır · RITA</p>';
@@ -488,7 +488,8 @@ function acLine(){const t=acOf(D.cur),c=cfg(),a=c.ac&&ACT[c.ac];
   const IC='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l18-7-7 18-2.5-8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
   if(!t)return'<div class="acline none">'+IC+'<div><b>Uçak tipi henüz yok</b><span>Günlük sefer bilgisi onaylanınca burada görünür.</span></div></div>';
   return'<div class="acline">'+IC+'<div><b>'+esc(t.ad||((ACT[t.tip]||{}).ad)||t.tip)+'<span class="tag">'+esc(t.tip)+'</span></b><span>'+(a?'Business '+range(1,c.biz).length+' · Ekonomi '+range(c.biz+1,c.last).length+' · ':'')+'Kaynak: '+esc(t.kaynak||'FlightStats')+' · '+esc(fmtD(t.tarih))+(c.dog?'':' · koltuk düzeni yaklaşık')+'</span></div></div>'}
-function vUcus(){const c=cfg(),n=counts();
+function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 class="h">SEFER</h2><p style="margin:0 0 6px;font-weight:700">Henüz sefer listesi yok</p><p class="note" style="margin-top:0">THY İstanbul → Esenboğa seferleri ve uçak tipleri her sabah otomatik toplanır. '+(isAdmin()?'Yönetim sekmesindeki “Günlük sefer bilgisi”ni onayladığınızda seferler burada görünür.':'Yönetici günlük sefer bilgisini onayladığında seferler burada görünür.')+'</p>'+(isAdmin()?'<div class="row-btns" style="margin-top:10px"><button class="btn pri" data-a="tab" data-k="ayar" type="button">Yönetim’e git</button></div>':'')+'</section>'+legal();return}
+  const c=cfg(),n=counts();
   $('view').innerHTML=
   '<section class="panel"><h2 class="h">SEFER<span class="sp"></span>'+adm('<button class="btn sm" data-a="flightAdd" type="button">+ Sefer</button>')+'</h2><div class="strip">'+D.F.map(f=>{const a=f.split(' '),t=acOf(f);return'<button type="button" class="fchip" data-a="flight" data-f="'+esc(f)+'" aria-pressed="'+(f===D.cur)+'"><b>'+esc(a[a.length-1])+'</b><span>'+esc(a[0])+'</span>'+(t?'<span class="ac">'+esc(t.tip)+'</span>':'')+'</button>'}).join('')+'</div>'+
   '<div class="flfind"><input class="field" id="flq" placeholder="Sefer no: TK2122" autocomplete="off" aria-label="Sefer numarası ile ara"></div><div class="note" id="flmsg" style="margin-top:6px"></div>'+acLine()+
@@ -600,6 +601,8 @@ function sfApplyDoc(doc){D.AC=D.AC||{};
     else if(!old)D.F.push(key);
     const prev=D.AC[u.no];D.AC[u.no]={tip:u.tip,ad:u.ad||(ACT[u.tip]||{}).ad||u.tip,tarih:doc.tarih,kaynak:doc.kaynak||'FlightStats'};
     if(u.tip&&ACT[u.tip]&&(!prev||prev.tip!==u.tip||!D.C[key]||!D.C[key].ac)){D.C[key]=acCfg(u.tip);(D.P[key]||[]).forEach(p=>{p.seat=null;p.comp=[]})}});
+  const keep=new Set(doc.ucuslar.filter(u=>u.no&&/^\d\d:\d\d$/.test(u.kalkis||'')).map(u=>u.no+' IST-ESB '+u.kalkis));
+  D.F=D.F.filter(f=>keep.has(f)||(D.P[f]||[]).length);if(D.F.indexOf(D.cur)<0)D.cur=D.F[0]||'';
   D.F.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()));touch()}
 /* ---------- eylemler ---------- */
 const ADMIN_ONLY=new Set(['sfApply','sfIgnore','chNew','chSave','chApply','chIgnore','kmSave','c9new','c9save','c9del','noteEdit','noteNew','noteSave','noteDel','flightAdd','flightSave','flightDel','cabinCfg','cabinSave','cabinEmpty','cabinSample','personNew','personEdit','personSave','personDel','ri','riSave','riDel','riNew','riAdd','upItem','upDel','upNew','upAdd','eqDel','secSave','backup','restore','restoreDo','reset','resetDo']);
@@ -665,7 +668,7 @@ const A={
  person(d){const x=window['_pl_'+d.k][+d.i];window._cur=x;const f=Math.floor(x.r);
   const pr=x.r>900?'Sıra tanımsız':x.o?(ORG[x.o]+' · THY sıralaması '+Math.round((x.r-300)*100)+'. sıra · devlet ricalinden sonra'):('Rical madde '+f+(D.EQ[f]!=null?' → '+D.EQ[f]+'. sırada sayılır':'')+(D.R[f-1]?' · '+D.R[f-1]:''));
   sheet('<h2>'+esc(x.n)+'</h2><p class="sub">'+esc(x.t)+'</p><dl class="kv"><dt>Durum</dt><dd>'+(x.act?'Aktif görevde':'Eski / ayrılmış')+'</dd><dt>Öncelik</dt><dd>'+esc(pr)+'</dd><dt>Upgrade</dt><dd>'+(x.u?esc(x.u):x.o&&x.o!=='THY'?'Tanımsız (yönetici elle girebilir)':'Upgrade listesinde karşılığı yok')+'</dd><dt>Kaynak</dt><dd>'+(x.m?'Elle eklendi':x.v?'Kasım 2026 itibarıyla kaynakla kontrol edildi':'Arşiv, seçim listesi veya çizelge; güncelliği teyit edilmedi')+'</dd></dl>'+noteLine(x.n)+'<div class="row-btns" style="margin-top:12px"><button class="btn gold" data-a="personFly" type="button">'+esc(D.cur.split(' ')[0])+' seferine ekle</button>'+adm('<button class="btn" data-a="noteEdit" type="button">'+(noteOf(x.n)?'Notu düzenle':'Not ekle')+'</button><button class="btn" data-a="personEdit" type="button">Düzenle</button><button class="btn dng" data-a="personDel" type="button">Sil</button>')+'</div>')},
- personFly(){const x=window._cur;ppl().push({key:norm(x.n),id:'p'+Date.now(),n:x.n,sub:x.t,rank:x.r||999,up:x.u||'',o:x.o||'',pax:1,t:Date.now()});reassign();save();closeSheet();toast(x.n+' sefere eklendi')},
+ personFly(){if(!D.cur)return toast('Önce bir sefer seçin; sefer listesi yöneticinin onayıyla gelir');const x=window._cur;ppl().push({key:norm(x.n),id:'p'+Date.now(),n:x.n,sub:x.t,rank:x.r||999,up:x.u||'',o:x.o||'',pax:1,t:Date.now()});reassign();save();closeSheet();toast(x.n+' sefere eklendi')},
  personNew(d){window._cur={n:'',t:'',r:d.k?tlRank('S2M'):999,u:'',o:d.k||'',isNew:1};A.personEdit()},
  personEdit(){const x=window._cur;sheet('<h2>'+(x.isNew?'Kişi ekle':'Kişiyi düzenle')+'</h2><label class="lbl" for="f-n">Ad Soyad</label><input class="field" id="f-n" value="'+esc(x.n)+'"><label class="lbl" for="f-t">Unvan / görev</label><input class="field" id="f-t" value="'+esc(x.t)+'"><label class="lbl" for="f-o">Kurum</label><select class="field" id="f-o">'+Object.entries(ORG).map(([k,l])=>'<option value="'+k+'"'+(x.o===k?' selected':'')+'>'+l+'</option>').join('')+'</select><div id="f-rk">'+rankField(x.r,x.o)+'</div><label class="lbl" for="f-up">Upgrade hakkı</label>'+upField(x.u)+'<p class="note">Unvana “Eski” yazılırsa kişi eski görevli olarak işaretlenir.</p><div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="personSave" type="button">Kaydet</button></div>')},
  personSave(){const n=$('f-n').value.trim(),t=$('f-t').value.trim(),o=$('f-o').value;if(!n||!t)return toast('Ad ve unvan gerekli');const x=window._cur;if(!x.isNew)removePerson(x);D.add.push([n,t,readRank(o),$('f-up').value.trim(),0,o,o?$('f-tl').value:'']);touch();closeSheet();render();toast('Kaydedildi')},
