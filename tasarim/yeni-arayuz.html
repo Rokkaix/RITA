@@ -152,6 +152,19 @@ button{cursor:pointer}
 .sr.b .seat{width:46px;height:36px;background:var(--biz);color:var(--biz-ink)}
 .seat.on,.sr.b .seat.on{background:var(--navy);color:var(--on-navy)}
 .seat.occ,.sr.b .seat.occ{background:var(--line);color:var(--muted);text-decoration:line-through}
+.cabin-wrap{max-height:560px;overflow:auto;border-radius:16px}
+.cabin.wide .seat{width:30px;height:28px;font-size:9px}
+.cabin.wide .sr.b .seat{width:38px;height:32px}
+.cabin.wide .ai{width:12px}
+.seat.ghost{visibility:hidden}
+.acrow{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.1);border-radius:12px;padding:10px 12px}
+.acrow svg{width:22px;height:22px;flex:none}
+.acrow b{display:block;font-size:15px}
+.acrow span{font-size:12px;opacity:.8;font-family:var(--mono)}
+.srcline{font-size:11px;opacity:.7}
+.acwarn{background:var(--warn-soft);color:var(--ink);border-radius:14px;padding:12px 14px;font-size:13px;display:block}
+.acwarn b{color:var(--warn)}
+.acwarn .btn{margin-top:8px;display:inline-block}
 .legend{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-top:12px;justify-content:center}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 .tip{margin-top:10px;font-size:13px;text-align:center;min-height:20px}
@@ -257,7 +270,7 @@ button{cursor:pointer}
     </div>
   </div>
 </div>
-<p class="note-under">Yolcu adları ve onay bekleyen değişiklikler örnektir; gerçek programda senin verilerin görünür.</p>
+<p class="note-under">Yolcu adları, seferlerin uçak tipleri ve onay bekleyen değişiklikler örnektir. Koltuk sayıları yaklaşıktır ve THY koltuk haritasıyla doğrulanacaktır.</p>
 
 <script>
 "use strict";
@@ -279,14 +292,33 @@ const IC={
 const SEARCH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>';
 
 let admin=true,tab='sefer',fl='TK2170',cat='Tümü',qr='',seatTip='';
-const FL=[['TK2190','01:00'],['TK2122','07:00'],['TK2142','11:00'],['TK2154','14:00'],['TK2170','18:00'],['TK2182','21:00']];
+/* Uçak tipleri ve kabin düzenleri. Koltuk sayıları yaklaşık; yönetici THY koltuk haritasıyla doğrulayıp onaylar. */
+const NB_B=['A','C','|','D','F'],NB_E=['A','B','C','|','D','E','F'];
+const AC={
+ B738:{n:'Boeing 737-800',b:{c:NB_B,n:16},e:{c:NB_E,n:135}},
+ B38M:{n:'Boeing 737 MAX 8',b:{c:NB_B,n:16},e:{c:NB_E,n:135}},
+ B39M:{n:'Boeing 737 MAX 9',b:{c:NB_B,n:16},e:{c:NB_E,n:153}},
+ A321:{n:'Airbus A321',b:{c:NB_B,n:20},e:{c:NB_E,n:158}},
+ A21N:{n:'Airbus A321neo',b:{c:NB_B,n:20},e:{c:NB_E,n:162}},
+ A333:{n:'Airbus A330-300',w:1,b:{c:['A','C','|','D','G','|','H','K'],n:28},e:{c:['A','C','|','D','E','F','G','|','H','K'],n:261}}
+};
+let FLT={TK2190:['01:00','B738'],TK2192:['02:00','B738'],TK2122:['07:00','A21N'],TK2126:['08:00','B38M'],TK2134:['09:00','A333'],TK2142:['11:00','B39M'],TK2154:['14:00','A321'],TK2170:['18:00','B738'],TK2182:['21:00','A21N']};
+let flMsg='';
 const PAX=[
- {r:'2',n:'Numan Kurtulmuş',t:'TBMM Başkanı',s:'1A',c:'b',u:'TBMM Başkanı ve Eşi'},
- {r:'2',n:'Eşi',t:'Refakatçi',s:'1C',c:'b',u:''},
- {r:'5',n:'Abdullah Gül',t:'11. Cumhurbaşkanı (Eski)',s:'2A',c:'b',u:'Eski Cumhurbaşkanları ve Eşleri'},
- {r:'9',n:'Hakan Fidan',t:'Dışişleri Bakanı',s:'2D',c:'b',u:'Bakanlar Kurulu Üyeleri ve Eşleri'},
- {r:'50',n:'Örnek Yolcu',t:'Tuğgeneral',s:'5A',c:'e',u:''}
+ {r:'2',n:'Numan Kurtulmuş',t:'TBMM Başkanı',c:'b',u:'TBMM Başkanı ve Eşi'},
+ {r:'2',n:'Eşi',t:'Refakatçi',c:'b',u:''},
+ {r:'5',n:'Abdullah Gül',t:'11. Cumhurbaşkanı (Eski)',c:'b',u:'Eski Cumhurbaşkanları ve Eşleri'},
+ {r:'9',n:'Hakan Fidan',t:'Dışişleri Bakanı',c:'b',u:'Bakanlar Kurulu Üyeleri ve Eşleri'},
+ {r:'50',n:'Örnek Yolcu',t:'Tuğgeneral',c:'e',u:''}
 ];
+/* bir kabin sınıfının koltuk sıraları: [[sıra no, [koltuk kodu ya da '|' ]], ...] */
+function cabinRows(cls,start){const L=cls.c.filter(x=>x!=='|'),per=L.length,rows=[];let left=cls.n,r=start;
+  while(left>0){const k=Math.min(per,left);const use=new Set(L.slice(0,k));rows.push([r,cls.c.map(x=>x==='|'?'|':(use.has(x)?r+x:null))]);left-=k;r++}return rows}
+function layout(code){const a=AC[code],B=cabinRows(a.b,1),E=cabinRows(a.e,B.length+(a.w?2:1));return{a,B,E}}
+/* rical sırasına göre önden, boşluksuz: 1A,1C,1D,1F,2A... */
+function seatMap(code){const {B,E}=layout(code),bs=B.flatMap(r=>r[1].filter(x=>x&&x!=='|')),es=E.flatMap(r=>r[1].filter(x=>x&&x!=='|'));const m={};let bi=0,ei=0;
+  PAX.forEach(p=>{const s=p.c==='b'?bs[bi++]:es[ei++];if(s)m[s]=p});return m}
+const paxHere=()=>fl==='TK2170'?PAX:[];
 const PEOPLE=[
  ['1','Recep Tayyip Erdoğan','12. Cumhurbaşkanı','Cumhurbaşkanlığı',['up','ac']],
  ['2','Numan Kurtulmuş','TBMM Başkanı · İstanbul Milletvekili','TBMM',['up','ac']],
@@ -301,6 +333,7 @@ const PEOPLE=[
 ];
 const CATS=['Tümü','Cumhurbaşkanlığı','TBMM','Kabine','TSK','Eski'];
 let PROPS=[
+ {id:4,k:'UÇAK DEĞİŞİKLİĞİ',ui:0,w:'Bugün 06:40',h:'TK2170 bugün farklı uçakla uçuyor',ac:['TK2170','B738','A21N'],d:[['Sefer','TK2170 · 18:00'],['Eski','<span class="old">Boeing 737-800 · 16 Business</span>'],['Yeni','<span class="new">Airbus A321neo · 20 Business</span>'],['Etkisi','5 yolcunun koltuğu yeni düzene göre yeniden atanır']],src:'Kaynak: İGA uçuş bilgisi (örnek)',st:''},
  {id:1,k:'GÖREV DEĞİŞİKLİĞİ',ui:0,w:'Bugün 06:40',h:'Örnek İl Valisi değişti',d:[['Makam','Örnek İl Valisi'],['Eski','<span class="old">Ad Soyad A</span>'],['Yeni','<span class="new">Ad Soyad B</span>'],['Rical sırası','60 · Valiler (Ankara dışı)']],src:'Kaynak: Resmî Gazete atama kararı (örnek)',st:''},
  {id:2,k:'YENİ SEFER',ui:0,w:'Bugün 06:40',h:'TK2194 İstanbul → Esenboğa 23:00 tarifeye eklendi',d:[['Sefer','<span class="new">TK2194 · 23:00</span>'],['Geçerlilik','1 Aralık 2026 itibarıyla']],src:'Kaynak: kış tarifesi (örnek)',st:''},
  {id:3,k:'ARAYÜZ ÖNERİSİ',ui:1,w:'Dün 22:10',h:'Aileyle uçan yolculara yan yana koltuk önerilsin',d:[['Şu an','<span class="old">Eş ve çocuklar ayrı ayrı yerleştiriliyor</span>'],['Öneri','<span class="new">Kişi sayısı 2 ve üzeriyse aynı sıradaki boş koltuklar birlikte atanır</span>']],src:'Neden: son 30 günde 14 kez elle yer değiştirildi',st:''}
@@ -314,29 +347,32 @@ function nav(){
   $('tabs').innerHTML=T.map(([k,l])=>'<button type="button" data-tab="'+k+'"'+(tab===k?' aria-current="page"':'')+'><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[k]+'</svg></span>'+l+(k==='onay'&&pend()?'<span class="dot">'+pend()+'</span>':'')+'</button>').join('');
   $('nav').innerHTML=T.map(([k,l])=>'<button type="button" data-tab="'+k+'"'+(tab===k?' aria-current="page"':'')+'><svg viewBox="0 0 24 24" aria-hidden="true">'+IC[k]+'</svg>'+(k==='onay'?'Onay merkezi':l)+(k==='onay'&&pend()?'<span class="n">'+pend()+'</span>':'')+'</button>').join('');
 }
-const HEAD={sefer:['Sefer',()=>fl+' · İstanbul → Esenboğa'],rical:['Rical rehberi',()=>'2.471 kayıt · rical sırasına göre'],onay:['Onay merkezi',()=>pend()?pend()+' değişiklik onayını bekliyor':'Bekleyen değişiklik yok'],not:['Notlar',()=>'Sefer notları'],hesap:[admin?'Yönetim':'Hesap',()=>admin?'Ayarlar ve yedekler':'Personel hesabı']};
+const HEAD={sefer:['Sefer',()=>fl+' · '+AC[FLT[fl][1]].n+' · İstanbul → Esenboğa'],rical:['Rical rehberi',()=>'2.471 kayıt · rical sırasına göre'],onay:['Onay merkezi',()=>pend()?pend()+' değişiklik onayını bekliyor':'Bekleyen değişiklik yok'],not:['Notlar',()=>'Sefer notları'],hesap:[admin?'Yönetim':'Hesap',()=>admin?'Ayarlar ve yedekler':'Personel hesabı']};
 
 function vSefer(){
-  const f=FL.find(x=>x[0]===fl);
-  const bizUsed=PAX.filter(p=>p.c==='b').length,ecoUsed=PAX.filter(p=>p.c==='e').length;
-  const list=PAX.map(p=>'<div class="pax"><div class="rk">'+esc(p.r)+'</div><div class="tx"><div class="nm">'+esc(p.n)+'</div><div class="ti">'+esc(p.t)+(p.u?' · <span style="color:var(--ok)">Upgrade: '+esc(p.u)+'</span>':'')+'</div></div><div class="st'+(p.c==='e'?' e':'')+'">'+p.s+'</div></div>').join('');
-  return '<div class="stack"><div class="strip">'+FL.map(([c,t])=>'<button type="button" class="fchip" data-fl="'+c+'" aria-pressed="'+(c===fl)+'"><b>'+t+'</b><span>'+c+'</span></button>').join('')+'</div>'+
-  '<div class="grid2"><div class="stack"><section class="flight" aria-label="Sefer bilgisi"><div class="fl-top"><span>'+fl+' · A321neo</span><span>Kapı 214 · Biniş '+f[1].replace(/^(\d\d):(\d\d)$/,(m,h,mm)=>String((+h+23)%24).padStart(2,'0')+':'+(mm==='00'?'30':mm))+'</span></div>'+
+  const [time,code]=FLT[fl],{a}=layout(code),P=paxHere(),M=seatMap(code),seatOf={};Object.entries(M).forEach(([s,p])=>seatOf[P.indexOf(p)]=s);
+  const bizUsed=P.filter(p=>p.c==='b').length,ecoUsed=P.filter(p=>p.c==='e').length;
+  const pendAc=PROPS.find(p=>p.ac&&!p.st&&p.ac[0]===fl);
+  const list=P.length?P.map((p,i)=>'<div class="pax"><div class="rk">'+esc(p.r)+'</div><div class="tx"><div class="nm">'+esc(p.n)+'</div><div class="ti">'+esc(p.t)+(p.u?' · <span style="color:var(--ok)">Upgrade: '+esc(p.u)+'</span>':'')+'</div></div><div class="st'+(p.c==='e'?' e':'')+'">'+(seatOf[i]||'—')+'</div></div>').join(''):'<p class="ti" style="margin:8px 0 0">Bu seferde henüz yolcu yok. Yukarıdan isim veya unvan yazarak ekle.</p>';
+  const board=time.replace(/^(\d\d):(\d\d)$/,(m,h,mm)=>String((+h+23)%24).padStart(2,'0')+':30');
+  return '<div class="stack"><section class="card"><div class="fl-find"><div class="search">'+SEARCH+'<input class="field mono" id="flq" placeholder="Sefer no yaz: TK2122" value="'+esc(fl)+'" autocomplete="off" inputmode="text"></div></div><div class="ti" id="flmsg" style="margin-top:8px">'+(flMsg||'Sefer numarasını yaz; uçak tipi ve koltuk düzeni kendiliğinden gelir.')+'</div>'+
+  '<div class="strip" style="margin-top:10px">'+Object.entries(FLT).map(([c,[t,ac]])=>'<button type="button" class="fchip" data-fl="'+c+'" aria-pressed="'+(c===fl)+'"><b>'+t+'</b><span>'+c+' · '+ac+'</span></button>').join('')+'</div></section>'+
+  '<div class="grid2"><div class="stack"><section class="flight" aria-label="Sefer bilgisi"><div class="fl-top"><span>'+fl+'</span><span>Biniş '+board+'</span></div>'+
   '<div class="route"><div><b>IST</b><small>İstanbul</small></div><div class="ln" aria-hidden="true"></div><div style="text-align:right"><b>ESB</b><small>Ankara</small></div></div>'+
-  '<div class="fl-stats"><div><b>'+(16-bizUsed)+'/16</b><span>Business boş</span></div><div><b>'+(162-ecoUsed)+'/162</b><span>Ekonomi boş</span></div><div><b>'+PAX.length+'</b><span>Listede</span></div></div></section>'+
-  '<section class="card"><div class="search">'+SEARCH+'<input class="field" id="addq" placeholder="Yolcu ekle: isim, unvan veya kurum"></div></section>'+
-  '<section class="card"><h2 class="h">RİCAL SIRASI VE KOLTUKLAR<span class="sp"></span><button type="button" class="btn sm pri" data-act="auto">Otomatik ata</button></h2><div class="ex">Örnek yolcular</div>'+list+'</section></div>'+
-  '<section class="card"><h2 class="h">KOLTUK HARİTASI</h2><div class="cabin-wrap">'+cabin()+'</div><div class="legend"><span><i style="background:var(--navy)"></i>Atandı</span><span><i style="background:var(--biz)"></i>Business boş</span><span><i style="background:var(--seat)"></i>Ekonomi boş</span><span><i style="background:var(--line)"></i>Dolu</span></div><div class="tip" id="tip">'+(seatTip||'Bir koltuğa dokun')+'</div></section></div></div>';
+  '<div class="acrow"><svg viewBox="0 0 24 24" aria-hidden="true">'+IC.sefer+'</svg><div><b>'+a.n+'</b><span>'+code+' · Business '+a.b.n+' · Ekonomi '+a.e.n+' · '+(a.w?'geniş gövde':'dar gövde')+'</span></div></div>'+
+  '<div class="fl-stats"><div><b>'+(a.b.n-bizUsed)+'/'+a.b.n+'</b><span>Business boş</span></div><div><b>'+(a.e.n-ecoUsed)+'/'+a.e.n+'</b><span>Ekonomi boş</span></div><div><b>'+P.length+'</b><span>Listede</span></div></div>'+
+  '<div class="srcline">Uçak bilgisi: İGA uçuş bilgisi · son kontrol bugün 06:40 (örnek)</div></section>'+
+  (pendAc?'<div class="acwarn"><b>Uçak değişikliği bulundu:</b> bugün '+AC[pendAc.ac[1]].n+' yerine '+AC[pendAc.ac[2]].n+' görünüyor. Onaylarsan koltuk haritası yeniden kurulur.'+(admin?' <button type="button" class="btn sm" data-tab="onay">Onay merkezine git</button>':'')+'</div>':'')+
+  '<section class="card"><h2 class="h">RİCAL SIRASI VE KOLTUKLAR<span class="sp"></span>'+(P.length?'<button type="button" class="btn sm pri" data-act="auto">Otomatik ata</button>':'')+'</h2>'+(P.length?'<div class="ex">Örnek yolcular</div>':'')+list+'</section></div>'+
+  '<section class="card"><h2 class="h">KOLTUK HARİTASI<span class="sp"></span><span class="mono" style="letter-spacing:0">'+code+'</span></h2><div class="cabin-wrap">'+cabin(code,M)+'</div><div class="legend"><span><i style="background:var(--navy)"></i>Atandı</span><span><i style="background:var(--biz)"></i>Business boş</span><span><i style="background:var(--seat)"></i>Ekonomi boş</span></div><div class="tip" id="tip">'+(seatTip||'Bir koltuğa dokun')+'</div></section></div></div>';
 }
-function cabin(){
-  const on={};PAX.forEach(p=>on[p.s]=p);const occ=new Set(['3F','6C','6D','7A','8E','9B']);
-  const seat=(id)=>'<button type="button" class="seat'+(on[id]?' on':occ.has(id)?' occ':'')+'" data-seat="'+id+'" aria-label="Koltuk '+id+'">'+id+'</button>';
-  let h='<div class="cl">BUSINESS</div>';
-  for(let r=1;r<=4;r++)h+='<div class="sr b"><span class="rn">'+r+'</span>'+seat(r+'A')+seat(r+'C')+'<span class="ai"></span>'+seat(r+'D')+seat(r+'F')+'<span class="rn">'+r+'</span></div>';
-  h+='<div class="cl">EKONOMİ</div>';
-  for(let r=5;r<=10;r++)h+='<div class="sr"><span class="rn">'+r+'</span>'+['A','B','C'].map(c=>seat(r+c)).join('')+'<span class="ai"></span>'+['D','E','F'].map(c=>seat(r+c)).join('')+'<span class="rn">'+r+'</span></div>';
-  return '<div class="cabin">'+h+'</div>';
+function cabin(code,M){
+  const {a,B,E}=layout(code);
+  const seat=id=>id?'<button type="button" class="seat'+(M[id]?' on':'')+'" data-seat="'+id+'" aria-label="Koltuk '+id+'">'+id+'</button>':'<span class="seat ghost"></span>';
+  const row=(r,cls)=>'<div class="sr '+cls+'"><span class="rn">'+r[0]+'</span>'+r[1].map(x=>x==='|'?'<span class="ai"></span>':seat(x)).join('')+'<span class="rn">'+r[0]+'</span></div>';
+  return '<div class="cabin'+(a.w?' wide':'')+'"><div class="cl">BUSINESS · '+a.b.n+'</div>'+B.map(r=>row(r,'b')).join('')+'<div class="cl">EKONOMİ · '+a.e.n+'</div>'+E.map(r=>row(r,'')).join('')+'</div>';
 }
+function findFlight(v){const d=String(v).toUpperCase().replace(/\s/g,'').replace(/^TK/,'').replace(/^THY/,'');if(!/^\d{2,4}$/.test(d))return null;const k='TK'+d;return FLT[k]?k:{miss:k}}
 function vRical(){
   const n=s=>s.toLocaleLowerCase('tr');
   const L=PEOPLE.filter(p=>(cat==='Tümü'||p[3]===cat)&&(!qr||n(p[1]+' '+p[2]).includes(n(qr))));
@@ -369,17 +405,20 @@ let tt;function toast(m){const t=$('toast');t.textContent=m;t.hidden=false;clear
 document.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;const d=b.dataset;
   if(d.tab){tab=d.tab;$('view').scrollTop=0;render();return}
-  if(d.fl){fl=d.fl;seatTip='';render();return}
+  if(d.fl){fl=d.fl;seatTip='';flMsg='';render();return}
   if(d.cat){cat=d.cat;render();return}
-  if(d.seat){const p=PAX.find(x=>x.s===d.seat);seatTip=p?'<b class="mono">'+d.seat+'</b> · '+esc(p.n)+' — '+esc(p.t):(b.classList.contains('occ')?'<b class="mono">'+d.seat+'</b> · dolu':'<b class="mono">'+d.seat+'</b> · boş, atamaya hazır');$('tip').innerHTML=seatTip;return}
-  if(d.ok||d.no){const p=PROPS.find(x=>x.id==(d.ok||d.no));p.st=d.ok?'y':'n';LOG.unshift(['Şimdi',(d.ok?'Onaylandı · ':'Reddedildi · ')+p.h]);toast(d.ok?'Onaylandı ve uygulandı':'Reddedildi, hiçbir şey değişmedi');render();return}
-  if(d.undo){const p=PROPS.find(x=>x.id==d.undo);p.st='';LOG.unshift(['Şimdi','Geri alındı · '+p.h]);toast('Geri alındı');render();return}
+  if(d.seat){const p=paxHere().length?seatMap(FLT[fl][1])[d.seat]:null;seatTip=p?'<b class="mono">'+d.seat+'</b> · '+esc(p.n)+' · '+esc(p.t):'<b class="mono">'+d.seat+'</b> · boş, atamaya hazır';$('tip').innerHTML=seatTip;return}
+  if(d.ok||d.no){const p=PROPS.find(x=>x.id==(d.ok||d.no));p.st=d.ok?'y':'n';if(p.ac&&d.ok)FLT[p.ac[0]][1]=p.ac[2];LOG.unshift(['Şimdi',(d.ok?'Onaylandı · ':'Reddedildi · ')+p.h]);toast(d.ok?'Onaylandı ve uygulandı':'Reddedildi, hiçbir şey değişmedi');render();return}
+  if(d.undo){const p=PROPS.find(x=>x.id==d.undo);if(p.ac&&p.st==='y')FLT[p.ac[0]][1]=p.ac[1];p.st='';LOG.unshift(['Şimdi','Geri alındı · '+p.h]);toast('Geri alındı');render();return}
   if(d.pv){toast('Önizleme: değişiklik uygulanmadan gösterilir');return}
   if(d.ed){toast('Düzenle: öneriyi onaylamadan önce değiştirebilirsin');return}
   if(d.act==='auto'){toast('Koltuklar rical sırasına göre atandı');return}
   if(d.act==='out'){$('login').hidden=false;return}
 });
-document.addEventListener('input',e=>{if(e.target.id==='rq'){qr=e.target.value;const n=s=>s.toLocaleLowerCase('tr');const T={up:'<span class="tag up">UPG</span>',ac:'<span class="tag ac">AKTİF</span>',c9:'<span class="tag c9">CIC90</span>'};$('rlist').innerHTML=rlist(PEOPLE.filter(p=>(cat==='Tümü'||p[3]===cat)&&(!qr||n(p[1]+' '+p[2]).includes(n(qr)))),T)}});
+document.addEventListener('input',e=>{if(e.target.id==='flq'){const r=findFlight(e.target.value);
+    if(typeof r==='string'){if(r!==fl){fl=r;seatTip='';const [t,c]=FLT[r];flMsg='<b style="color:var(--ok)">'+r+' bulundu:</b> '+t+' · '+AC[c].n;const pos=e.target.selectionStart;render();const i=$('flq');i.focus();try{i.setSelectionRange(pos,pos)}catch(x){}}}
+    else{$('flmsg').innerHTML=r?'<b style="color:var(--warn)">'+esc(r.miss)+' listede yok.</b> Otomatik tarama bulursa Onay merkezine öneri olarak düşer.':'Sefer numarasını yaz; uçak tipi ve koltuk düzeni kendiliğinden gelir.'}return}
+  if(e.target.id==='rq'){qr=e.target.value;const n=s=>s.toLocaleLowerCase('tr');const T={up:'<span class="tag up">UPG</span>',ac:'<span class="tag ac">AKTİF</span>',c9:'<span class="tag c9">CIC90</span>'};$('rlist').innerHTML=rlist(PEOPLE.filter(p=>(cat==='Tümü'||p[3]===cat)&&(!qr||n(p[1]+' '+p[2]).includes(n(qr)))),T)}});
 $('lgf').addEventListener('submit',e=>{e.preventDefault();admin=true;tab='onay';$('login').hidden=true;render();toast('Hoş geldin, Yakup')});
 $('staff').addEventListener('click',()=>{admin=false;tab='sefer';$('login').hidden=true;render()});
 $('relogin').addEventListener('click',()=>{$('login').hidden=false});
