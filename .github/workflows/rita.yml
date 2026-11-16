@@ -27,14 +27,36 @@ jobs:
           python-version: "3.12"
       - name: Uçuşları topla (İstanbul'dan tüm THY kalkışları)
         run: python tools/canli_ucuslar.py
+      - name: TBMM milletvekili listesi (3 saatte bir)
+        continue-on-error: true
+        run: |
+          if [ $(( 10#$(date -u +%H) % 3 )) -eq 0 ] && [ $(( 10#$(date -u +%M) )) -lt 30 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            python tools/canli_tbmm.py
+          fi
+      - name: Resmî Gazete atama kararları (2 saatte bir, onaya düşer)
+        continue-on-error: true
+        run: |
+          if [ $(( 10#$(date -u +%H) % 2 )) -eq 1 ] && [ $(( 10#$(date -u +%M) )) -lt 30 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            pip install --quiet pypdf
+            python tools/resmi_gazete.py
+          fi
       - name: Kaydet
         run: |
           if ! git diff --quiet data/; then
             git config user.name "RITA canlı güncelleme"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/ucuslar.json
-            git commit -m "Canlı uçuşlar $(TZ=Europe/Istanbul date '+%F %H:%M')"
-            git pull --rebase origin "$GITHUB_REF_NAME"
+            git add data/ucuslar.json data/tbmm.json data/rita-veri.json
+            git commit -m "Canlı veri $(TZ=Europe/Istanbul date '+%F %H:%M')"
+            if ! git pull --rebase origin "$GITHUB_REF_NAME"; then
+              # yönetici aynı anda onay verdiyse: en güncel hâli alıp kayıtları yeniden ekle
+              git rebase --abort
+              cp data/ucuslar.json /tmp/u.json; [ -f data/tbmm.json ] && cp data/tbmm.json /tmp/t.json
+              git fetch origin "$GITHUB_REF_NAME" && git reset --hard "origin/$GITHUB_REF_NAME"
+              cp /tmp/u.json data/ucuslar.json; [ -f /tmp/t.json ] && cp /tmp/t.json data/tbmm.json
+              python tools/resmi_gazete.py || true
+              git add data/ucuslar.json data/tbmm.json data/rita-veri.json
+              git commit -m "Canlı veri $(TZ=Europe/Istanbul date '+%F %H:%M')" || true
+            fi
             git push
           fi
 

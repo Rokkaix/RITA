@@ -1,0 +1,2966 @@
+{
+"kaynak": "tbmm.gov.tr/milletvekili/AllList",
+"alindi": "2026-11-16T22:27",
+"mv": [
+{
+"n": "Abdullah Doğru",
+"il": "Adana",
+"parti": "AK Parti"
+},
+{
+"n": "Ahmet Zenbilci",
+"il": "Adana",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Ayhan Barut",
+"il": "Adana",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ayşe Sibel Ersoy",
+"il": "Adana",
+"parti": "MHP"
+},
+{
+"n": "Ayyüce Türkeş Taş",
+"il": "Adana",
+"parti": "İYİ Parti"
+},
+{
+"n": "Bilal Bilici",
+"il": "Adana",
+"parti": "Yeni Parti"
+},
+{
+"n": "Burhanettin Bulut",
+"il": "Adana",
+"parti": "Yeni Parti"
+},
+{
+"n": "Faruk Aytek",
+"il": "Adana",
+"parti": "AK Parti"
+},
+{
+"n": "Muharrem Varlı",
+"il": "Adana",
+"parti": "MHP"
+},
+{
+"n": "Müzeyyen Şevkin",
+"il": "Adana",
+"parti": "CHP"
+},
+{
+"n": "Orhan Sümer",
+"il": "Adana",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ömer Çelik",
+"il": "Adana",
+"parti": "AK Parti"
+},
+{
+"n": "Sadullah Kısacık",
+"il": "Adana",
+"parti": "YENİ YOL"
+},
+{
+"n": "Sunay Karamık",
+"il": "Adana",
+"parti": "AK Parti"
+},
+{
+"n": "Tulay Hatımoğulları Oruç",
+"il": "Adana",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Hüseyin Özhan",
+"il": "Adıyaman",
+"parti": "AK Parti"
+},
+{
+"n": "İshak Şan",
+"il": "Adıyaman",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Alkayış",
+"il": "Adıyaman",
+"parti": "AK Parti"
+},
+{
+"n": "Resul Kurt",
+"il": "Adıyaman",
+"parti": "AK Parti"
+},
+{
+"n": "Ali Özkaya",
+"il": "Afyonkarahisar",
+"parti": "AK Parti"
+},
+{
+"n": "Hakan Şeref Olgun",
+"il": "Afyonkarahisar",
+"parti": "İYİ Parti"
+},
+{
+"n": "Hasan Arslan",
+"il": "Afyonkarahisar",
+"parti": "AK Parti"
+},
+{
+"n": "İbrahim Yurdunuseven",
+"il": "Afyonkarahisar",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Taytak",
+"il": "Afyonkarahisar",
+"parti": "MHP"
+},
+{
+"n": "Heval Bozdağ",
+"il": "Ağrı",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Nejla Demir",
+"il": "Ağrı",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Ruken Kilerci",
+"il": "Ağrı",
+"parti": "AK Parti"
+},
+{
+"n": "Sırrı Sakik",
+"il": "Ağrı",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Cengiz Aydoğdu",
+"il": "Aksaray",
+"parti": "AK Parti"
+},
+{
+"n": "Hüseyin Altınsoy",
+"il": "Aksaray",
+"parti": "AK Parti"
+},
+{
+"n": "Ramazan Kaşlı",
+"il": "Aksaray",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Turan Yaldır",
+"il": "Aksaray",
+"parti": "İYİ Parti"
+},
+{
+"n": "Haluk İpek",
+"il": "Amasya",
+"parti": "AK Parti"
+},
+{
+"n": "Hasan Çilez",
+"il": "Amasya",
+"parti": "AK Parti"
+},
+{
+"n": "Reşat Karagöz",
+"il": "Amasya",
+"parti": "Yeni Parti"
+},
+{
+"n": "Adnan Beker",
+"il": "Ankara",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Ahmet Eşref Fakıbaba",
+"il": "Ankara",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Ahmet Fethan Baykoç",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Aliye Timisi Ersever",
+"il": "Ankara",
+"parti": "Yeni Parti"
+},
+{
+"n": "Asuman Erdoğan",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Aylin Yaman",
+"il": "Ankara",
+"parti": "Yeni Parti"
+},
+{
+"n": "Deniz Demir",
+"il": "Ankara",
+"parti": "CHP"
+},
+{
+"n": "Fuat Oktay",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Gamze Taşcıer",
+"il": "Ankara",
+"parti": "Yeni Parti"
+},
+{
+"n": "İdris Şahin",
+"il": "Ankara",
+"parti": "YENİ YOL"
+},
+{
+"n": "Jülide Sarıeroğlu",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Koray Aydın",
+"il": "Ankara",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Kurtcan Çelebi",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Kürşad Zorlu",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Leyla Şahin Usta",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Lütfiye Selva Çam",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Mesut Doğan",
+"il": "Ankara",
+"parti": "YENİ YOL"
+},
+{
+"n": "Mevlüt Karakaya",
+"il": "Ankara",
+"parti": "MHP"
+},
+{
+"n": "Murat Alparslan",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Murat Emir",
+"il": "Ankara",
+"parti": "Yeni Parti"
+},
+{
+"n": "Mustafa Nedim Yamalı",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Okan Konuralp",
+"il": "Ankara",
+"parti": "Yeni Parti"
+},
+{
+"n": "Orhan Yegin",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Osman Gökçek",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Ömer İleri",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Sadir Durmaz",
+"il": "Ankara",
+"parti": "MHP"
+},
+{
+"n": "Sadullah Ergin",
+"il": "Ankara",
+"parti": "YENİ YOL"
+},
+{
+"n": "Semra Dinçer",
+"il": "Ankara",
+"parti": "CHP"
+},
+{
+"n": "Tekin Bingöl",
+"il": "Ankara",
+"parti": "Yeni Parti"
+},
+{
+"n": "Umut Akdoğan",
+"il": "Ankara",
+"parti": "Yeni Parti"
+},
+{
+"n": "Vedat Bilgin",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Yaşar Yıldırım",
+"il": "Ankara",
+"parti": "MHP"
+},
+{
+"n": "Yıldırım Tuğrul Türkeş",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Yüksel Arslan",
+"il": "Ankara",
+"parti": "İYİ Parti"
+},
+{
+"n": "Zehranur Aydemir",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Zeynep Yıldız",
+"il": "Ankara",
+"parti": "AK Parti"
+},
+{
+"n": "Abdurrahman Başkan",
+"il": "Antalya",
+"parti": "MHP"
+},
+{
+"n": "Aliye Coşar",
+"il": "Antalya",
+"parti": "Yeni Parti"
+},
+{
+"n": "Atay Uslu",
+"il": "Antalya",
+"parti": "AK Parti"
+},
+{
+"n": "Aykut Kaya",
+"il": "Antalya",
+"parti": "Yeni Parti"
+},
+{
+"n": "Cavit Arı",
+"il": "Antalya",
+"parti": "Yeni Parti"
+},
+{
+"n": "Hakkı Saruhan Oluç",
+"il": "Antalya",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Hilmi Durgun",
+"il": "Antalya",
+"parti": "MHP"
+},
+{
+"n": "İbrahim Ethem Taş",
+"il": "Antalya",
+"parti": "AK Parti"
+},
+{
+"n": "Kemal Çelik",
+"il": "Antalya",
+"parti": "AK Parti"
+},
+{
+"n": "Mevlüt Çavuşoğlu",
+"il": "Antalya",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Erdem",
+"il": "Antalya",
+"parti": "Yeni Parti"
+},
+{
+"n": "Mustafa Köse",
+"il": "Antalya",
+"parti": "AK Parti"
+},
+{
+"n": "Serap Yazıcı Özbudun",
+"il": "Antalya",
+"parti": "AK Parti"
+},
+{
+"n": "Sururi Çorabatır",
+"il": "Antalya",
+"parti": "CHP"
+},
+{
+"n": "Şerafettin Kılıç",
+"il": "Antalya",
+"parti": "YENİ YOL"
+},
+{
+"n": "Tuba Vural Çokal",
+"il": "Antalya",
+"parti": "AK Parti"
+},
+{
+"n": "Uğur Poyraz",
+"il": "Antalya",
+"parti": "İYİ Parti"
+},
+{
+"n": "Kaan Koç",
+"il": "Ardahan",
+"parti": "AK Parti"
+},
+{
+"n": "Özgür Erdem İncesu",
+"il": "Ardahan",
+"parti": "Yeni Parti"
+},
+{
+"n": "Faruk Çelik",
+"il": "Artvin",
+"parti": "AK Parti"
+},
+{
+"n": "Uğur Bayraktutan",
+"il": "Artvin",
+"parti": "Yeni Parti"
+},
+{
+"n": "Bülent Tezcan",
+"il": "Aydın",
+"parti": "Yeni Parti"
+},
+{
+"n": "Evrim Karakoz",
+"il": "Aydın",
+"parti": "Yeni Parti"
+},
+{
+"n": "Hüseyin Yıldız",
+"il": "Aydın",
+"parti": "CHP"
+},
+{
+"n": "Mustafa Savaş",
+"il": "Aydın",
+"parti": "AK Parti"
+},
+{
+"n": "Ömer Karakaş",
+"il": "Aydın",
+"parti": "AK Parti"
+},
+{
+"n": "Ömer Özmen",
+"il": "Aydın",
+"parti": "AK Parti"
+},
+{
+"n": "Seda Sarıbaş",
+"il": "Aydın",
+"parti": "AK Parti"
+},
+{
+"n": "Süleyman Bülbül",
+"il": "Aydın",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ali Taylan Öztaylan",
+"il": "Balıkesir",
+"parti": "AK Parti"
+},
+{
+"n": "Belgin Uygur",
+"il": "Balıkesir",
+"parti": "AK Parti"
+},
+{
+"n": "Burak Dalgın",
+"il": "Balıkesir",
+"parti": "İYİ Parti"
+},
+{
+"n": "Ekrem Gökay Yüksel",
+"il": "Balıkesir",
+"parti": "MHP"
+},
+{
+"n": "Ensar Aytekin",
+"il": "Balıkesir",
+"parti": "Yeni Parti"
+},
+{
+"n": "İsmail Ok",
+"il": "Balıkesir",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Canbey",
+"il": "Balıkesir",
+"parti": "AK Parti"
+},
+{
+"n": "Serkan Sarı",
+"il": "Balıkesir",
+"parti": "CHP"
+},
+{
+"n": "Turhan Çömez",
+"il": "Balıkesir",
+"parti": "İYİ Parti"
+},
+{
+"n": "Aysu Bankoğlu",
+"il": "Bartın",
+"parti": "CHP"
+},
+{
+"n": "Yusuf Ziya Aldatmaz",
+"il": "Bartın",
+"parti": "AK Parti"
+},
+{
+"n": "Ferhat Nasıroğlu",
+"il": "Batman",
+"parti": "AK Parti"
+},
+{
+"n": "Keskin Bayındır",
+"il": "Batman",
+"parti": "DBP"
+},
+{
+"n": "Mehmet Rüştü Tiryaki",
+"il": "Batman",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Serkan Ramanlı",
+"il": "Batman",
+"parti": "HÜDA PAR"
+},
+{
+"n": "Zeynep Oduncu Kutevi",
+"il": "Batman",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Orhan Ateş",
+"il": "Bayburt",
+"parti": "AK Parti"
+},
+{
+"n": "Halil Eldemir",
+"il": "Bilecik",
+"parti": "AK Parti"
+},
+{
+"n": "Yaşar Tüzün",
+"il": "Bilecik",
+"parti": "Yeni Parti"
+},
+{
+"n": "Feyzi Berdibek",
+"il": "Bingöl",
+"parti": "AK Parti"
+},
+{
+"n": "Ömer Faruk Hülakü",
+"il": "Bingöl",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Zeki Korkutata",
+"il": "Bingöl",
+"parti": "AK Parti"
+},
+{
+"n": "Hüseyin Olan",
+"il": "Bitlis",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Semra Çağlar Gökalp",
+"il": "Bitlis",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Turan Bedirhanoğlu",
+"il": "Bitlis",
+"parti": "AK Parti"
+},
+{
+"n": "İsmail Akgül",
+"il": "Bolu",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Türker Ateş",
+"il": "Bolu",
+"parti": "CHP"
+},
+{
+"n": "Yüksel Coşkunyürek",
+"il": "Bolu",
+"parti": "AK Parti"
+},
+{
+"n": "Adem Korkmaz",
+"il": "Burdur",
+"parti": "AK Parti"
+},
+{
+"n": "İzzet Akbulut",
+"il": "Burdur",
+"parti": "Yeni Parti"
+},
+{
+"n": "Mustafa Oğuz",
+"il": "Burdur",
+"parti": "AK Parti"
+},
+{
+"n": "Ahmet Kılıç",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Ayhan Salman",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Cemalettin Kani Torun",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Efkan Ala",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Emel Gözükara Durmaz",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Emine Yavuz Gözgeç",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Fevzi Zırhlıoğlu",
+"il": "Bursa",
+"parti": "MHP"
+},
+{
+"n": "Hasan Öztürk",
+"il": "Bursa",
+"parti": "Yeni Parti"
+},
+{
+"n": "Hasan Toktaş",
+"il": "Bursa",
+"parti": "İYİ Parti"
+},
+{
+"n": "İsmet Büyükataman",
+"il": "Bursa",
+"parti": "MHP"
+},
+{
+"n": "Kayıhan Pala",
+"il": "Bursa",
+"parti": "Yeni Parti"
+},
+{
+"n": "Mehmet Atmaca",
+"il": "Bursa",
+"parti": "YENİ YOL"
+},
+{
+"n": "Muhammet Müfit Aydın",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Varank",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Yavuz",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Nurhayat Altaca Kayışoğlu",
+"il": "Bursa",
+"parti": "Yeni Parti"
+},
+{
+"n": "Orhan Sarıbal",
+"il": "Bursa",
+"parti": "CHP"
+},
+{
+"n": "Osman Mesten",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Refik Özen",
+"il": "Bursa",
+"parti": "AK Parti"
+},
+{
+"n": "Yüksel Selçuk Türkoğlu",
+"il": "Bursa",
+"parti": "İYİ Parti"
+},
+{
+"n": "Ayhan Gider",
+"il": "Çanakkale",
+"parti": "AK Parti"
+},
+{
+"n": "İsmet Güneşhan",
+"il": "Çanakkale",
+"parti": "Yeni Parti"
+},
+{
+"n": "Özgür Ceylan",
+"il": "Çanakkale",
+"parti": "Yeni Parti"
+},
+{
+"n": "Rıdvan Uz",
+"il": "Çanakkale",
+"parti": "İYİ Parti"
+},
+{
+"n": "Muhammet Emin Akbaşoğlu",
+"il": "Çankırı",
+"parti": "AK Parti"
+},
+{
+"n": "Pelin Yılık",
+"il": "Çankırı",
+"parti": "MHP"
+},
+{
+"n": "Mehmet Tahtasız",
+"il": "Çorum",
+"parti": "Yeni Parti"
+},
+{
+"n": "Oğuzhan Kaya",
+"il": "Çorum",
+"parti": "AK Parti"
+},
+{
+"n": "Vahit Kayrıcı",
+"il": "Çorum",
+"parti": "MHP"
+},
+{
+"n": "Yusuf Ahlatcı",
+"il": "Çorum",
+"parti": "AK Parti"
+},
+{
+"n": "Cahit Özkan",
+"il": "Denizli",
+"parti": "AK Parti"
+},
+{
+"n": "Gülizar Biçer Karaca",
+"il": "Denizli",
+"parti": "CHP"
+},
+{
+"n": "Nilgün Ök",
+"il": "Denizli",
+"parti": "AK Parti"
+},
+{
+"n": "Sema Silkin Ün",
+"il": "Denizli",
+"parti": "YENİ YOL"
+},
+{
+"n": "Şahin Tin",
+"il": "Denizli",
+"parti": "AK Parti"
+},
+{
+"n": "Şeref Arpacı",
+"il": "Denizli",
+"parti": "Yeni Parti"
+},
+{
+"n": "Yasin Öztürk",
+"il": "Denizli",
+"parti": "İYİ Parti"
+},
+{
+"n": "Adalet Kaya",
+"il": "Diyarbakır",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Berdan Öztürk",
+"il": "Diyarbakır",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Ceylan Akça Cupolo",
+"il": "Diyarbakır",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Halide Türkoğlu",
+"il": "Diyarbakır",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Mehmet Kamaç",
+"il": "Diyarbakır",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Mehmet Galip Ensarioğlu",
+"il": "Diyarbakır",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Sait Yaz",
+"il": "Diyarbakır",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Sezgin Tanrıkulu",
+"il": "Diyarbakır",
+"parti": "Yeni Parti"
+},
+{
+"n": "Osman Cengiz Çandar",
+"il": "Diyarbakır",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Serhat Eren",
+"il": "Diyarbakır",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Sevilay Çelenk Özen",
+"il": "Diyarbakır",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Suna Kepolu Ataman",
+"il": "Diyarbakır",
+"parti": "AK Parti"
+},
+{
+"n": "Ayşe Keşir",
+"il": "Düzce",
+"parti": "AK Parti"
+},
+{
+"n": "Ercan Öztürk",
+"il": "Düzce",
+"parti": "AK Parti"
+},
+{
+"n": "Talih Özcan",
+"il": "Düzce",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ahmet Baran Yazgan",
+"il": "Edirne",
+"parti": "CHP"
+},
+{
+"n": "Ediz Ün",
+"il": "Edirne",
+"parti": "CHP"
+},
+{
+"n": "Fatma Aksal",
+"il": "Edirne",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Akalın",
+"il": "Edirne",
+"parti": "İYİ Parti"
+},
+{
+"n": "Ejder Açıkkapı",
+"il": "Elazığ",
+"parti": "AK Parti"
+},
+{
+"n": "Erol Keleş",
+"il": "Elazığ",
+"parti": "AK Parti"
+},
+{
+"n": "Gürsel Erol",
+"il": "Elazığ",
+"parti": "CHP"
+},
+{
+"n": "Mahmut Rıdvan Nazırlı",
+"il": "Elazığ",
+"parti": "AK Parti"
+},
+{
+"n": "Semih Işıkver",
+"il": "Elazığ",
+"parti": "MHP"
+},
+{
+"n": "Mustafa Sarıgül",
+"il": "Erzincan",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Süleyman Karaman",
+"il": "Erzincan",
+"parti": "AK Parti"
+},
+{
+"n": "Abdurrahim Fırat",
+"il": "Erzurum",
+"parti": "AK Parti"
+},
+{
+"n": "Fatma Öncü",
+"il": "Erzurum",
+"parti": "AK Parti"
+},
+{
+"n": "Kamil Aydın",
+"il": "Erzurum",
+"parti": "MHP"
+},
+{
+"n": "Mehmet Emin Öz",
+"il": "Erzurum",
+"parti": "AK Parti"
+},
+{
+"n": "Meral Danış Beştaş",
+"il": "Erzurum",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Selami Altınok",
+"il": "Erzurum",
+"parti": "AK Parti"
+},
+{
+"n": "Ayşen Gürcan",
+"il": "Eskişehir",
+"parti": "AK Parti"
+},
+{
+"n": "Fatih Dönmez",
+"il": "Eskişehir",
+"parti": "AK Parti"
+},
+{
+"n": "İbrahim Arslan",
+"il": "Eskişehir",
+"parti": "Yeni Parti"
+},
+{
+"n": "İdris Nebi Hatipoğlu",
+"il": "Eskişehir",
+"parti": "AK Parti"
+},
+{
+"n": "Jale Nur Süllü",
+"il": "Eskişehir",
+"parti": "CHP"
+},
+{
+"n": "Utku Çakırözer",
+"il": "Eskişehir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Abdulhamit Gül",
+"il": "Gaziantep",
+"parti": "AK Parti"
+},
+{
+"n": "Ali Şahin",
+"il": "Gaziantep",
+"parti": "AK Parti"
+},
+{
+"n": "Bünyamin Bozgeyik",
+"il": "Gaziantep",
+"parti": "AK Parti"
+},
+{
+"n": "Derya Bakbak",
+"il": "Gaziantep",
+"parti": "AK Parti"
+},
+{
+"n": "Ertuğrul Kaya",
+"il": "Gaziantep",
+"parti": "YENİ YOL"
+},
+{
+"n": "Hasan Öztürkmen",
+"il": "Gaziantep",
+"parti": "CHP"
+},
+{
+"n": "İrfan Çelikaslan",
+"il": "Gaziantep",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Eyup Özkeçeci",
+"il": "Gaziantep",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Mustafa Gürban",
+"il": "Gaziantep",
+"parti": "AK Parti"
+},
+{
+"n": "Melih Meriç",
+"il": "Gaziantep",
+"parti": "Yeni Parti"
+},
+{
+"n": "Mesut Bozatlı",
+"il": "Gaziantep",
+"parti": "AK Parti"
+},
+{
+"n": "Sermet Atay",
+"il": "Gaziantep",
+"parti": "MHP"
+},
+{
+"n": "Sevda Karaca Demir",
+"il": "Gaziantep",
+"parti": "EMEP"
+},
+{
+"n": "Şahzade Demir",
+"il": "Gaziantep",
+"parti": "HÜDA PAR"
+},
+{
+"n": "Ali Temür",
+"il": "Giresun",
+"parti": "AK Parti"
+},
+{
+"n": "Elvan Işık Gezmiş",
+"il": "Giresun",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ertuğrul Gazi Konal",
+"il": "Giresun",
+"parti": "MHP"
+},
+{
+"n": "Nazım Elmas",
+"il": "Giresun",
+"parti": "AK Parti"
+},
+{
+"n": "Celalettin Köse",
+"il": "Gümüşhane",
+"parti": "AK Parti"
+},
+{
+"n": "Musa Küçük",
+"il": "Gümüşhane",
+"parti": "MHP"
+},
+{
+"n": "Onur Düşünmez",
+"il": "Hakkari",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Öznur Bartin",
+"il": "Hakkari",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Vezir Coşkun Parlak",
+"il": "Hakkari",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Abdulkadir Özel",
+"il": "Hatay",
+"parti": "AK Parti"
+},
+{
+"n": "Adem Yeşildal",
+"il": "Hatay",
+"parti": "AK Parti"
+},
+{
+"n": "Adnan Şefik Çirkin",
+"il": "Hatay",
+"parti": "İYİ Parti"
+},
+{
+"n": "Hüseyin Yayman",
+"il": "Hatay",
+"parti": "AK Parti"
+},
+{
+"n": "Kemal Karahan",
+"il": "Hatay",
+"parti": "AK Parti"
+},
+{
+"n": "Lütfi Kaşıkçı",
+"il": "Hatay",
+"parti": "MHP"
+},
+{
+"n": "Mehmet Güzelmansur",
+"il": "Hatay",
+"parti": "CHP"
+},
+{
+"n": "Necmettin Çalışkan",
+"il": "Hatay",
+"parti": "YENİ YOL"
+},
+{
+"n": "Nermin Yıldırım Kara",
+"il": "Hatay",
+"parti": "CHP"
+},
+{
+"n": "Servet Mullaoğlu",
+"il": "Hatay",
+"parti": "Yeni Parti"
+},
+{
+"n": "Cantürk Alagöz",
+"il": "Iğdır",
+"parti": "AK Parti"
+},
+{
+"n": "Yılmaz Hun",
+"il": "Iğdır",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Hasan Basri Sönmez",
+"il": "Isparta",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Hikmet Yalım Halıcı",
+"il": "Isparta",
+"parti": "Yeni Parti"
+},
+{
+"n": "Mehmet Uğur Gökgöz",
+"il": "Isparta",
+"parti": "AK Parti"
+},
+{
+"n": "Osman Zabun",
+"il": "Isparta",
+"parti": "AK Parti"
+},
+{
+"n": "Adem Yıldırım",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Ahmet Şık",
+"il": "İstanbul",
+"parti": "TİP"
+},
+{
+"n": "Ahmet Ersagun Yücel",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Ali Gökçek",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ayşe Sibel Yanıkömeroğlu",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Azmi Ekinci",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Bayram Şenocak",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Behiye Eker",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Birol Aydın",
+"il": "İstanbul",
+"parti": "YENİ YOL"
+},
+{
+"n": "Burak Akburak",
+"il": "İstanbul",
+"parti": "İYİ Parti"
+},
+{
+"n": "Bülent Kaya",
+"il": "İstanbul",
+"parti": "YENİ YOL"
+},
+{
+"n": "Büşra Paker",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Celal Adan",
+"il": "İstanbul",
+"parti": "MHP"
+},
+{
+"n": "Celal Fırat",
+"il": "İstanbul",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Cemal Enginyurt",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Cengiz Çiçek",
+"il": "İstanbul",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Cüneyt Yüksel",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Çiçek Otlu",
+"il": "İstanbul",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Çiğdem Kılıçgün Uçar",
+"il": "İstanbul",
+"parti": "DBP"
+},
+{
+"n": "Derya Ayaydın",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Doğan Bekin",
+"il": "İstanbul",
+"parti": "YENİDEN REFAH"
+},
+{
+"n": "Doğan Demir",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Edip Semih Yalçın",
+"il": "İstanbul",
+"parti": "MHP"
+},
+{
+"n": "Elif Esen",
+"il": "İstanbul",
+"parti": "YENİ YOL"
+},
+{
+"n": "Engin Altay",
+"il": "İstanbul",
+"parti": "CHP"
+},
+{
+"n": "Erdoğan Toprak",
+"il": "İstanbul",
+"parti": "CHP"
+},
+{
+"n": "Erkan Baş",
+"il": "İstanbul",
+"parti": "TİP"
+},
+{
+"n": "Erkan Kandemir",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Ersin Beyaz",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Evrim Rızvanoğlu Emir",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Fethi Açıkel",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Feti Yıldız",
+"il": "İstanbul",
+"parti": "MHP"
+},
+{
+"n": "Gamze Akkuş İlgezdi",
+"il": "İstanbul",
+"parti": "CHP"
+},
+{
+"n": "Gökan Zeybek",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Gökhan Günaydın",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Halis Dalkılıç",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Halit Yerebakan",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Hasan Karal",
+"il": "İstanbul",
+"parti": "YENİ YOL"
+},
+{
+"n": "Hasan Turan",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Hulusi Şentürk",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "İlhan Kesici",
+"il": "İstanbul",
+"parti": "CHP"
+},
+{
+"n": "İsa Mesih Şahin",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "İskender Bayhan",
+"il": "İstanbul",
+"parti": "EMEP"
+},
+{
+"n": "İsmail Erdem",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "İsmail Emrah Karayel",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "İsmail Faruk Aksu",
+"il": "İstanbul",
+"parti": "MHP"
+},
+{
+"n": "İzzet Ulvi Yönter",
+"il": "İstanbul",
+"parti": "MHP"
+},
+{
+"n": "Kadri Enis Berberoğlu",
+"il": "İstanbul",
+"parti": "CHP"
+},
+{
+"n": "Keziban Konukcu Kok",
+"il": "İstanbul",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Medeni Yılmaz",
+"il": "İstanbul",
+"parti": "YENİ YOL"
+},
+{
+"n": "Mehmet Önder Aksakal",
+"il": "İstanbul",
+"parti": "DSP"
+},
+{
+"n": "Mehmet Satuk Buğra Kavuncu",
+"il": "İstanbul",
+"parti": "İYİ Parti"
+},
+{
+"n": "Mehmet Selim Ensarioğlu",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Muhammed Ali Fatih Erbakan",
+"il": "İstanbul",
+"parti": "YENİDEN REFAH"
+},
+{
+"n": "Mustafa Demir",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Kaya",
+"il": "İstanbul",
+"parti": "YENİ YOL"
+},
+{
+"n": "Mustafa Yeneroğlu",
+"il": "İstanbul",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Mustafa Cihan Paçacı",
+"il": "İstanbul",
+"parti": "İYİ Parti"
+},
+{
+"n": "Mustafa Hulki Cevizoğlu",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Müşerref Pervin Tuba Durgut",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Namık Tan",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Nilhan Ayan",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Nimet Özdemir",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Numan Kurtulmuş",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Nurettin Alan",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Oğuz Üçüncü",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Oğuz Kaan Salıcı",
+"il": "İstanbul",
+"parti": "CHP"
+},
+{
+"n": "Özgül Saki",
+"il": "İstanbul",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Özgür Karabat",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Özlem Zengin",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Rabia İlhan",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Rümeysa Kadak",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Saliha Sera Kadıgil",
+"il": "İstanbul",
+"parti": "TİP"
+},
+{
+"n": "Seda Gören",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Selim Temurci",
+"il": "İstanbul",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Sena Nur Çelik Kanat",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Serkan Bayram",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Sevan Sıvacıoğlu",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Seyithan İzsiz",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Suat Özçağdaş",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Suat Pamukçu",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Süleyman Soylu",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Şamil Ayrım",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Şengül Karslı",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Tuğba Işık Ercan",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Turan Taşkın Özer",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Türkan Elçi",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ümmügülşen Öztürk",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Yahya Çelik",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Yıldız Konal Süslü",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Yunus Emre",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Yücel Arzen Hacıoğulları",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Yüksel Mansur Kılınç",
+"il": "İstanbul",
+"parti": "CHP"
+},
+{
+"n": "Zafer Sırakaya",
+"il": "İstanbul",
+"parti": "AK Parti"
+},
+{
+"n": "Zekeriya Yapıcıoğlu",
+"il": "İstanbul",
+"parti": "HÜDA PAR"
+},
+{
+"n": "Zeynel Emre",
+"il": "İstanbul",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ahmet Tuncay Özkan",
+"il": "İzmir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Burcugül Çubuk",
+"il": "İzmir",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Ceyda Bölünmez Çankırı",
+"il": "İzmir",
+"parti": "AK Parti"
+},
+{
+"n": "Deniz Yücel",
+"il": "İzmir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Dursun Müsavat Dervişoğlu",
+"il": "İzmir",
+"parti": "İYİ Parti"
+},
+{
+"n": "Ednan Arslan",
+"il": "İzmir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Eyyüp Kadir İnan",
+"il": "İzmir",
+"parti": "AK Parti"
+},
+{
+"n": "Fehmi Alpay Özalan",
+"il": "İzmir",
+"parti": "AK Parti"
+},
+{
+"n": "Gökçe Gökçen",
+"il": "İzmir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Haydar Altıntaş",
+"il": "İzmir",
+"parti": "DP"
+},
+{
+"n": "Hüsmen Kırkpınar",
+"il": "İzmir",
+"parti": "İYİ Parti"
+},
+{
+"n": "İbrahim Akın",
+"il": "İzmir",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Mahir Polat",
+"il": "İzmir",
+"parti": "CHP"
+},
+{
+"n": "Mahmut Atilla Kaya",
+"il": "İzmir",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Ali Çelebi",
+"il": "İzmir",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Muharrem Kasapoğlu",
+"il": "İzmir",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Salih Uzun",
+"il": "İzmir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Murat Bakan",
+"il": "İzmir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Mustafa Bilici",
+"il": "İzmir",
+"parti": "AK Parti"
+},
+{
+"n": "Rahmi Aşkın Türeli",
+"il": "İzmir",
+"parti": "CHP"
+},
+{
+"n": "Rıfat Turuntay Nalbantoğlu",
+"il": "İzmir",
+"parti": "CHP"
+},
+{
+"n": "Seda Kâya Ösen",
+"il": "İzmir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Sevda Erdan Kılıç",
+"il": "İzmir",
+"parti": "CHP"
+},
+{
+"n": "Şebnem Bursalı Aksoy",
+"il": "İzmir",
+"parti": "AK Parti"
+},
+{
+"n": "Tamer Osmanağaoğlu",
+"il": "İzmir",
+"parti": "MHP"
+},
+{
+"n": "Ümit Özlale",
+"il": "İzmir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Yaşar Kırkpınar",
+"il": "İzmir",
+"parti": "AK Parti"
+},
+{
+"n": "Yüksel Taşkın",
+"il": "İzmir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ali Öztunç",
+"il": "Kahramanmaraş",
+"parti": "CHP"
+},
+{
+"n": "İrfan Karatutlu",
+"il": "Kahramanmaraş",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Şahin",
+"il": "Kahramanmaraş",
+"parti": "AK Parti"
+},
+{
+"n": "Mevlüt Kurt",
+"il": "Kahramanmaraş",
+"parti": "AK Parti"
+},
+{
+"n": "Ömer Oruç Bilal Debgici",
+"il": "Kahramanmaraş",
+"parti": "AK Parti"
+},
+{
+"n": "Tuba Köksal",
+"il": "Kahramanmaraş",
+"parti": "AK Parti"
+},
+{
+"n": "Vahit Kirişci",
+"il": "Kahramanmaraş",
+"parti": "AK Parti"
+},
+{
+"n": "Zuhal Karakoç",
+"il": "Kahramanmaraş",
+"parti": "MHP"
+},
+{
+"n": "Cem Şahin",
+"il": "Karabük",
+"parti": "AK Parti"
+},
+{
+"n": "Cevdet Akay",
+"il": "Karabük",
+"parti": "CHP"
+},
+{
+"n": "Durmuş Ali Keskinkılıç",
+"il": "Karabük",
+"parti": "AK Parti"
+},
+{
+"n": "İsmail Atakan Ünver",
+"il": "Karaman",
+"parti": "Yeni Parti"
+},
+{
+"n": "Osman Sağlam",
+"il": "Karaman",
+"parti": "AK Parti"
+},
+{
+"n": "Selman Oğuzhan Eser",
+"il": "Karaman",
+"parti": "AK Parti"
+},
+{
+"n": "Adem Çalkın",
+"il": "Kars",
+"parti": "AK Parti"
+},
+{
+"n": "Gülüstan Kılıç Koçyiğit",
+"il": "Kars",
+"parti": "DEM PARTİ"
+},
+{
+"n": "İnan Akgün Alp",
+"il": "Kars",
+"parti": "CHP"
+},
+{
+"n": "Fatma Serap Ekmekci",
+"il": "Kastamonu",
+"parti": "AK Parti"
+},
+{
+"n": "Halil Uluay",
+"il": "Kastamonu",
+"parti": "AK Parti"
+},
+{
+"n": "Aşkın Genç",
+"il": "Kayseri",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ayşe Böhürler",
+"il": "Kayseri",
+"parti": "AK Parti"
+},
+{
+"n": "Dursun Ataş",
+"il": "Kayseri",
+"parti": "AK Parti"
+},
+{
+"n": "Hulusi Akar",
+"il": "Kayseri",
+"parti": "AK Parti"
+},
+{
+"n": "İsmail Özdemir",
+"il": "Kayseri",
+"parti": "MHP"
+},
+{
+"n": "Mahmut Arıkan",
+"il": "Kayseri",
+"parti": "SAADET Partisi"
+},
+{
+"n": "Murat Cahid Cıngı",
+"il": "Kayseri",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Baki Ersoy",
+"il": "Kayseri",
+"parti": "MHP"
+},
+{
+"n": "Sayın Bayar Özsoy",
+"il": "Kayseri",
+"parti": "AK Parti"
+},
+{
+"n": "Şaban Çopuroğlu",
+"il": "Kayseri",
+"parti": "AK Parti"
+},
+{
+"n": "Halil Öztürk",
+"il": "Kırıkkale",
+"parti": "MHP"
+},
+{
+"n": "Mustafa Kaplan",
+"il": "Kırıkkale",
+"parti": "AK Parti"
+},
+{
+"n": "Ahmet Gökhan Sarıçam",
+"il": "Kırklareli",
+"parti": "AK Parti"
+},
+{
+"n": "Fahri Özkan",
+"il": "Kırklareli",
+"parti": "Yeni Parti"
+},
+{
+"n": "Vecdi Gündoğdu",
+"il": "Kırklareli",
+"parti": "CHP"
+},
+{
+"n": "Metin İlhan",
+"il": "Kırşehir",
+"parti": "Yeni Parti"
+},
+{
+"n": "Necmettin Erkan",
+"il": "Kırşehir",
+"parti": "AK Parti"
+},
+{
+"n": "Ahmet Salih Dal",
+"il": "Kilis",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Demir",
+"il": "Kilis",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Cemil Yaman",
+"il": "Kocaeli",
+"parti": "AK Parti"
+},
+{
+"n": "Harun Özgür Yıldızlı",
+"il": "Kocaeli",
+"parti": "Yeni Parti"
+},
+{
+"n": "Lütfü Türkkan",
+"il": "Kocaeli",
+"parti": "İYİ Parti"
+},
+{
+"n": "Mehmet Aşıla",
+"il": "Kocaeli",
+"parti": "YENİDEN REFAH"
+},
+{
+"n": "Mehmet Akif Yılmaz",
+"il": "Kocaeli",
+"parti": "AK Parti"
+},
+{
+"n": "Mühip Kanko",
+"il": "Kocaeli",
+"parti": "Yeni Parti"
+},
+{
+"n": "Nail Çiler",
+"il": "Kocaeli",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ömer Faruk Gergerlioğlu",
+"il": "Kocaeli",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Radiye Sezer Katırcıoğlu",
+"il": "Kocaeli",
+"parti": "AK Parti"
+},
+{
+"n": "Sadettin Hülagü",
+"il": "Kocaeli",
+"parti": "AK Parti"
+},
+{
+"n": "Saffet Sancaklı",
+"il": "Kocaeli",
+"parti": "MHP"
+},
+{
+"n": "Sami Çakır",
+"il": "Kocaeli",
+"parti": "AK Parti"
+},
+{
+"n": "Veysal Tipioğlu",
+"il": "Kocaeli",
+"parti": "AK Parti"
+},
+{
+"n": "Abdullah Ağralı",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Ali Yüksel",
+"il": "Konya",
+"parti": "YENİ YOL"
+},
+{
+"n": "Barış Bektaş",
+"il": "Konya",
+"parti": "CHP"
+},
+{
+"n": "Hasan Ekici",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Konur Alp Koçak",
+"il": "Konya",
+"parti": "MHP"
+},
+{
+"n": "Latif Selvi",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Baykan",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Meryem Göka",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Kalaycı",
+"il": "Konya",
+"parti": "MHP"
+},
+{
+"n": "Mustafa Hakan Özer",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Orhan Erdem",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Selman Özboyacı",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Tahir Akyürek",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Ünal Karaman",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Ziya Altunyaldız",
+"il": "Konya",
+"parti": "AK Parti"
+},
+{
+"n": "Adil Biçer",
+"il": "Kütahya",
+"parti": "AK Parti"
+},
+{
+"n": "Ahmet Erbaş",
+"il": "Kütahya",
+"parti": "MHP"
+},
+{
+"n": "Ali Fazıl Kasap",
+"il": "Kütahya",
+"parti": "YENİ YOL"
+},
+{
+"n": "İsmail Çağlar Bayırcı",
+"il": "Kütahya",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Demir",
+"il": "Kütahya",
+"parti": "AK Parti"
+},
+{
+"n": "Abdurrahman Babacan",
+"il": "Malatya",
+"parti": "AK Parti"
+},
+{
+"n": "Bülent Tüfenkci",
+"il": "Malatya",
+"parti": "AK Parti"
+},
+{
+"n": "İhsan Koca",
+"il": "Malatya",
+"parti": "AK Parti"
+},
+{
+"n": "İnanç Siraç Kara Ölmeztoprak",
+"il": "Malatya",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Celal Fendoğlu",
+"il": "Malatya",
+"parti": "MHP"
+},
+{
+"n": "Veli Ağbaba",
+"il": "Malatya",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ahmet Mücahit Arınç",
+"il": "Manisa",
+"parti": "AK Parti"
+},
+{
+"n": "Ahmet Vehbi Bakırlıoğlu",
+"il": "Manisa",
+"parti": "Yeni Parti"
+},
+{
+"n": "Bahadır Nahit Yenişehirlioğlu",
+"il": "Manisa",
+"parti": "AK Parti"
+},
+{
+"n": "Bekir Başevirgen",
+"il": "Manisa",
+"parti": "Yeni Parti"
+},
+{
+"n": "Erkan Akçay",
+"il": "Manisa",
+"parti": "MHP"
+},
+{
+"n": "Murat Baybatur",
+"il": "Manisa",
+"parti": "AK Parti"
+},
+{
+"n": "Özgür Özel",
+"il": "Manisa",
+"parti": "Yeni Parti"
+},
+{
+"n": "Selma Aliye Kavaf",
+"il": "Manisa",
+"parti": "CHP"
+},
+{
+"n": "Şenol Sunat",
+"il": "Manisa",
+"parti": "İYİ Parti"
+},
+{
+"n": "Tamer Akkal",
+"il": "Manisa",
+"parti": "AK Parti"
+},
+{
+"n": "Beritan Güneş Altın",
+"il": "Mardin",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Faruk Kılıç",
+"il": "Mardin",
+"parti": "AK Parti"
+},
+{
+"n": "George Aslan",
+"il": "Mardin",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Kamuran Tanhan",
+"il": "Mardin",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Muhammed Adak",
+"il": "Mardin",
+"parti": "AK Parti"
+},
+{
+"n": "Salihe Aydeniz",
+"il": "Mardin",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Ali Bozan",
+"il": "Mersin",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Ali Kıratlı",
+"il": "Mersin",
+"parti": "AK Parti"
+},
+{
+"n": "Ali Mahir Başarır",
+"il": "Mersin",
+"parti": "Yeni Parti"
+},
+{
+"n": "Burhanettin Kocamaz",
+"il": "Mersin",
+"parti": "İYİ Parti"
+},
+{
+"n": "Faruk Dinç",
+"il": "Mersin",
+"parti": "HÜDA PAR"
+},
+{
+"n": "Gülcan Kış",
+"il": "Mersin",
+"parti": "CHP"
+},
+{
+"n": "Hasan Ufuk Çakır",
+"il": "Mersin",
+"parti": "AK Parti"
+},
+{
+"n": "Havva Sibel Söylemez",
+"il": "Mersin",
+"parti": "AK Parti"
+},
+{
+"n": "Levent Uysal",
+"il": "Mersin",
+"parti": "MHP"
+},
+{
+"n": "Mehmet Emin Ekmen",
+"il": "Mersin",
+"parti": "YENİ YOL"
+},
+{
+"n": "Nureddin Nebati",
+"il": "Mersin",
+"parti": "AK Parti"
+},
+{
+"n": "Perihan Koca Doğan",
+"il": "Mersin",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Talat Dinçer",
+"il": "Mersin",
+"parti": "Yeni Parti"
+},
+{
+"n": "Cumhur Uzun",
+"il": "Muğla",
+"parti": "Yeni Parti"
+},
+{
+"n": "Gizem Özcan",
+"il": "Muğla",
+"parti": "Yeni Parti"
+},
+{
+"n": "Kadem Mete",
+"il": "Muğla",
+"parti": "AK Parti"
+},
+{
+"n": "Metin Ergun",
+"il": "Muğla",
+"parti": "İYİ Parti"
+},
+{
+"n": "Selçuk Özdağ",
+"il": "Muğla",
+"parti": "YENİ YOL"
+},
+{
+"n": "Süreyya Öneş Derici",
+"il": "Muğla",
+"parti": "Yeni Parti"
+},
+{
+"n": "Yakup Otgöz",
+"il": "Muğla",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Emin Şimşek",
+"il": "Muş",
+"parti": "AK Parti"
+},
+{
+"n": "Sezai Temelli",
+"il": "Muş",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Sümeyye Boz Çakı",
+"il": "Muş",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Emre Çalışkan",
+"il": "Nevşehir",
+"parti": "AK Parti"
+},
+{
+"n": "Filiz Kılıç",
+"il": "Nevşehir",
+"parti": "MHP"
+},
+{
+"n": "Süleyman Özgün",
+"il": "Nevşehir",
+"parti": "AK Parti"
+},
+{
+"n": "Cevahir Uzkurt",
+"il": "Niğde",
+"parti": "AK Parti"
+},
+{
+"n": "Cumali İnce",
+"il": "Niğde",
+"parti": "MHP"
+},
+{
+"n": "Ömer Fethi Gürer",
+"il": "Niğde",
+"parti": "CHP"
+},
+{
+"n": "İbrahim Ufuk Kaynak",
+"il": "Ordu",
+"parti": "AK Parti"
+},
+{
+"n": "Mahmut Özer",
+"il": "Ordu",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Adıgüzel",
+"il": "Ordu",
+"parti": "CHP"
+},
+{
+"n": "Mustafa Hamarat",
+"il": "Ordu",
+"parti": "AK Parti"
+},
+{
+"n": "Naci Şanlıtürk",
+"il": "Ordu",
+"parti": "MHP"
+},
+{
+"n": "Seyit Torun",
+"il": "Ordu",
+"parti": "Yeni Parti"
+},
+{
+"n": "Asu Kaya",
+"il": "Osmaniye",
+"parti": "Yeni Parti"
+},
+{
+"n": "Derya Yanık",
+"il": "Osmaniye",
+"parti": "AK Parti"
+},
+{
+"n": "Devlet Bahçeli",
+"il": "Osmaniye",
+"parti": "MHP"
+},
+{
+"n": "Seydi Gülsoy",
+"il": "Osmaniye",
+"parti": "AK Parti"
+},
+{
+"n": "Harun Mertoğlu",
+"il": "Rize",
+"parti": "AK Parti"
+},
+{
+"n": "Muhammed Avcı",
+"il": "Rize",
+"parti": "AK Parti"
+},
+{
+"n": "Tahsin Ocaklı",
+"il": "Rize",
+"parti": "Yeni Parti"
+},
+{
+"n": "Ali İnci",
+"il": "Sakarya",
+"parti": "AK Parti"
+},
+{
+"n": "Ayça Taşkent",
+"il": "Sakarya",
+"parti": "Yeni Parti"
+},
+{
+"n": "Çiğdem Erdoğan",
+"il": "Sakarya",
+"parti": "AK Parti"
+},
+{
+"n": "Ertuğrul Kocacık",
+"il": "Sakarya",
+"parti": "AK Parti"
+},
+{
+"n": "Lütfi Bayraktar",
+"il": "Sakarya",
+"parti": "AK Parti"
+},
+{
+"n": "Muhammed Levent Bülbül",
+"il": "Sakarya",
+"parti": "MHP"
+},
+{
+"n": "Murat Kaya",
+"il": "Sakarya",
+"parti": "AK Parti"
+},
+{
+"n": "Ümit Dikbayır",
+"il": "Sakarya",
+"parti": "BAĞIMSIZ"
+},
+{
+"n": "Çiğdem Karaaslan",
+"il": "Samsun",
+"parti": "AK Parti"
+},
+{
+"n": "Erhan Usta",
+"il": "Samsun",
+"parti": "İYİ Parti"
+},
+{
+"n": "Ersan Aksu",
+"il": "Samsun",
+"parti": "AK Parti"
+},
+{
+"n": "İlyas Topsakal",
+"il": "Samsun",
+"parti": "MHP"
+},
+{
+"n": "Mehmet Karaman",
+"il": "Samsun",
+"parti": "YENİ YOL"
+},
+{
+"n": "Mehmet Muş",
+"il": "Samsun",
+"parti": "AK Parti"
+},
+{
+"n": "Murat Çan",
+"il": "Samsun",
+"parti": "Yeni Parti"
+},
+{
+"n": "Orhan Kırcalı",
+"il": "Samsun",
+"parti": "AK Parti"
+},
+{
+"n": "Yusuf Ziya Yılmaz",
+"il": "Samsun",
+"parti": "AK Parti"
+},
+{
+"n": "Mervan Gül",
+"il": "Siirt",
+"parti": "AK Parti"
+},
+{
+"n": "Sabahat Erdoğan Sarıtaş",
+"il": "Siirt",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Tuncer Bakırhan",
+"il": "Siirt",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Barış Karadeniz",
+"il": "Sinop",
+"parti": "Yeni Parti"
+},
+{
+"n": "Nazım Maviş",
+"il": "Sinop",
+"parti": "AK Parti"
+},
+{
+"n": "Abdullah Güler",
+"il": "Sivas",
+"parti": "AK Parti"
+},
+{
+"n": "Ahmet Özyürek",
+"il": "Sivas",
+"parti": "MHP"
+},
+{
+"n": "Hakan Aksu",
+"il": "Sivas",
+"parti": "AK Parti"
+},
+{
+"n": "Rukiye Toy",
+"il": "Sivas",
+"parti": "AK Parti"
+},
+{
+"n": "Ulaş Karasu",
+"il": "Sivas",
+"parti": "Yeni Parti"
+},
+{
+"n": "Abdulkadir Emin Önen",
+"il": "Şanlıurfa",
+"parti": "AK Parti"
+},
+{
+"n": "Abdürrahim Dusak",
+"il": "Şanlıurfa",
+"parti": "AK Parti"
+},
+{
+"n": "Bekir Bozdağ",
+"il": "Şanlıurfa",
+"parti": "AK Parti"
+},
+{
+"n": "Cevahir Asuman Yazmacı",
+"il": "Şanlıurfa",
+"parti": "AK Parti"
+},
+{
+"n": "Dilan Kunt Ayan",
+"il": "Şanlıurfa",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Ferit Şenyaşar",
+"il": "Şanlıurfa",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Hikmet Başak",
+"il": "Şanlıurfa",
+"parti": "AK Parti"
+},
+{
+"n": "İbrahim Eyyüpoğlu",
+"il": "Şanlıurfa",
+"parti": "AK Parti"
+},
+{
+"n": "İbrahim Özyavuz",
+"il": "Şanlıurfa",
+"parti": "MHP"
+},
+{
+"n": "Mahmut Tanal",
+"il": "Şanlıurfa",
+"parti": "Yeni Parti"
+},
+{
+"n": "Mehmet Ali Cevheri",
+"il": "Şanlıurfa",
+"parti": "AK Parti"
+},
+{
+"n": "Mehmet Faruk Pınarbaşı",
+"il": "Şanlıurfa",
+"parti": "AK Parti"
+},
+{
+"n": "Mithat Sancar",
+"il": "Şanlıurfa",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Ömer Öcalan",
+"il": "Şanlıurfa",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Arslan Tatar",
+"il": "Şırnak",
+"parti": "AK Parti"
+},
+{
+"n": "Ayşegül Doğan",
+"il": "Şırnak",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Mehmet Zeki İrmez",
+"il": "Şırnak",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Nevroz Uysal Aslan",
+"il": "Şırnak",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Cem Avşar",
+"il": "Tekirdağ",
+"parti": "CHP"
+},
+{
+"n": "Çiğdem Koncagül",
+"il": "Tekirdağ",
+"parti": "AK Parti"
+},
+{
+"n": "Faik Öztrak",
+"il": "Tekirdağ",
+"parti": "CHP"
+},
+{
+"n": "Gökhan Diktaş",
+"il": "Tekirdağ",
+"parti": "AK Parti"
+},
+{
+"n": "İlhami Özcan Aygun",
+"il": "Tekirdağ",
+"parti": "CHP"
+},
+{
+"n": "Mestan Özcan",
+"il": "Tekirdağ",
+"parti": "AK Parti"
+},
+{
+"n": "Nurten Yontar",
+"il": "Tekirdağ",
+"parti": "CHP"
+},
+{
+"n": "Selcan Taşcı",
+"il": "Tekirdağ",
+"parti": "İYİ Parti"
+},
+{
+"n": "Cüneyt Aldemir",
+"il": "Tokat",
+"parti": "AK Parti"
+},
+{
+"n": "Kadim Durmaz",
+"il": "Tokat",
+"parti": "CHP"
+},
+{
+"n": "Mustafa Arslan",
+"il": "Tokat",
+"parti": "AK Parti"
+},
+{
+"n": "Yusuf Beyazıt",
+"il": "Tokat",
+"parti": "AK Parti"
+},
+{
+"n": "Yücel Bulut",
+"il": "Tokat",
+"parti": "MHP"
+},
+{
+"n": "Adil Karaismailoğlu",
+"il": "Trabzon",
+"parti": "AK Parti"
+},
+{
+"n": "Mustafa Şen",
+"il": "Trabzon",
+"parti": "AK Parti"
+},
+{
+"n": "Sibel Suiçmez",
+"il": "Trabzon",
+"parti": "Yeni Parti"
+},
+{
+"n": "Vehbi Koç",
+"il": "Trabzon",
+"parti": "AK Parti"
+},
+{
+"n": "Yavuz Aydın",
+"il": "Trabzon",
+"parti": "İYİ Parti"
+},
+{
+"n": "Yılmaz Büyükaydın",
+"il": "Trabzon",
+"parti": "AK Parti"
+},
+{
+"n": "Ayten Kordu",
+"il": "Tunceli",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Ali Karaoba",
+"il": "Uşak",
+"parti": "CHP"
+},
+{
+"n": "Fahrettin Tuğrul",
+"il": "Uşak",
+"parti": "AK Parti"
+},
+{
+"n": "İsmail Güneş",
+"il": "Uşak",
+"parti": "AK Parti"
+},
+{
+"n": "Burhan Kayatürk",
+"il": "Van",
+"parti": "AK Parti"
+},
+{
+"n": "Gülcan Kaçmaz Sayyiğit",
+"il": "Van",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Gülderen Varli",
+"il": "Van",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Kayhan Türkmenoğlu",
+"il": "Van",
+"parti": "AK Parti"
+},
+{
+"n": "Mahmut Dindar",
+"il": "Van",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Pervin Buldan",
+"il": "Van",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Sinan Çiftyürek",
+"il": "Van",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Zülküf Uçar",
+"il": "Van",
+"parti": "DEM PARTİ"
+},
+{
+"n": "Ahmet Büyükgümüş",
+"il": "Yalova",
+"parti": "AK Parti"
+},
+{
+"n": "Meliha Akyol",
+"il": "Yalova",
+"parti": "AK Parti"
+},
+{
+"n": "Tahsin Becan",
+"il": "Yalova",
+"parti": "CHP"
+},
+{
+"n": "Abdulkadir Akgül",
+"il": "Yozgat",
+"parti": "AK Parti"
+},
+{
+"n": "İbrahim Ethem Sedef",
+"il": "Yozgat",
+"parti": "MHP"
+},
+{
+"n": "Lütfullah Kayalar",
+"il": "Yozgat",
+"parti": "İYİ Parti"
+},
+{
+"n": "Süleyman Şahan",
+"il": "Yozgat",
+"parti": "AK Parti"
+},
+{
+"n": "Ahmet Çolakoğlu",
+"il": "Zonguldak",
+"parti": "AK Parti"
+},
+{
+"n": "Deniz Yavuzyılmaz",
+"il": "Zonguldak",
+"parti": "Yeni Parti"
+},
+{
+"n": "Eylem Ertuğ Ertuğrul",
+"il": "Zonguldak",
+"parti": "Yeni Parti"
+},
+{
+"n": "Muammer Avcı",
+"il": "Zonguldak",
+"parti": "AK Parti"
+},
+{
+"n": "Saffet Bozkurt",
+"il": "Zonguldak",
+"parti": "AK Parti"
+}
+]
+}
