@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-16T12:30",
+ "guncelleme": "2026-11-16T12:24:03.883Z",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -414,7 +414,7 @@
    "yeni": "Muhsin Atcı",
    "sebep": "Mahmut Sütcü görevden alındı; Vergi Denetim Kurulu Başkanı Muhsin Atcı SPK Başkanlığına atandı",
    "kaynak": "Resmî Gazete 01.11.2026, sayı 33417 (NTV, CNBC-e, Habertürk)",
-   "durum": "beklemede",
+   "durum": "uygulandi",
    "ekleyen": "claude",
    "r": 0
   },
@@ -426,7 +426,7 @@
    "yeni": "Fatih Çakmak",
    "sebep": "Cumhurbaşkanlığı Kararı 2026/275 ile DHMİ Genel Müdür Yardımcısı Fatih Çakmak, DHMİ Genel Müdürü ve Yönetim Kurulu Başkanı oldu. Rehberdeki \"Enes Çakmak\" kaydı muhtemelen aynı kişinin yanlış yazılmış adı; onaylarsanız ad düzeltilmiş olur.",
    "kaynak": "Resmî Gazete 31.08.2026 (Habertürk, BirGün, MGM basın bülteni 09.09.2026)",
-   "durum": "beklemede",
+   "durum": "uygulandi",
    "ekleyen": "claude",
    "r": 0
   },
@@ -438,7 +438,7 @@
    "yeni": "Özgür Bayraktar",
    "sebep": "İzzet Ulvi Yönter 27.03.2026 tarihinde istifa etti; görev 30.03.2026 tarihinde Özgür Bayraktar'a verildi",
    "kaynak": "MHP açıklaması 30.03.2026 (Bengütürk, TGRT Haber)",
-   "durum": "beklemede",
+   "durum": "uygulandi",
    "ekleyen": "claude",
    "r": 0
   }
@@ -642,7 +642,7 @@
  "dogrulama": {
   "dg-20261116": {
    "tarih": "2026-11-16",
-   "durum": "beklemede",
+   "durum": "onaylandi",
    "ekleyen": "claude",
    "aciklama": "Bu kişilerin görevde olduğu 2026 tarihli haber veya resmî kaynaklarla doğrulandı. Onaylarsanız rehberdeki “doğrulayın” etiketleri kalkar.",
    "kisiler": [
@@ -746,19 +746,21 @@
      "g": "Bahreyn Büyükelçisi",
      "kaynak": "Cumhuriyet, 2026"
     }
-   ]
+   ],
+   "onay": "2026-11-16T12:23:18.022Z"
   }
  },
  "rehber": {
   "rh-2026-11-16": {
    "tarih": "2026-11-16",
-   "durum": "beklemede",
+   "durum": "onaylandi",
    "ekleyen": "claude",
    "ozet": {
     "ekle": 1086,
     "guncelle": 622,
     "eskit": 12
-   }
+   },
+   "onay": "2026-11-16T12:22:48.810Z"
   }
  }
 }
