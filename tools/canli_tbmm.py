@@ -19,6 +19,14 @@ if len(mv) < 500:
     print('TBMM listesi okunamadı ya da eksik:', len(mv)); sys.exit(0)
 now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=3))).strftime('%Y-%m-%dT%H:%M')
 old = json.load(open(OUT, encoding='utf-8')) if os.path.exists(OUT) else {}
-if old.get('mv') == mv: print('TBMM listesi değişmedi', len(mv)); sys.exit(0)
-json.dump({'kaynak': 'tbmm.gov.tr/milletvekili/AllList', 'alindi': now, 'mv': mv}, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
+if old.get('mv') == mv:
+    old['alindi'] = now; json.dump(old, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
+    print('TBMM listesi değişmedi', len(mv)); sys.exit(0)
+gecmis = old.get('gecmis', [])
+if old.get('mv'):
+    k = lambda m: (m['n'], m['il'], m['parti'])
+    o, n = {k(m) for m in old['mv']}, {k(m) for m in mv}
+    ek = sorted(f"{a} ({b}, {c})" for a, b, c in n - o); ck = sorted(f"{a} ({b}, {c})" for a, b, c in o - n)
+    if ek or ck: gecmis = [{'zaman': now, 'eklenen': ek, 'cikan': ck}] + gecmis[:49]
+json.dump({'kaynak': 'tbmm.gov.tr/milletvekili/AllList', 'alindi': now, 'mv': mv, 'gecmis': gecmis}, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 print('TBMM listesi güncellendi', len(mv))

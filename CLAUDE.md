@@ -8,7 +8,9 @@ bu işi hızlandırmak ve doğru yapmak için vardır. Yeni özellik eklerken ö
 
 ## Kullanıcı
 - Sahibi ve yöneticisi: Yakup KAYABAŞ. Kod bilmiyor; açıklamalar Türkçe, sade ve adım adım olmalı.
-- Her ortak değişiklik (atama, sefer verisi, kabin düzeni) yönetici onayıyla yapılır.
+- Görev değişiklikleri ve rehber güncellemeleri **teyit edilince otomatik işlenir** (kullanıcı kararı, 16.11.2026): Resmî Gazete metni / resmî kurum sitesi / TBMM listesi = teyitli. Teyit edilemeyen (yalnız haber, eşleşmeyen makam, "doğrulayın") ASLA işlenmez; Yönetim → Değişiklik günlüğü'nde "teyit bekliyor" olarak durur. Her işlenen değişiklik günlükte görünür, yönetici "Geri al" diyebilir.
+- Rical listesinin sırası (protokol listesi) hiçbir zaman otomatik ya da kafaya göre değişmez; yalnızca kullanıcının verdiği listeye göre.
+- Kabin düzeni ve sefer verisi değişiklikleri yönetici onayıyla yapılır.
 
 ## Yapı
 - `index.html` — uygulamanın tamamı (tek dosya). Hem claude.ai artifact'ı hem bağımsız site bu dosyadan çıkar.

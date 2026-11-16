@@ -764,14 +764,16 @@
   },
   "rh-2026-11-16b": {
    "tarih": "2026-11-16",
-   "durum": "beklemede",
+   "durum": "otomatik",
    "ekleyen": "claude",
    "dosya": "data/rehber-2.json",
    "ozet": {
     "ekle": 27,
     "guncelle": 2,
     "eskit": 0
-   }
+   },
+   "onay": "2026-11-16T22:36:19+03:00",
+   "teyit": "Resmî kurum siteleri ve haberlerle teyitli kayıtlar işlenir; \"doğrulayın\" etiketliler teyit bekler"
   }
  }
 }
