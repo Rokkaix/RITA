@@ -1,9 +1,10 @@
 [
  {"n": "Emine Erdoğan", "t": "Cumhurbaşkanı'nın Eşi", "r": 1, "u": "Cumhurbaşkanı ve Eşi"},
- {"n": "Ahmet Burak Erdoğan", "t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın oğlu", "r": 92, "u": ""},
- {"n": "Necmettin Bilal Erdoğan", "t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın oğlu", "r": 92, "u": ""},
- {"n": "Esra Albayrak", "t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın kızı (eşi Berat Albayrak)", "r": 92, "u": ""},
- {"n": "Sümeyye Erdoğan Bayraktar", "t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın kızı (eşi Selçuk Bayraktar)", "r": 92, "u": ""},
- {"n": "Selçuk Bayraktar", "t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı'nın damadı · Baykar Yönetim Kurulu Başkanı", "r": 92, "u": ""},
- {"n": "Berat Albayrak", "t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı'nın damadı", "r": null, "u": null, "ekle_unvan": true}
+ {"n": "Ahmet Burak Erdoğan", "t": "Cbk. Ailesi (Cumhurbaşkanı'nın oğlu)", "r": 999, "u": ""},
+ {"n": "Necmettin Bilal Erdoğan", "t": "Cbk. Ailesi (Cumhurbaşkanı'nın oğlu) · İlim Yayma Vakfı Mütevelli Heyeti Başkanı", "r": 999, "u": ""},
+ {"n": "Reyyan Uzuner Erdoğan", "t": "Cbk. Ailesi (Cumhurbaşkanı'nın gelini, Bilal Erdoğan'ın eşi)", "r": 999, "u": ""},
+ {"n": "Esra Albayrak", "t": "Cbk. Ailesi (Cumhurbaşkanı'nın kızı)", "r": 999, "u": ""},
+ {"n": "Sümeyye Erdoğan Bayraktar", "t": "Cbk. Ailesi (Cumhurbaşkanı'nın kızı)", "r": 999, "u": ""},
+ {"n": "Selçuk Bayraktar", "t": "Cbk. Ailesi (Cumhurbaşkanı'nın damadı) · Baykar Yönetim Kurulu Başkanı · T3 Vakfı Mütevelli Heyeti Başkanı · TEKNOFEST Yönetim Kurulu Başkanı", "r": 999, "u": ""},
+ {"n": "Berat Albayrak", "t": "Cbk. Ailesi (Cumhurbaşkanı'nın damadı)", "r": null, "u": null, "ekle_unvan": true}
 ]

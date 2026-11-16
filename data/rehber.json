@@ -6,7 +6,7 @@
 "Vali": "icisleri.gov.tr/valilikler",
 "Kaymakam": "icisleri.gov.tr il detayları",
 "Cumhurbaşkanı ailesi": "kamuya açık bilgiler",
-"Yüksek yargı": "yargitay.gov.tr",
+"Yüksek yargı": "yargitay.gov.tr, danistay.gov.tr",
 "Rektör": "tr.wikipedia.org üniversite bilgi kutuları (yalnız eksikler)",
 "Belediye Başkanı": "tr.wikipedia.org belediye bilgi kutuları + haber kaynakları (Mersin, Tokat)"
 },
@@ -1296,6 +1296,118 @@
 "n": "Aydın Şimşek",
 "t": "Yargıtay Genel Sekreteri",
 "r": 999,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Cevdet Erkan",
+"t": "Danıştay Başsavcısı",
+"r": 23,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Mahmut Vural",
+"t": "Danıştay Başkanvekili · Danıştay Vergi Dava Daireleri Kurulu Başkanı",
+"r": 28,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Hasan Güzeler",
+"t": "Danıştay Başkanvekili · Danıştay İdari Dava Daireleri Kurulu Başkanı",
+"r": 28,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Levent Barış Tüfenkci",
+"t": "Danıştay Genel Sekreteri",
+"r": 999,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Hanifi Doğan",
+"t": "Danıştay 3. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Enver Kaya",
+"t": "Danıştay 4. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Fethi Aslan",
+"t": "Danıştay 5. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Emin Sınmaz",
+"t": "Danıştay 6. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Hamit Ümit Aksoy",
+"t": "Danıştay 7. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "İsmail Hakkı Sayın",
+"t": "Danıştay 8. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Abdurrahman Gençbay",
+"t": "Danıştay 9. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "İbrahim Topuz",
+"t": "Danıştay 10. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Hasan Gül",
+"t": "Danıştay 13. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Rasim Aytin",
+"t": "Danıştay 1. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Ercan Ahi",
+"t": "Danıştay 2. Daire Başkanı",
+"r": 50,
+"u": "",
+"kat": "Yüksek yargı"
+},
+{
+"n": "Mahmut Doğan",
+"t": "Danıştay 12. Daire Başkanı",
+"r": 50,
 "u": "",
 "kat": "Yüksek yargı"
 },
@@ -7461,36 +7573,43 @@
 },
 {
 "n": "Ahmet Burak Erdoğan",
-"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın oğlu",
-"r": 92,
+"t": "Cbk. Ailesi (Cumhurbaşkanı'nın oğlu)",
+"r": 999,
 "u": "",
 "kat": "Cumhurbaşkanı ailesi"
 },
 {
 "n": "Necmettin Bilal Erdoğan",
-"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın oğlu",
-"r": 92,
+"t": "Cbk. Ailesi (Cumhurbaşkanı'nın oğlu) · İlim Yayma Vakfı Mütevelli Heyeti Başkanı",
+"r": 999,
+"u": "",
+"kat": "Cumhurbaşkanı ailesi"
+},
+{
+"n": "Reyyan Uzuner Erdoğan",
+"t": "Cbk. Ailesi (Cumhurbaşkanı'nın gelini, Bilal Erdoğan'ın eşi)",
+"r": 999,
 "u": "",
 "kat": "Cumhurbaşkanı ailesi"
 },
 {
 "n": "Esra Albayrak",
-"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın kızı (eşi Berat Albayrak)",
-"r": 92,
+"t": "Cbk. Ailesi (Cumhurbaşkanı'nın kızı)",
+"r": 999,
 "u": "",
 "kat": "Cumhurbaşkanı ailesi"
 },
 {
 "n": "Sümeyye Erdoğan Bayraktar",
-"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın kızı (eşi Selçuk Bayraktar)",
-"r": 92,
+"t": "Cbk. Ailesi (Cumhurbaşkanı'nın kızı)",
+"r": 999,
 "u": "",
 "kat": "Cumhurbaşkanı ailesi"
 },
 {
 "n": "Selçuk Bayraktar",
-"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı'nın damadı · Baykar Yönetim Kurulu Başkanı",
-"r": 92,
+"t": "Cbk. Ailesi (Cumhurbaşkanı'nın damadı) · Baykar Yönetim Kurulu Başkanı · T3 Vakfı Mütevelli Heyeti Başkanı · TEKNOFEST Yönetim Kurulu Başkanı",
+"r": 999,
 "u": "",
 "kat": "Cumhurbaşkanı ailesi"
 }
@@ -13054,9 +13173,17 @@
 "kat": "Yüksek yargı"
 },
 {
+"n": "Zeki Yiğit",
+"t_old": "Danıştay Başkanı · doğrulayın",
+"t_new": "Danıştay Başkanı",
+"r": 8,
+"u": "Yüksek Yargı Organlarının Başkanları (Anayasa Mahkemesi, Yargıtay, Sayıştay, Danıştay, Uyuşmazlık Mahkemesi, Yüksek Seçim Kurulu, Seçmen Kütüğü Genel Müdürü) ve Eşleri",
+"kat": "Yüksek yargı"
+},
+{
 "n": "Berat Albayrak",
 "t_old": "Eski Enerji ve Tabii Kaynaklar Bakanı",
-"t_new": "Eski Enerji ve Tabii Kaynaklar Bakanı · Cumhurbaşkanı ailesi · Cumhurbaşkanı'nın damadı",
+"t_new": "Cbk. Ailesi (Cumhurbaşkanı'nın damadı) · Eski Enerji ve Tabii Kaynaklar Bakanı",
 "r": 10.5,
 "u": "Eski Bakanlar Kurulu Üyeleri ve Eşleri",
 "kat": "Cumhurbaşkanı ailesi"

@@ -169,28 +169,32 @@ for p in json.load(open(os.path.join(K, 'rektorler.json'), encoding='utf-8')):
     r = 41 if p['il'] == 'Ankara' else 58
     ekle.append({'n': p['n'], 't': f"{p['uni']} Rektörü · doğrulayın", 'r': r, 'u': '', 'kat': 'Rektör'})
 # --- Yüksek yargı (Yargıtay resmî sitesi)
-YR = {'Yargıtay Başkanı': 7, 'Yargıtay Birinci Başkanvekili': 27, 'Yargıtay Genel Sekreteri': 999}
+YR = {'Yargıtay Başkanı': 7, 'Yargıtay Birinci Başkanvekili': 27, 'Yargıtay Genel Sekreteri': 999, 'Danıştay Başkanı': 8, 'Danıştay Başsavcısı': 23, 'Danıştay Başkanvekili': 28, 'Danıştay Genel Sekreteri': 999}
 for p in json.load(open(os.path.join(K, 'yargi.json'), encoding='utf-8')):
-    r = YR.get(p['t'], 50); role = p['t']
+    r = min(YR.get(q, 50) for q in p['t'].split(' · ')); role = p['t']
     xs = by.get(nk(p['n']), [])
     if not xs:
         ekle.append({'n': p['n'], 't': role, 'r': r, 'u': '', 'kat': 'Yüksek yargı'}); continue
     x = xs[0]; _, e = bekleyen(x); base = e['t_new'] if e else x[1]
     if norm(base.split(' · ')[0]) == norm(role) and 'dogrulayin' not in norm(base): continue
-    rest = [q for q in base.split(' · ') if 'dogrulayin' not in norm(q) and not re.match(r'yargitay (\d+ (hukuk|ceza) dairesi|baskani|birinci baskan)', norm(q))]
+    rest = [q for q in base.split(' · ') if 'dogrulayin' not in norm(q) and not re.match(r'(yargitay|danistay) (\d+ (hukuk|ceza )?dairesi|baskan|birinci baskan|bassavcisi|genel sekreteri|idari dava|vergi dava)', norm(q))]
     degistir(x, ' · '.join([role] + rest), min(x[2], r) if isinstance(x[2], (int, float)) else r, x[3], 'Yüksek yargı', guncelle)
 # --- Kaymakamlar (rical listesinde sıra numarası yok; aranabilir kayıt)
 for p in json.load(open(os.path.join(K, 'kaymakamlar.json'), encoding='utf-8')):
     if nk(p['n']) not in by:
         ekle.append({'n': p['n'], 't': f"{p['ilce']} Kaymakamı ({p['il']})", 'r': 999, 'u': '', 'kat': 'Kaymakam'})
-# --- Cumhurbaşkanı ailesi
+# --- Cumhurbaşkanı ailesi (rical listesinde ayrı sırası yok -> görevi olmayanlar 999, "Cbk. Ailesi" unvanıyla)
 for p in json.load(open(os.path.join(K, 'cumhurbaskani-ailesi.json'), encoding='utf-8')):
     xs = by.get(nk(p['n']), [])
     if xs:
-        x = xs[0]
-        if 'cumhurbaskani ailesi' not in norm(x[1]):
-            t_new = (x[1] + ' · ' + p['t']) if p.get('ekle_unvan') else p['t']
-            guncelle.append({'n': x[0], 't_old': x[1], 't_new': t_new, 'r': x[2] if p['r'] is None else min(x[2], p['r']), 'u': x[3] if p['u'] is None else (p['u'] or x[3]), 'kat': 'Cumhurbaşkanı ailesi'})
+        x = xs[0]; _, e = bekleyen(x); base = e['t_new'] if e else x[1]
+        segs = [q for q in base.split(' · ') if not re.search(r'cumhurbaskani ailesi|cbk ailesi|erdogan in (oglu|kizi)|damadi', norm(q))]
+        t_new = ' · '.join([p['t']] + segs) if p.get('ekle_unvan') else p['t']
+        if norm(t_new) == norm(base): continue
+        r = x[2] if p['r'] is None else p['r']
+        degistir(x, t_new, r, x[3] if p['u'] is None else (p['u'] or ''), 'Cumhurbaşkanı ailesi', guncelle)
+        L, e = bekleyen(x)
+        if e and p['r'] is not None: e['r'] = p['r']   # önceki elle verilen sıra yerine paylaşılan listeye uygun değer
     else:
         ekle.append({'n': p['n'], 't': p['t'], 'r': p['r'], 'u': p['u'] or '', 'kat': 'Cumhurbaşkanı ailesi'})
 # aynı kişi iki kez eklenmesin
@@ -200,7 +204,7 @@ for e in ekle:
     if k in seen: continue
     seen.add(k); E2.append(e)
 out = {'tarih': datetime.date.today().isoformat(),
-       'kaynaklar': {'Kabine': 'tccb.gov.tr/kabine', 'Milletvekili': 'tbmm.gov.tr/milletvekili/AllList', 'Vali': 'icisleri.gov.tr/valilikler', 'Kaymakam': 'icisleri.gov.tr il detayları', 'Cumhurbaşkanı ailesi': 'kamuya açık bilgiler', 'Yüksek yargı': 'yargitay.gov.tr', 'Rektör': 'tr.wikipedia.org üniversite bilgi kutuları (yalnız eksikler)', 'Belediye Başkanı': 'tr.wikipedia.org belediye bilgi kutuları + haber kaynakları (Mersin, Tokat)'},
+       'kaynaklar': {'Kabine': 'tccb.gov.tr/kabine', 'Milletvekili': 'tbmm.gov.tr/milletvekili/AllList', 'Vali': 'icisleri.gov.tr/valilikler', 'Kaymakam': 'icisleri.gov.tr il detayları', 'Cumhurbaşkanı ailesi': 'kamuya açık bilgiler', 'Yüksek yargı': 'yargitay.gov.tr, danistay.gov.tr', 'Rektör': 'tr.wikipedia.org üniversite bilgi kutuları (yalnız eksikler)', 'Belediye Başkanı': 'tr.wikipedia.org belediye bilgi kutuları + haber kaynakları (Mersin, Tokat)'},
        'ekle': E2, 'guncelle': guncelle, 'eskit': eskit}
 json.dump(out, open(os.path.join(R, 'data', 'rehber.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 from collections import Counter
