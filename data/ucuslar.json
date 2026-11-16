@@ -1,74 +1,8 @@
 {
-"guncelleme": "2026-11-16T22:51+03:00",
+"guncelleme": "2026-11-16T22:58+03:00",
 "kaynak": "FlightStats",
 "kalkis": "IST",
 "ucuslar": {
-"TK868-20261116": {
-"no": "TK868",
-"hat": "IST-AUH",
-"sehir": "Abu Dhabi",
-"kalkis": "19:55",
-"inis": "01:30",
-"zaman": "2026-11-16T19:55+03:00",
-"tip": "7M9",
-"ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK64-20261116": {
-"no": "TK64",
-"hat": "IST-BKK",
-"sehir": "Bangkok",
-"kalkis": "19:55",
-"inis": "08:50",
-"zaman": "2026-11-16T19:55+03:00",
-"tip": "789",
-"ad": "Boeing 787-9",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK1087-20261116": {
-"no": "TK1087",
-"hat": "IST-TGD",
-"sehir": "Podgorica",
-"kalkis": "19:55",
-"inis": "19:45",
-"zaman": "2026-11-16T19:55+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK1045-20261116": {
-"no": "TK1045",
-"hat": "IST-OTP",
-"sehir": "Bucharest",
-"kalkis": "19:55",
-"inis": "20:15",
-"zaman": "2026-11-16T19:55+03:00",
-"tip": "789",
-"ad": "Boeing 787-9",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK1077-20261116": {
-"no": "TK1077",
-"hat": "IST-TIA",
-"sehir": "Tirana",
-"kalkis": "19:55",
-"inis": "19:40",
-"zaman": "2026-11-16T19:55+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK1176-20261116": {
-"no": "TK1176",
-"hat": "IST-MRU",
-"sehir": "Mauritius",
-"kalkis": "19:55",
-"inis": "06:25",
-"zaman": "2026-11-16T19:55+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
-"kontrol": "2026-11-16T19:07+03:00"
-},
 "TK1983-20261116": {
 "no": "TK1983",
 "hat": "IST-LHR",
