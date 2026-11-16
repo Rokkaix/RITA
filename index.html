@@ -42,8 +42,12 @@ button{cursor:pointer}
 #app{height:100%;display:flex;flex-direction:column}
 .top{background:var(--surface);border-bottom:1px solid var(--line);padding-block:10px;display:flex;align-items:center;gap:10px}
 .top .brand{font-weight:800;letter-spacing:.28em;font-size:15px}
-.top .who{font-size:11px;color:var(--muted);white-space:nowrap}
-.top .sp{flex:1}
+.top .who{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top>div{min-width:0;flex:1}
+.top .sp{display:none}
+.top .role,.top .icon-btn{flex:none}
+.pxg{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+@media (max-width:420px){.li .ord{display:none}.li{gap:8px}.seatbadge{min-width:48px;padding:8px 4px;font-size:15px}.rk{min-width:38px}.mv button{width:42px!important}}
 .role{font-size:10px;font-weight:800;letter-spacing:.08em;padding:4px 8px;border-radius:999px;background:var(--navy-soft);color:var(--navy);white-space:nowrap}
 .role.adm{background:var(--gold-soft);color:var(--gold)}
 .icon-btn{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:7px 11px;font-size:12px;font-weight:700;white-space:nowrap}
@@ -56,11 +60,11 @@ main{flex:1;overflow-y:auto;padding-block:14px;-webkit-overflow-scrolling:touch}
 
 /* parçalar */
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;min-width:0}
-.h{margin:0 0 10px;font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--muted);display:flex;align-items:center;gap:8px}
+.h{margin:0 0 10px;font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;row-gap:8px}
 .h .sp{flex:1}
 .field{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:var(--soft);font-size:16px}
 .field:focus{background:#fff;border-color:var(--navy)}
-textarea.field{min-height:120px;font:12px/1.4 var(--mono)}
+textarea.field{min-height:120px;font:16px/1.4 var(--mono)}
 .lbl{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:10px 0 5px}
 .btn{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 14px;font-weight:700;font-size:14px;white-space:nowrap}
 .btn.pri{background:var(--navy);color:var(--navy-ink);border-color:var(--navy)}
@@ -136,7 +140,7 @@ textarea.field{min-height:120px;font:12px/1.4 var(--mono)}
 .fnote b{font-size:10px;letter-spacing:.12em;color:var(--navy);margin-right:4px}
 .tag.note{background:var(--gold);color:#fff}
 .mv{margin-left:auto;display:flex;gap:4px}
-.mv button{width:32px!important;height:28px!important;font-size:11px!important;color:var(--navy)}
+.mv button{width:44px!important;height:40px!important;font-size:13px!important;color:var(--navy)}
 button.seatbadge{border:0;cursor:pointer}
 .seatbadge.sel,.seat.sel{outline:3px solid var(--navy);outline-offset:2px}
 .swapbar{display:flex;align-items:center;gap:10px;justify-content:space-between;background:var(--navy-soft);border:1px solid #c9d7ee;border-radius:12px;padding:9px 10px;font-size:12.5px;margin-bottom:10px}
@@ -147,8 +151,8 @@ button.seatbadge{border:0;cursor:pointer}
 .grp{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--navy);padding:14px 0 6px;border-bottom:2px solid var(--navy-soft);display:flex;gap:8px}
 .grp.b{color:var(--gold);border-bottom-color:var(--gold-soft)}
 .grp:first-child{padding-top:0}
-.pxrow{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;color:var(--muted)}
-.pxrow button{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:var(--soft);font-weight:800;font-size:15px;line-height:1;padding:0}
+.pxrow{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;color:var(--muted);flex-wrap:wrap;row-gap:8px}
+.pxrow button{flex:none;width:40px;height:40px;border-radius:8px;border:1px solid var(--line);background:var(--soft);font-weight:800;font-size:15px;line-height:1;padding:0}
 .pxrow b{min-width:18px;text-align:center;font-family:var(--mono);color:var(--ink);font-size:13px}
 .hit{border:0;background:none;padding:0;text-align:left;width:100%}
 .results{margin-top:8px;border:1px solid var(--line);border-radius:12px;padding:0 12px;max-height:340px;overflow-y:auto;background:#fff}
@@ -191,6 +195,15 @@ button.seatbadge{border:0;cursor:pointer}
 @media (prefers-reduced-motion:no-preference){#sheet{animation:up .18s ease-out}@keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}}
 
 /* RITA 9: uçak tipi, günlük sefer onayı */
+/* telefon: dokunma alanları, iOS yakınlaştırma, seçim vurgusu */
+input[type=checkbox]{width:22px;height:22px;flex:none;accent-color:var(--navy)}
+button,[data-a]{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.btn.sm{min-height:36px}
+.chip{min-height:34px}
+.fchip{min-height:56px}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+main{overscroll-behavior:contain}
+@media (max-width:380px){.btn{padding:9px 11px;font-size:13px}.h .btn.sm{padding:6px 9px}}
 span.seat{display:inline-flex;align-items:center;justify-content:center}
 .flfind{display:flex;gap:8px;align-items:center;margin-top:10px}
 .flfind .field{font-family:var(--mono);text-transform:uppercase}
@@ -522,7 +535,7 @@ function paxHtml(){const O=ordered();if(!O.length)return'<p class="empty">Bu sef
   if(O.some(p=>p.over!=null||p.sw))h+='<div class="swapbar w"><span>Sıra veya koltuklar elle değiştirildi.</span><button class="btn sm" data-a="resetOrder" type="button">Rical sırasına döndür</button></div>';
   O.forEach((p,i)=>{if(p._g!==g){g=p._g;const L=O.filter(x=>x._g===g);h+='<div class="grp'+(g===0?' b':'')+'"><span>'+GN(g,any)+'</span><span style="font-weight:600;letter-spacing:0">'+L.length+' kayıt · '+L.reduce((s,x)=>s+(x.pax||1),0)+' kişi</span></div>'}
     const n=p.pax||1;
-    h+='<div class="li"><span class="ord">'+(i+1)+'</span>'+rkHtml(p.rank,p.o)+'<span class="tx"><button type="button" class="hit" data-a="pax" data-id="'+p.id+'"><span class="nm">'+esc(p.n)+'</span>'+(c9of(p)?' <span class="tag c9">CIC90 '+esc(c9of(p))+'</span>':'')+(p.sub?'<br><span class="ti">'+esc(p.sub)+'</span>':'')+'<div class="why '+(any?p.wc:p.up?'y':'n')+'">'+esc(any?p.why:(p.up?'Upgrade hakkı: '+p.up:'Upgrade hakkı yok'))+'</div>'+(any&&p.comp&&p.comp.length?'<div class="comp">Refakat: <b>'+esc(p.comp.join(' · '))+'</b> · '+esc(p.cnote)+'</div>':any&&p.cnote?'<div class="why w">'+esc(p.cnote)+'</div>':'')+(c=>c?'<div class="chw"><b>GÖREV DEĞİŞİKLİĞİ</b> '+esc(fmtD(c.tarih))+' · '+esc(c.makam)+(nk(c.eski||'')===nk(p.n)?' görevinden ayrıldı'+(c.yeni?' (yerine '+esc(c.yeni)+')':''):' görevine geldi')+'</div>':'')(chFor(p.n)[0])+noteLine(p.n)+(p.fn?'<div class="fnote"><b>UÇUŞ NOTU</b> '+esc(p.fn)+'</div>':'')+'</button><div class="pxrow">Kişi sayısı <button type="button" data-a="pxm" data-id="'+p.id+'" aria-label="Azalt">−</button><b>'+n+'</b><button type="button" data-a="pxp" data-id="'+p.id+'" aria-label="Artır">+</button>'+(n>1?'<span>+'+(n-1)+' refakatçi</span>':'')+'<span class="mv"><button type="button" data-a="mvUp" data-id="'+p.id+'" aria-label="Öne al">▲</button><button type="button" data-a="mvDn" data-id="'+p.id+'" aria-label="Geri al">▼</button></span></div></span><button type="button" class="seatbadge'+(p.seat?(p.cab==='E'?' e':''):' none')+(window._sw===p.id?' sel':'')+'" data-a="swapSel" data-id="'+p.id+'" aria-label="Koltuğu değiştir">'+esc(p.seat||'—')+'</button></div>'});
+    h+='<div class="li"><span class="ord">'+(i+1)+'</span>'+rkHtml(p.rank,p.o)+'<span class="tx"><button type="button" class="hit" data-a="pax" data-id="'+p.id+'"><span class="nm">'+esc(p.n)+'</span>'+(c9of(p)?' <span class="tag c9">CIC90 '+esc(c9of(p))+'</span>':'')+(p.sub?'<br><span class="ti">'+esc(p.sub)+'</span>':'')+'<div class="why '+(any?p.wc:p.up?'y':'n')+'">'+esc(any?p.why:(p.up?'Upgrade hakkı: '+p.up:'Upgrade hakkı yok'))+'</div>'+(any&&p.comp&&p.comp.length?'<div class="comp">Refakat: <b>'+esc(p.comp.join(' · '))+'</b> · '+esc(p.cnote)+'</div>':any&&p.cnote?'<div class="why w">'+esc(p.cnote)+'</div>':'')+(c=>c?'<div class="chw"><b>GÖREV DEĞİŞİKLİĞİ</b> '+esc(fmtD(c.tarih))+' · '+esc(c.makam)+(nk(c.eski||'')===nk(p.n)?' görevinden ayrıldı'+(c.yeni?' (yerine '+esc(c.yeni)+')':''):' görevine geldi')+'</div>':'')(chFor(p.n)[0])+noteLine(p.n)+(p.fn?'<div class="fnote"><b>UÇUŞ NOTU</b> '+esc(p.fn)+'</div>':'')+'</button><div class="pxrow"><span class="pxg">Kişi <button type="button" data-a="pxm" data-id="'+p.id+'" aria-label="Azalt">−</button><b>'+n+'</b><button type="button" data-a="pxp" data-id="'+p.id+'" aria-label="Artır">+</button></span>'+(n>1?'<span>+'+(n-1)+' refakatçi</span>':'')+'<span class="mv"><button type="button" data-a="mvUp" data-id="'+p.id+'" aria-label="Öne al">▲</button><button type="button" data-a="mvDn" data-id="'+p.id+'" aria-label="Geri al">▼</button></span></div></span><button type="button" class="seatbadge'+(p.seat?(p.cab==='E'?' e':''):' none')+(window._sw===p.id?' sel':'')+'" data-a="swapSel" data-id="'+p.id+'" aria-label="Koltuğu değiştir">'+esc(p.seat||'—')+'</button></div>'});
   return h}
 function cabinHtml(){const S=seats(),c=cfg(),as={},a2={};ordered().forEach((p,i)=>{if(p.seat)as[p.seat]=i+1;(p.comp||[]).forEach(k=>a2[k]=i+1)});const swS=window._sw&&findP(window._sw)?findP(window._sw).seat:null;
   let h='<div class="cabin"><div class="cab-lbl">BUSINESS</div>';
