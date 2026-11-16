@@ -60,22 +60,81 @@ def ayikla(txt):
         if m: out.append(('atama', sade(m.group(1)), '', tc(m.group(2)))); continue
     return [o for o in out if ALAKA.search(o[1]) and not DISLA.search(o[1]) and len(o[1]) < 160]
 
+# ---- teyit: makam RITA'nın bildiği bir makamla eşleşmeli, isimler düzgün olmalı ----
+def _norm(t):
+    import unicodedata
+    t = (t or '').replace('İ', 'i').replace('I', 'ı').lower().translate(str.maketrans('şğüöçı', 'sguoci'))
+    t = ''.join(c for c in unicodedata.normalize('NFD', t) if unicodedata.category(c) != 'Mn')
+    return re.sub(r'\s+', ' ', re.sub(r'[^a-z0-9 ]', ' ', t)).strip()
+_BIL = None
+def bilinen():
+    """RITA'daki makamlar: rehber unvanları, kurum listesi, valilikler, üniversiteler, bakanlıklar."""
+    global _BIL
+    if _BIL is not None: return _BIL
+    src = open(os.path.join(R, 'index.html'), encoding='utf-8').read()
+    def arr(name):
+        i = src.index(name + '='); return json.JSONDecoder().raw_decode(src[i + len(name) + 1:])[0]
+    M = {}
+    add = lambda t: M.setdefault(_norm(t), t)
+    for x in arr('K0'):
+        for q in str(x[1]).split(' · '):
+            q = re.sub(r'\s*\(.*?\)', '', q)
+            if not re.match(r'(?i)eski|emekli', q) and len(q) > 6:
+                add(q)
+                if '(' in str(x[1]): pass
+    G = arr('GMC')
+    for r in G['rows']: add(r['u'])
+    bak = {_norm(r['b']) for r in G['rows'] if 'Bakanlığı' in r['b']}
+    K = os.path.join(R, 'data', 'rehber-kaynak')
+    try:
+        for v in json.load(open(os.path.join(K, 'valiler.json'), encoding='utf-8')): add(v['il'] + ' Valisi')
+        for u in json.load(open(os.path.join(K, 'rektorler.json'), encoding='utf-8')): add(u['uni'] + ' Rektörü')
+    except Exception: pass
+    for r in G['rows']:
+        if 'Bakanlığı' in r['b']: add(r['b'].replace('Bakanlığı', 'Bakan Yardımcısı'))
+    ABBR = {'Bankacılık Düzenleme ve Denetleme Kurumu': 'BDDK', 'Sermaye Piyasası Kurulu': 'SPK', 'Enerji Piyasası Düzenleme Kurumu': 'EPDK',
+            'Bilgi Teknolojileri ve İletişim Kurumu': 'BTK', 'Kamu İhale Kurumu': 'KİK', 'Radyo ve Televizyon Üst Kurulu': 'RTÜK',
+            'Kişisel Verileri Koruma Kurumu': 'KVKK', 'Tasarruf Mevduatı Sigorta Fonu': 'TMSF', 'Kamu Gözetimi, Muhasebe ve Denetim Standartları Kurumu': 'KGK',
+            'Sosyal Güvenlik Kurumu': 'SGK', 'Türkiye İstatistik Kurumu': 'TÜİK', 'Türkiye Cumhuriyet Merkez Bankası': 'TCMB', 'Devlet Hava Meydanları İşletmesi': 'DHMİ'}
+    for uzun, kisa in ABBR.items():
+        for suf in (' Başkanı', ' Genel Müdürü'):
+            if _norm(kisa + suf) in M: M[_norm(uzun + suf)] = M[_norm(kisa + suf)]
+    M.pop('', None)
+    _BIL = M
+    return _BIL
+GENEL = set('genel muduru mudur baskani baskan sekreteri yardimcisi bakan rektoru valisi buyukelcisi uyesi kurulu kurumu baskanvekili komutani bassavcisi mustesari ve daimi temsilcisi'.split())
+def teyit(makam, eski, yeni):
+    """(durum, kanonik_makam, açıklama). Yalnızca kesin eşleşme 'otomatik' olur."""
+    ad = re.compile(r"^[A-ZÇĞİÖŞÜÂÎÛ][a-zçğıöşüâîû]+(?: [A-ZÇĞİÖŞÜÂÎÛ][a-zçğıöşüâîû'’\-]+){1,4}$")
+    for n in (eski, yeni):
+        if n and not ad.match(n): return 'beklemede', makam, 'isim okunamadı: ' + n
+    nm = _norm(makam)
+    if re.search(r'buyukelcisi$', nm) and re.search(r'nezdinde|buyukelciligine|buyukelcisi', nm):
+        return 'otomatik', makam, 'Resmî Gazete metni; büyükelçi ataması'
+    B = bilinen()
+    for k in sorted(B, key=len, reverse=True):
+        if len(k) >= 10 and set(k.split()) - GENEL and (nm == k or nm.endswith(' ' + k) or (len(set(nm.split()) - GENEL) >= 1 and k.endswith(' ' + nm))):
+            return 'otomatik', B[k], 'Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti'
+    return 'beklemede', makam, 'makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli'
+
 def gun(d):
     """Bir günün gazetesindeki atama kararı belgeleri -> kayıtlar."""
     y, mo = d[:4], d[4:6]
-    idx = get(f'{BASE}eskiler/{y}/{mo}/{d}.htm')
+    IU = f'{BASE}eskiler/{y}/{mo}/{d}.htm'
+    idx = get(IU)
     print(f'  {d}: fihrist {len(idx)} bayt, ATAMA geçiyor: {"ATAMA" in idx.upper()}')
     if 'ATAMA' not in idx.upper(): return []
     sec = idx.upper().find('ATAMA KARAR'); part = idx[sec:sec + 20000] if sec >= 0 else idx
     links = []
     for m in re.finditer(r'href="([^"]+?(?:\.pdf|\.htm))"', part, re.I):
         u = m.group(1)
-        if d in u and u not in links: links.append(u)
+        if d in u and 'ilanlar' not in u and u not in links: links.append(u)
         if re.search(r'</ul>|<h\d', part[m.end():m.end() + 300] or ''): pass
     print(f'  {d}: {len(links)} bağlantı', links[:6])
     kayit = []
     for u in links[:15]:
-        full = u if u.startswith('http') else BASE + u.lstrip('./')
+        import urllib.parse
+        full = urllib.parse.urljoin(IU, u)
         if not re.search(rf'{d}-\d+', full): continue
         body = pdf_text(get(full, True)) if full.lower().endswith('.pdf') else html.unescape(re.sub(r'<[^>]+>', ' ', get(full)))
         print(f'   {full}: {len(body)} karakter')
@@ -105,14 +164,15 @@ def main():
             if key in var: continue
             var.add(key)
             did = 'rg-' + d + '-' + hashlib.sha1((makam + eski + ynn).encode()).hexdigest()[:8]
-            C[did] = {'tarih': f'{d[:4]}-{d[4:6]}-{d[6:]}', 'tur': tur, 'makam': makam, 'eski': eski, 'yeni': ynn,
+            durum, makam2, aciklama = teyit(makam, eski, ynn)
+            C[did] = {'rg_metin': makam, 'tarih': f'{d[:4]}-{d[4:6]}-{d[6:]}', 'tur': tur, 'makam': makam2, 'eski': eski, 'yeni': ynn,
                       'sebep': 'Resmî Gazete atama kararı' + (f' ({kno})' if kno else ''), 'kaynak': f'Resmî Gazete {d[6:]}.{d[4:6]}.{d[:4]} · {url}',
-                      'durum': 'beklemede', 'ekleyen': 'resmi-gazete', 'r': 0}
+                      'durum': durum, 'teyit': aciklama, 'ekleyen': 'resmi-gazete', 'eklendi': datetime.datetime.now(TR).isoformat(timespec='seconds'), 'r': 0}
             yeni += 1
     if os.environ.get('RG_KURU'):
         for k, v in C.items():
             if v.get('ekleyen') == 'resmi-gazete' and k.startswith('rg-'): pass
-        print('Kuru deneme: dosyaya yazılmadı. Bulunanlar:'); [print('  ', v['tarih'], v['tur'], v['makam'], '|', v['eski'], '->', v['yeni']) for k, v in C.items() if v.get('ekleyen') == 'resmi-gazete']
+        print('Kuru deneme: dosyaya yazılmadı. Bulunanlar:'); [print('  ', v['tarih'], v['durum'], v['makam'], '|', v['eski'], '->', v['yeni'], '|', v.get('teyit')) for k, v in C.items() if v.get('ekleyen') == 'resmi-gazete']
         return
     if yeni:
         V['guncelleme'] = datetime.datetime.now(TR).isoformat(timespec='seconds')
