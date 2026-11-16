@@ -1,7 +1,7 @@
 {
  "name": "RITA · Rical Takip Asistanı",
  "short_name": "RITA",
- "description": "THY İstanbul → Esenboğa seferleri için rical sırası ve koltuk yönetimi",
+ "description": "THY seferleri için rical sırası ve koltuk yönetimi",
  "lang": "tr",
  "start_url": "./",
  "scope": "./",

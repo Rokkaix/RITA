@@ -1,25 +1,28 @@
-"""Her gün: THY İstanbul -> Esenboğa seferlerini (bugün + yarın) FlightStats'ten alır,
+"""Her gün: takip edilen hatlardaki THY seferlerini (bugün + yarın) FlightStats'ten alır,
 data/rita-veri.json içine "beklemede" kayıt olarak yazar. Onaylı kayda asla dokunmaz."""
 import json, os, sys, datetime
 from zoneinfo import ZoneInfo
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from ist_esb_flights import route, aircraft
+from thy_flights import route, aircraft
 
 R = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 P = os.path.join(R, "data", "rita-veri.json")
 now = datetime.datetime.now(ZoneInfo("Europe/Istanbul"))
 st = json.load(open(P, encoding="utf-8"))
 st.setdefault("seferler", {})
-key = lambda L: [(u["no"], u["kalkis"], u.get("tip", "")) for u in L]
+key = lambda L: sorted((u.get("hat", "IST-ESB"), u["no"], u["kalkis"], u.get("tip", "")) for u in L)
+HATLAR = sorted((st.get("hatlar") or {"IST-ESB": {}}).keys(), key=lambda h: (h != "IST-ESB", h))
 changed = False
 for day in (now.date(), now.date() + datetime.timedelta(days=1)):
-    fl = route(day)
-    if not fl:
-        print(day, "sefer bulunamadı"); continue
     ucus = []
-    for f in fl:
-        a = aircraft(f) or {}
-        ucus.append({"no": f["no"], "kalkis": f["dep"], "inis": f["arr"], "tip": a.get("iata") or "", "ad": ""})
+    for h in HATLAR:
+        dep, arr = h.split("-")
+        for f in route(day, dep, arr):
+            a = aircraft(f) or {}
+            ucus.append({"no": f["no"], "hat": h, "kalkis": f["dep"], "inis": f["arr"], "tip": a.get("iata") or "", "ad": ""})
+    if not ucus:
+        print(day, "sefer bulunamadı"); continue
+    ucus.sort(key=lambda u: (u["kalkis"], u["hat"]))
     doc = {"tarih": day.isoformat(), "kaynak": "FlightStats", "alindi": now.strftime("%Y-%m-%dT%H:%M"),
            "durum": "beklemede", "ekleyen": "gunluk-tarama", "ucuslar": ucus}
     did = "gun-" + day.isoformat()

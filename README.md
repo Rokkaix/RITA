@@ -1,6 +1,6 @@
 # RITA — Rical Takip Asistanı
 
-THY İstanbul → Esenboğa seferleri için rical sırası, upgrade ve koltuk yönetimi.
+THY seferleri için rical sırası, upgrade ve koltuk yönetimi.
 
 **Uygulama adresi:** https://rokkaix.github.io/RITA/
 
@@ -10,7 +10,7 @@ THY İstanbul → Esenboğa seferleri için rical sırası, upgrade ve koltuk y�
 - **Bilgisayar:** Chrome/Edge'de açın → adres çubuğundaki **Yükle** simgesi
 
 ## Nasıl güncellenir
-- **Her gün 05:43:** GitHub, THY İstanbul → Esenboğa seferlerini ve uçak tiplerini toplar (`tools/gunluk_seferler.py`) ve `data/rita-veri.json` dosyasına **onay bekleyen** kayıt olarak yazar.
+- **Her gün 05:43:** GitHub, takip edilen hatlardaki THY seferlerini (Yönetim → Takip edilen hatlar) ve uçak tiplerini toplar (`tools/gunluk_seferler.py`) ve `data/rita-veri.json` dosyasına **onay bekleyen** kayıt olarak yazar.
 - **Her pazartesi:** Resmî Gazete görev değişiklikleri onay bekleyen kayıt olarak eklenir.
 - Yönetici uygulamada **Yönetim** sekmesinden onaylar. Onaylanmadan hiçbir şey değişmez.
 - Her değişiklikte site kendiliğinden yeniden yayınlanır (`.github/workflows/rita.yml`).

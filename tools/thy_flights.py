@@ -1,5 +1,5 @@
-"""THY İstanbul (IST) -> Ankara Esenboğa (ESB) seferlerini FlightStats'ten okur.
-Kullanım: python3 tools/ist_esb_flights.py [YYYY-MM-DD]  -> JSON (sefer, kalkış, iniş, uçak tipi)"""
+"""Bir hattaki THY seferlerini (kalkış, iniş, uçak tipi) FlightStats'ten okur.
+Kullanım: python3 tools/thy_flights.py IST-ESB [YYYY-MM-DD]"""
 import sys, re, json, datetime, subprocess
 
 UA = "Mozilla/5.0"
@@ -14,10 +14,10 @@ def next_data(html):
         return None
     return json.JSONDecoder().raw_decode(html[i + len("__NEXT_DATA__ = "):])[0]
 
-def route(day):
+def route(day, dep="IST", arr="ESB"):
     out = {}
     for hour in (0, 6, 12, 18):
-        url = f"https://www.flightstats.com/v2/flight-tracker/route/IST/ESB?year={day.year}&month={day.month}&date={day.day}&hour={hour}"
+        url = f"https://www.flightstats.com/v2/flight-tracker/route/{dep}/{arr}?year={day.year}&month={day.month}&date={day.day}&hour={hour}"
         d = next_data(get(url))
         if not d:
             continue
@@ -40,8 +40,9 @@ def aircraft(f):
         return None
 
 if __name__ == "__main__":
-    day = datetime.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else datetime.date.today()
-    res = route(day)
+    dep, arr = (sys.argv[1] if len(sys.argv) > 1 else "IST-ESB").split("-")
+    day = datetime.date.fromisoformat(sys.argv[2]) if len(sys.argv) > 2 else datetime.date.today()
+    res = route(day, dep, arr)
     for f in res:
         f["aircraft"] = aircraft(f)
         f.pop("url", None)
