@@ -1,30 +1,8 @@
 {
-"guncelleme": "2026-11-16T22:38+03:00",
+"guncelleme": "2026-11-16T22:41+03:00",
 "kaynak": "FlightStats",
 "kalkis": "IST",
 "ucuslar": {
-"TK2562-20261116": {
-"no": "TK2562",
-"hat": "IST-DLM",
-"sehir": "Dalaman",
-"kalkis": "19:40",
-"inis": "21:00",
-"zaman": "2026-11-16T19:40+03:00",
-"tip": "32B",
-"ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK2008-20261116": {
-"no": "TK2008",
-"hat": "IST-NAV",
-"sehir": "Nevsehir",
-"kalkis": "19:40",
-"inis": "21:00",
-"zaman": "2026-11-16T19:40+03:00",
-"tip": "32A",
-"ad": "Airbus A320 (sharklets)",
-"kontrol": "2026-11-16T19:07+03:00"
-},
 "TK399-20261116": {
 "no": "TK399",
 "hat": "IST-LED",
