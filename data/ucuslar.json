@@ -1,41 +1,8 @@
 {
-"guncelleme": "2026-11-16T22:34+03:00",
+"guncelleme": "2026-11-16T22:38+03:00",
 "kaynak": "FlightStats",
 "kalkis": "IST",
 "ucuslar": {
-"TK760-20261116": {
-"no": "TK760",
-"hat": "IST-DXB",
-"sehir": "Dubai",
-"kalkis": "19:35",
-"inis": "01:10",
-"zaman": "2026-11-16T19:35+03:00",
-"tip": "359",
-"ad": "Airbus A350-900",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK565-20261116": {
-"no": "TK565",
-"hat": "IST-JRO",
-"sehir": "Kilimanjaro",
-"kalkis": "19:35",
-"inis": "02:35",
-"zaman": "2026-11-16T19:35+03:00",
-"tip": "7M8",
-"ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-16T19:07+03:00"
-},
-"TK606-20261116": {
-"no": "TK606",
-"hat": "IST-KGL",
-"sehir": "Kigali",
-"kalkis": "19:35",
-"inis": "01:40",
-"zaman": "2026-11-16T19:35+03:00",
-"tip": "7M8",
-"ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-16T19:07+03:00"
-},
 "TK2562-20261116": {
 "no": "TK2562",
 "hat": "IST-DLM",
