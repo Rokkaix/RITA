@@ -1,0 +1,326 @@
+[
+{
+"il": "Adana",
+"n": "Mustafa Yavuz"
+},
+{
+"il": "Adıyaman",
+"n": "Abdullah Küçük"
+},
+{
+"il": "Afyonkarahisar",
+"n": "Naci Aktaş"
+},
+{
+"il": "Ağrı",
+"n": "Önder Bozkurt"
+},
+{
+"il": "Amasya",
+"n": "Önder Bakan"
+},
+{
+"il": "Ankara",
+"n": "Yakup Canbolat"
+},
+{
+"il": "Antalya",
+"n": "Hulusi Şahin"
+},
+{
+"il": "Artvin",
+"n": "Turan Ergün"
+},
+{
+"il": "Aydın",
+"n": "Osman Varol"
+},
+{
+"il": "Balıkesir",
+"n": "İsmail Ustaoğlu"
+},
+{
+"il": "Bilecik",
+"n": "Faik Oktay Sözer"
+},
+{
+"il": "Bingöl",
+"n": "Cahit Çelik"
+},
+{
+"il": "Bitlis",
+"n": "Ahmet Karakaya"
+},
+{
+"il": "Bolu",
+"n": "Abdulaziz Aydın"
+},
+{
+"il": "Burdur",
+"n": "Tülay Baydar Bilgihan"
+},
+{
+"il": "Bursa",
+"n": "Erol Ayyıldız"
+},
+{
+"il": "Çanakkale",
+"n": "Ömer Toraman"
+},
+{
+"il": "Çankırı",
+"n": "Hüseyin Çakırtaş"
+},
+{
+"il": "Çorum",
+"n": "Ali Çalgan"
+},
+{
+"il": "Denizli",
+"n": "Yavuz Selim Köşger"
+},
+{
+"il": "Diyarbakır",
+"n": "Murat Zorluoğlu"
+},
+{
+"il": "Edirne",
+"n": "Yunus Sezer"
+},
+{
+"il": "Elazığ",
+"n": "Numan Hatipoğlu"
+},
+{
+"il": "Erzincan",
+"n": "Hamza Aydoğdu"
+},
+{
+"il": "Erzurum",
+"n": "Aydın Baruş"
+},
+{
+"il": "Eskişehir",
+"n": "Erdinç Yılmaz"
+},
+{
+"il": "Gaziantep",
+"n": "Kemal Çeber"
+},
+{
+"il": "Giresun",
+"n": "Mustafa Koç"
+},
+{
+"il": "Gümüşhane",
+"n": "Cevdet Atay"
+},
+{
+"il": "Hakkari",
+"n": "İbrahim Taşyapan"
+},
+{
+"il": "Hatay",
+"n": "Mustafa Masatlı"
+},
+{
+"il": "Isparta",
+"n": "Abdullah Erin"
+},
+{
+"il": "Mersin",
+"n": "Atilla Toros"
+},
+{
+"il": "İstanbul",
+"n": "Davut Gül"
+},
+{
+"il": "İzmir",
+"n": "Süleyman Elban"
+},
+{
+"il": "Kars",
+"n": "Ziya Polat"
+},
+{
+"il": "Kastamonu",
+"n": "Meftun Dallı"
+},
+{
+"il": "Kayseri",
+"n": "Gökmen Çiçek"
+},
+{
+"il": "Kırklareli",
+"n": "Uğur Turan"
+},
+{
+"il": "Kırşehir",
+"n": "Murat Sefa Demiryürek"
+},
+{
+"il": "Kocaeli",
+"n": "İlhami Aktaş"
+},
+{
+"il": "Konya",
+"n": "İbrahim Akın"
+},
+{
+"il": "Kütahya",
+"n": "Musa Işın"
+},
+{
+"il": "Malatya",
+"n": "Seddar Yavuz"
+},
+{
+"il": "Manisa",
+"n": "Vahdettin Özkan"
+},
+{
+"il": "Kahramanmaraş",
+"n": "Mükerrem Ünlüer"
+},
+{
+"il": "Mardin",
+"n": "Tuncay Akkoyun"
+},
+{
+"il": "Muğla",
+"n": "İdris Akbıyık"
+},
+{
+"il": "Muş",
+"n": "Avni Çakır"
+},
+{
+"il": "Nevşehir",
+"n": "Hüseyin Kök"
+},
+{
+"il": "Niğde",
+"n": "Nedim Akmeşe"
+},
+{
+"il": "Ordu",
+"n": "Muammer Erol"
+},
+{
+"il": "Rize",
+"n": "İhsan Selim Baydaş"
+},
+{
+"il": "Sakarya",
+"n": "Rahmi Doğan"
+},
+{
+"il": "Samsun",
+"n": "Orhan Tavlı"
+},
+{
+"il": "Siirt",
+"n": "Kemal Kızılkaya"
+},
+{
+"il": "Sinop",
+"n": "Mustafa Özarslan"
+},
+{
+"il": "Sivas",
+"n": "Yılmaz Şimşek"
+},
+{
+"il": "Tekirdağ",
+"n": "Recep Soytürk"
+},
+{
+"il": "Tokat",
+"n": "Abdullah Köklü"
+},
+{
+"il": "Trabzon",
+"n": "Tahir Şahin"
+},
+{
+"il": "Tunceli",
+"n": "Şefik Aygöl"
+},
+{
+"il": "Şanlıurfa",
+"n": "Hasan Şıldak"
+},
+{
+"il": "Uşak",
+"n": "Serdar Kartal"
+},
+{
+"il": "Van",
+"n": "Ozan Balcı"
+},
+{
+"il": "Yozgat",
+"n": "Mehmet Ali Özkan"
+},
+{
+"il": "Zonguldak",
+"n": "Osman Hacıbektaşoğlu"
+},
+{
+"il": "Aksaray",
+"n": "Murat Duru"
+},
+{
+"il": "Bayburt",
+"n": "Mustafa Eldivan"
+},
+{
+"il": "Karaman",
+"n": "Hayrettin Çiçek"
+},
+{
+"il": "Kırıkkale",
+"n": "Hüseyin Engin Sarıibrahim"
+},
+{
+"il": "Batman",
+"n": "Ekrem Canalp"
+},
+{
+"il": "Şırnak",
+"n": "Birol Ekici"
+},
+{
+"il": "Bartın",
+"n": "Nurtaç Arslan"
+},
+{
+"il": "Ardahan",
+"n": "Ömer Hilmi Yamlı"
+},
+{
+"il": "Iğdır",
+"n": "Mustafa Fırat Taşolar"
+},
+{
+"il": "Yalova",
+"n": "Ahmet Hamdi Usta"
+},
+{
+"il": "Karabük",
+"n": "Oktay Çağatay"
+},
+{
+"il": "Kilis",
+"n": "Ömer Kalaylı"
+},
+{
+"il": "Osmaniye",
+"n": "Mehmet Fatih Serdengeçti"
+},
+{
+"il": "Düzce",
+"n": "Mehmet Makas"
+}
+]

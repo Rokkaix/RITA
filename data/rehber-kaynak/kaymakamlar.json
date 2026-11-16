@@ -1,0 +1,4457 @@
+[
+{
+"il": "Adana",
+"ilce": "Aladağ",
+"n": "Tayfun Yılmaz"
+},
+{
+"il": "Adana",
+"ilce": "Ceyhan",
+"n": "Ramazan Kurtyemez"
+},
+{
+"il": "Adana",
+"ilce": "Çukurova",
+"n": "Hakan Alkan"
+},
+{
+"il": "Adana",
+"ilce": "Feke",
+"n": "Nural Cengiz Yamakoğlu"
+},
+{
+"il": "Adana",
+"ilce": "İmamoğlu",
+"n": "İbrahim Şenkon"
+},
+{
+"il": "Adana",
+"ilce": "Karaisalı",
+"n": "Hüseyin Bozoğlan"
+},
+{
+"il": "Adana",
+"ilce": "Karataş",
+"n": "Ozan Onu"
+},
+{
+"il": "Adana",
+"ilce": "Kozan",
+"n": "Bahattin Alp Arslanköylü"
+},
+{
+"il": "Adana",
+"ilce": "Pozantı",
+"n": "Muhammet Cengiz"
+},
+{
+"il": "Adana",
+"ilce": "Saimbeyli",
+"n": "Nursen Yüce"
+},
+{
+"il": "Adana",
+"ilce": "Sarıçam",
+"n": "Murtaza Dayanç"
+},
+{
+"il": "Adana",
+"ilce": "Seyhan",
+"n": "Ekrem İnci"
+},
+{
+"il": "Adana",
+"ilce": "Tufanbeyli",
+"n": "Habib Güven"
+},
+{
+"il": "Adana",
+"ilce": "Yumurtalık",
+"n": "Yakup Papaker"
+},
+{
+"il": "Adana",
+"ilce": "Yüreğir",
+"n": "Mehmet Aksu"
+},
+{
+"il": "Adıyaman",
+"ilce": "Besni",
+"n": "Ahmet Oğuz Aslan"
+},
+{
+"il": "Adıyaman",
+"ilce": "Çelikhan",
+"n": "Özgür Pelvan"
+},
+{
+"il": "Adıyaman",
+"ilce": "Gerger",
+"n": "İbrahim Coşkunaslan"
+},
+{
+"il": "Adıyaman",
+"ilce": "Gölbaşı",
+"n": "Kadir Algın"
+},
+{
+"il": "Adıyaman",
+"ilce": "Kahta",
+"n": "Muhammed Üsame Soysal"
+},
+{
+"il": "Adıyaman",
+"ilce": "Samsat",
+"n": "Hasan İnanç Gökçayır"
+},
+{
+"il": "Adıyaman",
+"ilce": "Sincik",
+"n": "Fatih Yıldız"
+},
+{
+"il": "Adıyaman",
+"ilce": "Tut",
+"n": "Abdulhamit Bağış"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Başmakçı",
+"n": "Merve Bayri"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Bayat",
+"n": "Ahmet Akdağ"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Bolvadin",
+"n": "Ali Arıkan"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Çay",
+"n": "Hasan Hüsnü Türker"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Çobanlar",
+"n": "Ömer Nergiz"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Dazkırı",
+"n": "Serkan Ala"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Dinar",
+"n": "Mehmet Naim Akgül"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Emirdağ",
+"n": "Adem Topaca"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Evciler",
+"n": "Halil İbrahim Okumuş"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Hocalar",
+"n": "Yaşar Şimşek"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "İhsaniye",
+"n": "Koray Yanıktepe"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "İscehisar",
+"n": "Enis Akdağoğlu"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Kızılören",
+"n": "Ensar Çelik"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Sandıklı",
+"n": "Batuhan Bingöl"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Sinanpaşa",
+"n": "Bünyamin Miroğlu"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Sultandağı",
+"n": "Muhammet Çınarka"
+},
+{
+"il": "Afyonkarahisar",
+"ilce": "Şuhut",
+"n": "İzzet Cem Eser"
+},
+{
+"il": "Ağrı",
+"ilce": "Diyadin",
+"n": "Furkan Korkusuz"
+},
+{
+"il": "Ağrı",
+"ilce": "Doğubayazıt",
+"n": "Mustafa Ayvat"
+},
+{
+"il": "Ağrı",
+"ilce": "Eleşkirt",
+"n": "Ömer Saygılı"
+},
+{
+"il": "Ağrı",
+"ilce": "Hamur",
+"n": "Erkan Minuz"
+},
+{
+"il": "Ağrı",
+"ilce": "Patnos",
+"n": "Burak Dertlioğlu"
+},
+{
+"il": "Ağrı",
+"ilce": "Taşlıçay",
+"n": "Kübra Baka Kılıç"
+},
+{
+"il": "Ağrı",
+"ilce": "Tutak",
+"n": "Ahmet Coşkun"
+},
+{
+"il": "Amasya",
+"ilce": "Göynücek",
+"n": "Oğuzhan Akman"
+},
+{
+"il": "Amasya",
+"ilce": "Gümüşhacıköy",
+"n": "Büşra Güneş"
+},
+{
+"il": "Amasya",
+"ilce": "Hamamözü",
+"n": "Ertuğrul Arslan"
+},
+{
+"il": "Amasya",
+"ilce": "Merzifon",
+"n": "Ahmet Karaaslan"
+},
+{
+"il": "Amasya",
+"ilce": "Suluova",
+"n": "Şafak Gürçam"
+},
+{
+"il": "Amasya",
+"ilce": "Taşova",
+"n": "Turan Bayram"
+},
+{
+"il": "Ankara",
+"ilce": "Akyurt",
+"n": "Hamit Genç"
+},
+{
+"il": "Ankara",
+"ilce": "Altındağ",
+"n": "Bülent Bayraktar"
+},
+{
+"il": "Ankara",
+"ilce": "Ayaş",
+"n": "Mustafa Kutlu"
+},
+{
+"il": "Ankara",
+"ilce": "Bala",
+"n": "Ali Yıldırım"
+},
+{
+"il": "Ankara",
+"ilce": "Beypazarı",
+"n": "Ünal Coşkun"
+},
+{
+"il": "Ankara",
+"ilce": "Çamlıdere",
+"n": "Osman Şenbahar"
+},
+{
+"il": "Ankara",
+"ilce": "Çankaya",
+"n": "Avni Oral"
+},
+{
+"il": "Ankara",
+"ilce": "Çubuk",
+"n": "Vehbi Bakır"
+},
+{
+"il": "Ankara",
+"ilce": "Elmadağ",
+"n": "Cemal Hüsnü Çaykara"
+},
+{
+"il": "Ankara",
+"ilce": "Etimesgut",
+"n": "Özlem Bozkurt Gevrek"
+},
+{
+"il": "Ankara",
+"ilce": "Evren",
+"n": "Ümit Cin"
+},
+{
+"il": "Ankara",
+"ilce": "Gölbaşı",
+"n": "Erol Rüstemoğlu"
+},
+{
+"il": "Ankara",
+"ilce": "Güdül",
+"n": "Naim Akar"
+},
+{
+"il": "Ankara",
+"ilce": "Haymana",
+"n": "Osman Sak"
+},
+{
+"il": "Ankara",
+"ilce": "Kahramankazan",
+"n": "Mustafa Yılmaz"
+},
+{
+"il": "Ankara",
+"ilce": "Kalecik",
+"n": "Melih Aydoğan"
+},
+{
+"il": "Ankara",
+"ilce": "Keçiören",
+"n": "Mehmet Soğukpınar"
+},
+{
+"il": "Ankara",
+"ilce": "Kızılcahamam",
+"n": "Faruk Erdem"
+},
+{
+"il": "Ankara",
+"ilce": "Mamak",
+"n": "Mehmet Nebi Kaya"
+},
+{
+"il": "Ankara",
+"ilce": "Nallıhan",
+"n": "Semih Doğanoğlu"
+},
+{
+"il": "Ankara",
+"ilce": "Polatlı",
+"n": "Atilla Kantay"
+},
+{
+"il": "Ankara",
+"ilce": "Pursaklar",
+"n": "Üzeyir Aziz Özeren"
+},
+{
+"il": "Ankara",
+"ilce": "Sincan",
+"n": "Levent Kılıç"
+},
+{
+"il": "Ankara",
+"ilce": "Şereflikoçhisar",
+"n": "Taner Tengir"
+},
+{
+"il": "Ankara",
+"ilce": "Yenimahalle",
+"n": "Tahsin Kurtbeyoğlu"
+},
+{
+"il": "Antalya",
+"ilce": "Akseki",
+"n": "Yusuf Ilıca"
+},
+{
+"il": "Antalya",
+"ilce": "Aksu",
+"n": "Cevat Çelik"
+},
+{
+"il": "Antalya",
+"ilce": "Alanya",
+"n": "Şakir Öner Öztürk"
+},
+{
+"il": "Antalya",
+"ilce": "Demre",
+"n": "Emin Bağlı"
+},
+{
+"il": "Antalya",
+"ilce": "Döşemealtı",
+"n": "Ünal Çakıcı"
+},
+{
+"il": "Antalya",
+"ilce": "Elmalı",
+"n": "Adem Balkanlıoğlu (Geçici Görev:Balıkesir Bigadiç Kaymakamlığı Kaymakam )"
+},
+{
+"il": "Antalya",
+"ilce": "Finike",
+"n": "Mehmet Soylu"
+},
+{
+"il": "Antalya",
+"ilce": "Gazipaşa",
+"n": "Hasan Uğuz"
+},
+{
+"il": "Antalya",
+"ilce": "Gündoğmuş",
+"n": "Erdal Bilgiç"
+},
+{
+"il": "Antalya",
+"ilce": "İbradı",
+"n": "Berk Acar"
+},
+{
+"il": "Antalya",
+"ilce": "Kaş",
+"n": "Tevfik Kumbasar"
+},
+{
+"il": "Antalya",
+"ilce": "Kemer",
+"n": "Ahmet Solmaz"
+},
+{
+"il": "Antalya",
+"ilce": "Kepez",
+"n": "Suat Dervişoğlu"
+},
+{
+"il": "Antalya",
+"ilce": "Konyaaltı",
+"n": "Rahmi Köse"
+},
+{
+"il": "Antalya",
+"ilce": "Korkuteli",
+"n": "Onur Yılmazer"
+},
+{
+"il": "Antalya",
+"ilce": "Kumluca",
+"n": "Bahadır Güneş"
+},
+{
+"il": "Antalya",
+"ilce": "Manavgat",
+"n": "Adil Karataş"
+},
+{
+"il": "Antalya",
+"ilce": "Serik",
+"n": "Cemal Şahin"
+},
+{
+"il": "Artvin",
+"ilce": "Ardanuç",
+"n": "Nazmi Yücel"
+},
+{
+"il": "Artvin",
+"ilce": "Arhavi",
+"n": "Muhammet Güzel"
+},
+{
+"il": "Artvin",
+"ilce": "Borçka",
+"n": "Emre Yeşil"
+},
+{
+"il": "Artvin",
+"ilce": "Hopa",
+"n": "Uğur Karakaya"
+},
+{
+"il": "Artvin",
+"ilce": "Kemalpaşa",
+"n": "Ayşe Karaca Nas"
+},
+{
+"il": "Artvin",
+"ilce": "Murgul",
+"n": "Ferhat Gür"
+},
+{
+"il": "Artvin",
+"ilce": "Şavşat",
+"n": "Alperen Celepci"
+},
+{
+"il": "Artvin",
+"ilce": "Yusufeli",
+"n": "Ahmet Tan"
+},
+{
+"il": "Aydın",
+"ilce": "Bozdoğan",
+"n": "Hüseyin Şamil Sözen"
+},
+{
+"il": "Aydın",
+"ilce": "Buharkent",
+"n": "Mehmet Halit Haydaroğlu"
+},
+{
+"il": "Aydın",
+"ilce": "Çine",
+"n": "Ali Erdoğan"
+},
+{
+"il": "Aydın",
+"ilce": "Didim",
+"n": "Mesut Çoban"
+},
+{
+"il": "Aydın",
+"ilce": "Efeler",
+"n": "İlker Arıkan"
+},
+{
+"il": "Aydın",
+"ilce": "Germencik",
+"n": "Sultan Doğru"
+},
+{
+"il": "Aydın",
+"ilce": "İncirliova",
+"n": "İlhan Abay"
+},
+{
+"il": "Aydın",
+"ilce": "Karacasu",
+"n": "İsmail Battal"
+},
+{
+"il": "Aydın",
+"ilce": "Karpuzlu",
+"n": "Mustafa Bayram"
+},
+{
+"il": "Aydın",
+"ilce": "Koçarlı",
+"n": "Ramazan Taşkın"
+},
+{
+"il": "Aydın",
+"ilce": "Köşk",
+"n": "Hasan Taş"
+},
+{
+"il": "Aydın",
+"ilce": "Kuşadası",
+"n": "İbrahim Keklik"
+},
+{
+"il": "Aydın",
+"ilce": "Kuyucak",
+"n": "Ahmet Gülderen"
+},
+{
+"il": "Aydın",
+"ilce": "Nazilli",
+"n": "Huriye Küpeli Kan"
+},
+{
+"il": "Aydın",
+"ilce": "Söke",
+"n": "Ali Akça"
+},
+{
+"il": "Aydın",
+"ilce": "Sultanhisar",
+"n": "Ali Ekber Ateş"
+},
+{
+"il": "Aydın",
+"ilce": "Yenipazar",
+"n": "Murat Karataş"
+},
+{
+"il": "Balıkesir",
+"ilce": "Altıeylül",
+"n": "Gökhan Gürbüzerol"
+},
+{
+"il": "Balıkesir",
+"ilce": "Ayvalık",
+"n": "Ömer Çimşit"
+},
+{
+"il": "Balıkesir",
+"ilce": "Balya",
+"n": "Murathan Cebeci"
+},
+{
+"il": "Balıkesir",
+"ilce": "Bandırma",
+"n": "Recep Öztürk"
+},
+{
+"il": "Balıkesir",
+"ilce": "Burhaniye",
+"n": "Cumali Atilla"
+},
+{
+"il": "Balıkesir",
+"ilce": "Dursunbey",
+"n": "Musa Ayyıldız"
+},
+{
+"il": "Balıkesir",
+"ilce": "Edremit",
+"n": "Ahmet Odabaş (Geçici Görev:Gaziantep Şehitkamil Kaymakamlığı Kaymakam )"
+},
+{
+"il": "Balıkesir",
+"ilce": "Erdek",
+"n": "Hasan Göç"
+},
+{
+"il": "Balıkesir",
+"ilce": "Gömeç",
+"n": "Mehmet Nesip Mahir"
+},
+{
+"il": "Balıkesir",
+"ilce": "Gönen",
+"n": "Ahmet Altıntaş"
+},
+{
+"il": "Balıkesir",
+"ilce": "Havran",
+"n": "Muhammed Evlice"
+},
+{
+"il": "Balıkesir",
+"ilce": "İvrindi",
+"n": "Ömer Niğdelioğlu"
+},
+{
+"il": "Balıkesir",
+"ilce": "Karesi",
+"n": "Murat Büyükköse"
+},
+{
+"il": "Balıkesir",
+"ilce": "Kepsut",
+"n": "Adem Taşpınar"
+},
+{
+"il": "Balıkesir",
+"ilce": "Manyas",
+"n": "Mustafa Salih Bayram"
+},
+{
+"il": "Balıkesir",
+"ilce": "Marmara",
+"n": "Sedat Akpınar"
+},
+{
+"il": "Balıkesir",
+"ilce": "Savaştepe",
+"n": "Furkan Berber (Geçici Görev: Kars Valiliği Vali Yardımcısı )"
+},
+{
+"il": "Balıkesir",
+"ilce": "Sındırgı",
+"n": "Doğukan Koyuncu"
+},
+{
+"il": "Balıkesir",
+"ilce": "Susurluk",
+"n": "Turgut Gülen"
+},
+{
+"il": "Bilecik",
+"ilce": "Bozüyük",
+"n": "Ahmet Naci Helvacı"
+},
+{
+"il": "Bilecik",
+"ilce": "Gölpazarı",
+"n": "Onur Titiz"
+},
+{
+"il": "Bilecik",
+"ilce": "İnhisar",
+"n": "Esra Polat"
+},
+{
+"il": "Bilecik",
+"ilce": "Osmaneli",
+"n": "Tahir Yılmaz"
+},
+{
+"il": "Bilecik",
+"ilce": "Pazaryeri",
+"n": "Muhammet Mustafa Kara"
+},
+{
+"il": "Bilecik",
+"ilce": "Söğüt",
+"n": "Murat Yayabaşı"
+},
+{
+"il": "Bilecik",
+"ilce": "Yenipazar",
+"n": "Yunus Emre Polat"
+},
+{
+"il": "Bingöl",
+"ilce": "Adaklı",
+"n": "Tugay Kalkanlı"
+},
+{
+"il": "Bingöl",
+"ilce": "Genç",
+"n": "Muhammed Burak Akköz"
+},
+{
+"il": "Bingöl",
+"ilce": "Karlıova",
+"n": "Abdulselam Bıçak"
+},
+{
+"il": "Bingöl",
+"ilce": "Kiğı",
+"n": "Hüseyin Çamkerten"
+},
+{
+"il": "Bingöl",
+"ilce": "Solhan",
+"n": "Okan Ayaz"
+},
+{
+"il": "Bingöl",
+"ilce": "Yayladere",
+"n": "Mehmet Arsoy"
+},
+{
+"il": "Bingöl",
+"ilce": "Yedisu",
+"n": "Emrah Özbek"
+},
+{
+"il": "Bitlis",
+"ilce": "Adilcevaz",
+"n": "Nurhalil Özçelik"
+},
+{
+"il": "Bitlis",
+"ilce": "Ahlat",
+"n": "Özgür Kaya"
+},
+{
+"il": "Bitlis",
+"ilce": "Güroymak",
+"n": "Onur Aykaç"
+},
+{
+"il": "Bitlis",
+"ilce": "Hizan",
+"n": "Mete Öztürk"
+},
+{
+"il": "Bitlis",
+"ilce": "Mutki",
+"n": "Barış Aytürk"
+},
+{
+"il": "Bitlis",
+"ilce": "Tatvan",
+"n": "Yiğit Yaşar Demirer"
+},
+{
+"il": "Bolu",
+"ilce": "Dörtdivan",
+"n": "Tugay Cantürk"
+},
+{
+"il": "Bolu",
+"ilce": "Gerede",
+"n": "Fatih Kaya"
+},
+{
+"il": "Bolu",
+"ilce": "Kıbrıscık",
+"n": "Feyza Yılmaz"
+},
+{
+"il": "Bolu",
+"ilce": "Mengen",
+"n": "Sercan Yıldız"
+},
+{
+"il": "Bolu",
+"ilce": "Mudurnu",
+"n": "Muhammed Furkan Okumuş"
+},
+{
+"il": "Bolu",
+"ilce": "Seben",
+"n": "Metehan Güngör"
+},
+{
+"il": "Bolu",
+"ilce": "Yeniçağa",
+"n": "Fatih Kurt"
+},
+{
+"il": "Burdur",
+"ilce": "Ağlasun",
+"n": "Osman Nuri Akgül"
+},
+{
+"il": "Burdur",
+"ilce": "Altınyayla",
+"n": "Özgür Tığlı"
+},
+{
+"il": "Burdur",
+"ilce": "Bucak",
+"n": "Can Kazım Kuruca"
+},
+{
+"il": "Burdur",
+"ilce": "Çavdır",
+"n": "Özgü Özen"
+},
+{
+"il": "Burdur",
+"ilce": "Çeltikçi",
+"n": "Ekrem Güdek"
+},
+{
+"il": "Burdur",
+"ilce": "Gölhisar",
+"n": "Emre Çifci"
+},
+{
+"il": "Burdur",
+"ilce": "Karamanlı",
+"n": "Senanur Tunalı"
+},
+{
+"il": "Burdur",
+"ilce": "Kemer",
+"n": "Zühre Berra Küçüköner"
+},
+{
+"il": "Burdur",
+"ilce": "Tefenni",
+"n": "İbrahim Cem Deveci"
+},
+{
+"il": "Burdur",
+"ilce": "Yeşilova",
+"n": "Ahmet Çakıcı"
+},
+{
+"il": "Bursa",
+"ilce": "Büyükorhan",
+"n": "Ferit Can"
+},
+{
+"il": "Bursa",
+"ilce": "Gemlik",
+"n": "Osman Aslan Canbaba"
+},
+{
+"il": "Bursa",
+"ilce": "Gürsu",
+"n": "Murat Kütük"
+},
+{
+"il": "Bursa",
+"ilce": "Harmancık",
+"n": "Muhammed Safa Kömürcü"
+},
+{
+"il": "Bursa",
+"ilce": "İnegöl",
+"n": "Ayhan Akpay"
+},
+{
+"il": "Bursa",
+"ilce": "İznik",
+"n": "Arif Karaman"
+},
+{
+"il": "Bursa",
+"ilce": "Karacabey",
+"n": "Cemalettin Yılmaz"
+},
+{
+"il": "Bursa",
+"ilce": "Keles",
+"n": "Burak Bozkurt Gürses"
+},
+{
+"il": "Bursa",
+"ilce": "Kestel",
+"n": "Emre Zeyrek"
+},
+{
+"il": "Bursa",
+"ilce": "Mudanya",
+"n": "Enver Yılmaz"
+},
+{
+"il": "Bursa",
+"ilce": "Mustafakemalpaşa",
+"n": "Mehmet Okur"
+},
+{
+"il": "Bursa",
+"ilce": "Nilüfer",
+"n": "Murat Süzen"
+},
+{
+"il": "Bursa",
+"ilce": "Orhaneli",
+"n": "Yasin Erdem"
+},
+{
+"il": "Bursa",
+"ilce": "Orhangazi",
+"n": "Zafer Karamehmetoğlu"
+},
+{
+"il": "Bursa",
+"ilce": "Osmangazi",
+"n": "Bahri Tiryaki"
+},
+{
+"il": "Bursa",
+"ilce": "Yenişehir",
+"n": "Ümit Altay"
+},
+{
+"il": "Bursa",
+"ilce": "Yıldırım",
+"n": "Metin Esen"
+},
+{
+"il": "Çanakkale",
+"ilce": "Ayvacık",
+"n": "Mustafa Karali"
+},
+{
+"il": "Çanakkale",
+"ilce": "Bayramiç",
+"n": "Emrah Bütün"
+},
+{
+"il": "Çanakkale",
+"ilce": "Biga",
+"n": "Ercan Kayabaşı"
+},
+{
+"il": "Çanakkale",
+"ilce": "Bozcaada",
+"n": "Oğuzhan Altunay"
+},
+{
+"il": "Çanakkale",
+"ilce": "Çan",
+"n": "Bülent Şimşek"
+},
+{
+"il": "Çanakkale",
+"ilce": "Eceabat",
+"n": "Kerem Yenigün"
+},
+{
+"il": "Çanakkale",
+"ilce": "Ezine",
+"n": "Yusuf Kaptanoğlu"
+},
+{
+"il": "Çanakkale",
+"ilce": "Gelibolu",
+"n": "Cihat Koç"
+},
+{
+"il": "Çanakkale",
+"ilce": "Gökçeada",
+"n": "Osman Acar"
+},
+{
+"il": "Çanakkale",
+"ilce": "Lapseki",
+"n": "Cafer Ekinci"
+},
+{
+"il": "Çanakkale",
+"ilce": "Yenice",
+"n": "Şeref Gülyer"
+},
+{
+"il": "Çankırı",
+"ilce": "Atkaracalar",
+"n": "Saliha Karataş"
+},
+{
+"il": "Çankırı",
+"ilce": "Bayramören",
+"n": "Oğuzhan Gülhan"
+},
+{
+"il": "Çankırı",
+"ilce": "Çerkeş",
+"n": "Harun Arslanargun"
+},
+{
+"il": "Çankırı",
+"ilce": "Eldivan",
+"n": "Zeliha Uz"
+},
+{
+"il": "Çankırı",
+"ilce": "Ilgaz",
+"n": "Ahmet Karatepe"
+},
+{
+"il": "Çankırı",
+"ilce": "Kızılırmak",
+"n": "Hüseyin Akçay"
+},
+{
+"il": "Çankırı",
+"ilce": "Korgun",
+"n": "Hasan Budak"
+},
+{
+"il": "Çankırı",
+"ilce": "Kurşunlu",
+"n": "Osman Emre Öztürk"
+},
+{
+"il": "Çankırı",
+"ilce": "Orta",
+"n": "Ökkeş Yusuf İnce"
+},
+{
+"il": "Çankırı",
+"ilce": "Şabanözü",
+"n": "Oğuzhan Yazar"
+},
+{
+"il": "Çankırı",
+"ilce": "Yapraklı",
+"n": "İhsan Akbel"
+},
+{
+"il": "Çorum",
+"ilce": "Alaca",
+"n": "Meriç Dinçer"
+},
+{
+"il": "Çorum",
+"ilce": "Bayat",
+"n": "Ömer Faruk Koç"
+},
+{
+"il": "Çorum",
+"ilce": "Boğazkale",
+"n": "Muhammed Ebrar Evsen (Geçici Görev:Kırıkkale Çelebi Kaymakamlığı Kaymakam )"
+},
+{
+"il": "Çorum",
+"ilce": "Dodurga",
+"n": "Gizem Tokur"
+},
+{
+"il": "Çorum",
+"ilce": "İskilip",
+"n": "Ramazan Polat"
+},
+{
+"il": "Çorum",
+"ilce": "Kargı",
+"n": "Furkan Türkay Kayış"
+},
+{
+"il": "Çorum",
+"ilce": "Laçin",
+"n": "Murat Yeşilyurt"
+},
+{
+"il": "Çorum",
+"ilce": "Mecitözü",
+"n": "Fatma Gül Nayman"
+},
+{
+"il": "Çorum",
+"ilce": "Oğuzlar",
+"n": "Serkan Tokur"
+},
+{
+"il": "Çorum",
+"ilce": "Ortaköy",
+"n": "Fatih Şimşek"
+},
+{
+"il": "Çorum",
+"ilce": "Osmancık",
+"n": "Furkan Duman"
+},
+{
+"il": "Çorum",
+"ilce": "Sungurlu",
+"n": "Mutlu Köksal"
+},
+{
+"il": "Çorum",
+"ilce": "Uğurludağ",
+"n": "Mustafa Düzgün"
+},
+{
+"il": "Denizli",
+"ilce": "Acıpayam",
+"n": "Ramazan Cankaloğlu"
+},
+{
+"il": "Denizli",
+"ilce": "Babadağ",
+"n": "Miyase Demirkoparan"
+},
+{
+"il": "Denizli",
+"ilce": "Baklan",
+"n": "Kezban Yerlikaya"
+},
+{
+"il": "Denizli",
+"ilce": "Bekilli",
+"n": "Abdullah Melikoğlu"
+},
+{
+"il": "Denizli",
+"ilce": "Beyağaç",
+"n": "Servet Haydari"
+},
+{
+"il": "Denizli",
+"ilce": "Bozkurt",
+"n": "Ali Özdaş"
+},
+{
+"il": "Denizli",
+"ilce": "Buldan",
+"n": "Turan Erdoğan"
+},
+{
+"il": "Denizli",
+"ilce": "Çal",
+"n": "Hatice Gamze Kuran"
+},
+{
+"il": "Denizli",
+"ilce": "Çameli",
+"n": "Mustafa Çelik"
+},
+{
+"il": "Denizli",
+"ilce": "Çardak",
+"n": "Ahmet Berkay Deniz"
+},
+{
+"il": "Denizli",
+"ilce": "Çivril",
+"n": "Fatih Cıdıroğlu"
+},
+{
+"il": "Denizli",
+"ilce": "Güney",
+"n": "Adem Can Okur"
+},
+{
+"il": "Denizli",
+"ilce": "Honaz",
+"n": "Vahit Yılmaz"
+},
+{
+"il": "Denizli",
+"ilce": "Kale",
+"n": "İbrahim Gökçe"
+},
+{
+"il": "Denizli",
+"ilce": "Merkezefendi",
+"n": "Abdullah Demir"
+},
+{
+"il": "Denizli",
+"ilce": "Pamukkale",
+"n": "Alper Faruk Güngör"
+},
+{
+"il": "Denizli",
+"ilce": "Sarayköy",
+"n": "İsmail Pendik"
+},
+{
+"il": "Denizli",
+"ilce": "Serinhisar",
+"n": "İsmail Alsancak"
+},
+{
+"il": "Denizli",
+"ilce": "Tavas",
+"n": "İsmail Demir"
+},
+{
+"il": "Edirne",
+"ilce": "Enez",
+"n": "Yunus Emre Fırat"
+},
+{
+"il": "Edirne",
+"ilce": "Havsa",
+"n": "Oğuzhan Aksoy"
+},
+{
+"il": "Edirne",
+"ilce": "İpsala",
+"n": "Hayrettin Buğra Güzel"
+},
+{
+"il": "Edirne",
+"ilce": "Keşan",
+"n": "Aziz Mercan"
+},
+{
+"il": "Edirne",
+"ilce": "Lalapaşa",
+"n": "Mustafa Çolak"
+},
+{
+"il": "Edirne",
+"ilce": "Meriç",
+"n": "Feyza Nur Odabaşı"
+},
+{
+"il": "Edirne",
+"ilce": "Süloğlu",
+"n": "Emin Cevat Tutar"
+},
+{
+"il": "Edirne",
+"ilce": "Uzunköprü",
+"n": "Muammer Köken"
+},
+{
+"il": "Elazığ",
+"ilce": "Ağın",
+"n": "Tuğçe Yılmaz"
+},
+{
+"il": "Elazığ",
+"ilce": "Alacakaya",
+"n": "Batuhan Sarıoğlu"
+},
+{
+"il": "Elazığ",
+"ilce": "Arıcak",
+"n": "Alper Açıkgöz"
+},
+{
+"il": "Elazığ",
+"ilce": "Baskil",
+"n": "Muhammed Enes Çıkrık"
+},
+{
+"il": "Elazığ",
+"ilce": "Karakoçan",
+"n": "Furkan Seyman"
+},
+{
+"il": "Elazığ",
+"ilce": "Keban",
+"n": "Muhammed Huzeyfe Onur"
+},
+{
+"il": "Elazığ",
+"ilce": "Kovancılar",
+"n": "Abdulhamid Uyar"
+},
+{
+"il": "Elazığ",
+"ilce": "Maden",
+"n": "İbrahim İşleyen"
+},
+{
+"il": "Elazığ",
+"ilce": "Palu",
+"n": "Fatih Çevik"
+},
+{
+"il": "Elazığ",
+"ilce": "Sivrice",
+"n": "Yusuf Akın"
+},
+{
+"il": "Erzincan",
+"ilce": "Çayırlı",
+"n": "Ramazan Teke"
+},
+{
+"il": "Erzincan",
+"ilce": "İliç",
+"n": "Hacı Demirci"
+},
+{
+"il": "Erzincan",
+"ilce": "Kemah",
+"n": "Resul Tutay"
+},
+{
+"il": "Erzincan",
+"ilce": "Kemaliye",
+"n": "Emirhan Arıkan"
+},
+{
+"il": "Erzincan",
+"ilce": "Otlukbeli",
+"n": "Volkan Oral"
+},
+{
+"il": "Erzincan",
+"ilce": "Refahiye",
+"n": "Mehmet Furkan Taşkıran"
+},
+{
+"il": "Erzincan",
+"ilce": "Tercan",
+"n": "Neslihan Kısa Duman"
+},
+{
+"il": "Erzincan",
+"ilce": "Üzümlü",
+"n": "Hacı Osman Hökelekli"
+},
+{
+"il": "Erzurum",
+"ilce": "Aşkale",
+"n": "Sait Muhammed Bilgin"
+},
+{
+"il": "Erzurum",
+"ilce": "Aziziye",
+"n": "Mehmet Faruk Kazdal"
+},
+{
+"il": "Erzurum",
+"ilce": "Çat",
+"n": "Erkan Şahin"
+},
+{
+"il": "Erzurum",
+"ilce": "Hınıs",
+"n": "Fatih Gülnar"
+},
+{
+"il": "Erzurum",
+"ilce": "Horasan",
+"n": "Mesut Ozan Yılmaz"
+},
+{
+"il": "Erzurum",
+"ilce": "İspir",
+"n": "Berker Çırak"
+},
+{
+"il": "Erzurum",
+"ilce": "Karaçoban",
+"n": "Ali İhsan Selimoğlu"
+},
+{
+"il": "Erzurum",
+"ilce": "Karayazı",
+"n": "Mustafa Babacan"
+},
+{
+"il": "Erzurum",
+"ilce": "Köprüköy",
+"n": "Mustafa Turan"
+},
+{
+"il": "Erzurum",
+"ilce": "Narman",
+"n": "Erkan Adıbelli"
+},
+{
+"il": "Erzurum",
+"ilce": "Oltu",
+"n": "Mustafa Çelik"
+},
+{
+"il": "Erzurum",
+"ilce": "Olur",
+"n": "Semanur Kalkan"
+},
+{
+"il": "Erzurum",
+"ilce": "Palandöken",
+"n": "Yunus Kızılgüneş"
+},
+{
+"il": "Erzurum",
+"ilce": "Pasinler",
+"n": "Rahmi Bulut"
+},
+{
+"il": "Erzurum",
+"ilce": "Pazaryolu",
+"n": "Ömer Levent Türk"
+},
+{
+"il": "Erzurum",
+"ilce": "Şenkaya",
+"n": "Safa Kahraman"
+},
+{
+"il": "Erzurum",
+"ilce": "Tekman",
+"n": "Hüseyin Demirkol"
+},
+{
+"il": "Erzurum",
+"ilce": "Tortum",
+"n": "Hakan Başoğlu"
+},
+{
+"il": "Erzurum",
+"ilce": "Uzundere",
+"n": "Muhammed Taha Canpolat"
+},
+{
+"il": "Erzurum",
+"ilce": "Yakutiye",
+"n": "Mehmet Rıdvan Doğan"
+},
+{
+"il": "Eskişehir",
+"ilce": "Alpu",
+"n": "Taha Furkan Sönmezel"
+},
+{
+"il": "Eskişehir",
+"ilce": "Beylikova",
+"n": "Ali Kantilav"
+},
+{
+"il": "Eskişehir",
+"ilce": "Çifteler",
+"n": "Bilal Basrı"
+},
+{
+"il": "Eskişehir",
+"ilce": "Günyüzü",
+"n": "Muhammed Raşit Kurt"
+},
+{
+"il": "Eskişehir",
+"ilce": "Han",
+"n": "Bahadır Yılmaz"
+},
+{
+"il": "Eskişehir",
+"ilce": "İnönü",
+"n": "Talha Atılay Teymur"
+},
+{
+"il": "Eskişehir",
+"ilce": "Mahmudiye",
+"n": "Yunus Tekçe"
+},
+{
+"il": "Eskişehir",
+"ilce": "Mihalgazi",
+"n": "Mustafa Aksoy"
+},
+{
+"il": "Eskişehir",
+"ilce": "Mihalıççık",
+"n": "Fahrettin Çırak"
+},
+{
+"il": "Eskişehir",
+"ilce": "Odunpazarı",
+"n": "Ahmet Hikmet Şahin"
+},
+{
+"il": "Eskişehir",
+"ilce": "Sarıcakaya",
+"n": "Abdurrahim Tomakin"
+},
+{
+"il": "Eskişehir",
+"ilce": "Sivrihisar",
+"n": "Yunus Emre Temel"
+},
+{
+"il": "Eskişehir",
+"ilce": "Tepebaşı",
+"n": "Sadettin Yücel"
+},
+{
+"il": "Gaziantep",
+"ilce": "Araban",
+"n": "Ferhat Salih Ceylan"
+},
+{
+"il": "Gaziantep",
+"ilce": "İslahiye",
+"n": "Emre Oğuztürk"
+},
+{
+"il": "Gaziantep",
+"ilce": "Karkamış",
+"n": "Ferdi Akgün"
+},
+{
+"il": "Gaziantep",
+"ilce": "Nizip",
+"n": "Osman Uğurlu"
+},
+{
+"il": "Gaziantep",
+"ilce": "Nurdağı",
+"n": "Nurullah Cemil Erciyas"
+},
+{
+"il": "Gaziantep",
+"ilce": "Oğuzeli",
+"n": "Mikail Ersöz"
+},
+{
+"il": "Gaziantep",
+"ilce": "Şahinbey",
+"n": "Mehmet Emin Taşçı"
+},
+{
+"il": "Gaziantep",
+"ilce": "Yavuzeli",
+"n": "Osman Sarı"
+},
+{
+"il": "Giresun",
+"ilce": "Alucra",
+"n": "Doğan Can Kandemir"
+},
+{
+"il": "Giresun",
+"ilce": "Bulancak",
+"n": "Ömer Faruk Tuncer"
+},
+{
+"il": "Giresun",
+"ilce": "Çamoluk",
+"n": "Mehmet Eren Çoşkun"
+},
+{
+"il": "Giresun",
+"ilce": "Çanakçı",
+"n": "Zübeyir Özdemir"
+},
+{
+"il": "Giresun",
+"ilce": "Dereli",
+"n": "Mustafa Gövercin"
+},
+{
+"il": "Giresun",
+"ilce": "Doğankent",
+"n": "Tarık Emre Uşen"
+},
+{
+"il": "Giresun",
+"ilce": "Espiye",
+"n": "Ahmet Kavanoz"
+},
+{
+"il": "Giresun",
+"ilce": "Görele",
+"n": "İbrahim Civelek"
+},
+{
+"il": "Giresun",
+"ilce": "Güce",
+"n": "Esra Kodaz Köse"
+},
+{
+"il": "Giresun",
+"ilce": "Keşap",
+"n": "Selin Sarı"
+},
+{
+"il": "Giresun",
+"ilce": "Piraziz",
+"n": "Kadir Kılıç"
+},
+{
+"il": "Giresun",
+"ilce": "Şebinkarahisar",
+"n": "Adnan Doğan"
+},
+{
+"il": "Giresun",
+"ilce": "Tirebolu",
+"n": "Tuncay Kaldırım"
+},
+{
+"il": "Giresun",
+"ilce": "Yağlıdere",
+"n": "Muhammed Taha Büyükserin"
+},
+{
+"il": "Gümüşhane",
+"ilce": "Kelkit",
+"n": "Mahmut Sami Yılmaz"
+},
+{
+"il": "Gümüşhane",
+"ilce": "Köse",
+"n": "İbrahim Pelit"
+},
+{
+"il": "Gümüşhane",
+"ilce": "Kürtün",
+"n": "Ahmet Faruk Beyazıt"
+},
+{
+"il": "Gümüşhane",
+"ilce": "Şiran",
+"n": "Zeynep Topcu"
+},
+{
+"il": "Gümüşhane",
+"ilce": "Torul",
+"n": "Koray Çelik"
+},
+{
+"il": "Hakkari",
+"ilce": "Çukurca",
+"n": "Emre Cebeci"
+},
+{
+"il": "Hakkari",
+"ilce": "Derecik",
+"n": "İbrahim Yazıcı"
+},
+{
+"il": "Hakkari",
+"ilce": "Şemdinli",
+"n": "Fatih Erdoğan"
+},
+{
+"il": "Hakkari",
+"ilce": "Yüksekova",
+"n": "Volkan Hülür"
+},
+{
+"il": "Hatay",
+"ilce": "Altınözü",
+"n": "Efecan Şahin"
+},
+{
+"il": "Hatay",
+"ilce": "Antakya",
+"n": "Abdullah Akdaş"
+},
+{
+"il": "Hatay",
+"ilce": "Arsuz",
+"n": "Fatih Eroğlu"
+},
+{
+"il": "Hatay",
+"ilce": "Belen",
+"n": "Onur Şan"
+},
+{
+"il": "Hatay",
+"ilce": "Defne",
+"n": "Oğuz Cem Murat"
+},
+{
+"il": "Hatay",
+"ilce": "Dörtyol",
+"n": "Mehmet Keklik"
+},
+{
+"il": "Hatay",
+"ilce": "Erzin",
+"n": "Yunus Emre Akpınar"
+},
+{
+"il": "Hatay",
+"ilce": "Hassa",
+"n": "Ali Argama"
+},
+{
+"il": "Hatay",
+"ilce": "İskenderun",
+"n": "Muhammet Önder"
+},
+{
+"il": "Hatay",
+"ilce": "Kırıkhan",
+"n": "Yusuf Cankatar"
+},
+{
+"il": "Hatay",
+"ilce": "Kumlu",
+"n": "Yunus Polat"
+},
+{
+"il": "Hatay",
+"ilce": "Payas",
+"n": "Kürşad Karaca"
+},
+{
+"il": "Hatay",
+"ilce": "Reyhanlı",
+"n": "Muharrem Coşgun"
+},
+{
+"il": "Hatay",
+"ilce": "Samandağ",
+"n": "Emre Dündar"
+},
+{
+"il": "Hatay",
+"ilce": "Yayladağı",
+"n": "Halil Yazıcı"
+},
+{
+"il": "Isparta",
+"ilce": "Aksu",
+"n": "Merve Ayık"
+},
+{
+"il": "Isparta",
+"ilce": "Atabey",
+"n": "Selami Işık"
+},
+{
+"il": "Isparta",
+"ilce": "Eğirdir",
+"n": "Serhat Doğan"
+},
+{
+"il": "Isparta",
+"ilce": "Gelendost",
+"n": "Kemal Özdoğan"
+},
+{
+"il": "Isparta",
+"ilce": "Gönen",
+"n": "Mehmet Yıldız"
+},
+{
+"il": "Isparta",
+"ilce": "Keçiborlu",
+"n": "Kerem Türker"
+},
+{
+"il": "Isparta",
+"ilce": "Senirkent",
+"n": "Muhammet Samet Bahar"
+},
+{
+"il": "Isparta",
+"ilce": "Sütçüler",
+"n": "Hüseyin Saban"
+},
+{
+"il": "Isparta",
+"ilce": "Şarkikaraağaç",
+"n": "Yasin Uzuner"
+},
+{
+"il": "Isparta",
+"ilce": "Uluborlu",
+"n": "Ahmet Açıkgöz"
+},
+{
+"il": "Isparta",
+"ilce": "Yalvaç",
+"n": "Bekir Abacı"
+},
+{
+"il": "Isparta",
+"ilce": "Yenişarbademli",
+"n": "Adem Levent"
+},
+{
+"il": "Mersin",
+"ilce": "Akdeniz",
+"n": "Murat Beşikci"
+},
+{
+"il": "Mersin",
+"ilce": "Anamur",
+"n": "Kemal Duru"
+},
+{
+"il": "Mersin",
+"ilce": "Aydıncık",
+"n": "Mehmet Çelik"
+},
+{
+"il": "Mersin",
+"ilce": "Bozyazı",
+"n": "Tuncay Topsakaloğlu"
+},
+{
+"il": "Mersin",
+"ilce": "Çamlıyayla",
+"n": "Salih Gültekin"
+},
+{
+"il": "Mersin",
+"ilce": "Erdemli",
+"n": "Aydın Tetikoğlu"
+},
+{
+"il": "Mersin",
+"ilce": "Gülnar",
+"n": "Emrah Aslan"
+},
+{
+"il": "Mersin",
+"ilce": "Mezitli",
+"n": "Murat Öztürk"
+},
+{
+"il": "Mersin",
+"ilce": "Mut",
+"n": "Osman Çelikkol"
+},
+{
+"il": "Mersin",
+"ilce": "Silifke",
+"n": "Eyüp Fırat"
+},
+{
+"il": "Mersin",
+"ilce": "Tarsus",
+"n": "Mehmet Ali Akyüz"
+},
+{
+"il": "Mersin",
+"ilce": "Toroslar",
+"n": "Hüseyin Karameşe"
+},
+{
+"il": "Mersin",
+"ilce": "Yenişehir",
+"n": "Nevzat Şengök"
+},
+{
+"il": "İstanbul",
+"ilce": "Adalar",
+"n": "Uğur Bulut"
+},
+{
+"il": "İstanbul",
+"ilce": "Arnavutköy",
+"n": "Mahmut Hersanlıoğlu"
+},
+{
+"il": "İstanbul",
+"ilce": "Ataşehir",
+"n": "Eren Arslan"
+},
+{
+"il": "İstanbul",
+"ilce": "Avcılar",
+"n": "Orhan Burhan"
+},
+{
+"il": "İstanbul",
+"ilce": "Bağcılar",
+"n": "Abdullah Uçgun"
+},
+{
+"il": "İstanbul",
+"ilce": "Bahçelievler",
+"n": "Mehmet Boztepe"
+},
+{
+"il": "İstanbul",
+"ilce": "Bakırköy",
+"n": "Recai Karal"
+},
+{
+"il": "İstanbul",
+"ilce": "Başakşehir",
+"n": "Cemil Özgür Öneği"
+},
+{
+"il": "İstanbul",
+"ilce": "Bayrampaşa",
+"n": "Abdullah Çiftçi"
+},
+{
+"il": "İstanbul",
+"ilce": "Beşiktaş",
+"n": "Oğuzhan Bingöl"
+},
+{
+"il": "İstanbul",
+"ilce": "Beykoz",
+"n": "Fatih Ürkmezer"
+},
+{
+"il": "İstanbul",
+"ilce": "Beylikdüzü",
+"n": "Bülent Karacan"
+},
+{
+"il": "İstanbul",
+"ilce": "Beyoğlu",
+"n": "Abdullah Atakan Atasoy"
+},
+{
+"il": "İstanbul",
+"ilce": "Büyükçekmece",
+"n": "Ali İkram Tuna"
+},
+{
+"il": "İstanbul",
+"ilce": "Çatalca",
+"n": "Yasin Öztürk"
+},
+{
+"il": "İstanbul",
+"ilce": "Çekmeköy",
+"n": "Ömer Bilgin"
+},
+{
+"il": "İstanbul",
+"ilce": "Esenler",
+"n": "Süleyman Özçakıcı"
+},
+{
+"il": "İstanbul",
+"ilce": "Esenyurt",
+"n": "Fatih Çobanoğlu"
+},
+{
+"il": "İstanbul",
+"ilce": "Eyüpsultan",
+"n": "Arslan Yurt"
+},
+{
+"il": "İstanbul",
+"ilce": "Fatih",
+"n": "Cafer Sarılı"
+},
+{
+"il": "İstanbul",
+"ilce": "Gaziosmanpaşa",
+"n": "İskender Yönden"
+},
+{
+"il": "İstanbul",
+"ilce": "Güngören",
+"n": "Ayhan Terzi"
+},
+{
+"il": "İstanbul",
+"ilce": "Kadıköy",
+"n": "Muhittin Pamuk"
+},
+{
+"il": "İstanbul",
+"ilce": "Kağıthane",
+"n": "Yüksel Kara"
+},
+{
+"il": "İstanbul",
+"ilce": "Kartal",
+"n": "Edip Çakıcı"
+},
+{
+"il": "İstanbul",
+"ilce": "Küçükçekmece",
+"n": "Mustafa Anteplioğlu"
+},
+{
+"il": "İstanbul",
+"ilce": "Maltepe",
+"n": "Mehmet Akçay"
+},
+{
+"il": "İstanbul",
+"ilce": "Pendik",
+"n": "Mehmet Yıldız"
+},
+{
+"il": "İstanbul",
+"ilce": "Sancaktepe",
+"n": "Naif Yavuz"
+},
+{
+"il": "İstanbul",
+"ilce": "Sarıyer",
+"n": "Metin Maytalman"
+},
+{
+"il": "İstanbul",
+"ilce": "Silivri",
+"n": "Murat Eren"
+},
+{
+"il": "İstanbul",
+"ilce": "Sultanbeyli",
+"n": "Kemal Şahin"
+},
+{
+"il": "İstanbul",
+"ilce": "Sultangazi",
+"n": "Mahmut Kaşıkçı"
+},
+{
+"il": "İstanbul",
+"ilce": "Şile",
+"n": "Mustafa Çit"
+},
+{
+"il": "İstanbul",
+"ilce": "Şişli",
+"n": "Cevdet Ertürkmen"
+},
+{
+"il": "İstanbul",
+"ilce": "Tuzla",
+"n": "Ümit Hüseyin Güney"
+},
+{
+"il": "İstanbul",
+"ilce": "Ümraniye",
+"n": "Yüksel Çelik"
+},
+{
+"il": "İstanbul",
+"ilce": "Üsküdar",
+"n": "Adem Yazıcı"
+},
+{
+"il": "İstanbul",
+"ilce": "Zeytinburnu",
+"n": "Adem Uslu"
+},
+{
+"il": "İzmir",
+"ilce": "Aliağa",
+"n": "Zekeriya Güney"
+},
+{
+"il": "İzmir",
+"ilce": "Balçova",
+"n": "Mahmut Halal"
+},
+{
+"il": "İzmir",
+"ilce": "Bayındır",
+"n": "Murat Mete"
+},
+{
+"il": "İzmir",
+"ilce": "Bayraklı",
+"n": "Engin Aksakal"
+},
+{
+"il": "İzmir",
+"ilce": "Bergama",
+"n": "Hasan Yaman"
+},
+{
+"il": "İzmir",
+"ilce": "Beydağ",
+"n": "Ramazan Aykut Saka"
+},
+{
+"il": "İzmir",
+"ilce": "Bornova",
+"n": "Muzaffer Şahiner"
+},
+{
+"il": "İzmir",
+"ilce": "Buca",
+"n": "Muhammed Gürbüz"
+},
+{
+"il": "İzmir",
+"ilce": "Çeşme",
+"n": "Mehmet Maraşlı"
+},
+{
+"il": "İzmir",
+"ilce": "Çiğli",
+"n": "Fatih Görmüş"
+},
+{
+"il": "İzmir",
+"ilce": "Dikili",
+"n": "Metin Arslanbaş"
+},
+{
+"il": "İzmir",
+"ilce": "Foça",
+"n": "İhsan Emre Aydın"
+},
+{
+"il": "İzmir",
+"ilce": "Gaziemir",
+"n": "Kudret Kurnaz"
+},
+{
+"il": "İzmir",
+"ilce": "Güzelbahçe",
+"n": "Mehmet Özel"
+},
+{
+"il": "İzmir",
+"ilce": "Karabağlar",
+"n": "Mehmet Özer"
+},
+{
+"il": "İzmir",
+"ilce": "Karaburun",
+"n": "Hilal Kızılkaya"
+},
+{
+"il": "İzmir",
+"ilce": "Karşıyaka",
+"n": "Özkan Demir"
+},
+{
+"il": "İzmir",
+"ilce": "Kemalpaşa",
+"n": "Okan Daştan"
+},
+{
+"il": "İzmir",
+"ilce": "Kınık",
+"n": "Onur Alimoğlu"
+},
+{
+"il": "İzmir",
+"ilce": "Kiraz",
+"n": "Ebubekir Erdoğan"
+},
+{
+"il": "İzmir",
+"ilce": "Konak",
+"n": "Ediz Sürücü"
+},
+{
+"il": "İzmir",
+"ilce": "Menderes",
+"n": "Murat Karaloğlu"
+},
+{
+"il": "İzmir",
+"ilce": "Menemen",
+"n": "Vedat Yılmaz"
+},
+{
+"il": "İzmir",
+"ilce": "Narlıdere",
+"n": "Kadir Taner Eser"
+},
+{
+"il": "İzmir",
+"ilce": "Ödemiş",
+"n": "Hakan Yavuz Erdoğan"
+},
+{
+"il": "İzmir",
+"ilce": "Seferihisar",
+"n": "Mehmet Şerif Olçaş"
+},
+{
+"il": "İzmir",
+"ilce": "Selçuk",
+"n": "Oğuz Alp Çağlar"
+},
+{
+"il": "İzmir",
+"ilce": "Tire",
+"n": "Mesut Yakuta"
+},
+{
+"il": "İzmir",
+"ilce": "Torbalı",
+"n": "Adem Çelik"
+},
+{
+"il": "İzmir",
+"ilce": "Urla",
+"n": "Mustafa Gözlet"
+},
+{
+"il": "Kars",
+"ilce": "Akyaka",
+"n": "İsmail Demirtaş"
+},
+{
+"il": "Kars",
+"ilce": "Arpaçay",
+"n": "Mehmet Abdulkadir Güvenç"
+},
+{
+"il": "Kars",
+"ilce": "Digor",
+"n": "Abdulkadir Zengin"
+},
+{
+"il": "Kars",
+"ilce": "Kağızman",
+"n": "Semih Cembekli"
+},
+{
+"il": "Kars",
+"ilce": "Sarıkamış",
+"n": "Enis Aslantatar"
+},
+{
+"il": "Kars",
+"ilce": "Selim",
+"n": "Mehmet Ali Semiz"
+},
+{
+"il": "Kars",
+"ilce": "Susuz",
+"n": "Furkan Öztürk"
+},
+{
+"il": "Kastamonu",
+"ilce": "Abana",
+"n": "Tolga Ustaoğlu"
+},
+{
+"il": "Kastamonu",
+"ilce": "Ağlı",
+"n": "Şeyma Şendur"
+},
+{
+"il": "Kastamonu",
+"ilce": "Araç",
+"n": "Ali Emre Tekin"
+},
+{
+"il": "Kastamonu",
+"ilce": "Azdavay",
+"n": "Bilal Çitil"
+},
+{
+"il": "Kastamonu",
+"ilce": "Bozkurt",
+"n": "İsmail Koçdoğan"
+},
+{
+"il": "Kastamonu",
+"ilce": "Cide",
+"n": "Furkan Atalık"
+},
+{
+"il": "Kastamonu",
+"ilce": "Çatalzeytin",
+"n": "Alpay Dincel"
+},
+{
+"il": "Kastamonu",
+"ilce": "Daday",
+"n": "Zübeyir Yıldırım"
+},
+{
+"il": "Kastamonu",
+"ilce": "Devrekani",
+"n": "Umut Pazarcı"
+},
+{
+"il": "Kastamonu",
+"ilce": "Doğanyurt",
+"n": "Muhammed Burak Kantar"
+},
+{
+"il": "Kastamonu",
+"ilce": "Hanönü",
+"n": "Alper Uslu"
+},
+{
+"il": "Kastamonu",
+"ilce": "İhsangazi",
+"n": "Yasin Cevizci"
+},
+{
+"il": "Kastamonu",
+"ilce": "İnebolu",
+"n": "Necdet Uçar"
+},
+{
+"il": "Kastamonu",
+"ilce": "Küre",
+"n": "Hasan Çakır"
+},
+{
+"il": "Kastamonu",
+"ilce": "Pınarbaşı",
+"n": "Ahmet Dursun Tulga"
+},
+{
+"il": "Kastamonu",
+"ilce": "Seydiler",
+"n": "Büşra Erdoğan Duramaz"
+},
+{
+"il": "Kastamonu",
+"ilce": "Şenpazar",
+"n": "Öznur Züleyha Ete"
+},
+{
+"il": "Kastamonu",
+"ilce": "Taşköprü",
+"n": "Abdullah Demirdağ"
+},
+{
+"il": "Kastamonu",
+"ilce": "Tosya",
+"n": "Hüseyin Remzi Konak"
+},
+{
+"il": "Kayseri",
+"ilce": "Akkışla",
+"n": "Yavuz Selim Günday"
+},
+{
+"il": "Kayseri",
+"ilce": "Bünyan",
+"n": "Yücel Erdem"
+},
+{
+"il": "Kayseri",
+"ilce": "Develi",
+"n": "Selim Çomaklı"
+},
+{
+"il": "Kayseri",
+"ilce": "Felahiye",
+"n": "Esma Atasever Sağıroğlugil"
+},
+{
+"il": "Kayseri",
+"ilce": "Hacılar",
+"n": "Cüneyt Caner"
+},
+{
+"il": "Kayseri",
+"ilce": "İncesu",
+"n": "Ömer Said Karakaş"
+},
+{
+"il": "Kayseri",
+"ilce": "Kocasinan",
+"n": "Erdoğan Turan Ermiş"
+},
+{
+"il": "Kayseri",
+"ilce": "Melikgazi",
+"n": "Sedat Sırrı Arısoy"
+},
+{
+"il": "Kayseri",
+"ilce": "Özvatan",
+"n": "Hakan Naifoğlu"
+},
+{
+"il": "Kayseri",
+"ilce": "Pınarbaşı",
+"n": "Emrah Bayram"
+},
+{
+"il": "Kayseri",
+"ilce": "Sarıoğlan",
+"n": "Abdullah Cemil Can"
+},
+{
+"il": "Kayseri",
+"ilce": "Sarız",
+"n": "Aykut Canol"
+},
+{
+"il": "Kayseri",
+"ilce": "Talas",
+"n": "İlyas Memiş"
+},
+{
+"il": "Kayseri",
+"ilce": "Tomarza",
+"n": "Selim Eser"
+},
+{
+"il": "Kayseri",
+"ilce": "Yahyalı",
+"n": "İbrahim Gültekin"
+},
+{
+"il": "Kayseri",
+"ilce": "Yeşilhisar",
+"n": "Fatih Adıgüzel"
+},
+{
+"il": "Kırklareli",
+"ilce": "Babaeski",
+"n": "Tamer Orhan"
+},
+{
+"il": "Kırklareli",
+"ilce": "Demirköy",
+"n": "Hamza Erdem"
+},
+{
+"il": "Kırklareli",
+"ilce": "Kofçaz",
+"n": "Seda Ünlü"
+},
+{
+"il": "Kırklareli",
+"ilce": "Lüleburgaz",
+"n": "Ayhan Işık"
+},
+{
+"il": "Kırklareli",
+"ilce": "Pehlivanköy",
+"n": "Ahmet Murat Türbe"
+},
+{
+"il": "Kırklareli",
+"ilce": "Pınarhisar",
+"n": "Enver Özderin"
+},
+{
+"il": "Kırklareli",
+"ilce": "Vize",
+"n": "Kemal Balaban"
+},
+{
+"il": "Kırşehir",
+"ilce": "Akçakent",
+"n": "Ali Can Yıldız"
+},
+{
+"il": "Kırşehir",
+"ilce": "Akpınar",
+"n": "Ali Erdoğan"
+},
+{
+"il": "Kırşehir",
+"ilce": "Çiçekdağı",
+"n": "Durdu Yavuz Öğüt"
+},
+{
+"il": "Kırşehir",
+"ilce": "Kaman",
+"n": "Engin Tok (Geçici Görev: Trabzon Valiliği Vali Yardımcısı )"
+},
+{
+"il": "Kocaeli",
+"ilce": "Başiskele",
+"n": "Soner Şenel"
+},
+{
+"il": "Kocaeli",
+"ilce": "Çayırova",
+"n": "Ahmet Önal"
+},
+{
+"il": "Kocaeli",
+"ilce": "Darıca",
+"n": "Yaşar Dönmez"
+},
+{
+"il": "Kocaeli",
+"ilce": "Derince",
+"n": "Mustafa Demirelli"
+},
+{
+"il": "Kocaeli",
+"ilce": "Dilovası",
+"n": "Resul Çelik"
+},
+{
+"il": "Kocaeli",
+"ilce": "Gebze",
+"n": "Mehmet Ali Özyiğit"
+},
+{
+"il": "Kocaeli",
+"ilce": "Gölcük",
+"n": "Müfit Gültekin"
+},
+{
+"il": "Kocaeli",
+"ilce": "İzmit",
+"n": "Yusuf Ziya Çelikkaya"
+},
+{
+"il": "Kocaeli",
+"ilce": "Kandıra",
+"n": "Ömer Lütfi Yaran"
+},
+{
+"il": "Kocaeli",
+"ilce": "Karamürsel",
+"n": "Kemal İnan"
+},
+{
+"il": "Kocaeli",
+"ilce": "Kartepe",
+"n": "Hasan Öztürk"
+},
+{
+"il": "Kocaeli",
+"ilce": "Körfez",
+"n": "Uğur Kalkar"
+},
+{
+"il": "Konya",
+"ilce": "Ahırlı",
+"n": "Hasan Can Tufan"
+},
+{
+"il": "Konya",
+"ilce": "Akören",
+"n": "Musa Türkmen"
+},
+{
+"il": "Konya",
+"ilce": "Akşehir",
+"n": "Mustafa Yiğit"
+},
+{
+"il": "Konya",
+"ilce": "Altınekin",
+"n": "Zübeyde Aslan"
+},
+{
+"il": "Konya",
+"ilce": "Beyşehir",
+"n": "Mehmet Kemal Akpınar"
+},
+{
+"il": "Konya",
+"ilce": "Bozkır",
+"n": "Enes Özkan"
+},
+{
+"il": "Konya",
+"ilce": "Cihanbeyli",
+"n": "Orhan Gazi Karakaş"
+},
+{
+"il": "Konya",
+"ilce": "Çeltik",
+"n": "Hilal Buse Ünal"
+},
+{
+"il": "Konya",
+"ilce": "Çumra",
+"n": "Muhammet Fuat Türkman"
+},
+{
+"il": "Konya",
+"ilce": "Derbent",
+"n": "Fatih Güner"
+},
+{
+"il": "Konya",
+"ilce": "Derebucak",
+"n": "Mehmet Enes Yurdakul"
+},
+{
+"il": "Konya",
+"ilce": "Doğanhisar",
+"n": "Muhammed Ali Yolal"
+},
+{
+"il": "Konya",
+"ilce": "Emirgazi",
+"n": "Melih Arslantepeli"
+},
+{
+"il": "Konya",
+"ilce": "Ereğli",
+"n": "Fatih Genel"
+},
+{
+"il": "Konya",
+"ilce": "Güneysınır",
+"n": "Ozan Bozçalı"
+},
+{
+"il": "Konya",
+"ilce": "Hadim",
+"n": "Ali Emre Deniz"
+},
+{
+"il": "Konya",
+"ilce": "Halkapınar",
+"n": "Mehmet Şirin Altay"
+},
+{
+"il": "Konya",
+"ilce": "Hüyük",
+"n": "Ozan Ramazan Budak"
+},
+{
+"il": "Konya",
+"ilce": "Ilgın",
+"n": "Mustafa Maslak"
+},
+{
+"il": "Konya",
+"ilce": "Kadınhanı",
+"n": "Hasan Raşit Taşkın"
+},
+{
+"il": "Konya",
+"ilce": "Karapınar",
+"n": "Şenol Öztürk"
+},
+{
+"il": "Konya",
+"ilce": "Karatay",
+"n": "Cengiz Ayhan"
+},
+{
+"il": "Konya",
+"ilce": "Kulu",
+"n": "Ömer Faruk Canpolat"
+},
+{
+"il": "Konya",
+"ilce": "Meram",
+"n": "Bayram Yılmaz"
+},
+{
+"il": "Konya",
+"ilce": "Sarayönü",
+"n": "Abdullah Huzeyfe Çakmak"
+},
+{
+"il": "Konya",
+"ilce": "Selçuklu",
+"n": "Ali Candan"
+},
+{
+"il": "Konya",
+"ilce": "Seydişehir",
+"n": "Mustafa Hamit Kıyıcı (Geçici Görev:Kırşehir Mucur Kaymakamlığı Kaymakam )"
+},
+{
+"il": "Konya",
+"ilce": "Taşkent",
+"n": "Fatih Karamahmut"
+},
+{
+"il": "Konya",
+"ilce": "Tuzlukçu",
+"n": "Ömer Faruk Onbaşıoğlu"
+},
+{
+"il": "Konya",
+"ilce": "Yalıhüyük",
+"n": "İsmail Şanal (Geçici Görev:Ardahan Damal Kaymakamlığı Kaymakam )"
+},
+{
+"il": "Konya",
+"ilce": "Yunak",
+"n": "Can Alperen Taşavlı"
+},
+{
+"il": "Kütahya",
+"ilce": "Altıntaş",
+"n": "Ayşegül Yıldırım"
+},
+{
+"il": "Kütahya",
+"ilce": "Aslanapa",
+"n": "İsmail Tosun"
+},
+{
+"il": "Kütahya",
+"ilce": "Çavdarhisar",
+"n": "Sevde Nur Mantı"
+},
+{
+"il": "Kütahya",
+"ilce": "Domaniç",
+"n": "Okan Yenidünya"
+},
+{
+"il": "Kütahya",
+"ilce": "Dumlupınar",
+"n": "Murat Karahan"
+},
+{
+"il": "Kütahya",
+"ilce": "Emet",
+"n": "Mehmet Alperen Başkapan"
+},
+{
+"il": "Kütahya",
+"ilce": "Gediz",
+"n": "Emrah Uzun"
+},
+{
+"il": "Kütahya",
+"ilce": "Hisarcık",
+"n": "Erkan Atam"
+},
+{
+"il": "Kütahya",
+"ilce": "Pazarlar",
+"n": "Zeynep Biber Demir"
+},
+{
+"il": "Kütahya",
+"ilce": "Simav",
+"n": "Bünyamin Karaloğlu"
+},
+{
+"il": "Kütahya",
+"ilce": "Şaphane",
+"n": "Davut Boztaş"
+},
+{
+"il": "Kütahya",
+"ilce": "Tavşanlı",
+"n": "Ömer Faruk Özdemir"
+},
+{
+"il": "Malatya",
+"ilce": "Akçadağ",
+"n": "Muhammed Fazıl Tüzel"
+},
+{
+"il": "Malatya",
+"ilce": "Arapgir",
+"n": "Muhammet Kılıçaslan"
+},
+{
+"il": "Malatya",
+"ilce": "Arguvan",
+"n": "Salih Ağar"
+},
+{
+"il": "Malatya",
+"ilce": "Battalgazi",
+"n": "Ömer Tuğrul Kundakçı"
+},
+{
+"il": "Malatya",
+"ilce": "Darende",
+"n": "Ömer Sirkeci"
+},
+{
+"il": "Malatya",
+"ilce": "Doğanşehir",
+"n": "Ahmet Fatih Sungur"
+},
+{
+"il": "Malatya",
+"ilce": "Doğanyol",
+"n": "Serhat Bağcı"
+},
+{
+"il": "Malatya",
+"ilce": "Hekimhan",
+"n": "Muhammed Fatih Günlü"
+},
+{
+"il": "Malatya",
+"ilce": "Kale",
+"n": "İsmail Hakkı Batı"
+},
+{
+"il": "Malatya",
+"ilce": "Kuluncak",
+"n": "Gizem Bayguş"
+},
+{
+"il": "Malatya",
+"ilce": "Pütürge",
+"n": "Oğuzhan Öztürk"
+},
+{
+"il": "Malatya",
+"ilce": "Yazıhan",
+"n": "Abdullah Emre Özefe"
+},
+{
+"il": "Malatya",
+"ilce": "Yeşilyurt",
+"n": "Hasan Hüseyin Uzan"
+},
+{
+"il": "Manisa",
+"ilce": "Ahmetli",
+"n": "Mehmet Kaan Kini"
+},
+{
+"il": "Manisa",
+"ilce": "Akhisar",
+"n": "Mustafa Can"
+},
+{
+"il": "Manisa",
+"ilce": "Alaşehir",
+"n": "Ercan Öter"
+},
+{
+"il": "Manisa",
+"ilce": "Demirci",
+"n": "Fatih Bayram"
+},
+{
+"il": "Manisa",
+"ilce": "Gölmarmara",
+"n": "Altay Karadağ"
+},
+{
+"il": "Manisa",
+"ilce": "Gördes",
+"n": "Sercan Sakarya"
+},
+{
+"il": "Manisa",
+"ilce": "Kırkağaç",
+"n": "Zafer Oktay"
+},
+{
+"il": "Manisa",
+"ilce": "Köprübaşı",
+"n": "Bilal Doğan"
+},
+{
+"il": "Manisa",
+"ilce": "Kula",
+"n": "Talha Altuntaş"
+},
+{
+"il": "Manisa",
+"ilce": "Salihli",
+"n": "Ali Güldoğan"
+},
+{
+"il": "Manisa",
+"ilce": "Sarıgöl",
+"n": "Halil Dalak"
+},
+{
+"il": "Manisa",
+"ilce": "Saruhanlı",
+"n": "Fatih Özcan"
+},
+{
+"il": "Manisa",
+"ilce": "Selendi",
+"n": "Mücahit Enes Yıldız"
+},
+{
+"il": "Manisa",
+"ilce": "Soma",
+"n": "Ünal Koç"
+},
+{
+"il": "Manisa",
+"ilce": "Şehzadeler",
+"n": "Günhan Yazar"
+},
+{
+"il": "Manisa",
+"ilce": "Turgutlu",
+"n": "Selami Kapankaya"
+},
+{
+"il": "Manisa",
+"ilce": "Yunusemre",
+"n": "Celalettin Cantürk"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Afşin",
+"n": "Abdullah Arslantürk"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Andırın",
+"n": "Ömer Bulut"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Çağlayancerit",
+"n": "Mustafa Şeker"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Dulkadiroğlu",
+"n": "Hicabi Aytemür"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Ekinözü",
+"n": "Faruk Atar"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Elbistan",
+"n": "Muhammet Fatih Demirel"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Göksun",
+"n": "Mustafa Emre Kılıç"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Nurhak",
+"n": "Kerem Tunçer"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Onikişubat",
+"n": "Salih Çiğdem"
+},
+{
+"il": "Kahramanmaraş",
+"ilce": "Türkoğlu",
+"n": "Mustafa Nevzat Mercan"
+},
+{
+"il": "Mardin",
+"ilce": "Artuklu",
+"n": "Muhammet Öztabak"
+},
+{
+"il": "Mardin",
+"ilce": "Dargeçit",
+"n": "Bayram Köse"
+},
+{
+"il": "Mardin",
+"ilce": "Derik",
+"n": "Yunus Emre Bayraklı"
+},
+{
+"il": "Mardin",
+"ilce": "Kızıltepe",
+"n": "Murat Acar"
+},
+{
+"il": "Mardin",
+"ilce": "Mazıdağı",
+"n": "Volkan Özer"
+},
+{
+"il": "Mardin",
+"ilce": "Midyat",
+"n": "Mehmet Kaya"
+},
+{
+"il": "Mardin",
+"ilce": "Nusaybin",
+"n": "Gürsel Temurci"
+},
+{
+"il": "Mardin",
+"ilce": "Ömerli",
+"n": "Furkan Çakır"
+},
+{
+"il": "Mardin",
+"ilce": "Savur",
+"n": "Enes Emircan Buyuran"
+},
+{
+"il": "Mardin",
+"ilce": "Yeşilli",
+"n": "İlyas Öztürk"
+},
+{
+"il": "Muğla",
+"ilce": "Bodrum",
+"n": "Ali Sırmalı"
+},
+{
+"il": "Muğla",
+"ilce": "Dalaman",
+"n": "Ferhat Vardar"
+},
+{
+"il": "Muğla",
+"ilce": "Datça",
+"n": "Murat Atıcı"
+},
+{
+"il": "Muğla",
+"ilce": "Fethiye",
+"n": "Fatih Akkaya"
+},
+{
+"il": "Muğla",
+"ilce": "Kavaklıdere",
+"n": "Cihad Karakaya"
+},
+{
+"il": "Muğla",
+"ilce": "Köyceğiz",
+"n": "Mert Kumcu"
+},
+{
+"il": "Muğla",
+"ilce": "Marmaris",
+"n": "Nurullah Kaya"
+},
+{
+"il": "Muğla",
+"ilce": "Menteşe",
+"n": "Ali Edip Budan"
+},
+{
+"il": "Muğla",
+"ilce": "Milas",
+"n": "Vural Karagül"
+},
+{
+"il": "Muğla",
+"ilce": "Ortaca",
+"n": "Kenan Aktaş"
+},
+{
+"il": "Muğla",
+"ilce": "Seydikemer",
+"n": "Mustafa Dilekli"
+},
+{
+"il": "Muğla",
+"ilce": "Ula",
+"n": "Murat Ekinci"
+},
+{
+"il": "Muğla",
+"ilce": "Yatağan",
+"n": "Turgay İlhan"
+},
+{
+"il": "Muş",
+"ilce": "Bulanık",
+"n": "Ömer Övünç Koşansu"
+},
+{
+"il": "Muş",
+"ilce": "Hasköy",
+"n": "İsmail Güney"
+},
+{
+"il": "Muş",
+"ilce": "Korkut",
+"n": "Ahmet Sami Meram"
+},
+{
+"il": "Muş",
+"ilce": "Malazgirt",
+"n": "Ahmed Tayyib Kahraman"
+},
+{
+"il": "Muş",
+"ilce": "Varto",
+"n": "Abdulkadir Işık"
+},
+{
+"il": "Nevşehir",
+"ilce": "Acıgöl",
+"n": "Emre Konak"
+},
+{
+"il": "Nevşehir",
+"ilce": "Avanos",
+"n": "Osman Bilici"
+},
+{
+"il": "Nevşehir",
+"ilce": "Derinkuyu",
+"n": "Göktuğ Muhsin Yeğin"
+},
+{
+"il": "Nevşehir",
+"ilce": "Gülşehir",
+"n": "Tolga Değirmenci"
+},
+{
+"il": "Nevşehir",
+"ilce": "Hacıbektaş",
+"n": "Özlem Doğan"
+},
+{
+"il": "Nevşehir",
+"ilce": "Kozaklı",
+"n": "Uğur Savaş"
+},
+{
+"il": "Nevşehir",
+"ilce": "Ürgüp",
+"n": "Ömer Coşkun"
+},
+{
+"il": "Niğde",
+"ilce": "Altunhisar",
+"n": "Salim Ensar Kahraman"
+},
+{
+"il": "Niğde",
+"ilce": "Bor",
+"n": "Gökhan Görgülüarslan"
+},
+{
+"il": "Niğde",
+"ilce": "Çamardı",
+"n": "Muhammet Furkan Bektaş"
+},
+{
+"il": "Niğde",
+"ilce": "Çiftlik",
+"n": "Tolga Turan"
+},
+{
+"il": "Niğde",
+"ilce": "Ulukışla",
+"n": "Barış Kalkan"
+},
+{
+"il": "Ordu",
+"ilce": "Akkuş",
+"n": "Kerem Yüce"
+},
+{
+"il": "Ordu",
+"ilce": "Altınordu",
+"n": "İsmail Hakkı Ertaş"
+},
+{
+"il": "Ordu",
+"ilce": "Aybastı",
+"n": "Makbule Adacı Uludağ"
+},
+{
+"il": "Ordu",
+"ilce": "Çamaş",
+"n": "Remzi Karabulut"
+},
+{
+"il": "Ordu",
+"ilce": "Çatalpınar",
+"n": "Recep Ali Çolak"
+},
+{
+"il": "Ordu",
+"ilce": "Çaybaşı",
+"n": "Furkan Çiçek"
+},
+{
+"il": "Ordu",
+"ilce": "Fatsa",
+"n": "Mustafa Ünver Böke"
+},
+{
+"il": "Ordu",
+"ilce": "Gölköy",
+"n": "Ataberk Altun"
+},
+{
+"il": "Ordu",
+"ilce": "Gülyalı",
+"n": "Mehmet Zortul"
+},
+{
+"il": "Ordu",
+"ilce": "Gürgentepe",
+"n": "Atilla Mete"
+},
+{
+"il": "Ordu",
+"ilce": "İkizce",
+"n": "Fuat Yurddaş"
+},
+{
+"il": "Ordu",
+"ilce": "Kabadüz",
+"n": "Görkem Nalçacı"
+},
+{
+"il": "Ordu",
+"ilce": "Kabataş",
+"n": "Ali Can Uludağ"
+},
+{
+"il": "Ordu",
+"ilce": "Korgan",
+"n": "Serhat Satış"
+},
+{
+"il": "Ordu",
+"ilce": "Kumru",
+"n": "Bahri Gökalp"
+},
+{
+"il": "Ordu",
+"ilce": "Mesudiye",
+"n": "Abdulbaki Cırık"
+},
+{
+"il": "Ordu",
+"ilce": "Perşembe",
+"n": "Burak Akeller"
+},
+{
+"il": "Ordu",
+"ilce": "Ulubey",
+"n": "İrem Ayşegül Çetin"
+},
+{
+"il": "Ordu",
+"ilce": "Ünye",
+"n": "Kemal Yıldız"
+},
+{
+"il": "Rize",
+"ilce": "Ardeşen",
+"n": "Ahmet Korkmaz"
+},
+{
+"il": "Rize",
+"ilce": "Çamlıhemşin",
+"n": "Gizem Çiçek"
+},
+{
+"il": "Rize",
+"ilce": "Çayeli",
+"n": "Sertaç Kırçuval"
+},
+{
+"il": "Rize",
+"ilce": "Derepazarı",
+"n": "Eftal Palabıyık"
+},
+{
+"il": "Rize",
+"ilce": "Fındıklı",
+"n": "Mücahit Aydoğdu"
+},
+{
+"il": "Rize",
+"ilce": "Güneysu",
+"n": "Eyup Gürdal"
+},
+{
+"il": "Rize",
+"ilce": "Hemşin",
+"n": "Murat Karnap"
+},
+{
+"il": "Rize",
+"ilce": "İkizdere",
+"n": "Burak Yaylacı"
+},
+{
+"il": "Rize",
+"ilce": "İyidere",
+"n": "Osman Ersoy"
+},
+{
+"il": "Rize",
+"ilce": "Kalkandere",
+"n": "Emrullah Doğru"
+},
+{
+"il": "Rize",
+"ilce": "Pazar",
+"n": "Hamza İnam"
+},
+{
+"il": "Sakarya",
+"ilce": "Adapazarı",
+"n": "Musa Sarı"
+},
+{
+"il": "Sakarya",
+"ilce": "Akyazı",
+"n": "Mustafa İkbal Eşki"
+},
+{
+"il": "Sakarya",
+"ilce": "Arifiye",
+"n": "Ahmet Can Pınar"
+},
+{
+"il": "Sakarya",
+"ilce": "Erenler",
+"n": "Metin Kubilay"
+},
+{
+"il": "Sakarya",
+"ilce": "Ferizli",
+"n": "Muhammed Kaya"
+},
+{
+"il": "Sakarya",
+"ilce": "Geyve",
+"n": "Çağlar Tekin"
+},
+{
+"il": "Sakarya",
+"ilce": "Hendek",
+"n": "Hacı Hasan Gökpınar"
+},
+{
+"il": "Sakarya",
+"ilce": "Karapürçek",
+"n": "Ümit Gürsançtı"
+},
+{
+"il": "Sakarya",
+"ilce": "Karasu",
+"n": "Mehmet Uğur Arslan"
+},
+{
+"il": "Sakarya",
+"ilce": "Kaynarca",
+"n": "Ahmet Erdoğdu"
+},
+{
+"il": "Sakarya",
+"ilce": "Kocaali",
+"n": "Hakan Kılınçkaya"
+},
+{
+"il": "Sakarya",
+"ilce": "Pamukova",
+"n": "Halil İbrahim Köroğlu"
+},
+{
+"il": "Sakarya",
+"ilce": "Sapanca",
+"n": "Şaban Arda Yazıcı"
+},
+{
+"il": "Sakarya",
+"ilce": "Serdivan",
+"n": "Tolga Toğan"
+},
+{
+"il": "Sakarya",
+"ilce": "Söğütlü",
+"n": "Mehmet Göze"
+},
+{
+"il": "Sakarya",
+"ilce": "Taraklı",
+"n": "Turgay Tarık"
+},
+{
+"il": "Samsun",
+"ilce": "19 Mayıs",
+"n": "Haluk Şimşek"
+},
+{
+"il": "Samsun",
+"ilce": "Alaçam",
+"n": "Fatih Kayabaşı"
+},
+{
+"il": "Samsun",
+"ilce": "Asarcık",
+"n": "Fatma Bilgin"
+},
+{
+"il": "Samsun",
+"ilce": "Atakum",
+"n": "Murat Bulacak"
+},
+{
+"il": "Samsun",
+"ilce": "Ayvacık",
+"n": "Mustafa Haktan Çepni"
+},
+{
+"il": "Samsun",
+"ilce": "Bafra",
+"n": "Mustafa Altınpınar"
+},
+{
+"il": "Samsun",
+"ilce": "Canik",
+"n": "Şeref Aydın"
+},
+{
+"il": "Samsun",
+"ilce": "Çarşamba",
+"n": "Mehmet Kamil Sağlam"
+},
+{
+"il": "Samsun",
+"ilce": "Havza",
+"n": "Samet Serin"
+},
+{
+"il": "Samsun",
+"ilce": "İlkadım",
+"n": "Abdulkadir Demir"
+},
+{
+"il": "Samsun",
+"ilce": "Kavak",
+"n": "Taha Genç"
+},
+{
+"il": "Samsun",
+"ilce": "Ladik",
+"n": "Serkan Kaya"
+},
+{
+"il": "Samsun",
+"ilce": "Salıpazarı",
+"n": "İbrahim Cesur"
+},
+{
+"il": "Samsun",
+"ilce": "Tekkeköy",
+"n": "Enver Hakan Zengince"
+},
+{
+"il": "Samsun",
+"ilce": "Terme",
+"n": "Can Atak"
+},
+{
+"il": "Samsun",
+"ilce": "Vezirköprü",
+"n": "Bayram Yıldız"
+},
+{
+"il": "Samsun",
+"ilce": "Yakakent",
+"n": "Muhammed Sadi Taşyapan"
+},
+{
+"il": "Siirt",
+"ilce": "Baykan",
+"n": "Mehmet Gündoğdu"
+},
+{
+"il": "Siirt",
+"ilce": "Eruh",
+"n": "Muttalip Çetin"
+},
+{
+"il": "Siirt",
+"ilce": "Kurtalan",
+"n": "Salih Başara"
+},
+{
+"il": "Siirt",
+"ilce": "Pervari",
+"n": "Ali Buzkaya"
+},
+{
+"il": "Siirt",
+"ilce": "Şirvan",
+"n": "Ertuğrul Bayram"
+},
+{
+"il": "Siirt",
+"ilce": "Tillo",
+"n": "Tanju Çanakcıoğlu"
+},
+{
+"il": "Sinop",
+"ilce": "Ayancık",
+"n": "Mevlana Kürkcü"
+},
+{
+"il": "Sinop",
+"ilce": "Dikmen",
+"n": "İslam Timur"
+},
+{
+"il": "Sinop",
+"ilce": "Durağan",
+"n": "Mustafa Mücahit Ayan"
+},
+{
+"il": "Sinop",
+"ilce": "Erfelek",
+"n": "Ali Tuğrul Yıldız"
+},
+{
+"il": "Sinop",
+"ilce": "Gerze",
+"n": "Yıldız Büyüker"
+},
+{
+"il": "Sinop",
+"ilce": "Saraydüzü",
+"n": "Birkan Göktaş"
+},
+{
+"il": "Sinop",
+"ilce": "Türkeli",
+"n": "Muhammed Cezmi Kandemir"
+},
+{
+"il": "Sivas",
+"ilce": "Akıncılar",
+"n": "Faruk Karababa"
+},
+{
+"il": "Sivas",
+"ilce": "Altınyayla",
+"n": "Ahmet Baz"
+},
+{
+"il": "Sivas",
+"ilce": "Divriği",
+"n": "İlyas Kılıç"
+},
+{
+"il": "Sivas",
+"ilce": "Doğanşar",
+"n": "Yavuz Selim Kabaktepe"
+},
+{
+"il": "Sivas",
+"ilce": "Gemerek",
+"n": "Enes Burak Koca"
+},
+{
+"il": "Sivas",
+"ilce": "Gölova",
+"n": "Mustafa Köroğlu"
+},
+{
+"il": "Sivas",
+"ilce": "Gürün",
+"n": "Selami Alper Özkan"
+},
+{
+"il": "Sivas",
+"ilce": "Hafik",
+"n": "Funda Hamza Çaldağı"
+},
+{
+"il": "Sivas",
+"ilce": "İmranlı",
+"n": "Mehmet Sevban Gökbunar"
+},
+{
+"il": "Sivas",
+"ilce": "Kangal",
+"n": "Muhammed Yiğit Yıldırım"
+},
+{
+"il": "Sivas",
+"ilce": "Koyulhisar",
+"n": "Yunus Emre Yıldız"
+},
+{
+"il": "Sivas",
+"ilce": "Suşehri",
+"n": "Mahmut Fazıl Yıldız"
+},
+{
+"il": "Sivas",
+"ilce": "Şarkışla",
+"n": "Zekeriya Murat Şahan"
+},
+{
+"il": "Sivas",
+"ilce": "Ulaş",
+"n": "Veli Avcı"
+},
+{
+"il": "Sivas",
+"ilce": "Yıldızeli",
+"n": "İsmail Bildirici"
+},
+{
+"il": "Sivas",
+"ilce": "Zara",
+"n": "Malik Çalışır"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Çerkezköy",
+"n": "Nazmi Günlü"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Çorlu",
+"n": "Niyazi Erten"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Ergene",
+"n": "Kadir Duman"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Hayrabolu",
+"n": "Ahmet Yıldız"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Kapaklı",
+"n": "Mustafa Gürdal"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Malkara",
+"n": "Haluk Koç"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Marmaraereğlisi",
+"n": "Fatih Kızıltoprak"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Muratlı",
+"n": "Aytekin Yılmaz"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Saray",
+"n": "Refik Özsoy"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Süleymanpaşa",
+"n": "Mahmut Nedim Tunçer"
+},
+{
+"il": "Tekirdağ",
+"ilce": "Şarköy",
+"n": "Aydın Erdoğan"
+},
+{
+"il": "Tokat",
+"ilce": "Almus",
+"n": "Uğur Kızılboğa"
+},
+{
+"il": "Tokat",
+"ilce": "Artova",
+"n": "Ömer Karadağ"
+},
+{
+"il": "Tokat",
+"ilce": "Başçiftlik",
+"n": "Fatih Bayram"
+},
+{
+"il": "Tokat",
+"ilce": "Erbaa",
+"n": "Remzi Demir"
+},
+{
+"il": "Tokat",
+"ilce": "Niksar",
+"n": "Kadir Perçi"
+},
+{
+"il": "Tokat",
+"ilce": "Pazar",
+"n": "Halaf Demir"
+},
+{
+"il": "Tokat",
+"ilce": "Reşadiye",
+"n": "Eymen Özer"
+},
+{
+"il": "Tokat",
+"ilce": "Sulusaray",
+"n": "Ömer Faruk Gökalp"
+},
+{
+"il": "Tokat",
+"ilce": "Turhal",
+"n": "Ersin Tepeli"
+},
+{
+"il": "Tokat",
+"ilce": "Yeşilyurt",
+"n": "Yeşim Altın"
+},
+{
+"il": "Tokat",
+"ilce": "Zile",
+"n": "Önder Koç"
+},
+{
+"il": "Trabzon",
+"ilce": "Akçaabat",
+"n": "Abdullah Şahin"
+},
+{
+"il": "Trabzon",
+"ilce": "Araklı",
+"n": "Mehmet Ali Uzun"
+},
+{
+"il": "Trabzon",
+"ilce": "Arsin",
+"n": "Şule Demirtaş"
+},
+{
+"il": "Trabzon",
+"ilce": "Beşikdüzü",
+"n": "Muammer Sarıdoğan"
+},
+{
+"il": "Trabzon",
+"ilce": "Çarşıbaşı",
+"n": "Ahmet Ziya Dilekcan"
+},
+{
+"il": "Trabzon",
+"ilce": "Çaykara",
+"n": "Ahmet Rıfat Arık"
+},
+{
+"il": "Trabzon",
+"ilce": "Dernekpazarı",
+"n": "Miralp Çeber"
+},
+{
+"il": "Trabzon",
+"ilce": "Düzköy",
+"n": "Muhammed İbrahim Ağlamaz"
+},
+{
+"il": "Trabzon",
+"ilce": "Hayrat",
+"n": "Selçuk Baş (Geçici Görev: Erzurum Valiliği Vali Yardımcısı )"
+},
+{
+"il": "Trabzon",
+"ilce": "Köprübaşı",
+"n": "Tamer Zorkalkan"
+},
+{
+"il": "Trabzon",
+"ilce": "Maçka",
+"n": "Şahin Demir"
+},
+{
+"il": "Trabzon",
+"ilce": "Of",
+"n": "Eşref Akça"
+},
+{
+"il": "Trabzon",
+"ilce": "Ortahisar",
+"n": "Muhammed Lütfi Kotan"
+},
+{
+"il": "Trabzon",
+"ilce": "Sürmene",
+"n": "Mehmet Ali Öztürk"
+},
+{
+"il": "Trabzon",
+"ilce": "Şalpazarı",
+"n": "İhsan Mert Mutlu"
+},
+{
+"il": "Trabzon",
+"ilce": "Tonya",
+"n": "Ramazan Kıyak"
+},
+{
+"il": "Trabzon",
+"ilce": "Vakfıkebir",
+"n": "Kadir Ulusoy"
+},
+{
+"il": "Trabzon",
+"ilce": "Yomra",
+"n": "Oğuzhan Ocak"
+},
+{
+"il": "Tunceli",
+"ilce": "Çemişgezek",
+"n": "Levent Küçük"
+},
+{
+"il": "Tunceli",
+"ilce": "Hozat",
+"n": "Yasin Gürkan"
+},
+{
+"il": "Tunceli",
+"ilce": "Mazgirt",
+"n": "Emrah Akduman"
+},
+{
+"il": "Tunceli",
+"ilce": "Nazımiye",
+"n": "Pınar Ayaz"
+},
+{
+"il": "Tunceli",
+"ilce": "Ovacık",
+"n": "Gökhan Arslan"
+},
+{
+"il": "Tunceli",
+"ilce": "Pertek",
+"n": "Yusuf Ziya Yaktı"
+},
+{
+"il": "Tunceli",
+"ilce": "Pülümür",
+"n": "Mehmet Akif Temur"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Akçakale",
+"n": "Ali Cemal Altınöz"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Birecik",
+"n": "Osman Şahin"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Bozova",
+"n": "Reşit Özer Özdemir"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Ceylanpınar",
+"n": "Mehmet Çağatay Çakal"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Eyyübiye",
+"n": "Yusuf Turan"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Halfeti",
+"n": "Sinan Korkmaz"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Haliliye",
+"n": "Erkan Savar"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Harran",
+"n": "Harun Reşit Han"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Hilvan",
+"n": "Zafer Şahin"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Karaköprü",
+"n": "Orhan Altun"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Siverek",
+"n": "Salih Sak"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Suruç",
+"n": "Muhammed Furkan Tuna"
+},
+{
+"il": "Şanlıurfa",
+"ilce": "Viranşehir",
+"n": "Kemal Ülkü"
+},
+{
+"il": "Uşak",
+"ilce": "Banaz",
+"n": "Musa Kazım Çelik"
+},
+{
+"il": "Uşak",
+"ilce": "Eşme",
+"n": "Mustafa Görmüş"
+},
+{
+"il": "Uşak",
+"ilce": "Karahallı",
+"n": "Ramazan Çelebi"
+},
+{
+"il": "Uşak",
+"ilce": "Sivaslı",
+"n": "Eda Nur Yurt Yıldız"
+},
+{
+"il": "Van",
+"ilce": "Bahçesaray",
+"n": "Salih Kartal"
+},
+{
+"il": "Van",
+"ilce": "Başkale",
+"n": "Ramazan Cihangir"
+},
+{
+"il": "Van",
+"ilce": "Çaldıran",
+"n": "Süleyman Bakan"
+},
+{
+"il": "Van",
+"ilce": "Çatak",
+"n": "Abdullah Sarı"
+},
+{
+"il": "Van",
+"ilce": "Edremit",
+"n": "Ömer Ahmet Özdemir"
+},
+{
+"il": "Van",
+"ilce": "Erciş",
+"n": "Ahmed Çelik"
+},
+{
+"il": "Van",
+"ilce": "Gevaş",
+"n": "Ali Osman Bulat"
+},
+{
+"il": "Van",
+"ilce": "Gürpınar",
+"n": "Fatma Turhan Keser"
+},
+{
+"il": "Van",
+"ilce": "İpekyolu",
+"n": "Tufan Bağır Gilan"
+},
+{
+"il": "Van",
+"ilce": "Muradiye",
+"n": "Furkan Taha Türkmenoğlu"
+},
+{
+"il": "Van",
+"ilce": "Özalp",
+"n": "Mesut Bolat"
+},
+{
+"il": "Van",
+"ilce": "Saray",
+"n": "Hasan Ali Kurt"
+},
+{
+"il": "Van",
+"ilce": "Tuşba",
+"n": "Musa Göktaş"
+},
+{
+"il": "Yozgat",
+"ilce": "Akdağmadeni",
+"n": "Cafer Kaymakçı"
+},
+{
+"il": "Yozgat",
+"ilce": "Aydıncık",
+"n": "Merve Ayşe Büyükuçar"
+},
+{
+"il": "Yozgat",
+"ilce": "Boğazlıyan",
+"n": "Aydın Yanık"
+},
+{
+"il": "Yozgat",
+"ilce": "Çandır",
+"n": "Onur Çelik"
+},
+{
+"il": "Yozgat",
+"ilce": "Çayıralan",
+"n": "Emre Açar"
+},
+{
+"il": "Yozgat",
+"ilce": "Çekerek",
+"n": "Can Kurt"
+},
+{
+"il": "Yozgat",
+"ilce": "Kadışehri",
+"n": "Ahmet Hakan Özel"
+},
+{
+"il": "Yozgat",
+"ilce": "Saraykent",
+"n": "Akın Aydın"
+},
+{
+"il": "Yozgat",
+"ilce": "Sarıkaya",
+"n": "Mubin Demirkıran"
+},
+{
+"il": "Yozgat",
+"ilce": "Sorgun",
+"n": "Abdurrezzak Canpolat"
+},
+{
+"il": "Yozgat",
+"ilce": "Şefaatli",
+"n": "Mehmet Burak Eski"
+},
+{
+"il": "Yozgat",
+"ilce": "Yenifakılı",
+"n": "İsmail Kalender"
+},
+{
+"il": "Yozgat",
+"ilce": "Yerköy",
+"n": "Mehmet Halis Aydın"
+},
+{
+"il": "Zonguldak",
+"ilce": "Alaplı",
+"n": "Selçuk Köksal"
+},
+{
+"il": "Zonguldak",
+"ilce": "Çaycuma",
+"n": "Adem Kaya"
+},
+{
+"il": "Zonguldak",
+"ilce": "Devrek",
+"n": "Onur Alp Bıçakcı"
+},
+{
+"il": "Zonguldak",
+"ilce": "Ereğli",
+"n": "Fatih Yılmaz"
+},
+{
+"il": "Zonguldak",
+"ilce": "Gökçebey",
+"n": "Hatice Ruveyda Kahraman Şıktaş"
+},
+{
+"il": "Zonguldak",
+"ilce": "Kilimli",
+"n": "Kübra Demirer"
+},
+{
+"il": "Zonguldak",
+"ilce": "Kozlu",
+"n": "Evren Çakır"
+},
+{
+"il": "Aksaray",
+"ilce": "Ağaçören",
+"n": "Metin Korkmaz"
+},
+{
+"il": "Aksaray",
+"ilce": "Eskil",
+"n": "Taha Soydaş"
+},
+{
+"il": "Aksaray",
+"ilce": "Gülağaç",
+"n": "Ejder Şahin"
+},
+{
+"il": "Aksaray",
+"ilce": "Güzelyurt",
+"n": "Süleyman Arat"
+},
+{
+"il": "Aksaray",
+"ilce": "Ortaköy",
+"n": "Mehmet Bek"
+},
+{
+"il": "Aksaray",
+"ilce": "Sarıyahşi",
+"n": "Şeyma Nur Arıkan"
+},
+{
+"il": "Aksaray",
+"ilce": "Sultanhanı",
+"n": "Tarık Yerlikaya"
+},
+{
+"il": "Bayburt",
+"ilce": "Aydıntepe",
+"n": "Deniz Yıldırım"
+},
+{
+"il": "Bayburt",
+"ilce": "Demirözü",
+"n": "İbrahim Zahid Ahat"
+},
+{
+"il": "Karaman",
+"ilce": "Ayrancı",
+"n": "Nihal Özer"
+},
+{
+"il": "Karaman",
+"ilce": "Başyayla",
+"n": "Abdülsamet Kocakaya"
+},
+{
+"il": "Karaman",
+"ilce": "Ermenek",
+"n": "Uğur Muzaffer Çam"
+},
+{
+"il": "Karaman",
+"ilce": "Kazımkarabekir",
+"n": "Mücahit Zıvlak"
+},
+{
+"il": "Karaman",
+"ilce": "Sarıveliler",
+"n": "Mustafa Katran"
+},
+{
+"il": "Kırıkkale",
+"ilce": "Bahşılı",
+"n": "Elif Yazıcıoğlu Kazanasmaz"
+},
+{
+"il": "Kırıkkale",
+"ilce": "Balışeyh",
+"n": "Muhammed Raşit Aktay"
+},
+{
+"il": "Kırıkkale",
+"ilce": "Delice",
+"n": "İmran Demirel"
+},
+{
+"il": "Kırıkkale",
+"ilce": "Karakeçili",
+"n": "Yasin Mert"
+},
+{
+"il": "Kırıkkale",
+"ilce": "Keskin",
+"n": "İlhan Kayatürk"
+},
+{
+"il": "Kırıkkale",
+"ilce": "Sulakyurt",
+"n": "Mehmet Miraç Demir"
+},
+{
+"il": "Kırıkkale",
+"ilce": "Yahşihan",
+"n": "Abdulkadir Umut Kasman"
+},
+{
+"il": "Batman",
+"ilce": "Beşiri",
+"n": "Mustafa Arslanşahin"
+},
+{
+"il": "Batman",
+"ilce": "Gercüş",
+"n": "Mehmet Zahid Uzun"
+},
+{
+"il": "Batman",
+"ilce": "Hasankeyf",
+"n": "Serkan Böyük"
+},
+{
+"il": "Batman",
+"ilce": "Kozluk",
+"n": "Ümit Fırat Böçkün"
+},
+{
+"il": "Batman",
+"ilce": "Sason",
+"n": "Furkan Başar"
+},
+{
+"il": "Şırnak",
+"ilce": "Beytüşşebap",
+"n": "Muhammed Emin Tutal"
+},
+{
+"il": "Şırnak",
+"ilce": "Cizre",
+"n": "Ahmet Vezir Baycar"
+},
+{
+"il": "Şırnak",
+"ilce": "Güçlükonak",
+"n": "Semih Memiş"
+},
+{
+"il": "Şırnak",
+"ilce": "İdil",
+"n": "Anıl Adıgüzel"
+},
+{
+"il": "Şırnak",
+"ilce": "Silopi",
+"n": "Çağlar Partal"
+},
+{
+"il": "Şırnak",
+"ilce": "Uludere",
+"n": "Salih Kaya"
+},
+{
+"il": "Bartın",
+"ilce": "Amasra",
+"n": "Muhammet Serdar Erdoğan"
+},
+{
+"il": "Bartın",
+"ilce": "Kurucaşile",
+"n": "Selver Esra Arık"
+},
+{
+"il": "Bartın",
+"ilce": "Ulus",
+"n": "Melikşah Şahin"
+},
+{
+"il": "Ardahan",
+"ilce": "Çıldır",
+"n": "Yunus Emre Sakızcı"
+},
+{
+"il": "Ardahan",
+"ilce": "Damal",
+"n": "Abdulhamit Bayram"
+},
+{
+"il": "Ardahan",
+"ilce": "Göle",
+"n": "Cuma Emeç"
+},
+{
+"il": "Ardahan",
+"ilce": "Hanak",
+"n": "Soner Erol"
+},
+{
+"il": "Ardahan",
+"ilce": "Posof",
+"n": "İsa Bertan"
+},
+{
+"il": "Iğdır",
+"ilce": "Aralık",
+"n": "Sançar Batuhan Kurdu"
+},
+{
+"il": "Iğdır",
+"ilce": "Karakoyunlu",
+"n": "İlhan Kayaş"
+},
+{
+"il": "Iğdır",
+"ilce": "Tuzluca",
+"n": "Abdüllatif Yılmaz"
+},
+{
+"il": "Yalova",
+"ilce": "Altınova",
+"n": "Göksu Bayram"
+},
+{
+"il": "Yalova",
+"ilce": "Armutlu",
+"n": "Erinç Demir"
+},
+{
+"il": "Yalova",
+"ilce": "Çınarcık",
+"n": "Oğuzhan Erdi Atak (Geçici Görev: Bartın Valiliği Vali Yardımcısı )"
+},
+{
+"il": "Yalova",
+"ilce": "Çiftlikköy",
+"n": "Ali Ada"
+},
+{
+"il": "Yalova",
+"ilce": "Termal",
+"n": "Abdulkadir Şahin"
+},
+{
+"il": "Karabük",
+"ilce": "Eflani",
+"n": "Muhammed Ali Çelik"
+},
+{
+"il": "Karabük",
+"ilce": "Eskipazar",
+"n": "Kübra Ustaoğlu"
+},
+{
+"il": "Karabük",
+"ilce": "Ovacık",
+"n": "Öznur Güler Kıyak"
+},
+{
+"il": "Karabük",
+"ilce": "Safranbolu",
+"n": "Hayrettin Baskın"
+},
+{
+"il": "Karabük",
+"ilce": "Yenice",
+"n": "Mert Can Çanga"
+},
+{
+"il": "Kilis",
+"ilce": "Elbeyli",
+"n": "Yakup Hacıismailoğlu"
+},
+{
+"il": "Kilis",
+"ilce": "Musabeyli",
+"n": "İbrahim Şahin"
+},
+{
+"il": "Kilis",
+"ilce": "Polateli",
+"n": "Esra Bozan"
+},
+{
+"il": "Osmaniye",
+"ilce": "Düziçi",
+"n": "Kadir Yurdagül"
+},
+{
+"il": "Osmaniye",
+"ilce": "Hasanbeyli",
+"n": "Kürşat Yelli"
+},
+{
+"il": "Osmaniye",
+"ilce": "Kadirli",
+"n": "Erdinç Dolu"
+},
+{
+"il": "Osmaniye",
+"ilce": "Sumbas",
+"n": "Hakan Kara"
+},
+{
+"il": "Düzce",
+"ilce": "Akçakoca",
+"n": "Hacı Arslan Uzan"
+},
+{
+"il": "Düzce",
+"ilce": "Cumayeri",
+"n": "Ceyhun Denli"
+},
+{
+"il": "Düzce",
+"ilce": "Çilimli",
+"n": "Ahmet Ali Altıntaş"
+},
+{
+"il": "Düzce",
+"ilce": "Gölyaka",
+"n": "Mehmet Bircan"
+},
+{
+"il": "Düzce",
+"ilce": "Gümüşova",
+"n": "Ahmet Raşit Orhan"
+},
+{
+"il": "Düzce",
+"ilce": "Kaynaşlı",
+"n": "Kemal Sefa Gökmenoğlu"
+},
+{
+"il": "Düzce",
+"ilce": "Yığılca",
+"n": "Mustafa Talha Aydın"
+}
+]

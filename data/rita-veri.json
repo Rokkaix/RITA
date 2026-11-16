@@ -748,5 +748,17 @@
     }
    ]
   }
+ },
+ "rehber": {
+  "rh-2026-11-16": {
+   "tarih": "2026-11-16",
+   "durum": "beklemede",
+   "ekleyen": "claude",
+   "ozet": {
+    "ekle": 914,
+    "guncelle": 604,
+    "eskit": 7
+   }
+  }
  }
 }
