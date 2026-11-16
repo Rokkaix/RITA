@@ -191,6 +191,7 @@ button.seatbadge{border:0;cursor:pointer}
 @media (prefers-reduced-motion:no-preference){#sheet{animation:up .18s ease-out}@keyframes up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}}
 
 /* RITA 9: uçak tipi, günlük sefer onayı */
+span.seat{display:inline-flex;align-items:center;justify-content:center}
 .flfind{display:flex;gap:8px;align-items:center;margin-top:10px}
 .flfind .field{font-family:var(--mono);text-transform:uppercase}
 .acline{display:flex;gap:10px;align-items:center;margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--navy);color:#fff}
@@ -217,7 +218,7 @@ button.seatbadge{border:0;cursor:pointer}
   .tabs button[aria-selected="true"]{background:var(--navy-soft);border-top-color:transparent}
   .wrap{max-width:1180px}
   main{padding-block:22px}
-  #view[data-tab="ucus"]{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+  #view[data-tab="ucus"]{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto 1fr;align-items:start}
   #view[data-tab="ucus"]>.panel:nth-child(1),#view[data-tab="ucus"]>.legal{grid-column:1/-1}
   #view[data-tab="ucus"]>.panel:nth-child(4){grid-column:2;grid-row:2/span 2}
 }
@@ -277,7 +278,7 @@ const KEY='priora';
 function fresh(){return{v:7,R:RS.slice(),F:FL0.slice(),cur:'',S:{},P:{},C:{},U:UP0.slice(),add:[],del:[],EQ:{},lock:10,cred:null,N:{},C9:{b:[],s:[]},m9:1,GMn:{},PO:{},CH:[],CHx:{},AC:{}}}
 let D=fresh();
 function load(){let o=null;try{o=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
-  if(o){['R','F','cur','S','P','C','EQ','lock','cred','N','C9','GMn','PO','CH','CHx','AC'].forEach(k=>{if(o[k]!=null)D[k]=o[k]});
+  if(o){['R','F','cur','S','P','C','EQ','lock','cred','N','C9','GMn','PO','CH','CHx','AC','TT'].forEach(k=>{if(o[k]!=null)D[k]=o[k]});
     if(Array.isArray(o.add))D.add=o.add.map(a=>a.length>=6?a:[a[0],a[1],a[2],a[3]||'',0,'','']);
     if(Array.isArray(o.del))D.del=o.del;
     if(o.v===7&&Array.isArray(o.U))D.U=o.U}
@@ -360,26 +361,34 @@ function find(text,{corp,cat,org,limit}){const T=toks(text);let L=people().filte
 
 /* ---------- uçuş ve koltuk ---------- */
 /* THY uçak tipleri (FlightStats IATA kodu). Koltuk düzenleri yaklaşık; yönetici Kabin düzeni ile düzeltir. */
-const NB={bl:['A','C','D','F'],el:['A','B','C','D','E','F']};
+/* THY uçak tipleri (FlightStats IATA kodu). Dizilim: harfler, boşluk = koridor. bblk = business'ta kapalı orta koltuklar.
+   Varsayılanlar yaklaşık; yönetici Yönetim → Uçak tipleri ve kabin düzeni bölümünden doğrular. */
 const ACT={
- '73H':{ad:'Boeing 737-800',biz:4,last:27,stub:1},'738':{ad:'Boeing 737-800',biz:4,last:27,stub:1},
- '7M8':{ad:'Boeing 737 MAX 8',biz:4,last:27,stub:1},'7M9':{ad:'Boeing 737 MAX 9',biz:4,last:30,stub:1},
- '73J':{ad:'Boeing 737-900ER',biz:4,last:27,stub:1},'739':{ad:'Boeing 737-900ER',biz:4,last:27,stub:1},
- '321':{ad:'Airbus A321',biz:5,last:32,stub:1},'32Q':{ad:'Airbus A321neo',biz:5,last:32,stub:0},
- '320':{ad:'Airbus A320',biz:5,last:27,stub:1},'32A':{ad:'Airbus A320',biz:5,last:27,stub:1},'32N':{ad:'Airbus A320neo',biz:5,last:27,stub:1},
- '319':{ad:'Airbus A319',biz:3,last:23,stub:0},'32R':{ad:'Airbus A321',biz:5,last:32,stub:1},
- '359':{ad:'Airbus A350-900',biz:8,last:41,stub:0,wide:1,bl:['A','D','G','K'],el:['A','B','C','D','E','F','H','J','K']},
- '789':{ad:'Boeing 787-9',biz:8,last:38,stub:0,wide:1,bl:['A','D','G','K'],el:['A','B','C','D','E','F','H','J','K']},
- '333':{ad:'Airbus A330-300',biz:7,last:40,stub:0,wide:1,bl:['A','C','D','G','H','K'],el:['A','C','D','E','F','G','H','K']},
- '77W':{ad:'Boeing 777-300ER',biz:9,last:50,stub:0,wide:1,bl:['A','C','D','G','H','K'],el:['A','B','C','D','E','F','G','H','J','K']}
+ '73H':{ad:'Boeing 737-800',b:'AC DF',biz:4,e:'ABC DEF',last:27,stub:1},'738':{ad:'Boeing 737-800',b:'AC DF',biz:4,e:'ABC DEF',last:27,stub:1},
+ '7M8':{ad:'Boeing 737 MAX 8',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1},'7M9':{ad:'Boeing 737 MAX 9',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1},
+ '73J':{ad:'Boeing 737-900ER',b:'AC DF',biz:4,e:'ABC DEF',last:27,stub:1},'739':{ad:'Boeing 737-900ER',b:'AC DF',biz:4,e:'ABC DEF',last:27,stub:1},
+ '321':{ad:'Airbus A321',b:'AC DF',biz:5,e:'ABC DEF',last:32,stub:1},'32R':{ad:'Airbus A321',b:'AC DF',biz:5,e:'ABC DEF',last:32,stub:1},
+ '32Q':{ad:'Airbus A321neo',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:0},
+ '320':{ad:'Airbus A320',b:'AC DF',biz:5,e:'ABC DEF',last:27,stub:1},'32A':{ad:'Airbus A320',b:'AC DF',biz:5,e:'ABC DEF',last:27,stub:1},'32N':{ad:'Airbus A320neo',b:'AC DF',biz:5,e:'ABC DEF',last:27,stub:1},
+ '319':{ad:'Airbus A319',b:'AC DF',biz:3,e:'ABC DEF',last:23,stub:0},
+ '789':{ad:'Boeing 787-9',b:'A DG K',biz:8,e:'ABC DEF HJK',last:38,stub:0},
+ '359':{ad:'Airbus A350-900',b:'A DG K',biz:8,e:'ABC DEF HJK',last:41,stub:0},
+ '333':{ad:'Airbus A330-300',b:'AC DG HK',biz:7,e:'AC DEFG HK',last:40,stub:0},
+ '77W':{ad:'Boeing 777-300ER',b:'AC DG HK',biz:9,e:'ABC DEFG HJK',last:50,stub:0}
 };
-const acCfg=t=>{const a=ACT[t];if(!a)return null;const c={biz:a.biz,last:a.last,stub:a.stub,ac:t};if(a.wide){c.wide=1;c.bl=a.bl.slice();c.el=a.el.slice()}return c};
+let TT={},TTH=null;/* yöneticinin doğruladığı tip düzenleri (ortak kayıt) */
+const parseL=x=>{const l=[],a=[];String(x||'').toUpperCase().trim().split(/\s+/).forEach((g,gi)=>{if(gi)a.push(l.length);g.replace(/[^A-Z]/g,'').split('').forEach(ch=>l.push(ch))});return{l,a}};
+const ttGet=t=>{const b=ACT[t],o=Object.assign({},(D.TT||{})[t]||{},TT[t]||{});if(!b&&!o.b)return null;return Object.assign({b:'AC DF',biz:4,e:'ABC DEF',last:27,stub:1,bblk:''},b||{},o)};
+function typeCfg(t){const o=ttGet(t);if(!o)return null;const pb=parseL(o.b),pe=parseL(o.e);
+  return{biz:+o.biz||0,last:Math.max((+o.biz||0)+1,+o.last||27),stub:o.stub?1:0,bl:pb.l,ba:pb.a,el:pe.l,ea:pe.a,blk:String(o.bblk||'').toUpperCase(),ac:t,dog:!!o.dog,type:1}}
+const acCfg=t=>typeCfg(t);
 const flNo=f=>String(f).split(' ')[0];
 const acOf=f=>(D.AC||{})[flNo(f)];
-const cfg=()=>D.C[D.cur]||(D.C[D.cur]=(acOf(D.cur)&&acCfg(acOf(D.cur).tip))||{biz:4,last:27,stub:1});
-const aisleAt=(r,i,L)=>{const c=cfg();if(!c.wide)return i===L.length/2;const n=L.length;return(r<=c.biz?(n===4?[1,3]:[2,4]):(n===9?[3,6]:n===10?[3,7]:[2,6])).includes(i)};
-const LET=r=>{const c=cfg();return r<=c.biz?(c.bl||NB.bl):(c.el||NB.el)};
-const exists=(r,l)=>!(cfg().stub&&r===cfg().last&&'ABC'.includes(l));
+const cfg=()=>{const m=D.C[D.cur];if(m&&m.manual)return m;const t=acOf(D.cur),c=t&&typeCfg(t.tip);if(c)return c;if(m&&!m.type)return m;return D.C[D.cur]={biz:4,last:27,stub:1}};
+const aisleAt=(r,i,L)=>{const c=cfg(),a=r<=c.biz?c.ba:c.ea;return a?a.includes(i):i===L.length/2};
+const LET=r=>{const c=cfg();return r<=c.biz?(c.bl||['A','C','D','F']):(c.el||['A','B','C','D','E','F'])};
+const isBlk=(r,l)=>{const c=cfg();return r<=c.biz&&!!c.blk&&c.blk.includes(l)};
+const exists=(r,l)=>!(cfg().stub&&r===cfg().last&&'ABC'.includes(l))&&!isBlk(r,l);
 function photo(){const s={};'1D 2A 2C 2D 2F 3A 3C 3D 3F 7B 7E 8A 8B 9A 9B 9E 9F 12A 12B 12C 12D 12E 12F'.split(' ').forEach(k=>s[k]=1);'10A 10B 11A 11B 11C 10D 11D 11E 11F 7A 7C 7D 7F 8C 8D 8F 9C 9D'.split(' ').forEach(k=>s[k]=2);return s}
 const seats=()=>D.S[D.cur]||(D.S[D.cur]={});
 const ppl=()=>D.P[D.cur]||(D.P[D.cur]=[]);
@@ -480,14 +489,14 @@ function paxHtml(){const O=ordered();if(!O.length)return'<p class="empty">Bu sef
 function cabinHtml(){const S=seats(),c=cfg(),as={},a2={};ordered().forEach((p,i)=>{if(p.seat)as[p.seat]=i+1;(p.comp||[]).forEach(k=>a2[k]=i+1)});const swS=window._sw&&findP(window._sw)?findP(window._sw).seat:null;
   let h='<div class="cabin"><div class="cab-lbl">BUSINESS</div>';
   for(let r=1;r<=c.last;r++){if(r===c.biz+1)h+='<div class="cab-lbl">EKONOMİ</div>';const L=LET(r),bz=r<=c.biz;h+='<div class="srow'+(bz?' bz':'')+'"><span class="rn">'+r+'</span>';
-    L.forEach((l,i)=>{if(aisleAt(r,i,L))h+='<span class="aisle'+(bz?' mid':'')+'"></span>';const k=r+l;if(!exists(r,l)){h+='<span class="seat ghost"></span>';return}const st=S[k]||0;
+    L.forEach((l,i)=>{if(aisleAt(r,i,L))h+='<span class="aisle'+(bz?' mid':'')+'"></span>';const k=r+l;if(!exists(r,l)){h+=isBlk(r,l)?'<span class="seat k" title="Kapalı orta koltuk" aria-label="'+k+' kapalı">✕</span>':'<span class="seat ghost"></span>';return}const st=S[k]||0;
       h+='<button type="button" class="seat'+(as[k]?' a':a2[k]?' a2':st===1?' d':st===2?' k':'')+(k===swS?' sel':'')+'" data-a="seat" data-k="'+k+'" aria-label="'+k+'">'+(as[k]?'#'+as[k]:a2[k]?'+'+a2[k]:st===2?'✕':k)+'</button>'});
     h+='<span class="rn">'+r+'</span></div>'}
   return h+'</div>'}
 function acLine(){const t=acOf(D.cur),c=cfg(),a=c.ac&&ACT[c.ac];
   const IC='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l18-7-7 18-2.5-8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
   if(!t)return'<div class="acline none">'+IC+'<div><b>Uçak tipi henüz yok</b><span>Günlük sefer bilgisi onaylanınca burada görünür.</span></div></div>';
-  return'<div class="acline">'+IC+'<div><b>'+esc(t.ad||((ACT[t.tip]||{}).ad)||t.tip)+'<span class="tag">'+esc(t.tip)+'</span></b><span>'+(a?'Business '+range(1,c.biz).length+' · Ekonomi '+range(c.biz+1,c.last).length+' · ':'')+'Kaynak: '+esc(t.kaynak||'FlightStats')+' · '+esc(fmtD(t.tarih))+(c.dog?'':' · koltuk düzeni yaklaşık')+'</span></div></div>'}
+  return'<div class="acline">'+IC+'<div><b>'+esc(t.ad||((ACT[t.tip]||{}).ad)||t.tip)+'<span class="tag">'+esc(t.tip)+'</span></b><span>'+(c.type?'Business '+range(1,c.biz).length+' ('+esc(ttGet(c.ac).b)+(c.blk?', orta kapalı':'')+') · Ekonomi '+range(c.biz+1,c.last).length+' · ':'')+'Kaynak: '+esc(t.kaynak||'FlightStats')+' · '+esc(fmtD(t.tarih))+(c.type&&!c.dog?' · kabin düzeni doğrulanmadı':'')+'</span></div></div>'}
 function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 class="h">SEFER</h2><p style="margin:0 0 6px;font-weight:700">Henüz sefer listesi yok</p><p class="note" style="margin-top:0">THY İstanbul → Esenboğa seferleri ve uçak tipleri her sabah otomatik toplanır. '+(isAdmin()?'Yönetim sekmesindeki “Günlük sefer bilgisi”ni onayladığınızda seferler burada görünür.':'Yönetici günlük sefer bilgisini onayladığında seferler burada görünür.')+'</p>'+(isAdmin()?'<div class="row-btns" style="margin-top:10px"><button class="btn pri" data-a="tab" data-k="ayar" type="button">Yönetim’e git</button></div>':'')+'</section>'+legal();return}
   const c=cfg(),n=counts();
   $('view').innerHTML=
@@ -556,12 +565,12 @@ function vAyar(){if(!isAdmin()){$('view').innerHTML='<section class="panel"><h2 
   $('view').innerHTML='<section class="panel"><h2 class="h">UYARILAR · '+AL.n+'<span class="sp"></span><button class="btn sm pri" data-a="chNew" type="button">+ Değişiklik</button></h2>'
   +'<div class="al">'+[[sfPend().length,'Onay bekleyen sefer bilgisi','Günlük taramadan gelen sefer saatleri ve uçak tipleri; aşağıdan onaylayın.','pend'],[AL.pend.length,'Onay bekleyen değişiklik','Haftalık taramadan ya da başka bir cihazdan geldi; uygula veya yok say.','pend'],[AL.vac.length,'Boşalan makam','Görevden alma / istifa sonrası yerine kimse kaydedilmedi: '+AL.vac.map(c=>c.makam).join(', '),'vac'],[AL.terms.length,'Yaklaşan görev bitişi',AL.terms.map(t=>t.kisi+' · '+t.makam+' · '+fmtD(t.bitis)+' ('+(t.d>=0?t.d+' gün kaldı':'süre doldu')+')').join('; '),'terms'],[AL.unv,'Doğrulanmamış kayıt','“doğrulayın” etiketli kişiler; Rical → Kişiler’de “doğrulayın” yazarak listeleyin.','unv'],[AL.age>30?AL.age:0,'Veri yaşı','Gömülü veri '+AL.age+' gün önce güncellendi.','age']].filter(a=>a[0]).map(a=>'<div class="alc'+(a[3]==='pend'||a[3]==='vac'?' hot':'')+'"><b>'+a[0]+'</b><span><strong>'+a[1]+'</strong><br>'+esc(a[2])+'</span></div>').join('')+'</div>'
   +'<p class="note">'+(dbOk?'Değişiklik kayıtları tüm cihazlarda ortak tutuluyor.':'Ortak kayıt bağlantısı yok: kayıtlar bu cihazda saklanır.')+' Haftalık otomatik tarama Resmî Gazete atamalarını, günlük tarama THY İstanbul → Esenboğa sefer ve uçak bilgilerini “onay bekleyen” olarak buraya ekler.</p></section>'
-  +sfHtml()+'<section class="panel"><h2 class="h">GÖREV DEĞİŞİKLİKLERİ · '+allCh().length+'</h2><div class="chips">'+[['pend','Bekleyen'],['all','Tümü'],['atama','Atama'],['gorevden_alma','Görevden alma'],['istifa','İstifa'],['secim','Seçim'],['gorev_degisikligi','Görev değişikliği'],['emeklilik','Emeklilik']].map(([k,l])=>'<button type="button" class="chip" data-a="chf" data-k="'+k+'" aria-pressed="'+(chF===k)+'">'+l+'</button>').join('')+'</div>'
+  +sfHtml()+ttHtml()+'<section class="panel"><h2 class="h">GÖREV DEĞİŞİKLİKLERİ · '+allCh().length+'</h2><div class="chips">'+[['pend','Bekleyen'],['all','Tümü'],['atama','Atama'],['gorevden_alma','Görevden alma'],['istifa','İstifa'],['secim','Seçim'],['gorev_degisikligi','Görev değişikliği'],['emeklilik','Emeklilik']].map(([k,l])=>'<button type="button" class="chip" data-a="chf" data-k="'+k+'" aria-pressed="'+(chF===k)+'">'+l+'</button>').join('')+'</div>'
   +(CH.map(c=>'<div class="chr"><div class="chh"><span class="tag ct">'+esc(CHT[c.tur]||c.tur)+'</span><span class="chd">'+esc(fmtD(c.tarih))+'</span>'+(c.durum==='beklemede'?'<span class="tag stU">BEKLİYOR</span>':c.durum==='yoksayildi'?'<span class="tag stE">YOK SAYILDI</span>':'<span class="tag stG">UYGULANDI</span>')+'</div><div class="chm">'+esc(c.makam)+'</div><div class="chp">'+(c.eski?'<s>'+esc(c.eski)+'</s>':'—')+' → '+(c.yeni?'<b>'+esc(c.yeni)+'</b>':'<em>boş</em>')+'</div>'+(c.sebep?'<div class="ti">Sebep: '+esc(c.sebep)+'</div>':'')+(c.kaynak?'<div class="ti">Kaynak: '+esc(c.kaynak)+'</div>':'')+(c.durum==='beklemede'?'<div class="row-btns" style="margin-top:8px"><button class="btn sm pri" data-a="chApply" data-k="'+esc(c.id)+'" type="button">Uygula</button><button class="btn sm" data-a="chIgnore" data-k="'+esc(c.id)+'" type="button">Yok say</button></div>':'')+'</div>').join('')||'<p class="empty">Bu süzgeçte kayıt yok.</p>')+'</section>'
   +'<section class="panel"><h2 class="h">ÖNCELİK EŞDEĞERLERİ</h2>'+(eq.map(k=>'<div class="li">'+rkHtml(+k,'',1)+'<span class="tx"><span class="ti">'+esc(D.R[k-1]||'')+'</span><br><span class="nm">'+esc(D.EQ[k])+'. sırada sayılır</span></span><button class="btn sm dng" data-a="eqDel" data-k="'+k+'" type="button">Kaldır</button></div>').join('')||'<p class="empty">Tanımlı eşdeğer yok.</p>')+'<p class="note">Yeni eşdeğer için Rical & Upgrade → Rical listesi’nde maddeye dokunun.</p></section>'+
   '<section class="panel"><h2 class="h">GÜVENLİK</h2><label class="lbl" for="np">Yeni yönetici şifresi (boş bırakılırsa değişmez)</label><input class="field" id="np" type="password" autocomplete="new-password"><label class="lbl" for="lk">Otomatik çıkış (dakika)</label><input class="field" id="lk" type="number" min="1" max="120" value="'+esc(D.lock)+'"><div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="secSave" type="button">Kaydet</button></div></section>'+
   '<section class="panel"><h2 class="h">YEDEK</h2><div class="row-btns"><button class="btn" data-a="backup" type="button">Yedek al</button><button class="btn" data-a="restore" type="button">Yedek yükle</button><button class="btn dng" data-a="reset" type="button">Fabrika verilerine dön</button></div><p class="note">Veriler bu cihazda tutulur. Telefon değiştirmeden önce yedek alın.</p></section>'+about()+legal()}
-function about(){const P=people();return'<section class="panel"><h2 class="h">UYGULAMA OLARAK KUR</h2><dl class="kv"><dt>iPhone</dt><dd>Safari’de bu sayfayı açın → Paylaş → Ana Ekrana Ekle</dd><dt>Android</dt><dd>Chrome’da açın → ⋮ menü → Ana ekrana ekle</dd><dt>Bilgisayar</dt><dd>Chrome veya Edge’de açın → ⋮ menü → Yayınla, kaydet ve paylaş → Kısayol oluştur (pencere olarak aç)</dd></dl><p class="note">RITA simgesiyle ayrı bir uygulama gibi açılır.</p></section><section class="panel"><h2 class="h">VERİ VE KAYNAKLAR</h2><dl class="kv"><dt>Sürüm</dt><dd>RITA 9.0 · veri '+DATA_VER+'</dd><dt>Devlet rehberi</dt><dd>'+P.filter(x=>!x.o).length+' kayıt</dd><dt>Kurumsal</dt><dd>'+P.filter(x=>x.o).length+' kayıt</dd><dt>Rical</dt><dd>'+D.R.length+' madde</dd><dt>Upgrade</dt><dd>'+D.U.length+' unvan + THY sıralaması (24 sıra)</dd></dl><p class="note">✓ işaretli kayıtlar Kasım 2026 itibarıyla haber veya resmî kaynakla kontrol edildi. TGS kadrosu 19.01.2026 tarihli organizasyon şemasından, İstanbul yolcu hizmetleri kadrosu duvar çizelgesinden alınmıştır. Diğer kayıtlar arşiv ve seçim listelerine dayanır.</p></section><section class="panel"><p style="margin:0;font-size:13px"><b>© 2026 Yakup KAYABAŞ. Tüm hakları saklıdır.</b><br>RITA yazılımının adı, amblemi, arayüz tasarımı, kaynak kodu ve veri düzeni üzerindeki tüm fikri ve sınai mülkiyet hakları Yakup KAYABAŞ’a aittir.</p></section>'}
+function about(){const P=people();return'<section class="panel"><h2 class="h">UYGULAMA OLARAK KUR</h2><dl class="kv"><dt>iPhone</dt><dd>Safari’de bu sayfayı açın → Paylaş → Ana Ekrana Ekle</dd><dt>Android</dt><dd>Chrome’da açın → ⋮ menü → Ana ekrana ekle</dd><dt>Bilgisayar</dt><dd>Chrome veya Edge’de açın → ⋮ menü → Yayınla, kaydet ve paylaş → Kısayol oluştur (pencere olarak aç)</dd></dl><p class="note">RITA simgesiyle ayrı bir uygulama gibi açılır.</p></section><section class="panel"><h2 class="h">VERİ VE KAYNAKLAR</h2><dl class="kv"><dt>Sürüm</dt><dd>RITA 9.1 · veri '+DATA_VER+'</dd><dt>Devlet rehberi</dt><dd>'+P.filter(x=>!x.o).length+' kayıt</dd><dt>Kurumsal</dt><dd>'+P.filter(x=>x.o).length+' kayıt</dd><dt>Rical</dt><dd>'+D.R.length+' madde</dd><dt>Upgrade</dt><dd>'+D.U.length+' unvan + THY sıralaması (24 sıra)</dd></dl><p class="note">✓ işaretli kayıtlar Kasım 2026 itibarıyla haber veya resmî kaynakla kontrol edildi. TGS kadrosu 19.01.2026 tarihli organizasyon şemasından, İstanbul yolcu hizmetleri kadrosu duvar çizelgesinden alınmıştır. Diğer kayıtlar arşiv ve seçim listelerine dayanır.</p></section><section class="panel"><p style="margin:0;font-size:13px"><b>© 2026 Yakup KAYABAŞ. Tüm hakları saklıdır.</b><br>RITA yazılımının adı, amblemi, arayüz tasarımı, kaynak kodu ve veri düzeni üzerindeki tüm fikri ve sınai mülkiyet hakları Yakup KAYABAŞ’a aittir.</p></section>'}
 
 /* ---------- alt sayfa, bildirim ---------- */
 let toastT,undoFn=null;function toast(m,undo){$('toast-t').textContent=m;undoFn=undo||null;$('toast-b').hidden=!undo;$('toast').hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{$('toast').hidden=true;undoFn=null},undo?6000:2200)}
@@ -584,10 +593,16 @@ function flFind(v){const d=String(v).toUpperCase().replace(/\s/g,'').replace(/^(
 /* ---------- günlük sefer bilgisi (THY İstanbul → Esenboğa) ---------- */
 let SF=[],SFH=null;
 async function sfInit(){try{if(!window.claude||!claude.use)return;const db=await claude.use('db');if(!db)return;SFH=db.collection('seferler');
-  SFH.onSnapshot(sn=>{SF=sn.docs.map(d=>({id:d.id,...d.data()}));if(role)render()},()=>{})}catch(e){}}
+  SFH.onSnapshot(sn=>{SF=sn.docs.map(d=>({id:d.id,...d.data()}));if(role)render()},()=>{});
+  TTH=db.collection('ucaktipleri');TTH.onSnapshot(sn=>{const o={};sn.docs.forEach(d=>o[d.id]=d.data());TT=o;if(role)render()},()=>{})}catch(e){}}
 const sfPend=()=>SF.filter(x=>x.durum==='beklemede'&&Array.isArray(x.ucuslar)).sort((a,b)=>String(a.tarih).localeCompare(String(b.tarih)));
 function sfDiff(doc){return doc.ucuslar.map(u=>{const cur=D.F.find(x=>flNo(x)===u.no),t=(D.AC||{})[u.no];
   return{u,yeni:!cur,saat:cur&&cur.split(' ').pop()!==u.kalkis?cur.split(' ').pop():null,tip:t&&t.tip!==u.tip?((ACT[t.tip]||{}).ad||t.tip):null,ilk:!t}})}
+function ttHtml(){const used={};Object.entries(D.AC||{}).forEach(([no,x])=>{(used[x.tip]=used[x.tip]||[]).push(no)});
+  const codes=[...new Set(Object.keys(used).concat(Object.keys(ACT)))].sort((a,b)=>(used[b]?1:0)-(used[a]?1:0)||((ACT[a]||{}).ad||a).localeCompare((ACT[b]||{}).ad||b));
+  return'<section class="panel"><h2 class="h">UÇAK TİPLERİ VE KABİN DÜZENİ</h2><p class="note" style="margin-top:0">Her uçak tipinin kabini ayrı tanımlıdır. Bir tipi bir kez doğrulayın; o tiple uçan tüm seferler bu düzeni kullanır.</p>'+
+  codes.map(t=>{const o=ttGet(t)||{},c=typeCfg(t);const nb=c?c.bl.filter(l=>!c.blk.includes(l)).length*c.biz:0,ad=(ACT[t]||{}).ad||t;
+    return'<button type="button" class="li" data-a="ttEdit" data-k="'+esc(t)+'"><span class="rk alt">'+esc(t)+'</span><span class="tx"><span class="nm">'+esc(ad)+'</span><br><span class="ti">Business '+nb+' · '+esc(o.b||'?')+(o.bblk?' (kapalı: '+esc(o.bblk)+')':'')+' · Ekonomi '+esc(o.e||'?')+' · son sıra '+esc(o.last||'?')+(used[t]?' · bugün: '+esc(used[t].join(', ')):'')+'</span></span><span class="tag '+(o.dog?'up">DOĞRULANDI':'old">VARSAYILAN')+'</span></button>'}).join('')+'</section>'}
 function sfHtml(){const P=sfPend();if(!P.length)return'';
   return'<section class="panel"><h2 class="h">GÜNLÜK SEFER BİLGİSİ · '+P.length+'</h2><p class="note" style="margin-top:0">THY İstanbul → Esenboğa seferleri ve uçak tipleri her gün otomatik toplanır. Onaylamadan hiçbir şey değişmez.</p>'+
   P.map(doc=>{const Df=sfDiff(doc),ch=Df.filter(x=>x.yeni||x.saat||x.tip||x.ilk).length;
@@ -605,7 +620,7 @@ function sfApplyDoc(doc){D.AC=D.AC||{};
   D.F=D.F.filter(f=>keep.has(f)||(D.P[f]||[]).length);if(D.F.indexOf(D.cur)<0)D.cur=D.F[0]||'';
   D.F.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()));touch()}
 /* ---------- eylemler ---------- */
-const ADMIN_ONLY=new Set(['sfApply','sfIgnore','chNew','chSave','chApply','chIgnore','kmSave','c9new','c9save','c9del','noteEdit','noteNew','noteSave','noteDel','flightAdd','flightSave','flightDel','cabinCfg','cabinSave','cabinEmpty','cabinSample','personNew','personEdit','personSave','personDel','ri','riSave','riDel','riNew','riAdd','upItem','upDel','upNew','upAdd','eqDel','secSave','backup','restore','restoreDo','reset','resetDo']);
+const ADMIN_ONLY=new Set(['ttEdit','ttSave','ttReset','sfApply','sfIgnore','chNew','chSave','chApply','chIgnore','kmSave','c9new','c9save','c9del','noteEdit','noteNew','noteSave','noteDel','flightAdd','flightSave','flightDel','cabinCfg','cabinSave','cabinEmpty','cabinSample','personNew','personEdit','personSave','personDel','ri','riSave','riDel','riNew','riAdd','upItem','upDel','upNew','upAdd','eqDel','secSave','backup','restore','restoreDo','reset','resetDo']);
 const A={
  tab(d){tab=d.k;render();document.querySelector('main').scrollTop=0},
  seg(d){seg[d.t]=d.k;render()},
@@ -633,6 +648,21 @@ const A={
  chNew(){const today=new Date().toISOString().slice(0,10);sheet('<h2>Görev değişikliği kaydet</h2><p class="sub">Kayıt uygulanır: eski görevli “eski” olarak işaretlenir, yeni görevli bu makamla rical sırasına girer.</p><label class="lbl" for="ch-m">Makam / görev</label><input class="field" id="ch-m" list="ch-ml" placeholder="Örn. Et ve Süt Kurumu (ESK) Genel Müdürü"><datalist id="ch-ml">'+gmRows().map(r=>'<option value="'+esc(r.u)+'">').join('')+'</datalist><label class="lbl" for="ch-t">Değişiklik türü</label><select class="field" id="ch-t">'+Object.entries(CHT).map(([k,l])=>'<option value="'+k+'">'+l+'</option>').join('')+'</select><label class="lbl" for="ch-d">Tarih</label><input class="field" id="ch-d" type="date" value="'+today+'"><label class="lbl" for="ch-e">Ayrılan kişi (varsa)</label><input class="field" id="ch-e" list="ch-pl" placeholder="Ad Soyad"><label class="lbl" for="ch-y">Yerine gelen kişi (varsa)</label><input class="field" id="ch-y" list="ch-pl" placeholder="Ad Soyad"><datalist id="ch-pl">'+people().filter(x=>x.r<200).slice(0,800).map(x=>'<option value="'+esc(x.n)+'">').join('')+'</datalist><label class="lbl" for="ch-r">Makamın rical maddesi (boş = otomatik)</label><input class="field" id="ch-r" type="number" min="1" max="'+RS.length+'"><label class="lbl" for="ch-s">Sebep</label><input class="field" id="ch-s" placeholder="Örn. Görevden alındı, emekliye ayrıldı, başka göreve atandı"><label class="lbl" for="ch-k">Kaynak</label><input class="field" id="ch-k" placeholder="Örn. Resmî Gazete 20.10.2026, sayı 33406"><div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="chSave" type="button">Kaydet ve uygula</button></div>')},
  async chSave(){const v=i=>($(i).value||'').trim(),c={tarih:v('ch-d'),tur:v('ch-t'),makam:v('ch-m'),eski:v('ch-e'),yeni:v('ch-y'),r:+v('ch-r')||0,sebep:v('ch-s'),kaynak:v('ch-k'),durum:'uygulandi',ekleyen:'yonetici',id:'l'+Date.now()};
    if(!c.makam||(!c.eski&&!c.yeni))return toast('Makam ve en az bir kişi gerekli');applyCh(c);const shared=await chSaveRow(c);closeSheet();render();toast('Değişiklik uygulandı'+(shared?' · tüm cihazlara iletildi':''))},
+ ttEdit(d){const t=d.k,o=ttGet(t)||{b:'AC DF',biz:4,e:'ABC DEF',last:27,stub:1,bblk:''},ad=(ACT[t]||{}).ad||Object.values(D.AC||{}).map(x=>x.tip===t?x.ad:'').find(Boolean)||t;
+  sheet('<h2>'+esc(ad)+' <span class="mono" style="font-size:13px;color:var(--muted)">'+esc(t)+'</span></h2><p class="sub">Bu düzen, bu uçak tipiyle uçan tüm seferlerde kullanılır. Harfler koltukları, boşluk koridoru gösterir.</p>'+
+  '<label class="lbl" for="t-b">Business dizilimi (örn. AC DF · AB EF · ABC DEF · A DG K)</label><input class="field mono" id="t-b" value="'+esc(o.b)+'" autocapitalize="characters">'+
+  '<label class="lbl" for="t-k">Business’ta kapalı koltuklar (örn. ABC DEF düzeninde orta koltuk kapalıysa: BE)</label><input class="field mono" id="t-k" value="'+esc(o.bblk||'')+'" autocapitalize="characters">'+
+  '<label class="lbl" for="t-z">Business sıra sayısı</label><input class="field" id="t-z" type="number" min="0" max="15" value="'+esc(o.biz)+'">'+
+  '<label class="lbl" for="t-e">Ekonomi dizilimi (örn. ABC DEF · ABC DEF HJK)</label><input class="field mono" id="t-e" value="'+esc(o.e)+'" autocapitalize="characters">'+
+  '<label class="lbl" for="t-l">Son sıra numarası</label><input class="field" id="t-l" type="number" min="2" max="70" value="'+esc(o.last)+'">'+
+  '<label class="lbl"><input type="checkbox" id="t-s" '+(o.stub?'checked':'')+'> Son sırada yalnızca sağ taraf (D-E-F) var</label>'+
+  '<div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="ttSave" data-k="'+esc(t)+'" type="button">Doğrula ve kaydet</button>'+(TT[t]||(D.TT||{})[t]?'<button class="btn" data-a="ttReset" data-k="'+esc(t)+'" type="button">Varsayılana dön</button>':'')+'</div>')},
+ async ttSave(d){const t=d.k,clean=v=>String(v||'').toUpperCase().replace(/[^A-Z ]/g,'').replace(/\s+/g,' ').trim();
+  const o={b:clean($('t-b').value),bblk:clean($('t-k').value).replace(/ /g,''),biz:Math.max(0,Math.min(15,parseInt($('t-z').value)||0)),e:clean($('t-e').value),last:Math.max(2,Math.min(70,parseInt($('t-l').value)||27)),stub:$('t-s').checked?1:0,dog:true,ad:(ACT[t]||{}).ad||t,tarih:new Date().toISOString().slice(0,10)};
+  if(!o.b||!o.e)return toast('Business ve ekonomi dizilimini yazın');if(o.last<=o.biz)return toast('Son sıra, business sıra sayısından büyük olmalı');
+  let shared=false;if(TTH){try{await TTH.doc(t).set(o);shared=true}catch(e){}}
+  D.TT=D.TT||{};D.TT[t]=o;TT[t]=o;reassign();save();closeSheet();render();toast(shared?'Kabin düzeni kaydedildi; tüm cihazlarda geçerli':'Kabin düzeni bu cihazda kaydedildi')},
+ async ttReset(d){const t=d.k;if(TTH&&TT[t]){try{await TTH.doc(t).delete()}catch(e){}}delete TT[t];if(D.TT)delete D.TT[t];reassign();save();closeSheet();render();toast('Varsayılan düzene dönüldü')},
  async sfApply(d){const doc=SF.find(x=>x.id===d.k);if(!doc)return;sfApplyDoc(doc);try{await SFH.doc(doc.id).update({durum:'onaylandi',onay:new Date().toISOString()})}catch(e){render();toast('Uygulandı, ama onay kaydı yazılamadı');return}render();toast('Sefer ve uçak bilgileri uygulandı')},
  async sfIgnore(d){const doc=SF.find(x=>x.id===d.k);if(!doc)return;try{await SFH.doc(doc.id).update({durum:'yoksayildi',onay:new Date().toISOString()})}catch(e){toast('Kaydedilemedi, tekrar deneyin');return}render();toast('Yok sayıldı, hiçbir şey değişmedi')},
  async chApply(d){const c=allCh().find(x=>x.id===d.k);if(!c)return;applyCh(c);const u={...c,durum:'uygulandi'};if(!(c._db&&await chSaveRow(u))){D.CHx=D.CHx||{};D.CHx[c.id]={durum:'uygulandi'};save()}render();toast('Uygulandı: '+c.makam)},
@@ -659,8 +689,8 @@ const A={
  clearAll(){if(!ppl().length)return toast('Liste zaten boş');const prev=JSON.stringify(ppl());D.P[D.cur]=[];q.add='';save();render();toast('Yolcular ve koltuklar temizlendi',()=>{D.P[D.cur]=JSON.parse(prev);save();render()})},
  copy(){if(!ppl().length)return toast('Listede yolcu yok');copyText(summary())},
  seat(d){if(window._sw){const a=findP(window._sw),S0=seats();window._sw=null;if(!a){render();return}if(S0[d.k]){render();return toast(d.k+' dolu veya bloke')}const b=ppl().find(x=>x!==a&&x.seat===d.k);if(b){b.fix=a.seat;b.sw=1}else if(ppl().some(x=>(x.comp||[]).includes(d.k))){render();return toast(d.k+' bir refakatçiye ait')}a.fix=d.k;a.sw=1;assign();render();return toast(a.n+' → '+d.k)}const S=seats();S[d.k]=((S[d.k]||0)+1)%3;if(!S[d.k])delete S[d.k];reassign();save();render()},
- cabinCfg(){const c=cfg();sheet('<h2>Kabin düzeni</h2><p class="sub">'+esc(D.cur)+'</p><label class="lbl" for="f-bz">Business sıra sayısı (2+2)</label><input class="field" id="f-bz" type="number" min="0" max="12" value="'+c.biz+'"><label class="lbl" for="f-ls">Son sıra numarası</label><input class="field" id="f-ls" type="number" min="5" max="60" value="'+c.last+'"><label class="lbl"><input type="checkbox" id="f-st" '+(c.stub?'checked':'')+'> Son sırada yalnızca D-E-F var</label><div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="cabinSave" type="button">Kaydet</button><button class="btn" data-a="cabinEmpty" type="button">Tüm koltukları boşalt</button><button class="btn" data-a="cabinSample" type="button">TK2170 örnek doluluk</button></div>')},
- cabinSave(){const c=cfg();c.biz=Math.max(0,Math.min(12,parseInt($('f-bz').value)||0));c.last=Math.max(c.biz+1,Math.min(60,parseInt($('f-ls').value)||27));c.stub=$('f-st').checked?1:0;c.dog=1;reassign();save();closeSheet();render();toast('Kabin düzeni kaydedildi')},
+ cabinCfg(){const t=acOf(D.cur);if(t)return A.ttEdit({k:t.tip});const c=cfg();sheet('<h2>Kabin düzeni</h2><p class="sub">'+esc(D.cur)+'</p><label class="lbl" for="f-bz">Business sıra sayısı (2+2)</label><input class="field" id="f-bz" type="number" min="0" max="12" value="'+c.biz+'"><label class="lbl" for="f-ls">Son sıra numarası</label><input class="field" id="f-ls" type="number" min="5" max="60" value="'+c.last+'"><label class="lbl"><input type="checkbox" id="f-st" '+(c.stub?'checked':'')+'> Son sırada yalnızca D-E-F var</label><div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="cabinSave" type="button">Kaydet</button><button class="btn" data-a="cabinEmpty" type="button">Tüm koltukları boşalt</button><button class="btn" data-a="cabinSample" type="button">TK2170 örnek doluluk</button></div>')},
+ cabinSave(){const c=cfg();c.biz=Math.max(0,Math.min(12,parseInt($('f-bz').value)||0));c.last=Math.max(c.biz+1,Math.min(60,parseInt($('f-ls').value)||27));c.stub=$('f-st').checked?1:0;c.manual=1;reassign();save();closeSheet();render();toast('Kabin düzeni kaydedildi')},
  cabinEmpty(){D.S[D.cur]={};reassign();save();closeSheet();render();toast('Tüm koltuklar boş')},
  cabinSample(){D.S[D.cur]=photo();reassign();save();closeSheet();render();toast('Örnek doluluk yüklendi')},
  rcat(d){riCat=d.k;lim.ri=60;render()},korg(d){kuOrg=d.k;lim.ku=60;render()},
