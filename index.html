@@ -447,12 +447,17 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
   /* 1) elle sabitlenen koltuklar */
   P.forEach(p=>{if(p.fix&&valid.has(p.fix)&&!used.has(p.fix)){p.seat=take(p.fix);p.fixed=1}else p.fixed=0});
   /* 2) business: önce upgrade hakkı olan asıl yolcular, rical sırasıyla, önden arkaya */
-  P.forEach(p=>{if(p.seat||!p.up)return;const nt=D.N[keyOf(p)],k=prefPick(BIZ.filter(free),nt&&nt.sp);if(k)p.seat=take(k)});
+  /*    eşli/refakatçili yolcu: business'ta sonraki herkese yer kalıyorsa yan yana koltuk birlikte ayrılır */
+  const rowGroups=r=>{const L=LET(r),G=[];let cur=[];L.forEach((l,i)=>{if(i&&aisleAt(r,i,L)){G.push(cur);cur=[]}if(exists(r,l))cur.push(r+l)});if(cur.length)G.push(cur);return G};
+  const upQ=P.filter(p=>!p.seat&&p.up);
+  upQ.forEach((p,qi)=>{const nt=D.N[keyOf(p)],n=(p.pax||1)-1,freeB=BIZ.filter(free),rest=upQ.length-qi-1;
+    if(n>=1&&!(nt&&nt.sp)&&freeB.length-1-rest>=n){for(const r of [...new Set(freeB.map(rowOf))]){for(const g of rowGroups(r)){const f=g.filter(free);if(f.length>=n+1){p.seat=take(f[0]);p.comp=f.slice(1,n+1).map(take);return}}}}
+    const k=prefPick(freeB,nt&&nt.sp);if(k)p.seat=take(k)});
   /* 3) business'taki asıl yolcunun refakatçileri: kalan business yeri tüm refakatçilere yetiyorsa yan koltuklara */
-  P.forEach(p=>{const n=(p.pax||1)-1;if(!n||!p.seat||rowOf(p.seat)>c.biz)return;const left=BIZ.filter(free);if(left.length<n)return;
+  P.forEach(p=>{const n=(p.pax||1)-1-(p.comp||[]).length;if(n<=0||!p.seat||rowOf(p.seat)>c.biz)return;const left=BIZ.filter(free);if(left.length<n)return;
     const r=rowOf(p.seat),side='AC'.includes(p.seat.slice(-1))?'AC':'DF';
     const near=[r+side[0],r+side[1]].filter(k=>k!==p.seat&&free(k)).concat(rowSeats(r).filter(free)).concat(left);
-    const pick=[];near.forEach(k=>{if(pick.length<n&&!pick.includes(k))pick.push(k)});p.comp=pick.map(take)});
+    const pick=[];near.forEach(k=>{if(pick.length<n&&!pick.includes(k))pick.push(k)});p.comp=(p.comp||[]).concat(pick.map(take))});
   /* 4) ekonomi: kalan herkes grup hâlinde, rical sırasıyla, en öndeki uygun yan yana bloğa */
   P.forEach(p=>{const need=(p.seat?0:1)+((p.pax||1)-1-p.comp.length);if(!need)return;
     const nt=D.N[keyOf(p)],blk=need===1&&!p.seat?[prefPick(range(c.biz+1,c.last).filter(free),nt&&nt.sp)].filter(Boolean):block(need,c,free);if(!blk.length)return;blk.forEach(take);
@@ -538,7 +543,7 @@ function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 clas
   '<div class="stats" style="margin-top:10px"><div class="stat"><b>'+n.bf+'/'+n.bt+'</b><span>Business boş</span></div><div class="stat"><b>'+n.ef+'/'+n.et+'</b><span>Ekonomi boş</span></div><div class="stat"><b>'+ppl().reduce((s,p)=>s+(p.pax||1),0)+'</b><span>Listedeki kişi</span></div></div></section>'+
   '<section class="panel"><h2 class="h">YOLCU EKLE</h2><input class="field" id="q-add" data-q="add" placeholder="İsim, unvan veya kurum yazın" value="'+esc(q.add)+'" autocomplete="off"><div id="res">'+resHtml()+'</div><p class="note">Türkçe/İngilizce harf fark etmez. <button class="btn sm" data-a="manual" type="button">Listede yok, elle ekle</button></p></section>'+
   '<section class="panel"><h2 class="h">RİCAL SIRASI VE KOLTUKLAR</h2><div id="pax">'+paxHtml()+'</div><div class="row-btns" style="margin-top:12px"><button class="btn gold" data-a="assign" type="button">Koltuk ata</button><button class="btn" data-a="copy" type="button">Özeti kopyala</button><button class="btn dng" data-a="clearAll" type="button">Listeyi temizle</button></div><p class="note">Liste rical sırasındadır: en üstte en yüksek rical. Business ve ekonomi ayrı ayrı, en önden başlayarak ve boşluk bırakmadan doldurulur (1A, 1C, 1D, 1F, 2A…; ekonomide 5A, 5B, 5C…). Ailesiyle uçan yolcunun kişi sayısını artırın. ▲ ▼ ile sırayı elle değiştirin. İki yolcunun yerini değiştirmek için önce birinin koltuğuna, sonra diğerininkine dokunun.</p></section>'+
-  '<section class="panel"><h2 class="h">KOLTUK HARİTASI<span class="sp"></span>'+'<button class="btn sm pri" data-a="ocrOpen" type="button">Fotoğraftan doldur</button>'+(OLAST&&OLAST.cur===D.cur?'<button class="btn sm" data-a="ocrLast" type="button">Okunanı göster</button>':'')+adm('<button class="btn sm" data-a="cabinCfg" type="button">Kabin düzeni</button>')+'</h2><div class="cabin-scroll">'+cabinHtml()+'</div><div class="legend"><span><i style="background:var(--biz)"></i>Business boş</span><span><i style="background:var(--seat)"></i>Ekonomi boş</span><span><i style="background:var(--occ);box-shadow:inset 0 0 0 1.5px #f3b4b4"></i>Dolu (üstü çizili)</span><span><i style="background:var(--blk)"></i>Bloke ✕</span><span><i style="background:var(--gold)"></i>#sıra asıl yolcu</span><span><i style="background:#f2b8bc"></i>+sıra refakatçi</span></div><p class="note">Seferler boş kabinle başlar. Dolu koltukları haritada işaretleyin: bir dokunuş dolu, iki dokunuş bloke, üç dokunuş tekrar boş. Koltuk ata her zaman en öndeki boş koltuktan başlar.</p></section>'+legal()}
+  '<section class="panel"><h2 class="h">KOLTUK HARİTASI<span class="sp"></span>'+'<button class="btn sm" data-a="demo" type="button">Örnek senaryo</button><button class="btn sm pri" data-a="ocrOpen" type="button">Fotoğraftan doldur</button>'+(OLAST&&OLAST.cur===D.cur?'<button class="btn sm" data-a="ocrLast" type="button">Okunanı göster</button>':'')+adm('<button class="btn sm" data-a="cabinCfg" type="button">Kabin düzeni</button>')+'</h2><div class="cabin-scroll">'+cabinHtml()+'</div><div class="legend"><span><i style="background:var(--biz)"></i>Business boş</span><span><i style="background:var(--seat)"></i>Ekonomi boş</span><span><i style="background:var(--occ);box-shadow:inset 0 0 0 1.5px #f3b4b4"></i>Dolu (üstü çizili)</span><span><i style="background:var(--blk)"></i>Bloke ✕</span><span><i style="background:var(--gold)"></i>#sıra asıl yolcu</span><span><i style="background:#f2b8bc"></i>+sıra refakatçi</span></div><p class="note">Seferler boş kabinle başlar. Dolu koltukları haritada işaretleyin: bir dokunuş dolu, iki dokunuş bloke, üç dokunuş tekrar boş. Koltuk ata her zaman en öndeki boş koltuktan başlar.</p></section>'+legal()}
 function segHtml(key,opts){return'<div class="seg">'+opts.map(([k,l])=>'<button type="button" data-a="seg" data-t="'+key+'" data-k="'+k+'" aria-pressed="'+(seg[key]===k)+'">'+l+'</button>').join('')+'</div>'}
 function personList(R,key){window['_pl_'+key]=R.list;return'<p class="note" style="margin:0 0 4px">'+R.n+' kayıt · rical sırasına göre</p>'+(R.list.map((x,i)=>'<button type="button" class="li" data-a="person" data-k="'+key+'" data-i="'+i+'">'+rkHtml(x.r,x.o)+'<span class="tx"><span class="nm">'+esc(x.n)+'</span><br><span class="ti">'+esc(x.t)+'</span>'+(x.u?'<div class="why y">Upgrade: '+esc(x.u)+'</div>':'')+noteLine(x.n)+'</span>'+tagsHtml(x)+'</button>').join('')||'<p class="empty">Bu aramayla eşleşen kayıt yok.</p>')+(R.n>R.list.length?'<div style="padding-top:10px"><button class="btn" data-a="more" data-k="'+key+'" type="button">Daha fazla göster</button></div>':'')}
 function riList(){return personList(find(q.ri,{corp:0,cat:riCat,limit:lim.ri}),'ri')}
@@ -706,8 +711,8 @@ function parseSeats(t){const c=cfg(),valid=new Set(range(1,c.last)),out=new Set(
   String(t||'').toUpperCase().replace(/[|]/g,' ').replace(/(^|[^A-Z0-9])([0-9OIlLS]{1,2})\s?([A-K])(?=[^A-Z0-9]|$)/g,(m,a,n,l)=>{const num=n.replace(/O/g,'0').replace(/[IL]/g,'1').replace(/S/g,'5');const k=parseInt(num,10)+l;if(valid.has(k))out.add(k);return m});
   return [...out].sort((a,b)=>parseInt(a)-parseInt(b)||a.localeCompare(b))}
 /* Renkli koltuk haritası (Quick Check-in "Koltuk Görünümü" gibi): okunabilen koltuk numaralarından ızgarayı hesaplar, her koltuğun rengine bakar. */
-const OCAT={koyu:'Gri / koyu zeminli · bloke',kirmizi:'Kırmızı yazılı · dolu / rezerve',sari:'Sarı yazılı · çıkış sırası, kısıtlı',mor:'Mor zeminli · seçili / özel',bos:'Siyah yazılı · boş'};
-const OCOL={koyu:'#3f4a5c',kirmizi:'#c62828',sari:'#e0a800',mor:'#8e24aa',bos:'#2e7d32'};
+const OCAT={mavi:'Mavi zemin · check-in yapılmış',gri:'Gri zemin · bloke',sari:'Sarı zemin · kısıtlı',mor:'Mor zemin · seçili / özel',bos:'Beyaz zemin · boş (check-in yok)'};
+const OCOL={mavi:'#1e5bd8',gri:'#6b7280',sari:'#e0a800',mor:'#8e24aa',bos:'#2e7d32'};
 let OGRID=null;
 function lsq(X,Y){const n=X[0].length,A=Array.from({length:n},()=>new Array(n+1).fill(0));X.forEach((r,i)=>{for(let a=0;a<n;a++){for(let b=0;b<n;b++)A[a][b]+=r[a]*r[b];A[a][n]+=r[a]*Y[i]}});
   for(let a=0;a<n;a++)A[a][a]+=1e-6;for(let c=0;c<n;c++){let p=c;for(let r=c+1;r<n;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;[A[c],A[p]]=[A[p],A[c]];const d=A[c][c]||1e-9;for(let r=0;r<n;r++){if(r===c)continue;const f=A[r][c]/d;for(let k=c;k<=n;k++)A[r][k]-=f*A[c][k]}}
@@ -739,12 +744,14 @@ function gridFit(words,img){const c=cfg(),L=[...new Set([...(c.el||['A','B','C',
   const F=S.map(o=>{const px=[];for(let yy=Math.round(o.y-hh);yy<o.y+hh;yy+=2)for(let xx=Math.round(o.x-hw);xx<o.x+hw;xx+=2){if(xx<0||yy<0||xx>=W||yy>=cv.height)continue;const i=(yy*W+xx)*4;px.push([P[i],P[i+1],P[i+2]])}
     if(!px.length)return{bgL:0};const lum=px.map(p=>p[0]+p[1]+p[2]),cut=lum.slice().sort((a,b)=>a-b)[lum.length>>1],bgp=px.filter((p,i)=>lum[i]>=cut);
     const med=j=>bgp.map(p=>p[j]).sort((a,b)=>a-b)[bgp.length>>1],bg=[med(0),med(1),med(2)],kk=bg.map(v=>Math.min(2.5,230/Math.max(1,v))),npx=px.map(p=>[p[0]*kk[0],p[1]*kk[1],p[2]*kk[2]]),ink=npx.filter(p=>Math.abs(p[0]-230)+Math.abs(p[1]-230)+Math.abs(p[2]-230)>70);
-    const fr=fn=>ink.length?ink.filter(fn).length/ink.length:0;
-    return{bg,bgL:(bg[0]+bg[1]+bg[2])/3,red:fr(p=>p[0]-p[1]>45&&p[0]-p[2]>35),yel:fr(p=>p[0]>130&&p[1]>110&&p[0]-p[2]>55)}});
-  const medL=(()=>{const t=F.map(f=>f.bgL).sort((a,b)=>a-b);return t[Math.floor(t.length*0.75)]})();
-  S.forEach((o,i)=>{const f=F[i],[r,g,b]=f.bg||[0,0,0];o.f=[+(f.red||0).toFixed(2),+(f.yel||0).toFixed(2),+(f.bgL/medL).toFixed(2)];o.c=(b>g*1.12&&r>g*1.06)?'mor':(b<0.72*Math.min(r,g)&&r>120)?'sari':f.bgL<0.86*medL?'koyu':(f.yel>0.08&&f.yel>f.red)?'sari':f.red>0.015?'kirmizi':'bos'});
+    const fr=fn=>ink.length?ink.filter(fn).length/ink.length:0,am=j=>px.map(p=>p[j]).sort((a,b)=>a-b)[px.length>>1],bd=[am(0),am(1),am(2)];
+    return{bg,bd,bdL:(bd[0]+bd[1]+bd[2])/3,bgL:(bg[0]+bg[1]+bg[2])/3,red:fr(p=>p[0]-p[1]>45&&p[0]-p[2]>35),yel:fr(p=>p[0]>130&&p[1]>110&&p[0]-p[2]>55)}});
+  const medL=(()=>{const t=F.map(f=>f.bdL||0).sort((a,b)=>a-b);return t[Math.floor(t.length*0.75)]})();
+  const refT=(()=>{const t=F.map(f=>f.bgL||0).sort((a,b)=>a-b);return t[Math.floor(t.length*0.75)]})();
+  S.forEach((o,i)=>{const f=F[i],[r,g,b]=f.bd||[0,0,0],L=(f.bdL||0)/medL,Lt=(f.bgL||0)/refT,sp=Math.max(r,g,b)-Math.min(r,g,b);o.f=[+L.toFixed(2),+Lt.toFixed(2),r,g,b];
+    o.c=(b>g*1.12&&r>g*1.06&&r>b*0.75)?'mor':(r>130&&g>110&&b<0.7*Math.min(r,g))?'sari':(L<0.92&&b>r+18&&b>=g-5)||L<0.45?'mavi':(L<0.88&&Lt<0.86&&sp<30)?'gri':'bos'});
   return{seats:S,anchors:an.length,img,sure}}
-const ocrCats=()=>{try{return JSON.parse(localStorage.getItem('rita-ocr-cat')||'null')||{koyu:1,kirmizi:1,sari:1,mor:1}}catch(e){return{koyu:1,kirmizi:1,sari:1,mor:1}}};
+const ocrCats=()=>{try{return JSON.parse(localStorage.getItem('rita-ocr-cat2')||'null')||{mavi:1,gri:1,sari:1,mor:1}}catch(e){return{mavi:1,gri:1,sari:1,mor:1}}};
 function gridSeats(){const C=ocrCats();return OGRID?OGRID.seats.filter(o=>o.c!=='bos'&&C[o.c]).map(o=>o.k):[]}
 function gridShow(){const G=OGRID,C=ocrCats(),cnt={};G.seats.forEach(o=>cnt[o.c]=(cnt[o.c]||0)+1);const L=gridSeats();
   const tot=range(1,cfg().last).length;let h='<p class="note" style="margin:8px 0 6px"><b>Renkli koltuk haritası algılandı.</b> '+G.seats.length+' koltuğun rengi okundu'+(G.seats.length<tot?' ('+(tot-G.seats.length)+' koltuk fotoğrafta görünmüyor; onlara dokunulmaz)':'')+'. Hangi renkler <b>dolu</b> sayılsın?</p><div style="display:grid;gap:6px">';
@@ -793,7 +800,16 @@ const A={
  ocrOpen(){if(!D.cur)return toast('Önce bir uçuş seçin');OGRID=null;if(window.RITA_STANDALONE)ocrWorker().catch(()=>{});sheet('<h2>Dolu koltukları fotoğraftan doldur</h2><p class="sub">'+esc(D.cur)+' · Check-in ekranının (TROYA) fotoğrafını çekin ya da yükleyin. Fotoğraf yalnızca bu cihazda okunur, hiçbir yere gönderilmez.</p>'+
   (window.RITA_STANDALONE?'<label class="btn pri" for="ocrf" style="display:inline-block;text-align:center;width:100%;padding:13px">📷 Fotoğraf çek / seç</label><input id="ocrf" type="file" accept="image/*" style="display:none"><p class="note" id="ocrp" style="margin:8px 0 0"></p>':'<p class="note">Fotoğraf okuma RITA sitesinde çalışır; burada metni yapıştırabilirsiniz.</p>')+
   '<label class="lbl" for="ocrt">Okunan metin (yapıştırabilir ya da düzeltebilirsiniz)</label><textarea class="field" id="ocrt" placeholder="Örn. 3A 3C 5D 12A 12B …"></textarea><div id="ocrr"></div>')},
- ocrApply(d){const L=OGRID?gridSeats():parseSeats($('ocrt').value);if(!L.length)return toast('İşaretlenecek koltuk yok');ocrAuto(L,OGRID?new Set(OGRID.seats.filter(o=>o.c==='koyu').map(o=>o.k)):null,OGRID?OGRID.seats.map(o=>o.k):(d.k==='set'?range(1,cfg().last):null))},
+ ocrApply(d){const L=OGRID?gridSeats():parseSeats($('ocrt').value);if(!L.length)return toast('İşaretlenecek koltuk yok');ocrAuto(L,OGRID?new Set(OGRID.seats.filter(o=>o.c==='gri').map(o=>o.k)):null,OGRID?OGRID.seats.map(o=>o.k):(d.k==='set'?range(1,cfg().last):null))},
+ demo(){const P=people(),find=n=>P.find(x=>x.n===n);
+  const key='ÖRNEK IST-ESB 18:00';D.FA=D.FA||{};D.FA[key]=Date.now();D.AC=D.AC||{};D.AC['ÖRNEK']={tip:'73H',ad:'Boeing 737-800',tarih:new Date().toISOString().slice(0,10),kaynak:'örnek'};
+  if(!D.F.includes(key))D.F.unshift(key);D.cur=key;delete D.C[key];
+  /* check-in'li (mavi) ve bloke (gri) koltuklar: örnek */
+  const S=D.S[key]={};['1A','1C','2D','5A','5B','5C','6D','6E','7A','8F','9B'].forEach(k=>S[k]=1);['10A','10B','10D','11A','11B','11C','11D','11E','11F'].forEach(k=>S[k]=2);
+  const L=[['Abdullah Gül',1],['Hakan Fidan',1],['Numan Kurtulmuş',2],['Mehmet Şimşek',1],['Selçuk Bayraktaroğlu',1],['Yaşar Güler',2],['Özgür Özel',1]].map(([n,pax])=>[find(n),pax]).filter(a=>a[0]);
+  const noUp=P.find(x=>!x.u&&!x.o&&x.r>=40&&x.r<300&&isActive(x.t));if(noUp)L.push([noUp,1]);
+  D.P[key]=L.slice(0,8).map(([x,pax],i)=>({key:norm(x.n),id:'d'+i+Date.now(),n:x.n,sub:x.t,rank:x.r||999,up:x.u||'',o:x.o||'',pax,t:Date.now()+i}));
+  tab='ucus';assign();save();render();toast('Örnek senaryo hazır: 8 rical yolcusu yerleştirildi')},
  ocrLast(){if(!OLAST||OLAST.cur!==D.cur)return toast('Bu uçuş için okunmuş fotoğraf yok');OGRID=OLAST.g;sheet('<h2>Okunan fotoğraf</h2><p class="sub">'+esc(D.cur)+' · Renkleri kontrol edin; değiştirirseniz yeniden uygulayın.</p><div id="ocrr"></div>');gridShow()},
  async htAdd(){const v=($('htn').value||'').toUpperCase().replace(/\s/g,'');if(!/^[A-Z]{3}-[A-Z]{3}$/.test(v))return toast('Hat kodunu IST-ADB biçiminde yazın');if(hatlar().includes(v))return toast('Bu hat zaten takipte');
   if(!HTH)return toast('Ortak kayıt yok');try{if(!Object.keys(HT).length&&!(RSTORE&&RSTORE.hatlar))await HTH.doc('IST-ESB').set({eklendi:new Date().toISOString().slice(0,10)});await HTH.doc(v).set({eklendi:new Date().toISOString().slice(0,10)})}catch(e){return toast(window.RITA_STANDALONE&&!ghTok()?'Önce Yönetim → Ortak kayıt anahtarı girin':'Kaydedilemedi')}
@@ -888,11 +904,11 @@ document.addEventListener('change',async e=>{if(e.target.id!=='ocrf'||!e.target.
       const r=await w.recognize(g);return r.data.words.map(x=>({text:x.text,bbox:{x0:x.bbox.x0/sc,x1:x.bbox.x1/sc,y0:x.bbox.y0/sc,y1:x.bbox.y1/sc}}))};
     await w.setParameters({tessedit_pageseg_mode:'11',tessedit_char_whitelist:'0123456789ABCDEFGHJK'});pe.textContent='Koltuk haritası okunuyor…';
     const words=(await pass(0)).concat(await pass(1));OGRID=gridFit(words,img);
-    if(OGRID){OLAST={g:OGRID,cur:D.cur};if(OGRID.sure){const L=gridSeats(),blk=new Set(OGRID.seats.filter(o=>o.c==='koyu').map(o=>o.k));ocrAuto(L,blk,OGRID.seats.map(o=>o.k));return}
+    if(OGRID){OLAST={g:OGRID,cur:D.cur};if(OGRID.sure){const L=gridSeats(),blk=new Set(OGRID.seats.filter(o=>o.c==='gri').map(o=>o.k));ocrAuto(L,blk,OGRID.seats.map(o=>o.k));return}
       $('ocrt').value='';pe.innerHTML='<b style="color:var(--bad)">Fotoğraf yeterince net değil.</b> Aşağıdaki noktaları kontrol edin; doğruysa uygulayın, değilse daha yakından ve düz yeniden çekin.';ocrShow();return}
     await w.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});const r=await w.recognize(cv);$('ocrt').value=r.data.text;const L=parseSeats(r.data.text),tot=range(1,cfg().last).length;
     if(L.length&&L.length<0.85*tot){ocrAuto(L,null);return}pe.textContent=L.length?'Neredeyse tüm koltuklar okundu; bu bir koltuk haritası olabilir. Kontrol edip uygulayın.':'Koltuk bulunamadı. Fotoğrafı daha yakından ve düz çekin.';ocrShow()}catch(err){pe.textContent='Fotoğraf okunamadı. Tekrar deneyin ya da metni elle yazın.'}});
-addEventListener('input',e=>{if(e.target.id==='ocrt'){OGRID=null;ocrShow();return}if(e.target.dataset&&e.target.dataset.ocat){const C=ocrCats();C[e.target.dataset.ocat]=e.target.checked?1:0;try{localStorage.setItem('rita-ocr-cat',JSON.stringify(C))}catch(x){}gridShow();return}if(e.target.id==='flq'){flFind(e.target.value);return}const k=e.target.dataset&&e.target.dataset.q;if(!k)return;q[k]=e.target.value;
+addEventListener('input',e=>{if(e.target.id==='ocrt'){OGRID=null;ocrShow();return}if(e.target.dataset&&e.target.dataset.ocat){const C=ocrCats();C[e.target.dataset.ocat]=e.target.checked?1:0;try{localStorage.setItem('rita-ocr-cat2',JSON.stringify(C))}catch(x){}gridShow();return}if(e.target.id==='flq'){flFind(e.target.value);return}const k=e.target.dataset&&e.target.dataset.q;if(!k)return;q[k]=e.target.value;
   if(k==='add')$('res').innerHTML=resHtml();else if(k==='ri'){lim.ri=60;$('list-ri').innerHTML=riList()}else if(k==='ku'){lim.ku=60;$('list-ku').innerHTML=kuList()}else if(k==='rl')$('list-rl').innerHTML=rlList();else if(k==='up')$('list-up').innerHTML=upList();else if(k==='nt')$('list-nt').innerHTML=ntList();else if(k==='km')$('list-km').innerHTML=kmList();else if(k==='c9')$('list-c9').innerHTML=c9Body()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('veil').hidden)closeSheet()});
 
