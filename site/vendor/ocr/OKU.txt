@@ -1,0 +1,2 @@
+Tesseract.js 5.1.1 ve tesseract.js-core 5.1.1 (Apache-2.0), eng.traineddata (tessdata, Apache-2.0).
+Fotoğraf okuma tamamen cihazda yapılır.
