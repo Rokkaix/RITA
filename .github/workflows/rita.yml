@@ -11,6 +11,10 @@ on:
         description: 'Resmî Gazete için denenecek günler (YYYYMMDD, boşlukla)'
         required: false
         default: ''
+      rg_yaz:
+        description: 'Günleri gerçekten işle (evet) ya da yalnız dene (boş)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -44,7 +48,7 @@ jobs:
           if [ $(( 10#$(date -u +%H) % 2 )) -eq 1 ] && [ $(( 10#$(date -u +%M) )) -lt 30 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             pip install --quiet pypdf
             sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-tur poppler-utils >/dev/null
-            RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_gunler }}" python tools/resmi_gazete.py
+            RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_yaz != 'evet' && github.event.inputs.rg_gunler || '' }}" python tools/resmi_gazete.py
           fi
       - name: Kaydet
         run: |
@@ -59,7 +63,7 @@ jobs:
               cp data/ucuslar.json /tmp/u.json; [ -f data/tbmm.json ] && cp data/tbmm.json /tmp/t.json
               git fetch origin "$GITHUB_REF_NAME" && git reset --hard "origin/$GITHUB_REF_NAME"
               cp /tmp/u.json data/ucuslar.json; [ -f /tmp/t.json ] && cp /tmp/t.json data/tbmm.json
-              RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_gunler }}" python tools/resmi_gazete.py || true
+              RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_yaz != 'evet' && github.event.inputs.rg_gunler || '' }}" python tools/resmi_gazete.py || true
               git add data/ucuslar.json data/tbmm.json data/rita-veri.json
               git commit -m "Canlı veri $(TZ=Europe/Istanbul date '+%F %H:%M')" || true
             fi
