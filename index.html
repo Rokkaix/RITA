@@ -194,6 +194,7 @@ button.seatbadge{border:0;cursor:pointer}
 span.seat{display:inline-flex;align-items:center;justify-content:center}
 .flfind{display:flex;gap:8px;align-items:center;margin-top:10px}
 .flfind .field{font-family:var(--mono);text-transform:uppercase}
+.flfind .field::placeholder{text-transform:none;font-family:var(--ui);color:#9aa6b8}
 .acline{display:flex;gap:10px;align-items:center;margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--navy);color:#fff}
 .acline svg{width:22px;height:22px;flex:none}
 .acline b{display:block;font-size:15px}
@@ -524,7 +525,7 @@ function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 clas
   const c=cfg(),n=counts();
   $('view').innerHTML=
   '<section class="panel"><h2 class="h">SEFER<span class="sp"></span>'+adm('<button class="btn sm" data-a="flightAdd" type="button">+ Sefer</button>')+'</h2><div class="strip">'+D.F.map(f=>{const a=f.split(' '),t=acOf(f);return'<button type="button" class="fchip" data-a="flight" data-f="'+esc(f)+'" aria-pressed="'+(f===D.cur)+'"><b>'+esc(a[a.length-1])+'</b><span>'+esc(a[0])+'</span>'+(t?'<span class="ac">'+esc(t.tip)+'</span>':'')+'</button>'}).join('')+'</div>'+
-  '<div class="flfind"><input class="field" id="flq" placeholder="Sefer no: TK2122" autocomplete="off" aria-label="Sefer numarası ile ara"></div><div class="note" id="flmsg" style="margin-top:6px"></div>'+acLine()+
+  '<div class="flfind"><input class="field" id="flq" placeholder="Sefer numarası ile ara (örn. 2122)" autocomplete="off" aria-label="Sefer numarası ile ara"></div><div class="note" id="flmsg" style="margin-top:6px"></div>'+acLine()+
   '<div class="stats" style="margin-top:10px"><div class="stat"><b>'+n.bf+'/'+n.bt+'</b><span>Business boş</span></div><div class="stat"><b>'+n.ef+'/'+n.et+'</b><span>Ekonomi boş</span></div><div class="stat"><b>'+ppl().reduce((s,p)=>s+(p.pax||1),0)+'</b><span>Listedeki kişi</span></div></div></section>'+
   '<section class="panel"><h2 class="h">YOLCU EKLE</h2><input class="field" id="q-add" data-q="add" placeholder="İsim, unvan veya kurum yazın" value="'+esc(q.add)+'" autocomplete="off"><div id="res">'+resHtml()+'</div><p class="note">Türkçe/İngilizce harf fark etmez. <button class="btn sm" data-a="manual" type="button">Listede yok, elle ekle</button></p></section>'+
   '<section class="panel"><h2 class="h">RİCAL SIRASI VE KOLTUKLAR</h2><div id="pax">'+paxHtml()+'</div><div class="row-btns" style="margin-top:12px"><button class="btn gold" data-a="assign" type="button">Koltuk ata</button><button class="btn" data-a="copy" type="button">Özeti kopyala</button><button class="btn dng" data-a="clearAll" type="button">Listeyi temizle</button></div><p class="note">Liste rical sırasındadır: en üstte en yüksek rical. Business ve ekonomi ayrı ayrı, en önden başlayarak ve boşluk bırakmadan doldurulur (1A, 1C, 1D, 1F, 2A…; ekonomide 5A, 5B, 5C…). Ailesiyle uçan yolcunun kişi sayısını artırın. ▲ ▼ ile sırayı elle değiştirin. İki yolcunun yerini değiştirmek için önce birinin koltuğuna, sonra diğerininkine dokunun.</p></section>'+
