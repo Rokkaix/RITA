@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-16T12:23:54.918Z",
+ "guncelleme": "2026-11-16T12:24:03.883Z",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -438,7 +438,7 @@
    "yeni": "Özgür Bayraktar",
    "sebep": "İzzet Ulvi Yönter 27.03.2026 tarihinde istifa etti; görev 30.03.2026 tarihinde Özgür Bayraktar'a verildi",
    "kaynak": "MHP açıklaması 30.03.2026 (Bengütürk, TGRT Haber)",
-   "durum": "beklemede",
+   "durum": "uygulandi",
    "ekleyen": "claude",
    "r": 0
   }
