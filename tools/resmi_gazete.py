@@ -109,6 +109,11 @@ def main():
                       'sebep': 'Resmî Gazete atama kararı' + (f' ({kno})' if kno else ''), 'kaynak': f'Resmî Gazete {d[6:]}.{d[4:6]}.{d[:4]} · {url}',
                       'durum': 'beklemede', 'ekleyen': 'resmi-gazete', 'r': 0}
             yeni += 1
+    if os.environ.get('RG_KURU'):
+        for k, v in C.items():
+            if v.get('ekleyen') == 'resmi-gazete' and k.startswith('rg-'): pass
+        print('Kuru deneme: dosyaya yazılmadı. Bulunanlar:'); [print('  ', v['tarih'], v['tur'], v['makam'], '|', v['eski'], '->', v['yeni']) for k, v in C.items() if v.get('ekleyen') == 'resmi-gazete']
+        return
     if yeni:
         V['guncelleme'] = datetime.datetime.now(TR).isoformat(timespec='seconds')
         json.dump(V, open(VERI, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

@@ -43,7 +43,7 @@ jobs:
         run: |
           if [ $(( 10#$(date -u +%H) % 2 )) -eq 1 ] && [ $(( 10#$(date -u +%M) )) -lt 30 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             pip install --quiet pypdf
-            RG_GUNLER="${{ github.event.inputs.rg_gunler }}" python tools/resmi_gazete.py
+            RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_gunler }}" python tools/resmi_gazete.py
           fi
       - name: Kaydet
         run: |
