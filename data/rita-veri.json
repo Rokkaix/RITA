@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-16T12:23:18.532Z",
+ "guncelleme": "2026-11-16T12:23:44.712Z",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -414,7 +414,7 @@
    "yeni": "Muhsin Atcı",
    "sebep": "Mahmut Sütcü görevden alındı; Vergi Denetim Kurulu Başkanı Muhsin Atcı SPK Başkanlığına atandı",
    "kaynak": "Resmî Gazete 01.11.2026, sayı 33417 (NTV, CNBC-e, Habertürk)",
-   "durum": "beklemede",
+   "durum": "uygulandi",
    "ekleyen": "claude",
    "r": 0
   },
