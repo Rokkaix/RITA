@@ -704,7 +704,48 @@ function ocrPrep(img){const W=Math.min(2600,Math.max(1400,img.naturalWidth)),sc=
 function parseSeats(t){const c=cfg(),valid=new Set(range(1,c.last)),out=new Set();
   String(t||'').toUpperCase().replace(/[|]/g,' ').replace(/(^|[^A-Z0-9])([0-9OIlLS]{1,2})\s?([A-K])(?=[^A-Z0-9]|$)/g,(m,a,n,l)=>{const num=n.replace(/O/g,'0').replace(/[IL]/g,'1').replace(/S/g,'5');const k=parseInt(num,10)+l;if(valid.has(k))out.add(k);return m});
   return [...out].sort((a,b)=>parseInt(a)-parseInt(b)||a.localeCompare(b))}
-function ocrShow(){const t=$('ocrt').value,L=parseSeats(t),S=seats();$('ocrr').innerHTML=L.length?'<p class="note" style="margin:8px 0 6px"><b>'+L.length+' dolu koltuk bulundu.</b> Haritada kontrol edip yanlışları dokunarak düzeltebilirsiniz.</p><div class="chips wrap">'+L.map(k=>'<span class="chip" style="font-family:var(--mono)'+(S[k]?';opacity:.55':'')+'">'+k+'</span>').join('')+'</div><div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="ocrApply" data-k="add" type="button">Dolu olarak işaretle</button><button class="btn" data-a="ocrApply" data-k="set" type="button">Haritayı sıfırla ve işaretle</button></div>':'<p class="note" style="margin:8px 0 0">Koltuk numarası bulunamadı. Fotoğrafı daha yakından ve düz çekin ya da metni aşağıdan düzeltin.</p>'}
+/* Renkli koltuk haritası (Quick Check-in "Koltuk Görünümü" gibi): okunabilen koltuk numaralarından ızgarayı hesaplar, her koltuğun rengine bakar. */
+const OCAT={koyu:'Gri / koyu zeminli',kirmizi:'Kırmızı yazılı',sari:'Sarı yazılı',mor:'Mor zeminli',bos:'Siyah yazılı (boş)'};
+const OCOL={koyu:'#3f4a5c',kirmizi:'#c62828',sari:'#e0a800',mor:'#8e24aa',bos:'#2e7d32'};
+let OGRID=null;
+function lsq(X,Y){const n=X[0].length,A=Array.from({length:n},()=>new Array(n+1).fill(0));X.forEach((r,i)=>{for(let a=0;a<n;a++){for(let b=0;b<n;b++)A[a][b]+=r[a]*r[b];A[a][n]+=r[a]*Y[i]}});
+  for(let a=0;a<n;a++)A[a][a]+=1e-6;for(let c=0;c<n;c++){let p=c;for(let r=c+1;r<n;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;[A[c],A[p]]=[A[p],A[c]];const d=A[c][c]||1e-9;for(let r=0;r<n;r++){if(r===c)continue;const f=A[r][c]/d;for(let k=c;k<=n;k++)A[r][k]-=f*A[c][k]}}
+  return A.map((r,i)=>r[n]/(r[i]||1e-9))}
+const dotp=(a,b)=>a.reduce((t,x,i)=>t+x*b[i],0);
+function gridFit(words,img){const c=cfg(),L=[...new Set([...(c.el||['A','B','C','D','E','F']),...(c.bl||[])])].sort(),valid=new Set(range(1,c.last));
+  let an=words.map(w=>{const t=String(w.text).toUpperCase().replace(/O/g,'0');const m=t.match(/^0?(\d{1,2})([A-K])$/);if(!m)return null;const k=parseInt(m[1],10)+m[2];if(!valid.has(k))return null;
+    return{v:parseInt(m[1],10),l:m[2],x:(w.bbox.x0+w.bbox.x1)/2,y:(w.bbox.y0+w.bbox.y1)/2,w:w.bbox.x1-w.bbox.x0,h:w.bbox.y1-w.bbox.y0}}).filter(Boolean);
+  const md=A=>{const t=A.slice().sort((a,b)=>a-b);return t[t.length>>1]};if(an.length<10)return null;
+  {const h0=md(an.map(a=>a.h)),w0=md(an.map(a=>a.w)),sl=[];for(let i=0;i<an.length;i++)for(let j=i+1;j<an.length;j++)if(an[i].v!==an[j].v)sl.push((an[j].y-an[i].y)/(an[j].v-an[i].v));
+   const bs=md(sl),as=md(an.map(q=>q.y-bs*q.v));let A2=an.filter(q=>Math.abs(q.y-(as+bs*q.v))<2.5*h0);
+   const byL={};A2.forEach(q=>(byL[q.l]=byL[q.l]||[]).push(q.x));const mx={};Object.keys(byL).forEach(l=>mx[l]=md(byL[l]));an=A2.filter(q=>Math.abs(q.x-mx[q.l])<1.2*w0)}
+  if(an.length<10||new Set(an.map(a=>a.v)).size<4||new Set(an.map(a=>a.l)).size<3)return null;
+  const dx=(v,l)=>{const u=L.indexOf(l),s=v>c.biz?1:0;return L.map((_,i)=>i===u?1:0).concat([v,s,v*u,v*v/10])},dy=(v,l)=>{const u=L.indexOf(l),s=v>c.biz?1:0;return[1,v,s,u,u*v,v*v/10]};
+  const fit=(f,key)=>{let K=an.slice(),cf=null;for(let it=0;it<4;it++){cf=lsq(K.map(a=>f(a.v,a.l)),K.map(a=>a[key]));const res=an.map(a=>Math.abs(dotp(f(a.v,a.l),cf)-a[key])),srt=res.slice().sort((a,b)=>a-b),thr=Math.max(6,3*srt[srt.length>>1]);K=an.filter((a,i)=>res[i]<thr);if(K.length<8)break}return{cf,K}};
+  const fx=fit(dx,'x'),fy=fit(dy,'y');const mh=an.map(a=>a.h).sort((a,b)=>a-b)[an.length>>1],mw=an.map(a=>a.w).sort((a,b)=>a-b)[an.length>>1];
+  const err=an.map(a=>Math.hypot(dotp(dx(a.v,a.l),fx.cf)-a.x,dotp(dy(a.v,a.l),fy.cf)-a.y)).sort((a,b)=>a-b)[an.length>>1];if(err>0.6*mh)return null;
+  const cv=document.createElement('canvas');cv.width=img.naturalWidth;cv.height=img.naturalHeight;const x=cv.getContext('2d');x.drawImage(img,0,0);const P=x.getImageData(0,0,cv.width,cv.height).data,W=cv.width;
+  const S=range(1,c.last).map(k=>{const v=parseInt(k,10),l=k.replace(/\d+/,'');return{k,x:dotp(dx(v,l),fx.cf),y:dotp(dy(v,l),fy.cf)}});
+  const hw=Math.max(6,mw*0.75),hh=Math.max(4,mh*0.7);
+  const F=S.map(o=>{const px=[];for(let yy=Math.round(o.y-hh);yy<o.y+hh;yy+=2)for(let xx=Math.round(o.x-hw);xx<o.x+hw;xx+=2){if(xx<0||yy<0||xx>=W||yy>=cv.height)continue;const i=(yy*W+xx)*4;px.push([P[i],P[i+1],P[i+2]])}
+    if(!px.length)return{bgL:0};const lum=px.map(p=>p[0]+p[1]+p[2]),cut=lum.slice().sort((a,b)=>a-b)[lum.length>>1],bgp=px.filter((p,i)=>lum[i]>=cut);
+    const med=j=>bgp.map(p=>p[j]).sort((a,b)=>a-b)[bgp.length>>1],bg=[med(0),med(1),med(2)],ink=px.filter(p=>Math.abs(p[0]-bg[0])+Math.abs(p[1]-bg[1])+Math.abs(p[2]-bg[2])>70);
+    const fr=fn=>ink.length?ink.filter(fn).length/ink.length:0;
+    return{bg,bgL:(bg[0]+bg[1]+bg[2])/3,red:fr(p=>p[0]-p[1]>45&&p[0]-p[2]>35),yel:fr(p=>p[0]>130&&p[1]>110&&p[0]-p[2]>55)}});
+  const medL=md(F.map(f=>f.bgL));
+  S.forEach((o,i)=>{const f=F[i],[r,g,b]=f.bg||[0,0,0];o.c=(b>g+25&&r>g+15)?'mor':f.bgL<0.8*medL?'koyu':(f.yel>0.15&&f.yel>f.red)?'sari':f.red>0.06?'kirmizi':'bos'});
+  return{seats:S,anchors:an.length,img}}
+const ocrCats=()=>{try{return JSON.parse(localStorage.getItem('rita-ocr-cat')||'null')||{koyu:1,kirmizi:1,sari:1,mor:1}}catch(e){return{koyu:1,kirmizi:1,sari:1,mor:1}}};
+function gridSeats(){const C=ocrCats();return OGRID?OGRID.seats.filter(o=>o.c!=='bos'&&C[o.c]).map(o=>o.k):[]}
+function gridShow(){const G=OGRID,C=ocrCats(),cnt={};G.seats.forEach(o=>cnt[o.c]=(cnt[o.c]||0)+1);const L=gridSeats();
+  let h='<p class="note" style="margin:8px 0 6px"><b>Renkli koltuk haritası algılandı.</b> '+G.seats.length+' koltuğun rengi okundu. Hangi renkler <b>dolu</b> sayılsın?</p><div style="display:grid;gap:6px">';
+  Object.keys(OCAT).forEach(c=>{if(!cnt[c])return;h+=c==='bos'?'<div class="note" style="margin:0"><i style="display:inline-block;width:12px;height:12px;border-radius:3px;background:'+OCOL[c]+';vertical-align:-1px;margin-right:6px"></i>'+OCAT[c]+' · '+cnt[c]+'</div>':'<label style="display:flex;gap:8px;align-items:center;font-size:14px"><input type="checkbox" data-ocat="'+c+'" '+(C[c]?'checked':'')+'><i style="display:inline-block;width:12px;height:12px;border-radius:3px;background:'+OCOL[c]+'"></i>'+OCAT[c]+' · <b>'+cnt[c]+'</b></label>'});
+  h+='</div><canvas id="ocrv" style="width:100%;margin-top:10px;border-radius:10px;border:1px solid var(--line)"></canvas>';
+  h+='<p class="note" style="margin:8px 0 0"><b>'+L.length+' koltuk dolu sayılacak.</b> Fotoğraftaki noktalar okunan rengi gösterir; yanlış olanları sonra haritada dokunarak düzeltebilirsiniz.</p><div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="ocrApply" data-k="add" type="button">Dolu olarak işaretle</button><button class="btn" data-a="ocrApply" data-k="set" type="button">Haritayı sıfırla ve işaretle</button></div>';
+  $('ocrr').innerHTML=h;const cv=$('ocrv'),xs=G.seats.map(o=>o.x),ys=G.seats.map(o=>o.y),pad=40,x0=Math.max(0,Math.min(...xs)-pad),y0=Math.max(0,Math.min(...ys)-pad),x1=Math.min(G.img.naturalWidth,Math.max(...xs)+pad),y1=Math.min(G.img.naturalHeight,Math.max(...ys)+pad),sc=Math.min(1,700/(x1-x0));
+  cv.width=Math.round((x1-x0)*sc);cv.height=Math.round((y1-y0)*sc);const x=cv.getContext('2d');x.drawImage(G.img,x0,y0,x1-x0,y1-y0,0,0,cv.width,cv.height);
+  G.seats.forEach(o=>{x.beginPath();x.arc((o.x-x0)*sc,(o.y-y0)*sc,Math.max(4,6*sc*2),0,7);x.lineWidth=3;x.strokeStyle=OCOL[o.c];x.stroke()})}
+function ocrShow(){if(OGRID)return gridShow();const t=$('ocrt').value,L=parseSeats(t),S=seats();$('ocrr').innerHTML=L.length?'<p class="note" style="margin:8px 0 6px"><b>'+L.length+' dolu koltuk bulundu.</b> Haritada kontrol edip yanlışları dokunarak düzeltebilirsiniz.</p><div class="chips wrap">'+L.map(k=>'<span class="chip" style="font-family:var(--mono)'+(S[k]?';opacity:.55':'')+'">'+k+'</span>').join('')+'</div><div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="ocrApply" data-k="add" type="button">Dolu olarak işaretle</button><button class="btn" data-a="ocrApply" data-k="set" type="button">Haritayı sıfırla ve işaretle</button></div>':'<p class="note" style="margin:8px 0 0">Koltuk numarası bulunamadı. Fotoğrafı daha yakından ve düz çekin ya da metni aşağıdan düzeltin.</p>'}
 /* ---------- eylemler ---------- */
 const ADMIN_ONLY=new Set(['htAdd','htDel','ghSave','ghDel','ttEdit','ttSave','ttReset','sfApply','sfIgnore','chNew','chSave','chApply','chIgnore','kmSave','c9new','c9save','c9del','noteEdit','noteNew','noteSave','noteDel','flightAdd','flightSave','flightDel','cabinCfg','cabinSave','cabinEmpty','cabinSample','personNew','personEdit','personSave','personDel','ri','riSave','riDel','riNew','riAdd','upItem','upDel','upNew','upAdd','eqDel','secSave','backup','restore','restoreDo','reset','resetDo']);
 const A={
@@ -735,10 +776,10 @@ const A={
  async chSave(){const v=i=>($(i).value||'').trim(),c={tarih:v('ch-d'),tur:v('ch-t'),makam:v('ch-m'),eski:v('ch-e'),yeni:v('ch-y'),r:+v('ch-r')||0,sebep:v('ch-s'),kaynak:v('ch-k'),durum:'uygulandi',ekleyen:'yonetici',id:'l'+Date.now()};
    if(!c.makam||(!c.eski&&!c.yeni))return toast('Makam ve en az bir kişi gerekli');applyCh(c);const shared=await chSaveRow(c);closeSheet();render();toast('Değişiklik uygulandı'+(shared?' · tüm cihazlara iletildi':''))},
  hatF(d){window._hf=d.k||'';if(!fOK(D.cur)){const f=D.F.find(fOK);if(f){D.cur=f;save()}}render()},
- ocrOpen(){if(!D.cur)return toast('Önce bir uçuş seçin');sheet('<h2>Dolu koltukları fotoğraftan doldur</h2><p class="sub">'+esc(D.cur)+' · Check-in ekranının (TROYA) fotoğrafını çekin ya da yükleyin. Fotoğraf yalnızca bu cihazda okunur, hiçbir yere gönderilmez.</p>'+
+ ocrOpen(){if(!D.cur)return toast('Önce bir uçuş seçin');OGRID=null;sheet('<h2>Dolu koltukları fotoğraftan doldur</h2><p class="sub">'+esc(D.cur)+' · Check-in ekranının (TROYA) fotoğrafını çekin ya da yükleyin. Fotoğraf yalnızca bu cihazda okunur, hiçbir yere gönderilmez.</p>'+
   (window.RITA_STANDALONE?'<label class="btn pri" for="ocrf" style="display:inline-block;text-align:center;width:100%;padding:13px">📷 Fotoğraf çek / seç</label><input id="ocrf" type="file" accept="image/*" style="display:none"><p class="note" id="ocrp" style="margin:8px 0 0"></p>':'<p class="note">Fotoğraf okuma RITA sitesinde çalışır; burada metni yapıştırabilirsiniz.</p>')+
   '<label class="lbl" for="ocrt">Okunan metin (yapıştırabilir ya da düzeltebilirsiniz)</label><textarea class="field" id="ocrt" placeholder="Örn. 3A 3C 5D 12A 12B …"></textarea><div id="ocrr"></div>')},
- ocrApply(d){const L=parseSeats($('ocrt').value);if(!L.length)return toast('İşaretlenecek koltuk yok');if(d.k==='set')D.S[D.cur]={};const S=seats();L.forEach(k=>{if(!S[k])S[k]=1});reassign();save();closeSheet();render();toast(L.length+' koltuk dolu olarak işaretlendi')},
+ ocrApply(d){const L=OGRID?gridSeats():parseSeats($('ocrt').value);if(!L.length)return toast('İşaretlenecek koltuk yok');if(d.k==='set')D.S[D.cur]={};const S=seats();L.forEach(k=>{if(!S[k])S[k]=1});reassign();save();closeSheet();render();toast(L.length+' koltuk dolu olarak işaretlendi')},
  async htAdd(){const v=($('htn').value||'').toUpperCase().replace(/\s/g,'');if(!/^[A-Z]{3}-[A-Z]{3}$/.test(v))return toast('Hat kodunu IST-ADB biçiminde yazın');if(hatlar().includes(v))return toast('Bu hat zaten takipte');
   if(!HTH)return toast('Ortak kayıt yok');try{if(!Object.keys(HT).length&&!(RSTORE&&RSTORE.hatlar))await HTH.doc('IST-ESB').set({eklendi:new Date().toISOString().slice(0,10)});await HTH.doc(v).set({eklendi:new Date().toISOString().slice(0,10)})}catch(e){return toast(window.RITA_STANDALONE&&!ghTok()?'Önce Yönetim → Ortak kayıt anahtarı girin':'Kaydedilemedi')}
   render();toast(hatAd(v)+' takibe alındı; yarın sabahki taramada gelir')},
@@ -826,8 +867,13 @@ document.addEventListener('change',e=>{if(e.target.id==='f-o'&&$('f-rk')){const 
 document.addEventListener('change',async e=>{if(e.target.id!=='ocrf'||!e.target.files||!e.target.files[0])return;const pe=$('ocrp'),file=e.target.files[0];
   try{pe.textContent='Fotoğraf hazırlanıyor…';const url=URL.createObjectURL(file),img=new Image();await new Promise((ok,no)=>{img.onload=ok;img.onerror=no;img.src=url});const cv=ocrPrep(img);URL.revokeObjectURL(url);
     pe.textContent='Okuma aracı yükleniyor… (ilk seferde biraz sürer)';const w=await ocrWorker(m=>{if(m.status==='recognizing text')pe.textContent='Okunuyor… %'+Math.round(m.progress*100)});
-    const r=await w.recognize(cv);$('ocrt').value=r.data.text;pe.textContent='Okundu. Bulunan koltukları kontrol edin.';ocrShow()}catch(err){pe.textContent='Fotoğraf okunamadı. Tekrar deneyin ya da metni elle yazın.'}});
-addEventListener('input',e=>{if(e.target.id==='ocrt'){ocrShow();return}if(e.target.id==='flq'){flFind(e.target.value);return}const k=e.target.dataset&&e.target.dataset.q;if(!k)return;q[k]=e.target.value;
+    const sc=Math.min(1.6,3000/Math.max(img.naturalWidth,img.naturalHeight)),g=document.createElement('canvas');g.width=Math.round(img.naturalWidth*sc);g.height=Math.round(img.naturalHeight*sc);const gx=g.getContext('2d');gx.drawImage(img,0,0,g.width,g.height);
+    const gd=gx.getImageData(0,0,g.width,g.height),q=gd.data;for(let i=0;i<q.length;i+=4){const m=Math.min(q[i],q[i+1],q[i+2]);q[i]=q[i+1]=q[i+2]=m}gx.putImageData(gd,0,0);
+    await w.setParameters({tessedit_pageseg_mode:'11',tessedit_char_whitelist:'0123456789ABCDEFGHJK'});const r1=await w.recognize(g);
+    const words=r1.data.words.map(x=>({text:x.text,bbox:{x0:x.bbox.x0/sc,x1:x.bbox.x1/sc,y0:x.bbox.y0/sc,y1:x.bbox.y1/sc}}));OGRID=gridFit(words,img);
+    if(OGRID){$('ocrt').value='';pe.textContent='Okundu. Renkleri ve dolu sayılacak koltukları kontrol edin.';ocrShow();return}
+    await w.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});const r=await w.recognize(cv);$('ocrt').value=r.data.text;pe.textContent='Okundu. Bulunan koltukları kontrol edin.';ocrShow()}catch(err){pe.textContent='Fotoğraf okunamadı. Tekrar deneyin ya da metni elle yazın.'}});
+addEventListener('input',e=>{if(e.target.id==='ocrt'){OGRID=null;ocrShow();return}if(e.target.dataset&&e.target.dataset.ocat){const C=ocrCats();C[e.target.dataset.ocat]=e.target.checked?1:0;try{localStorage.setItem('rita-ocr-cat',JSON.stringify(C))}catch(x){}gridShow();return}if(e.target.id==='flq'){flFind(e.target.value);return}const k=e.target.dataset&&e.target.dataset.q;if(!k)return;q[k]=e.target.value;
   if(k==='add')$('res').innerHTML=resHtml();else if(k==='ri'){lim.ri=60;$('list-ri').innerHTML=riList()}else if(k==='ku'){lim.ku=60;$('list-ku').innerHTML=kuList()}else if(k==='rl')$('list-rl').innerHTML=rlList();else if(k==='up')$('list-up').innerHTML=upList();else if(k==='nt')$('list-nt').innerHTML=ntList();else if(k==='km')$('list-km').innerHTML=kmList();else if(k==='c9')$('list-c9').innerHTML=c9Body()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('veil').hidden)closeSheet()});
 
