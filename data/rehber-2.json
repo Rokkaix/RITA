@@ -1,0 +1,227 @@
+{
+"id": "rh-2026-11-16b",
+"tarih": "2026-11-16",
+"kaynaklar": {
+"Kabine": "tccb.gov.tr/kabine",
+"Milletvekili": "tbmm.gov.tr/milletvekili/AllList",
+"Vali": "icisleri.gov.tr/valilikler",
+"Kaymakam": "icisleri.gov.tr il detayları",
+"Cumhurbaşkanı ailesi": "kamuya açık bilgiler",
+"Yüksek yargı": "yargitay.gov.tr, danistay.gov.tr",
+"Protokol 2. sayfa": "sayistay.gov.tr, ysk.gov.tr, kurum duyuruları ve haberler",
+"Rektör": "tr.wikipedia.org üniversite bilgi kutuları (yalnız eksikler)",
+"Belediye Başkanı": "tr.wikipedia.org belediye bilgi kutuları + haber kaynakları (Mersin, Tokat)"
+},
+"rs2": 1,
+"ekle": [
+{
+"n": "Orhan Aydın",
+"t": "Türkiye Bilimsel ve Teknolojik Araştırma Kurumu (TÜBİTAK) Başkanı",
+"r": 66,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Volkan Mutlu Coşkun",
+"t": "Meteoroloji Genel Müdürü",
+"r": 88,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Sinan Aksu",
+"t": "Vakıflar Genel Müdürü",
+"r": 89,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Hakan Gedikli",
+"t": "Tapu ve Kadastro Genel Müdürü · doğrulayın",
+"r": 90,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Orhan Yaşa",
+"t": "Sayıştay Başkan Yardımcısı · Sayıştay Üyesi",
+"r": 63,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Ahmet Tezcan",
+"t": "Sayıştay Başkan Yardımcısı · Sayıştay Üyesi",
+"r": 63,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Nurullah Bodur",
+"t": "Yüksek Seçim Kurulu Üyesi",
+"r": 68,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Nedret Engin",
+"t": "Yüksek Seçim Kurulu Üyesi",
+"r": 68,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "İhsan Kamil Akçadırcı",
+"t": "Yüksek Seçim Kurulu Üyesi",
+"r": 68,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Hamdi Şenler",
+"t": "Yüksek Seçim Kurulu Üyesi",
+"r": 68,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Yunus Emre Sılay",
+"t": "Yüksek Seçim Kurulu Üyesi",
+"r": 68,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Mehmet Arı",
+"t": "Yüksek Seçim Kurulu Üyesi",
+"r": 68,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Ali Çopur",
+"t": "Yüksek Seçim Kurulu Üyesi · doğrulayın",
+"r": 68,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Celal Albay",
+"t": "Yüksek Seçim Kurulu Üyesi · doğrulayın",
+"r": 68,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Talip Bakır",
+"t": "Yüksek Seçim Kurulu Üyesi · doğrulayın",
+"r": 68,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Şerif Yılmaz",
+"t": "Kamu Denetçiliği Kurumu Kamu Denetçisi",
+"r": 81,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Abdullah Cengiz Makas",
+"t": "Kamu Denetçiliği Kurumu Kamu Denetçisi",
+"r": 81,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Özcan Yıldız",
+"t": "Kamu Denetçiliği Kurumu Kamu Denetçisi",
+"r": 81,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Haydar Çiftçi",
+"t": "TBMM Genel Sekreter Yardımcısı · doğrulayın",
+"r": 56,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Kübra Temur",
+"t": "TBMM Genel Sekreter Yardımcısı · doğrulayın",
+"r": 56,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Murat Yetiş",
+"t": "MGK Genel Sekreter Yardımcısı (Tuğgeneral)",
+"r": 82,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Füsun Arslantosun",
+"t": "MGK Genel Sekreter Yardımcısı",
+"r": 167,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Alper Görkem Aksu",
+"t": "MGK Genel Sekreter Yardımcısı",
+"r": 167,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Gürsel Baran",
+"t": "Ankara Ticaret Odası Başkanı",
+"r": 95,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Seyit Ardıç",
+"t": "Ankara Sanayi Odası Yönetim Kurulu Başkanı · doğrulayın",
+"r": 95,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Mustafa Köroğlu",
+"t": "Ankara Barosu Başkanı · doğrulayın",
+"r": 95,
+"u": "",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Pınar Mualla Saip",
+"t": "Türk Tabipleri Birliği Merkez Konseyi Başkanı",
+"r": 95,
+"u": "",
+"kat": "Protokol 2. sayfa"
+}
+],
+"guncelle": [
+{
+"n": "Ertunç Erkan Balta",
+"t_old": "Eski Milletvekili · 27. Dönem · Artvin",
+"t_new": "Kamu Denetçiliği Kurumu Kamu Denetçisi · Eski Milletvekili · 27. Dönem · Artvin",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Protokol 2. sayfa"
+},
+{
+"n": "Fatma Benli",
+"t_old": "Eski Milletvekili · 26. Dönem · İstanbul",
+"t_new": "Kamu Denetçiliği Kurumu Kamu Denetçisi · Eski Milletvekili · 26. Dönem · İstanbul",
+"r": 21.5,
+"u": "TBMM Eski Üyeleri ve Eşleri",
+"kat": "Protokol 2. sayfa"
+}
+],
+"eskit": [],
+"baslik": "Başkent Protokol Listesi 2. sayfa görevlileri"
+}

@@ -7,6 +7,9 @@ s = open(os.path.join(R, 'index.html'), encoding='utf-8').read()
 def arr(name):
     i = s.index(name + '=['); return json.JSONDecoder().raw_decode(s[i + len(name) + 1:])[0]
 K0 = arr('K0')
+RSL = arr('RS')
+EM = next(i + 1 for i, t in enumerate(RSL) if 'Görevlerden Emekliler' in t)
+def eski_r(r): return round(EM + min(r, 299) / 1000, 4) if isinstance(r, (int, float)) and r < 300 else r
 def norm(t):
     t = (t or '').replace('İ', 'i').replace('I', 'ı').lower()
     t = t.translate(str.maketrans('şğüöçı', 'sguoci'))
@@ -92,7 +95,7 @@ for k, L in by.items():
 VA = json.load(open(os.path.join(K, 'valiler.json'), encoding='utf-8'))
 cur = {norm(v['il']): nk(v['n']) for v in VA}
 for v in VA:
-    r = 39 if v['il'] == 'Ankara' else 60
+    r = 39 if v['il'] == 'Ankara' else 73
     k = nk(v['n']); role = f"{v['il']} Valisi"
     xs = [x for x in by.get(k, []) if not re.search(r'milletvekili', norm(x[1]))]
     if not xs:
@@ -110,7 +113,7 @@ for k, L in by.items():
             m = re.match(r'^(.+?) valisi\b', norm(p))
             if m and not norm(p).startswith('eski') and m.group(1) in cur and cur[m.group(1)] != k:
                 t_new = ' · '.join(('Eski ' + q if q == p else q) for q in segs)
-                eskit.append({'n': x[0], 't_old': x[1], 't_new': re.sub(r'\s*\(\d\d\.\d\d\.\d{4} kararnamesi\)', '', t_new), 'r': 82 if x[2] in (39, 60) else x[2], 'u': '' if x[3] == 'İl Valileri ve Eşleri' else x[3], 'kat': 'Vali'})
+                eskit.append({'n': x[0], 't_old': x[1], 't_new': re.sub(r'\s*\(\d\d\.\d\d\.\d{4} kararnamesi\)', '', t_new), 'r': eski_r(x[2]) if x[2] in (39, 73) else x[2], 'u': '' if x[3] == 'İl Valileri ve Eşleri' else x[3], 'kat': 'Vali'})
 # --- Belediye başkanları (30 büyükşehir + 51 il merkezi)
 def bekleyen(x):  # bu kayıt için önceki bölümlerde hazırlanmış değişiklik (aynı kayda iki ayrı değişiklik çıkmasın)
     for L in (guncelle, eskit):
@@ -129,7 +132,7 @@ BEL = json.load(open(os.path.join(K, 'belediye-baskanlari.json'), encoding='utf-
 for b in BEL:
     il = b['il']; bb = b['bb']; kurum = f"{il} {'Büyükşehir ' if bb else ''}Belediye"
     role = kurum + (' Başkanı' if b['durum'] == 'seçilmiş' else ' Başkan Vekili' + (' (kayyum)' if b['durum'] == 'kayyum' else ''))
-    r = (43 if il == 'Ankara' else 61) if bb else 91
+    r = (43 if il == 'Ankara' else 74) if bb else 112
     u = 'Büyükşehir Belediye Başkanları ve Eşleri' if bb else ''
     kr = norm(kurum) + r' baskan'
     k = nk(b['n'])
@@ -157,7 +160,7 @@ for b in BEL:
             if any(re.match(kr, norm(q)) for q in segs):
                 ek = ' (görevden uzaklaştırıldı)' if b['durum'] != 'seçilmiş' and 'vekili' not in norm(x[1]) else ''
                 t_new = ' · '.join(((q + ek) if ek else 'Eski ' + q) if re.match(kr, norm(q)) else q for q in segs if 'kontrol edin' not in q)
-                degistir(x, t_new, 82 if x[2] in (43, 61) else x[2], '' if x[3] == u else x[3], 'Belediye Başkanı', eskit)
+                degistir(x, t_new, eski_r(x[2]) if x[2] in (43, 74, 112) else x[2], '' if x[3] == u else x[3], 'Belediye Başkanı', eskit)
 # --- Rektörler (Wikipedia bilgi kutuları; eski olabilir -> yalnızca rehberde rektörü OLMAYAN üniversiteler eklenir, "doğrulayın" notuyla)
 RU = Counter_u = {}
 for x in K0:
@@ -166,12 +169,12 @@ for x in K0:
         if m and not norm(q).startswith('eski'): RU.setdefault(m.group(1), x)
 for p in json.load(open(os.path.join(K, 'rektorler.json'), encoding='utf-8')):
     if not p['n'] or norm(p['uni']) in RU or nk(p['n']) in by: continue
-    r = 41 if p['il'] == 'Ankara' else 58
+    r = 41 if p['il'] == 'Ankara' else 70
     ekle.append({'n': p['n'], 't': f"{p['uni']} Rektörü · doğrulayın", 'r': r, 'u': '', 'kat': 'Rektör'})
 # --- Yüksek yargı (Yargıtay resmî sitesi)
 YR = {'Yargıtay Başkanı': 7, 'Yargıtay Birinci Başkanvekili': 27, 'Yargıtay Genel Sekreteri': 999, 'Danıştay Başkanı': 8, 'Danıştay Başsavcısı': 23, 'Danıştay Başkanvekili': 28, 'Danıştay Genel Sekreteri': 999}
 for p in json.load(open(os.path.join(K, 'yargi.json'), encoding='utf-8')):
-    r = min(YR.get(q, 50) for q in p['t'].split(' · ')); role = p['t']
+    r = min(YR.get(q, 62 if q.startswith('Danıştay') else 61) for q in p['t'].split(' · ')); role = p['t']
     xs = by.get(nk(p['n']), [])
     if not xs:
         ekle.append({'n': p['n'], 't': role, 'r': r, 'u': '', 'kat': 'Yüksek yargı'}); continue
@@ -179,6 +182,16 @@ for p in json.load(open(os.path.join(K, 'yargi.json'), encoding='utf-8')):
     if norm(base.split(' · ')[0]) == norm(role) and 'dogrulayin' not in norm(base): continue
     rest = [q for q in base.split(' · ') if 'dogrulayin' not in norm(q) and not re.match(r'(yargitay|danistay) (\d+ (hukuk|ceza )?dairesi|baskan|birinci baskan|bassavcisi|genel sekreteri|idari dava|vergi dava)', norm(q))]
     degistir(x, ' · '.join([role] + rest), min(x[2], r) if isinstance(x[2], (int, float)) else r, x[3], 'Yüksek yargı', guncelle)
+# --- Başkent Protokol Listesi 2. sayfa (49–82) makamlarındaki görevliler
+for p in json.load(open(os.path.join(K, 'protokol-sayfa2.json'), encoding='utf-8')):
+    xs = by.get(nk(p['n']), [])
+    if not xs:
+        ekle.append({'n': p['n'], 't': p['t'], 'r': p['r'], 'u': '', 'kat': 'Protokol 2. sayfa'}); continue
+    x = xs[0]; _, e = bekleyen(x); base = e['t_new'] if e else x[1]
+    role0 = p['t'].split(' · ')[0]
+    if norm(role0) in norm(base) and 'dogrulayin' not in norm(base): continue
+    rest = [q for q in base.split(' · ') if 'dogrulayin' not in norm(q) and norm(q) != norm(role0)]
+    degistir(x, ' · '.join([p['t']] + rest), min(x[2], p['r']) if isinstance(x[2], (int, float)) else p['r'], x[3], 'Protokol 2. sayfa', guncelle)
 # --- Kaymakamlar (rical listesinde sıra numarası yok; aranabilir kayıt)
 for p in json.load(open(os.path.join(K, 'kaymakamlar.json'), encoding='utf-8')):
     if nk(p['n']) not in by:
@@ -204,8 +217,10 @@ for e in ekle:
     if k in seen: continue
     seen.add(k); E2.append(e)
 out = {'tarih': datetime.date.today().isoformat(),
-       'kaynaklar': {'Kabine': 'tccb.gov.tr/kabine', 'Milletvekili': 'tbmm.gov.tr/milletvekili/AllList', 'Vali': 'icisleri.gov.tr/valilikler', 'Kaymakam': 'icisleri.gov.tr il detayları', 'Cumhurbaşkanı ailesi': 'kamuya açık bilgiler', 'Yüksek yargı': 'yargitay.gov.tr, danistay.gov.tr', 'Rektör': 'tr.wikipedia.org üniversite bilgi kutuları (yalnız eksikler)', 'Belediye Başkanı': 'tr.wikipedia.org belediye bilgi kutuları + haber kaynakları (Mersin, Tokat)'},
+       'kaynaklar': {'Kabine': 'tccb.gov.tr/kabine', 'Milletvekili': 'tbmm.gov.tr/milletvekili/AllList', 'Vali': 'icisleri.gov.tr/valilikler', 'Kaymakam': 'icisleri.gov.tr il detayları', 'Cumhurbaşkanı ailesi': 'kamuya açık bilgiler', 'Yüksek yargı': 'yargitay.gov.tr, danistay.gov.tr', 'Protokol 2. sayfa': 'sayistay.gov.tr, ysk.gov.tr, kurum duyuruları ve haberler', 'Rektör': 'tr.wikipedia.org üniversite bilgi kutuları (yalnız eksikler)', 'Belediye Başkanı': 'tr.wikipedia.org belediye bilgi kutuları + haber kaynakları (Mersin, Tokat)'},
        'ekle': E2, 'guncelle': guncelle, 'eskit': eskit}
-json.dump(out, open(os.path.join(R, 'data', 'rehber.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
+# Onaylanmış paket (data/rehber.json) asla üzerine yazılmaz: tam taslak ayrı dosyaya yazılır,
+# yeni kayıtlar tools/rehber/paket_ayir.py ile ayrı onay paketine ayrılır.
+json.dump(out, open(os.path.join(R, 'data', 'rehber-taslak.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 from collections import Counter
 print('ekle', len(E2), Counter(e['kat'] for e in E2)); print('guncelle', len(guncelle), Counter(e['kat'] for e in guncelle)); print('eskit', len(eskit), Counter(e['kat'] for e in eskit))

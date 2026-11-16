@@ -761,6 +761,17 @@
     "eskit": 12
    },
    "onay": "2026-11-16T12:22:48.810Z"
+  },
+  "rh-2026-11-16b": {
+   "tarih": "2026-11-16",
+   "durum": "beklemede",
+   "ekleyen": "claude",
+   "dosya": "data/rehber-2.json",
+   "ozet": {
+    "ekle": 27,
+    "guncelle": 2,
+    "eskit": 0
+   }
   }
  }
 }
