@@ -64,6 +64,7 @@ def gun(d):
     """Bir günün gazetesindeki atama kararı belgeleri -> kayıtlar."""
     y, mo = d[:4], d[4:6]
     idx = get(f'{BASE}eskiler/{y}/{mo}/{d}.htm')
+    print(f'  {d}: fihrist {len(idx)} bayt, ATAMA geçiyor: {"ATAMA" in idx.upper()}')
     if 'ATAMA' not in idx.upper(): return []
     sec = idx.upper().find('ATAMA KARAR'); part = idx[sec:sec + 20000] if sec >= 0 else idx
     links = []
@@ -71,11 +72,13 @@ def gun(d):
         u = m.group(1)
         if d in u and u not in links: links.append(u)
         if re.search(r'</ul>|<h\d', part[m.end():m.end() + 300] or ''): pass
+    print(f'  {d}: {len(links)} bağlantı', links[:6])
     kayit = []
     for u in links[:15]:
         full = u if u.startswith('http') else BASE + u.lstrip('./')
         if not re.search(rf'{d}-\d+', full): continue
         body = pdf_text(get(full, True)) if full.lower().endswith('.pdf') else html.unescape(re.sub(r'<[^>]+>', ' ', get(full)))
+        print(f'   {full}: {len(body)} karakter')
         if 'atan' not in body and 'görevden' not in body: continue
         ks = re.search(r'Karar Sayısı\s*:\s*([0-9/]+)', body)
         for k in ayikla(body):
@@ -88,7 +91,8 @@ def main():
         for k in ayikla(open(args[0], encoding='utf-8').read()): print(k)
         return
     today = datetime.datetime.now(TR).date()
-    days = args or [(today - datetime.timedelta(days=i)).strftime('%Y%m%d') for i in range(3)]
+    env = os.environ.get('RG_GUNLER', '').split()
+    days = args or env or [(today - datetime.timedelta(days=i)).strftime('%Y%m%d') for i in range(3)]
     V = json.load(open(VERI, encoding='utf-8')); C = V.setdefault('degisiklikler', {})
     var = {(re.sub(r'\W', '', (c.get('makam') or '').lower()), (c.get('yeni') or c.get('eski') or '').lower()) for c in C.values()}
     yeni = 0
