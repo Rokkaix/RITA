@@ -278,7 +278,7 @@ const KEY='priora';
 function fresh(){return{v:7,R:RS.slice(),F:FL0.slice(),cur:'',S:{},P:{},C:{},U:UP0.slice(),add:[],del:[],EQ:{},lock:10,cred:null,N:{},C9:{b:[],s:[]},m9:1,GMn:{},PO:{},CH:[],CHx:{},AC:{}}}
 let D=fresh();
 function load(){let o=null;try{o=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
-  if(o){['R','F','cur','S','P','C','EQ','lock','cred','N','C9','GMn','PO','CH','CHx','AC','TT'].forEach(k=>{if(o[k]!=null)D[k]=o[k]});
+  if(o){['R','F','cur','S','P','C','EQ','lock','cred','N','C9','GMn','PO','CH','CHx','AC','TT','sfSig','m10'].forEach(k=>{if(o[k]!=null)D[k]=o[k]});
     if(Array.isArray(o.add))D.add=o.add.map(a=>a.length>=6?a:[a[0],a[1],a[2],a[3]||'',0,'','']);
     if(Array.isArray(o.del))D.del=o.del;
     if(o.v===7&&Array.isArray(o.U))D.U=o.U}
@@ -497,7 +497,7 @@ function acLine(){const t=acOf(D.cur),c=cfg(),a=c.ac&&ACT[c.ac];
   const IC='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l18-7-7 18-2.5-8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
   if(!t)return'<div class="acline none">'+IC+'<div><b>Uçak tipi henüz yok</b><span>Günlük sefer bilgisi onaylanınca burada görünür.</span></div></div>';
   return'<div class="acline">'+IC+'<div><b>'+esc(t.ad||((ACT[t.tip]||{}).ad)||t.tip)+'<span class="tag">'+esc(t.tip)+'</span></b><span>'+(c.type?'Business '+range(1,c.biz).length+' ('+esc(ttGet(c.ac).b)+(c.blk?', orta kapalı':'')+') · Ekonomi '+range(c.biz+1,c.last).length+' · ':'')+'Kaynak: '+esc(t.kaynak||'FlightStats')+' · '+esc(fmtD(t.tarih))+(c.type&&!c.dog?' · kabin düzeni doğrulanmadı':'')+'</span></div></div>'}
-function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 class="h">SEFER</h2><p style="margin:0 0 6px;font-weight:700">Henüz sefer listesi yok</p><p class="note" style="margin-top:0">THY İstanbul → Esenboğa seferleri ve uçak tipleri her sabah otomatik toplanır. '+(isAdmin()?'Yönetim sekmesindeki “Günlük sefer bilgisi”ni onayladığınızda seferler burada görünür.':'Yönetici günlük sefer bilgisini onayladığında seferler burada görünür.')+'</p>'+(isAdmin()?'<div class="row-btns" style="margin-top:10px"><button class="btn pri" data-a="tab" data-k="ayar" type="button">Yönetim’e git</button></div>':'')+'</section>'+legal();return}
+function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 class="h">SEFER</h2><p style="margin:0 0 6px;font-weight:700">Henüz sefer listesi yok</p><p class="note" style="margin-top:0">THY İstanbul → Esenboğa seferleri ve uçak tipleri her sabah otomatik toplanır. '+(isAdmin()?'Yönetim sekmesindeki “Günlük sefer bilgisi”ni onayladığınızda seferler burada görünür.':'Yönetici günlük sefer bilgisini onayladığında seferler burada görünür.')+'</p>'+(isAdmin()?'<div class="row-btns" style="margin-top:10px"><button class="btn pri" data-a="flightAdd" type="button">+ Sefer ekle</button><button class="btn" data-a="tab" data-k="ayar" type="button">Yönetim’e git</button></div>':'')+'</section>'+legal();return}
   const c=cfg(),n=counts();
   $('view').innerHTML=
   '<section class="panel"><h2 class="h">SEFER<span class="sp"></span>'+adm('<button class="btn sm" data-a="flightAdd" type="button">+ Sefer</button>')+'</h2><div class="strip">'+D.F.map(f=>{const a=f.split(' '),t=acOf(f);return'<button type="button" class="fchip" data-a="flight" data-f="'+esc(f)+'" aria-pressed="'+(f===D.cur)+'"><b>'+esc(a[a.length-1])+'</b><span>'+esc(a[0])+'</span>'+(t?'<span class="ac">'+esc(t.tip)+'</span>':'')+'</button>'}).join('')+'</div>'+
@@ -593,8 +593,13 @@ function flFind(v){const d=String(v).toUpperCase().replace(/\s/g,'').replace(/^(
 /* ---------- günlük sefer bilgisi (THY İstanbul → Esenboğa) ---------- */
 let SF=[],SFH=null;
 async function sfInit(){try{if(!window.claude||!claude.use)return;const db=await claude.use('db');if(!db)return;SFH=db.collection('seferler');
-  SFH.onSnapshot(sn=>{SF=sn.docs.map(d=>({id:d.id,...d.data()}));if(role)render()},()=>{});
+  SFH.onSnapshot(sn=>{SF=sn.docs.map(d=>({id:d.id,...d.data()}));sfSync();if(role)render()},()=>{});
   TTH=db.collection('ucaktipleri');TTH.onSnapshot(sn=>{const o={};sn.docs.forEach(d=>o[d.id]=d.data());TT=o;if(role)render()},()=>{})}catch(e){}}
+const todayTR=()=>{try{return new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Istanbul'})}catch(e){return new Date().toISOString().slice(0,10)}};
+/* Onaylanmış en uygun gün: bugünün kaydı; yoksa bugünden önceki en yeni; o da yoksa en yakın gelecek gün. Aynı gün için en son onaylanan geçerli. */
+function sfActive(){const t=todayTR(),A=SF.filter(x=>x.durum==='onaylandi'&&Array.isArray(x.ucuslar)).sort((a,b)=>String(a.tarih).localeCompare(String(b.tarih))||String(a.onay||'').localeCompare(String(b.onay||'')));
+  if(!A.length)return null;const past=A.filter(x=>String(x.tarih)<=t);return past.length?past[past.length-1]:A[0]}
+function sfSync(){const d=sfActive();if(!d)return;const sig=d.id+'|'+(d.onay||'');if(D.sfSig===sig)return;sfApplyDoc(d);D.sfSig=sig;save()}
 const sfPend=()=>SF.filter(x=>x.durum==='beklemede'&&Array.isArray(x.ucuslar)).sort((a,b)=>String(a.tarih).localeCompare(String(b.tarih)));
 function sfDiff(doc){return doc.ucuslar.map(u=>{const cur=D.F.find(x=>flNo(x)===u.no),t=(D.AC||{})[u.no];
   return{u,yeni:!cur,saat:cur&&cur.split(' ').pop()!==u.kalkis?cur.split(' ').pop():null,tip:t&&t.tip!==u.tip?((ACT[t.tip]||{}).ad||t.tip):null,ilk:!t}})}
@@ -628,7 +633,7 @@ const A={
  flight(d){D.cur=d.f;q.add='';save();render()},
  flightAdd(){sheet('<h2>Sefer ekle</h2><label class="lbl" for="f-fn">Sefer numarası</label><input class="field" id="f-fn" placeholder="TK2190"><label class="lbl" for="f-rt">Hat</label><input class="field" id="f-rt" value="IST-ESB"><label class="lbl" for="f-tm">Saat</label><input class="field" id="f-tm" placeholder="18:00"><div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="flightSave" type="button">Ekle</button><button class="btn dng" data-a="flightDel" type="button">Seçili seferi sil</button></div>')},
  flightSave(){const fn=$('f-fn').value.trim().toUpperCase(),rt=$('f-rt').value.trim().toUpperCase(),tm=$('f-tm').value.trim();if(!fn||!tm)return toast('Sefer numarası ve saat gerekli');const f=fn+' '+(rt||'IST-ESB')+' '+tm;if(D.F.indexOf(f)<0)D.F.push(f);D.F.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()));D.cur=f;save();closeSheet();render();toast('Sefer eklendi')},
- flightDel(){if(D.F.length<2)return toast('En az bir sefer kalmalı');const f=D.cur;D.F=D.F.filter(x=>x!==f);delete D.S[f];delete D.P[f];delete D.C[f];D.cur=D.F[0];save();closeSheet();render();toast(f.split(' ')[0]+' silindi')},
+ flightDel(){if(!D.F.length)return toast('Silinecek sefer yok');const f=D.cur;D.F=D.F.filter(x=>x!==f);delete D.S[f];delete D.P[f];delete D.C[f];D.cur=D.F[0]||'';save();closeSheet();render();toast(f.split(' ')[0]+' silindi')},
  pick(d){const x=window._res[+d.i];ppl().push({key:norm(x.n),id:'p'+Date.now(),n:x.n,sub:x.sub,rank:x.rank,up:x.up||'',o:x.o||'',pax:1,t:Date.now()});q.add='';reassign();save();render();toast(x.n+' eklendi')},
  manual(){sheet('<h2>Elle yolcu ekle</h2><label class="lbl" for="f-n">Ad Soyad</label><input class="field" id="f-n"><label class="lbl" for="f-t">Unvan</label><input class="field" id="f-t"><label class="lbl" for="f-o">Kurum</label><select class="field" id="f-o">'+Object.entries(ORG).map(([k,l])=>'<option value="'+k+'">'+l+'</option>').join('')+'</select><div id="f-rk">'+rankField(999,'')+'</div><label class="lbl" for="f-px">Kişi sayısı</label><input class="field" id="f-px" type="number" min="1" max="9" value="1">'+(isAdmin()?'<label class="lbl" for="f-up">Upgrade hakkı</label>'+upField(''):'<p class="note">Upgrade hakkını yalnızca yönetici girebilir.</p>')+'<div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="manualSave" type="button">Ekle</button></div>')},
  manualSave(){const n=$('f-n').value.trim();if(!n)return toast('Ad Soyad gerekli');const o=$('f-o').value;ppl().push({key:norm(n),id:'p'+Date.now(),n,sub:$('f-t').value.trim(),rank:readRank(o),up:$('f-up')?$('f-up').value.trim():'',o,pax:Math.max(1,parseInt($('f-px').value)||1),t:Date.now()});reassign();save();closeSheet();render();toast(n+' eklendi')},
@@ -663,7 +668,7 @@ const A={
   let shared=false;if(TTH){try{await TTH.doc(t).set(o);shared=true}catch(e){}}
   D.TT=D.TT||{};D.TT[t]=o;TT[t]=o;reassign();save();closeSheet();render();toast(shared?'Kabin düzeni kaydedildi; tüm cihazlarda geçerli':'Kabin düzeni bu cihazda kaydedildi')},
  async ttReset(d){const t=d.k;if(TTH&&TT[t]){try{await TTH.doc(t).delete()}catch(e){}}delete TT[t];if(D.TT)delete D.TT[t];reassign();save();closeSheet();render();toast('Varsayılan düzene dönüldü')},
- async sfApply(d){const doc=SF.find(x=>x.id===d.k);if(!doc)return;sfApplyDoc(doc);try{await SFH.doc(doc.id).update({durum:'onaylandi',onay:new Date().toISOString()})}catch(e){render();toast('Uygulandı, ama onay kaydı yazılamadı');return}render();toast('Sefer ve uçak bilgileri uygulandı')},
+ async sfApply(d){const doc=SF.find(x=>x.id===d.k);if(!doc)return;try{await SFH.doc(doc.id).update({durum:'onaylandi',onay:new Date().toISOString()})}catch(e){toast('Onay kaydedilemedi, tekrar deneyin');return}doc.durum='onaylandi';doc.onay=new Date().toISOString();sfSync();render();toast(String(doc.tarih)>todayTR()?'Onaylandı; '+fmtD(doc.tarih)+' günü tüm cihazlarda geçerli olacak':'Onaylandı; sefer listesi tüm cihazlarda güncellendi')},
  async sfIgnore(d){const doc=SF.find(x=>x.id===d.k);if(!doc)return;try{await SFH.doc(doc.id).update({durum:'yoksayildi',onay:new Date().toISOString()})}catch(e){toast('Kaydedilemedi, tekrar deneyin');return}render();toast('Yok sayıldı, hiçbir şey değişmedi')},
  async chApply(d){const c=allCh().find(x=>x.id===d.k);if(!c)return;applyCh(c);const u={...c,durum:'uygulandi'};if(!(c._db&&await chSaveRow(u))){D.CHx=D.CHx||{};D.CHx[c.id]={durum:'uygulandi'};save()}render();toast('Uygulandı: '+c.makam)},
  async chIgnore(d){const c=allCh().find(x=>x.id===d.k);if(!c)return;const u={...c,durum:'yoksayildi'};if(!(c._db&&await chSaveRow(u))){D.CHx=D.CHx||{};D.CHx[c.id]={durum:'yoksayildi'};save()}render();toast('Yok sayıldı')},
