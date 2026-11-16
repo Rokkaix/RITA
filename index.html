@@ -441,7 +441,7 @@ function rowSeats(r){return LET(r).filter(l=>exists(r,l)).map(l=>r+l)}
 function range(a,b){const o=[];for(let r=a;r<=b;r++)o.push(...rowSeats(r));return o}
 const rowOf=k=>parseInt(k,10);
 function assign(){if(D.ACX)delete D.ACX[D.cur];
-  const S=seats(),c=cfg(),used=new Set(),P=byRank(),free=k=>!S[k]&&!used.has(k),take=k=>{used.add(k);return k};
+  const S=seats(),c=cfg(),used=new Set(),P=byRank(),ub=D.useBlk!==0,free=k=>(!S[k]||(ub&&S[k]===2))&&!used.has(k),ord=A=>A.slice().sort((a,b)=>rowOf(a)-rowOf(b)||((S[a]===2)-(S[b]===2))),take=k=>{used.add(k);return k};
   const BIZ=range(1,c.biz),valid=new Set(range(1,c.last));
   P.forEach(p=>{p.seat=null;p.comp=[];p.cab='';p.why='';p.wc='n';p.fixNote=''});
   /* 1) elle sabitlenen koltuklar */
@@ -450,8 +450,8 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
   /*    eşli/refakatçili yolcu: business'ta sonraki herkese yer kalıyorsa yan yana koltuk birlikte ayrılır */
   const rowGroups=r=>{const L=LET(r),G=[];let cur=[];L.forEach((l,i)=>{if(i&&aisleAt(r,i,L)){G.push(cur);cur=[]}if(exists(r,l))cur.push(r+l)});if(cur.length)G.push(cur);return G};
   const upQ=P.filter(p=>!p.seat&&p.up);
-  upQ.forEach((p,qi)=>{const nt=D.N[keyOf(p)],n=(p.pax||1)-1,freeB=BIZ.filter(free),rest=upQ.length-qi-1;
-    if(n>=1&&!(nt&&nt.sp)&&freeB.length-1-rest>=n){for(const r of [...new Set(freeB.map(rowOf))]){for(const g of rowGroups(r)){const f=g.filter(free);if(f.length>=n+1){p.seat=take(f[0]);p.comp=f.slice(1,n+1).map(take);return}}}}
+  upQ.forEach((p,qi)=>{const nt=D.N[keyOf(p)],n=(p.pax||1)-1,freeB=ord(BIZ.filter(free)),rest=upQ.length-qi-1;
+    if(n>=1&&!(nt&&nt.sp)&&freeB.length-1-rest>=n){for(const r of [...new Set(freeB.map(rowOf))]){for(const g of rowGroups(r).sort((x,y)=>x.filter(k=>S[k]===2).length-y.filter(k=>S[k]===2).length)){const f=ord(g.filter(free));if(f.length>=n+1){p.seat=take(f[0]);p.comp=f.slice(1,n+1).map(take);return}}}}
     const k=prefPick(freeB,nt&&nt.sp);if(k)p.seat=take(k)});
   /* 3) business'taki asıl yolcunun refakatçileri: kalan business yeri tüm refakatçilere yetiyorsa yan koltuklara */
   P.forEach(p=>{const n=(p.pax||1)-1-(p.comp||[]).length;if(n<=0||!p.seat||rowOf(p.seat)>c.biz)return;const left=BIZ.filter(free);if(left.length<n)return;
@@ -460,18 +460,20 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
     const pick=[];near.forEach(k=>{if(pick.length<n&&!pick.includes(k))pick.push(k)});p.comp=(p.comp||[]).concat(pick.map(take))});
   /* 4) ekonomi: kalan herkes grup hâlinde, rical sırasıyla, en öndeki uygun yan yana bloğa */
   P.forEach(p=>{const need=(p.seat?0:1)+((p.pax||1)-1-p.comp.length);if(!need)return;
-    const nt=D.N[keyOf(p)],blk=need===1&&!p.seat?[prefPick(range(c.biz+1,c.last).filter(free),nt&&nt.sp)].filter(Boolean):block(need,c,free);if(!blk.length)return;blk.forEach(take);
+    const nt=D.N[keyOf(p)],blk=need===1&&!p.seat?[prefPick(ord(range(c.biz+1,c.last).filter(free)),nt&&nt.sp)].filter(Boolean):block(need,c,free);if(!blk.length)return;blk.forEach(take);
     if(!p.seat){p.seat=blk.shift()}p.comp=p.comp.concat(blk)});
   /* gerekçeler */
   P.forEach(p=>{const biz=p.seat&&rowOf(p.seat)<=c.biz,n=(p.pax||1)-1,cb=p.comp.filter(k=>rowOf(k)<=c.biz).length,ce=p.comp.length-cb;
     p.cab=!p.seat?'':biz?'B':'E';
     if(!p.seat){p.why='Boş koltuk kalmadı';p.wc='w';return}
+    if(S[p.seat]===2&&!p.fixed){p.blk=[p.seat]}else p.blk=[];(p.comp||[]).forEach(k=>{if(S[k]===2)p.blk.push(k)});
     if(p.fixed){p.why='Koltuk elle sabitlendi'+(S[p.seat]?' (haritada dolu/bloke görünüyor)':'');p.wc='w'}
     else if(biz){p.why='Business · '+p.up;p.wc='y'}
     else if(p.up){p.why='Upgrade hakkı var ('+p.up+') ancak business dolu, ekonomiye alındı';p.wc='w'}
     else{p.why='Upgrade hakkı yok, ekonomide sıradaki koltuk';p.wc='n'}
     if(p.over!=null)p.why='Sırası elle değiştirildi · '+p.why;else if(baseKey(p)<eff(p.rank))p.why='Kişi notuyla öne alındı · '+p.why;
     if(n){if(cb===n)p.cnote='Refakatçiler business’ta yanında';else if(biz&&ce)p.cnote='Business’ta yer kalmadığı için refakatçiler ekonomide yan yana';else p.cnote='Grup ekonomide yan yana';if(p.comp.length<n)p.cnote+=' · '+(n-p.comp.length)+' kişiye koltuk kalmadı'}else p.cnote=''});
+  P.forEach(p=>{if(p.blk&&p.blk.length){p.why+=' · Bloke açılmalı: '+p.blk.join(', ');p.wc='w'}});
   D.done=D.done||{};D.done[D.cur]=1;save()}
 function block(n,c,free){
   for(let r=c.biz+1;r<=c.last;r++){const row=rowSeats(r).filter(free);if(row.length<Math.min(n,1))continue;
@@ -543,7 +545,7 @@ function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 clas
   '<div class="stats" style="margin-top:10px"><div class="stat"><b>'+n.bf+'/'+n.bt+'</b><span>Business boş</span></div><div class="stat"><b>'+n.ef+'/'+n.et+'</b><span>Ekonomi boş</span></div><div class="stat"><b>'+ppl().reduce((s,p)=>s+(p.pax||1),0)+'</b><span>Listedeki kişi</span></div></div></section>'+
   '<section class="panel"><h2 class="h">YOLCU EKLE</h2><input class="field" id="q-add" data-q="add" placeholder="İsim, unvan veya kurum yazın" value="'+esc(q.add)+'" autocomplete="off"><div id="res">'+resHtml()+'</div><p class="note">Türkçe/İngilizce harf fark etmez. <button class="btn sm" data-a="manual" type="button">Listede yok, elle ekle</button></p></section>'+
   '<section class="panel"><h2 class="h">RİCAL SIRASI VE KOLTUKLAR</h2><div id="pax">'+paxHtml()+'</div><div class="row-btns" style="margin-top:12px"><button class="btn gold" data-a="assign" type="button">Koltuk ata</button><button class="btn" data-a="copy" type="button">Özeti kopyala</button><button class="btn dng" data-a="clearAll" type="button">Listeyi temizle</button></div><p class="note">Liste rical sırasındadır: en üstte en yüksek rical. Business ve ekonomi ayrı ayrı, en önden başlayarak ve boşluk bırakmadan doldurulur (1A, 1C, 1D, 1F, 2A…; ekonomide 5A, 5B, 5C…). Ailesiyle uçan yolcunun kişi sayısını artırın. ▲ ▼ ile sırayı elle değiştirin. İki yolcunun yerini değiştirmek için önce birinin koltuğuna, sonra diğerininkine dokunun.</p></section>'+
-  '<section class="panel"><h2 class="h">KOLTUK HARİTASI<span class="sp"></span>'+'<button class="btn sm" data-a="demo" type="button">Örnek senaryo</button><button class="btn sm pri" data-a="ocrOpen" type="button">Fotoğraftan doldur</button>'+(OLAST&&OLAST.cur===D.cur?'<button class="btn sm" data-a="ocrLast" type="button">Okunanı göster</button>':'')+adm('<button class="btn sm" data-a="cabinCfg" type="button">Kabin düzeni</button>')+'</h2><div class="cabin-scroll">'+cabinHtml()+'</div><div class="legend"><span><i style="background:var(--biz)"></i>Business boş</span><span><i style="background:var(--seat)"></i>Ekonomi boş</span><span><i style="background:var(--occ);box-shadow:inset 0 0 0 1.5px #f3b4b4"></i>Dolu (üstü çizili)</span><span><i style="background:var(--blk)"></i>Bloke ✕</span><span><i style="background:var(--gold)"></i>#sıra asıl yolcu</span><span><i style="background:#f2b8bc"></i>+sıra refakatçi</span></div><p class="note">Seferler boş kabinle başlar. Dolu koltukları haritada işaretleyin: bir dokunuş dolu, iki dokunuş bloke, üç dokunuş tekrar boş. Koltuk ata her zaman en öndeki boş koltuktan başlar.</p></section>'+legal()}
+  '<section class="panel"><h2 class="h">KOLTUK HARİTASI<span class="sp"></span>'+'<button class="btn sm" data-a="demo" type="button">Örnek senaryo</button><button class="btn sm pri" data-a="ocrOpen" type="button">Fotoğraftan doldur</button>'+(OLAST&&OLAST.cur===D.cur?'<button class="btn sm" data-a="ocrLast" type="button">Okunanı göster</button>':'')+adm('<button class="btn sm" data-a="cabinCfg" type="button">Kabin düzeni</button>')+'</h2><div class="cabin-scroll">'+cabinHtml()+'</div><div class="legend"><span><i style="background:var(--biz)"></i>Business boş</span><span><i style="background:var(--seat)"></i>Ekonomi boş</span><span><i style="background:var(--occ);box-shadow:inset 0 0 0 1.5px #f3b4b4"></i>Dolu (üstü çizili)</span><span><i style="background:var(--blk)"></i>Bloke ✕</span>'+'<label style="display:flex;gap:6px;align-items:center;width:100%;margin-top:4px"><input type="checkbox" data-a="useBlk" '+(D.useBlk!==0?'checked':'')+'> Bloke koltukları rical yolcuları için kullan (yerleşince “bloke açılmalı” uyarısı çıkar)</label>'+'<span><i style="background:var(--gold)"></i>#sıra asıl yolcu</span><span><i style="background:#f2b8bc"></i>+sıra refakatçi</span></div><p class="note">Seferler boş kabinle başlar. Dolu koltukları haritada işaretleyin: bir dokunuş dolu, iki dokunuş bloke, üç dokunuş tekrar boş. Koltuk ata her zaman en öndeki boş koltuktan başlar.</p></section>'+legal()}
 function segHtml(key,opts){return'<div class="seg">'+opts.map(([k,l])=>'<button type="button" data-a="seg" data-t="'+key+'" data-k="'+k+'" aria-pressed="'+(seg[key]===k)+'">'+l+'</button>').join('')+'</div>'}
 function personList(R,key){window['_pl_'+key]=R.list;return'<p class="note" style="margin:0 0 4px">'+R.n+' kayıt · rical sırasına göre</p>'+(R.list.map((x,i)=>'<button type="button" class="li" data-a="person" data-k="'+key+'" data-i="'+i+'">'+rkHtml(x.r,x.o)+'<span class="tx"><span class="nm">'+esc(x.n)+'</span><br><span class="ti">'+esc(x.t)+'</span>'+(x.u?'<div class="why y">Upgrade: '+esc(x.u)+'</div>':'')+noteLine(x.n)+'</span>'+tagsHtml(x)+'</button>').join('')||'<p class="empty">Bu aramayla eşleşen kayıt yok.</p>')+(R.n>R.list.length?'<div style="padding-top:10px"><button class="btn" data-a="more" data-k="'+key+'" type="button">Daha fazla göster</button></div>':'')}
 function riList(){return personList(find(q.ri,{corp:0,cat:riCat,limit:lim.ri}),'ri')}
@@ -801,11 +803,12 @@ const A={
   (window.RITA_STANDALONE?'<label class="btn pri" for="ocrf" style="display:inline-block;text-align:center;width:100%;padding:13px">📷 Fotoğraf çek / seç</label><input id="ocrf" type="file" accept="image/*" style="display:none"><p class="note" id="ocrp" style="margin:8px 0 0"></p>':'<p class="note">Fotoğraf okuma RITA sitesinde çalışır; burada metni yapıştırabilirsiniz.</p>')+
   '<label class="lbl" for="ocrt">Okunan metin (yapıştırabilir ya da düzeltebilirsiniz)</label><textarea class="field" id="ocrt" placeholder="Örn. 3A 3C 5D 12A 12B …"></textarea><div id="ocrr"></div>')},
  ocrApply(d){const L=OGRID?gridSeats():parseSeats($('ocrt').value);if(!L.length)return toast('İşaretlenecek koltuk yok');ocrAuto(L,OGRID?new Set(OGRID.seats.filter(o=>o.c==='gri').map(o=>o.k)):null,OGRID?OGRID.seats.map(o=>o.k):(d.k==='set'?range(1,cfg().last):null))},
+ useBlk(d,el){D.useBlk=el.checked?1:0;if(assigned())assign();save();render();toast(el.checked?'Bloke koltuklar rical için kullanılabilir':'Bloke koltuklar kullanılmayacak')},
  demo(){const P=people(),find=n=>P.find(x=>x.n===n);
   const key='ÖRNEK IST-ESB 18:00';D.FA=D.FA||{};D.FA[key]=Date.now();D.AC=D.AC||{};D.AC['ÖRNEK']={tip:'73H',ad:'Boeing 737-800',tarih:new Date().toISOString().slice(0,10),kaynak:'örnek'};
   if(!D.F.includes(key))D.F.unshift(key);D.cur=key;delete D.C[key];
   /* check-in'li (mavi) ve bloke (gri) koltuklar: örnek */
-  const S=D.S[key]={};['1A','1C','2D','5A','5B','5C','6D','6E','7A','8F','9B'].forEach(k=>S[k]=1);['10A','10B','10D','11A','11B','11C','11D','11E','11F'].forEach(k=>S[k]=2);
+  const S=D.S[key]={};['1A','1C','2D','3A','3C','4D','4F','5A','5B','5C','6D','6E','7A','8F','9B'].forEach(k=>S[k]=1);['4A','4C','10A','10B','10D','11A','11B','11C','11D','11E','11F'].forEach(k=>S[k]=2);
   const L=[['Abdullah Gül',1],['Hakan Fidan',1],['Numan Kurtulmuş',2],['Mehmet Şimşek',1],['Selçuk Bayraktaroğlu',1],['Yaşar Güler',2],['Özgür Özel',1]].map(([n,pax])=>[find(n),pax]).filter(a=>a[0]);
   const noUp=P.find(x=>!x.u&&!x.o&&x.r>=40&&x.r<300&&isActive(x.t));if(noUp)L.push([noUp,1]);
   D.P[key]=L.slice(0,8).map(([x,pax],i)=>({key:norm(x.n),id:'d'+i+Date.now(),n:x.n,sub:x.t,rank:x.r||999,up:x.u||'',o:x.o||'',pax,t:Date.now()+i}));
