@@ -4,7 +4,8 @@
 "Kabine": "tccb.gov.tr/kabine",
 "Milletvekili": "tbmm.gov.tr/milletvekili/AllList",
 "Vali": "icisleri.gov.tr/valilikler",
-"Kaymakam": "icisleri.gov.tr il detayları"
+"Kaymakam": "icisleri.gov.tr il detayları",
+"Cumhurbaşkanı ailesi": "kamuya açık bilgiler"
 },
 "ekle": [
 {
@@ -6404,6 +6405,48 @@
 "r": 999,
 "u": "",
 "kat": "Kaymakam"
+},
+{
+"n": "Emine Erdoğan",
+"t": "Cumhurbaşkanı'nın Eşi",
+"r": 1,
+"u": "Cumhurbaşkanı ve Eşi",
+"kat": "Cumhurbaşkanı ailesi"
+},
+{
+"n": "Ahmet Burak Erdoğan",
+"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın oğlu",
+"r": 92,
+"u": "",
+"kat": "Cumhurbaşkanı ailesi"
+},
+{
+"n": "Necmettin Bilal Erdoğan",
+"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın oğlu",
+"r": 92,
+"u": "",
+"kat": "Cumhurbaşkanı ailesi"
+},
+{
+"n": "Esra Albayrak",
+"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın kızı (eşi Berat Albayrak)",
+"r": 92,
+"u": "",
+"kat": "Cumhurbaşkanı ailesi"
+},
+{
+"n": "Sümeyye Erdoğan Bayraktar",
+"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı Recep Tayyip Erdoğan'ın kızı (eşi Selçuk Bayraktar)",
+"r": 92,
+"u": "",
+"kat": "Cumhurbaşkanı ailesi"
+},
+{
+"n": "Selçuk Bayraktar",
+"t": "Cumhurbaşkanı ailesi · Cumhurbaşkanı'nın damadı · Baykar Yönetim Kurulu Başkanı",
+"r": 92,
+"u": "",
+"kat": "Cumhurbaşkanı ailesi"
 }
 ],
 "guncelle": [
@@ -11823,6 +11866,14 @@
 "r": 60,
 "u": "İl Valileri ve Eşleri",
 "kat": "Vali"
+},
+{
+"n": "Berat Albayrak",
+"t_old": "Eski Enerji ve Tabii Kaynaklar Bakanı",
+"t_new": "Eski Enerji ve Tabii Kaynaklar Bakanı · Cumhurbaşkanı ailesi · Cumhurbaşkanı'nın damadı",
+"r": 10.5,
+"u": "Eski Bakanlar Kurulu Üyeleri ve Eşleri",
+"kat": "Cumhurbaşkanı ailesi"
 }
 ],
 "eskit": [

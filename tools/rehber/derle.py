@@ -115,6 +115,16 @@ for k, L in by.items():
 for p in json.load(open(os.path.join(K, 'kaymakamlar.json'), encoding='utf-8')):
     if nk(p['n']) not in by:
         ekle.append({'n': p['n'], 't': f"{p['ilce']} Kaymakamı ({p['il']})", 'r': 999, 'u': '', 'kat': 'Kaymakam'})
+# --- Cumhurbaşkanı ailesi
+for p in json.load(open(os.path.join(K, 'cumhurbaskani-ailesi.json'), encoding='utf-8')):
+    xs = by.get(nk(p['n']), [])
+    if xs:
+        x = xs[0]
+        if 'cumhurbaskani ailesi' not in norm(x[1]):
+            t_new = (x[1] + ' · ' + p['t']) if p.get('ekle_unvan') else p['t']
+            guncelle.append({'n': x[0], 't_old': x[1], 't_new': t_new, 'r': x[2] if p['r'] is None else min(x[2], p['r']), 'u': x[3] if p['u'] is None else (p['u'] or x[3]), 'kat': 'Cumhurbaşkanı ailesi'})
+    else:
+        ekle.append({'n': p['n'], 't': p['t'], 'r': p['r'], 'u': p['u'] or '', 'kat': 'Cumhurbaşkanı ailesi'})
 # aynı kişi iki kez eklenmesin
 seen, E2 = set(), []
 for e in ekle:
@@ -122,7 +132,7 @@ for e in ekle:
     if k in seen: continue
     seen.add(k); E2.append(e)
 out = {'tarih': datetime.date.today().isoformat(),
-       'kaynaklar': {'Kabine': 'tccb.gov.tr/kabine', 'Milletvekili': 'tbmm.gov.tr/milletvekili/AllList', 'Vali': 'icisleri.gov.tr/valilikler', 'Kaymakam': 'icisleri.gov.tr il detayları'},
+       'kaynaklar': {'Kabine': 'tccb.gov.tr/kabine', 'Milletvekili': 'tbmm.gov.tr/milletvekili/AllList', 'Vali': 'icisleri.gov.tr/valilikler', 'Kaymakam': 'icisleri.gov.tr il detayları', 'Cumhurbaşkanı ailesi': 'kamuya açık bilgiler'},
        'ekle': E2, 'guncelle': guncelle, 'eskit': eskit}
 json.dump(out, open(os.path.join(R, 'data', 'rehber.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
 from collections import Counter
