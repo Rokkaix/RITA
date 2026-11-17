@@ -396,6 +396,9 @@ details.bilgi[open]>summary{margin-bottom:2px}
 #ops-fl .li.sel{background:var(--navy-soft);border-radius:10px;padding-left:8px;padding-right:8px}
 .saat{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:5px}.saat span{display:flex;flex-direction:column;line-height:1.15}.saat i{font-style:normal;font-size:9px;font-weight:800;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}.saat b{font:700 13px var(--mono);color:var(--ink)}.saat b.gec{color:var(--bad)}
 .elle-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.os-b{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.os-n{font-weight:700;font-size:15px}
+.os-y{display:inline-block;margin-top:4px;font-size:9.5px;font-weight:800;letter-spacing:.1em;padding:3px 8px;border-radius:6px;color:#fff}.os-y.gidis{background:var(--night)}.os-y.gelis{background:#0b6e4f}
+.os-t{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:16px 0 6px;padding-top:12px;border-top:1px solid var(--line)}.os-t .sp{flex:1}
 .pk-y{font-size:9.5px;font-weight:800;letter-spacing:.08em;padding:3px 7px;border-radius:6px;color:#fff}.pk-y.gidis{background:#1d3461}.pk-y.gelis{background:#0b6e4f}
 
 /* ===== RITA 17 · bordo & gece mavisi kimlik ===== */
@@ -581,7 +584,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 17.0';let SURUM_YENI=false;
+const SURUM='RITA 17.1';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -963,11 +966,7 @@ function vOps(){{const sin=new Date(Date.now()-7*864e5).toISOString().slice(0,10
    +'<div id="ops-fl">'+opsFlHtml()+'</div>'
    +'<input class="field" id="ops-q" data-q="ops" value="'+esc(opsQ)+'" autocomplete="off" placeholder="Başka uçuş ara (VIP’siz uçuşlar dahil) · örn. TK2122" style="margin-top:10px">'
    +'<p class="note">Personel listesi ve atamalar yalnız bu cihazda tutulur. Uçuşa dokunun, VIP’leri görün ve personel atayın.</p></section>'
-   +(f?'<section class="panel" id="ops-sec"><h2 class="h">'+esc(f)+'</h2><div class="chips"><button type="button" class="chip" data-a="opsYon" data-k="gidis" aria-pressed="'+(opsYon==='gidis')+'">Gidiş · Uçağa uğurlama</button><button type="button" class="chip" data-a="opsYon" data-k="gelis" aria-pressed="'+(opsYon==='gelis')+'">Geliş · Karşılama</button></div>'
-     +(V.length?V.map(p=>'<div class="li"><span class="tx"><span class="nm">'+esc(p.n)+'</span> <span class="mono">'+esc(p.seat||'')+'</span><br><span class="ti">'+esc(p.sub||'')+((p.mai||0)?' · maiyet '+p.mai:'')+(p.bag?' · '+esc(p.bag):'')+'</span></span></div>').join(''):'<p class="note">Bu uçuşta henüz VIP yok. Önce Uçuş ekranında yolcu ekleyin ya da yolcu listesinden okutun.</p>')
-     +'<label class="lbl" for="ops-p">Saha personeli</label><select class="field" id="ops-p">'+(PER().length?PER().slice().sort((a,b)=>gunSay(a.id,opsGun)-gunSay(b.id,opsGun)||a.ad.localeCompare(b.ad,'tr')).map(x=>'<option value="'+x.id+'">'+esc(x.ad)+(x.sic?' ('+esc(x.sic)+')':'')+' · '+gunSay(x.id,opsGun)+'/6 uçuş</option>').join(''):'<option value="">Önce aşağıdan personel ekleyin</option>')+'</select>'
-     +'<label class="lbl" for="ops-n">Personele not (isteğe bağlı)</label><input class="field" id="ops-n" placeholder="Örn. Protokol kapısından alınacak">'
-     +'<div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="opsAta" type="button">Ata ve gönder</button><button class="btn" data-a="opsOnizle" type="button">Kartları önizle</button></div>'+elleHtml(f)+'</section>':'')
+   +(f?opsSecHtml(f,V):'')
    +'<section class="panel"><h2 class="h">ATAMALAR · '+esc(fmtD(opsGun))+' · '+A.length+'</h2>'+(PER().filter(x=>A.some(a=>a.per===x.id)).map(x=>{const B=A.filter(a=>a.per===x.id);return'<div class="chr"><div class="chh"><b>'+esc(x.ad)+'</b><span class="chd">'+esc(telGoster(x.tel))+'</span><span class="tag '+(B.length>6?'stU':'stG')+'">'+B.length+'/6</span></div>'+B.map(a=>'<div class="row-btns" style="align-items:center;margin-top:6px"><span class="mono" style="flex:1">'+esc(a.f)+' · '+(a.yon==='gelis'?'Karşılama':'Uğurlama')+' · '+(D.P[a.f]||[]).length+' VIP</span><button class="btn sm" data-a="opsWa" data-k="'+a.id+'" type="button">WhatsApp</button><button class="btn sm dng" data-a="opsSil" data-k="'+a.id+'" type="button">Sil</button></div>').join('')+'</div>'}).join('')||'<p class="empty">Bu gün için atama yok.</p>')+'</section>'
    +'<section class="panel"><h2 class="h">SAHA PERSONELİ · '+PER().length+'<span class="sp"></span><button class="btn sm" data-a="perYeni" type="button">+ Personel</button><button class="btn sm" data-a="perToplu" type="button">Toplu ekle</button></h2>'+'<input class="field" id="per-q" data-q="per" value="'+esc(perQ)+'" autocomplete="off" placeholder="Ad, sicil ya da telefon ara"><div id="per-l" style="margin-top:8px">'+perListe()+'</div><p class="note">Personel bilgileri yalnızca bu cihazda saklanır. Telefon değiştirmeden önce Yönetim → Yedek alın.</p></section>'+legal()}
 function perForm(x){return'<label class="lbl" for="pe-a">Ad Soyad</label><input class="field" id="pe-a" value="'+esc(x.ad||'')+'">'
@@ -1312,7 +1311,7 @@ const A={
   const [m1,...mr]=m.split('\n'),ml=mr.join(' ');
   sheet('<h2>'+(per.kod?'Görev gönderildi':'WhatsApp mesajı hazır')+'</h2><p class="sub">'+esc(per.ad)+' · '+esc(telGoster(per.tel))+'</p>'+ani+'<a class="btn '+(per.kod?'':'pri ')+'wa-go" href="'+esc(u)+'" target="_blank" rel="noopener">'+(per.kod?'Ayrıca WhatsApp’tan gönder':'WhatsApp’ta aç ve gönder')+'</a><div class="wa-on"><div class="wa-t">MESAJ ÖNİZLEMESİ</div><b>'+esc(m1)+'</b><span class="wa-l">'+esc(ml.length>64?ml.slice(0,58)+'…':ml)+'</span></div>'+(uyari?'<p class="note">'+uyari+'</p>':''))},
  opsSil(d){izleSil(d.k);D.GOR=GOR().filter(x=>x.id!==d.k);save();render();toast('Atama silindi')},
- opsOnizle(){const a={f:opsF,yon:opsYon,per:$('ops-p').value,gun:opsGun,not:$('ops-n').value.trim()};window.open(gorevLink(a),'_blank')},
+ opsOnizle(){const a={f:opsF,yon:opsYon,per:($('ops-p')||{}).value||'',gun:opsGun,not:(($('ops-n')||{}).value||'').trim()};window.open(gorevLink(a),'_blank')},
  perYeni(){sheet('<h2>Personel ekle</h2>'+perForm({})+'<div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="perKaydet" type="button">Kaydet</button></div>')},
  perDuz(d){const x=PER().find(y=>y.id===d.k);if(!x)return;sheet('<h2>Personel</h2>'+perForm(x)+'<div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="perKaydet" data-k="'+x.id+'" type="button">Kaydet</button><button class="btn gold" data-a="pkKur" data-k="'+x.id+'" type="button">Anlık bildirim kurulumu</button><button class="btn dng" data-a="perSilSor" data-k="'+x.id+'" type="button">Listeden çıkar</button></div>')},
  perKaydet(d){const v=i=>($(i).value||'').trim(),ad=v('pe-a'),tel=v('pe-t'),sic=v('pe-s'),kur=v('pe-k'),tel2=v('pe-t2'),gr=v('pe-g'),nt=v('pe-n');
@@ -1550,7 +1549,7 @@ function durumHtml2(){let H=[];try{H=JSON.parse(localStorage.getItem(HATA_K)||'[
   return '<section class="panel"><h2 class="h">SİSTEM DURUMU</h2><dl class="kv">'+sat('Sürüm',esc(SURUM))+sat('Canlı uçuşlar',LIVE&&LIVE.guncelleme?esc(String(LIVE.guncelleme).replace('T',' ').slice(0,16))+' güncellendi':'bağlantı yok')
    +sat('TBMM listesi',TBL&&TBL.alindi?esc(String(TBL.alindi).replace('T',' ').slice(0,16)):'—')+sat('VIP fotoğrafları',fs.var+' / '+fs.tum+' kişi')+sat('Ortak kayıt',dbOk?'bağlı':'yalnız bu cihaz')+sat('Hata kaydı',H.length?H.length+' kayıt':'temiz')+'</dl>'
    +(H.length?'<details class="bilgi"><summary>Hata kayıtlarını göster</summary>'+H.map(h=>'<div class="ti" style="padding:4px 0;border-bottom:1px solid var(--line)"><span class="mono">'+esc(h.t.replace('T',' ').slice(0,16))+'</span> · '+esc(h.m)+'</div>').join('')+'<div class="row-btns" style="margin-top:8px"><button class="btn sm" data-a="hataSil" type="button">Kayıtları temizle</button></div></details>':'')
-   +'<div class="row-btns" style="margin-top:10px">'+(D.ADMB?'<span class="ani ok" style="margin:0">✓ Bu cihaza uçuş bildirimleri açık</span>':'<button class="btn sm gold" data-a="adminBildirim" type="button">Bu cihaza da uçuş bildirimleri gelsin</button>')+'<button class="btn sm" data-a="demo" type="button">Sunum için örnek uçuş yükle</button></div></section>'}
+   +'<div class="row-btns" style="margin-top:10px">'+(D.ADMB?'<span class="ani ok" style="margin:0">✓ Bu cihaza uçuş bildirimleri açık</span>':'<button class="btn sm gold" data-a="adminBildirim" type="button">Bu cihaza da uçuş bildirimleri gelsin</button>')+(D.F.some(f=>/^ÖRNEK/.test(f))?'<button class="btn sm dng" data-a="ornekSil" type="button">Örnek uçuşu sil</button>':'<button class="btn sm" data-a="demo" type="button">Sunum için örnek uçuş yükle</button>')+'</div></section>'}
 Object.assign(A,{
  yazdir(){if(!ppl().length)return toast('Listede yolcu yok');let el=$('prt');if(!el){el=document.createElement('div');el.id='prt';document.body.appendChild(el)}el.innerHTML=yazdirHtml();setTimeout(()=>window.print(),50)},
  hataSil(){try{localStorage.removeItem(HATA_K)}catch(e){}render();toast('Hata kayıtları temizlendi')}
@@ -1700,6 +1699,27 @@ $('cekmece').addEventListener('click',e=>{if(e.target.id==='cekmece')cekmeceKapa
 Object.assign(A,{
  menu(){cekmeceAc()},
  ckGit(d){cekmeceKapat();tab=d.k;if(d.y&&d.y!=='x')YS=d.y;render();document.querySelector('main').scrollTop=0}
+});
+/* Atama → seçili uçuş: yön uçuştan gelir; önce atama, sonra düzenlenebilir VIP listesi, sonra elle bilgi */
+function opsSecHtml(f,V){const ge=gelisMi(f);opsYon=ge?'gelis':'gidis';const G=GOR().filter(a=>a.f===f&&a.gun===opsGun),P=PER(),ornek=/^ÖRNEK/.test(f);
+  return '<section class="panel" id="ops-sec"><div class="os-b"><div><div class="os-n mono">'+esc(f.split(' ')[0])+' · '+esc(rotaAd(f)||hatOf(f)||'')+'</div><span class="os-y '+(ge?'gelis':'gidis')+'">'+(ge?'GELİŞ · KARŞILAMA':'GİDİŞ · UĞURLAMA')+'</span>'+(ornek?' <span class="tag old">ÖRNEK</span>':'')+'</div><button class="btn sm" data-a="opsKapat" type="button" aria-label="Kapat">✕</button></div>'
+   +saatSatir(f,opsGun)
+   +'<div class="os-t">PERSONEL</div>'
+   +(G.length?G.map(a=>{const per=P.find(x=>x.id===a.per)||{};return '<div class="uca-r"><span class="uca-a"><b>'+esc(per.ad||'—')+'</b><span>'+(a.gon?'Gönderildi '+new Date(a.gon).toTimeString().slice(0,5):'Gönderilmedi')+'</span></span><button class="btn sm" data-a="opsWa" data-k="'+a.id+'" type="button">Tekrar gönder</button><button class="btn sm dng" data-a="opsSil" data-k="'+a.id+'" type="button" aria-label="Atamayı kaldır">×</button></div>'}).join(''):'<p class="note" style="margin:2px 0 6px">Henüz personel atanmadı.</p>')
+   +(P.length?'<div class="uca-f"><select class="field" id="ops-p">'+P.slice().sort((a,b)=>gunSay(a.id,opsGun)-gunSay(b.id,opsGun)||a.ad.localeCompare(b.ad,'tr')).map(x=>'<option value="'+x.id+'">'+esc(x.ad)+' ('+gunSay(x.id,opsGun)+'/6)</option>').join('')+'</select><button class="btn gold" data-a="opsAta" type="button">Ata ve gönder</button></div><input class="field" id="ops-n" placeholder="Personele not (isteğe bağlı)" style="margin-top:8px">'
+     :'<p class="note">Personel listesi boş; aşağıdaki “Saha personeli” bölümünden ekleyin.</p>')
+   +'<div class="os-t">VIP YOLCULAR · '+V.length+'<span class="sp"></span><button class="btn sm" data-a="opsUcusAc" type="button">Uçuş ekranında aç ›</button></div>'
+   +(V.length?V.map(p=>'<button type="button" class="li" data-a="opsPax" data-id="'+p.id+'"><span class="seatbadge'+(p.seat?(p.cab==='E'?' e':''):' none')+'" style="min-width:42px;padding:6px 4px;font-size:12.5px">'+esc(p.seat||'—')+'</span><span class="tx"><span class="nm">'+esc(p.n)+'</span><br><span class="ti">'+esc(String(p.sub||'').split(' · ')[0])+'</span>'+pxOzet(p,p.pax||1).replace(/<button[^>]*>Düzenle ›<\/button>/,'')+'</span><span class="pxdz">Düzenle ›</span></button>').join('')
+     :'<p class="note">Bu uçuşta VIP yok. “Uçuş ekranında aç” ile ekleyin.</p>')
+   +elleHtml(f)
+   +'<div class="row-btns" style="margin-top:12px"><button class="btn sm" data-a="opsOnizle" type="button">Personel kartını önizle</button>'+(ornek?'<button class="btn sm dng" data-a="ornekSil" type="button">Örnek uçuşu sil</button>':'<button class="btn sm dng" data-a="opsTemizle" type="button">Bu uçuşun VIP listesini temizle</button>')+'</div></section>'}
+function ornekKaldir(){const k=D.F.filter(f=>/^ÖRNEK/.test(f));k.forEach(f=>{delete D.P[f];delete (D.S||{})[f];delete (D.FA||{})[f];D.GOR=GOR().filter(a=>a.f!==f)});D.F=D.F.filter(f=>!/^ÖRNEK/.test(f));if(D.AC)delete D.AC['ÖRNEK'];if(/^ÖRNEK/.test(D.cur||''))D.cur=D.F[0]||'';if(/^ÖRNEK/.test(opsF))opsF='';save()}
+Object.assign(A,{
+ opsPax(d){if(D.cur!==opsF){D.cur=opsF;save()}A.pax({id:d.id})},
+ opsUcusAc(){D.cur=opsF;save();tab='ucus';render();document.querySelector('main').scrollTop=0},
+ opsKapat(){opsF='';render()},
+ ornekSil(){if(!confirm('Örnek uçuş ve ona bağlı atamalar silinsin mi?'))return;ornekKaldir();render();toast('Örnek uçuş silindi')},
+ opsTemizle(){if(!confirm(opsF.split(' ')[0]+' uçuşunun VIP listesi temizlensin mi?'))return;D.P[opsF]=[];save();render();toast('VIP listesi temizlendi')}
 });
 dbInit();sfInit();load();if(D.rmig){Object.values(D.P).forEach(L=>L.forEach(p=>{const x=people().find(y=>nk(y.n)===nk(p.n));if(x){p.rank=x.r;if(!p.up&&x.u)p.up=x.u}}));delete D.rmig;save()}if(!location.hash){try{const h=localStorage.getItem('rita-pk');if(h)history.replaceState(null,'',location.pathname+h)}catch(e){}}if(!gorevAc())showLogin();window.addEventListener('hashchange',()=>{if(/^#(gk?|p)=/.test(location.hash))gorevAc()});
 
