@@ -21,7 +21,7 @@ bu işi hızlandırmak ve doğru yapmak için vardır. Yeni özellik eklerken ö
 - Rical listesi (`RS` in `index.html`): Başkent Protokol Listesi 1–82 (iki sayfa, kullanıcının paylaştığı), ardından THY listesinden kalan maddeler. Kullanıcı onayı olmadan sıra değiştirilmez.
 - Rehber paketleri: `tools/rehber/derle.py` → `data/rehber-taslak.json`; onaylanmış `data/rehber.json` ASLA değiştirilmez; yeni kayıtlar `tools/rehber/paket_ayir.py` ile yeni paket dosyasına (`data/rehber-2.json`…) ayrılır ve `rita-veri.json` → `rehber` içinde `beklemede` belge açılır.
 - `data/tbmm.json` — TBMM resmî milletvekili listesi; `tools/canli_tbmm.py` 3 saatte bir günceller. Uygulama isim aramasında kullanır (rical 21. madde, "TBMM ✓").
-- `tools/resmi_gazete.py` — Resmî Gazete atama kararlarını 2 saatte bir okur, `degisiklikler`e `beklemede` ekler (yönetici onaylar).
+- `tools/resmi_gazete.py` — Resmî Gazete atama kararlarını 2 saatte bir okur (resim PDF → Türkçe OCR); teyitliler `otomatik`, teyitsizler `beklemede` olarak `degisiklikler`e eklenir.
 - `site/vendor/ocr/` — cihazda çalışan Tesseract.js; check-in ekranı fotoğrafından dolu koltuk okuma.
 
 ## Planlanan (sonraki aşama)
