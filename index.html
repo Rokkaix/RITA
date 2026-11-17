@@ -1396,8 +1396,8 @@ function ysCiz(P){const AL=alerts(),on=(AL.reh||0)+(AL.dg||0)+sfPend().length,fs
 let FQ='',FF='yok',FN=60;
 function fotoKisiler(){const seen=new Set();return people().filter(x=>!x.o&&x.r<300&&x.n&&!/isim girilmemiş/i.test(x.t)).filter(x=>{const k=nk(x.n);if(seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>a.r-b.r)}
 function fotoSay(){const L=fotoKisiler();let v=0;L.forEach(x=>{if(fotoOf(x.n,x.t))v++});return{tum:L.length,var:v,yok:L.length-v}}
-function kaynakAd(f){return !f?'Fotoğraf yok':f.k==='TBMM'?'TBMM':f.k==='Valilik'?'Valilik':/Vikipedi/.test(f.k)?f.k:'Yönetici'}
-function kaynakUzun(f){return !f?'Doğrulanmış fotoğraf yok':f.k==='TBMM'?'TBMM resmî sayfası':f.k==='Valilik'?'Valiliğin resmî sitesi':/Vikipedi/.test(f.k)?f.k+' (görevi doğrulandı)':'Yönetici ekledi'}
+function kaynakAd(f){return !f?'Fotoğraf yok':f.k==='TBMM'?'TBMM':/^(Valilik|Kaymakamlık)$/.test(f.k)?f.k:/Vikipedi/.test(f.k)?f.k:'Yönetici'}
+function kaynakUzun(f){return !f?'Doğrulanmış fotoğraf yok':f.k==='TBMM'?'TBMM resmî sayfası':f.k==='Valilik'?'Valiliğin resmî sitesi':f.k==='Kaymakamlık'?'Kaymakamlığın resmî sitesi':/Vikipedi/.test(f.k)?f.k+' (görevi doğrulandı)':'Yönetici ekledi'}
 function fotoYon(){const all=fotoKisiler(),q=norm(FQ);let L=all.map(x=>({x,f:fotoOf(x.n,x.t)}));
   const say={yok:L.filter(o=>!o.f).length,var:L.filter(o=>o.f).length,yon:L.filter(o=>o.f&&o.f.k==='Yönetici').length};
   if(FF==='yok')L=L.filter(o=>!o.f);else if(FF==='yon')L=L.filter(o=>o.f&&o.f.k==='Yönetici');else if(FF==='var')L=L.filter(o=>o.f);

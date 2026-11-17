@@ -180,41 +180,62 @@ def viki(limit):
     print('Vikipedi:', len(bek), 'kişi,', n, 'doğrulanmış fotoğraf; elenen:', red); kaydet()
 
 ILLER = 'adana adiyaman afyonkarahisar agri aksaray amasya ankara antalya ardahan artvin aydin balikesir bartin batman bayburt bilecik bingol bitlis bolu burdur bursa canakkale cankiri corum denizli diyarbakir duzce edirne elazig erzincan erzurum eskisehir gaziantep giresun gumushane hakkari hatay igdir isparta istanbul izmir kahramanmaras karabuk karaman kars kastamonu kayseri kilis kirikkale kirklareli kirsehir kocaeli konya kutahya malatya manisa mardin mersin mugla mus nevsehir nigde ordu osmaniye rize sakarya samsun sanliurfa siirt sinop sirnak sivas tekirdag tokat trabzon tunceli usak van yalova yozgat zonguldak'.split()
+def resmi_site(ad, unvan, adresler, kelime, kaynak):
+    """Resmî kurum sitesinde kişinin adı geçiyorsa, adıyla ya da makam kelimesiyle eşleşen resmi al."""
+    k = nk(ad)
+    for u in adresler:
+        h = get(u, 30)
+        if not h or k not in nk(re.sub(r'<[^>]+>', ' ', html.unescape(h))): continue
+        aday = []
+        for im in re.finditer(r'<img\b[^>]*>', h, re.I):
+            t = im.group(0); src = re.search(r'\b(?:data-src|src)=["\']([^"\']+)', t)
+            if not src or re.search(r'(?i)logo|icon|bayrak|flag|\.svg|banner|ataturk|cumhurbaskani|erdogan', src.group(1)): continue
+            alt = norm(' '.join(re.findall(r'\b(?:alt|title)=["\']([^"\']*)', t)))
+            puan = (3 if k in nk(alt) else 0) + (2 if re.search(r'(?i)' + kelime, src.group(1) + ' ' + alt) else 0)
+            if puan: aday.append((puan, urllib.parse.urljoin(u, html.unescape(src.group(1)))))
+        if aday:
+            aday.sort(key=lambda x: -x[0])
+            if k not in DB or not DB[k].get('u') or DB[k].get('k') == kaynak:
+                DB[k] = {'n': ad, 'u': aday[0][1], 'k': kaynak, 's': u, 'g': unvan.split(' · ')[0], 'd': bugun}; return True
+            return False
+        time.sleep(0.4)
+    return False
+def yeni_mi(k, kaynak):
+    return not (k in DB and (DB[k].get('u') or DB[k].get('k') == kaynak) and DB[k].get('d', '') > (datetime.date.today() - datetime.timedelta(days=30)).isoformat())
 def valilik():
-    """Valiler: il valiliğinin resmî sitesi (www.<il>.gov.tr). Sayfada valinin adı geçmeli; görsel, adıyla eşleşen ya da 'vali' içeren resimdir."""
-    n = 0; kontrol = 0
+    """Valiler: il valiliğinin resmî sitesi (www.<il>.gov.tr)."""
+    n = kontrol = 0
     for ad, unvan, r in kisiler():
         m = re.match(r'(.+?) Valisi$', unvan.split(' · ')[0].strip())
         if not m: continue
-        k = nk(ad)
-        if k in DB and DB[k].get('k') == 'Valilik' and DB[k].get('d', '') > (datetime.date.today() - datetime.timedelta(days=30)).isoformat(): continue
         il = norm(m.group(1)).replace(' ', '')
-        if il not in ILLER: continue
+        if il not in ILLER or not yeni_mi(nk(ad), 'Valilik'): continue
         kontrol += 1
-        for yol in ('/vali', '/valimiz', '/vali-ozgecmis', ''):
-            u = 'https://www.%s.gov.tr%s' % (il, yol)
-            h = get(u, 30)
-            if not h or nk(ad) not in nk(re.sub(r'<[^>]+>', ' ', html.unescape(h))): continue
-            aday = []
-            for im in re.finditer(r'<img\b[^>]*>', h, re.I):
-                t = im.group(0); src = re.search(r'\b(?:data-src|src)=["\']([^"\']+)', t)
-                if not src or re.search(r'(?i)logo|icon|bayrak|flag|\.svg|banner|ataturk|cumhurbaskani', src.group(1)): continue
-                alt = norm(' '.join(re.findall(r'\b(?:alt|title)=["\']([^"\']*)', t)))
-                puan = (3 if nk(ad) in nk(alt) else 0) + (2 if re.search(r'(?i)vali', src.group(1) + alt) else 0)
-                if puan: aday.append((puan, urllib.parse.urljoin(u, html.unescape(src.group(1)))))
-            og = re.search(r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)', h, re.I)
-            if not aday and og and yol and not re.search(r'(?i)logo', og.group(1)): aday.append((1, urllib.parse.urljoin(u, og.group(1))))
-            if aday:
-                aday.sort(key=lambda x: -x[0])
-                if k not in DB or not DB[k].get('u') or DB[k].get('k') == 'Valilik':
-                    DB[k] = {'n': ad, 'u': aday[0][1], 'k': 'Valilik', 's': u, 'g': unvan.split(' · ')[0], 'd': bugun}; n += 1
-                break
-            time.sleep(0.5)
-        time.sleep(0.5)
+        if resmi_site(ad, unvan, ['https://www.%s.gov.tr%s' % (il, y) for y in ('/vali', '/valimiz', '')], 'vali', 'Valilik'): n += 1
+        time.sleep(0.4)
     print('Valilik:', kontrol, 'vali denendi,', n, 'resmî fotoğraf'); kaydet()
+def kaymakamlik(limit):
+    """Kaymakamlar: kaymakamlığın resmî sitesi (www.<ilçe>.gov.tr). Günde 'limit' kişi, 30 günde bir yenilenir."""
+    try: P = json.load(open(os.path.join(R, 'data', 'rehber.json'), encoding='utf-8'))
+    except Exception: return
+    n = kontrol = 0
+    for e in P.get('ekle', []):
+        if e.get('kat') != 'Kaymakam' or 'doğrulayın' in e['t']: continue
+        m = re.match(r'(.+?) Kaymakamı \((.+?)\)', e['t'])
+        if not m or not yeni_mi(nk(e['n']), 'Kaymakamlık'): continue
+        if kontrol >= limit: break
+        ilce, il = norm(m.group(1)).replace(' ', ''), norm(m.group(2)).replace(' ', '')
+        kontrol += 1
+        adr = ['https://www.%s.gov.tr%s' % (d, y) for d in (ilce, il + ilce) for y in ('/kaymakam', '/kaymakamimiz', '')]
+        if resmi_site(e['n'], e['t'], adr, 'kaymakam', 'Kaymakamlık'): n += 1
+        else: DB.setdefault(nk(e['n']), {'n': e['n'], 'u': '', 'k': '', 'neden': 'kaymakamlık sitesinde bulunamadı', 'd': bugun})['d'] = bugun
+        if kontrol % 25 == 0: kaydet()
+        time.sleep(0.4)
+    print('Kaymakamlık:', kontrol, 'kaymakam denendi,', n, 'resmî fotoğraf'); kaydet()
 
 if __name__ == '__main__':
     a = sys.argv[1:]
     if '--tbmm' in a or not a: tbmm()
     if '--vali' in a: valilik()
+    if '--kaymakam' in a: kaymakamlik(int(a[a.index('--kaymakam') + 1]) if len(a) > a.index('--kaymakam') + 1 else 300)
     if '--viki' in a: viki(int(a[a.index('--viki') + 1]) if len(a) > a.index('--viki') + 1 else 300)
