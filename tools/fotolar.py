@@ -189,7 +189,7 @@ def resmi_site(ad, unvan, adresler, kelime, kaynak):
     """Resmî kurum sitesinde kişinin adı geçiyorsa, adıyla ya da makam kelimesiyle eşleşen resmi al."""
     k = nk(ad)
     for u in adresler:
-        h = get(u, 30)
+        h = get(u, 15)
         if not h or k not in nk(re.sub(r'<[^>]+>', ' ', html.unescape(h))): continue
         aday = []
         for im in re.finditer(r'<img\b[^>]*>', h, re.I):
@@ -277,8 +277,11 @@ def kurum_yonetim():
 
 if __name__ == '__main__':
     a = sys.argv[1:]
-    if '--tbmm' in a or not a: tbmm()
-    if '--vali' in a: valilik()
-    if '--kurum' in a: kurum_yonetim()
-    if '--kaymakam' in a: kaymakamlik(int(a[a.index('--kaymakam') + 1]) if len(a) > a.index('--kaymakam') + 1 else 300)
-    if '--viki' in a: viki(int(a[a.index('--viki') + 1]) if len(a) > a.index('--viki') + 1 else 300)
+    sayi = lambda k, v: int(a[a.index(k) + 1]) if len(a) > a.index(k) + 1 and a[a.index(k) + 1].isdigit() else v
+    if not a: tbmm()
+    for k in a:  # komut satırındaki sırayla
+        if k == '--tbmm': tbmm()
+        elif k == '--kurum': kurum_yonetim()
+        elif k == '--vali': valilik()
+        elif k == '--viki': viki(sayi('--viki', 300))
+        elif k == '--kaymakam': kaymakamlik(sayi('--kaymakam', 150))
