@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-17T12:12:46+03:00",
+ "guncelleme": "2026-11-17T13:05:27+03:00",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -631,8 +631,8 @@
    "yeni": "Bekir Bayrakdar",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 16.10.2026 · https://www.resmigazete.gov.tr/eskiler/2026/10/20261016-10.pdf",
-   "durum": "otomatik",
-   "teyit": "Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti (yeniden kontrol)",
+   "durum": "beklemede",
+   "teyit": "karar metni tam ayrıştırılamadı; elle kontrol edilmeli (yeniden kontrolde geri alındı)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:24:05+03:00",
    "r": 0
