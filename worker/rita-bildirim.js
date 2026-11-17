@@ -81,7 +81,8 @@ async function ucusDurumu(no, gun, yon) {
   const F = ((((nextData(await r.text()) || {}).props || {}).initialState || {}).flightTracker || {}).flight; if (!F) return { hata: 'bulunamadı' };
   const st = F.status || {}, dep = F.departureAirport || {}, arr = F.arrivalAirport || {};
   const ist = yon === 'gelis' ? arr : dep, t = x => ((x || {}).times || {});
-  return { kod: st.statusCode || '', durum: DURUM[st.statusCode] || st.status || '', yon,
+  const tescil = (((F.positional || {}).flexTrack || {}).tailNumber || '').toUpperCase();
+  return { kod: st.statusCode || '', durum: DURUM[st.statusCode] || st.status || '', yon, tescil,
     kalkis: { apt: dep.iata || dep.fs || '', plan: (t(dep).scheduled || {}).time24 || '', tahmini: (t(dep).estimatedActual || {}).time24 || '', tur: (t(dep).estimatedActual || {}).title || '', kapi: dep.gate || '', terminal: dep.terminal || '' },
     inis: { apt: arr.iata || arr.fs || '', plan: (t(arr).scheduled || {}).time24 || '', tahmini: (t(arr).estimatedActual || {}).time24 || '', tur: (t(arr).estimatedActual || {}).title || '', kapi: arr.gate || '', terminal: arr.terminal || '', bant: arr.baggage || '' },
     kapi: ist.gate || '', bant: arr.baggage || '', zaman: new Date().toISOString() };

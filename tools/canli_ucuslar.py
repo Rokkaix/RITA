@@ -87,6 +87,9 @@ for fid, f in order:
                 if rec.get("tip") and rec["tip"] != tip:
                     rec["onceki_tip"] = rec["tip"]; rec["degisti"] = now.isoformat(timespec="minutes")
                 rec["tip"] = tip; rec["ad"] = eq.get("name") or ""
+            tescil = (((F.get("positional") or {}).get("flexTrack") or {}).get("tailNumber") or "").upper()
+            if tescil:
+                rec["tescil"] = tescil
             rec["kontrol"] = now.isoformat(timespec="minutes")
             st = F.get("status") or {}
             istS = F.get("departureAirport") if f["yon"] == "gidis" else F.get("arrivalAirport")
