@@ -25,6 +25,11 @@ bu işi hızlandırmak ve doğru yapmak için vardır. Yeni özellik eklerken ö
 - `site/vendor/ocr/` — cihazda çalışan Tesseract.js; check-in ekranı fotoğrafından dolu koltuk okuma ve TROYA yolcu listesinden (PAX BY GROUP / Quick Check-in) rical eşleştirme (Modül 1).
 - Koltuk kuralı: rical business/ön; eşi/refakat ricalin yanında; **maiyet ve koruma her zaman ekonomide** (bloke koltuk verilmez), yalnız "maiyet upgrade notu" varsa business'ta yer kalırsa.
 
+## Modül 2 — Operasyon ve personel atama (sunucusuz, kullanıcı kararı 17.11.2026)
+- "Atama" sekmesi yalnız yöneticide. Personel (ad, telefon) ve atamalar YALNIZ yönetici cihazında (`D.PER`, `D.GOR`, localStorage); asla `data/` ya da depoya yazılmaz.
+- Görev WhatsApp'tan tek dokunuşla (`wa.me`) gider; bağlantı `#g=<base64>` ile VIP kartlarını taşır (fragment sunucuya gitmez). Personel girişsiz yalnız o kartları görür.
+- Uygulama içi push ve gerçek rol kontrolü için sunucu gerekir (önerilen: Cloudflare ücretsiz) — kullanıcı şimdilik sunucusuzu seçti.
+
 ## Planlanan (sonraki aşama)
 - **Personel girişi:** THY veya TGS sicil numarası + kişinin kendi oluşturduğu şifre. Yeni kayıtlar yönetici onayıyla açılır.
   Şifresiz "Personel olarak devam et" kaldırılacak. Gerçek koruma için veriler herkese açık dosyadan çıkarılıp
