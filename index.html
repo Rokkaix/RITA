@@ -259,6 +259,73 @@ span.seat{display:inline-flex;align-items:center;justify-content:center}
   #view[data-tab="ucus"]>.panel:nth-child(1),#view[data-tab="ucus"]>.legal{grid-column:1/-1}
   #view[data-tab="ucus"]>.panel:nth-child(4){grid-column:2;grid-row:2/span 2}
 }
+
+/* ===== RITA 13 · kurumsal görünüm: daha küçük ve dengeli yazı, sıkı boşluk, sade yüzeyler ===== */
+:root{--line:#e3e7ee;--bg:#f2f4f8;--muted:#5f6b7e}
+body{font-size:14px;line-height:1.45;letter-spacing:-.003em}
+.top{padding-block:8px}.top .brand{font-size:13.5px;letter-spacing:.3em}.top .who{font-size:10.5px}
+.role{font-size:9.5px;padding:3px 7px}.icon-btn{font-size:11.5px;padding:6px 10px;border-radius:8px}
+main{padding-block:12px}.wrap{gap:10px}
+.panel{border-radius:12px;padding:12px 13px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.h{font-size:10px;letter-spacing:.14em;margin-bottom:8px}
+.field{padding:9px 11px;border-radius:9px}
+textarea.field{min-height:100px}
+.lbl{font-size:11px;margin:9px 0 4px;letter-spacing:.01em}
+.btn{font-size:13px;padding:8px 13px;border-radius:9px;font-weight:700}
+.btn.sm{font-size:11.5px;padding:5px 9px;border-radius:8px;min-height:32px}
+.note{font-size:11.5px}.empty{font-size:12.5px}
+.seg{border-radius:10px;padding:2px;gap:2px}.seg button{font-size:12px;padding:6px 4px;border-radius:8px}
+.chip{font-size:11.5px;padding:5px 11px;min-height:30px}
+.fchip{padding:7px 10px;min-width:78px;min-height:50px;border-radius:10px}.fchip b{font-size:13.5px}.fchip span{font-size:10.5px}
+.stat{padding:7px 9px;border-radius:10px}.stat b{font-size:16px}.stat span{font-size:10.5px}
+.li{padding:9px 0;gap:9px}.nm{font-size:13.5px}.ti{font-size:11.5px}
+.rk{font-size:11px;min-width:40px;padding:4px 5px;border-radius:7px}
+.tag{font-size:9px;padding:2px 6px}
+.why,.comp{font-size:11.5px}
+.seatbadge{font-size:14px;min-width:48px;padding:7px 5px;border-radius:9px}
+.tabs button{font-size:10px;padding:7px 2px 8px;gap:2px;border-top-width:2px}.tabs button svg{width:19px;height:19px}
+.acline{padding:8px 11px;border-radius:10px}.acline b{font-size:13.5px}.acline span{font-size:11px}.acline svg{width:19px;height:19px}
+.al{gap:6px}.alc{font-size:12.5px;padding:9px 11px;border-radius:10px}.alc b{font-size:18px;min-width:28px}
+.c9stat b{font-size:17px}.c9stat span{font-size:10px}
+#sheet{border-radius:16px 16px 0 0}#sheet h2{font-size:16.5px}#sheet .sub{font-size:12.5px}
+.kv{font-size:12.5px;gap:5px 12px}
+#toast{font-size:12.5px;padding:8px 10px 8px 14px}
+.stp span{font-size:13.5px}.stp button{width:40px;height:40px;font-size:19px;border-radius:10px}
+.opsk{border-width:1.5px;border-radius:12px}.opsk-b{font-size:10.5px}
+.lg-head h1{font-size:26px}.lg-card{border-radius:14px;padding:18px}
+.surum-bar{font-size:13px;padding:10px 12px;border-radius:12px}
+.pft{width:56px;height:70px;border-radius:8px}
+
+/* personel görev kartı (WhatsApp bağlantısı) */
+body.gorev main{padding-block:10px}
+.gk-bas{border-radius:12px;padding:13px 14px;margin:4px 0 10px;box-shadow:0 2px 8px rgba(16,24,40,.12)}
+.gk-bas.gidis{background:linear-gradient(135deg,#1d3461,#24427a)}.gk-bas.gelis{background:linear-gradient(135deg,#0b5e45,#0d7253)}
+.gk-yon{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;letter-spacing:.14em;font-weight:800;opacity:.95}
+.gk-say{margin:0;font-size:10.5px;letter-spacing:.06em;background:rgba(255,255,255,.18);padding:3px 8px;border-radius:999px}
+.gk-uc{display:flex;justify-content:space-between;align-items:baseline;font:700 21px/1.2 var(--mono);margin-top:6px}.gk-sa{font-size:17px;opacity:.95}
+.gk-rt{font:600 13px var(--mono);letter-spacing:.04em;margin-top:1px;opacity:.95}
+.gk-alt{font-size:12.5px;opacity:.88;margin-top:4px}.gk-alt b{font-weight:700;opacity:1}
+.gk-not{font-size:12.5px;padding:7px 9px;border-radius:8px;margin-top:8px}
+.gk-dur{font:700 13px/1.35 var(--ui);padding:7px 9px;border-radius:8px;margin-top:8px}
+.gk{display:block;background:#fff;border:1px solid #d7dde7;border-radius:12px;padding:12px;margin:0 0 10px;color:var(--ink);box-shadow:0 1px 3px rgba(16,24,40,.06)}
+.gk-top{display:flex;gap:12px;align-items:flex-start}
+.gk-ft{width:72px;height:90px;border-radius:9px;background:#eef1f5;font:700 20px var(--ui);color:#7a8699;border:1px solid #e3e7ee}
+.gk-no{font:700 10px var(--mono);color:var(--muted);letter-spacing:.06em}
+.gk-ad{font:800 16.5px/1.2 var(--ui);color:var(--ink);margin-top:2px}
+.gk-un{font-size:12.5px;line-height:1.35;margin-top:2px;color:var(--muted)}
+.gk-et{gap:5px;margin-top:8px}
+.gke{font:800 10px var(--ui);letter-spacing:.05em;padding:4px 7px;border-radius:6px}
+.gke.k{background:#1d3461}.gke.silah,.gke.bebek{font-size:10px}.gke.silah{background:#b42318}.gke.bebek{background:#c2410c}
+.gk-bag{margin-top:10px;border:1px solid #dfe4ec;border-radius:9px;padding:8px 10px;background:#f7f9fc}
+.gk-bag.dev{border-color:#f1b8b0;background:#fff5f3}
+.gk-bt{font:800 9.5px var(--ui);letter-spacing:.12em;color:var(--muted)}
+.gk-bs{font:700 13.5px/1.3 var(--ui);color:var(--ink);margin-top:2px}
+.gk-be{gap:5px;margin-top:6px}.gk-be span{font:600 12px var(--mono);background:#fff;color:var(--ink);border:1px solid #cdd4df;border-radius:5px;padding:2px 6px}
+.gk-s{font-size:12.5px;color:var(--muted);margin-top:4px}
+.gk-kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:10px 0 0;font-size:12.5px;padding-top:8px;border-top:1px solid #eef1f5}
+.gk-kv dt{color:var(--muted)}.gk-kv dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.gk-gz{text-align:center;margin:14px 8px;font-size:11px}
+@media (max-width:420px){.gk-ft{width:64px;height:80px}.gk-ad{font-size:16px}}
 </style>
 
 <div id="login" class="gut" hidden>
@@ -392,7 +459,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 12.6';let SURUM_YENI=false;
+const SURUM='RITA 13.0';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -817,14 +884,14 @@ let GDUR=null,GDT=0;async function gorevDurum(){const P=GOREVP;if(!P||!P.no)retu
 function gorevCiz(){const P=GOREVP;
   $('login').hidden=true;$('app').hidden=false;document.body.classList.add('gorev');role='gorev';const yon=P.yon==='gelis';
   $('tabs').innerHTML='';$('topfl').textContent=P.f;$('role').textContent='GÖREV';
-  $('view').innerHTML='<section class="gk-bas '+(yon?'gelis':'gidis')+'"><div class="gk-yon">'+(yon?'GELİŞ · KARŞILAMA':'GİDİŞ · UĞURLAMA')+'</div><div class="gk-uc">'+esc(P.f)+'</div><div class="gk-alt">'+esc([fmtD(P.gun),P.sehir,P.ac].filter(Boolean).join(' · '))+'</div>'+(P.per?'<div class="gk-alt">Görevli: '+esc(P.per)+'</div>':'')+(P.not?'<div class="gk-not">'+esc(P.not)+'</div>':'')+(GDUR&&durumMetin(GDUR)?'<div class="gk-dur '+durumRenk(GDUR)+'">'+esc(durumMetin(GDUR))+'<div style="font:600 12px var(--ui);opacity:.7;margin-top:2px">Canlı durum · '+esc(String(GDUR.durum_zaman||GDUR._g||'').slice(11,16))+' güncellendi</div></div>':'')+'<div class="gk-say">'+P.y.length+' VIP yolcu</div></section>'
-   +P.y.map((v,i)=>'<article class="gk"><div class="gk-ft" data-ad="'+esc(v.n)+'" data-ft="'+esc(v.ft||'')+'"><span>'+esc(v.n.split(' ').map(w=>w[0]).slice(0,2).join(''))+'</span></div><div class="gk-ic"><div class="gk-no">'+(i+1)+'</div><div class="gk-ad">'+esc(v.n)+'</div><div class="gk-un">'+esc(v.t)+'</div>'
-     +'<div class="gk-et"><span class="gke '+(yon?'gelis':'gidis')+'">'+(yon?'KARŞILAMA':'UĞURLAMA')+'</span>'+(v.k?'<span class="gke k">KOLTUK '+esc(v.k)+'</span>':'')+(v.sl?'<span class="gke silah">⚠ SİLAH VAR</span>':'')+(v.bb?'<span class="gke bebek">BEBEK ARABASI</span>':'')+'</div><div class="gk-bag'+(v.bd?' dev':'')+'"><div class="gk-bt">BAGAJ'+(v.bn?' · '+v.bn+' ADET':'')+'</div><div class="gk-bs">'+esc(v.bs||(yon?'İstanbul (IST) son varış':'Son varış'))+'</div>'+((v.be||[]).length?'<div class="gk-be">'+v.be.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div>':'<div class="gk-s" style="margin:4px 0 0">Etiket no girilmedi</div>')+(v.b?'<div class="gk-s" style="margin:4px 0 0">'+esc(v.b)+'</div>':'')+'</div>'
-     +(v.r?'<div class="gk-s">Refakat: <b>'+esc(v.r)+'</b></div>':'')+(v.m?'<div class="gk-s">Maiyet/koruma: <b>'+v.m+'</b>'+(v.mk?' · '+esc(v.mk):'')+'</div>':'')+(v.fn?'<div class="gk-s">Not: '+esc(v.fn)+'</div>':'')+'</div></article>').join('')
-   +'<p class="note" style="text-align:center;margin:16px">Bu sayfa yalnızca size gönderilen bağlantıdaki bilgileri gösterir. Bağlantıyı başkasıyla paylaşmayın.</p>';
-  document.querySelectorAll('.gk-ft').forEach(fotoYukle)}
+  $('view').innerHTML='<section class="gk-bas '+(yon?'gelis':'gidis')+'"><div class="gk-yon"><span>'+(yon?'GELİŞ · KARŞILAMA':'GİDİŞ · UĞURLAMA')+'</span><span class="gk-say">'+P.y.length+' VIP</span></div><div class="gk-uc"><span>'+esc(P.no||P.f)+'</span><span class="gk-sa">'+esc(P.saat||'')+'</span></div>'+(P.hat?'<div class="gk-rt">'+esc(P.hat.replace('-',' → '))+'</div>':'')+'<div class="gk-alt">'+esc([fmtD(P.gun),P.sehir,P.ac].filter(Boolean).join(' · '))+'</div>'+(P.per?'<div class="gk-alt">Görevli: <b>'+esc(P.per)+'</b></div>':'')+(P.not?'<div class="gk-not">'+esc(P.not)+'</div>':'')+(GDUR&&durumMetin(GDUR)?'<div class="gk-dur '+durumRenk(GDUR)+'">'+esc(durumMetin(GDUR))+'<div style="font:600 12px var(--ui);opacity:.7;margin-top:2px">Canlı durum · '+esc(String(GDUR.durum_zaman||GDUR._g||'').slice(11,16))+' güncellendi</div></div>':'')+'</section>'
+   +P.y.map((v,i)=>'<article class="gk"><div class="gk-top"><div class="gk-ft" data-ad="'+esc(v.n)+'" data-ft="'+esc(v.ft||'')+'"><span>'+esc(v.n.split(' ').map(w=>w[0]).slice(0,2).join(''))+'</span></div><div class="gk-ic"><div class="gk-no">VIP '+(i+1)+'/'+P.y.length+'</div><div class="gk-ad">'+esc(v.n)+'</div><div class="gk-un">'+esc(v.t)+'</div>'
+     +'<div class="gk-et">'+(v.k?'<span class="gke k">KOLTUK '+esc(v.k)+'</span>':'')+(v.sl?'<span class="gke silah">⚠ SİLAH VAR</span>':'')+(v.bb?'<span class="gke bebek">BEBEK ARABASI</span>':'')+'</div></div></div><div class="gk-bag'+(v.bd?' dev':'')+'"><div class="gk-bt">BAGAJ'+(v.bn?' · '+v.bn+' ADET':'')+'</div><div class="gk-bs">'+esc(v.bs||(yon?'İstanbul (IST) son varış':'Son varış'))+'</div>'+((v.be||[]).length?'<div class="gk-be">'+v.be.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div>':'<div class="gk-s" style="margin:4px 0 0">Etiket no girilmedi</div>')+(v.b?'<div class="gk-s" style="margin:4px 0 0">'+esc(v.b)+'</div>':'')+'</div>'
+     +((v.r||v.m||v.fn)?'<dl class="gk-kv">'+(v.r?'<dt>Refakat</dt><dd>'+esc(v.r)+'</dd>':'')+(v.m?'<dt>Maiyet / koruma</dt><dd>'+v.m+' kişi'+(v.mk?' · '+esc(v.mk):'')+'</dd>':'')+(v.fn?'<dt>Not</dt><dd>'+esc(v.fn)+'</dd>':'')+'</dl>':'')+'</article>').join('')
+   +'<p class="note gk-gz">Bu sayfa yalnızca size gönderilen bağlantıdaki bilgileri gösterir. Bağlantıyı başkasıyla paylaşmayın.</p>';
+  document.querySelectorAll('.gk-ft').forEach(fotoYukle);if(!Object.keys(FOTOLAR).length&&window.RITA_STANDALONE)fotoLoad().then(()=>document.querySelectorAll('.gk-ft').forEach(el=>{if(!el.querySelector('img'))fotoYukle(el)}))}
 function fotoYukle(el){const u=el.dataset.ft||(fotoOf(el.dataset.ad||'')||{}).u;if(u)el.innerHTML='<img src="'+esc(u)+'" alt="'+esc(el.dataset.ad)+'" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">'}
-function about(){const P=people();return'<section class="panel"><h2 class="h">UYGULAMA OLARAK KUR</h2><dl class="kv"><dt>iPhone</dt><dd>Safari’de bu sayfayı açın → Paylaş → Ana Ekrana Ekle</dd><dt>Android</dt><dd>Chrome’da açın → ⋮ menü → Ana ekrana ekle</dd><dt>Bilgisayar</dt><dd>Chrome veya Edge’de açın → ⋮ menü → Yayınla, kaydet ve paylaş → Kısayol oluştur (pencere olarak aç)</dd></dl><p class="note">RITA simgesiyle ayrı bir uygulama gibi açılır.</p></section><section class="panel"><h2 class="h">VERİ VE KAYNAKLAR</h2><dl class="kv"><dt>Sürüm</dt><dd>RITA 12.5 · veri '+DATA_VER+'</dd><dt>Devlet rehberi</dt><dd>'+P.filter(x=>!x.o).length+' kayıt</dd><dt>Kurumsal</dt><dd>'+P.filter(x=>x.o).length+' kayıt</dd><dt>Rical</dt><dd>'+D.R.length+' madde</dd><dt>Upgrade</dt><dd>'+D.U.length+' unvan + THY sıralaması (24 sıra)</dd></dl><p class="note">✓ işaretli kayıtlar Kasım 2026 itibarıyla haber veya resmî kaynakla kontrol edildi. TGS kadrosu 19.01.2026 tarihli organizasyon şemasından, İstanbul yolcu hizmetleri kadrosu duvar çizelgesinden alınmıştır. Diğer kayıtlar arşiv ve seçim listelerine dayanır.</p></section><section class="panel"><p style="margin:0;font-size:13px"><b>© 2026 Yakup KAYABAŞ. Tüm hakları saklıdır.</b><br>RITA yazılımının adı, amblemi, arayüz tasarımı, kaynak kodu ve veri düzeni üzerindeki tüm fikri ve sınai mülkiyet hakları Yakup KAYABAŞ’a aittir.</p></section>'}
+function about(){const P=people();return'<section class="panel"><h2 class="h">UYGULAMA OLARAK KUR</h2><dl class="kv"><dt>iPhone</dt><dd>Safari’de bu sayfayı açın → Paylaş → Ana Ekrana Ekle</dd><dt>Android</dt><dd>Chrome’da açın → ⋮ menü → Ana ekrana ekle</dd><dt>Bilgisayar</dt><dd>Chrome veya Edge’de açın → ⋮ menü → Yayınla, kaydet ve paylaş → Kısayol oluştur (pencere olarak aç)</dd></dl><p class="note">RITA simgesiyle ayrı bir uygulama gibi açılır.</p></section><section class="panel"><h2 class="h">VERİ VE KAYNAKLAR</h2><dl class="kv"><dt>Sürüm</dt><dd>'+SURUM+' · veri '+DATA_VER+'</dd><dt>Devlet rehberi</dt><dd>'+P.filter(x=>!x.o).length+' kayıt</dd><dt>Kurumsal</dt><dd>'+P.filter(x=>x.o).length+' kayıt</dd><dt>Rical</dt><dd>'+D.R.length+' madde</dd><dt>Upgrade</dt><dd>'+D.U.length+' unvan + THY sıralaması (24 sıra)</dd></dl><p class="note">✓ işaretli kayıtlar Kasım 2026 itibarıyla haber veya resmî kaynakla kontrol edildi. TGS kadrosu 19.01.2026 tarihli organizasyon şemasından, İstanbul yolcu hizmetleri kadrosu duvar çizelgesinden alınmıştır. Diğer kayıtlar arşiv ve seçim listelerine dayanır.</p></section><section class="panel"><p style="margin:0;font-size:13px"><b>© 2026 Yakup KAYABAŞ. Tüm hakları saklıdır.</b><br>RITA yazılımının adı, amblemi, arayüz tasarımı, kaynak kodu ve veri düzeni üzerindeki tüm fikri ve sınai mülkiyet hakları Yakup KAYABAŞ’a aittir.</p></section>'}
 
 /* ---------- alt sayfa, bildirim ---------- */
 let toastT,undoFn=null;function toast(m,undo){$('toast-t').textContent=m;undoFn=undo||null;$('toast-b').hidden=!undo;$('toast').hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{$('toast').hidden=true;undoFn=null},undo?6000:2200)}
