@@ -61,14 +61,18 @@ jobs:
           if ! git diff --quiet data/; then
             git config user.name "RITA canlı güncelleme"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            # yalnız BU çalışmanın değiştirdiği dosyalar yazılır (eski kopya başkasının yenisini ezmesin)
+            DEG=$(git diff --name-only -- data/ucuslar.json data/tbmm.json data/fotolar.json)
+            mkdir -p /tmp/yedek; for f in $DEG; do cp "$f" /tmp/yedek/; done
             git add data/ucuslar.json data/tbmm.json data/rita-veri.json data/fotolar.json
             git commit -m "Canlı veri $(TZ=Europe/Istanbul date '+%F %H:%M')"
             if ! git pull --rebase origin "$GITHUB_REF_NAME"; then
-              # yönetici aynı anda onay verdiyse: en güncel hâli alıp kayıtları yeniden ekle
+              # aynı anda başka bir kayıt geldiyse: en güncel hâli al, yalnız bu çalışmanın değişikliklerini yeniden uygula
               git rebase --abort
-              cp data/ucuslar.json /tmp/u.json; [ -f data/tbmm.json ] && cp data/tbmm.json /tmp/t.json; [ -f data/fotolar.json ] && cp data/fotolar.json /tmp/f.json
               git fetch origin "$GITHUB_REF_NAME" && git reset --hard "origin/$GITHUB_REF_NAME"
-              cp /tmp/u.json data/ucuslar.json; [ -f /tmp/t.json ] && cp /tmp/t.json data/tbmm.json; [ -f /tmp/f.json ] && cp /tmp/f.json data/fotolar.json
+              for f in $DEG; do
+                if [ "$f" = "data/fotolar.json" ]; then python tools/fotolar_birlestir.py data/fotolar.json /tmp/yedek/fotolar.json; else cp "/tmp/yedek/$(basename $f)" "$f"; fi
+              done
               RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_yaz != 'evet' && github.event.inputs.rg_gunler || '' }}" python tools/resmi_gazete.py || true
               git add data/ucuslar.json data/tbmm.json data/rita-veri.json data/fotolar.json
               git commit -m "Canlı veri $(TZ=Europe/Istanbul date '+%F %H:%M')" || true
