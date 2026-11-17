@@ -37,18 +37,24 @@ def tbmm():
     print('TBMM fotoğrafı:', n); kaydet()
 
 GENEL = set('genel muduru mudur baskani baskan baskanligi sekreteri yardimcisi uyesi kurulu kurumu baskanvekili komutani bassavcisi mustesari ve daimi temsilcisi cumhuriyeti turkiye eski emekli birinci ikinci dairesi bakanligi idaresi yuksek'.split())
-ROL = [(r'basbakan', 'basbakan'), (r'cumhurbaskani yardimcisi', 'cumhurbaskani yardimcisi'), (r'cumhurbaskani', 'cumhurbaskan'), (r'tbmm baskani|meclis baskani', 'meclis baskan|tbmm baskan'), (r'valisi', 'vali'), (r'bakan yardimcisi', 'bakan yardimcisi'), (r'bakani', 'bakan'), (r'rektoru', 'rektor'), (r'buyukelcisi', 'buyukelci'),
-       (r'orgeneral|oramiral', 'orgeneral|oramiral|komutan'), (r'korgeneral|koramiral', 'korgeneral|koramiral|general|amiral'), (r'tumgeneral|tuggeneral|tumamiral|tugamiral', 'general|amiral'),
-       (r'komutani', 'komutan'), (r'belediye baskan', 'belediye baskan'), (r'milletvekili', 'milletvekil'), (r'yargitay', 'yargitay'), (r'danistay', 'danistay'),
-       (r'anayasa mahkemesi', 'anayasa mahkemesi'), (r'sayistay', 'sayistay'), (r'genel muduru', 'genel mudur'), (r'baskani', 'baskan')]
+# (Türkçe unvan kalıbı, metinde aranacak görev — Türkçe|İngilizce)
+ROL = [(r'basbakan', r'basbakan|prime minister'), (r'cumhurbaskani yardimcisi', r'cumhurbaskani yardimcisi|vice president'), (r'cumhurbaskani', r'cumhurbaskan|president|first lady'),
+       (r'tbmm baskani|meclis baskani', r'meclis baskan|tbmm baskan|speaker of the grand national'), (r'valisi', r'vali|governor'), (r'bakan yardimcisi', r'bakan yardimcisi|deputy minister'),
+       (r'bakani', r'bakan|minister'), (r'rektoru', r'rektor|rector'), (r'buyukelcisi', r'buyukelci|ambassador'),
+       (r'orgeneral|oramiral', r'orgeneral|oramiral|komutan|general|admiral|commander'), (r'korgeneral|koramiral', r'korgeneral|koramiral|general|amiral|admiral'),
+       (r'tumgeneral|tuggeneral|tumamiral|tugamiral', r'general|amiral|admiral'), (r'komutani', r'komutan|commander'), (r'belediye baskan', r'belediye baskan|mayor'),
+       (r'milletvekili', r'milletvekil|member of the grand national assembly|member of parliament|deputy'), (r'yargitay', r'yargitay|court of cassation'), (r'danistay', r'danistay|council of state'),
+       (r'anayasa mahkemesi', r'anayasa mahkemesi|constitutional court'), (r'sayistay', r'sayistay|court of accounts'), (r'genel muduru', r'genel mudur|director general|general manager|ceo'),
+       (r'baskani', r'baskan|president|chair|head')]
+OLUM = r'(?i)\b(öldü|ölümü|vefat|died|death)|\(\s*(d\.\s*)?\d{1,2}?\s*\w*\s*\d{4}\s*[-–]\s*\d{1,2}?\s*\w*\s*\d{4}\s*\)|ö\.\s*\d{4}'
 def dogrula(kisi, unvan, j):
-    """Vikipedi özetinin bu kişi ve bu görev olduğunu doğrula."""
+    """Vikipedi özetinin BU kişi ve BUGÜNKÜ (ya da kayıttaki eski) görevi olduğunu doğrula."""
     if j.get('type') != 'standard': return 'anlam ayrımı/özel sayfa'
     tit = nk(j.get('title', ''))
     if tit != nk(kisi) and not (set(nk(kisi).split()) <= set(tit.split())): return 'başlık farklı: ' + j.get('title', '')
-    metin = norm((j.get('description') or '') + ' ' + (j.get('extract') or ''))
     ham = (j.get('description') or '') + ' ' + (j.get('extract') or '')
-    if re.search(r'(?i)\b(öldü|ölümü|vefat)|\(\s*(d\.\s*)?\d{1,2}?\s*\w*\s*\d{4}\s*[-–]\s*\d{1,2}?\s*\w*\s*\d{4}\s*\)|ö\.\s*\d{4}', ham): return 'ölmüş kişi olabilir'
+    metin = norm(ham)
+    if re.search(OLUM, ham): return 'ölmüş kişi olabilir'
     u = norm(re.sub(r'\s*\(.*?\)', '', unvan.split(' · ')[0]))
     rol = next((r for p, r in ROL if re.search(p, u)), None)
     if not rol or not re.search(rol, metin): return 'görev doğrulanamadı'
@@ -75,69 +81,140 @@ def kisiler():
         seen.add(k); out.append((n, t, r))
     return out
 
-API = 'https://tr.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&redirects=1&prop=pageimages|extracts|description|pageprops&exintro=1&explaintext=1&exsentences=4&piprop=thumbnail|original&pithumbsize=400&ppprop=disambiguation|wikibase_item&titles='
-def toplu(basliklar):
-    """20 başlığı tek istekte sor (Vikipedi'ye az yük). Hız sınırında bekleyip yeniden dener."""
+PROP = 'action=query&format=json&formatversion=2&redirects=1&prop=pageimages|extracts|description|pageprops&exintro=1&explaintext=1&exsentences=4&piprop=thumbnail|original&pithumbsize=400&ppprop=disambiguation|wikibase_item'
+def sor(lang, ek):
+    """Vikipedi API; hız sınırında bekleyip yeniden dener."""
     for bek in (0, 20, 60, 180):
         if bek: time.sleep(bek)
-        raw = get(API + urllib.parse.quote('|'.join(basliklar)), 40)
+        raw = get('https://%s.wikipedia.org/w/api.php?%s&%s' % (lang, PROP, ek), 40)
         if re.search(r'(?i)too many requests|making too many', raw[:400]): continue
-        try: q = json.loads(raw)['query']
+        try: return json.loads(raw).get('query', {})
         except Exception: return None
-        yon = {}
-        for x in q.get('normalized', []) + q.get('redirects', []): yon[x['from']] = x['to']
-        sayfa = {p['title']: p for p in q.get('pages', [])}
-        out = {}
-        for b in basliklar:
-            t = b
-            for _ in range(3): t = yon.get(t, t)
-            p = sayfa.get(t)
-            if not p or p.get('missing'): out[b] = None; continue
-            out[b] = {'type': 'disambiguation' if 'disambiguation' in (p.get('pageprops') or {}) else 'standard', 'title': p['title'],
-                      'description': p.get('description', ''), 'extract': p.get('extract', ''),
-                      'thumbnail': p.get('thumbnail') or {}, 'qid': (p.get('pageprops') or {}).get('wikibase_item', ''), 'url': 'https://tr.wikipedia.org/wiki/' + urllib.parse.quote(p['title'].replace(' ', '_'))}
-        return out
     return None
+def sayfa_kaydi(lang, p):
+    return {'type': 'disambiguation' if 'disambiguation' in (p.get('pageprops') or {}) else 'standard', 'title': p['title'],
+            'description': p.get('description', ''), 'extract': p.get('extract', ''), 'thumbnail': p.get('thumbnail') or {},
+            'qid': (p.get('pageprops') or {}).get('wikibase_item', ''), 'lang': lang,
+            'url': 'https://%s.wikipedia.org/wiki/%s' % (lang, urllib.parse.quote(p['title'].replace(' ', '_')))}
+def toplu(basliklar, lang='tr'):
+    """20 başlığı tek istekte sor (Vikipedi'ye az yük)."""
+    q = sor(lang, 'titles=' + urllib.parse.quote('|'.join(basliklar)))
+    if q is None: return None
+    yon = {}
+    for x in q.get('normalized', []) + q.get('redirects', []): yon[x['from']] = x['to']
+    sayfa = {p['title']: p for p in q.get('pages', [])}
+    out = {}
+    for b in basliklar:
+        t = b
+        for _ in range(3): t = yon.get(t, t)
+        p = sayfa.get(t)
+        out[b] = None if not p or p.get('missing') else sayfa_kaydi(lang, p)
+    return out
+def ara(lang, ad):
+    """Başlığı farklı yazılmış sayfalar için ("Ali Veli (siyasetçi)" gibi) isimle arama; ilk 5 aday."""
+    q = sor(lang, 'generator=search&gsrlimit=5&gsrnamespace=0&gsrsearch=' + urllib.parse.quote('"' + ad + '"'))
+    if q is None: return None
+    return [sayfa_kaydi(lang, p) for p in sorted(q.get('pages', []), key=lambda p: p.get('index', 99)) if not p.get('missing')]
+def commons(kayitlar):
+    """Doğrulanmış sayfanın Vikidata kaydındaki resmî görsel (P18) — sayfa özetinde resim yoksa."""
+    qs = [j['qid'] for j in kayitlar if j and j.get('qid') and not j['thumbnail']]
+    if not qs: return
+    try:
+        w = json.loads(get('https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=claims&ids=' + '|'.join(qs[:50]), 40))
+        for j in kayitlar:
+            e = w.get('entities', {}).get(j.get('qid', '') if j else '', {})
+            c = (e.get('claims') or {}).get('P18') or []
+            if j and not j['thumbnail'] and c and c[0].get('mainsnak', {}).get('datavalue'):
+                j['thumbnail'] = {'source': 'https://commons.wikimedia.org/wiki/Special:FilePath/' + urllib.parse.quote(c[0]['mainsnak']['datavalue']['value'].replace(' ', '_')) + '?width=400'}; j['commons'] = 1
+    except Exception: pass
+SURUM = 3  # arama yöntemi değişince eski "bulunamadı" kayıtları bir kez yeniden denenir
+def sonuc(ad, unvan, j):
+    neden = dogrula(ad, unvan, j)
+    if not neden and not j['thumbnail'].get('source'): neden = 'sayfada fotoğraf yok'
+    return neden
+def kabul(ad, unvan, j):
+    DB[nk(ad)] = {'n': ad, 'u': j['thumbnail']['source'], 'k': 'Vikipedi' + (' (EN)' if j['lang'] == 'en' else '') + (' / Commons' if j.get('commons') else ''),
+                  's': j['url'], 'g': unvan.split(' · ')[0], 'd': bugun}
 
 def viki(limit):
     eski = (datetime.date.today() - datetime.timedelta(days=30)).isoformat()
     bek = []
     for ad, unvan, r in kisiler():
         k = nk(ad)
-        if k in DB and (DB[k].get('u') or (DB[k].get('d', '') > eski and not (DB[k].get('neden') == 'sayfada fotoğraf yok' and not DB[k].get('c')))): continue
-        bek.append((ad, unvan, re.sub(r'^((Prof|Doç|Dr|Av|Org|Korg|Orgeneral|Korgeneral|Oramiral|Koramiral)\.? )+', '', ad).strip()))
+        if k in DB and (DB[k].get('u') or (DB[k].get('d', '') > eski and DB[k].get('v') == SURUM)): continue
+        bek.append((ad, unvan, re.sub(r'^((Prof|Doç|Dr|Av|Org|Korg|Orgeneral|Korgeneral|Oramiral|Koramiral|Tümgeneral|Tuğgeneral)\.? )+', '', ad).strip()))
         if len(bek) >= limit: break
-    n = 0; red = {}
+    n = 0; red = {}; dur = False
     for i in range(0, len(bek), 20):
         grup = bek[i:i + 20]
-        res = toplu([g[2] for g in grup])
-        if res is None: print('Vikipedi hız sınırı / okunamadı; bu tur durduruldu.'); break
-        qs = [res[b[2]]['qid'] for b in grup if res.get(b[2]) and res[b[2]].get('qid') and not res[b[2]]['thumbnail']]
-        p18 = {}
-        if qs:
-            try:
-                w = json.loads(get('https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=claims&ids=' + '|'.join(qs), 40))
-                for q, e in w.get('entities', {}).items():
-                    c = (e.get('claims') or {}).get('P18') or []
-                    if c and c[0].get('mainsnak', {}).get('datavalue'):
-                        p18[q] = 'https://commons.wikimedia.org/wiki/Special:FilePath/' + urllib.parse.quote(c[0]['mainsnak']['datavalue']['value'].replace(' ', '_')) + '?width=400'
-            except Exception: pass
-        for b in grup:
-            j = res.get(b[2])
-            if j and not j['thumbnail'] and p18.get(j.get('qid')): j['thumbnail'] = {'source': p18[j['qid']]}; j['commons'] = 1
-        for ad, unvan, bas in grup:
-            k = nk(ad); j = res.get(bas)
-            if j is None: DB[k] = {'n': ad, 'u': '', 'k': '', 'neden': 'Vikipedi sayfası yok', 'd': bugun}; continue
-            neden = dogrula(ad, unvan, j)
-            img = j['thumbnail'].get('source', '')
-            if not neden and not img: neden = 'sayfada fotoğraf yok'
-            if neden:
-                DB[k] = {'n': ad, 'u': '', 'k': '', 'neden': neden, 'd': bugun, 'c': 1}; red[neden.split(':')[0]] = red.get(neden.split(':')[0], 0) + 1; continue
-            DB[k] = {'n': ad, 'u': img, 'k': 'Vikipedi' + (' / Commons' if j.get('commons') else ''), 's': j['url'], 'g': unvan.split(' · ')[0], 'd': bugun}; n += 1
-        kaydet(); time.sleep(3)
+        # 1) Türkçe Vikipedi, tam başlık (toplu)  2) İngilizce Vikipedi, tam başlık (toplu)
+        kalan = list(grup); neden = {}
+        for lang in ('tr', 'en'):
+            if not kalan: break
+            res = toplu([g[2] for g in kalan], lang)
+            if res is None: dur = True; break
+            commons(list(res.values()))
+            yeni = []
+            for g in kalan:
+                j = res.get(g[2])
+                nd = sonuc(g[0], g[1], j) if j else 'Vikipedi sayfası yok'
+                if not nd: kabul(g[0], g[1], j); n += 1
+                else: neden[g[0]] = neden.get(g[0]) if lang == 'en' and neden.get(g[0]) != 'Vikipedi sayfası yok' else nd; yeni.append(g)
+            kalan = yeni; time.sleep(2)
+        # 3) isimle arama (başlığı farklı yazılmış sayfalar), önce Türkçe sonra İngilizce
+        for g in kalan:
+            if dur: break
+            for lang in ('tr', 'en'):
+                c = ara(lang, g[2])
+                if c is None: dur = True; break
+                c = [j for j in c if set(nk(g[2]).split()) <= set(nk(j['title']).split())]
+                commons(c)
+                ok = next((j for j in c if not sonuc(g[0], g[1], j)), None)
+                time.sleep(1)
+                if ok: kabul(g[0], g[1], ok); n += 1; break
+            else:
+                k = nk(g[0]); nd = neden.get(g[0], 'bulunamadı')
+                DB[k] = {'n': g[0], 'u': '', 'k': '', 'neden': nd, 'd': bugun, 'v': SURUM}; red[nd.split(':')[0]] = red.get(nd.split(':')[0], 0) + 1
+        kaydet()
+        if dur: print('Vikipedi hız sınırı; bu tur durduruldu.'); break
     print('Vikipedi:', len(bek), 'kişi,', n, 'doğrulanmış fotoğraf; elenen:', red); kaydet()
+
+ILLER = 'adana adiyaman afyonkarahisar agri aksaray amasya ankara antalya ardahan artvin aydin balikesir bartin batman bayburt bilecik bingol bitlis bolu burdur bursa canakkale cankiri corum denizli diyarbakir duzce edirne elazig erzincan erzurum eskisehir gaziantep giresun gumushane hakkari hatay igdir isparta istanbul izmir kahramanmaras karabuk karaman kars kastamonu kayseri kilis kirikkale kirklareli kirsehir kocaeli konya kutahya malatya manisa mardin mersin mugla mus nevsehir nigde ordu osmaniye rize sakarya samsun sanliurfa siirt sinop sirnak sivas tekirdag tokat trabzon tunceli usak van yalova yozgat zonguldak'.split()
+def valilik():
+    """Valiler: il valiliğinin resmî sitesi (www.<il>.gov.tr). Sayfada valinin adı geçmeli; görsel, adıyla eşleşen ya da 'vali' içeren resimdir."""
+    n = 0; kontrol = 0
+    for ad, unvan, r in kisiler():
+        m = re.match(r'(.+?) Valisi$', unvan.split(' · ')[0].strip())
+        if not m: continue
+        k = nk(ad)
+        if k in DB and DB[k].get('k') == 'Valilik' and DB[k].get('d', '') > (datetime.date.today() - datetime.timedelta(days=30)).isoformat(): continue
+        il = norm(m.group(1)).replace(' ', '')
+        if il not in ILLER: continue
+        kontrol += 1
+        for yol in ('/vali', '/valimiz', '/vali-ozgecmis', ''):
+            u = 'https://www.%s.gov.tr%s' % (il, yol)
+            h = get(u, 30)
+            if not h or nk(ad) not in nk(re.sub(r'<[^>]+>', ' ', html.unescape(h))): continue
+            aday = []
+            for im in re.finditer(r'<img\b[^>]*>', h, re.I):
+                t = im.group(0); src = re.search(r'\b(?:data-src|src)=["\']([^"\']+)', t)
+                if not src or re.search(r'(?i)logo|icon|bayrak|flag|\.svg|banner|ataturk|cumhurbaskani', src.group(1)): continue
+                alt = norm(' '.join(re.findall(r'\b(?:alt|title)=["\']([^"\']*)', t)))
+                puan = (3 if nk(ad) in nk(alt) else 0) + (2 if re.search(r'(?i)vali', src.group(1) + alt) else 0)
+                if puan: aday.append((puan, urllib.parse.urljoin(u, html.unescape(src.group(1)))))
+            og = re.search(r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)', h, re.I)
+            if not aday and og and yol and not re.search(r'(?i)logo', og.group(1)): aday.append((1, urllib.parse.urljoin(u, og.group(1))))
+            if aday:
+                aday.sort(key=lambda x: -x[0])
+                if k not in DB or not DB[k].get('u') or DB[k].get('k') == 'Valilik':
+                    DB[k] = {'n': ad, 'u': aday[0][1], 'k': 'Valilik', 's': u, 'g': unvan.split(' · ')[0], 'd': bugun}; n += 1
+                break
+            time.sleep(0.5)
+        time.sleep(0.5)
+    print('Valilik:', kontrol, 'vali denendi,', n, 'resmî fotoğraf'); kaydet()
 
 if __name__ == '__main__':
     a = sys.argv[1:]
     if '--tbmm' in a or not a: tbmm()
+    if '--vali' in a: valilik()
     if '--viki' in a: viki(int(a[a.index('--viki') + 1]) if len(a) > a.index('--viki') + 1 else 300)
