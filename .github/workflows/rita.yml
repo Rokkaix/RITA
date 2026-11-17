@@ -54,7 +54,7 @@ jobs:
         continue-on-error: true
         run: |
           if [ $(( 10#$(date -u +%H) )) -eq 2 ] && [ $(( 10#$(date -u +%M) )) -lt 15 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            timeout 40m python tools/fotolar.py --tbmm --viki 200
+            timeout 40m python tools/fotolar.py --tbmm --viki 600
           fi
       - name: Kaydet
         run: |
