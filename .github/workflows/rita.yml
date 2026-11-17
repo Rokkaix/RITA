@@ -15,6 +15,10 @@ on:
         description: 'Günleri gerçekten işle (evet) ya da yalnız dene (boş)'
         required: false
         default: ''
+      kesif:
+        description: 'Yalnız sayfa yapısı keşfi: boşlukla ayrılmış adresler (veri değişmez)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -26,8 +30,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  kesif:
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.kesif != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sayfa yapısını göster
+        run: python tools/kesif.py ${{ github.event.inputs.kesif }}
+
   tarama:
-    if: github.event_name != 'push'
+    if: github.event_name != 'push' && (github.event_name != 'workflow_dispatch' || github.event.inputs.kesif == '')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -82,7 +94,7 @@ jobs:
 
   yayin:
     needs: tarama
-    if: always() && needs.tarama.result != 'failure'
+    if: always() && needs.tarama.result != 'failure' && (github.event_name != 'workflow_dispatch' || github.event.inputs.kesif == '')
     runs-on: ubuntu-latest
     environment:
       name: github-pages
