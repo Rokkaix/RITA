@@ -242,9 +242,43 @@ def kaymakamlik(limit):
         time.sleep(0.4)
     print('Kaymakamlık:', kontrol, 'kaymakam denendi,', n, 'resmî fotoğraf'); kaydet()
 
+KURUM_SAYFA = {'THY': ['https://investor.turkishairlines.com/tr/kurumsal-yonetim/yonetim-kurulu', 'https://investor.turkishairlines.com/tr/kurumsal-yonetim/ust-yonetim'],
+               # TGS sitesi (tgs.aero) yönetim kadrosu yayımlamıyor: /kurumsal/* ana sayfaya yönleniyor (17.11.2026 keşif)
+               }
+def kurum_yonetim():
+    """THY / TGS yöneticileri: şirketin resmî yönetim sayfası. Resim etiketinden hemen sonra gelen ad, rehberdeki aynı kurumun kişisiyle eşleşmeli."""
+    src = open(os.path.join(R, 'index.html'), encoding='utf-8').read(); i = src.index('K0=')
+    K = json.JSONDecoder().raw_decode(src[i + 3:])[0]
+    rehber = {}
+    for x in K:
+        if x[5] in KURUM_SAYFA: rehber.setdefault((x[5], nk(x[0])), x)
+    n = 0; yeni = []
+    for kurum, sayfalar in KURUM_SAYFA.items():
+        for u in sayfalar:
+            h = get(u, 40)
+            if not h: continue
+            parca = re.split(r'(<img\b[^>]*>)', h, flags=re.I)
+            for ix in range(1, len(parca), 2):
+                t = parca[ix]; s_ = re.search(r'\bsrc=["\']([^"\']+)', t)
+                if not s_ or re.search(r'(?i)logo|icon|\.svg|footer|award|odul', s_.group(1)): continue
+                alt = html.unescape(' '.join(re.findall(r'\balt=["\']([^"\']*)', t))).strip()
+                sonra = re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', ''.join(parca[ix + 1:ix + 2]))))[:300].strip()
+                # ad = resimden sonraki metnin unvandan (alt) önceki kısmı
+                kes = sonra.find(alt.split('/')[0].strip()[:20]) if alt else -1
+                ad = (sonra[:kes] if kes > 0 else ' '.join(sonra.split()[:4])).strip(' -–·|')
+                if not ad or len(ad) > 60: continue
+                k = nk(ad); x = rehber.get((kurum, k)) or next((v for (kk, kn), v in rehber.items() if kk == kurum and (kn.endswith(' ' + k) or k.endswith(' ' + kn))), None)
+                if not x: yeni.append(kurum + ': ' + ad + ' — ' + alt); continue
+                DB[nk(x[0])] = {'n': x[0], 'u': urllib.parse.urljoin(u, html.unescape(s_.group(1))), 'k': kurum + ' resmî sitesi', 's': u, 'g': alt or x[1], 'd': bugun}; n += 1
+            time.sleep(1)
+    print('Kurum yönetimi:', n, 'resmî fotoğraf eşleşti')
+    if yeni: print('Rehberde olmayan (yönetici onayı için):', *yeni, sep='\n  ')
+    kaydet()
+
 if __name__ == '__main__':
     a = sys.argv[1:]
     if '--tbmm' in a or not a: tbmm()
     if '--vali' in a: valilik()
+    if '--kurum' in a: kurum_yonetim()
     if '--kaymakam' in a: kaymakamlik(int(a[a.index('--kaymakam') + 1]) if len(a) > a.index('--kaymakam') + 1 else 300)
     if '--viki' in a: viki(int(a[a.index('--viki') + 1]) if len(a) > a.index('--viki') + 1 else 300)
