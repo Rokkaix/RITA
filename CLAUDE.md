@@ -17,7 +17,7 @@ bu işi hızlandırmak ve doğru yapmak için vardır. Yeni özellik eklerken ö
 - Bağımsız site: https://rokkaix.github.io/RITA/ (GitHub Pages, `.github/workflows/rita.yml`).
 - `tools/build_site.py` siteyi `_site/` içine kurar (manifest, service worker, `window.RITA_STANDALONE`).
 - `data/rita-veri.json` — ortak veri (görev değişiklikleri, uçak tipi kabin düzenleri, öne çıkan hatlar).
-- `data/ucuslar.json` — İstanbul'dan kalkan tüm THY uçuşları; `tools/canli_ucuslar.py` her 30 dakikada günceller.
+- `data/ucuslar.json` — İstanbul'dan kalkan VE İstanbul'a gelen tüm THY uçuşları (`yon`: gidis/gelis; geliş anahtarı `TKno XXX-IST iniş`); yakın uçuşlarda canlı durum/gecikme/tahmini saat/kapı/bant. `tools/canli_ucuslar.py` her 15 dakikada (FlightStats).
 - Rical listesi (`RS` in `index.html`): Başkent Protokol Listesi 1–82 (iki sayfa, kullanıcının paylaştığı), ardından THY listesinden kalan maddeler. Kullanıcı onayı olmadan sıra değiştirilmez.
 - Rehber paketleri: `tools/rehber/derle.py` → `data/rehber-taslak.json`; onaylanmış `data/rehber.json` ASLA değiştirilmez; yeni kayıtlar `tools/rehber/paket_ayir.py` ile yeni paket dosyasına (`data/rehber-2.json`…) ayrılır ve `rita-veri.json` → `rehber` içinde `beklemede` belge açılır.
 - `data/tbmm.json` — TBMM resmî milletvekili listesi; `tools/canli_tbmm.py` 3 saatte bir günceller. Uygulama isim aramasında kullanır (rical 21. madde, "TBMM ✓").
@@ -27,7 +27,7 @@ bu işi hızlandırmak ve doğru yapmak için vardır. Yeni özellik eklerken ö
 
 ## Modül 2 — Operasyon ve personel atama (sunucusuz, kullanıcı kararı 17.11.2026)
 - "Atama" sekmesi yalnız yöneticide. Personel (ad, telefon) ve atamalar YALNIZ yönetici cihazında (`D.PER`, `D.GOR`, localStorage); asla `data/` ya da depoya yazılmaz.
-- Görev WhatsApp'tan tek dokunuşla (`wa.me`) gider; bağlantı `#g=<base64>` ile VIP kartlarını taşır (fragment sunucuya gitmez). Personel girişsiz yalnız o kartları görür.
+- Görev WhatsApp'tan tek dokunuşla (`wa.me`) gider. Kısa bağlantı: VIP kartları AES-GCM ile şifrelenip `data/gorev/<id>.json`'a yazılır (yönetici GitHub anahtarıyla), bağlantı `/g/?<id>#<anahtar>` (anahtar sunucuya gitmez); 3 günden eski dosyalar silinir. Anahtar yoksa uzun `#g=` bağlantısı. `/g/` sayfası WhatsApp önizlemesi için OG etiketli.
 - Uygulama içi push ve gerçek rol kontrolü için sunucu gerekir (önerilen: Cloudflare ücretsiz) — kullanıcı şimdilik sunucusuzu seçti.
 
 ## Planlanan (sonraki aşama)

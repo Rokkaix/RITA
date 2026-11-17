@@ -4,7 +4,7 @@ on:
   push:
     branches: ["claude/bn-depo-usage-issue-3ucip6"]
   schedule:
-    - cron: "7,37 * * * *"   # her 30 dakikada bir
+    - cron: "7,22,37,52 * * * *"   # her 15 dakikada bir (uçuş durumu, kapı, gecikme)
   workflow_dispatch:
     inputs:
       rg_gunler:
@@ -39,13 +39,13 @@ jobs:
       - name: TBMM milletvekili listesi (3 saatte bir)
         continue-on-error: true
         run: |
-          if [ $(( 10#$(date -u +%H) % 3 )) -eq 0 ] && [ $(( 10#$(date -u +%M) )) -lt 30 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ $(( 10#$(date -u +%H) % 3 )) -eq 0 ] && [ $(( 10#$(date -u +%M) )) -lt 15 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             python tools/canli_tbmm.py
           fi
       - name: Resmî Gazete atama kararları (2 saatte bir; teyitliler otomatik işlenir)
         continue-on-error: true
         run: |
-          if [ $(( 10#$(date -u +%H) % 2 )) -eq 1 ] && [ $(( 10#$(date -u +%M) )) -lt 30 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ $(( 10#$(date -u +%H) % 2 )) -eq 1 ] && [ $(( 10#$(date -u +%M) )) -lt 15 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             pip install --quiet pypdf
             sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-tur poppler-utils >/dev/null
             RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_yaz != 'evet' && github.event.inputs.rg_gunler || '' }}" python tools/resmi_gazete.py
