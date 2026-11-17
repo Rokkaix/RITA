@@ -536,7 +536,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 15.2';let SURUM_YENI=false;
+const SURUM='RITA 15.3';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1421,7 +1421,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('veil').hidden)c
 let lockT;function bump(){clearTimeout(lockT);if(role)lockT=setTimeout(logout,(D.lock||10)*60000)}
 ['click','keydown','touchstart'].forEach(ev=>document.addEventListener(ev,bump,{passive:true}));
 function showLogin(){role=null;closeSheet();$('app').hidden=true;$('login').hidden=false;$('lg-p').value='';$('lgerr').textContent=''}
-function logout(){if(PK){try{localStorage.removeItem('rita-pk')}catch(e){}PK=null;PKES=null;clearTimeout(PKT);history.replaceState(null,'',location.pathname)}showLogin()}
+function logout(){if(PK){if(!confirm('Bu telefonun Görevlerim bağlantısı kaldırılsın mı? Tekrar bağlamak için kurulum bağlantısı gerekir.'))return;try{localStorage.removeItem('rita-pk')}catch(e){}PK=null;PKES=null;clearTimeout(PKT);history.replaceState(null,'',location.pathname)}showLogin()}
 function enter(r){role=r;$('login').hidden=true;$('app').hidden=false;tab='ucus';bump();render()}
 $('lgform').addEventListener('submit',async e=>{e.preventDefault();const u=$('lg-u').value.trim().toLowerCase(),p=$('lg-p').value;
   if(!u||!p){$('lgerr').textContent='Kullanıcı adı ve şifreyi girin.';return}
