@@ -22,6 +22,7 @@ bu işi hızlandırmak ve doğru yapmak için vardır. Yeni özellik eklerken ö
 - Rehber paketleri: `tools/rehber/derle.py` → `data/rehber-taslak.json`; onaylanmış `data/rehber.json` ASLA değiştirilmez; yeni kayıtlar `tools/rehber/paket_ayir.py` ile yeni paket dosyasına (`data/rehber-2.json`…) ayrılır ve `rita-veri.json` → `rehber` içinde `beklemede` belge açılır.
 - `data/tbmm.json` — TBMM resmî milletvekili listesi; `tools/canli_tbmm.py` 3 saatte bir günceller. Uygulama isim aramasında kullanır (rical 21. madde, "TBMM ✓").
 - `tools/resmi_gazete.py` — Resmî Gazete atama kararlarını 2 saatte bir okur (resim PDF → Türkçe OCR); teyitliler `otomatik`, teyitsizler `beklemede` olarak `degisiklikler`e eklenir.
+- `data/fotolar.json` — DOĞRULANMIŞ portreler (`tools/fotolar.py`, günde bir, Actions'ta). Kaynak yalnız: TBMM resmî milletvekili sayfası ya da kişinin BUGÜNKÜ görevini (makam + il/kurum) doğrulayan Vikipedi sayfası; anlam ayrımı, ölmüş adaş, görev uyuşmazlığı → fotoğraf YOK (nedeni kayıtta). Uygulama canlı tahmin yapmaz. Yönetici yanlış/eksik fotoğrafı yolcu kartında elle düzeltebilir (`D.FOTO`, öncelikli).
 - `site/vendor/ocr/` — cihazda çalışan Tesseract.js; check-in ekranı fotoğrafından dolu koltuk okuma ve TROYA yolcu listesinden (PAX BY GROUP / Quick Check-in) rical eşleştirme (Modül 1).
 - Koltuk kuralı: rical business/ön; eşi/refakat ricalin yanında; **maiyet ve koruma her zaman ekonomide** (bloke koltuk verilmez), yalnız "maiyet upgrade notu" varsa business'ta yer kalırsa.
 

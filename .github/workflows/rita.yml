@@ -50,21 +50,27 @@ jobs:
             sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-tur poppler-utils >/dev/null
             RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_yaz != 'evet' && github.event.inputs.rg_gunler || '' }}" python tools/resmi_gazete.py
           fi
+      - name: Doğrulanmış portre fotoğrafları (günde bir; TBMM + görevi doğrulanan Vikipedi)
+        continue-on-error: true
+        run: |
+          if [ $(( 10#$(date -u +%H) )) -eq 2 ] && [ $(( 10#$(date -u +%M) )) -lt 15 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            timeout 40m python tools/fotolar.py --tbmm --viki 200
+          fi
       - name: Kaydet
         run: |
           if ! git diff --quiet data/; then
             git config user.name "RITA canlı güncelleme"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/ucuslar.json data/tbmm.json data/rita-veri.json
+            git add data/ucuslar.json data/tbmm.json data/rita-veri.json data/fotolar.json
             git commit -m "Canlı veri $(TZ=Europe/Istanbul date '+%F %H:%M')"
             if ! git pull --rebase origin "$GITHUB_REF_NAME"; then
               # yönetici aynı anda onay verdiyse: en güncel hâli alıp kayıtları yeniden ekle
               git rebase --abort
-              cp data/ucuslar.json /tmp/u.json; [ -f data/tbmm.json ] && cp data/tbmm.json /tmp/t.json
+              cp data/ucuslar.json /tmp/u.json; [ -f data/tbmm.json ] && cp data/tbmm.json /tmp/t.json; [ -f data/fotolar.json ] && cp data/fotolar.json /tmp/f.json
               git fetch origin "$GITHUB_REF_NAME" && git reset --hard "origin/$GITHUB_REF_NAME"
-              cp /tmp/u.json data/ucuslar.json; [ -f /tmp/t.json ] && cp /tmp/t.json data/tbmm.json
+              cp /tmp/u.json data/ucuslar.json; [ -f /tmp/t.json ] && cp /tmp/t.json data/tbmm.json; [ -f /tmp/f.json ] && cp /tmp/f.json data/fotolar.json
               RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_yaz != 'evet' && github.event.inputs.rg_gunler || '' }}" python tools/resmi_gazete.py || true
-              git add data/ucuslar.json data/tbmm.json data/rita-veri.json
+              git add data/ucuslar.json data/tbmm.json data/rita-veri.json data/fotolar.json
               git commit -m "Canlı veri $(TZ=Europe/Istanbul date '+%F %H:%M')" || true
             fi
             git push
