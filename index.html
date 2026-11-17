@@ -398,6 +398,45 @@ details.bilgi[open]>summary{margin-bottom:2px}
 .elle-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .pk-y{font-size:9.5px;font-weight:800;letter-spacing:.08em;padding:3px 7px;border-radius:6px;color:#fff}.pk-y.gidis{background:#1d3461}.pk-y.gelis{background:#0b6e4f}
 
+/* ===== RITA 17 · bordo & gece mavisi kimlik ===== */
+:root{--crim:#a3142b;--crim2:#7f0f22;--night:#0f1b33;--night2:#18284a;--gold:#a3142b}
+html{background:linear-gradient(to bottom,var(--crim) 50%,#fff 50%)}
+body{background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='300' viewBox='0 0 600 300'%3E%3Cpath d='M-20 260 Q 300 -40 620 160' fill='none' stroke='%230f1b33' stroke-opacity='.045' stroke-width='1.5' stroke-dasharray='5 8'/%3E%3Cpath d='M-20 300 Q 260 60 620 230' fill='none' stroke='%23a3142b' stroke-opacity='.04' stroke-width='1.2'/%3E%3C/svg%3E") no-repeat right top/680px auto fixed}
+.top{background:linear-gradient(180deg,#b0172f,var(--crim2));color:#fff;border-bottom:0;box-shadow:0 2px 10px rgba(80,10,20,.18)}
+.top .brand{color:#fff}.top .who{color:rgba(255,255,255,.82)}
+.top .role{background:rgba(255,255,255,.16);color:#fff}.top .role.adm{background:#fff;color:var(--crim)}
+.top .icon-btn{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28);color:#fff}
+.hb{flex:none;border:0;background:none;color:#fff;padding:4px;margin-left:-4px;display:grid;place-items:center;cursor:pointer}
+.lgc{flex:none;width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.tabs button[aria-selected="true"]{color:var(--crim);border-top-color:var(--crim)}
+.btn.pri{background:var(--night);border-color:var(--night)}
+.hero-w{margin-bottom:10px}
+.hero{position:relative;border-radius:16px;overflow:hidden;color:#fff;min-height:150px;box-shadow:0 6px 18px rgba(15,27,51,.18)}
+.hero-art{position:absolute;inset:0;width:100%;height:100%}
+.hero-i{position:relative;padding:16px 16px 14px}
+.hero-s{font-size:12.5px;opacity:.9;letter-spacing:.02em}.hero-t{font-size:21px;font-weight:800;margin-top:2px;letter-spacing:-.01em}
+.hero-c{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.hc{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;border-radius:12px;padding:7px 11px;text-align:left;display:flex;flex-direction:column;cursor:pointer;font:inherit;min-width:92px}
+.hc b{font:800 15px var(--mono)}.hc span{font-size:10.5px;opacity:.85}.hc.uy{background:rgba(255,255,255,.95);color:var(--crim);border-color:#fff}
+#cekmece{position:fixed;inset:0;z-index:60;background:rgba(10,16,30,0);transition:background .2s}
+#cekmece.acik{background:rgba(10,16,30,.45)}
+.ck{position:absolute;top:0;bottom:0;left:0;width:min(86vw,330px);background:linear-gradient(180deg,var(--night2),var(--night));color:#fff;overflow-y:auto;transform:translateX(-100%);transition:transform .22s ease-out;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+#cekmece.acik .ck{transform:none}
+.ck-u{display:flex;gap:12px;align-items:center;padding:calc(18px + env(safe-area-inset-top,0px)) 18px 18px;background:linear-gradient(135deg,#b0172f,#5a1226)}
+.ck-a{width:46px;height:46px;border-radius:50%;background:#fff;color:var(--crim);display:grid;place-items:center;font-weight:800;font-size:16px;flex:none}
+.ck-u b{display:block;font-size:14px;letter-spacing:.04em}.ck-u span{font-size:11px;opacity:.8}
+.ck-b{font-size:10px;font-weight:800;letter-spacing:.16em;color:#8fa0c2;padding:16px 18px 6px}
+.ck-o{display:flex;align-items:center;gap:12px;width:100%;border:0;background:none;color:#e9eef8;font:600 14px var(--ui);padding:11px 18px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer}
+.ck-o svg{width:19px;height:19px;flex:none;opacity:.8}.ck-o span{flex:1}.ck-o b{background:var(--crim);color:#fff;border-radius:999px;font-size:11px;padding:2px 8px}
+.ck-o.on{background:rgba(255,255,255,.07);box-shadow:inset 3px 0 0 #e0475d}
+.ck-f{font-size:10.5px;color:#7486a8;padding:16px 18px;line-height:1.6}
+#login{background:radial-gradient(120% 80% at 85% 100%,rgba(255,170,110,.35),transparent 60%),linear-gradient(160deg,var(--night) 0%,#3b1530 55%,var(--crim) 100%)}
+#login .lg-head h1{color:#fff}#login .lg-head p{color:rgba(255,255,255,.75)}
+#login .lg-head svg{background:#fff;border-radius:50%;padding:10px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#login .lg-legal,#login .lg-legal b{color:rgba(255,255,255,.75)}#login .lg-box>.lg-alt{color:#fff}
+#login .lg-card{box-shadow:0 18px 40px rgba(0,0,0,.25);border:0}
+@media (min-width:900px){#app>.tabs{background:linear-gradient(180deg,var(--night2),var(--night))}#app>.tabs::before{color:#fff}.tabs button{color:#b8c4dc}.tabs button[aria-selected="true"]{background:rgba(255,255,255,.08);color:#fff}.hb{display:none}}
+
 </style>
 
 <div id="login" class="gut" hidden>
@@ -418,15 +457,17 @@ details.bilgi[open]>summary{margin-bottom:2px}
 
 <div id="app" hidden>
   <header class="top gut">
-    <svg id="logo-sm" width="32" height="32" viewBox="0 0 100 100" aria-hidden="true"></svg>
+    <button class="hb" data-a="menu" type="button" aria-label="Menü"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <span class="lgc"><svg id="logo-sm" width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"></svg></span>
     <div><div class="brand">RITA</div><div class="who" id="topfl"></div></div>
     <span class="sp"></span>
     <span class="role" id="role"></span>
     <button class="icon-btn" data-a="lock" type="button">Çıkış</button>
   </header>
-  <main class="gut"><div class="wrap" id="view"></div></main>
+  <main class="gut"><div class="wrap hero-w" id="hero" hidden></div><div class="wrap" id="view"></div></main>
   <nav class="tabs gut" role="tablist" id="tabs"></nav>
 </div>
+<div id="cekmece" hidden><nav class="ck" aria-label="Ana menü" id="ck"></nav></div>
 <div id="veil" hidden><div id="sheet" role="dialog" aria-modal="true"></div></div>
 <div id="toast" role="status" hidden><span id="toast-t"></span><button type="button" id="toast-b" hidden>Geri al</button></div>
 
@@ -540,7 +581,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 16.0';let SURUM_YENI=false;
+const SURUM='RITA 17.0';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -756,7 +797,7 @@ function apBanner(){let nw=0,pd=0;try{nw=glNew();pd=glPend()}catch(e){}
   v.insertAdjacentHTML('afterbegin','<div class="swapbar apb"><span><b>'+nw+' yeni değişiklik işlendi.</b> Resmî kaynaklarla teyit edildi; ayrıntılar günlükte.</span><button class="btn sm pri" data-a="tab" data-k="gunluk" type="button">Günlük</button></div>')}
 function render(){if(role==='gorev')return GOREVP?gorevCiz():PK?pkCiz():undefined;$('tabs').innerHTML=TABS().map(([k,l])=>'<button type="button" role="tab" data-a="tab" data-k="'+k+'" aria-selected="'+(tab===k)+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+ICON[k]+'</svg>'+l+'</button>').join('');
   $('topfl').textContent=!D.cur?'Sefer seçilmedi':D.cur.split(' ')[0]+(hatOf(D.cur)?' · '+rotaAd(D.cur):'')+' · '+D.cur.split(' ').pop();$('role').textContent=isAdmin()?'YÖNETİCİ':'PERSONEL';$('role').className='role'+(isAdmin()?' adm':'');
-  $('view').dataset.tab=tab;if(tab==='ops'&&!isAdmin())tab='ucus';({ucus:vUcus,rical:vRical,kurum:vKurum,not:vNot,c90:vC90,ayar:vAyar,gunluk:vGunluk,ops:vOps})[tab]();apBanner();bilgiKatla($('view'));gkOtoGuncelle()}
+  $('view').dataset.tab=tab;if(tab==='ops'&&!isAdmin())tab='ucus';({ucus:vUcus,rical:vRical,kurum:vKurum,not:vNot,c90:vC90,ayar:vAyar,gunluk:vGunluk,ops:vOps})[tab]();apBanner();bilgiKatla($('view'));gkOtoGuncelle();heroCiz()}
 /* sade görünüm: uzun açıklamalar "Nasıl çalışır?" altında katlı durur */
 function bilgiKatla(kok){kok.querySelectorAll('p.note').forEach(n=>{if(n.closest('details')||n.textContent.length<150||n.querySelector('input,button,select'))return;
   const d=document.createElement('details');d.className='bilgi';d.innerHTML='<summary>Nasıl çalışır?</summary>';n.parentNode.insertBefore(d,n);d.appendChild(n)})}
@@ -1430,7 +1471,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('veil').hidden)c
 let lockT;function bump(){clearTimeout(lockT);if(role)lockT=setTimeout(logout,(D.lock||10)*60000)}
 ['click','keydown','touchstart'].forEach(ev=>document.addEventListener(ev,bump,{passive:true}));
 function showLogin(){role=null;closeSheet();$('app').hidden=true;$('login').hidden=false;$('lg-p').value='';$('lgerr').textContent=''}
-function logout(){if(PK){if(!confirm('Bu telefonun Görevlerim bağlantısı kaldırılsın mı? Tekrar bağlamak için kurulum bağlantısı gerekir.'))return;try{localStorage.removeItem('rita-pk')}catch(e){}PK=null;PKES=null;clearTimeout(PKT);history.replaceState(null,'',location.pathname)}showLogin()}
+function logout(){cekmeceKapat();if(PK){if(!confirm('Bu telefonun Görevlerim bağlantısı kaldırılsın mı? Tekrar bağlamak için kurulum bağlantısı gerekir.'))return;try{localStorage.removeItem('rita-pk')}catch(e){}PK=null;PKES=null;clearTimeout(PKT);history.replaceState(null,'',location.pathname)}showLogin()}
 function enter(r){role=r;$('login').hidden=true;$('app').hidden=false;tab='ucus';bump();render()}
 $('lgform').addEventListener('submit',async e=>{e.preventDefault();const u=$('lg-u').value.trim().toLowerCase(),p=$('lg-p').value;
   if(!u||!p){$('lgerr').textContent='Kullanıcı adı ve şifreyi girin.';return}
@@ -1627,6 +1668,38 @@ Object.assign(A,{
    for(const a of G){const per=PER().find(x=>x.id===a.per);if(!per)continue;const r=await bildirimGonder(per,a,'',false,{t:'['+f.split(' ')[0]+'] Yönetici mesajı',b:m});if(r.ok)n++}
    $('el-m').value='';toast(n?'Mesaj '+n+' personele gönderildi':'Gönderilemedi (personel bildirimleri açmamış olabilir)')},
  adminBildirim(){adminBildirimAc()}
+});
+/* ---------- RITA görünümü: selamlama kartı (canlı özet) ve yan menü ---------- */
+function selam(){const h=new Date().getHours();return h<5?'İyi geceler':h<11?'Günaydın':h<17?'İyi günler':h<22?'İyi akşamlar':'İyi geceler'}
+function kimAd(){return isAdmin()?'Yakup':''}
+function heroHtml(){const bugun=new Date().toISOString().slice(0,10),now=new Date(),dk=f=>{const m=/(\d{1,2}):(\d{2})$/.exec(f);if(!m)return 1e9;const t=new Date();t.setHours(+m[1],+m[2],0,0);let d=Math.round((t-now)/6e4);if(d<-180)d+=1440;return d};
+  const V=D.F.filter(f=>(D.P[f]||[]).length),bek=V.filter(f=>!GOR().some(a=>a.f===f&&a.gun===bugun)).length,sira=V.map(f=>[f,dk(f)]).filter(x=>x[1]>-20).sort((a,b)=>a[1]-b[1])[0];
+  const kalan=sira?(sira[1]<=0?'şimdi':sira[1]<60?sira[1]+' dk':Math.floor(sira[1]/60)+' sa '+(sira[1]%60)+' dk'):'';
+  return '<section class="hero"><svg class="hero-art" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1b33"/><stop offset=".55" stop-color="#4a1630"/><stop offset="1" stop-color="#b3322b"/></linearGradient><radialGradient id="hs" cx=".85" cy=".95" r=".6"><stop offset="0" stop-color="#ffb36b" stop-opacity=".55"/><stop offset="1" stop-color="#ffb36b" stop-opacity="0"/></radialGradient></defs><rect width="400" height="160" fill="url(#hg)"/><rect width="400" height="160" fill="url(#hs)"/>'
+   +'<g fill="#fff" opacity=".55"><circle cx="40" cy="22" r="1"/><circle cx="92" cy="40" r=".8"/><circle cx="150" cy="16" r="1.1"/><circle cx="210" cy="34" r=".7"/><circle cx="258" cy="12" r=".9"/><circle cx="20" cy="70" r=".7"/><circle cx="120" cy="64" r=".6"/></g>'
+   +'<path d="M-10 150 Q 170 20 410 70" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.4" stroke-dasharray="4 6"/><path d="M-10 160 Q 200 60 410 120" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="1"/>'
+   +'<g transform="translate(300 52) rotate(14)" fill="#fff" opacity=".9"><path d="M0 0 L26 -2 L34 0 L26 2 Z"/><path d="M14 -1 L6 -14 L10 -14 L22 -1 Z"/><path d="M14 1 L6 14 L10 14 L22 1 Z"/><path d="M2 -1 L-2 -6 L1 -6 L5 -1 Z"/><path d="M2 1 L-2 6 L1 6 L5 1 Z"/></g></svg>'
+   +'<div class="hero-i"><div class="hero-s">'+esc(selam())+(kimAd()?', '+esc(kimAd()):'')+'</div><div class="hero-t">'+(V.length?'Bugün '+V.length+' VIP’li uçuş':'Bugün VIP’li uçuş yok')+'</div>'
+   +'<div class="hero-c">'+(isAdmin()&&V.length?'<button type="button" class="hc'+(bek?' uy':'')+'" data-a="tab" data-k="ops"><b>'+bek+'</b><span>atama bekliyor</span></button>':'')
+   +(sira?'<button type="button" class="hc" data-a="flight" data-f="'+esc(sira[0])+'"><b>'+esc(sira[0].split(' ')[0])+'</b><span>sıradaki · '+esc(kalan)+'</span></button>':'')
+   +'<button type="button" class="hc" data-a="tab" data-k="rical"><b>Rical</b><span>kişi ara</span></button></div></div></section>'}
+function heroCiz(){const h=$('hero');if(!h)return;const goster=role!=='gorev'&&tab==='ucus';h.hidden=!goster;if(goster)h.innerHTML=heroHtml()}
+function cekmeceAc(){const say=k=>k==='ops'?(D.F.filter(f=>(D.P[f]||[]).length&&!GOR().some(a=>a.f===f&&a.gun===new Date().toISOString().slice(0,10))).length||''):k==='ayar'&&isAdmin()?(alerts().n||''):'';
+  const ad=isAdmin()?'YAKUP KAYABAŞ':'Personel',ik=isAdmin()?'YK':'P';
+  const IK={onay:'<path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',degisim:'<path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+    foto:'<path d="M4 8h3l2-3h6l2 3h3v11H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/>',x:'<path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>'};
+  const oge=(k,l,ek)=>'<button type="button" class="ck-o'+(tab===k&&!ek?' on':'')+'" data-a="ckGit" data-k="'+k+'"'+(ek?' data-y="'+ek+'"':'')+'><svg viewBox="0 0 24 24" aria-hidden="true">'+(IK[ek]||ICON[k]||ICON.ayar)+'</svg><span>'+l+'</span>'+(say(k)&&!ek?'<b>'+say(k)+'</b>':'')+'</button>';
+  $('ck').innerHTML='<div class="ck-u"><span class="ck-a">'+ik+'</span><div><b>'+esc(ad)+'</b><span>'+(isAdmin()?'Yönetici':'Personel')+' · '+esc(SURUM)+'</span></div></div>'
+   +'<div class="ck-b">ANA MENÜ</div>'+TABS().map(([k,l])=>oge(k,String(l).replace(/<[^>]+>.*$/,''))).join('')
+   +(isAdmin()?'<div class="ck-b">YÖNETİM</div>'+oge('ayar','Onay bekleyenler','onay')+oge('ayar','Görev değişiklikleri','degisim')+oge('ayar','VIP fotoğrafları','foto')+oge('ayar','Ayarlar ve güvenlik','ayar')+oge('gunluk','Değişiklik günlüğü','x'):'')
+   +'<div class="ck-b">HESAP</div><button type="button" class="ck-o" data-a="lock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Çıkış</span></button>'
+   +'<p class="ck-f">RITA · Rical Takip Asistanı<br>© Yakup KAYABAŞ</p>';
+  $('cekmece').hidden=false;requestAnimationFrame(()=>$('cekmece').classList.add('acik'))}
+function cekmeceKapat(){const c=$('cekmece');if(!c||c.hidden)return;c.classList.remove('acik');setTimeout(()=>{c.hidden=true},220)}
+$('cekmece').addEventListener('click',e=>{if(e.target.id==='cekmece')cekmeceKapat()});
+Object.assign(A,{
+ menu(){cekmeceAc()},
+ ckGit(d){cekmeceKapat();tab=d.k;if(d.y&&d.y!=='x')YS=d.y;render();document.querySelector('main').scrollTop=0}
 });
 dbInit();sfInit();load();if(D.rmig){Object.values(D.P).forEach(L=>L.forEach(p=>{const x=people().find(y=>nk(y.n)===nk(p.n));if(x){p.rank=x.r;if(!p.up&&x.u)p.up=x.u}}));delete D.rmig;save()}if(!location.hash){try{const h=localStorage.getItem('rita-pk');if(h)history.replaceState(null,'',location.pathname+h)}catch(e){}}if(!gorevAc())showLogin();window.addEventListener('hashchange',()=>{if(/^#(gk?|p)=/.test(location.hash))gorevAc()});
 
