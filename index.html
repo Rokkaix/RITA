@@ -536,7 +536,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 15.1';let SURUM_YENI=false;
+const SURUM='RITA 15.2';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1528,7 +1528,7 @@ Object.assign(A,{
    (2) personelin günlük görev listesi şifrelenip data/gorev/p-<kod>.json'a yazılır; Görevlerim sayfası bunu okur. */
 /* RITA bildirim sunucusu (Cloudflare Worker, worker/rita-bildirim.js). Telefon RITA'yı ana ekrana ekleyip
    "Bildirimleri aç" deyince aboneliğini kendi koduyla kaydeder; yönetici atayınca bildirim doğrudan ekrana düşer. */
-const BILDIRIM_URL='',VAPID_PUB='BFn2MCfBAlMcBw2Va6Teb-Bh3k4KbeDIkngXGkEw9sfLWjpP4XwDob3YkwM_XlguUzwlKJwx68SXqDnLxpro6jI';
+const BILDIRIM_URL='https://rita-bildirim.rita-8c559a.workers.dev',VAPID_PUB='BFn2MCfBAlMcBw2Va6Teb-Bh3k4KbeDIkngXGkEw9sfLWjpP4XwDob3YkwM_XlguUzwlKJwx68SXqDnLxpro6jI';
 function pkHazirla(per){if(!per.kod){per.kod=rb64(crypto.getRandomValues(new Uint8Array(12))).replace(/[^A-Za-z0-9]/g,'').slice(0,16);per.pk=rb64(crypto.getRandomValues(new Uint8Array(16)));save()}return per}
 function pkLink(per){return siteKok()+'#p='+per.kod+'.'+per.pk}
 async function bildirimGonder(per,a,link,sessiz,ozel){if(!BILDIRIM_URL||!ghTok()||!per.kod)return{ok:false,cihaz:0};try{
