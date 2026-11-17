@@ -38,4 +38,6 @@ r = cf('/accounts/%s/workers/scripts/rita-bildirim' % aid, 'PUT', ham=parca.enco
 if not r.get('success'): sys.exit('Worker yüklenemedi: ' + json.dumps(r.get('errors')))
 r = cf('/accounts/%s/workers/scripts/rita-bildirim/subdomain' % aid, 'POST', {'enabled': True})
 print('workers.dev:', r.get('success'), r.get('errors') or '')
+r = cf('/accounts/%s/workers/scripts/rita-bildirim/schedules' % aid, 'PUT', [{'cron': '*/2 * * * *'}])
+print('zamanlayıcı (2 dk):', r.get('success'), r.get('errors') or '')
 print('ADRES https://rita-bildirim.%s.workers.dev' % alt)
