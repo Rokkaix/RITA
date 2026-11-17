@@ -33,6 +33,7 @@ bu işi hızlandırmak ve doğru yapmak için vardır. Yeni özellik eklerken ö
 ## Modül 2 — Operasyon ve personel atama (sunucusuz, kullanıcı kararı 17.11.2026)
 - "Atama" sekmesi yalnız yöneticide. Personel (ad, telefon) ve atamalar YALNIZ yönetici cihazında (`D.PER`, `D.GOR`, localStorage); asla `data/` ya da depoya yazılmaz.
 - Görev WhatsApp'tan tek dokunuşla (`wa.me`) gider. Kısa bağlantı: VIP kartları AES-GCM ile şifrelenip `data/gorev/<id>.json`'a yazılır (yönetici GitHub anahtarıyla), bağlantı `/g/?<id>#<anahtar>` (anahtar sunucuya gitmez); 3 günden eski dosyalar silinir. Anahtar yoksa uzun `#g=` bağlantısı. `/g/` sayfası WhatsApp önizlemesi için OG etiketli.
+- **Anlık bildirim + Görevlerim (kullanıcı kararı 17.11.2026, "ikisi birden"):** her personele bir kez `kod` (ntfy konusu `rita-<kod>`) + `pk` (AES anahtarı) üretilir, YALNIZ yönetici cihazında (`D.PER`). Atamada ntfy.sh'ye kısa bildirim (uçuş no, VIP sayısı, şifreli kart bağlantısı; isim YOK) + personelin günlük listesi şifreli `data/gorev/p-<kod>.json`. Personel sayfası `/#p=<kod>.<pk>`: listeyi okur, ntfy SSE ile anında yenilenir, 60 sn yedek yoklama; adres cihazda `rita-pk` olarak hatırlanır. WhatsApp yedek olarak durur.
 - Uygulama içi push ve gerçek rol kontrolü için sunucu gerekir (önerilen: Cloudflare ücretsiz) — kullanıcı şimdilik sunucusuzu seçti.
 
 ## Planlanan (sonraki aşama)

@@ -385,6 +385,14 @@ details.bilgi[open]>summary{margin-bottom:2px}
 .uca-r{display:flex;align-items:center;gap:6px;padding:6px 0;border-bottom:1px solid var(--line)}.uca-a{flex:1;min-width:0;display:flex;flex-direction:column}.uca-a b{font-size:13px}.uca-a span{font-size:11px;color:var(--muted)}
 .uca-f{display:flex;gap:8px;margin-top:8px}.uca-f .field{flex:1;min-width:0;padding:7px 10px;font-size:15px}
 .gk-geri{align-self:flex-start;border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 12px;font:700 12.5px var(--ui);color:var(--navy);margin:2px 0 8px;cursor:pointer}
+/* anlık bildirim ve Görevlerim sayfası */
+.ani{margin:4px 0 8px;font-size:12.5px;color:var(--muted)}.ani.ok{color:var(--ok);font-weight:700}
+.pk-bas{background:linear-gradient(135deg,#1d3461,#24427a);color:#fff;border-radius:12px;padding:13px 14px;margin:4px 0 10px}
+.pk-t{font-size:10.5px;font-weight:800;letter-spacing:.14em;opacity:.9}.pk-a{font-size:18px;font-weight:800;margin-top:2px}.pk-s{font-size:12px;opacity:.85;margin-top:2px}
+.pk-g{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:#fff;border:1px solid #d7dde7;border-radius:12px;padding:11px 12px;margin:0 0 8px;cursor:pointer;color:var(--ink);font:inherit}
+.pk-g.eski{opacity:.55}.pk-sa{font:700 17px var(--mono);min-width:54px}.pk-g .tx b{display:block;font-size:14px}.pk-g .tx span{font-size:11.5px;color:var(--muted)}
+.pk-y{font-size:9.5px;font-weight:800;letter-spacing:.08em;padding:3px 7px;border-radius:6px;color:#fff}.pk-y.gidis{background:#1d3461}.pk-y.gelis{background:#0b6e4f}
+
 </style>
 
 <div id="login" class="gut" hidden>
@@ -527,7 +535,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 14.2';let SURUM_YENI=false;
+const SURUM='RITA 15.0';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -741,7 +749,7 @@ function apBanner(){let nw=0,pd=0;try{nw=glNew();pd=glPend()}catch(e){}
   try{if(isAdmin()&&navigator.setAppBadge){(nw+pd)?navigator.setAppBadge(nw+pd).catch(()=>{}):navigator.clearAppBadge().catch(()=>{})}}catch(e){}
   if(!nw||tab==='gunluk'||tab==='ayar')return;const v=$('view');if(!v||v.querySelector('.apb'))return;
   v.insertAdjacentHTML('afterbegin','<div class="swapbar apb"><span><b>'+nw+' yeni değişiklik işlendi.</b> Resmî kaynaklarla teyit edildi; ayrıntılar günlükte.</span><button class="btn sm pri" data-a="tab" data-k="gunluk" type="button">Günlük</button></div>')}
-function render(){if(role==='gorev')return gorevCiz();$('tabs').innerHTML=TABS().map(([k,l])=>'<button type="button" role="tab" data-a="tab" data-k="'+k+'" aria-selected="'+(tab===k)+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+ICON[k]+'</svg>'+l+'</button>').join('');
+function render(){if(role==='gorev')return GOREVP?gorevCiz():PK?pkCiz():undefined;$('tabs').innerHTML=TABS().map(([k,l])=>'<button type="button" role="tab" data-a="tab" data-k="'+k+'" aria-selected="'+(tab===k)+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+ICON[k]+'</svg>'+l+'</button>').join('');
   $('topfl').textContent=!D.cur?'Sefer seçilmedi':D.cur.split(' ')[0]+(hatOf(D.cur)?' · '+rotaAd(D.cur):'')+' · '+D.cur.split(' ').pop();$('role').textContent=isAdmin()?'YÖNETİCİ':'PERSONEL';$('role').className='role'+(isAdmin()?' adm':'');
   $('view').dataset.tab=tab;if(tab==='ops'&&!isAdmin())tab='ucus';({ucus:vUcus,rical:vRical,kurum:vKurum,not:vNot,c90:vC90,ayar:vAyar,gunluk:vGunluk,ops:vOps})[tab]();apBanner();bilgiKatla($('view'));gkOtoGuncelle()}
 /* sade görünüm: uzun açıklamalar "Nasıl çalışır?" altında katlı durur */
@@ -946,13 +954,13 @@ async function gkTemizle(){const tok=ghTok();if(!tok)return;const H={Authorizati
   for(const a of GOR().filter(x=>x.gk&&x.gk.sha&&Date.now()-(x.gk.t||x.t||0)>3*864e5)){try{const api='https://api.github.com/repos/'+GHR.owner+'/'+GHR.repo+'/contents/data/gorev/'+a.gk.id+'.json';
     const r=await fetch(api,{method:'DELETE',headers:H,body:JSON.stringify({message:'RITA eski görev kartı silindi',sha:a.gk.sha,branch:GHR.branch})});if(r.ok||r.status===404){delete a.gk.sha;a.gk.silindi=1}}catch(e){}}save()}
 /* personel tarafı: bağlantıyla açılan VIP kartları (giriş gerekmez, yalnız bağlantıdaki bilgi) */
-let GOREVP=null;function gorevAc(){const k=location.hash.match(/^#gk=([A-Za-z0-9-]+)\.([A-Za-z0-9_-]+)/);
+let GOREVP=null;function gorevAc(){if(/^#p=/.test(location.hash))return pkAc();const k=location.hash.match(/^#gk=([A-Za-z0-9-]+)\.([A-Za-z0-9_-]+)/);
   if(k){role='gorev';document.body.classList.add('gorev');$('login').hidden=true;$('app').hidden=false;$('tabs').innerHTML='';$('view').innerHTML='<p class="note" style="text-align:center;margin:40px 16px">Görev kartları yükleniyor…</p>';
     (async()=>{let d=null;for(const u of ['https://raw.githubusercontent.com/'+GHR.owner+'/'+GHR.repo+'/'+GHR.branch+'/data/gorev/'+k[1]+'.json?t='+Date.now(),'data/gorev/'+k[1]+'.json?t='+Date.now()]){try{const r=await fetch(u,{cache:'no-store'});if(r.ok){d=await r.json();break}}catch(e){}}
       try{if(!d)throw 0;GOREVP=await gkCoz(d,k[2]);gorevCiz();gorevDurum()}catch(e){$('view').innerHTML='<p class="note" style="text-align:center;margin:40px 16px">Görev bulunamadı ya da süresi doldu. Yöneticiden yeni bağlantı isteyin.</p>'}})();return true}
   const m=location.hash.match(/^#g=([A-Za-z0-9_-]+)/);if(!m)return false;try{GOREVP=JSON.parse(gb64d(m[1]))}catch(e){return false}gorevCiz();gorevDurum();return true}
 let GDUR=null,GDT=0;async function gorevDurum(){const P=GOREVP;if(!P||!P.no)return;try{const r=await fetch('https://raw.githubusercontent.com/'+GHR.owner+'/'+GHR.repo+'/'+GHR.branch+'/data/ucuslar.json?t='+Date.now(),{cache:'no-store'});
-  if(r.ok){const j=await r.json();GDUR=Object.values(j.ucuslar||{}).find(u=>u.no===P.no&&u.hat===P.hat&&u.kalkis===P.saat&&String(u.zaman).slice(0,10)===P.gun)||Object.values(j.ucuslar||{}).find(u=>u.no===P.no&&u.hat===P.hat)||null;GDUR&&(GDUR._g=j.guncelleme);gorevCiz()}}catch(e){}
+  if(r.ok){const j=await r.json();GDUR=Object.values(j.ucuslar||{}).find(u=>u.no===P.no&&u.hat===P.hat&&u.kalkis===P.saat&&String(u.zaman).slice(0,10)===P.gun)||Object.values(j.ucuslar||{}).find(u=>u.no===P.no&&u.hat===P.hat)||null;GDUR&&(GDUR._g=j.guncelleme);if(GOREVP===P)gorevCiz()}}catch(e){}
   clearTimeout(GDT);GDT=setTimeout(gorevDurum,3*60000)}
 function gorevCiz(){const P=GOREVP;
   $('login').hidden=true;$('app').hidden=false;document.body.classList.add('gorev');role='gorev';const yon=P.yon==='gelis';
@@ -1248,12 +1256,14 @@ const A={
   try{link=await gkYukle(a);if(link&&a.gk)a.gk.iz=JSON.stringify(gorevPaket(a))}catch(e){uyari='Kısa bağlantı oluşturulamadı ('+esc(e.message)+'); uzun bağlantı kullanıldı.'}
   if(!link&&!uyari)uyari=window.RITA_STANDALONE?'Kısa bağlantı için Yönetim → Ortak kayıt anahtarı gerekli; şimdilik uzun bağlantı kullanıldı.':'';
   const m=waMesaj(a,link),u='https://wa.me/'+telNorm(per.tel)+'?text='+encodeURIComponent(m);a.gon=Date.now();save();gkTemizle();
+  let ani='';if(per.kod){const [r1,r2]=await Promise.all([ntfyGonder(per,a,link,false),pkYukle(per).catch(()=>false)]);ani=r1?'<p class="ani ok">✓ Anlık bildirim gönderildi'+(r2?' · Görevlerim sayfası güncellendi':'')+'</p>':'<p class="ani">Anlık bildirim gönderilemedi; WhatsApp ile gönderin.</p>'}
+  else ani='<p class="ani">Bu personelde anlık bildirim kurulu değil. Personel kartından “Anlık bildirim kurulumu”nu bir kez gönderin.</p>';
   const [m1,...mr]=m.split('\n'),ml=mr.join(' ');
-  sheet('<h2>WhatsApp mesajı hazır</h2><p class="sub">'+esc(per.ad)+' · '+esc(telGoster(per.tel))+'</p><a class="btn pri wa-go" href="'+esc(u)+'" target="_blank" rel="noopener">WhatsApp’ta aç ve gönder</a><div class="wa-on"><div class="wa-t">MESAJ ÖNİZLEMESİ</div><b>'+esc(m1)+'</b><span class="wa-l">'+esc(ml.length>64?ml.slice(0,58)+'…':ml)+'</span></div>'+(uyari?'<p class="note">'+uyari+'</p>':''))},
+  sheet('<h2>'+(per.kod?'Görev gönderildi':'WhatsApp mesajı hazır')+'</h2><p class="sub">'+esc(per.ad)+' · '+esc(telGoster(per.tel))+'</p>'+ani+'<a class="btn '+(per.kod?'':'pri ')+'wa-go" href="'+esc(u)+'" target="_blank" rel="noopener">'+(per.kod?'Ayrıca WhatsApp’tan gönder':'WhatsApp’ta aç ve gönder')+'</a><div class="wa-on"><div class="wa-t">MESAJ ÖNİZLEMESİ</div><b>'+esc(m1)+'</b><span class="wa-l">'+esc(ml.length>64?ml.slice(0,58)+'…':ml)+'</span></div>'+(uyari?'<p class="note">'+uyari+'</p>':''))},
  opsSil(d){D.GOR=GOR().filter(x=>x.id!==d.k);save();render();toast('Atama silindi')},
  opsOnizle(){const a={f:opsF,yon:opsYon,per:$('ops-p').value,gun:opsGun,not:$('ops-n').value.trim()};window.open(gorevLink(a),'_blank')},
  perYeni(){sheet('<h2>Personel ekle</h2>'+perForm({})+'<div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="perKaydet" type="button">Kaydet</button></div>')},
- perDuz(d){const x=PER().find(y=>y.id===d.k);if(!x)return;sheet('<h2>Personel</h2>'+perForm(x)+'<div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="perKaydet" data-k="'+x.id+'" type="button">Kaydet</button><button class="btn dng" data-a="perSilSor" data-k="'+x.id+'" type="button">Listeden çıkar</button></div>')},
+ perDuz(d){const x=PER().find(y=>y.id===d.k);if(!x)return;sheet('<h2>Personel</h2>'+perForm(x)+'<div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="perKaydet" data-k="'+x.id+'" type="button">Kaydet</button><button class="btn gold" data-a="pkKur" data-k="'+x.id+'" type="button">Anlık bildirim kurulumu</button><button class="btn dng" data-a="perSilSor" data-k="'+x.id+'" type="button">Listeden çıkar</button></div>')},
  perKaydet(d){const v=i=>($(i).value||'').trim(),ad=v('pe-a'),tel=v('pe-t'),sic=v('pe-s'),kur=v('pe-k'),tel2=v('pe-t2'),gr=v('pe-g'),nt=v('pe-n');
   if(!ad||telNorm(tel).length<12)return toast('Ad ve geçerli cep telefonu gerekli');if(tel2&&telNorm(tel2).length<12)return toast('İkinci telefon geçersiz');
   const ayni=PER().find(y=>y.id!==d.k&&(telNorm(y.tel)===telNorm(tel)||(sic&&y.sic===sic)));if(ayni)return toast('Bu telefon ya da sicil zaten kayıtlı: '+ayni.ad);
@@ -1410,7 +1420,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('veil').hidden)c
 let lockT;function bump(){clearTimeout(lockT);if(role)lockT=setTimeout(logout,(D.lock||10)*60000)}
 ['click','keydown','touchstart'].forEach(ev=>document.addEventListener(ev,bump,{passive:true}));
 function showLogin(){role=null;closeSheet();$('app').hidden=true;$('login').hidden=false;$('lg-p').value='';$('lgerr').textContent=''}
-function logout(){showLogin()}
+function logout(){if(PK){try{localStorage.removeItem('rita-pk')}catch(e){}PK=null;try{PKES&&PKES.close()}catch(e){}PKES=null;clearTimeout(PKT);history.replaceState(null,'',location.pathname)}showLogin()}
 function enter(r){role=r;$('login').hidden=true;$('app').hidden=false;tab='ucus';bump();render()}
 $('lgform').addEventListener('submit',async e=>{e.preventDefault();const u=$('lg-u').value.trim().toLowerCase(),p=$('lg-p').value;
   if(!u||!p){$('lgerr').textContent='Kullanıcı adı ve şifreyi girin.';return}
@@ -1501,14 +1511,63 @@ function ucAtamaHtml(){if(!isAdmin()||!D.cur||!ppl().length)return'';const G=GOR
 /* atanmış uçuşta VIP bilgisi değişince şifreli kart aynı bağlantıda güncellenir */
 let GKOT=null;function gkOtoGuncelle(){if(!isAdmin()||!window.RITA_STANDALONE||!ghTok())return;clearTimeout(GKOT);GKOT=setTimeout(async()=>{
   for(const a of GOR().filter(x=>x.gk&&x.gk.sha&&x.gk.key&&!x.gk.silindi)){const iz=JSON.stringify(gorevPaket(a));if(!a.gk.iz||a.gk.iz===iz)continue;
-    try{await gkYukle(a);a.gk.iz=iz;save();toast('Personel kartı güncellendi: '+a.f.split(' ')[0])}catch(e){}}},4000)}
+    try{await gkYukle(a);a.gk.iz=iz;save();const per=PER().find(x=>x.id===a.per);if(per&&per.kod){await pkYukle(per).catch(()=>{});ntfyGonder(per,a,siteKok()+'g/?'+a.gk.id+'#'+a.gk.key,true)}toast('Personel kartı güncellendi: '+a.f.split(' ')[0])}catch(e){}}},4000)}
 Object.assign(A,{
  ucAta(){const pid=$('uc-p')&&$('uc-p').value;if(!pid)return toast('Önce personel ekleyin');const f=D.cur;if(GOR().some(a=>a.f===f&&a.per===pid))return toast('Bu personel bu uçuşa zaten atanmış');
    const a={id:'g'+Date.now(),f,yon:gelisMi(f)?'gelis':'gidis',per:pid,gun:opsGun,not:'',t:Date.now()};GOR().push(a);save();const n=gunSay(pid,opsGun);render();A.opsWa({k:a.id});if(n>6)toast('Dikkat: bu personele bugün '+n+' uçuş atandı')},
  ucSil(d){D.GOR=GOR().filter(x=>x.id!==d.k);save();render();toast('Atama kaldırıldı')},
- gorevGeri(){if(window.opener){try{window.close();return}catch(e){}}history.replaceState(null,'',location.pathname);clearTimeout(GDT);GOREVP=null;role=null;document.body.classList.remove('gorev');showLogin()}
+ gorevGeri(){if(PK){GOREVP=null;clearTimeout(GDT);GDUR=null;return pkCiz()}if(window.opener){try{window.close();return}catch(e){}}history.replaceState(null,'',location.pathname);clearTimeout(GDT);GOREVP=null;role=null;document.body.classList.remove('gorev');showLogin()}
 });
-dbInit();sfInit();load();if(D.rmig){Object.values(D.P).forEach(L=>L.forEach(p=>{const x=people().find(y=>nk(y.n)===nk(p.n));if(x){p.rank=x.r;if(!p.up&&x.u)p.up=x.u}}));delete D.rmig;save()}if(!gorevAc())showLogin();window.addEventListener('hashchange',()=>{if(/^#gk?=/.test(location.hash))gorevAc()});
+/* ---------- anlık bildirim (ntfy) ve personelin "Görevlerim" sayfası ----------
+   Her personele bir kez: rastgele kod (bildirim konusu) + şifre anahtarı. İkisi de YALNIZ yönetici cihazında (D.PER).
+   Atama yapılınca: (1) ntfy.sh/rita-<kod> konusuna kısa bildirim (uçuş no, VIP sayısı, şifreli kart bağlantısı; isim yok)
+   (2) personelin günlük görev listesi şifrelenip data/gorev/p-<kod>.json'a yazılır; Görevlerim sayfası bunu okur. */
+const NTFY='https://ntfy.sh/';const pkKonu=per=>'rita-'+per.kod;
+function pkHazirla(per){if(!per.kod){per.kod=rb64(crypto.getRandomValues(new Uint8Array(12))).replace(/[^A-Za-z0-9]/g,'').slice(0,16);per.pk=rb64(crypto.getRandomValues(new Uint8Array(16)));save()}return per}
+function pkLink(per){return siteKok()+'#p='+per.kod+'.'+per.pk}
+async function ntfyGonder(per,a,link,sessiz){try{const P=gorevPaket(a),h=(P.hat||'').split('-');
+  const r=await fetch(NTFY,{method:'POST',body:JSON.stringify({topic:pkKonu(per),title:(sessiz?'Güncellendi · ':'')+'['+P.no+' | '+(h.length===2?h[0]+' - '+h[1]:P.f)+'] '+(P.yon==='gelis'?'Geliş':'Gidiş')+' · '+P.saat,
+    message:'Atanan VIP: '+P.y.length+' yolcu'+(P.not?' · '+P.not:'')+(sessiz?' (kart güncellendi)':''),priority:sessiz?2:5,tags:[sessiz?'arrows_counterclockwise':'airplane'],...(link&&link.length<1800?{click:link}:{})})});return r.ok}catch(e){return false}}
+async function pkYukle(per){const tok=ghTok();if(!tok||!window.RITA_STANDALONE||!per.kod)return false;const dun=new Date(Date.now()-864e5).toISOString().slice(0,10);
+  const L=GOR().filter(a=>a.per===per.id&&a.gun>=dun).map(a=>({id:a.id,link:a.gk&&a.gk.key?siteKok()+'g/?'+a.gk.id+'#'+a.gk.key:'',p:gorevPaket(a),t:a.gon||a.t}));
+  const {dosya}=await gkSifrele({v:1,ad:per.ad,g:L,t:Date.now()},per.pk);const path='data/gorev/p-'+per.kod+'.json';
+  const api='https://api.github.com/repos/'+GHR.owner+'/'+GHR.repo+'/contents/'+path,H={Authorization:'Bearer '+tok,Accept:'application/vnd.github+json'};
+  for(let t=0;t<2;t++){let sha=per.psha;if(!sha||t){const g=await fetch(api+'?ref='+encodeURIComponent(GHR.branch)+'&t='+Date.now(),{headers:H,cache:'no-store'});sha=g.ok?(await g.json()).sha:undefined}
+    const r=await fetch(api,{method:'PUT',headers:H,body:JSON.stringify({message:'RITA görev listesi (şifreli)',content:btoa(JSON.stringify(dosya)),branch:GHR.branch,...(sha?{sha}:{})})});
+    if(r.ok){per.psha=(await r.json()).content.sha;save();return true}}return false}
+/* personel tarafı */
+let PK=null,PKL=null,PKT=0,PKES=null,PKSON='';
+function pkAc(){const m=location.hash.match(/^#p=([A-Za-z0-9]+)\.([A-Za-z0-9_-]+)/);if(!m)return false;PK={kod:m[1],key:m[2]};
+  try{localStorage.setItem('rita-pk',location.hash)}catch(e){}
+  role='gorev';document.body.classList.add('gorev');$('login').hidden=true;$('app').hidden=false;$('tabs').innerHTML='';$('role').textContent='GÖREVLERİM';$('topfl').textContent='Görev listesi';
+  $('view').innerHTML='<p class="note" style="text-align:center;margin:40px 16px">Görevler yükleniyor…</p>';pkYenile();
+  try{if(!PKES&&window.EventSource){PKES=new EventSource(NTFY+'rita-'+PK.kod+'/sse');PKES.onmessage=()=>{pkYenile(true)}}}catch(e){}
+  return true}
+async function pkYenile(yeniBildirim){clearTimeout(PKT);let d=null;for(const u of ['https://raw.githubusercontent.com/'+GHR.owner+'/'+GHR.repo+'/'+GHR.branch+'/data/gorev/p-'+PK.kod+'.json?t='+Date.now(),'data/gorev/p-'+PK.kod+'.json?t='+Date.now()]){try{const r=await fetch(u,{cache:'no-store'});if(r.ok){d=await r.json();break}}catch(e){}}
+  if(d){try{const x=await gkCoz(d,PK.key);const iz=JSON.stringify(x.g.map(g=>g.id+(g.t||'')));if(PKL&&iz!==PKSON)pkUyar();PKSON=iz;PKL=x}catch(e){}}
+  if(!GOREVP)pkCiz();PKT=setTimeout(()=>pkYenile(),yeniBildirim?15000:60000)}
+function pkUyar(){try{navigator.vibrate&&navigator.vibrate([200,100,200])}catch(e){}
+  try{const c=new (window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.frequency.value=880;o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(.2,c.currentTime);o.start();o.stop(c.currentTime+.35)}catch(e){}
+  try{if(window.Notification&&Notification.permission==='granted')new Notification('RITA · yeni görev',{body:'Görev listeniz güncellendi'})}catch(e){}toast('Yeni görev geldi')}
+function pkCiz(){const x=PKL;$('topfl').textContent=x?x.ad:'Görev listesi';const L=x?x.g.slice().sort((a,b)=>(a.p.gun+a.p.saat).localeCompare(b.p.gun+b.p.saat)):[];
+  const bugun=new Date().toISOString().slice(0,10);
+  $('view').innerHTML='<section class="pk-bas"><div class="pk-t">GÖREVLERİM</div><div class="pk-a">'+esc(x?x.ad:'')+'</div><div class="pk-s">'+L.filter(g=>g.p.gun>=bugun).length+' görev · liste kendiliğinden yenilenir</div></section>'
+   +(L.length?L.map((g,i)=>{const P=g.p,ge=P.yon==='gelis',h=(P.hat||'').split('-');return '<button type="button" class="pk-g'+(P.gun<bugun?' eski':'')+'" data-a="pkSec" data-k="'+i+'"><span class="pk-sa">'+esc(P.saat||'')+'</span><span class="tx"><b>'+esc(P.no)+' · '+esc(h.length===2?h[0]+' → '+h[1]:P.f)+'</b><span>'+(ge?'Geliş · karşılama':'Gidiş · uğurlama')+' · '+P.y.length+' VIP'+(P.gun!==bugun?' · '+esc(fmtD(P.gun)):'')+'</span></span><span class="pk-y '+(ge?'gelis':'gidis')+'">'+(ge?'GELİŞ':'GİDİŞ')+'</span></button>'}).join('')
+     :'<p class="empty" style="text-align:center;padding:30px 0">Şu an atanmış görev yok. Yeni görev gelince burada görünür.</p>')
+   +((window.Notification&&Notification.permission==='default')?'<div class="row-btns" style="justify-content:center;margin-top:12px"><button class="btn" data-a="pkIzin" type="button">Bu cihazda bildirim izni ver</button></div>':'')
+   +'<p class="note gk-gz">Telefon kapalıyken de bildirim için “ntfy” uygulamasında <b class="mono">'+esc('rita-'+PK.kod)+'</b> konusuna abone olun. Bu sayfayı ana ekrana ekleyin.</p>'}
+Object.assign(A,{
+ pkSec(d){const g=PKL&&PKL.g.slice().sort((a,b)=>(a.p.gun+a.p.saat).localeCompare(b.p.gun+b.p.saat))[+d.k];if(!g)return;GOREVP=g.p;gorevCiz();gorevDurum();document.querySelector('main').scrollTop=0},
+ async pkIzin(){try{await Notification.requestPermission()}catch(e){}pkCiz()},
+ pkKur(d){const per=PER().find(y=>y.id===d.k);if(!per)return;pkHazirla(per);const L=pkLink(per),konu=pkKonu(per);
+   const m='RITA görev bildirimi kurulumu (bir kez):\n1) Görevlerim sayfanız: '+L+'\n   Açın ve “Ana ekrana ekle” yapın.\n2) Anlık bildirim: telefonunuza ücretsiz “ntfy” uygulamasını kurun, + ile “'+konu+'” konusuna abone olun.\nBu bilgileri kimseyle paylaşmayın.';
+   sheet('<h2>Anlık bildirim kurulumu</h2><p class="sub">'+esc(per.ad)+'</p><dl class="kv"><dt>Görevlerim</dt><dd class="mono" style="font-size:11px">'+esc(L.slice(0,60))+'…</dd><dt>ntfy konusu</dt><dd class="mono">'+esc(konu)+'</dd></dl>'
+    +'<a class="btn pri wa-go" href="https://wa.me/'+telNorm(per.tel)+'?text='+encodeURIComponent(m)+'" target="_blank" rel="noopener">Kurulum bilgisini WhatsApp’tan gönder</a>'
+    +'<div class="row-btns" style="margin-top:10px"><button class="btn sm" data-a="pkDene" data-k="'+per.id+'" type="button">Deneme bildirimi gönder</button></div>'
+    +'<p class="note">Bu bilgi bir kez gönderilir. Sonra her atamada personelin telefonuna 1–2 saniyede sesli bildirim düşer; dokununca VIP kartı açılır. Bildirimde VIP isimleri yer almaz.</p>')},
+ async pkDene(d){const per=PER().find(y=>y.id===d.k);if(!per||!per.kod)return;try{const r=await fetch(NTFY,{method:'POST',body:JSON.stringify({topic:pkKonu(per),title:'RITA deneme bildirimi',message:'Bildirimler çalışıyor ✓',priority:4,tags:['white_check_mark'],click:pkLink(per)})});toast(r.ok?'Deneme bildirimi gönderildi':'Gönderilemedi')}catch(e){toast('Gönderilemedi')}}
+});
+dbInit();sfInit();load();if(D.rmig){Object.values(D.P).forEach(L=>L.forEach(p=>{const x=people().find(y=>nk(y.n)===nk(p.n));if(x){p.rank=x.r;if(!p.up&&x.u)p.up=x.u}}));delete D.rmig;save()}if(!location.hash){try{const h=localStorage.getItem('rita-pk');if(h)history.replaceState(null,'',location.pathname+h)}catch(e){}}if(!gorevAc())showLogin();window.addEventListener('hashchange',()=>{if(/^#(gk?|p)=/.test(location.hash))gorevAc()});
 
 </script>
 
