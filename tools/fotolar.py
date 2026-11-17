@@ -45,7 +45,7 @@ ROL = [(r'basbakan', r'basbakan|prime minister'), (r'cumhurbaskani yardimcisi', 
        (r'tumgeneral|tuggeneral|tumamiral|tugamiral', r'general|amiral|admiral'), (r'komutani', r'komutan|commander'), (r'belediye baskan', r'belediye baskan|mayor'),
        (r'milletvekili', r'milletvekil|member of the grand national assembly|member of parliament|deputy'), (r'yargitay', r'yargitay|court of cassation'), (r'danistay', r'danistay|council of state'),
        (r'anayasa mahkemesi', r'anayasa mahkemesi|constitutional court'), (r'sayistay', r'sayistay|court of accounts'), (r'genel muduru', r'genel mudur|director general|general manager|ceo'),
-       (r'baskani', r'baskan|president|chair|head')]
+       (r'baskan yardimcisi|baskanvekili', r'baskan yardimcisi|baskanvekili|vice chair|deputy chair|deputy leader'), (r'kamu denetcisi', r'kamu denetci|ombudsman'), (r'baskani', r'baskan|president|chair|head|leader')]
 OLUM = r'(?i)\b(öldü|ölümü|vefat|died|death)|\(\s*(d\.\s*)?\d{1,2}?\s*\w*\s*\d{4}\s*[-–]\s*\d{1,2}?\s*\w*\s*\d{4}\s*\)|ö\.\s*\d{4}'
 def dogrula(kisi, unvan, j):
     """Vikipedi özetinin BU kişi ve BUGÜNKÜ (ya da kayıttaki eski) görevi olduğunu doğrula."""
@@ -55,12 +55,17 @@ def dogrula(kisi, unvan, j):
     ham = (j.get('description') or '') + ' ' + (j.get('extract') or '')
     metin = norm(ham)
     if re.search(OLUM, ham): return 'ölmüş kişi olabilir'
-    u = norm(re.sub(r'\s*\(.*?\)', '', unvan.split(' · ')[0]))
-    rol = next((r for p, r in ROL if re.search(p, u)), None)
-    if not rol or not re.search(rol, metin): return 'görev doğrulanamadı'
-    ayirt = [w for w in u.split() if w not in GENEL and len(w) > 2 and not re.search(rol, w)]
-    if ayirt and not any(w[:6] in metin for w in ayirt): return 'il/kurum doğrulanamadı'
-    return ''
+    # rehberdeki görevlerinden HERHANGİ biri (makam + il/kurum) metinde doğrulanmalı
+    son = 'görev doğrulanamadı'
+    for parca in unvan.split(' · '):
+        if re.search(r'(?i)doğrulayın|dönem$|^\d', parca): continue
+        u = norm(re.sub(r'\s*\(.*?\)', '', parca))
+        rol = next((r for p, r in ROL if re.search(p, u)), None)
+        if not rol or not re.search(rol, metin): continue
+        ayirt = [w for w in u.split() if w not in GENEL and len(w) > 2 and not re.search(rol, w)]
+        if ayirt and not any(w[:6] in metin for w in ayirt): son = 'il/kurum doğrulanamadı'; continue
+        return ''
+    return son
 
 def kisiler():
     src = open(os.path.join(R, 'index.html'), encoding='utf-8').read(); i = src.index('K0=')
@@ -81,7 +86,7 @@ def kisiler():
         seen.add(k); out.append((n, t, r))
     return out
 
-PROP = 'action=query&format=json&formatversion=2&redirects=1&prop=pageimages|extracts|description|pageprops&exintro=1&explaintext=1&exsentences=4&piprop=thumbnail|original&pithumbsize=400&ppprop=disambiguation|wikibase_item'
+PROP = 'action=query&format=json&formatversion=2&redirects=1&prop=pageimages|extracts|description|pageprops&exintro=1&explaintext=1&exsentences=8&piprop=thumbnail|original&pithumbsize=400&ppprop=disambiguation|wikibase_item'
 def sor(lang, ek):
     """Vikipedi API; hız sınırında bekleyip yeniden dener."""
     for bek in (0, 20, 60, 180):
@@ -127,7 +132,7 @@ def commons(kayitlar):
             if j and not j['thumbnail'] and c and c[0].get('mainsnak', {}).get('datavalue'):
                 j['thumbnail'] = {'source': 'https://commons.wikimedia.org/wiki/Special:FilePath/' + urllib.parse.quote(c[0]['mainsnak']['datavalue']['value'].replace(' ', '_')) + '?width=400'}; j['commons'] = 1
     except Exception: pass
-SURUM = 3  # arama yöntemi değişince eski "bulunamadı" kayıtları bir kez yeniden denenir
+SURUM = 4  # arama yöntemi değişince eski "bulunamadı" kayıtları bir kez yeniden denenir
 def sonuc(ad, unvan, j):
     neden = dogrula(ad, unvan, j)
     if not neden and not j['thumbnail'].get('source'): neden = 'sayfada fotoğraf yok'
@@ -190,9 +195,13 @@ def resmi_site(ad, unvan, adresler, kelime, kaynak):
         for im in re.finditer(r'<img\b[^>]*>', h, re.I):
             t = im.group(0); src = re.search(r'\b(?:data-src|src)=["\']([^"\']+)', t)
             if not src or re.search(r'(?i)logo|icon|bayrak|flag|\.svg|banner|ataturk|cumhurbaskani|erdogan', src.group(1)): continue
+            yol = norm(urllib.parse.unquote(html.unescape(src.group(1))))
+            # haber / etkinlik / galeri görselleri ASLA (kalabalık fotoğraf, yanlış kişi riski)
+            if re.search(r'haber|gundem|whatsapp|duyuru|etkinlik|ziyaret|slider|galeri|toplanti|tören|toren|bayram|cumhurbaskan|bakan|img \d|dsc|\d{6,}', yol): continue
             alt = norm(' '.join(re.findall(r'\b(?:alt|title)=["\']([^"\']*)', t)))
-            puan = (3 if k in nk(alt) else 0) + (2 if re.search(r'(?i)' + kelime, src.group(1) + ' ' + alt) else 0)
-            if puan: aday.append((puan, urllib.parse.urljoin(u, html.unescape(src.group(1)))))
+            soyad = nk(ad).split()[-1]
+            puan = (5 if soyad in yol.replace(' ', '') or soyad in yol else 0) + (4 if re.search(r'yoneticilerimiz|' + kelime + r'imiz|ozgecmis|biyografi', yol) else 0) + (2 if k in nk(alt) else 0)
+            if puan >= 4: aday.append((puan, urllib.parse.urljoin(u, html.unescape(src.group(1)))))
         if aday:
             aday.sort(key=lambda x: -x[0])
             if k not in DB or not DB[k].get('u') or DB[k].get('k') == kaynak:
