@@ -391,6 +391,7 @@ details.bilgi[open]>summary{margin-bottom:2px}
 .pk-t{font-size:10.5px;font-weight:800;letter-spacing:.14em;opacity:.9}.pk-a{font-size:18px;font-weight:800;margin-top:2px}.pk-s{font-size:12px;opacity:.85;margin-top:2px}
 .pk-g{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:#fff;border:1px solid #d7dde7;border-radius:12px;padding:11px 12px;margin:0 0 8px;cursor:pointer;color:var(--ink);font:inherit}
 .pk-g.eski{opacity:.55}.pk-sa{font:700 17px var(--mono);min-width:54px}.pk-g .tx b{display:block;font-size:14px}.pk-g .tx span{font-size:11.5px;color:var(--muted)}
+.pk-kur{background:#fff;border:1px solid #d7dde7;border-radius:12px;padding:12px 14px;margin-top:12px;font-size:12.5px}.pk-kur ol{margin:8px 0 0;padding-left:18px;display:grid;gap:8px}
 .pk-y{font-size:9.5px;font-weight:800;letter-spacing:.08em;padding:3px 7px;border-radius:6px;color:#fff}.pk-y.gidis{background:#1d3461}.pk-y.gelis{background:#0b6e4f}
 
 </style>
@@ -535,7 +536,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 15.0';let SURUM_YENI=false;
+const SURUM='RITA 15.1';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1256,7 +1257,7 @@ const A={
   try{link=await gkYukle(a);if(link&&a.gk)a.gk.iz=JSON.stringify(gorevPaket(a))}catch(e){uyari='Kısa bağlantı oluşturulamadı ('+esc(e.message)+'); uzun bağlantı kullanıldı.'}
   if(!link&&!uyari)uyari=window.RITA_STANDALONE?'Kısa bağlantı için Yönetim → Ortak kayıt anahtarı gerekli; şimdilik uzun bağlantı kullanıldı.':'';
   const m=waMesaj(a,link),u='https://wa.me/'+telNorm(per.tel)+'?text='+encodeURIComponent(m);a.gon=Date.now();save();gkTemizle();
-  let ani='';if(per.kod){const [r1,r2]=await Promise.all([ntfyGonder(per,a,link,false),pkYukle(per).catch(()=>false)]);ani=r1?'<p class="ani ok">✓ Anlık bildirim gönderildi'+(r2?' · Görevlerim sayfası güncellendi':'')+'</p>':'<p class="ani">Anlık bildirim gönderilemedi; WhatsApp ile gönderin.</p>'}
+  let ani='';if(per.kod){const [r1,r2]=await Promise.all([bildirimGonder(per,a,link,false),pkYukle(per).catch(()=>false)]);ani=r1.ok?'<p class="ani ok">✓ Bildirim personelin telefonuna gönderildi ('+r1.cihaz+' cihaz)'+(r2?' · Görevlerim güncellendi':'')+'</p>':'<p class="ani">'+(!BILDIRIM_URL?'Bildirim sunucusu henüz kurulmadı':r1.cihaz===0?'Personel telefonunda henüz “Bildirimleri aç” dememiş':'Bildirim gönderilemedi')+'; WhatsApp ile gönderin.</p>'}
   else ani='<p class="ani">Bu personelde anlık bildirim kurulu değil. Personel kartından “Anlık bildirim kurulumu”nu bir kez gönderin.</p>';
   const [m1,...mr]=m.split('\n'),ml=mr.join(' ');
   sheet('<h2>'+(per.kod?'Görev gönderildi':'WhatsApp mesajı hazır')+'</h2><p class="sub">'+esc(per.ad)+' · '+esc(telGoster(per.tel))+'</p>'+ani+'<a class="btn '+(per.kod?'':'pri ')+'wa-go" href="'+esc(u)+'" target="_blank" rel="noopener">'+(per.kod?'Ayrıca WhatsApp’tan gönder':'WhatsApp’ta aç ve gönder')+'</a><div class="wa-on"><div class="wa-t">MESAJ ÖNİZLEMESİ</div><b>'+esc(m1)+'</b><span class="wa-l">'+esc(ml.length>64?ml.slice(0,58)+'…':ml)+'</span></div>'+(uyari?'<p class="note">'+uyari+'</p>':''))},
@@ -1420,13 +1421,16 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('veil').hidden)c
 let lockT;function bump(){clearTimeout(lockT);if(role)lockT=setTimeout(logout,(D.lock||10)*60000)}
 ['click','keydown','touchstart'].forEach(ev=>document.addEventListener(ev,bump,{passive:true}));
 function showLogin(){role=null;closeSheet();$('app').hidden=true;$('login').hidden=false;$('lg-p').value='';$('lgerr').textContent=''}
-function logout(){if(PK){try{localStorage.removeItem('rita-pk')}catch(e){}PK=null;try{PKES&&PKES.close()}catch(e){}PKES=null;clearTimeout(PKT);history.replaceState(null,'',location.pathname)}showLogin()}
+function logout(){if(PK){try{localStorage.removeItem('rita-pk')}catch(e){}PK=null;PKES=null;clearTimeout(PKT);history.replaceState(null,'',location.pathname)}showLogin()}
 function enter(r){role=r;$('login').hidden=true;$('app').hidden=false;tab='ucus';bump();render()}
 $('lgform').addEventListener('submit',async e=>{e.preventDefault();const u=$('lg-u').value.trim().toLowerCase(),p=$('lg-p').value;
   if(!u||!p){$('lgerr').textContent='Kullanıcı adı ve şifreyi girin.';return}
   let h='';try{h=await sha('ubay|'+u+'|'+p)}catch(err){$('lgerr').textContent='Bu tarayıcı güvenli girişi desteklemiyor.';return}
   if(u===ADMIN_USER&&h===(D.cred||ADMIN_HASH)){enter('admin');toast('Yönetici olarak giriş yapıldı')}else $('lgerr').textContent='Kullanıcı adı veya şifre hatalı.'});
 $('lg-staff').addEventListener('click',()=>{enter('staff');toast('Personel modu: veriler yalnızca görüntülenir')});
+/* ana ekrandaki RITA (iPhone'da Safari'den ayrı hafıza): kurulum bağlantısıyla Görevlerim'i bağla */
+(()=>{const box=document.querySelector('.lg-box');if(!box||!(matchMedia('(display-mode: standalone)').matches||navigator.standalone===true))return;const b=document.createElement('button');b.type='button';b.className='lg-alt';b.textContent='Personel: Görevlerimi bağla';
+  b.onclick=async()=>{let t='';try{t=await navigator.clipboard.readText()}catch(e){}if(!/#p=[A-Za-z0-9]+\.[A-Za-z0-9_-]+/.test(t))t=prompt('WhatsApp’tan gelen RITA kurulum bağlantısını yapıştırın:')||'';const m=t.match(/#p=[A-Za-z0-9]+\.[A-Za-z0-9_-]+/);if(!m)return toast('Geçerli bir kurulum bağlantısı bulunamadı');history.replaceState(null,'',location.pathname+m[0]);gorevAc()};box.appendChild(b)})();
 $('logo-lg').innerHTML=LOGO;$('logo-sm').innerHTML=LOGO.replace(/lg1/g,'lg2');
 /* ---------- Yönetim menüsü ---------- */
 let YS='ozet';
@@ -1511,23 +1515,26 @@ function ucAtamaHtml(){if(!isAdmin()||!D.cur||!ppl().length)return'';const G=GOR
 /* atanmış uçuşta VIP bilgisi değişince şifreli kart aynı bağlantıda güncellenir */
 let GKOT=null;function gkOtoGuncelle(){if(!isAdmin()||!window.RITA_STANDALONE||!ghTok())return;clearTimeout(GKOT);GKOT=setTimeout(async()=>{
   for(const a of GOR().filter(x=>x.gk&&x.gk.sha&&x.gk.key&&!x.gk.silindi)){const iz=JSON.stringify(gorevPaket(a));if(!a.gk.iz||a.gk.iz===iz)continue;
-    try{await gkYukle(a);a.gk.iz=iz;save();const per=PER().find(x=>x.id===a.per);if(per&&per.kod){await pkYukle(per).catch(()=>{});ntfyGonder(per,a,siteKok()+'g/?'+a.gk.id+'#'+a.gk.key,true)}toast('Personel kartı güncellendi: '+a.f.split(' ')[0])}catch(e){}}},4000)}
+    try{await gkYukle(a);a.gk.iz=iz;save();const per=PER().find(x=>x.id===a.per);if(per&&per.kod){await pkYukle(per).catch(()=>{});bildirimGonder(per,a,siteKok()+'g/?'+a.gk.id+'#'+a.gk.key,true)}toast('Personel kartı güncellendi: '+a.f.split(' ')[0])}catch(e){}}},4000)}
 Object.assign(A,{
  ucAta(){const pid=$('uc-p')&&$('uc-p').value;if(!pid)return toast('Önce personel ekleyin');const f=D.cur;if(GOR().some(a=>a.f===f&&a.per===pid))return toast('Bu personel bu uçuşa zaten atanmış');
    const a={id:'g'+Date.now(),f,yon:gelisMi(f)?'gelis':'gidis',per:pid,gun:opsGun,not:'',t:Date.now()};GOR().push(a);save();const n=gunSay(pid,opsGun);render();A.opsWa({k:a.id});if(n>6)toast('Dikkat: bu personele bugün '+n+' uçuş atandı')},
  ucSil(d){D.GOR=GOR().filter(x=>x.id!==d.k);save();render();toast('Atama kaldırıldı')},
  gorevGeri(){if(PK){GOREVP=null;clearTimeout(GDT);GDUR=null;return pkCiz()}if(window.opener){try{window.close();return}catch(e){}}history.replaceState(null,'',location.pathname);clearTimeout(GDT);GOREVP=null;role=null;document.body.classList.remove('gorev');showLogin()}
 });
-/* ---------- anlık bildirim (ntfy) ve personelin "Görevlerim" sayfası ----------
+/* ---------- anlık bildirim (RITA bildirim sunucusu, Web Push) ve personelin "Görevlerim" sayfası ----------
    Her personele bir kez: rastgele kod (bildirim konusu) + şifre anahtarı. İkisi de YALNIZ yönetici cihazında (D.PER).
-   Atama yapılınca: (1) ntfy.sh/rita-<kod> konusuna kısa bildirim (uçuş no, VIP sayısı, şifreli kart bağlantısı; isim yok)
+   Atama yapılınca: (1) bildirim sunucusu üzerinden telefona Web Push (uçuş no, VIP sayısı, şifreli kart bağlantısı; isim yok)
    (2) personelin günlük görev listesi şifrelenip data/gorev/p-<kod>.json'a yazılır; Görevlerim sayfası bunu okur. */
-const NTFY='https://ntfy.sh/';const pkKonu=per=>'rita-'+per.kod;
+/* RITA bildirim sunucusu (Cloudflare Worker, worker/rita-bildirim.js). Telefon RITA'yı ana ekrana ekleyip
+   "Bildirimleri aç" deyince aboneliğini kendi koduyla kaydeder; yönetici atayınca bildirim doğrudan ekrana düşer. */
+const BILDIRIM_URL='',VAPID_PUB='BFn2MCfBAlMcBw2Va6Teb-Bh3k4KbeDIkngXGkEw9sfLWjpP4XwDob3YkwM_XlguUzwlKJwx68SXqDnLxpro6jI';
 function pkHazirla(per){if(!per.kod){per.kod=rb64(crypto.getRandomValues(new Uint8Array(12))).replace(/[^A-Za-z0-9]/g,'').slice(0,16);per.pk=rb64(crypto.getRandomValues(new Uint8Array(16)));save()}return per}
 function pkLink(per){return siteKok()+'#p='+per.kod+'.'+per.pk}
-async function ntfyGonder(per,a,link,sessiz){try{const P=gorevPaket(a),h=(P.hat||'').split('-');
-  const r=await fetch(NTFY,{method:'POST',body:JSON.stringify({topic:pkKonu(per),title:(sessiz?'Güncellendi · ':'')+'['+P.no+' | '+(h.length===2?h[0]+' - '+h[1]:P.f)+'] '+(P.yon==='gelis'?'Geliş':'Gidiş')+' · '+P.saat,
-    message:'Atanan VIP: '+P.y.length+' yolcu'+(P.not?' · '+P.not:'')+(sessiz?' (kart güncellendi)':''),priority:sessiz?2:5,tags:[sessiz?'arrows_counterclockwise':'airplane'],...(link&&link.length<1800?{click:link}:{})})});return r.ok}catch(e){return false}}
+async function bildirimGonder(per,a,link,sessiz,ozel){if(!BILDIRIM_URL||!ghTok()||!per.kod)return{ok:false,cihaz:0};try{
+  let t,b;if(ozel){t=ozel.t;b=ozel.b}else{const P=gorevPaket(a),h=(P.hat||'').split('-');t=(sessiz?'Güncellendi · ':'')+'['+P.no+' | '+(h.length===2?h[0]+' - '+h[1]:P.f)+'] '+(P.yon==='gelis'?'Geliş':'Gidiş')+' · '+P.saat;b='Atanan VIP: '+P.y.length+' yolcu'+(P.not?' · '+P.not:'')}
+  const r=await fetch(BILDIRIM_URL+'/gonder',{method:'POST',headers:{'Content-Type':'application/json','X-GH-Token':ghTok()},body:JSON.stringify({kod:per.kod,t,b,u:link&&link.length<1800?link:pkLink(per),s:sessiz?1:0,tag:a?a.id:'rita'})});
+  if(!r.ok)return{ok:false,cihaz:0};const j=await r.json();return{ok:j.gonderilen>0,cihaz:j.cihaz||0}}catch(e){return{ok:false,cihaz:0}}}
 async function pkYukle(per){const tok=ghTok();if(!tok||!window.RITA_STANDALONE||!per.kod)return false;const dun=new Date(Date.now()-864e5).toISOString().slice(0,10);
   const L=GOR().filter(a=>a.per===per.id&&a.gun>=dun).map(a=>({id:a.id,link:a.gk&&a.gk.key?siteKok()+'g/?'+a.gk.id+'#'+a.gk.key:'',p:gorevPaket(a),t:a.gon||a.t}));
   const {dosya}=await gkSifrele({v:1,ad:per.ad,g:L,t:Date.now()},per.pk);const path='data/gorev/p-'+per.kod+'.json';
@@ -1541,7 +1548,7 @@ function pkAc(){const m=location.hash.match(/^#p=([A-Za-z0-9]+)\.([A-Za-z0-9_-]+
   try{localStorage.setItem('rita-pk',location.hash)}catch(e){}
   role='gorev';document.body.classList.add('gorev');$('login').hidden=true;$('app').hidden=false;$('tabs').innerHTML='';$('role').textContent='GÖREVLERİM';$('topfl').textContent='Görev listesi';
   $('view').innerHTML='<p class="note" style="text-align:center;margin:40px 16px">Görevler yükleniyor…</p>';pkYenile();
-  try{if(!PKES&&window.EventSource){PKES=new EventSource(NTFY+'rita-'+PK.kod+'/sse');PKES.onmessage=()=>{pkYenile(true)}}}catch(e){}
+  try{if(!PKES&&navigator.serviceWorker){PKES=1;navigator.serviceWorker.addEventListener('message',e=>{if(e.data&&e.data.rita==='push')pkYenile(true)})}}catch(e){}
   return true}
 async function pkYenile(yeniBildirim){clearTimeout(PKT);let d=null;for(const u of ['https://raw.githubusercontent.com/'+GHR.owner+'/'+GHR.repo+'/'+GHR.branch+'/data/gorev/p-'+PK.kod+'.json?t='+Date.now(),'data/gorev/p-'+PK.kod+'.json?t='+Date.now()]){try{const r=await fetch(u,{cache:'no-store'});if(r.ok){d=await r.json();break}}catch(e){}}
   if(d){try{const x=await gkCoz(d,PK.key);const iz=JSON.stringify(x.g.map(g=>g.id+(g.t||'')));if(PKL&&iz!==PKSON)pkUyar();PKSON=iz;PKL=x}catch(e){}}
@@ -1554,18 +1561,27 @@ function pkCiz(){const x=PKL;$('topfl').textContent=x?x.ad:'Görev listesi';cons
   $('view').innerHTML='<section class="pk-bas"><div class="pk-t">GÖREVLERİM</div><div class="pk-a">'+esc(x?x.ad:'')+'</div><div class="pk-s">'+L.filter(g=>g.p.gun>=bugun).length+' görev · liste kendiliğinden yenilenir</div></section>'
    +(L.length?L.map((g,i)=>{const P=g.p,ge=P.yon==='gelis',h=(P.hat||'').split('-');return '<button type="button" class="pk-g'+(P.gun<bugun?' eski':'')+'" data-a="pkSec" data-k="'+i+'"><span class="pk-sa">'+esc(P.saat||'')+'</span><span class="tx"><b>'+esc(P.no)+' · '+esc(h.length===2?h[0]+' → '+h[1]:P.f)+'</b><span>'+(ge?'Geliş · karşılama':'Gidiş · uğurlama')+' · '+P.y.length+' VIP'+(P.gun!==bugun?' · '+esc(fmtD(P.gun)):'')+'</span></span><span class="pk-y '+(ge?'gelis':'gidis')+'">'+(ge?'GELİŞ':'GİDİŞ')+'</span></button>'}).join('')
      :'<p class="empty" style="text-align:center;padding:30px 0">Şu an atanmış görev yok. Yeni görev gelince burada görünür.</p>')
-   +((window.Notification&&Notification.permission==='default')?'<div class="row-btns" style="justify-content:center;margin-top:12px"><button class="btn" data-a="pkIzin" type="button">Bu cihazda bildirim izni ver</button></div>':'')
-   +'<p class="note gk-gz">Telefon kapalıyken de bildirim için “ntfy” uygulamasında <b class="mono">'+esc('rita-'+PK.kod)+'</b> konusuna abone olun. Bu sayfayı ana ekrana ekleyin.</p>'}
+   +pkKurulumHtml()}
+const iosMu=()=>/iphone|ipad|ipod/i.test(navigator.userAgent),uygMu=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+function pkKurulumHtml(){const acik=window.Notification&&Notification.permission==='granted'&&localStorage.getItem('rita-push')===PK.kod;
+  if(acik)return '<p class="note gk-gz">✓ Bildirimler bu telefonda açık. Yeni görev ekranınıza bildirim olarak düşer.</p>';
+  if(iosMu()&&!uygMu())return '<div class="pk-kur"><b>Bildirimleri açmak için (bir kez):</b><ol><li><button class="btn sm" data-a="pkKopya" type="button">Bu bağlantıyı kopyala</button></li><li>Safari’nin altındaki <b>Paylaş</b> → <b>Ana Ekrana Ekle</b></li><li>Ana ekrandaki <b>RITA</b>’yı açın → <b>Görevlerimi bağla</b> → <b>Bildirimleri aç</b></li></ol></div>';
+  if(!('PushManager' in window)||!navigator.serviceWorker)return '<p class="note gk-gz">Bu tarayıcı bildirim desteklemiyor. Chrome ya da Safari (iPhone’da ana ekrandan) kullanın.</p>';
+  return '<div class="pk-kur" style="text-align:center"><button class="btn gold" data-a="pkIzin" type="button">Bildirimleri aç</button><p class="note">Yeni görev geldiğinde telefon kilitliyken de ekrana bildirim düşer.</p></div>'}
 Object.assign(A,{
  pkSec(d){const g=PKL&&PKL.g.slice().sort((a,b)=>(a.p.gun+a.p.saat).localeCompare(b.p.gun+b.p.saat))[+d.k];if(!g)return;GOREVP=g.p;gorevCiz();gorevDurum();document.querySelector('main').scrollTop=0},
- async pkIzin(){try{await Notification.requestPermission()}catch(e){}pkCiz()},
- pkKur(d){const per=PER().find(y=>y.id===d.k);if(!per)return;pkHazirla(per);const L=pkLink(per),konu=pkKonu(per);
-   const m='RITA görev bildirimi kurulumu (bir kez):\n1) Görevlerim sayfanız: '+L+'\n   Açın ve “Ana ekrana ekle” yapın.\n2) Anlık bildirim: telefonunuza ücretsiz “ntfy” uygulamasını kurun, + ile “'+konu+'” konusuna abone olun.\nBu bilgileri kimseyle paylaşmayın.';
-   sheet('<h2>Anlık bildirim kurulumu</h2><p class="sub">'+esc(per.ad)+'</p><dl class="kv"><dt>Görevlerim</dt><dd class="mono" style="font-size:11px">'+esc(L.slice(0,60))+'…</dd><dt>ntfy konusu</dt><dd class="mono">'+esc(konu)+'</dd></dl>'
+ async pkIzin(){try{if(!BILDIRIM_URL)return toast('Bildirim sunucusu henüz kurulmadı');const izin=await Notification.requestPermission();if(izin!=='granted')return toast('Bildirim izni verilmedi. Ayarlar’dan RITA için bildirimlere izin verin.');
+   const reg=await navigator.serviceWorker.ready;let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:rb64d(VAPID_PUB)});
+   const r=await fetch(BILDIRIM_URL+'/abone',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kod:PK.kod,sub:sub.toJSON(),selam:1,u:location.href})});
+   if(!r.ok)throw new Error('kayıt '+r.status);localStorage.setItem('rita-push',PK.kod);toast('Bildirimler açıldı ✓');pkCiz()}catch(e){hataEkle('bildirim: '+(e.message||e));toast('Bildirim açılamadı: '+(e.message||e))}},
+ pkKopya(){copyText(location.href);toast('Bağlantı kopyalandı')},
+ pkKur(d){const per=PER().find(y=>y.id===d.k);if(!per)return;pkHazirla(per);const L=pkLink(per);
+   const m='RITA görevlerim ve bildirim kurulumu (bir kez):\n'+L+'\nBağlantıyı açın, ekrandaki adımları izleyin (RITA’yı ana ekrana ekleyip “Bildirimleri aç”). Bu bağlantıyı kimseyle paylaşmayın.';
+   sheet('<h2>Bildirim kurulumu</h2><p class="sub">'+esc(per.ad)+'</p><dl class="kv"><dt>Görevlerim</dt><dd class="mono" style="font-size:11px">'+esc(L.slice(0,60))+'…</dd><dt>Sunucu</dt><dd>'+(BILDIRIM_URL?'hazır':'henüz kurulmadı')+'</dd></dl>'
     +'<a class="btn pri wa-go" href="https://wa.me/'+telNorm(per.tel)+'?text='+encodeURIComponent(m)+'" target="_blank" rel="noopener">Kurulum bilgisini WhatsApp’tan gönder</a>'
     +'<div class="row-btns" style="margin-top:10px"><button class="btn sm" data-a="pkDene" data-k="'+per.id+'" type="button">Deneme bildirimi gönder</button></div>'
-    +'<p class="note">Bu bilgi bir kez gönderilir. Sonra her atamada personelin telefonuna 1–2 saniyede sesli bildirim düşer; dokununca VIP kartı açılır. Bildirimde VIP isimleri yer almaz.</p>')},
- async pkDene(d){const per=PER().find(y=>y.id===d.k);if(!per||!per.kod)return;try{const r=await fetch(NTFY,{method:'POST',body:JSON.stringify({topic:pkKonu(per),title:'RITA deneme bildirimi',message:'Bildirimler çalışıyor ✓',priority:4,tags:['white_check_mark'],click:pkLink(per)})});toast(r.ok?'Deneme bildirimi gönderildi':'Gönderilemedi')}catch(e){toast('Gönderilemedi')}}
+    +'<p class="note">Bu bilgi bir kez gönderilir. Personel RITA’yı ana ekrana ekleyip “Bildirimleri aç” dedikten sonra her atamada telefonuna 1–2 saniyede bildirim düşer; dokununca VIP kartı açılır. Bildirimde VIP isimleri yer almaz.</p>')},
+ async pkDene(d){const per=PER().find(y=>y.id===d.k);if(!per||!per.kod)return;const r=await bildirimGonder(per,null,'',false,{t:'RITA deneme bildirimi',b:'Bildirimler çalışıyor ✓'});toast(r.ok?'Deneme bildirimi gönderildi ('+r.cihaz+' cihaz)':!BILDIRIM_URL?'Bildirim sunucusu henüz kurulmadı':r.cihaz===0?'Personel henüz “Bildirimleri aç” dememiş':'Gönderilemedi')}
 });
 dbInit();sfInit();load();if(D.rmig){Object.values(D.P).forEach(L=>L.forEach(p=>{const x=people().find(y=>nk(y.n)===nk(p.n));if(x){p.rank=x.r;if(!p.up&&x.u)p.up=x.u}}));delete D.rmig;save()}if(!location.hash){try{const h=localStorage.getItem('rita-pk');if(h)history.replaceState(null,'',location.pathname+h)}catch(e){}}if(!gorevAc())showLogin();window.addEventListener('hashchange',()=>{if(/^#(gk?|p)=/.test(location.hash))gorevAc()});
 
