@@ -50,7 +50,7 @@ EK = [(r'Bakan Yardımcılığına$', 'Bakan Yardımcısı'), (r'Yardımcılığ
       (r'Üyeliğine$', 'Üyesi'), (r'Başsavcılığına$', 'Başsavcısı'), (r'Komutanlığına$', 'Komutanı'), (r'Müsteşarlığına$', 'Müsteşarı'),
       (r'Daimi Temsilciliğine$', 'Daimi Temsilcisi'), (r'Başkan Vekilliğine$', 'Başkanvekili'), (r'Müdürlüğüne$', 'Müdürü'), (r'Başkanvekilliğine$', 'Başkanvekili')]
 ALAKA = re.compile(r'Bakan Yardımcısı|Genel Müdürü|Başkanı|Valisi|Rektörü|Büyükelçisi|Genel Sekreteri|Başsavcısı|Komutanı|Müsteşarı|Daimi Temsilcisi|Başkanvekili|Kurulu Üyesi|Kurul Üyesi')
-DISLA = re.compile(r'Daire Başkan|Bölge Müdür|İl Müdür|İlçe|Müftü|Hastane|Genel Müdür Yardımc|Başkan Yardımc|Şube|Kaymakam|Dekan|Müdür Yardımc|Başhekim|Grup Başkan')
+DISLA = re.compile(r'Yönetim Kurulu Üyesi|Denetim Kurulu Üyesi|Denetçisi|Daire Başkan|Bölge Müdür|İl Müdür|İlçe|Müftü|Hastane|Genel Müdür Yardımc|Başkan Yardımc|Şube|Kaymakam|Dekan|Müdür Yardımc|Başhekim|Grup Başkan')
 
 def sade(m):
     m = re.sub(r'\s+', ' ', m).strip(' ,;:-')
@@ -61,8 +61,8 @@ def sade(m):
     m = re.sub(r'(?:’|\')?(?:n|d|t)?(?:a|e)\s+(?:boş|açık) bulunan\s+', ' ', m)
     m = re.sub(r'\b(?:boş|açık) bulunan\s+', '', m)
     for a, b in EK:
-        if re.search(a, m): return re.sub(a, b, m)
-    return m
+        if re.search(a, m): m = re.sub(a, b, m); break
+    return re.sub(r'Bakanlığı Bakan Yardımcısı$', 'Bakan Yardımcısı', m)
 
 def tc(n):
     return ' '.join(w if not (w.isupper() and len(w) > 1) else w[0] + w[1:].replace('I', 'ı').replace('İ', 'i').lower() for w in n.split())
@@ -86,6 +86,8 @@ def _kalem(org, item, tur):
     ad = tc(m.group(1)); rest = item[:m.start()].strip(' ,')
     if tur == 'atama':
         mk = rest.split(',')[0].strip()                      # "…Müdürlüğüne" (virgülden sonrası kişinin eski görevi)
+        dm = re.search(r'^(.*?\S+(?:ğına|ğine|ğuna|ğüne|lığına|liğine))\s+\S', mk)   # virgül okunmadıysa: ilk yönelme ekli kelimede böl
+        if dm: mk = dm.group(1)
     else:
         mk = rest
     mk = re.sub(r'\s*(?:(?:Prof|Doç|Dr|Av|Öğr|Üyesi)\.?\s*)+$', '', mk).strip(' ,')
@@ -178,20 +180,27 @@ def bilinen():
     _ORG = {_norm(r['b']) for r in G['rows'] if 'Bakanlığı' in r['b'] or r['b'] == 'Cumhurbaşkanlığı'} | {_norm(u) for u in ABBR}
     _BIL = M
     return _BIL
-GENEL = set('genel muduru mudur baskani baskan sekreteri yardimcisi bakan rektoru valisi buyukelcisi uyesi kurulu kurumu baskanvekili komutani bassavcisi mustesari ve daimi temsilcisi'.split())
+GENEL = set('genel muduru mudur baskani baskan sekreteri yardimcisi bakan rektoru valisi buyukelcisi uyesi kurulu kurumu baskanvekili komutani bassavcisi mustesari ve daimi temsilcisi yonetim denetim icra genel kurul'.split())
 def teyit(makam, eski, yeni):
     """(durum, kanonik_makam, açıklama). Yalnızca kesin eşleşme 'otomatik' olur."""
     ad = re.compile(r"^[A-ZÇĞİÖŞÜÂÎÛ][a-zçğıöşüâîû]+(?: [A-ZÇĞİÖŞÜÂÎÛ][a-zçğıöşüâîû'’\-]+){1,4}$")
     for n in (eski, yeni):
         if n and not ad.match(n): return 'beklemede', makam, 'isim okunamadı: ' + n
     nm = _norm(makam)
+    # cümle tam ayrışmamışsa (yönelme ekli kelime, 'merkeze', yarım ek, iki makam) asla otomatik değil
+    if re.search(r'\w+(?:lüğün|lığın|liğin|luğun|nın|nin)\b(?! )|\w+(?:lüğün|lığın|liğin|luğun) ', makam) or re.search(r'(ğına|ğine|ğuna|ğüne)\b', makam) or re.search(r'\b(merkeze|alınarak|yerine|suretle)\b', makam) or re.search(r'Bakanlığın\b|Başkanlığın\b', makam):
+        return 'beklemede', makam, 'karar metni tam ayrıştırılamadı; elle kontrol edilmeli'
+    if len(re.findall(r'(Genel Müdürü|Başkanı|Büyükelçisi|Valisi|Rektörü|Genel Sekreteri)', makam)) > 1:
+        return 'beklemede', makam, 'birden fazla makam okundu; elle kontrol edilmeli'
+    if len(set(nm.split()) - GENEL) < 1:
+        return 'beklemede', makam, 'makamın kurumu belirsiz; elle kontrol edilmeli'
     if re.search(r'(universitesi|enstitusu) rektoru$', nm) and len(nm.split()) >= 3:
         return 'otomatik', makam, 'Resmî Gazete metni; rektör ataması'
-    if re.search(r'buyukelcisi$', nm) and re.search(r'nezdinde|buyukelciligine|buyukelcisi', nm):
+    if re.match(r'^[^,]+ nezdinde turkiye cumhuriyeti buyukelcisi$', nm) and 'bakanlig' not in nm:
         return 'otomatik', makam, 'Resmî Gazete metni; büyükelçi ataması'
     B = bilinen()
     for k in sorted(B, key=len, reverse=True):
-        if len(k) >= 10 and set(k.split()) - GENEL and (nm == k or nm.endswith(' ' + k) or (len(set(nm.split()) - GENEL) >= 1 and k.endswith(' ' + nm))):
+        if len(k) >= 10 and set(k.split()) - GENEL and (nm == k or nm.endswith(' ' + k) or (len(set(nm.split()) - GENEL) >= 2 and k.endswith(' ' + nm))):
             return 'otomatik', B[k], 'Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti'
     for o in sorted(_ORG, key=len, reverse=True):
         if nm.startswith(o + ' ') and re.search(r'(genel muduru|baskani|baskanvekili|uyesi|bakan yardimcisi)$', nm):
@@ -275,13 +284,29 @@ def main():
     for k, v in C.items():
         if v.get('ekleyen') == 'resmi-gazete' and v.get('durum') == 'beklemede':
             e2, y2 = ad_duzelt(v.get('eski', ''), v.get('rg_metin', '')), ad_duzelt(v.get('yeni', ''), v.get('rg_metin', ''))
-            du, mk, ac = teyit(v.get('rg_metin') or v['makam'], e2, y2)
+            src = v.get('rg_metin') or v['makam']
+            dm = re.search(r'^(.*?\S+(?:ğına|ğine|ğuna|ğüne))\s+\S', src)
+            if dm: src = sade(dm.group(1))
+            du, mk, ac = teyit(src, e2, y2)
             if du == 'otomatik':
                 v.update(durum='otomatik', makam=mk, eski=e2, yeni=y2, teyit=ac + ' (yeniden kontrol)'); yeni += 1
         elif v.get('ekleyen') == 'resmi-gazete' and v.get('durum') == 'otomatik':
+            du, mk, ac = teyit(v.get('rg_metin') or v['makam'], v.get('eski', ''), v.get('yeni', ''))
+            if du != 'otomatik':
+                v.update(durum='beklemede', teyit=ac + ' (yeniden kontrolde geri alındı)'); yeni += 1; continue
             for f in ('eski', 'yeni'):
                 d2 = ad_duzelt(v.get(f, ''), v.get('rg_metin', ''))
                 if d2 != v.get(f, ''): v[f] = d2; v['teyit'] = v.get('teyit', '') + ' · isim rehberdeki kayda göre düzeltildi'; yeni += 1
+    # çelişki: aynı tekil makama 60 gün içinde farklı kişiler -> ikisi de teyit bekler
+    import itertools
+    RG = [(k, v) for k, v in C.items() if v.get('ekleyen') == 'resmi-gazete' and v.get('durum') == 'otomatik' and v.get('yeni')
+          and not re.search(r'Üyesi|Yardımcısı|Başkanvekili|İkinci Başkanı', v['makam'])]
+    for (k1, a), (k2, b) in itertools.combinations(RG, 2):
+        if _norm(a['makam']) == _norm(b['makam']) and _norm(a['yeni']) != _norm(b['yeni']):
+            try: gap = abs((datetime.date.fromisoformat(a['tarih']) - datetime.date.fromisoformat(b['tarih'])).days)
+            except Exception: gap = 0
+            if gap <= 60:
+                for v in (a, b): v.update(durum='beklemede', teyit='aynı makama kısa sürede iki farklı atama okundu; elle kontrol edilmeli'); yeni += 1
     if os.environ.get('RG_KURU'):
         for k, v in C.items():
             if v.get('ekleyen') == 'resmi-gazete' and k.startswith('rg-'): pass

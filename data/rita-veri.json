@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-16T23:35:48+03:00",
+ "guncelleme": "2026-11-17T06:56:06+03:00",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -616,8 +616,8 @@
    "yeni": "Sabri Tunç Angılı",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 16.10.2026 · https://www.resmigazete.gov.tr/eskiler/2026/10/20261016-10.pdf",
-   "durum": "otomatik",
-   "teyit": "Resmî Gazete metni; büyükelçi ataması",
+   "durum": "beklemede",
+   "teyit": "karar metni tam ayrıştırılamadı; elle kontrol edilmeli (yeniden kontrolde geri alındı)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:24:05+03:00",
    "r": 0
@@ -626,13 +626,13 @@
    "rg_metin": "Hazine ve Maliye Bakanlığı Bakan Yardımcılığına Gelir İdaresi Başkanı",
    "tarih": "2026-10-16",
    "tur": "atama",
-   "makam": "Gelir İdaresi Başkanı",
+   "makam": "Hazine ve Maliye Bakan Yardımcısı",
    "eski": "",
    "yeni": "Bekir Bayrakdar",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 16.10.2026 · https://www.resmigazete.gov.tr/eskiler/2026/10/20261016-10.pdf",
    "durum": "otomatik",
-   "teyit": "Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti",
+   "teyit": "Resmî Gazete metni; RITA'da tanımlı kurumun makamı (yeniden kontrol)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:24:05+03:00",
    "r": 0
@@ -676,8 +676,8 @@
    "yeni": "Kutluhan Taşkın",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 16.10.2026 · https://www.resmigazete.gov.tr/eskiler/2026/10/20261016-10.pdf",
-   "durum": "otomatik",
-   "teyit": "Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti",
+   "durum": "beklemede",
+   "teyit": "makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli (yeniden kontrolde geri alındı)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:24:05+03:00",
    "r": 0
@@ -691,8 +691,8 @@
    "yeni": "Selami Yapıcı",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 16.10.2026 · https://www.resmigazete.gov.tr/eskiler/2026/10/20261016-10.pdf",
-   "durum": "otomatik",
-   "teyit": "Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti",
+   "durum": "beklemede",
+   "teyit": "karar metni tam ayrıştırılamadı; elle kontrol edilmeli (yeniden kontrolde geri alındı)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:24:05+03:00",
    "r": 0
@@ -721,8 +721,8 @@
    "yeni": "Hikmet Yıldırım",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 20.10.2026 · https://www.resmigazete.gov.tr/eskiler/2026/10/20261020-8.pdf",
-   "durum": "otomatik",
-   "teyit": "Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti",
+   "durum": "beklemede",
+   "teyit": "makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli (yeniden kontrolde geri alındı)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:29:59+03:00",
    "r": 0
