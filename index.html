@@ -258,6 +258,11 @@ span.seat{display:inline-flex;align-items:center;justify-content:center}
   #view[data-tab="ucus"]{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto 1fr;align-items:start}
   #view[data-tab="ucus"]>.panel:nth-child(1),#view[data-tab="ucus"]>.legal{grid-column:1/-1}
   #view[data-tab="ucus"]>.panel:nth-child(4){grid-column:2;grid-row:2/span 2}
+  /* üstte "değişiklik işlendi" şeridi varken yerleşim bir satır kayar */
+  #view[data-tab="ucus"]:has(>.apb){grid-template-rows:auto auto auto 1fr}
+  #view[data-tab="ucus"]>.apb,#view[data-tab="ucus"]>.apb+.panel{grid-column:1/-1}
+  #view[data-tab="ucus"]>.apb~.panel:nth-child(4){grid-column:auto;grid-row:auto}
+  #view[data-tab="ucus"]>.apb~.panel:nth-child(5){grid-column:2;grid-row:3/span 2}
 }
 
 /* ===== RITA 13 · kurumsal görünüm: daha küçük ve dengeli yazı, sıkı boşluk, sade yüzeyler ===== */
@@ -339,6 +344,20 @@ body.gorev main{padding-block:10px}
 .pft svg.av,.gk-ft svg.av{position:absolute;inset:0;width:100%;height:100%;display:block}
 .pft img,.gk-ft img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;background:#e5e9f0}
 .gk-ft{position:relative}
+/* yolcu satırı denetimleri ve WhatsApp önizlemesi */
+.pxrow{gap:6px;row-gap:6px;margin-top:8px}
+.pxrow{display:grid;grid-template-columns:auto auto;justify-content:start;align-items:center;gap:6px 12px}
+.pxrow>span:not(.pxg):not(.mv){grid-column:1/-1;font-size:11px}
+.pxg{gap:3px}.pxg i{font-style:normal;font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+.pxrow button{width:28px;height:28px;border-radius:7px;font-size:13px}.pxrow b{min-width:14px;font-size:12.5px}
+.pxrow .mv{margin-left:0;justify-self:end}
+.pxrow .tgl{width:auto;height:28px;min-height:28px;padding:0 9px;font-size:11px;border-radius:7px;background:#fff;white-space:nowrap;justify-self:start}
+.pxrow .tgl.kirmizi{background:#b42318;border-color:#b42318;color:#fff}.pxrow .tgl.turuncu{background:#c2410c;border-color:#c2410c;color:#fff}
+.mv button{width:30px!important;height:28px!important}
+.wa-go{display:block;text-align:center;padding:12px;margin-top:4px}
+.wa-on{margin-top:10px;border:1px solid var(--line);border-left:3px solid #25d366;border-radius:10px;background:var(--soft);padding:10px 12px;font-size:13px;white-space:normal}
+.wa-on b{display:block;font-family:var(--mono);font-size:12.5px}.wa-l{display:block;color:var(--navy);font-size:11.5px;margin-top:3px;overflow-wrap:anywhere}
+.wa-t{font-size:9.5px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin-bottom:4px}
 </style>
 
 <div id="login" class="gut" hidden>
@@ -481,7 +500,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 13.2';let SURUM_YENI=false;
+const SURUM='RITA 13.3';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -713,7 +732,7 @@ function paxHtml(){const O=ordered();if(!O.length)return'<p class="empty">Bu sef
   if(O.some(p=>p.over!=null||p.sw))h+='<div class="swapbar w"><span>Sıra veya koltuklar elle değiştirildi.</span><button class="btn sm" data-a="resetOrder" type="button">Rical sırasına döndür</button></div>';
   O.forEach((p,i)=>{if(p._g!==g){g=p._g;const L=O.filter(x=>x._g===g);h+='<div class="grp'+(g===0?' b':'')+'"><span>'+GN(g,any)+'</span><span style="font-weight:600;letter-spacing:0">'+L.length+' kayıt · '+L.reduce((s,x)=>s+(x.pax||1),0)+' kişi</span></div>'}
     const n=p.pax||1;
-    h+='<div class="li"><span class="ord">'+(i+1)+'</span>'+rkHtml(p.rank,p.o)+'<span class="tx"><button type="button" class="hit" data-a="pax" data-id="'+p.id+'"><span class="nm">'+esc(p.n)+'</span>'+(c9of(p)?' <span class="tag c9">CIC90 '+esc(c9of(p))+'</span>':'')+(p.sub?'<br><span class="ti">'+esc(p.sub)+'</span>':'')+'<div class="why '+(any?p.wc:p.up?'y':'n')+'">'+esc(any?p.why:(p.up?'Upgrade hakkı: '+p.up:'Upgrade hakkı yok'))+'</div>'+(any&&p.ms&&p.ms.length||p.mai?'<div class="comp">'+(p.mtur||'Maiyet/koruma')+' ('+(p.mai||0)+'): <b>'+esc((p.ms||[]).join(' · ')||'—')+'</b>'+(p.mnote?' · '+esc(p.mnote):'')+'</div>':'')+((p.bagDev||(p.bagEt||[]).length||p.bag)?'<div class="fnote"><b>BAGAJ</b> '+esc(bagSonMetin(p,D.cur))+((p.bagEt||[]).length?' · '+esc(p.bagEt.join(', ')):'')+(p.bag?' · '+esc(p.bag):'')+'</div>':'')+(any&&p.comp&&p.comp.length?'<div class="comp">Refakat: <b>'+esc(p.comp.join(' · '))+'</b> · '+esc(p.cnote)+'</div>':any&&p.cnote?'<div class="why w">'+esc(p.cnote)+'</div>':'')+(c=>c?'<div class="chw"><b>GÖREV DEĞİŞİKLİĞİ</b> '+esc(fmtD(c.tarih))+' · '+esc(c.makam)+(nk(c.eski||'')===nk(p.n)?' görevinden ayrıldı'+(c.yeni?' (yerine '+esc(c.yeni)+')':''):' görevine geldi')+'</div>':'')(chFor(p.n)[0])+noteLine(p.n)+(p.fn?'<div class="fnote"><b>UÇUŞ NOTU</b> '+esc(p.fn)+'</div>':'')+'</button><div class="pxrow"><span class="pxg">Kişi <button type="button" data-a="pxm" data-id="'+p.id+'" aria-label="Azalt">−</button><b>'+n+'</b><button type="button" data-a="pxp" data-id="'+p.id+'" aria-label="Artır">+</button></span>'+(n>1?'<span>+'+(n-1)+' refakatçi</span>':'')+'<span class="pxg">🧳 <button type="button" data-a="bgm" data-id="'+p.id+'" aria-label="Bagaj azalt">−</button><b>'+(p.bagN||0)+'</b><button type="button" data-a="bgp" data-id="'+p.id+'" aria-label="Bagaj artır">+</button></span><button type="button" class="tgl'+(p.silah?' kirmizi':'')+'" data-a="slh" data-id="'+p.id+'" aria-pressed="'+!!p.silah+'">Silah'+(p.silah?' VAR':'')+'</button><button type="button" class="tgl'+(p.bebek?' turuncu':'')+'" data-a="beb" data-id="'+p.id+'" aria-pressed="'+!!p.bebek+'">Bebek arabası'+(p.bebek?' VAR':'')+'</button>'+'<span class="pxg">Maiyet <button type="button" data-a="mim" data-id="'+p.id+'" aria-label="Maiyet azalt">−</button><b>'+(p.mai||0)+'</b><button type="button" data-a="mip" data-id="'+p.id+'" aria-label="Maiyet artır">+</button></span>'+'<span class="mv"><button type="button" data-a="mvUp" data-id="'+p.id+'" aria-label="Öne al">▲</button><button type="button" data-a="mvDn" data-id="'+p.id+'" aria-label="Geri al">▼</button></span></div></span><button type="button" class="seatbadge'+(p.seat?(p.cab==='E'?' e':''):' none')+(window._sw===p.id?' sel':'')+'" data-a="swapSel" data-id="'+p.id+'" aria-label="Koltuğu değiştir">'+esc(p.seat||'—')+'</button></div>'});
+    h+='<div class="li"><span class="ord">'+(i+1)+'</span>'+rkHtml(p.rank,p.o)+'<span class="tx"><button type="button" class="hit" data-a="pax" data-id="'+p.id+'"><span class="nm">'+esc(p.n)+'</span>'+(c9of(p)?' <span class="tag c9">CIC90 '+esc(c9of(p))+'</span>':'')+(p.sub?'<br><span class="ti">'+esc(p.sub)+'</span>':'')+'<div class="why '+(any?p.wc:p.up?'y':'n')+'">'+esc(any?p.why:(p.up?'Upgrade hakkı: '+p.up:'Upgrade hakkı yok'))+'</div>'+(any&&p.ms&&p.ms.length||p.mai?'<div class="comp">'+(p.mtur||'Maiyet/koruma')+' ('+(p.mai||0)+'): <b>'+esc((p.ms||[]).join(' · ')||'—')+'</b>'+(p.mnote?' · '+esc(p.mnote):'')+'</div>':'')+((p.bagDev||(p.bagEt||[]).length||p.bag)?'<div class="fnote"><b>BAGAJ</b> '+esc(bagSonMetin(p,D.cur))+((p.bagEt||[]).length?' · '+esc(p.bagEt.join(', ')):'')+(p.bag?' · '+esc(p.bag):'')+'</div>':'')+(any&&p.comp&&p.comp.length?'<div class="comp">Refakat: <b>'+esc(p.comp.join(' · '))+'</b> · '+esc(p.cnote)+'</div>':any&&p.cnote?'<div class="why w">'+esc(p.cnote)+'</div>':'')+(c=>c?'<div class="chw"><b>GÖREV DEĞİŞİKLİĞİ</b> '+esc(fmtD(c.tarih))+' · '+esc(c.makam)+(nk(c.eski||'')===nk(p.n)?' görevinden ayrıldı'+(c.yeni?' (yerine '+esc(c.yeni)+')':''):' görevine geldi')+'</div>':'')(chFor(p.n)[0])+noteLine(p.n)+(p.fn?'<div class="fnote"><b>UÇUŞ NOTU</b> '+esc(p.fn)+'</div>':'')+'</button><div class="pxrow"><span class="pxg"><i>Kişi</i><button type="button" data-a="pxm" data-id="'+p.id+'" aria-label="Azalt">−</button><b>'+n+'</b><button type="button" data-a="pxp" data-id="'+p.id+'" aria-label="Artır">+</button></span>'+(n>1?'<span>+'+(n-1)+' refakatçi</span>':'')+'<span class="pxg"><i>Bagaj</i><button type="button" data-a="bgm" data-id="'+p.id+'" aria-label="Bagaj azalt">−</button><b>'+(p.bagN||0)+'</b><button type="button" data-a="bgp" data-id="'+p.id+'" aria-label="Bagaj artır">+</button></span><button type="button" class="tgl'+(p.silah?' kirmizi':'')+'" data-a="slh" data-id="'+p.id+'" aria-pressed="'+!!p.silah+'">Silah'+(p.silah?' ✓':'')+'</button><button type="button" class="tgl'+(p.bebek?' turuncu':'')+'" data-a="beb" data-id="'+p.id+'" aria-pressed="'+!!p.bebek+'">Bebek arabası'+(p.bebek?' ✓':'')+'</button>'+'<span class="pxg"><i>Maiyet</i><button type="button" data-a="mim" data-id="'+p.id+'" aria-label="Maiyet azalt">−</button><b>'+(p.mai||0)+'</b><button type="button" data-a="mip" data-id="'+p.id+'" aria-label="Maiyet artır">+</button></span>'+'<span class="mv"><button type="button" data-a="mvUp" data-id="'+p.id+'" aria-label="Öne al">▲</button><button type="button" data-a="mvDn" data-id="'+p.id+'" aria-label="Geri al">▼</button></span></div></span><button type="button" class="seatbadge'+(p.seat?(p.cab==='E'?' e':''):' none')+(window._sw===p.id?' sel':'')+'" data-a="swapSel" data-id="'+p.id+'" aria-label="Koltuğu değiştir">'+esc(p.seat||'—')+'</button></div>'});
   return h}
 function cabinHtml(){const S=seats(),c=cfg(),as={},a2={};ordered().forEach((p,i)=>{if(p.seat)as[p.seat]=i+1;(p.comp||[]).forEach(k=>a2[k]=i+1);(p.ms||[]).forEach(k=>a2[k]=i+1)});const swS=window._sw&&findP(window._sw)?findP(window._sw).seat:null;
   let h='<div class="cabin"><div class="cab-lbl">BUSINESS</div>';
@@ -1195,7 +1214,8 @@ const A={
   try{link=await gkYukle(a)}catch(e){uyari='Kısa bağlantı oluşturulamadı ('+esc(e.message)+'); uzun bağlantı kullanıldı.'}
   if(!link&&!uyari)uyari=window.RITA_STANDALONE?'Kısa bağlantı için Yönetim → Ortak kayıt anahtarı gerekli; şimdilik uzun bağlantı kullanıldı.':'';
   const m=waMesaj(a,link),u='https://wa.me/'+telNorm(per.tel)+'?text='+encodeURIComponent(m);a.gon=Date.now();save();gkTemizle();
-  sheet('<h2>WhatsApp mesajı hazır</h2><p class="sub">'+esc(per.ad)+' · '+esc(telGoster(per.tel))+'</p><pre class="wa-on">'+esc(m)+'</pre>'+(uyari?'<p class="note">'+uyari+'</p>':'')+'<a class="btn pri" style="display:block;text-align:center;padding:14px;margin-top:10px" href="'+esc(u)+'" target="_blank" rel="noopener">WhatsApp’ta aç ve gönder</a>')},
+  const [m1,...mr]=m.split('\n'),ml=mr.join(' ');
+  sheet('<h2>WhatsApp mesajı hazır</h2><p class="sub">'+esc(per.ad)+' · '+esc(telGoster(per.tel))+'</p><a class="btn pri wa-go" href="'+esc(u)+'" target="_blank" rel="noopener">WhatsApp’ta aç ve gönder</a><div class="wa-on"><div class="wa-t">MESAJ ÖNİZLEMESİ</div><b>'+esc(m1)+'</b><span class="wa-l">'+esc(ml.length>64?ml.slice(0,58)+'…':ml)+'</span></div>'+(uyari?'<p class="note">'+uyari+'</p>':''))},
  opsSil(d){D.GOR=GOR().filter(x=>x.id!==d.k);save();render();toast('Atama silindi')},
  opsOnizle(){const a={f:opsF,yon:opsYon,per:$('ops-p').value,gun:opsGun,not:$('ops-n').value.trim()};window.open(gorevLink(a),'_blank')},
  perYeni(){sheet('<h2>Personel ekle</h2>'+perForm({})+'<div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="perKaydet" type="button">Kaydet</button></div>')},
