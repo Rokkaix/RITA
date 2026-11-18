@@ -18,7 +18,7 @@ async function vapidBaslik(endpoint, env) {
   const jwk = JSON.parse(env.VAPID_JWK);
   const key = await crypto.subtle.importKey('jwk', jwk, { name: 'ECDSA', namedCurve: 'P-256' }, false, ['sign']);
   const h = b64u(te.encode(JSON.stringify({ typ: 'JWT', alg: 'ES256' })));
-  const c = b64u(te.encode(JSON.stringify({ aud: new URL(endpoint).origin, exp: Math.floor(Date.now() / 1000) + 12 * 3600, sub: 'https://rokkaix.github.io/RITA/' })));
+  const c = b64u(te.encode(JSON.stringify({ aud: new URL(endpoint).origin, exp: Math.floor(Date.now() / 1000) + 12 * 3600, sub: 'mailto:rita@rokkaix.github.io' })));
   const imza = await crypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, key, te.encode(h + '.' + c));
   return 'vapid t=' + h + '.' + c + '.' + b64u(imza) + ', k=' + env.VAPID_PUBLIC;
 }
@@ -138,8 +138,9 @@ export default {
         if (!KOD.test(g.kod || '') || !g.sub || !/^https:\/\//.test(g.sub.endpoint || '') || !g.sub.keys) return json({ hata: 'geçersiz' }, 400);
         const iz = b64u(await crypto.subtle.digest('SHA-256', te.encode(g.sub.endpoint))).slice(0, 16);
         await env.RITA_ABONE.put('s:' + g.kod + ':' + iz, JSON.stringify({ endpoint: g.sub.endpoint, keys: g.sub.keys }), { expirationTtl: 60 * 60 * 24 * 180 });
-        if (g.selam) await pushGonder(g.sub, { t: 'RITA bildirimleri açık ✓', b: 'Yeni görevler bu telefona bildirim olarak gelecek.', u: g.u || '' }, env, true);
-        return json({ tamam: true });
+        let selam = 0, selamHata = '';
+        if (g.selam) { try { const pr = await pushGonder(g.sub, { t: 'RITA bildirimleri açık ✓', b: 'Yeni görevler bu telefona bildirim olarak gelecek.', u: g.u || '' }, env, true); selam = pr.status; if (!pr.ok) selamHata = (await pr.text().catch(() => '')).slice(0, 200); } catch (e) { selamHata = String(e && e.message || e) } }
+        return json({ tamam: true, selam, selamHata });
       }
       if (yol === '/gonder') {
         if (!(await yoneticiMi(req.headers.get('X-GH-Token'), env))) return json({ hata: 'yetkisiz' }, 401);

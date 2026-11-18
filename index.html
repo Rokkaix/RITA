@@ -594,7 +594,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 18.2';let SURUM_YENI=false;
+const SURUM='RITA 18.3';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1638,7 +1638,7 @@ function pkCiz(){const x=PKL;$('topfl').textContent=x?x.ad:'Görev listesi';cons
    +pkKurulumHtml()}
 const iosMu=()=>/iphone|ipad|ipod/i.test(navigator.userAgent),uygMu=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 function pkKurulumHtml(){const acik=window.Notification&&Notification.permission==='granted'&&localStorage.getItem('rita-push')===PK.kod;
-  if(acik)return '<p class="note gk-gz">✓ Bildirimler bu telefonda açık. Yeni görev ekranınıza bildirim olarak düşer.</p>';
+  if(acik)return '<div class="pk-kur" style="text-align:center">✓ Bildirimler bu telefonda açık.<p class="note" style="margin:6px 0 10px">Yeni görev ekranınıza bildirim olarak düşer. Gelmiyorsa aşağıdan deneyin.</p><button class="btn sm" data-a="pkIzin" type="button">Deneme bildirimi gönder</button></div>';
   if(iosMu()&&!uygMu())return '<div class="pk-kur"><b>Bildirimleri açmak için (bir kez):</b><ol><li><button class="btn sm" data-a="pkKopya" type="button">Bu bağlantıyı kopyala</button></li><li>Safari’nin altındaki <b>Paylaş</b> → <b>Ana Ekrana Ekle</b></li><li>Ana ekrandaki <b>RITA</b>’yı açın → <b>Görevlerimi bağla</b> → <b>Bildirimleri aç</b></li></ol></div>';
   if(!('PushManager' in window)||!navigator.serviceWorker)return '<p class="note gk-gz">Bu tarayıcı bildirim desteklemiyor. Chrome ya da Safari (iPhone’da ana ekrandan) kullanın.</p>';
   return '<div class="pk-kur" style="text-align:center"><button class="btn gold" data-a="pkIzin" type="button">Bildirimleri aç</button><p class="note">Yeni görev geldiğinde telefon kilitliyken de ekrana bildirim düşer.</p></div>'}
@@ -1647,7 +1647,12 @@ Object.assign(A,{
  async pkIzin(){try{if(!BILDIRIM_URL)return toast('Bildirim sunucusu henüz kurulmadı');const izin=await Notification.requestPermission();if(izin!=='granted')return toast('Bildirim izni verilmedi. Ayarlar’dan RITA için bildirimlere izin verin.');
    const reg=await navigator.serviceWorker.ready;let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:rb64d(VAPID_PUB)});
    const r=await fetch(BILDIRIM_URL+'/abone',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kod:PK.kod,sub:sub.toJSON(),selam:1,u:location.href})});
-   if(!r.ok)throw new Error('kayıt '+r.status);localStorage.setItem('rita-push',PK.kod);toast('Bildirimler açıldı ✓');pkCiz()}catch(e){hataEkle('bildirim: '+(e.message||e));toast('Bildirim açılamadı: '+(e.message||e))}},
+   if(!r.ok)throw new Error('kayıt '+r.status);const j=await r.json().catch(()=>({}));localStorage.setItem('rita-push',PK.kod);pkCiz();
+   /* selam: push servisinin bildirimi kabul kodu (201/200 = kabul). Kabul edildiyse ama ekrana düşmüyorsa cihaz/odak ayarı sorunudur. */
+   if(j.selam===201||j.selam===200||j.selam===202)sheet('<h2>Bildirimler açıldı ✓</h2><p class="sub">Birkaç saniye içinde bu telefona bir deneme bildirimi düşmeli.</p><p class="note">Düşmezse: telefonun <b>Ayarlar → Bildirimler → RITA</b> açık mı, <b>Rahatsız Etmeyin/Odak</b> kapalı mı bakın. iPhone’da RITA <b>ana ekrandan</b> açılmış olmalı.</p>');
+   else sheet('<h2>Bildirim ayarlandı, ama…</h2><p class="sub">Abonelik kaydedildi; sunucu deneme bildirimini gönderemedi (kod '+esc(String(j.selam||'?'))+').</p><p class="note">Bu bir sunucu/anahtar sorunudur; yöneticiye iletin.'+(j.selamHata?' Ayrıntı: '+esc(j.selamHata):'')+'</p>')}
+   catch(e){hataEkle('bildirim: '+(e.message||e));const ios=/iphone|ipad/i.test(navigator.userAgent),st=!(matchMedia('(display-mode: standalone)').matches||navigator.standalone);
+     sheet('<h2>Bildirim açılamadı</h2><p class="sub">'+esc(e.message||e)+'</p>'+(ios&&st?'<p class="note">iPhone’da bildirim için RITA <b>ana ekrana eklenmeli</b> ve <b>ana ekrandaki simgeden</b> açılmalı. Safari sekmesinde çalışmaz.</p>':'<p class="note">Telefon Ayarlar’dan RITA için bildirime izin verildiğinden emin olun.</p>'))}},
  pkKopya(){copyText(location.href);toast('Bağlantı kopyalandı')},
  pkKur(d){const per=PER().find(y=>y.id===d.k);if(!per)return;pkHazirla(per);const L=pkLink(per);
    const m='RITA görevlerim ve bildirim kurulumu (bir kez):\n'+L+'\nBağlantıyı açın, ekrandaki adımları izleyin (RITA’yı ana ekrana ekleyip “Bildirimleri aç”). Bu bağlantıyı kimseyle paylaşmayın.';
