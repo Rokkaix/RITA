@@ -1,6 +1,6 @@
 {
 "kaynak": "tbmm.gov.tr/milletvekili/AllList",
-"alindi": "2026-11-18T18:02",
+"alindi": "2026-11-18T21:13",
 "mv": [
 {
 "n": "Abdullah Doğru",
@@ -1055,7 +1055,7 @@
 {
 "n": "Ertuğrul Kaya",
 "il": "Gaziantep",
-"parti": "YENİ YOL"
+"parti": "BAĞIMSIZ"
 },
 {
 "n": "Hasan Öztürkmen",
@@ -2964,6 +2964,15 @@
 }
 ],
 "gecmis": [
+{
+"zaman": "2026-11-18T21:13",
+"eklenen": [
+"Ertuğrul Kaya (Gaziantep, BAĞIMSIZ)"
+],
+"cikan": [
+"Ertuğrul Kaya (Gaziantep, YENİ YOL)"
+]
+},
 {
 "zaman": "2026-11-18T18:02",
 "eklenen": [
