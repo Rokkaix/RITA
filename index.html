@@ -594,7 +594,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 18.1';let SURUM_YENI=false;
+const SURUM='RITA 18.2';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1330,7 +1330,8 @@ const A={
   try{link=await gkYukle(a);if(link&&a.gk)a.gk.iz=JSON.stringify(gorevPaket(a))}catch(e){uyari='Kısa bağlantı oluşturulamadı ('+esc(e.message)+'); uzun bağlantı kullanıldı.'}
   if(!link&&!uyari)uyari=window.RITA_STANDALONE?'Kısa bağlantı için Yönetim → Ortak kayıt anahtarı gerekli; şimdilik uzun bağlantı kullanıldı.':'';
   const m=waMesaj(a,link),u='https://wa.me/'+telNorm(per.tel)+'?text='+encodeURIComponent(m);a.gon=Date.now();save();gkTemizle();izleKaydet(a);
-  let ani='';if(per.kod){const [r1,r2]=await Promise.all([bildirimGonder(per,a,link,false),pkYukle(per).catch(()=>false)]);ani=r1.ok?'<p class="ani ok">✓ Bildirim personelin telefonuna gönderildi ('+r1.cihaz+' cihaz)'+(r2?' · Görevlerim güncellendi':'')+'</p>':'<p class="ani">'+(!BILDIRIM_URL?'Bildirim sunucusu henüz kurulmadı':r1.cihaz===0?'Personel telefonunda henüz “Bildirimleri aç” dememiş':'Bildirim gönderilemedi')+'; WhatsApp ile gönderin.</p>'}
+  const NEDEN={sunucu:'Bildirim sunucusuna ulaşılamadı',anahtar:'Bu cihazda Ortak kayıt anahtarı yok (Yönetim → Ayarlar → Ortak kayıt anahtarı)',yetki:'Ortak kayıt anahtarı geçersiz; Yönetim → Ayarlar’dan yenisini girin',kurulum:'Bu personelde anlık bildirim kurulu değil',cihaz:'Personel telefonunda henüz “Bildirimleri aç” dememiş'};
+  let ani='';if(per.kod){const [r1,r2]=await Promise.all([bildirimGonder(per,a,link,false),pkYukle(per).catch(()=>false)]);ani=r1.ok?'<p class="ani ok">✓ Bildirim personelin telefonuna gönderildi ('+r1.cihaz+' cihaz)'+(r2?' · Görevlerim güncellendi':'')+'</p>':'<p class="ani">'+(NEDEN[r1.neden]||'Bildirim gönderilemedi')+'; aşağıdan WhatsApp ile gönderebilirsiniz.</p>'}
   else ani='<p class="ani">Bu personelde anlık bildirim kurulu değil. Personel kartından “Anlık bildirim kurulumu”nu bir kez gönderin.</p>';
   const [m1,...mr]=m.split('\n'),ml=mr.join(' ');
   sheet('<h2>'+(per.kod?'Görev gönderildi':'WhatsApp mesajı hazır')+'</h2><p class="sub">'+esc(per.ad)+' · '+esc(telGoster(per.tel))+'</p>'+ani+'<a class="btn '+(per.kod?'':'pri ')+'wa-go" href="'+esc(u)+'" target="_blank" rel="noopener">'+(per.kod?'Ayrıca WhatsApp’tan gönder':'WhatsApp’ta aç ve gönder')+'</a><div class="wa-on"><div class="wa-t">MESAJ ÖNİZLEMESİ</div><b>'+esc(m1)+'</b><span class="wa-l">'+esc(ml.length>64?ml.slice(0,58)+'…':ml)+'</span></div>'+(uyari?'<p class="note">'+uyari+'</p>':''))},
@@ -1604,10 +1605,10 @@ Object.assign(A,{
 const BILDIRIM_URL='https://rita-bildirim.rita-8c559a.workers.dev',VAPID_PUB='BFn2MCfBAlMcBw2Va6Teb-Bh3k4KbeDIkngXGkEw9sfLWjpP4XwDob3YkwM_XlguUzwlKJwx68SXqDnLxpro6jI';
 function pkHazirla(per){if(!per.kod){per.kod=rb64(crypto.getRandomValues(new Uint8Array(12))).replace(/[^A-Za-z0-9]/g,'').slice(0,16);per.pk=rb64(crypto.getRandomValues(new Uint8Array(16)));save()}return per}
 function pkLink(per){return siteKok()+'#p='+per.kod+'.'+per.pk}
-async function bildirimGonder(per,a,link,sessiz,ozel){if(!BILDIRIM_URL||!ghTok()||!per.kod)return{ok:false,cihaz:0};try{
+async function bildirimGonder(per,a,link,sessiz,ozel){if(!BILDIRIM_URL)return{ok:false,cihaz:0,neden:'sunucu'};if(!ghTok())return{ok:false,cihaz:0,neden:'anahtar'};if(!per.kod)return{ok:false,cihaz:0,neden:'kurulum'};try{
   let t,b;if(ozel){t=ozel.t;b=ozel.b}else{const P=gorevPaket(a),h=(P.hat||'').split('-');t=(sessiz?'Güncellendi · ':'')+'['+P.no+' | '+(h.length===2?h[0]+' - '+h[1]:P.f)+'] '+(P.yon==='gelis'?'Geliş':'Gidiş')+' · '+P.saat;b='Atanan VIP: '+P.y.length+' yolcu'+(P.not?' · '+P.not:'')}
   const r=await fetch(BILDIRIM_URL+'/gonder',{method:'POST',headers:{'Content-Type':'application/json','X-GH-Token':ghTok()},body:JSON.stringify({kod:per.kod,t,b,u:link&&link.length<1800?link:pkLink(per),s:sessiz?1:0,tag:a?a.id:'rita'})});
-  if(!r.ok)return{ok:false,cihaz:0};const j=await r.json();return{ok:j.gonderilen>0,cihaz:j.cihaz||0}}catch(e){return{ok:false,cihaz:0}}}
+  if(r.status===401)return{ok:false,cihaz:0,neden:'yetki'};if(!r.ok)return{ok:false,cihaz:0,neden:'sunucu'};const j=await r.json();return{ok:j.gonderilen>0,cihaz:j.cihaz||0,neden:j.cihaz?'':'cihaz'}}catch(e){return{ok:false,cihaz:0,neden:'sunucu'}}}
 async function pkYukle(per){const tok=ghTok();if(!tok||!window.RITA_STANDALONE||!per.kod)return false;const dun=new Date(Date.now()-864e5).toISOString().slice(0,10);
   const L=GOR().filter(a=>a.per===per.id&&a.gun>=dun).map(a=>({id:a.id,link:a.gk&&a.gk.key?siteKok()+'g/?'+a.gk.id+'#'+a.gk.key:'',p:gorevPaket(a),t:a.gon||a.t}));
   const {dosya}=await gkSifrele({v:1,ad:per.ad,g:L,t:Date.now()},per.pk);const path='data/gorev/p-'+per.kod+'.json';
@@ -1654,7 +1655,7 @@ Object.assign(A,{
     +'<a class="btn pri wa-go" href="https://wa.me/'+telNorm(per.tel)+'?text='+encodeURIComponent(m)+'" target="_blank" rel="noopener">Kurulum bilgisini WhatsApp’tan gönder</a>'
     +'<div class="row-btns" style="margin-top:10px"><button class="btn sm" data-a="pkDene" data-k="'+per.id+'" type="button">Deneme bildirimi gönder</button></div>'
     +'<p class="note">Bu bilgi bir kez gönderilir. Personel RITA’yı ana ekrana ekleyip “Bildirimleri aç” dedikten sonra her atamada telefonuna 1–2 saniyede bildirim düşer; dokununca VIP kartı açılır. Bildirimde VIP isimleri yer almaz.</p>')},
- async pkDene(d){const per=PER().find(y=>y.id===d.k);if(!per||!per.kod)return;const r=await bildirimGonder(per,null,'',false,{t:'RITA deneme bildirimi',b:'Bildirimler çalışıyor ✓'});toast(r.ok?'Deneme bildirimi gönderildi ('+r.cihaz+' cihaz)':!BILDIRIM_URL?'Bildirim sunucusu henüz kurulmadı':r.cihaz===0?'Personel henüz “Bildirimleri aç” dememiş':'Gönderilemedi')}
+ async pkDene(d){const per=PER().find(y=>y.id===d.k);if(!per||!per.kod)return;const r=await bildirimGonder(per,null,'',false,{t:'RITA deneme bildirimi',b:'Bildirimler çalışıyor ✓'});const N={sunucu:'Sunucuya ulaşılamadı',anahtar:'Bu cihazda Ortak kayıt anahtarı yok',yetki:'Ortak kayıt anahtarı geçersiz',cihaz:'Personel henüz “Bildirimleri aç” dememiş'};toast(r.ok?'Deneme bildirimi gönderildi ('+r.cihaz+' cihaz)':(N[r.neden]||'Gönderilemedi'))}
 });
 /* ---------- canlı uçuş takibi (bildirim sunucusu her 2 dk kontrol eder) ve yönetici elle bilgisi ---------- */
 let CANLI={},CANLIT={};
