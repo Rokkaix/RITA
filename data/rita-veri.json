@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-18T13:15:02.829Z",
+ "guncelleme": "2026-11-18T13:15:49.094Z",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -1106,5 +1106,11 @@
    "teyit": "Resmî kurum siteleri ve haberlerle teyitli kayıtlar işlenir; \"doğrulayın\" etiketliler teyit bekler"
   }
  },
- "foto": {}
+ "foto": {
+  "metin yener": {
+   "n": "Metin Yener",
+   "u": "https://raw.githubusercontent.com/Rokkaix/RITA/claude/bn-depo-usage-issue-3ucip6/data/foto/metin-yener-mwm59lf4.jpg",
+   "d": "2026-11-18"
+  }
+ }
 }
