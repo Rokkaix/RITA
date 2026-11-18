@@ -1,6 +1,6 @@
 {
 "kaynak": "tbmm.gov.tr/milletvekili/AllList",
-"alindi": "2026-11-18T16:13",
+"alindi": "2026-11-18T18:02",
 "mv": [
 {
 "n": "Abdullah Doğru",
@@ -925,7 +925,7 @@
 {
 "n": "Ediz Ün",
 "il": "Edirne",
-"parti": "CHP"
+"parti": "YENİ YOL"
 },
 {
 "n": "Fatma Aksal",
@@ -2961,6 +2961,17 @@
 "n": "Saffet Bozkurt",
 "il": "Zonguldak",
 "parti": "AK Parti"
+}
+],
+"gecmis": [
+{
+"zaman": "2026-11-18T18:02",
+"eklenen": [
+"Ediz Ün (Edirne, YENİ YOL)"
+],
+"cikan": [
+"Ediz Ün (Edirne, CHP)"
+]
 }
 ]
 }
