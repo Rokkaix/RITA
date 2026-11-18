@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-18T10:56:24.535Z",
+ "guncelleme": "2026-11-18T13:14:30.090Z",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -1104,6 +1104,13 @@
    },
    "onay": "2026-11-16T22:36:19+03:00",
    "teyit": "Resmî kurum siteleri ve haberlerle teyitli kayıtlar işlenir; \"doğrulayın\" etiketliler teyit bekler"
+  }
+ },
+ "foto": {
+  "metin yener": {
+   "n": "Metin Yener",
+   "u": "https://www.sayistay.gov.tr/pages/114-sayistay-baskani",
+   "d": "2026-11-18"
   }
  }
 }
