@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-18T10:56:14.278Z",
+ "guncelleme": "2026-11-18T10:56:24.535Z",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -676,7 +676,7 @@
    "yeni": "Kutluhan Taşkın",
    "sebep": "Resmî Gazete atama kararı",
    "kaynak": "Resmî Gazete 16.10.2026 · https://www.resmigazete.gov.tr/eskiler/2026/10/20261016-10.pdf",
-   "durum": "beklemede",
+   "durum": "uygulandi",
    "teyit": "makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli (yeniden kontrolde geri alındı)",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:24:05+03:00",
