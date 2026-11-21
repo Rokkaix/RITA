@@ -31,6 +31,7 @@ bu işi hızlandırmak ve doğru yapmak için vardır. Yeni özellik eklerken ö
 - Atama panosu (RITA 18): üstte sayaçlar (VIP'li uçuş, atama bekleyen, atandı, görevde personel); önce "ATAMA BEKLEYEN" kartlar — kart üzerinde önerilen personel (★ en az yük, saat çakışmasız; `oneriler`, `cakisma` ±60 dk) ve tek dokunuşla "Ata" (`hizliAta`); sonra "ATANMIŞ" kartlar (görevli, gönderim saati, çakışma). Personel listesinde günün uçuşları ve yük (x/6), bildirim kurulu 🔔.
 - Yönetim sekmesi menülüdür (`YS`): Genel bakış, Onay bekleyenler, Görev değişiklikleri, VIP fotoğrafları, Hatlar ve uçak tipleri, Ayarlar ve güvenlik.
 - `site/vendor/ocr/` — cihazda çalışan Tesseract.js; check-in ekranı fotoğrafından dolu koltuk okuma ve TROYA yolcu listesinden (PAX BY GROUP / Quick Check-in) rical eşleştirme (Modül 1).
+- İlave/özel VIP (kullanıcı kuralı 21.11.2026): TROYA yolcu listesinde !VIP! yorumlu ama rical listesinde ismi olmayan kayıtlar (protokol görevlisi, özel kalem, katip, görüntü ekibi, MAİ/maiyet, EMN/koruma, gazi, elçi) `opxTip` ile koruma/maiyet sınıflanır; eşleşen bir ricale bağlı değilse `ek:1` ilave yolcu olarak eklenir — **ekonomi, upgrade YOK (ayrı talimat olmadıkça), rank 999 ile ricallerden SONRA** yerleşir.
 - Koltuk kuralı: rical business/ön; eşi/refakat ricalin yanında; **maiyet ve koruma her zaman ekonomide** (bloke koltuk verilmez), yalnız "maiyet upgrade notu" varsa business'ta yer kalırsa.
 
 ## Modül 2 — Operasyon ve personel atama (sunucusuz, kullanıcı kararı 17.11.2026)
