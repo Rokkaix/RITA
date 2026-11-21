@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-18T13:15:49.094Z",
+ "guncelleme": "2026-11-21T08:01:56+03:00",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -770,6 +770,51 @@
    "teyit": "Resmî Gazete metni; RITA'da tanımlı kurumun makamı",
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-16T23:35:46+03:00",
+   "r": 0
+  },
+  "rg-20261121-b9233eec": {
+   "rg_metin": "Coğrafi Bilgi Sistemleri Genel Müdürü",
+   "tarih": "2026-11-21",
+   "tur": "atama",
+   "makam": "Coğrafi Bilgi Sistemleri Genel Müdürü",
+   "eski": "Ömer Aslan",
+   "yeni": "Selçuk Aydemir",
+   "sebep": "Resmî Gazete atama kararı",
+   "kaynak": "Resmî Gazete 21.11.2026 · https://www.resmigazete.gov.tr/eskiler/2026/11/20261121-6.pdf",
+   "durum": "otomatik",
+   "teyit": "Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti",
+   "ekleyen": "resmi-gazete",
+   "eklendi": "2026-11-21T08:01:51+03:00",
+   "r": 0
+  },
+  "rg-20261121-c1120298": {
+   "rg_metin": "Taşınmaz ve Kaynak Geliştirme Genel Müdürü",
+   "tarih": "2026-11-21",
+   "tur": "atama",
+   "makam": "Taşınmaz ve Kaynak Geliştirme Genel Müdürü",
+   "eski": "Oğuzhan Yaylacı",
+   "yeni": "Dursun Baştürk",
+   "sebep": "Resmî Gazete atama kararı",
+   "kaynak": "Resmî Gazete 21.11.2026 · https://www.resmigazete.gov.tr/eskiler/2026/11/20261121-6.pdf",
+   "durum": "beklemede",
+   "teyit": "makam RITA kayıtlarında bulunamadı; elle kontrol edilmeli",
+   "ekleyen": "resmi-gazete",
+   "eklendi": "2026-11-21T08:01:52+03:00",
+   "r": 0
+  },
+  "rg-20261121-0024e075": {
+   "rg_metin": "Kültür ve Turizm Bakanlığı Yaşayan Miras ve Kültürel Etkinlikler Genel Müdürü",
+   "tarih": "2026-11-21",
+   "tur": "gorevden_alma",
+   "makam": "Yaşayan Miras ve Kültürel Etkinlikler Genel Müdürü",
+   "eski": "Selim Terzi",
+   "yeni": "",
+   "sebep": "Resmî Gazete atama kararı",
+   "kaynak": "Resmî Gazete 21.11.2026 · https://www.resmigazete.gov.tr/eskiler/2026/11/20261121-6.pdf",
+   "durum": "otomatik",
+   "teyit": "Resmî Gazete metni; makam RITA kayıtlarıyla eşleşti",
+   "ekleyen": "resmi-gazete",
+   "eklendi": "2026-11-21T08:01:52+03:00",
    "r": 0
   }
  },
