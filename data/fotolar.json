@@ -121,7 +121,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/ust-yonetim",
 "g": "Genel Müdür (İnsan Kaynakları) Yardımcısı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "abdulkerim gok": {
 "n": "Abdulkerim Gök",
@@ -395,6 +395,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"adem balkanlioglu gecici gorev balikesir bigadic kaymakamligi kaymakam": {
+"n": "Adem Balkanlıoğlu (Geçici Görev:Balıkesir Bigadiç Kaymakamlığı Kaymakam )",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "adem calkin": {
 "n": "Adem Çalkın",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/0dbd63d9-6b2b-4535-bc2b-01881f4cb309.jpe",
@@ -425,6 +432,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"adem taspinar": {
+"n": "Adem Taşpınar",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "adem tatli": {
 "n": "Adem Tatlı",
 "u": "",
@@ -438,7 +452,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "adem uzun": {
 "n": "Adem Uzun",
@@ -483,6 +497,13 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"adil karatas": {
+"n": "Adil Karataş",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "adil kurt": {
 "n": "Adil Kurt",
@@ -623,7 +644,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ahmet akin": {
 "n": "Ahmet Akın",
@@ -632,6 +653,13 @@
 "s": "https://tr.wikipedia.org/wiki/Ahmet_Ak%C4%B1n",
 "g": "Balıkesir Büyükşehir Belediye Başkanı",
 "d": "2026-11-17"
+},
+"ahmet altintas": {
+"n": "Ahmet Altıntaş",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "ahmet aras": {
 "n": "Ahmet Aras",
@@ -739,7 +767,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"d": "2026-11-21"
 },
 "ahmet davutoglu": {
 "n": "Ahmet Davutoğlu",
@@ -823,6 +851,14 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"ahmet gulderen": {
+"n": "Ahmet Gülderen",
+"u": "https://www.kuyucak.gov.tr/kurumlar/kuyucak.gov.tr/Ahmet-GULDEREN-850X450.jpeg",
+"k": "Kaymakamlık",
+"s": "https://www.kuyucak.gov.tr/kaymakam",
+"g": "Kuyucak Kaymakamı (Aydın)",
+"d": "2026-11-21"
 },
 "ahmet gumen": {
 "n": "Ahmet Gümen",
@@ -914,10 +950,11 @@
 },
 "ahmet karaaslan": {
 "n": "Ahmet Karaaslan",
-"u": "",
-"k": "",
-"neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"u": "https://www.merzifon.gov.tr/kurumlar/merzifon.gov.tr/ALI-GULDOGAN/Ahmet-KARAASLAN.jpg",
+"k": "Kaymakamlık",
+"s": "https://www.merzifon.gov.tr/kaymakam",
+"g": "Merzifon Kaymakamı (Amasya)",
+"d": "2026-11-21"
 },
 "ahmet karakaya": {
 "n": "Ahmet Karakaya",
@@ -973,6 +1010,13 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"ahmet naci helvaci": {
+"n": "Ahmet Naci Helvacı",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "ahmet necdet sezer": {
 "n": "Ahmet Necdet Sezer",
 "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Ahmet_Necdet_Sezer.jpg/500px-Ahmet_Necdet_Sezer.jpg?utm_source=tr.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
@@ -981,12 +1025,19 @@
 "g": "10. Cumhurbaşkanı (Eski)",
 "d": "2026-11-17"
 },
+"ahmet odabas gecici gorev gaziantep sehitkamil kaymakamligi kaymakam": {
+"n": "Ahmet Odabaş (Geçici Görev:Gaziantep Şehitkamil Kaymakamlığı Kaymakam )",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "ahmet oguz aslan": {
 "n": "Ahmet Oğuz Aslan",
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ahmet oksuzkaya": {
 "n": "Ahmet Öksüzkaya",
@@ -1002,7 +1053,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/ust-yonetim",
 "g": "Genel Müdür  / Yönetim Kurulu ve İcra Komitesi Üyesi",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ahmet omeroglu": {
 "n": "Ahmet Ömeroğlu",
@@ -1088,6 +1139,13 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"ahmet solmaz": {
+"n": "Ahmet Solmaz",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "ahmet sorgun": {
 "n": "Ahmet Sorgun",
@@ -1286,6 +1344,14 @@
 "d": "2026-11-17",
 "v": 4
 },
+"ali akca": {
+"n": "Ali Akça",
+"u": "https://www.soke.gov.tr/kurumlar/soke.gov.tr/Ali-Akca.jpeg",
+"k": "Kaymakamlık",
+"s": "https://www.soke.gov.tr/kaymakamimiz",
+"g": "Söke Kaymakamı (Aydın)",
+"d": "2026-11-21"
+},
 "ali akyildiz": {
 "n": "Ali Akyıldız",
 "u": "",
@@ -1307,7 +1373,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ali aslik": {
 "n": "Ali Aşlık",
@@ -1412,6 +1478,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"ali ekber ates": {
+"n": "Ali Ekber Ateş",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "ali erbas": {
 "n": "Prof. Dr. Ali Erbaş",
 "u": "https://upload.wikimedia.org/wikipedia/commons/c/cc/AliErbas.jpg?utm_source=tr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
@@ -1427,6 +1500,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"ali erdogan": {
+"n": "Ali Erdoğan",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "ali fazil kasap": {
 "n": "Ali Fazıl Kasap",
@@ -1711,7 +1791,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/ust-yonetim",
 "g": "Genel Müdür (Kargo) Yardımcısı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ali unsat": {
 "n": "Ali Ünsat",
@@ -1744,6 +1824,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"ali yildirim": {
+"n": "Ali Yıldırım",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "ali yuksek": {
 "n": "Ali Yüksek",
@@ -1885,6 +1972,13 @@
 "neden": "Vikipedi sayfası yok",
 "d": "2026-11-18",
 "v": 4
+},
+"alperen celepci": {
+"n": "Alperen Celepci",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "altan tan": {
 "n": "Altan Tan",
@@ -2041,6 +2135,14 @@
 "d": "2026-11-18",
 "v": 4
 },
+"atilla kantay": {
+"n": "Atilla Kantay",
+"u": "https://www.polatli.gov.tr/kurumlar/polatli.gov.tr/polatli/images/dosya/JPEG/Atilla-KANTAY-_1_.JPG",
+"k": "Kaymakamlık",
+"s": "https://www.polatli.gov.tr/kaymakamimiz",
+"g": "Polatlı Kaymakamı (Ankara)",
+"d": "2026-11-21"
+},
 "atilla kart": {
 "n": "Atilla Kart",
 "u": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Atilla_Kart.jpg?utm_source=tr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
@@ -2104,6 +2206,13 @@
 "neden": "görev doğrulanamadı",
 "d": "2026-11-17",
 "v": 4
+},
+"avni oral": {
+"n": "Avni Oral",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "ayca osafoglu inam": {
 "n": "Ayça Oşafoğlu İnam",
@@ -2386,6 +2495,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"ayse karaca nas": {
+"n": "Ayşe Karaca Nas",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "ayse kesir": {
 "n": "Ayşe Keşir",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/524b00a2-781b-4b63-987a-b6ff7538fc0a.jpe",
@@ -2601,6 +2717,13 @@
 "d": "2026-11-17",
 "v": 4
 },
+"bahadir gunes": {
+"n": "Bahadır Güneş",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "bahadir nahit yenisehirlioglu": {
 "n": "Bahadır Nahit Yenişehirlioğlu",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/8cd75c74-357d-4537-8863-01881f4cb41d.jpe",
@@ -2629,7 +2752,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "bahattin seker": {
 "n": "Bahattin Şeker",
@@ -2950,6 +3073,13 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"berk acar": {
+"n": "Berk Acar",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "berris ekinci": {
 "n": "Berris Ekinci",
 "u": "",
@@ -3107,6 +3237,13 @@
 "s": "https://tr.wikipedia.org/wiki/B%C3%BClent_Ar%C4%B1n%C3%A7",
 "g": "Eski TBMM Başkanı",
 "d": "2026-11-17"
+},
+"bulent bayraktar": {
+"n": "Bülent Bayraktar",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "bulent belen": {
 "n": "Bülent Belen",
@@ -3267,7 +3404,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"d": "2026-11-21"
 },
 "burak erbay": {
 "n": "Burak Erbay",
@@ -3663,6 +3800,13 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"cemal husnu caykara": {
+"n": "Cemal Hüsnü Çaykara",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "cemal ibis": {
 "n": "Prof. Dr. Cemal İbiş",
 "u": "",
@@ -3686,6 +3830,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"cemal sahin": {
+"n": "Cemal Şahin",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "cemal talug": {
 "n": "Prof. Dr. Cemal Taluğ",
@@ -3889,6 +4040,13 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"cevat celik": {
+"n": "Cevat Çelik",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "cevdet akay": {
 "n": "Cevdet Akay",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/e1a60776-5d94-4af7-917d-01881f4cba56.jpe",
@@ -4072,6 +4230,13 @@
 "neden": "görev doğrulanamadı",
 "d": "2026-11-17",
 "v": 4
+},
+"cumali atilla": {
+"n": "Cumali Atilla",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "cumali ince": {
 "n": "Cumali İnce",
@@ -4323,6 +4488,13 @@
 "d": "2026-11-17",
 "v": 4
 },
+"dogukan koyuncu": {
+"n": "Doğukan Koyuncu",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "durdu mehmet kastal": {
 "n": "Durdu Mehmet Kastal",
 "u": "",
@@ -4551,7 +4723,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "elif dogan turkmen": {
 "n": "Elif Doğan Türkmen",
@@ -4581,6 +4753,13 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"emin bagli": {
+"n": "Emin Bağlı",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "emin cinar": {
 "n": "Emin Çınar",
@@ -4732,6 +4911,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"emre yesil": {
+"n": "Emre Yeşil",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "emrullah isler": {
 "n": "Emrullah İşler",
 "u": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Emrullah%C4%B0%C5%9FlerAnkara.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
@@ -4800,7 +4986,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "enis berberoglu": {
 "n": "Enis Berberoğlu",
@@ -4838,7 +5024,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ensar ogut": {
 "n": "Ensar Öğüt",
@@ -4982,6 +5168,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"erdal bilgic": {
+"n": "Erdal Bilgiç",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "erdal candan": {
 "n": "Erdal Candan",
@@ -5199,7 +5392,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"d": "2026-11-21"
 },
 "erkan mumcu": {
 "n": "Erkan Mumcu",
@@ -5264,6 +5457,14 @@
 "d": "2026-11-17",
 "v": 4
 },
+"erol rustemoglu": {
+"n": "Erol Rüstemoğlu",
+"u": "https://www.ankaragolbasi.gov.tr/kurumlar/ankaragolbasi.gov.tr/Kaymakam-Erol-RUSTEMOGLU-_-Kopya.jpg",
+"k": "Kaymakamlık",
+"s": "https://www.ankaragolbasi.gov.tr/kaymakam",
+"g": "Gölbaşı Kaymakamı (Ankara)",
+"d": "2026-11-21"
+},
 "ersan aksu": {
 "n": "Ersan Aksu",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/851b7b3b-a66d-4000-b39a-01881f4cb50b.jpe",
@@ -5312,10 +5513,11 @@
 },
 "ertugrul arslan": {
 "n": "Ertuğrul Arslan",
-"u": "",
-"k": "",
-"neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"u": "https://www.hamamozu.gov.tr/kurumlar/hamamozu.gov.tr/isay/makam/ertugrul_arslan.jpg",
+"k": "Kaymakamlık",
+"s": "https://www.hamamozu.gov.tr/kaymakam",
+"g": "Hamamözü Kaymakamı (Amasya)",
+"d": "2026-11-21"
 },
 "ertugrul gazi konal": {
 "n": "Ertuğrul Gazi Konal",
@@ -5655,6 +5857,13 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"faruk erdem": {
+"n": "Faruk Erdem",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "faruk isik": {
 "n": "Faruk Işık",
@@ -6018,6 +6227,13 @@
 "g": "Eski Milletvekili",
 "d": "2026-11-17"
 },
+"ferhat gur": {
+"n": "Ferhat Gür",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "ferhat nasiroglu": {
 "n": "Ferhat Nasıroğlu",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/9b0f4b29-99ce-4266-be29-01881f4cafb1.jpe",
@@ -6266,12 +6482,19 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"furkan berber gecici gorev kars valiligi vali yardimcisi": {
+"n": "Furkan Berber (Geçici Görev: Kars Valiliği Vali Yardımcısı )",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "furkan korkusuz": {
 "n": "Furkan Korkusuz",
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"d": "2026-11-21"
 },
 "fusun arslantosun": {
 "n": "Füsun Arslantosun",
@@ -6385,6 +6608,13 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"gokhan gurbuzerol": {
+"n": "Gökhan Gürbüzerol",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "gokhan karakose": {
 "n": "Gökhan Karaköse",
 "u": "",
@@ -6485,7 +6715,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/yonetim-kurulu",
 "g": "Bağımsız Yönetim Kurulu Üyesi",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "gulderen varli": {
 "n": "Gülderen Varli",
@@ -6899,7 +7129,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "halil ibrahim ozsoy": {
 "n": "Halil İbrahim Özsoy",
@@ -7095,6 +7325,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-18",
 "v": 4
+},
+"hamit genc": {
+"n": "Hamit Genç",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "hamit umit aksoy": {
 "n": "Hamit Ümit Aksoy",
@@ -7314,6 +7551,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"hasan goc": {
+"n": "Hasan Göç",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "hasan gul": {
 "n": "Hasan Gül",
 "u": "",
@@ -7351,14 +7595,15 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "hasan inanc gokcayir": {
 "n": "Hasan İnanç Gökçayır",
-"u": "",
-"k": "",
-"neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"u": "https://www.samsat.gov.tr/kurumlar/samsat.gov.tr/kaymakamlar/Hasan_inanc_gokcayir.jpg",
+"k": "Kaymakamlık",
+"s": "https://www.samsat.gov.tr/kaymakam",
+"g": "Samsat Kaymakamı (Adıyaman)",
+"d": "2026-11-21"
 },
 "hasan kalyoncu": {
 "n": "Hasan Kalyoncu",
@@ -7469,6 +7714,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"hasan tas": {
+"n": "Hasan Taş",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "hasan toktas": {
 "n": "Hasan Toktaş",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/273a0018-7f14-418c-ad77-01881f4cbc44.jpe",
@@ -7489,6 +7741,13 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"hasan uguz": {
+"n": "Hasan Uğuz",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "hasim bildis": {
 "n": "Haşim Bildiş",
@@ -7850,6 +8109,13 @@
 "d": "2026-11-17",
 "v": 4
 },
+"huriye kupeli kan": {
+"n": "Huriye Küpeli Kan",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "hursit gunes": {
 "n": "Hurşit Güneş",
 "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Hur%C5%9Fit_G%C3%BCne%C5%9F.jpg/500px-Hur%C5%9Fit_G%C3%BCne%C5%9F.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
@@ -7926,7 +8192,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "huseyin burge": {
 "n": "Hüseyin Bürge",
@@ -8149,6 +8415,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"huseyin samil sozen": {
+"n": "Hüseyin Şamil Sözen",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "huseyin sanverdi": {
 "n": "Hüseyin Şanverdi",
@@ -8374,6 +8647,13 @@
 "g": "MİT Başkanı",
 "d": "2026-11-18"
 },
+"ibrahim keklik": {
+"n": "İbrahim Keklik",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "ibrahim kocaoz": {
 "n": "Prof. Dr. İbrahim Kocaöz",
 "u": "",
@@ -8458,7 +8738,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ibrahim tasyapan": {
 "n": "İbrahim Taşyapan",
@@ -8670,6 +8950,13 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"ilhan abay": {
+"n": "İlhan Abay",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "ilhan cihaner": {
 "n": "İlhan Cihaner",
 "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Cihaner-Ilhan_%28cropped%29.jpg/500px-Cihaner-Ilhan_%28cropped%29.jpg?utm_source=tr.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
@@ -8708,6 +8995,13 @@
 "neden": "görev doğrulanamadı",
 "d": "2026-11-17",
 "v": 4
+},
+"ilker arikan": {
+"n": "İlker Arıkan",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "ilker basbug": {
 "n": "İlker Başbuğ",
@@ -8906,6 +9200,14 @@
 "neden": "anlam ayrımı/özel sayfa",
 "d": "2026-11-17",
 "v": 4
+},
+"ismail battal": {
+"n": "İsmail Battal",
+"u": "https://www.karacasu.gov.tr/kurumlar/karacasu.gov.tr/2026-ismail-battal/foto-2/1.jpeg",
+"k": "Kaymakamlık",
+"s": "https://www.karacasu.gov.tr/kaymakamimiz",
+"g": "Karacasu Kaymakamı (Aydın)",
+"d": "2026-11-21"
 },
 "ismail bilen": {
 "n": "İsmail Bilen",
@@ -9211,10 +9513,11 @@
 },
 "izzet cem eser": {
 "n": "İzzet Cem Eser",
-"u": "",
-"k": "",
-"neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"u": "https://www.suhut.gov.tr/kurumlar/suhut.gov.tr/fotograflar/Izzet-Cem-ESER/Izzet-Cem-ESER.jpeg",
+"k": "Kaymakamlık",
+"s": "https://www.suhut.gov.tr/kaymakam",
+"g": "Şuhut Kaymakamı (Afyonkarahisar)",
+"d": "2026-11-21"
 },
 "izzet cetin": {
 "n": "İzzet Çetin",
@@ -9300,10 +9603,11 @@
 },
 "kadir algin": {
 "n": "Kadir Algın",
-"u": "",
-"k": "",
-"neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"u": "https://www.golbasi.gov.tr/kurumlar/golbasi.gov.tr/Yeni_Web/golbasi_kadir_algin.png",
+"k": "Kaymakamlık",
+"s": "https://www.golbasi.gov.tr/kaymakam",
+"g": "Gölbaşı Kaymakamı (Adıyaman)",
+"d": "2026-11-21"
 },
 "kadir aydin": {
 "n": "Kadir Aydın",
@@ -9664,7 +9968,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/ust-yonetim",
 "g": "Genel Müdür (Bilgi Teknolojileri) Yardımcısı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "kerim ozkul": {
 "n": "Kerim Özkul",
@@ -9747,7 +10051,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"d": "2026-11-21"
 },
 "kuddusi erkilic": {
 "n": "Prof. Dr. Kuddusi Erkılıç",
@@ -9866,13 +10170,20 @@
 "d": "2026-11-18",
 "v": 4
 },
+"levent kilic": {
+"n": "Levent Kılıç",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "levent konukcu": {
 "n": "Levent Konukcu",
 "u": "https://investor.turkishairlines.com/documents/yonetim-kurulu/levent-konukcu.png",
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/ust-yonetim",
 "g": "Genel Müdür (Yatırım ve Strateji) Yardımcısı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "levent uysal": {
 "n": "Levent Uysal",
@@ -10318,7 +10629,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "mehmet aktas": {
 "n": "Mehmet Aktaş",
@@ -10818,6 +11129,13 @@
 "d": "2026-11-17",
 "v": 4
 },
+"mehmet halit haydaroglu": {
+"n": "Mehmet Halit Haydaroğlu",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "mehmet hilal kaplan": {
 "n": "Mehmet Hilal Kaplan",
 "u": "",
@@ -10848,7 +11166,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/ust-yonetim",
 "g": "Genel Müdür (Uçuş İşletme) Yardımcısı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "mehmet kamac": {
 "n": "Mehmet Kamaç",
@@ -11013,6 +11331,13 @@
 "g": "Dinar Kaymakamı (Afyonkarahisar)",
 "d": "2026-11-17"
 },
+"mehmet nebi kaya": {
+"n": "Mehmet Nebi Kaya",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "mehmet necati cetinkaya": {
 "n": "Mehmet Necati Çetinkaya",
 "u": "",
@@ -11028,6 +11353,13 @@
 "neden": "ölmüş kişi olabilir",
 "d": "2026-11-17",
 "v": 4
+},
+"mehmet nesip mahir": {
+"n": "Mehmet Nesip Mahir",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "mehmet nuri ersoy": {
 "n": "Mehmet Nuri Ersoy",
@@ -11230,6 +11562,21 @@
 "d": "2026-11-17",
 "v": 4
 },
+"mehmet sogukpinar": {
+"n": "Mehmet Soğukpınar",
+"u": "https://www.kecioren.gov.tr/kurumlar/kecioren.gov.tr/kaymakam/2026/kaymakam_mehmet_sogukpinar_makam_genis_aci.jpeg",
+"k": "Kaymakamlık",
+"s": "https://www.kecioren.gov.tr/kaymakam",
+"g": "Keçiören Kaymakamı (Ankara)",
+"d": "2026-11-21"
+},
+"mehmet soylu": {
+"n": "Mehmet Soylu",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "mehmet sukru erdinc": {
 "n": "Mehmet Şükrü Erdinç",
 "u": "",
@@ -11354,6 +11701,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"melih aydogan": {
+"n": "Melih Aydoğan",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "melih bulu": {
 "n": "Prof. Dr. Melih Bulu",
 "u": "",
@@ -11375,7 +11729,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/yonetim-kurulu",
 "g": "Bağımsız Yönetim Kurulu ve İcra Komitesi Üyesi",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "meliha akyol": {
 "n": "Meliha Akyol",
@@ -11443,7 +11797,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "meryem goka": {
 "n": "Meryem Göka",
@@ -11481,6 +11835,14 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"mesut coban": {
+"n": "Mesut Çoban",
+"u": "https://www.didim.gov.tr/kurumlar/didim.gov.tr/Kaymakam/Mesut-Coban-Yeni.jpeg",
+"k": "Kaymakamlık",
+"s": "https://www.didim.gov.tr/kaymakamimiz",
+"g": "Didim Kaymakamı (Aydın)",
+"d": "2026-11-21"
 },
 "mesut dedeoglu": {
 "n": "Mesut Dedeoğlu",
@@ -11606,7 +11968,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/ust-yonetim",
 "g": "Genel Müdür (Mali) Yardımcısı / Yönetim Kurulu ve İcra Komitesi Üyesi",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "metin gundogdu": {
 "n": "Metin Gündoğdu",
@@ -11855,6 +12217,13 @@
 "d": "2026-11-17",
 "v": 4
 },
+"muhammed evlice": {
+"n": "Muhammed Evlice",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "muhammed fatih toprak": {
 "n": "Muhammed Fatih Toprak",
 "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Muhammed_Fatih_Toprak.jpg/500px-Muhammed_Fatih_Toprak.jpg?utm_source=tr.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
@@ -11899,7 +12268,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "muhammet ahmet tokdemir": {
 "n": "Muhammet Ahmet Tokdemir",
@@ -11935,10 +12304,11 @@
 },
 "muhammet cinarka": {
 "n": "Muhammet Çınarka",
-"u": "",
-"k": "",
-"neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"u": "https://www.sultandagi.gov.tr/kurumlar/sultandagi.gov.tr/kaymakam-muhammet-cinarka/muhammet-cinarka-foto.jpeg",
+"k": "Kaymakamlık",
+"s": "https://www.sultandagi.gov.tr/kaymakam",
+"g": "Sultandağı Kaymakamı (Afyonkarahisar)",
+"d": "2026-11-21"
 },
 "muhammet emin akbasoglu": {
 "n": "Muhammet Emin Akbaşoğlu",
@@ -11946,6 +12316,13 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"muhammet guzel": {
+"n": "Muhammet Güzel",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "muhammet kasim gonullu": {
 "n": "Muhammet Kasım Gönüllü",
@@ -12165,6 +12542,13 @@
 "g": "Eski Deniz Kuvvetleri Komutanı (2011–2013)",
 "d": "2026-11-18"
 },
+"murat buyukkose": {
+"n": "Murat Büyükköse",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "murat cahid cingi": {
 "n": "Murat Cahid Cıngı",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/a81f6773-111e-4251-84ad-01881f4cb33d.jpe",
@@ -12225,6 +12609,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"murat karatas": {
+"n": "Murat Karataş",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "murat karayalcin": {
 "n": "Murat Karayalçın",
@@ -12287,7 +12678,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/yonetim-kurulu",
 "g": "Yönetim Kurulu ve İcra Komitesi Başkanı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "murat temur": {
 "n": "Murat Temur",
@@ -12337,6 +12728,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"murathan cebeci": {
+"n": "Murathan Cebeci",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "mursel alban": {
 "n": "Mürsel Alban",
 "u": "",
@@ -12368,6 +12766,13 @@
 "s": "https://tr.wikipedia.org/wiki/Musa_Avsever",
 "g": "Eski Kara Kuvvetleri Komutanı (2021–2023)",
 "d": "2026-11-18"
+},
+"musa ayyildiz": {
+"n": "Musa Ayyıldız",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "musa cam": {
 "n": "Musa Çam",
@@ -12537,7 +12942,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"d": "2026-11-21"
 },
 "mustafa baki ersoy": {
 "n": "Mustafa Baki Ersoy",
@@ -12561,6 +12966,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"mustafa bayram": {
+"n": "Mustafa Bayram",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "mustafa bilici": {
 "n": "Mustafa Bilici",
@@ -12870,6 +13282,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"mustafa kutlu": {
+"n": "Mustafa Kutlu",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "mustafa levent bilgen": {
 "n": "Mustafa Levent Bilgen",
 "u": "",
@@ -12963,6 +13382,13 @@
 "neden": "görev doğrulanamadı",
 "d": "2026-11-17",
 "v": 4
+},
+"mustafa salih bayram": {
+"n": "Mustafa Salih Bayram",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "mustafa sarigul": {
 "n": "Mustafa Sarıgül",
@@ -13101,6 +13527,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"mustafa yilmaz": {
+"n": "Mustafa Yılmaz",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "muzaffer aslan": {
 "n": "Muzaffer Aslan",
 "u": "",
@@ -13226,6 +13659,14 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"naim akar": {
+"n": "Naim Akar",
+"u": "https://www.gudul.gov.tr/kurumlar/gudul.gov.tr/Güdül/YENİ TASARIM GÖRSELLER/naim-akar-850-450.jpeg",
+"k": "Kaymakamlık",
+"s": "https://www.gudul.gov.tr/kaymakam",
+"g": "Güdül Kaymakamı (Ankara)",
+"d": "2026-11-21"
+},
 "namik havutca": {
 "n": "Namık Havutça",
 "u": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Nam%C4%B1k_Havut%C3%A7a_%28cropped%29.jpg?utm_source=tr.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
@@ -13286,6 +13727,13 @@
 "neden": "başlık farklı: Haluk Özdalga",
 "d": "2026-11-17",
 "v": 4
+},
+"nazmi yucel": {
+"n": "Nazmi Yücel",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "nazmiye basaran": {
 "n": "Nazmiye Başaran",
@@ -13707,7 +14155,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "nuran imir": {
 "n": "Nuran İmir",
@@ -13831,7 +14279,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "nurtac arslan": {
 "n": "Nurtaç Arslan",
@@ -13931,7 +14379,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"d": "2026-11-21"
 },
 "oguzhan kaya": {
 "n": "Oğuzhan Kaya",
@@ -14041,6 +14489,13 @@
 "neden": "Vikipedi sayfası yok",
 "d": "2026-11-18",
 "v": 4
+},
+"omer cimsit": {
+"n": "Ömer Çimşit",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "omer cinar": {
 "n": "Ömer Çınar",
@@ -14181,6 +14636,13 @@
 "g": "Çobanlar Kaymakamı (Afyonkarahisar)",
 "d": "2026-11-17"
 },
+"omer nigdelioglu": {
+"n": "Ömer Niğdelioğlu",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "omer ocalan": {
 "n": "Ömer Öcalan",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/1eb56501-a3f8-4ca5-8885-f8cc34c2efcb.jpe",
@@ -14215,7 +14677,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-17"
+"d": "2026-11-21"
 },
 "omer selvi": {
 "n": "Ömer Selvi",
@@ -14303,6 +14765,20 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"onur titiz": {
+"n": "Onur Titiz",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
+"onur yilmazer": {
+"n": "Onur Yılmazer",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "onursal adiguzel": {
 "n": "Onursal Adıgüzel",
@@ -14654,6 +15130,20 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"osman sak": {
+"n": "Osman Sak",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
+"osman senbahar": {
+"n": "Osman Şenbahar",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "osman taney koruturk": {
 "n": "Osman Taney Korutürk",
 "u": "",
@@ -14714,7 +15204,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ozcan ozel": {
 "n": "Özcan Özel",
@@ -14770,7 +15260,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/yonetim-kurulu",
 "g": "Bağımsız Yönetim Kurulu Üyesi",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ozgul saki": {
 "n": "Özgül Saki",
@@ -14828,7 +15318,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "ozgur uluduz": {
 "n": "Özgür Uludüz",
@@ -14869,6 +15359,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"ozlem bozkurt gevrek": {
+"n": "Özlem Bozkurt Gevrek",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "ozlem cercioglu": {
 "n": "Özlem Çerçioğlu",
@@ -15078,6 +15575,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"rahmi kose": {
+"n": "Rahmi Köse",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "rahmi metin": {
 "n": "Rahmi Metin",
 "u": "",
@@ -15131,7 +15635,14 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/yonetim-kurulu",
 "g": "Yönetim Kurulu Üyesi / Genel Havacılık (VIP Uçakları) Operasyon Başkanı",
-"d": "2026-11-18"
+"d": "2026-11-21"
+},
+"ramazan taskin": {
+"n": "Ramazan Taşkın",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "ramis topal": {
 "n": "Ramis Topal",
@@ -15236,6 +15747,13 @@
 "neden": "anlam ayrımı/özel sayfa",
 "d": "2026-11-17",
 "v": 4
+},
+"recep ozturk": {
+"n": "Recep Öztürk",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "recep seker": {
 "n": "Recep Şeker",
@@ -15811,6 +16329,13 @@
 "d": "2026-11-17",
 "v": 4
 },
+"sakir oner ozturk": {
+"n": "Şakir Öner Öztürk",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "salih cetinkaya": {
 "n": "Salih Çetinkaya",
 "u": "",
@@ -16074,6 +16599,13 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"sedat akpinar": {
+"n": "Sedat Akpınar",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "sedat ozturk": {
 "n": "Sedat Öztürk",
 "u": "",
@@ -16152,7 +16684,7 @@
 "k": "THY resmî sitesi",
 "s": "https://investor.turkishairlines.com/tr/kurumsal-yonetim/yonetim-kurulu",
 "g": "Yönetim Kurulu ve İcra Komitesi Başkan Vekili, Bağımsız Yönetim Kurulu Üyesi",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "selahaddin mentes": {
 "n": "Selahaddin Menteş",
@@ -16353,6 +16885,13 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"semih doganoglu": {
+"n": "Semih Doğanoğlu",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "semih isikver": {
 "n": "Semih Işıkver",
@@ -16661,7 +17200,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "serkan bayram": {
 "n": "Serkan Bayram",
@@ -17055,6 +17594,13 @@
 "d": "2026-11-17",
 "v": 4
 },
+"suat dervisoglu": {
+"n": "Suat Dervişoğlu",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "suat kilic": {
 "n": "Suat Kılıç",
 "u": "https://upload.wikimedia.org/wikipedia/commons/8/82/Suat_K%C4%B1l%C4%B1%C3%A7_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
@@ -17264,6 +17810,13 @@
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
 },
+"sultan dogru": {
+"n": "Sultan Doğru",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "sumer oral": {
 "n": "Sümer Oral",
 "u": "",
@@ -17409,6 +17962,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"tahsin kurtbeyoglu": {
+"n": "Tahsin Kurtbeyoğlu",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "tahsin ocakli": {
 "n": "Tahsin Ocaklı",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/05d7f3f7-0b47-4c8e-b191-01881f4cbb53.jpe",
@@ -17484,6 +18044,13 @@
 "d": "2026-11-18",
 "v": 4
 },
+"taner tengir": {
+"n": "Taner Tengir",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "taner yildiz": {
 "n": "Taner Yıldız",
 "u": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Taner_Yildiz_-_World_Economic_Forum_on_the_Middle_East%2C_North_Africa_and_Eurasia_2012_crop.jpg/500px-Taner_Yildiz_-_World_Economic_Forum_on_the_Middle_East%2C_North_Africa_and_Eurasia_2012_crop.jpg?utm_source=tr.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
@@ -17537,7 +18104,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "tayip temel": {
 "n": "Tayip Temel",
@@ -17569,6 +18136,13 @@
 "neden": "görev doğrulanamadı",
 "d": "2026-11-17",
 "v": 4
+},
+"tevfik kumbasar": {
+"n": "Tevfik Kumbasar",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "tevfik ozlu": {
 "n": "Prof. Dr. Tevfik Özlü",
@@ -17765,6 +18339,13 @@
 "g": "Eski Milletvekili",
 "d": "2026-11-17"
 },
+"turan bayram": {
+"n": "Turan Bayram",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "turan bedirhanoglu": {
 "n": "Turan Bedirhanoğlu",
 "u": "https://cdn.tbmm.gov.tr/IKBS/Milletvekilleri/Resim/f89502f9-2dd8-478f-88a5-01881f4cafd4.jpe",
@@ -17817,6 +18398,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"turgut gulen": {
+"n": "Turgut Gülen",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "turgut oker": {
 "n": "Turgut Öker",
@@ -17926,6 +18514,13 @@
 "d": "2026-11-17",
 "v": 4
 },
+"ugur karakaya": {
+"n": "Uğur Karakaya",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "ugur ozyurt": {
 "n": "Uğur Özyurt",
 "u": "",
@@ -17995,6 +18590,13 @@
 "neden": "sayfada fotoğraf yok",
 "d": "2026-11-17",
 "v": 4
+},
+"umit cin": {
+"n": "Ümit Cin",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "umit dikbayir": {
 "n": "Ümit Dikbayır",
@@ -18112,6 +18714,20 @@
 "d": "2026-11-18",
 "v": 4
 },
+"unal cakici": {
+"n": "Ünal Çakıcı",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
+"unal coskun": {
+"n": "Ünal Coşkun",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
+},
 "unal demirtas": {
 "n": "Ünal Demirtaş",
 "u": "",
@@ -18149,6 +18765,13 @@
 "k": "TBMM",
 "s": "tbmm.gov.tr milletvekili sayfası",
 "d": "2026-11-17"
+},
+"uzeyir aziz ozeren": {
+"n": "Üzeyir Aziz Özeren",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "vahap secer": {
 "n": "Vahap Seçer",
@@ -18241,6 +18864,13 @@
 "neden": "Vikipedi sayfası yok",
 "d": "2026-11-18",
 "v": 4
+},
+"vehbi bakir": {
+"n": "Vehbi Bakır",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "vehbi koc": {
 "n": "Vehbi Koç",
@@ -18401,7 +19031,7 @@
 "u": "",
 "k": "",
 "neden": "kaymakamlık sitesinde bulunamadı",
-"d": "2026-11-18"
+"d": "2026-11-21"
 },
 "yakup tas": {
 "n": "Yakup Taş",
@@ -18927,6 +19557,13 @@
 "s": "https://tr.wikipedia.org/wiki/Yusuf_Hala%C3%A7o%C4%9Flu",
 "g": "Eski Milletvekili",
 "d": "2026-11-17"
+},
+"yusuf ilica": {
+"n": "Yusuf Ilıca",
+"u": "",
+"k": "",
+"neden": "kaymakamlık sitesinde bulunamadı",
+"d": "2026-11-21"
 },
 "yusuf kuzu": {
 "n": "Yusuf Kuzu",
