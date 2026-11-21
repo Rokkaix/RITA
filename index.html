@@ -596,7 +596,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 18.6';let SURUM_YENI=false;
+const SURUM='RITA 18.7';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1378,7 +1378,7 @@ const A={
  async dgIgnore(d){try{await RDB.collection('dogrulama').doc(d.k).update({durum:'yoksayildi'})}catch(e){return toast('Kaydedilemedi')}render();toast('Yok sayıldı')},
  hatF(d){window._hf=d.k||'';if(!fOK(D.cur)){const f=D.F.find(fOK);if(f){D.cur=f;save()}}render()},
  ocrOpen(){if(!D.cur)return toast('Önce bir uçuş seçin');OGRID=null;if(window.RITA_STANDALONE)ocrWorker().catch(()=>{});sheet('<h2>Dolu koltukları fotoğraftan doldur</h2><p class="sub">'+esc(D.cur)+' · Check-in ekranının (TROYA) fotoğrafını çekin ya da yükleyin. Fotoğraf yalnızca bu cihazda okunur, hiçbir yere gönderilmez.</p>'+
-  (window.RITA_STANDALONE?'<label class="btn pri" for="ocrf" style="display:inline-block;text-align:center;width:100%;padding:13px">📷 Fotoğraf çek / seç</label><input id="ocrf" type="file" accept="image/*" style="display:none"><p class="note" id="ocrp" style="margin:8px 0 0"></p>':'<p class="note">Fotoğraf okuma RITA sitesinde çalışır; burada metni yapıştırabilirsiniz.</p>')+
+  (window.RITA_STANDALONE?'<label class="btn pri" for="ocrf" style="display:inline-block;text-align:center;width:100%;padding:13px">📷 Fotoğraf(lar) çek / seç</label><input id="ocrf" type="file" accept="image/*" multiple style="display:none"><p class="note" style="margin:8px 0 0">Yolcular tek ekrana sığmıyorsa <b>birden fazla ekran görüntüsü</b> seçebilirsiniz; hepsi birlikte okunup birleştirilir.</p><p class="note" id="ocrp" style="margin:8px 0 0"></p>':'<p class="note">Fotoğraf okuma RITA sitesinde çalışır; burada metni yapıştırabilirsiniz.</p>')+
   '<label class="lbl" for="ocrt">Okunan metin (yapıştırabilir ya da düzeltebilirsiniz)</label><textarea class="field" id="ocrt" placeholder="Örn. 3A 3C 5D 12A 12B …"></textarea><div id="ocrr"></div>')},
  ocrApply(d){const L=OGRID?gridSeats():parseSeats($('ocrt').value);if(!L.length)return toast('İşaretlenecek koltuk yok');ocrAuto(L,OGRID?new Set(OGRID.seats.filter(o=>o.c==='gri').map(o=>o.k)):null,OGRID?OGRID.seats.map(o=>o.k):(d.k==='set'?range(1,cfg().last):null))},
  useBlk(d,el){D.useBlk=el.checked?1:0;if(assigned())assign();save();render();toast(el.checked?'Bloke koltuklar rical için kullanılabilir':'Bloke koltuklar kullanılmayacak')},
@@ -1476,18 +1476,23 @@ const A={
 function removePerson(x){if(!x)return;const j=D.add.findIndex(a=>a[0]===x.n&&a[1]===x.t);if(j>=0)D.add.splice(j,1);else D.del.push(x.n+'|'+x.t)}
 document.addEventListener('click',e=>{if(e.target.id==='veil')return closeSheet();const el=e.target.closest('[data-a]');if(!el||!role)return;const a=el.dataset.a;if(ADMIN_ONLY.has(a)&&!isAdmin())return toast('Bu işlem için yönetici girişi gerekir');const f=A[a];if(f&&el.tagName!=='SELECT')f(el.dataset,el)});
 document.addEventListener('change',e=>{if(e.target.id==='f-o'&&$('f-rk')){const o=e.target.value;$('f-rk').innerHTML=rankField(o?tlRank('S2M'):999,o)}});
-document.addEventListener('change',async e=>{if(e.target.id!=='ocrf'||!e.target.files||!e.target.files[0])return;const pe=$('ocrp'),file=e.target.files[0];
-  try{pe.textContent='Fotoğraf hazırlanıyor…';const url=URL.createObjectURL(file),img=new Image();await new Promise((ok,no)=>{img.onload=ok;img.onerror=no;img.src=url});const cv=ocrPrep(img);URL.revokeObjectURL(url);
-    pe.textContent='Okuma aracı yükleniyor… (ilk seferde biraz sürer)';const w=await ocrWorker(m=>{if(m.status==='recognizing text')pe.textContent='Okunuyor… %'+Math.round(m.progress*100)});
-    const sc=Math.min(2.5,3600/Math.max(img.naturalWidth,img.naturalHeight));
-    const pass=async inv=>{const g=document.createElement('canvas');g.width=Math.round(img.naturalWidth*sc);g.height=Math.round(img.naturalHeight*sc);const gx=g.getContext('2d');gx.drawImage(img,0,0,g.width,g.height);
-      const gd=gx.getImageData(0,0,g.width,g.height),q=gd.data;for(let i=0;i<q.length;i+=4){const mn=Math.min(q[i],q[i+1],q[i+2]),M=Math.max(q[i],q[i+1],q[i+2]),m=inv?(M<90?255-M:mn):mn;q[i]=q[i+1]=q[i+2]=m}gx.putImageData(gd,0,0);
-      const r=await w.recognize(g);return r.data.words.map(x=>({text:x.text,bbox:{x0:x.bbox.x0/sc,x1:x.bbox.x1/sc,y0:x.bbox.y0/sc,y1:x.bbox.y1/sc}}))};
-    await w.setParameters({tessedit_pageseg_mode:'11',tessedit_char_whitelist:'0123456789ABCDEFGHJK'});pe.textContent='Koltuk haritası okunuyor…';
-    const words=(await pass(0)).concat(await pass(1));OGRID=gridFit(words,img);
-    if(OGRID){OLAST={g:OGRID,cur:D.cur};if(OGRID.sure){const L=gridSeats(),blk=new Set(OGRID.seats.filter(o=>o.c==='gri').map(o=>o.k));ocrAuto(L,blk,OGRID.seats.map(o=>o.k));return}
-      $('ocrt').value='';pe.innerHTML='<b style="color:var(--bad)">Fotoğraf yeterince net değil.</b> Aşağıdaki noktaları kontrol edin; doğruysa uygulayın, değilse daha yakından ve düz yeniden çekin.';ocrShow();return}
-    await w.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});const r=await w.recognize(cv);$('ocrt').value=r.data.text;const L=parseSeats(r.data.text),tot=range(1,cfg().last).length;
+document.addEventListener('change',async e=>{if(e.target.id!=='ocrf'||!e.target.files||!e.target.files.length)return;const pe=$('ocrp'),files=[...e.target.files];
+  try{pe.textContent='Okuma aracı yükleniyor… (ilk seferde biraz sürer)';const w=await ocrWorker(m=>{if(m.status==='recognizing text')pe.textContent='Okunuyor… %'+Math.round(m.progress*100)});
+    const oku=async(img)=>{const sc=Math.min(2.5,3600/Math.max(img.naturalWidth,img.naturalHeight));
+      const pass=async inv=>{const g=document.createElement('canvas');g.width=Math.round(img.naturalWidth*sc);g.height=Math.round(img.naturalHeight*sc);const gx=g.getContext('2d');gx.drawImage(img,0,0,g.width,g.height);
+        const gd=gx.getImageData(0,0,g.width,g.height),q=gd.data;for(let i=0;i<q.length;i+=4){const mn=Math.min(q[i],q[i+1],q[i+2]),M=Math.max(q[i],q[i+1],q[i+2]),m=inv?(M<90?255-M:mn):mn;q[i]=q[i+1]=q[i+2]=m}gx.putImageData(gd,0,0);
+        const r=await w.recognize(g);return r.data.words.map(x=>({text:x.text,bbox:{x0:x.bbox.x0/sc,x1:x.bbox.x1/sc,y0:x.bbox.y0/sc,y1:x.bbox.y1/sc}}))};
+      await w.setParameters({tessedit_pageseg_mode:'11',tessedit_char_whitelist:'0123456789ABCDEFGHJK'});return (await pass(0)).concat(await pass(1))};
+    const merge={};let okCount=0,allSure=true,sonCv=null;
+    for(let fi=0;fi<files.length;fi++){pe.textContent='Fotoğraf '+(fi+1)+'/'+files.length+' hazırlanıyor…';
+      const url=URL.createObjectURL(files[fi]),img=new Image();await new Promise((ok,no)=>{img.onload=ok;img.onerror=no;img.src=url});sonCv=ocrPrep(img);URL.revokeObjectURL(url);
+      pe.textContent='Fotoğraf '+(fi+1)+'/'+files.length+' okunuyor…';const words=await oku(img);const g=gridFit(words,img);
+      if(g){okCount++;if(!g.sure)allSure=false;g.seats.forEach(o=>{const c=merge[o.k];if(c===undefined||(c==='bos'&&o.c!=='bos'))merge[o.k]=o.c})}}
+    const seatsArr=Object.keys(merge).map(k=>({k,c:merge[k]}));
+    if(seatsArr.length){OGRID={seats:seatsArr,sure:allSure&&files.length===1};OLAST={g:OGRID,cur:D.cur};
+      if(OGRID.sure){const L=gridSeats(),blk=new Set(OGRID.seats.filter(o=>o.c==='gri').map(o=>o.k));ocrAuto(L,blk,OGRID.seats.map(o=>o.k));return}
+      $('ocrt').value='';pe.innerHTML='<b>'+okCount+'/'+files.length+' fotoğraf okundu</b> · '+seatsArr.length+' koltuk birleştirildi. Renkleri kontrol edip uygulayın.';ocrShow();return}
+    OGRID=null;await w.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});const r=await w.recognize(sonCv);$('ocrt').value=r.data.text;const L=parseSeats(r.data.text),tot=range(1,cfg().last).length;
     if(L.length&&L.length<0.85*tot){ocrAuto(L,null);return}pe.textContent=L.length?'Neredeyse tüm koltuklar okundu; bu bir koltuk haritası olabilir. Kontrol edip uygulayın.':'Koltuk bulunamadı. Fotoğrafı daha yakından ve düz çekin.';ocrShow()}catch(err){pe.textContent='Fotoğraf okunamadı. Tekrar deneyin ya da metni elle yazın.'}});
 addEventListener('input',e=>{if(e.target.id==='ocrt'){OGRID=null;ocrShow();return}if(e.target.dataset&&e.target.dataset.ocat){const C=ocrCats();C[e.target.dataset.ocat]=e.target.checked?1:0;try{localStorage.setItem('rita-ocr-cat2',JSON.stringify(C))}catch(x){}gridShow();return}if(e.target.id==='flq'){flFind(e.target.value);return}const k=e.target.dataset&&e.target.dataset.q;if(!k)return;const val=e.target.value;q[k]=val;
   clearTimeout(window._qT);window._qT=setTimeout(()=>{
