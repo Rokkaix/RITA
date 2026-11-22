@@ -618,7 +618,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 20.1';let SURUM_YENI=false;
+const SURUM='RITA 20.2';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -819,6 +819,9 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
     const near=grp.filter(k=>k!==p.seat&&free(k)).concat(rowSeats(r).filter(free)).concat(left);
     const pick=[];near.forEach(k=>{if(pick.length<n&&!pick.includes(k))pick.push(k)});p.comp=(p.comp||[]).concat(pick.map(take))});
   /* 4) ekonomi: kalan herkes grup hâlinde, rical sırasıyla, en öndeki uygun yan yana bloğa */
+  /* upgrade hakkı olmayan ilave VIP'ler: aynı grup/PNR (aile) ise ekonomide öndeki ilk boş yan yana bloğa birlikte */
+  {const G={};P.forEach(p=>{if(p.ek&&!p.seat&&p.grupK)(G[p.grupK]=G[p.grupK]||[]).push(p)});
+   Object.values(G).forEach(L=>{if(L.length<2)return;const fr=k=>sBos(S[k])&&!son(k)&&!used.has(k),b=block(L.length,c,fr);if(b.length<L.length)return;b.forEach(take);L.forEach((p,i)=>{p.seat=b[i];p.aile=L.length})})}
   P.forEach(p=>{const need=(p.seat?0:1)+((p.pax||1)-1-p.comp.length);if(!need)return;
     /* ilave VIP (ek): yalnız gerçekten boş koltuk — bloke / son verilecek verilmez */
     const fr=p.ek?(k=>sBos(S[k])&&!son(k)&&!used.has(k)):free,frOn=p.ek?fr:freeOn;
@@ -840,7 +843,7 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
     if(p.fixed&&p.canli){p.why='Quick Check’teki koltuğunda (canlı)';p.wc='n'}else if(p.fixed){p.why='Koltuk elle sabitlendi'+(S[p.seat]&&!sBos(S[p.seat])?' (haritada dolu/bloke görünüyor)':'');p.wc='w'}
     else if(biz){p.why='Business · '+p.up;p.wc='y'}
     else if(p.up){p.why='Upgrade hakkı var ('+p.up+') ancak business dolu, ekonomiye alındı';p.wc='w'}
-    else{p.why='Upgrade hakkı yok, ekonomide sıradaki koltuk';p.wc='n'}
+    else{p.why=p.aile?'Upgrade hakkı yok · aile/grup ('+p.aile+' kişi): ekonomide öndeki ilk boş yan yana koltuklar':'Upgrade hakkı yok, ekonomide öndeki ilk boş koltuk';p.wc='n'}
     if(p.over!=null)p.why='Sırası elle değiştirildi · '+p.why;else if(baseKey(p)<eff(p.rank))p.why='Kişi notuyla öne alındı · '+p.why;
     if(n){if(cb===n)p.cnote='Refakatçiler business’ta yanında';else if(biz&&ce)p.cnote='Business’ta yer kalmadığı için refakatçiler ekonomide yan yana';else p.cnote='Grup ekonomide yan yana';if(p.comp.length<n)p.cnote+=' · '+(n-p.comp.length)+' kişiye koltuk kalmadı'}else p.cnote=''});
   P.forEach(p=>{if(p.blk&&p.blk.length){p.why+=' · Bloke açılmalı: '+p.blk.join(', ');p.wc='w'}});
@@ -1315,7 +1318,7 @@ function opxIsle(K){K=K||{};const V=OPX.map((o,i)=>[o,i]).filter(([o])=>o.rol===
   OPX.forEach(o=>{if(!(o.rol==='maiyet'||o.rol==='koruma'))return;const par=OPX[o.bag];if(par&&par.rol==='rical'&&par.m)return;
     const ad=o.soy?cap(o.soy)+((o.ad||o.ini)?' '+cap(o.ad||o.ini):''):(o.rol==='koruma'?'Koruma':'Maiyet');
     const not=(o.yakNot?o.yakNot+' · ':'')+cap(o.yorum||String(o.ham||'').replace(/^.*?VIP[!:]?/i,'').replace(/[|!]/g,' ').replace(/\s+/g,' ').trim()).slice(0,80);
-    o._pe='pe'+Date.now()+'-'+ek;ppl().push({key:norm(ad)+'-ek'+ek,id:o._pe,n:ad,sub:(o.rol==='koruma'?'Koruma / emniyet (ilave)':o.yak?'VIP yakını (ilave, rical değil)':'Maiyet / ilave VIP')+(not?' · '+not:''),rank:999,up:'',o:'',pax:1,ek:1,ektip:o.rol,koltuk:o.koltuk||'',t:Date.now()+ek,canli:K.canli?1:0,...(K.canli&&o.koltuk?{fix:o.koltuk,qck:o.koltuk}:{})});ek++;ekN++});
+    o._pe='pe'+Date.now()+'-'+ek;ppl().push({key:norm(ad)+'-ek'+ek,id:o._pe,n:ad,sub:(o.rol==='koruma'?'Koruma / emniyet (ilave)':o.yak?'VIP yakını (ilave, rical değil)':'Maiyet / ilave VIP')+(not?' · '+not:''),rank:999,up:'',o:'',pax:1,ek:1,ektip:o.rol,koltuk:o.koltuk||'',t:Date.now()+ek,canli:K.canli?1:0,qck:o.koltuk||'',grupK:o.grup&&!/^t\d/.test(o.grup)?o.grup:''});ek++;ekN++});
   D.YL=D.YL||{};D.YL[D.cur]={t:new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16),l:OPX.map(o=>({soy:o.soy,ad:o.ad,ini:o.ini,koltuk:o.koltuk,rol:o.rol,vip:o.vip?1:0,yorum:o.yorum||'',sinif:o.sinif||'',vtip:o.vtip||'',ust:o.ust?1:0,bag:o.bag,mn:o.rol==='rical'&&o.m?o.m.x.n:'',mt:o.rol==='rical'&&o.m?o.m.x.t:'',mr:o.rol==='rical'&&o.m?o.m.x.r:null,pe:o._pe||''}))};
   if(K.canli){const L=D.YL[D.cur];if(L)L.canli=1}
   assign();save();return{yeni,gun,ekN,rical:V.length}}
@@ -1352,7 +1355,7 @@ function canliUygula(no){const d=QCK.durum[no];if(!d)return;const f=D.F.find(x=>
     /* koltuk durumları */
     const KK=Object.keys(d.koltuklar);if(KK.length){const S=seats();KK.forEach(k=>{const v=CKOL[d.koltuklar[k]];if(v===undefined)return;if(v)S[k]=v;else delete S[k]});Y.forEach(y=>{if(y.koltuk)delete S[y.koltuk]});/* VIP'in kendi koltuğu ona açık */QCK.S.add(f)}
     if(QCK.imza[f]!==imza){/* yolcu listesi değişti: yeniden eşleştir ve yerleştir */
-      OPX=Y.map((y,i)=>({soy:y.soyad,ad:'',ini:y.adBas,sinif:y.sinif,koltuk:y.koltuk,yorum:yorumAl(sadeTr(y.not))||'',vip:true,grup:'t'+i,ham:y.not,sira:''}));opxRoles();
+      OPX=Y.map((y,i)=>({soy:y.soyad,ad:'',ini:y.adBas,sinif:y.sinif,koltuk:y.koltuk,yorum:yorumAl(sadeTr(y.not))||'',vip:true,grup:(String(y.k).split('|')[2]||'').replace(/[^A-Z0-9]/gi,'')||('t'+i),ham:y.not,sira:''}));opxRoles();
       const r=opxIsle({canli:1});QCK.imza[f]=imza;
       const U=OPX.filter(o=>o.ust).map(o=>o.m.x.n);canliGunluk(no,'Otomatik işlendi: '+r.rical+' rical, '+r.ekN+' ilave VIP'+(KK.length?' · '+KK.length+' koltuk':'')+' · rical sırasına göre yerleştirildi'+(U.length?' · ÜST DÜZEY teyit bekliyor: '+U.join(', '):''))}
     else{reassign();save()}}

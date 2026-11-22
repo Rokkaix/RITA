@@ -339,7 +339,16 @@ function oneriler(U, liste) {
   const sonra = (k) => !vipKoltuk.has(k) && U.koltuklar[k] === "bos-son";
   const aday = hepsi.filter((s) => uygun(s.k)).concat(hepsi.filter((s) => sonra(s.k)));
   const kullan = new Set(), sonuc = new Map();
-  for (const x of liste) if (!Number.isFinite(x.p) && x.y.koltuk) { kullan.add(x.y.koltuk); sonuc.set(x.y.k, x.y.koltuk); }
+  /* aynı grup kodu (GK / PNR grubu = aile) ve upgrade hakkı olmayanlar: ekonomide öndeki ilk boş yan yana blok */
+  const grup = (y) => String(y.k).split("|")[2] || "";
+  const satirlar = (n) => { const R = new Map(); aday.forEach((s) => { if (s.biz || kullan.has(s.k)) return; const r = parseInt(s.k, 10); (R.get(r) || R.set(r, []).get(r)).push(s.k); }); for (const [r, L] of R) { const yan = harfGrup(DUZEN.e).map((g) => g.split("").map((h) => r + h).filter((k) => L.includes(k))).find((g) => g.length >= n); if (yan) return yan.slice(0, n); if (L.length >= n) return L.slice(0, n); } return null; };
+  for (const x of liste) {
+    if (sonuc.has(x.y.k) || x.biz || !grup(x.y)) continue;
+    const aile = liste.filter((z) => !z.biz && !sonuc.has(z.y.k) && grup(z.y) === grup(x.y));
+    if (aile.length < 2) continue;
+    const blok = satirlar(aile.length);
+    if (blok) aile.forEach((z, i) => { kullan.add(blok[i]); sonuc.set(z.y.k, blok[i]); });
+  }
   for (const x of liste) {
     if (sonuc.has(x.y.k)) continue;
     /* business yalnız kuralında "Business" işaretli olanlara (maiyet / görevli / kuralı olmayan → ekonomi) */
