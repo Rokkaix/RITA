@@ -80,6 +80,16 @@
    "durum": "tamam",
    "sonuc": "RITA 20.4'te düzeltildi; yeni yer imi sayfaları (yerimi/) dahil yatay taşma ve sayfa hatası yok.",
    "bitti": "2026-11-22 18:25"
+  },
+  {
+   "id": "cl1763839100000",
+   "t": "2026-11-22 22:18",
+   "tur": "denetim",
+   "kisi": "Uçak tipi 737",
+   "metin": "data/ucuslar.json'da FlightStats genel '737' (Boeing 737 Passenger) tipi görüldü (TK1667 IST-HAM); bu tip RITA'nın tip tablosunda tanımlı değil, varsayılan 737-800 düzeni kullanılır.",
+   "durum": "yapilamadi",
+   "sonuc": "Kabin düzeni yönetici onayıyla değişir; öneri: '737' tipini 737-800 (73H) düzeniyle tanımlamak. Bu uçuşta Quick Check verisi yer imiyle gelirse RITA gerçek düzeni zaten haritadan öğrenir (RITA 21.0).",
+   "bitti": "2026-11-22 22:18"
   }
  ]
 }
