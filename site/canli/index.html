@@ -288,7 +288,10 @@ function isle(m) {
   if (!secili) secili = a;
   if (m.tur === "tam") {
     if (Array.isArray(m.yolcular)) { U.yolcular = new Map(m.yolcular.map((y) => [y.k, y])); U.sira = m.yolcular.map((y) => y.k); }
-    if (m.koltuklar) U.koltuklar = Object.assign({}, m.koltuklar);
+    if (m.koltuklar) {
+      U.koltuklar = Object.assign({}, m.koltuklar);
+      if (m.sekme !== -1) { const o = kabinOgren(U.koltuklar); if (o) { DUZEN = o; duzenAlanlari(); $("duzenSec").value = "Özel"; } }   /* kabin düzeni Quick Check haritasından öğrenilir */
+    }
   } else if (m.tur === "fark") {
     let koltukSay = 0, ses = false;
     for (const f of m.farklar) {
@@ -502,6 +505,18 @@ $("kuralYukle").addEventListener("click", () => {
 });
 
 /* ============================ Düzen seçimi ============================ */
+/* Kabin düzenini Quick Check koltuk haritasından öğren (aynı tipte bile uçaktan uçağa değişir): business = baştan, pencere (A,F) dahil 4 koltuklu aynı desenli sıralar. */
+function kabinOgren(K) {
+  const R = {}; Object.keys(K).forEach((k) => { const m = /^(\d{1,2})([A-K])$/.exec(k); if (m) (R[+m[1]] = R[+m[1]] || new Set()).add(m[2]); });
+  const rows = Object.keys(R).map(Number).sort((a, b) => a - b); if (rows.length < 20) return null;
+  const all = new Set(); rows.forEach((r) => R[r].forEach((l) => all.add(l))); if ([...all].some((l) => "ABCDEF".indexOf(l) < 0)) return null;
+  const ls = (r) => [...R[r]].sort().join(""); let biz = 0, pat = "";
+  for (const r of rows) { const s = ls(r); if (s.length === 4 && s[0] === "A" && s[3] === "F" && (!pat || s === pat)) { pat = pat || s; biz = r; } else break; }
+  if (!biz) return null;
+  const son = rows[rows.length - 1], atla = [], yok = [];
+  for (let r = 1; r <= son; r++) { if (!R[r]) { atla.push(r); continue; } for (const l of (r <= biz ? pat : "ABCDEF")) if (!R[r].has(l)) yok.push(r + l); }
+  return { biz, b: pat.slice(0, 2) + " " + pat.slice(2), e: "ABC DEF", son, atla: atla.join(" "), yok: yok.join(" ") };
+}
 function duzenAlanlari() { $("dBiz").value = DUZEN.biz; $("dB").value = DUZEN.b; $("dE").value = DUZEN.e; $("dSon").value = DUZEN.son; }
 (function () {
   const s = $("duzenSec");

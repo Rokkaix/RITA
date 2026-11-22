@@ -623,7 +623,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 20.9';let SURUM_YENI=false;
+const SURUM='RITA 21.0';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -721,7 +721,7 @@ const ACT={/* THY kabinleri — dar gövde business TROYA/QC "Koltuk Görünüm�
  '73J':{ad:'Boeing 737-900ER',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1},'739':{ad:'Boeing 737-900ER',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1},
  '321':{ad:'Airbus A321',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:1},'32R':{ad:'Airbus A321',b:'AB EF',biz:4,e:'ABC DEF',last:33,stub:0,atla:'5',yok:'8A 8F 21A 21F',x:'8 9 21 22',mt:'10 11 12',kn:'13 14 15 16 17 18 19'}/* Quick Check TK2246 22NOV ekranı */,
  '32Q':{ad:'Airbus A321neo',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:0},'32B':{ad:'Airbus A321',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:1},
- '320':{ad:'Airbus A320',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},'32A':{ad:'Airbus A320',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},'32N':{ad:'Airbus A320neo',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},
+ '320':{ad:'Airbus A320',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},'32A':{ad:'Airbus A320',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},'32N':{ad:'Airbus A320neo',b:'AC DF',biz:5,e:'ABC DEF',last:32,stub:0,yok:'6A 6F 19A 19F',x:'6 7 20',mt:'8 9',kn:'10 11 12 13 14 15 16 17'}/* Quick Check TK2184 22NOV */,
  '319':{ad:'Airbus A319',b:'AB EF',biz:3,e:'ABC DEF',last:23,stub:0},
  '332':{ad:'Airbus A330-200',b:'AC DG HK',biz:4,e:'AC DEFG HK',last:36,stub:0},'33X':{ad:'Airbus A330-300',b:'AC DG HK',biz:7,e:'AC DEFG HK',last:40,stub:0},
  '333':{ad:'Airbus A330-300',b:'AC DG HK',biz:7,e:'AC DEFG HK',last:40,stub:0},
@@ -732,12 +732,13 @@ const ACT={/* THY kabinleri — dar gövde business TROYA/QC "Koltuk Görünüm�
 let TT={},TTH=null;/* yöneticinin doğruladığı tip düzenleri (ortak kayıt) */
 const parseL=x=>{const l=[],a=[];String(x||'').toUpperCase().trim().split(/\s+/).forEach((g,gi)=>{if(gi)a.push(l.length);g.replace(/[^A-Z]/g,'').split('').forEach(ch=>l.push(ch))});return{l,a}};
 const ttGet=t=>{const b=ACT[t],o=Object.assign({},(D.TT||{})[t]||{},TT[t]||{});if(!b&&!o.b)return null;return Object.assign({b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,bblk:''},b||{},o)};
-function typeCfg(t){const o=ttGet(t);if(!o)return null;const pb=parseL(o.b),pe=parseL(o.e);
-  return{biz:+o.biz||0,last:Math.max((+o.biz||0)+1,+o.last||27),stub:o.stub?1:0,stag:o.stag?1:0,bl:pb.l,ba:pb.a,el:pe.l,ea:pe.a,blk:String(o.bblk||'').toUpperCase(),x:String(o.x||'').split(/[^0-9]+/).filter(Boolean).map(Number),atla:String(o.atla||'').split(/[^0-9]+/).filter(Boolean).map(Number),yok:String(o.yok||'').toUpperCase().split(/[^0-9A-K]+/).filter(Boolean),mt:String(o.mt||'').split(/[^0-9]+/).filter(Boolean).map(Number),kn:String(o.kn||'').split(/[^0-9]+/).filter(Boolean).map(Number),ac:t,dog:!!o.dog,type:1}}
+function typeCfg(t){return cfgFrom(ttGet(t),t)}
+function cfgFrom(o,t){if(!o)return null;const pb=parseL(o.b),pe=parseL(o.e);
+  return{biz:+o.biz||0,last:Math.max((+o.biz||0)+1,+o.last||27),stub:o.stub?1:0,stag:o.stag?1:0,bl:pb.l,ba:pb.a,el:pe.l,ea:pe.a,blk:String(o.bblk||'').toUpperCase(),x:String(o.x||'').split(/[^0-9]+/).filter(Boolean).map(Number),atla:String(o.atla||'').split(/[^0-9]+/).filter(Boolean).map(Number),yok:String(o.yok||'').toUpperCase().split(/[^0-9A-K]+/).filter(Boolean),mt:String(o.mt||'').split(/[^0-9]+/).filter(Boolean).map(Number),kn:String(o.kn||'').split(/[^0-9]+/).filter(Boolean).map(Number),ac:t,dog:!!o.dog,ogr:!!o.ogr,type:1}}
 const acCfg=t=>typeCfg(t);
 const flNo=f=>String(f).split(' ')[0];
 const acOf=f=>(D.AC||{})[flNo(f)];
-const cfg=()=>{const m=D.C[D.cur];if(m&&m.manual)return m;const t=acOf(D.cur),c=t&&typeCfg(t.tip);if(c)return c;if(m&&!m.type)return m;return D.C[D.cur]={biz:4,last:27,stub:1}};
+const cfg=()=>{const m=D.C[D.cur];if(m&&m.manual)return m;const kd=(D.KD||{})[D.cur];if(kd){if(!kd._c||kd._s!==JSON.stringify([kd.b,kd.e,kd.biz,kd.last,kd.atla,kd.yok,kd.x,kd.mt,kd.kn])){kd._s=JSON.stringify([kd.b,kd.e,kd.biz,kd.last,kd.atla,kd.yok,kd.x,kd.mt,kd.kn]);kd._c=cfgFrom(Object.assign({ogr:1,dog:1},kd),(acOf(D.cur)||{}).tip||'')}return kd._c}const t=acOf(D.cur),c=t&&typeCfg(t.tip);if(c)return c;if(m&&!m.type)return m;return D.C[D.cur]={biz:4,last:27,stub:1}};
 const aisleAt=(r,i,L)=>{const c=cfg(),a=r<=c.biz?c.ba:c.ea;return a?a.includes(i):i===L.length/2};
 const LET=r=>{const c=cfg();return r<=c.biz?(c.bl||['A','B','E','F']):(c.el||['A','B','C','D','E','F'])};
 const isBlk=(r,l)=>{const c=cfg();return r<=c.biz&&!!c.blk&&c.blk.includes(l)};
@@ -948,7 +949,7 @@ function cabinHtml(){const S=seats(),c=cfg(),as={},a2={};ordered().forEach((p,i)
 function acLine(){const t=acOf(D.cur),c=cfg(),a=c.ac&&ACT[c.ac];
   const IC='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l18-7-7 18-2.5-8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
   if(!t)return'<div class="acline none">'+IC+'<div><b>Uçak tipi henüz yok</b><span>Günlük sefer bilgisi onaylanınca burada görünür.</span></div></div>';
-  const x=(D.ACX||{})[D.cur];return(x?'<div class="acline" style="background:var(--bad)">'+IC+'<div><b>Uçak değişti</b><span>Önceki: '+esc((ACT[x.eski]||{}).ad||x.eski)+'. Koltuklar yeni düzene göre boşaltıldı; Koltuk ata ile yeniden atayın.</span></div></div>':'')+'<div class="acline">'+IC+'<div><b>'+esc(t.ad||((ACT[t.tip]||{}).ad)||t.tip)+'<span class="tag">'+esc(t.tip)+'</span>'+((lr=>lr&&lr.tescil?'<span class="tag">'+esc(lr.tescil)+'</span>':'')(liveRec(D.cur)))+'</b><span>'+(c.type?'Business '+range(1,c.biz).length+' ('+esc(ttGet(c.ac).b)+(c.blk?', orta kapalı':'')+') · Ekonomi '+range(c.biz+1,c.last).length+' · ':'')+'Kaynak: '+esc(t.kaynak||'FlightStats')+' · '+esc(fmtD(t.tarih))+(c.type&&!c.dog?' · kabin düzeni doğrulanmadı':'')+'</span></div></div>'}
+  const x=(D.ACX||{})[D.cur];return(x?'<div class="acline" style="background:var(--bad)">'+IC+'<div><b>Uçak değişti</b><span>Önceki: '+esc((ACT[x.eski]||{}).ad||x.eski)+'. Koltuklar yeni düzene göre boşaltıldı; Koltuk ata ile yeniden atayın.</span></div></div>':'')+'<div class="acline">'+IC+'<div><b>'+esc(t.ad||((ACT[t.tip]||{}).ad)||t.tip)+'<span class="tag">'+esc(t.tip)+'</span>'+((lr=>lr&&lr.tescil?'<span class="tag">'+esc(lr.tescil)+'</span>':'')(liveRec(D.cur)))+'</b><span>'+(c.type?'Business '+range(1,c.biz).length+' ('+esc(ttGet(c.ac).b)+(c.blk?', orta kapalı':'')+') · Ekonomi '+range(c.biz+1,c.last).length+' · ':'')+'Kaynak: '+esc(t.kaynak||'FlightStats')+' · '+esc(fmtD(t.tarih))+(c.ogr?' · kabin düzeni Quick Check haritasından alındı':c.type&&!c.dog?' · kabin düzeni doğrulanmadı':'')+'</span></div></div>'}
 function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 class="h">SEFER</h2><p style="margin:0 0 6px;font-weight:700">'+(LIVE?'Önümüzdeki 1–6 saatte listelenecek uçuş yok':'Henüz sefer listesi yok')+'</p><p class="note" style="margin-top:0">THY seferleri ve uçak tipleri her sabah otomatik toplanır (İstanbul’dan kalkan ve gelen tüm THY uçuşları). '+(isAdmin()?'Yönetim sekmesindeki “Günlük sefer bilgisi”ni onayladığınızda seferler burada görünür.':'Yönetici günlük sefer bilgisini onayladığında seferler burada görünür.')+'</p>'+(isAdmin()?'<div class="row-btns" style="margin-top:10px"><button class="btn pri" data-a="flightAdd" type="button">+ Sefer ekle</button><button class="btn" data-a="tab" data-k="ayar" type="button">Yönetim’e git</button></div>':'')+'</section>'+legal();return}
   const c=cfg(),n=counts();
   $('view').innerHTML=
@@ -1405,10 +1406,31 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
   return true}
 function yerimiMetin(t){if(!/^\s*\{[\s\S]*"kaynak"\s*:\s*"yerimi"/.test(t||''))return false;let m;try{m=JSON.parse(t)}catch(e){return false}
   const ok=yerimiAl(m);try{navigator.clipboard&&navigator.clipboard.writeText('')}catch(e){}return ok}
+/* Kabin düzenini Quick Check koltuk haritasından ÖĞREN (kullanıcı isteği 22.11.2026: "sorun yaşamak istemiyorum").
+   Aynı tipteki uçaklar bile farklı dizilebiliyor (örn. 32N: business A C | D F, 6A 6F 19A 19F yok). Quick Check haritasında hangi koltuklar
+   VARSA o düzen esas alınır; tip tablosuna bakılmaz. Business = baştan itibaren, her sırası pencere (A ve F) dahil tam 4 koltuklu aynı desenli sıralar.
+   Geniş gövde (A–F dışı harf) öğrenilmez, tip tablosu kalır. İşaretler (X/E/W) haritadan okunamaz: tipin sıra sayısı aynıysa tipten alınır. */
+function kabinOgren(K,tip){const R={};Object.keys(K).forEach(k=>{const m=/^(\d{1,2})([A-K])$/.exec(k);if(m)(R[+m[1]]=R[+m[1]]||new Set()).add(m[2])});
+  const rows=Object.keys(R).map(Number).sort((a,b)=>a-b);if(rows.length<20)return null;
+  const all=new Set();rows.forEach(r=>R[r].forEach(l=>all.add(l)));if([...all].some(l=>'ABCDEF'.indexOf(l)<0))return null;
+  const ls=r=>[...R[r]].sort().join('');let biz=0,pat='';
+  for(const r of rows){const s=ls(r);if(s.length===4&&s[0]==='A'&&s[3]==='F'&&(!pat||s===pat)){pat=pat||s;biz=r}else break}
+  if(!biz||!pat)return null;
+  const last=rows[rows.length-1],atla=[],yok=[],bl=pat,el='ABCDEF';
+  for(let r=1;r<=last;r++){if(!R[r]){atla.push(r);continue}const L=r<=biz?bl:el;for(const l of L)if(!R[r].has(l))yok.push(r+l)}
+  const t=ttGet(tip||''),mk=t&&+t.biz===biz&&+t.last===last;
+  const o={b:bl.slice(0,2)+' '+bl.slice(2),e:'ABC DEF',biz,last,stub:0,atla:atla.join(' '),yok:yok.join(' '),t:Date.now()};
+  if(mk){o.x=t.x||'';o.mt=t.mt||'';o.kn=t.kn||''}return o}
+function kabinOgrenUygula(f,no,K){const o=kabinOgren(K,((D.AC||{})[no]||{}).tip);if(!o)return false;D.KD=D.KD||{};const e=D.KD[f],key=x=>JSON.stringify([x.b,x.e,x.biz,x.last,x.atla,x.yok]);
+  if(e&&key(e)===key(o)){e.t=o.t;return false}
+  D.KD[f]=o;const bz=o.b.replace(' ',' | ');canliGunluk(no,'Kabin düzeni Quick Check haritasından alındı: business 1–'+o.biz+' ('+bz+'), ekonomi '+(o.biz+1)+'–'+o.last+(o.yok?', olmayan koltuklar: '+o.yok:'')+(o.atla?', olmayan sıra: '+o.atla:''));return true}
 function canliUygula(no){const d=QCK.durum[no];if(!d)return;const f=D.F.find(x=>flNo(x)===no);
-  if(!f){if(!QCK.yok[no]){QCK.yok[no]=1;canliGunluk(no,no+' RITA uçuş listesinde yok (1–6 saat dışında olabilir); “+ Sefer” ile ekleyince otomatik işlenir.')}return}
+  if(!f){/* RITA listesinde yok (dış hat, 6 saatten uzak vb.): Quick Check'te açık uçuş kendiliğinden eklenir */
+    const u=Object.values((LIVE&&LIVE.ucuslar)||{}).find(x=>x.no===no),key=no+' '+(u&&u.hat?u.hat+' ':'')+(u&&u.kalkis?u.kalkis:new Date().toTimeString().slice(0,5));
+    D.F.push(key);D.FA=D.FA||{};D.FA[key]=Date.now();D.F.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()));if(u&&u.tip){D.AC=D.AC||{};D.AC[no]=D.AC[no]||{tip:u.tip,ad:u.ad,tarih:new Date().toISOString().slice(0,10),kaynak:'FlightStats'}}
+    canliGunluk(no,no+' RITA listesinde yoktu; Quick Check’te açık olduğu için uçuş listesine eklendi'+(u?'':' (hat/saat bilinmiyor)'));save();return canliUygula(no)}
   if(!QCK.oto)return;const eski=D.cur;D.cur=f;
-  try{const Y=d.sira.map(k=>d.yolcular.get(k)).filter(Boolean),imza=JSON.stringify(Y.map(y=>[y.soyad,y.adBas,y.not,y.sinif,y.koltuk]));
+  try{const Y=d.sira.map(k=>d.yolcular.get(k)).filter(Boolean),imza0=JSON.stringify(Y.map(y=>[y.soyad,y.adBas,y.not,y.sinif,y.koltuk])),duz=kabinOgrenUygula(f,no,d.koltuklar),imza=imza0+(duz?'|duzen'+Date.now():'');
     /* koltuk durumları */
     const KK=Object.keys(d.koltuklar);if(KK.length){const S=seats();KK.forEach(k=>{const v=CKOL[d.koltuklar[k]];if(v===undefined)return;if(v)S[k]=v;else delete S[k]});Y.forEach(y=>{if(y.koltuk)delete S[y.koltuk]});/* VIP'in kendi koltuğu ona açık */QCK.S.add(f)}
     if(QCK.imza[f]!==imza){/* yolcu listesi değişti: yeniden eşleştir ve yerleştir */

@@ -929,15 +929,19 @@
   },
   "32N": {
    "ad": "Airbus A320neo",
-   "b": "AB EF",
+   "b": "AC DF",
    "bblk": "",
    "biz": 5,
    "dog": true,
    "e": "ABC DEF",
-   "last": 27,
-   "stub": 1,
+   "last": 32,
+   "stub": 0,
+   "yok": "6A 6F 19A 19F",
+   "x": "6 7 20",
+   "mt": "8 9",
+   "kn": "10 11 12 13 14 15 16 17",
    "tarih": "2026-11-22",
-   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
+   "not": "Quick Check TK2184 IST-ESB 22.11.2026 ekranına göre: business A C | D F (B, E yok), ekonomi 6–32, olmayan koltuklar 6A 6F 19A 19F. Kabin uçak (tescil) bazında değişebilir: RITA artık düzeni her uçuşta Quick Check koltuk haritasından kendisi öğrenir."
   },
   "32Q": {
    "ad": "Airbus A321neo",
