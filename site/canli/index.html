@@ -346,7 +346,8 @@ function koltukSirasi() {
 /* Koltuk önerisi — kademeli ve sıkı kural:
    1) Business kuralı olan VIP (upgrade hakkı): business'ta EN ÖNDEKİ koltuk — boş, en son verilecek ya da bloke fark etmez
       (kullanıcı kuralı: business'ta bloke her zaman kaldırılır, rical önemli); business'ta hiç yer yoksa ekonomide öndeki ilk boş koltuk.
-   2) Diğerleri (maiyet, görevli, kuralı/upgrade hakkı olmayan): yalnız EKONOMİDE öndeki ilk BOŞ koltuk; bloke ve "en son verilecek" verilmez.
+   2) Diğerleri (maiyet, görevli, kuralı/upgrade hakkı olmayan): Business hakkı olanlardan SONRA, yalnız EKONOMİDE öndeki ilk BOŞ koltuk;
+      bloke ve "en son verilecek" verilmez.
       Aynı grup kodu (aile) yan yana. VIP'in şu anki koltuğu, daha önde boş yoksa ona açık sayılır.
    Business'ın hemen arkasında boş koltuk varken VIP asla daha geriye önerilmez (öndeki ilk uygun koltuk). */
 function oneriler(U, liste) {
@@ -358,15 +359,16 @@ function oneriler(U, liste) {
   const ilk = (filtre) => { const s = hepsi.find((s) => !kullan.has(s.k) && filtre(s)); return s ? s.k : ""; };
   const grup = (y) => String(y.k).split("|")[2] || "";
   const satirlar = (n) => { const R = new Map(); hepsi.forEach((s) => { if (s.biz || kullan.has(s.k) || durum(s.k) !== "bos") return; const r = parseInt(s.k, 10); (R.get(r) || R.set(r, []).get(r)).push(s.k); }); for (const [r, L] of R) { const yan = harfGrup(DUZEN.e).map((g) => g.split("").map((h) => r + h).filter((k) => L.includes(k))).find((g) => g.length >= n); if (yan) return yan.slice(0, n); if (L.length >= n) return L.slice(0, n); } return null; };
-  for (const x of liste) {
-    if (sonuc.has(x.y.k) || x.biz || !grup(x.y)) continue;
-    const aile = liste.filter((z) => !z.biz && !sonuc.has(z.y.k) && grup(z.y) === grup(x.y));
-    if (aile.length < 2) continue;
-    const blok = satirlar(aile.length);
-    if (blok) aile.forEach((z, i) => { kullan.add(blok[i]); sonuc.set(z.y.k, blok[i]); });
-  }
-  for (const x of liste) {
+  /* sıra (kullanıcı kuralı): önce Business hakkı olanlar (business'ta yer yoksa ekonominin EN ÖNÜ = business arkası),
+     sonra diğerleri öncelik sırasıyla; aile/grup, sırası gelen ilk üyesinde birlikte yan yana yerleşir */
+  const sira = liste.filter((x) => x.biz).concat(liste.filter((x) => !x.biz));
+  for (const x of sira) {
     if (sonuc.has(x.y.k)) continue;
+    if (!x.biz && grup(x.y)) {
+      const aile = liste.filter((z) => !z.biz && !sonuc.has(z.y.k) && grup(z.y) === grup(x.y));
+      const blok = aile.length >= 2 ? satirlar(aile.length) : null;
+      if (blok) { aile.forEach((z, i) => { kullan.add(blok[i]); sonuc.set(z.y.k, blok[i]); }); continue; }
+    }
     let k = "";
     if (x.biz) {
       /* business'ta bloke her zaman kaldırılır: boş / en son verilecek / soft / bloke eşit, en öndeki */

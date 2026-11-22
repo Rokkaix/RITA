@@ -623,7 +623,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 20.8';let SURUM_YENI=false;
+const SURUM='RITA 20.9';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -825,11 +825,11 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
     const r=rowOf(p.seat),grp=rowGrp(r).find(g=>g.includes(p.seat))||[];
     const near=grp.filter(k=>k!==p.seat&&freeBz(k)).concat(rowSeats(r).filter(freeBz)).concat(left);
     const pick=[];near.forEach(k=>{if(pick.length<n&&!pick.includes(k))pick.push(k)});p.comp=(p.comp||[]).concat(pick.map(take))});
-  /* 4) ekonomi: kalan herkes grup hâlinde, rical sırasıyla, en öndeki uygun yan yana bloğa */
-  /* upgrade hakkı olmayan ilave VIP'ler: aynı grup/PNR (aile) ise ekonomide öndeki ilk boş yan yana bloğa birlikte */
-  {const G={};P.forEach(p=>{if(p.ek&&!p.seat&&p.grupK)(G[p.grupK]=G[p.grupK]||[]).push(p)});
-   Object.values(G).forEach(L=>{if(L.length<2)return;const fr=k=>sBos(S[k])&&!son(k)&&!used.has(k),b=block(L.length,c,fr);if(b.length<L.length)return;b.forEach(take);L.forEach((p,i)=>{p.seat=b[i];p.aile=L.length})})}
-  P.forEach(p=>{const need=(p.seat?0:1)+((p.pax||1)-1-p.comp.length);if(!need)return;
+  /* 4) EKONOMİ — kullanıcı kuralı (22.11.2026): business arkası (ekonominin en önü) önce RİCALLERE:
+        a) business'taki ricalin sığmayan refakatçileri, b) ricalde adı olup upgrade hakkı olan ama business'ta yer kalmayanlar,
+        c) ricalde adı olan diğerleri (upgrade hakkı yok) — her grup kendi içinde rical sırasıyla;
+        d) en son ilave VIP'ler (aile/grup yan yana). Maiyet/koruma 5. adımda, hepsinden sonra. */
+  const ekoYer=p=>{const need=(p.seat?0:1)+((p.pax||1)-1-p.comp.length);if(!need)return;
     /* ilave VIP (ek): yalnız gerçekten boş koltuk — bloke / son verilecek verilmez */
     /* sıkı kural — ekonomide her zaman öndeki ilk uygun koltuk, kademeli:
        ilave VIP ve upgrade hakkı olmayan: YALNIZ boş koltuk (bloke ve "en son verilecek" verilmez);
@@ -838,7 +838,13 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
     const nt=D.N[keyOf(p)],eko=range(c.biz+1,c.last);let blk=[];
     for(const f of kad){const b=need===1&&!p.seat?[prefPick(eko.filter(f),nt&&nt.sp)].filter(Boolean):block(need,c,f);if(b.length>=need){blk=b;break}}
     if(!blk.length)blk=need===1&&!p.seat?[]:block(need,c,kad[kad.length-1]);if(!blk.length){if(kad.length===1)p.kadNot=1;return}blk.forEach(take);
-    if(!p.seat){p.seat=blk.shift()}p.comp=p.comp.concat(blk)});
+    if(!p.seat){p.seat=blk.shift()}p.comp=p.comp.concat(blk)};
+  const ekoGrup=p=>p.seat?0:(p.up&&!p.ek)?1:(!p.ek&&p.rank<999)?2:3;
+  P.map((p,i)=>[p,i]).sort((a,b)=>ekoGrup(a[0])-ekoGrup(b[0])||a[1]-b[1]).forEach(([p])=>{if(ekoGrup(p)<3)ekoYer(p)});
+  /* ilave VIP'ler: aynı grup/PNR (aile) ise ricallerden sonra, öndeki ilk boş yan yana bloğa birlikte */
+  {const G={};P.forEach(p=>{if(p.ek&&!p.seat&&p.grupK)(G[p.grupK]=G[p.grupK]||[]).push(p)});
+   Object.values(G).forEach(L=>{if(L.length<2)return;const fr=k=>sBos(S[k])&&!son(k)&&!used.has(k),b=block(L.length,c,fr);if(b.length<L.length)return;b.forEach(take);L.forEach((p,i)=>{p.seat=b[i];p.aile=L.length})})}
+  P.forEach(p=>{if(ekoGrup(p)===3)ekoYer(p)});
   /* 5) maiyet ve korumalar: tüm rical yolcuları yerleştikten sonra EKONOMİYE (öne yakın, yan yana).
         Bloke koltuklar ricale ayrıldığı için maiyete verilmez. Yalnız "maiyet upgrade" notu varsa business'ta yer kalırsa oraya. */
   const freeM=k=>sBos(S[k])&&!used.has(k);
