@@ -10,7 +10,7 @@
   --navy:#1d3461;--navy-ink:#ffffff;--navy-soft:#e8eef8;
   --gold:#b3202a;--gold-soft:#fbe9ea;--gold-ink:#ffffff;
   --ok:#137a4f;--ok-soft:#e3f5ec;--bad:#c2410c;--bad-soft:#fdebe2;--warn:#a15c00;--warn-soft:#fdf2df;
-  --seat:#ffffff;--seat-ink:#2f3a55;--biz:#ffffff;--biz-ink:#1d3461;--occ:#fde4e4;--occ-ink:#b42318;--blk:#3f4a5c;--blk-ink:#ffffff;
+  --seat:#ebebeb;--seat-ink:#2a2f5c;--biz:#ebebeb;--biz-ink:#2a2f5c;--occ:#fde4e4;--occ-ink:#b42318;--blk:#3f4a5c;--blk-ink:#ffffff;
   --ui:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
   color-scheme:light;
@@ -190,7 +190,7 @@ button.seatbadge{border:0;cursor:pointer}
 .srow{display:flex;align-items:center;gap:4px;justify-content:center}
 .srow .rn{width:22px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--muted)}
 .srow .aisle{width:16px}
-.seat{width:38px;height:32px;border-radius:7px 7px 4px 4px;border:0;box-shadow:inset 0 0 0 1.5px #c9cfdc;font-family:var(--mono);font-size:10px;font-weight:700;background:var(--seat);color:var(--seat-ink);padding:0}
+.seat{width:38px;height:32px;border-radius:7px 7px 4px 4px;border:0;box-shadow:inset 0 0 0 1.5px #c4c4c4;font-family:var(--mono);font-size:10px;font-weight:700;background:var(--seat);color:var(--seat-ink);padding:0}
 .srow.bz .seat{width:48px;height:36px;background:var(--biz);color:var(--biz-ink)}
 .srow.bz .mid{width:26px}
 .seat.d,.srow.bz .seat.d{background:var(--occ);color:var(--occ-ink);text-decoration:line-through;box-shadow:inset 0 0 0 1.5px #f3b4b4}
@@ -200,11 +200,15 @@ button.seatbadge{border:0;cursor:pointer}
 .seat.ghost{visibility:hidden}
 .ytab{width:100%;border-collapse:collapse;font-size:12px}.ytab th{text-align:left;font-size:10px;letter-spacing:.06em;color:var(--muted);font-weight:700;padding:4px 6px;border-bottom:1px solid var(--line)}.ytab td{padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top}.ytab tr.ri td{background:#fbf6e9}.ytab tr.dg td{color:var(--muted)}.ytab .ti{font-size:10.5px;color:var(--muted)}
 .seat.qs{text-decoration:none}
-.srow .rn.ex{color:#c62828;font-weight:800;box-shadow:inset 0 0 0 1.5px #e3a1a1;border-radius:6px}
-.qleg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:10px 0 4px}
+.srow .rn.mk{border-radius:5px;font-weight:800;height:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}.srow .rn.mk i{font-style:normal;font-size:9px;opacity:.9}
+.srow .aisle{align-self:stretch;background:#b9b3e8;margin:-2px 0}
+.seat{position:relative}.seat .sic{position:absolute;top:-3px;right:-3px;font-size:9px;line-height:1;background:#f2dc4a;color:#2a2a10;border-radius:6px;padding:1px 2px;font-family:system-ui}
+.qlg{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--muted);margin:8px 0 2px;text-transform:uppercase}
+.qleg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:2px 0 4px}
 .qleg button{display:flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card,#fff);color:var(--ink);border-radius:7px;padding:4px 5px;font-size:10.5px;font-weight:600;text-align:left;line-height:1.15;min-width:0}
 .qleg button[aria-pressed=true]{outline:2px solid var(--navy);outline-offset:1px}
-.qleg i{flex:none;display:inline-block;width:14px;height:12px;border-radius:3px}
+.qleg i{flex:none;position:relative;display:inline-flex;align-items:center;justify-content:center;width:24px;height:18px;border-radius:4px;font-style:normal;font-family:var(--mono);font-size:8.5px;font-weight:800}.qleg i em{position:absolute;top:-5px;right:-5px;font-size:7.5px;font-style:normal;background:#f2dc4a;color:#2a2a10;border-radius:4px;padding:0 1px}
+.qdet{margin:8px 0 4px;border:1px solid var(--line);border-radius:10px;padding:6px 8px}.qdet summary{font-size:12px;font-weight:700;cursor:pointer}
 .legend{display:flex;flex-wrap:wrap;gap:10px 14px;font-size:12px;color:var(--muted);margin-top:10px}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 
@@ -605,7 +609,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 19.1';let SURUM_YENI=false;
+const SURUM='RITA 19.2';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -693,10 +697,10 @@ function find(text,{corp,cat,org,limit}){const T=toks(text);let L=people().filte
 /* THY uçak tipleri (FlightStats IATA kodu). Koltuk düzenleri yaklaşık; yönetici Kabin düzeni ile düzeltir. */
 /* THY uçak tipleri (FlightStats IATA kodu). Dizilim: harfler, boşluk = koridor. bblk = business'ta kapalı orta koltuklar.
    Varsayılanlar yaklaşık; yönetici Yönetim → Uçak tipleri ve kabin düzeni bölümünden doğrular. */
-const ACT={/* THY kabinleri — dar gövde business TROYA/QC "Koltuk Görünümü"ne göre 2+2: A B | E F (C ve D yok). x: çıkış (exit) sıraları */
- '73H':{ad:'Boeing 737-800',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,x:'11 12'},'738':{ad:'Boeing 737-800',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,x:'11 12'},
- '7M8':{ad:'Boeing 737 MAX 8',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,x:'11 12'},'7M9':{ad:'Boeing 737 MAX 9',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1,x:'11 12'},
- '73J':{ad:'Boeing 737-900ER',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1,x:'11 12'},'739':{ad:'Boeing 737-900ER',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1,x:'11 12'},
+const ACT={/* THY kabinleri — dar gövde business TROYA/QC "Koltuk Görünümü"ne göre 2+2: A B | E F (C ve D yok). x: çıkış (exit), mt: motor (E), kn: kanat (W) sıraları — Quick Check-in TK2122/TK2150 (737-800) ekranından */
+ '73H':{ad:'Boeing 737-800',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,x:'11 12',mt:'7 8 9',kn:'10 13 14 15 16'},'738':{ad:'Boeing 737-800',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,x:'11 12',mt:'7 8 9',kn:'10 13 14 15 16'},
+ '7M8':{ad:'Boeing 737 MAX 8',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1},'7M9':{ad:'Boeing 737 MAX 9',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1},
+ '73J':{ad:'Boeing 737-900ER',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1},'739':{ad:'Boeing 737-900ER',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1},
  '321':{ad:'Airbus A321',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:1},'32R':{ad:'Airbus A321',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:1},
  '32Q':{ad:'Airbus A321neo',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:0},'32B':{ad:'Airbus A321',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:1},
  '320':{ad:'Airbus A320',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},'32A':{ad:'Airbus A320',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},'32N':{ad:'Airbus A320neo',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},
@@ -711,7 +715,7 @@ let TT={},TTH=null;/* yöneticinin doğruladığı tip düzenleri (ortak kayıt)
 const parseL=x=>{const l=[],a=[];String(x||'').toUpperCase().trim().split(/\s+/).forEach((g,gi)=>{if(gi)a.push(l.length);g.replace(/[^A-Z]/g,'').split('').forEach(ch=>l.push(ch))});return{l,a}};
 const ttGet=t=>{const b=ACT[t],o=Object.assign({},(D.TT||{})[t]||{},TT[t]||{});if(!b&&!o.b)return null;return Object.assign({b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,bblk:''},b||{},o)};
 function typeCfg(t){const o=ttGet(t);if(!o)return null;const pb=parseL(o.b),pe=parseL(o.e);
-  return{biz:+o.biz||0,last:Math.max((+o.biz||0)+1,+o.last||27),stub:o.stub?1:0,stag:o.stag?1:0,bl:pb.l,ba:pb.a,el:pe.l,ea:pe.a,blk:String(o.bblk||'').toUpperCase(),x:String(o.x||'').split(/[^0-9]+/).filter(Boolean).map(Number),ac:t,dog:!!o.dog,type:1}}
+  return{biz:+o.biz||0,last:Math.max((+o.biz||0)+1,+o.last||27),stub:o.stub?1:0,stag:o.stag?1:0,bl:pb.l,ba:pb.a,el:pe.l,ea:pe.a,blk:String(o.bblk||'').toUpperCase(),x:String(o.x||'').split(/[^0-9]+/).filter(Boolean).map(Number),mt:String(o.mt||'').split(/[^0-9]+/).filter(Boolean).map(Number),kn:String(o.kn||'').split(/[^0-9]+/).filter(Boolean).map(Number),ac:t,dog:!!o.dog,type:1}}
 const acCfg=t=>typeCfg(t);
 const flNo=f=>String(f).split(' ')[0];
 const acOf=f=>(D.AC||{})[flNo(f)];
@@ -723,22 +727,38 @@ const isStag=(r,l)=>{const c=cfg();if(!c.stag||r>c.biz)return false;const L=c.bl
 const exists=(r,l)=>{const c=cfg();if(c.stub&&r===c.last){const L=LET(r),a=(r<=c.biz?c.ba:c.ea)||[L.length/2],i=L.indexOf(l);if(i>=0&&i<a[0])return false}return !isBlk(r,l)&&!isStag(r,l)};
 function photo(){const s={};'1D 2A 2C 2D 2F 3A 3C 3D 3F 7B 7E 8A 8B 9A 9B 9E 9F 12A 12B 12C 12D 12E 12F'.split(' ').forEach(k=>s[k]=1);'10A 10B 11A 11B 11C 10D 11D 11E 11F 7A 7C 7D 7F 8C 8D 8F 9C 9D'.split(' ').forEach(k=>s[k]=2);return s}
 const seats=()=>D.S[D.cur]||(D.S[D.cur]={});
-/* Koltuk durumları — THY Quick Check-in "SeatMapHelp" açıklamasıyla bire bir renkler.
-   bos: ricale verilebilir · son: boş ama en son verilecek · blk: bloke (rical için açılabilir) · dolu: başka yolcu */
+/* Koltuk durumları — Quick Check-in "SeatMapHelp" (checkin.thy.com) açıklamasıyla bire bir renkler.
+   tur: bos = ricale verilir · son = boş ama en son verilir · blk = bloke (“bloke açılabilir” ile ricale) · dolu = yolcu var
+   g: paletteki grup · bd: çerçeve rengi · ic: köşe simgesi */
+const NV='#2f3a7a';
 const SST=[
- {n:0,ad:'Boş koltuk',kis:'Boş',bg:'#ffffff',fg:'#3b4257',bd:'#c9cfdc',tur:'bos'},
- {n:3,ad:'Boş koltuk (en son verilmesi gereken)',kis:'Son verilecek',bg:'#9aa1ad',fg:'#ffffff',tur:'son'},
- {n:7,ad:'Özel ücretli ön koltuk (boş)',kis:'Ücretli ön',bg:'#ffffff',fg:'#c62828',bd:'#e3a1a1',tur:'son'},
- {n:1,ad:'Check-in yapılmış koltuk',kis:'Check-in',bg:'#1d2647',fg:'#ffffff',tur:'dolu'},
- {n:4,ad:'Seçili koltuk (Soft bloke / yolcu var)',kis:'Soft bloke',bg:'#f08a24',fg:'#ffffff',tur:'blk'},
- {n:2,ad:'Bloke edilmiş (Hard / BR / T bloke)',kis:'Bloke',bg:'#3a4152',fg:'#ffffff',tur:'blk',x:1},
- {n:5,ad:'Ara bacakta dolacak koltuk',kis:'Ara bacak',bg:'#3fa34d',fg:'#ffffff',tur:'dolu'},
- {n:6,ad:'Son bacakta dolacak koltuk',kis:'Son bacak',bg:'#3aa7dc',fg:'#ffffff',tur:'dolu'},
- {n:10,ad:'Transit yolcu',kis:'Transit',bg:'#2f7f86',fg:'#ffffff',tur:'dolu'},
- {n:8,ad:'Bebekli yolcu / bebek beşiği',kis:'Bebekli',bg:'#7a4fb0',fg:'#ffffff',tur:'dolu'},
- {n:9,ad:'Tekerlekli sandalyeli yolcu',kis:'Tekerlekli',bg:'#2c63c9',fg:'#ffffff',tur:'dolu'},
- {n:11,ad:'UMNR (refakatsiz çocuk)',kis:'UMNR',bg:'#243a8c',fg:'#ffffff',tur:'dolu'},
- {n:12,ad:'İlave koltuk',kis:'İlave',bg:'#c62828',fg:'#ffffff',tur:'dolu'}];
+ {n:0,g:'Boş',ad:'Boş koltuk',kis:'Boş',bg:'#ebebeb',fg:'#2a2f5c',bd:'#c4c4c4',tur:'bos'},
+ {n:3,g:'Boş',ad:'Boş koltuk (en son verilmesi gereken)',kis:'Son verilecek',bg:'#6b6b6b',fg:'#ffffff',tur:'son'},
+ {n:7,g:'Boş',ad:'Özel ücretli ön koltuk (boş koltuk)',kis:'Ücretli ön (boş)',bg:'#ebebeb',fg:'#d01f1f',bd:'#c4c4c4',tur:'son'},
+ {n:23,g:'Boş',ad:'Az hasarlı',kis:'Az hasarlı',bg:'#ebebeb',fg:'#2a2f5c',bd:'#3fae8c',tur:'son'},
+ {n:24,g:'Boş',ad:'Penceresi olmayan koltuk',kis:'Penceresiz',bg:'#ebebeb',fg:'#2a2f5c',bd:'#3a9e4a',tur:'son'},
+ {n:1,g:'Yolcu var',ad:'Check-in yapılmış koltuk',kis:'Check-in',bg:NV,fg:'#ffffff',tur:'dolu'},
+ {n:19,g:'Yolcu var',ad:'Özel ücretli ön koltuk (check-in yapılmış veya bloke)',kis:'Ücretli ön (dolu)',bg:NV,fg:'#f2dc4a',tur:'dolu'},
+ {n:20,g:'Yolcu var',ad:'Son bacak varışlı yolcu',kis:'Son bacak varışlı',bg:'#ebebeb',fg:'#2a2f5c',bd:'#d23a3a',tur:'dolu'},
+ {n:21,g:'Yolcu var',ad:'Ara bacak varışlı yolcu',kis:'Ara bacak varışlı',bg:'#ebebeb',fg:'#2a2f5c',bd:'#2f3fd0',tur:'dolu'},
+ {n:10,g:'Yolcu var',ad:'Transit yolcu',kis:'Transit',bg:'#1f5a4f',fg:'#ffffff',tur:'dolu'},
+ {n:8,g:'Yolcu var',ad:'Bebekli yolcu',kis:'Bebekli',bg:NV,fg:'#ffffff',ic:'👶',tur:'dolu'},
+ {n:17,g:'Yolcu var',ad:'Bebek bassinet (beşik)',kis:'Bassinet',bg:'#74418f',fg:'#ffffff',tur:'dolu'},
+ {n:18,g:'Yolcu var',ad:'Petc – canlı hayvan ile seyahat eden yolcu',kis:'Petc',bg:NV,fg:'#ffffff',ic:'🐾',tur:'dolu'},
+ {n:9,g:'Yolcu var',ad:'Tekerlekli sandalyeli yolcu',kis:'Tekerlekli',bg:NV,fg:'#ffffff',ic:'♿',tur:'dolu'},
+ {n:11,g:'Yolcu var',ad:'UMNR (refakatsiz çocuk yolcu) koltuk',kis:'UMNR',bg:NV,fg:'#ffffff',ic:'UM',tur:'dolu'},
+ {n:12,g:'Yolcu var',ad:'İlave koltuk',kis:'İlave',bg:'#86161b',fg:'#ffffff',tur:'dolu'},
+ {n:5,g:'Yolcu var',ad:'Ara bacakta dolacak koltuk (ara bacak varışlı yolcular için)',kis:'Ara bacakta dolacak',bg:'#3d8f22',fg:'#ffffff',tur:'dolu'},
+ {n:6,g:'Yolcu var',ad:'Son bacakta dolacak koltuk (son bacak varışlı yolcular için)',kis:'Son bacakta dolacak',bg:'#2f8fc4',fg:'#ffffff',tur:'dolu'},
+ {n:22,g:'Yolcu var',ad:'Çok hasarlı',kis:'Çok hasarlı',bg:NV,fg:'#ffffff',bd:'#d8435e',tur:'dolu'},
+ {n:4,g:'Bloke',ad:'Seçili koltuk (Soft bloke / yolcu var)',kis:'Soft bloke',bg:'#df7a1e',fg:'#ffffff',tur:'blk'},
+ {n:2,g:'Bloke',ad:'Bloke edilmiş (Hard bloke / yolcu var)',kis:'Hard bloke',bg:'#111111',fg:'#ffffff',tur:'blk'},
+ {n:13,g:'Bloke',ad:'Bloke edilmiş (BR bloke / yolcu yok)',kis:'BR bloke',bg:'#2a2a2a',fg:'#ffffff',tur:'blk'},
+ {n:14,g:'Bloke',ad:'Bloke edilmiş (BR row bloke / yolcu yok)',kis:'BR row bloke',bg:'#2a2a2a',fg:'#ffffff',bd:'#9a9a9a',tur:'blk'},
+ {n:15,g:'Bloke',ad:'Bloke edilmiş (T bloke / yolcu yok)',kis:'T bloke',bg:'#1f5856',fg:'#ffffff',tur:'blk'},
+ {n:16,g:'Bloke',ad:'Bloke edilmiş (ZetBlocked)',kis:'ZetBlocked',bg:'#5e5f12',fg:'#ffffff',tur:'blk'}];
+/* sıra işaretleri (Quick Check-in kenar harfleri) */
+const SMK={E:{ad:'Motor',bg:'#c9c43a',fg:'#2a2a10'},W:{ad:'Kanat',bg:'#55585f',fg:'#ffffff'},X:{ad:'Çıkış',bg:'#8f2f1c',fg:'#ffffff'}};
 const SSN={};SST.forEach(x=>SSN[x.n]=x);
 const sTur=v=>(SSN[v||0]||SSN[1]).tur;
 /* ricale verilebilir mi: boş/son verilecek; bloke yalnız "bloke açılabilir" açıkken */
@@ -871,12 +891,12 @@ function paxHtml(){const O=ordered();if(!O.length)return'<p class="empty">Bu sef
     const n=p.pax||1;
     h+='<div class="li"><span class="ord">'+(i+1)+'</span>'+rkHtml(p.rank,p.o)+'<span class="tx"><button type="button" class="hit" data-a="pax" data-id="'+p.id+'"><span class="nm">'+esc(p.n)+'</span>'+(c9of(p)?' <span class="tag c9">CIC90 '+esc(c9of(p))+'</span>':'')+(p.sub?'<br><span class="ti">'+esc(p.sub)+'</span>':'')+'<div class="why '+(any?p.wc:p.up?'y':'n')+'">'+esc(any?p.why:(p.up?'Upgrade hakkı: '+p.up:'Upgrade hakkı yok'))+'</div>'+(any&&p.ms&&p.ms.length||p.mai?'<div class="comp">'+(p.mtur||'Maiyet/koruma')+' ('+(p.mai||0)+'): <b>'+esc((p.ms||[]).join(' · ')||'—')+'</b>'+(p.mnote?' · '+esc(p.mnote):'')+'</div>':'')+((p.bagDev||(p.bagEt||[]).length||p.bag)?'<div class="fnote"><b>BAGAJ</b> '+esc(bagSonMetin(p,D.cur))+((p.bagEt||[]).length?' · '+esc(p.bagEt.join(', ')):'')+(p.bag?' · '+esc(p.bag):'')+'</div>':'')+(any&&p.comp&&p.comp.length?'<div class="comp">Refakat: <b>'+esc(p.comp.join(' · '))+'</b> · '+esc(p.cnote)+'</div>':any&&p.cnote?'<div class="why w">'+esc(p.cnote)+'</div>':'')+(c=>c?'<div class="chw"><b>GÖREV DEĞİŞİKLİĞİ</b> '+esc(fmtD(c.tarih))+' · '+esc(c.makam)+(nk(c.eski||'')===nk(p.n)?' görevinden ayrıldı'+(c.yeni?' (yerine '+esc(c.yeni)+')':''):' görevine geldi')+'</div>':'')(chFor(p.n)[0])+noteLine(p.n)+(p.fn?'<div class="fnote"><b>UÇUŞ NOTU</b> '+esc(p.fn)+'</div>':'')+'</button>'+pxOzet(p,n)+'</span><button type="button" class="seatbadge'+(p.seat?(p.cab==='E'?' e':''):' none')+(window._sw===p.id?' sel':'')+'" data-a="swapSel" data-id="'+p.id+'" aria-label="Koltuğu değiştir">'+esc(p.seat||'—')+'</button></div>'});
   return h}
-function qLegend(){const f=window._fr==null?'':String(window._fr);return'<div class="qleg" role="group" aria-label="Koltuk durumu seç">'+SST.map(x=>'<button type="button" data-a="firca" data-k="'+x.n+'" aria-pressed="'+(f===String(x.n))+'" title="'+esc(x.ad)+'"><i style="background:'+x.bg+(x.bd?';box-shadow:inset 0 0 0 1.5px '+x.bd:';')+'"></i>'+esc(x.kis)+'</button>').join('')+'</div>'+(f!==''?'<p class="note" style="margin:2px 0 6px">Seçili renk: <b>'+esc((SSN[+f]||{}).ad||'')+'</b> — koltuklara dokunun. Bitirince aynı renge tekrar basın.</p>':'')}
+function qLegend(){const f=window._fr==null?'':String(window._fr),cur=f!==''?SSN[+f]:null;return'<details class="qdet"'+(cur?' open':'')+'><summary>🎨 Koltuk rengi seç (Quick Check-in renkleri)'+(cur?' · <b>'+esc(cur.kis)+'</b>':'')+'</summary>'+['Boş','Yolcu var','Bloke'].map(g=>'<div class="qlg">'+g+'</div><div class="qleg" role="group" aria-label="'+g+'">'+SST.filter(x=>x.g===g).map(x=>'<button type="button" data-a="firca" data-k="'+x.n+'" aria-pressed="'+(f===String(x.n))+'" title="'+esc(x.ad)+'"><i style=\"background:'+x.bg+';color:'+x.fg+(x.bd?';box-shadow:inset 0 0 0 2px '+x.bd:'')+'\">1A'+(x.ic?'<em>'+x.ic+'</em>':'')+'</i>'+esc(x.kis)+'</button>').join('')+'</div>').join('')+'</details>'+(f!==''?'<p class="note" style="margin:2px 0 6px">Seçili renk: <b>'+esc((SSN[+f]||{}).ad||'')+'</b> — koltuklara dokunun. Bitirince aynı renge tekrar basın.</p>':'')}
 function cabinHtml(){const S=seats(),c=cfg(),as={},a2={};ordered().forEach((p,i)=>{if(p.seat)as[p.seat]=i+1;(p.comp||[]).forEach(k=>a2[k]=i+1);(p.ms||[]).forEach(k=>a2[k]=i+1)});const swS=window._sw&&findP(window._sw)?findP(window._sw).seat:null;
   let h='<div class="cabin"><div class="cab-lbl">BUSINESS</div>';
-  for(let r=1;r<=c.last;r++){if(r===c.biz+1)h+='<div class="cab-lbl">EKONOMİ</div>';const L=LET(r),bz=r<=c.biz;const ex=(c.x||[]).includes(r),rn='<span class="rn'+(ex?' ex':'')+'"'+(ex?' title="Çıkış (exit) sırası"':'')+'>'+r+'</span>';h+='<div class="srow'+(bz?' bz':'')+'">'+rn;
+  for(let r=1;r<=c.last;r++){if(r===c.biz+1)h+='<div class="cab-lbl">EKONOMİ</div>';const L=LET(r),bz=r<=c.biz;const ex=(c.x||[]).includes(r),mk=ex?'X':(c.mt||[]).includes(r)?'E':(c.kn||[]).includes(r)?'W':'',M=SMK[mk],rn='<span class="rn'+(M?' mk':'')+'"'+(M?' style="background:'+M.bg+';color:'+M.fg+'" title="'+M.ad+'"':'')+'>'+(M?'<i>'+mk+'</i>':'')+r+'</span>';h+='<div class="srow'+(bz?' bz':'')+'">'+rn;
     L.forEach((l,i)=>{if(aisleAt(r,i,L))h+='<span class="aisle'+(bz?' mid':'')+'"></span>';const k=r+l;if(!exists(r,l)){h+=isBlk(r,l)?'<span class="seat k" title="Kapalı orta koltuk" aria-label="'+k+' kapalı">✕</span>':'<span class="seat ghost"></span>';return}const st=S[k]||0;
-      const sd=st?SSN[st]||SSN[1]:null;h+='<button type="button" class="seat'+(as[k]?' a':a2[k]?' a2':st?' qs':'')+(k===swS?' sel':'')+'"'+(!as[k]&&!a2[k]&&sd?' style="background:'+sd.bg+';color:'+sd.fg+(sd.bd?';box-shadow:inset 0 0 0 1.5px '+sd.bd:'')+'"':'')+' data-a="seat" data-k="'+k+'" aria-label="'+k+(sd?' '+esc(sd.kis):'')+'" title="'+k+(sd?' · '+esc(sd.ad):'')+'">'+(as[k]?'#'+as[k]:a2[k]?'+'+a2[k]:k)+'</button>'});
+      const sd=st?SSN[st]||SSN[1]:null;h+='<button type="button" class="seat'+(as[k]?' a':a2[k]?' a2':st?' qs':'')+(k===swS?' sel':'')+'"'+(!as[k]&&!a2[k]&&sd?' style="background:'+sd.bg+';color:'+sd.fg+(sd.bd?';box-shadow:inset 0 0 0 2px '+sd.bd:ex?';box-shadow:inset 0 0 0 2px #d9822b':'')+'"':ex&&!as[k]&&!a2[k]?' style="box-shadow:inset 0 0 0 2px #d9822b"':'')+' data-a="seat" data-k="'+k+'" aria-label="'+k+(sd?' '+esc(sd.kis):'')+'" title="'+k+(sd?' · '+esc(sd.ad):'')+'">'+(as[k]?'#'+as[k]:a2[k]?'+'+a2[k]:k)+(sd&&sd.ic&&!as[k]&&!a2[k]?'<span class="sic">'+sd.ic+'</span>':'')+'</button>'});
     h+=rn+'</div>'}
   return h+'</div>'}
 function acLine(){const t=acOf(D.cur),c=cfg(),a=c.ac&&ACT[c.ac];
@@ -894,7 +914,7 @@ function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 clas
   '<div class="stats" style="margin-top:10px"><div class="stat"><b>'+n.bf+'/'+n.bt+'</b><span>Business boş</span></div><div class="stat"><b>'+n.ef+'/'+n.et+'</b><span>Ekonomi boş</span></div><div class="stat"><b>'+ppl().reduce((s,p)=>s+(p.pax||1),0)+'</b><span>Listedeki kişi</span></div></div></section>'+
   '<section class="panel"><h2 class="h">YOLCU EKLE</h2><input class="field" id="q-add" data-q="add" placeholder="İsim, unvan veya kurum yazın" value="'+esc(q.add)+'" autocomplete="off"><div id="res">'+resHtml()+'</div><p class="note">Türkçe/İngilizce harf fark etmez. <button class="btn sm" data-a="manual" type="button">Listede yok, elle ekle</button></p></section>'+
   '<section class="panel"><h2 class="h">RİCAL SIRASI VE KOLTUKLAR</h2><div id="pax">'+paxHtml()+'</div>'+(ppl().length?'<div class="row-btns" style="margin-top:12px"><button class="btn gold" data-a="assign" type="button">Koltuk ata</button><button class="btn" data-a="yazdir" type="button">Yazdır / PDF</button><button class="btn" data-a="copy" type="button">Özeti kopyala</button><button class="btn dng" data-a="clearAll" type="button">Listeyi temizle</button></div>':'')+'<p class="note">Liste rical sırasındadır: en üstte en yüksek rical. Business ve ekonomi ayrı ayrı, en önden başlayarak ve boşluk bırakmadan doldurulur (1A, 1B, 1E, 1F, 2A…; ekonomide 5A, 5B, 5C…). Ailesiyle uçan yolcunun kişi sayısını artırın. ▲ ▼ ile sırayı elle değiştirin. İki yolcunun yerini değiştirmek için önce birinin koltuğuna, sonra diğerininkine dokunun.</p>'+ucAtamaHtml()+'</section>'+ylHtml()+
-  '<section class="panel"><h2 class="h">KOLTUK HARİTASI<span class="sp"></span>'+'<button class="btn sm pri" data-a="ocrOpen" type="button">Fotoğraftan doldur</button><button class="btn sm pri" data-a="opxOpen" type="button">Yolcu listesinden rical bul</button>'+(OLAST&&OLAST.cur===D.cur?'<button class="btn sm" data-a="ocrLast" type="button">Okunanı göster</button>':'')+adm('<button class="btn sm" data-a="cabinCfg" type="button">Kabin düzeni</button>')+'</h2>'+qLegend()+'<div class="cabin-scroll">'+cabinHtml()+'</div><div class="legend"><span><i style="background:var(--gold)"></i>Rical yolcusu (#sıra)</span><span><i style="background:#f2b8bc"></i>Refakat / maiyet (+sıra)</span><span><i style="background:#fff;box-shadow:inset 0 0 0 1.5px #e3a1a1"></i><b style="color:#c62828">Kırmızı sıra no</b>&nbsp;= çıkış (exit) sırası</span>'+SST.map(x=>'<span><i style="background:'+x.bg+(x.bd?';box-shadow:inset 0 0 0 1.5px '+x.bd:'')+'"></i>'+esc(x.ad)+'</span>').join('')+''+'<label style="display:flex;gap:6px;align-items:center;width:100%;margin-top:4px"><input type="checkbox" data-a="useBlk" '+(D.useBlk!==0?'checked':'')+'> Bloke koltuklar açılabilir (sıradaki koltuk blokeyse rical yolcusu oraya yerleşir; “bloke açılmalı” uyarısı çıkar)</label></div>'+'<p class="note"><b>Koltuk işaretleme:</b> Renkler THY Quick Check-in koltuk açıklamasıyla (SeatMapHelp) aynıdır. <b>Üstteki renklerden birini seçip</b> koltuklara dokunun: koltuk o duruma geçer, aynı renkle ikinci dokunuş boşaltır. Renk seçili değilken bir dokunuş → Check-in yapılmış, iki dokunuş → Bloke, üç dokunuş → boş. Ricale yalnız <b>boş</b> koltuk verilir; <b>en son verilecek</b> ve <b>özel ücretli ön</b> koltuklar en sona kalır; bloke ve soft bloke koltuklar “Bloke koltuklar açılabilir” işaretliyse kullanılır. Ara bacak / son bacak / transit / bebekli / tekerlekli / UMNR / ilave koltuklar doludur.</p></section>'+legal()}
+  '<section class="panel"><h2 class="h">KOLTUK HARİTASI<span class="sp"></span>'+'<button class="btn sm pri" data-a="ocrOpen" type="button">Fotoğraftan doldur</button><button class="btn sm pri" data-a="opxOpen" type="button">Yolcu listesinden rical bul</button>'+(OLAST&&OLAST.cur===D.cur?'<button class="btn sm" data-a="ocrLast" type="button">Okunanı göster</button>':'')+adm('<button class="btn sm" data-a="cabinCfg" type="button">Kabin düzeni</button>')+'</h2>'+qLegend()+'<div class="cabin-scroll">'+cabinHtml()+'</div><div class="legend"><span><i style="background:var(--gold)"></i>Rical yolcusu (#sıra)</span><span><i style="background:#f2b8bc"></i>Refakat / maiyet (+sıra)</span>'+Object.keys(SMK).map(k=>'<span><i style="background:'+SMK[k].bg+'"></i><b>'+k+'</b>&nbsp;'+SMK[k].ad+'</span>').join('')+'<span><i style="background:#b9b3e8"></i>Koridor</span><span><i style="background:#ebebeb;box-shadow:inset 0 0 0 2px #d9822b"></i>Exit koltuk (diz mesafeli)</span>'+SST.map(x=>'<span><i style="background:'+x.bg+(x.bd?';box-shadow:inset 0 0 0 1.5px '+x.bd:'')+'"></i>'+esc(x.ad)+'</span>').join('')+''+'<label style="display:flex;gap:6px;align-items:center;width:100%;margin-top:4px"><input type="checkbox" data-a="useBlk" '+(D.useBlk!==0?'checked':'')+'> Bloke koltuklar açılabilir (sıradaki koltuk blokeyse rical yolcusu oraya yerleşir; “bloke açılmalı” uyarısı çıkar)</label></div>'+'<p class="note"><b>Koltuk işaretleme:</b> Renkler Quick Check-in koltuk açıklamasıyla (SeatMapHelp) aynıdır; sıra numarasının yanındaki E / W / X Quick Check-in’deki gibi motor, kanat ve çıkış sıralarıdır. <b>Üstteki renklerden birini seçip</b> koltuklara dokunun: koltuk o duruma geçer, aynı renkle ikinci dokunuş boşaltır. Renk seçili değilken bir dokunuş → Check-in yapılmış, iki dokunuş → Bloke, üç dokunuş → boş. Ricale yalnız <b>boş</b> koltuk verilir; <b>en son verilecek</b> ve <b>özel ücretli ön</b> koltuklar en sona kalır; bloke ve soft bloke koltuklar “Bloke koltuklar açılabilir” işaretliyse kullanılır. “Yolcu var” grubundaki koltuklar doludur.</p></section>'+legal()}
 function segHtml(key,opts){return'<div class="seg">'+opts.map(([k,l])=>'<button type="button" data-a="seg" data-t="'+key+'" data-k="'+k+'" aria-pressed="'+(seg[key]===k)+'">'+l+'</button>').join('')+'</div>'}
 function personList(R,key){window['_pl_'+key]=R.list;return'<p class="note" style="margin:0 0 4px">'+R.n+' kayıt · rical sırasına göre</p>'+(R.list.map((x,i)=>'<button type="button" class="li" data-a="person" data-k="'+key+'" data-i="'+i+'">'+rkHtml(x.r,x.o)+'<span class="tx"><span class="nm">'+esc(x.n)+'</span><br><span class="ti">'+esc(x.t)+'</span>'+(x.u?'<div class="why y">Upgrade: '+esc(x.u)+'</div>':'')+noteLine(x.n)+'</span>'+tagsHtml(x)+'</button>').join('')||'<p class="empty">Bu aramayla eşleşen kayıt yok.</p>')+(R.n>R.list.length?'<div style="padding-top:10px"><button class="btn" data-a="more" data-k="'+key+'" type="button">Daha fazla göster</button></div>':'')}
 function riList(){return personList(find(q.ri,{corp:0,cat:riCat,limit:lim.ri}),'ri')}
@@ -1479,10 +1499,10 @@ const A={
   '<label class="lbl" for="t-z">Business sıra sayısı</label><input class="field" id="t-z" type="number" min="0" max="15" value="'+esc(o.biz)+'">'+
   '<label class="lbl" for="t-e">Ekonomi dizilimi (örn. ABC DEF · ABC DEF HJK)</label><input class="field mono" id="t-e" value="'+esc(o.e)+'" autocapitalize="characters">'+
   '<label class="lbl" for="t-l">Son sıra numarası</label><input class="field" id="t-l" type="number" min="2" max="70" value="'+esc(o.last)+'">'+
-  '<label class="lbl" for="t-x">Çıkış (exit) sıraları (örn. 11 12)</label><input class="field mono" id="t-x" value="'+esc(o.x||'')+'" inputmode="numeric">'+'<label class="lbl"><input type="checkbox" id="t-s" '+(o.stub?'checked':'')+'> Son sırada yalnızca sağ taraf (D-E-F) var</label><label class="lbl"><input type="checkbox" id="t-g" '+(o.stag?'checked':'')+'> Business zikzak (1-2-1): tek sıralarda ortadaki iki koltuk, çift sıralarda dıştaki iki koltuk</label>'+
+  '<label class="lbl" for="t-x">Çıkış (X) sıraları (örn. 11 12)</label><input class="field mono" id="t-x" value="'+esc(o.x||'')+'" inputmode="numeric">'+'<label class="lbl" for="t-mt">Motor (E) sıraları (örn. 7 8 9)</label><input class="field mono" id="t-mt" value="'+esc(o.mt||'')+'" inputmode="numeric">'+'<label class="lbl" for="t-kn">Kanat (W) sıraları (örn. 10 13 14 15 16)</label><input class="field mono" id="t-kn" value="'+esc(o.kn||'')+'" inputmode="numeric">'+'<label class="lbl"><input type="checkbox" id="t-s" '+(o.stub?'checked':'')+'> Son sırada yalnızca sağ taraf (D-E-F) var</label><label class="lbl"><input type="checkbox" id="t-g" '+(o.stag?'checked':'')+'> Business zikzak (1-2-1): tek sıralarda ortadaki iki koltuk, çift sıralarda dıştaki iki koltuk</label>'+
   '<div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="ttSave" data-k="'+esc(t)+'" type="button">Doğrula ve kaydet</button>'+(TT[t]||(D.TT||{})[t]?'<button class="btn" data-a="ttReset" data-k="'+esc(t)+'" type="button">Varsayılana dön</button>':'')+'</div>')},
  async ttSave(d){const t=d.k,clean=v=>String(v||'').toUpperCase().replace(/[^A-Z ]/g,'').replace(/\s+/g,' ').trim();
-  const o={b:clean($('t-b').value),bblk:clean($('t-k').value).replace(/ /g,''),biz:Math.max(0,Math.min(15,parseInt($('t-z').value)||0)),e:clean($('t-e').value),last:Math.max(2,Math.min(70,parseInt($('t-l').value)||27)),stub:$('t-s').checked?1:0,stag:$('t-g').checked?1:0,x:String($('t-x').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),dog:true,ad:(ACT[t]||{}).ad||t,tarih:new Date().toISOString().slice(0,10)};
+  const o={b:clean($('t-b').value),bblk:clean($('t-k').value).replace(/ /g,''),biz:Math.max(0,Math.min(15,parseInt($('t-z').value)||0)),e:clean($('t-e').value),last:Math.max(2,Math.min(70,parseInt($('t-l').value)||27)),stub:$('t-s').checked?1:0,stag:$('t-g').checked?1:0,x:String($('t-x').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),mt:String($('t-mt').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),kn:String($('t-kn').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),dog:true,ad:(ACT[t]||{}).ad||t,tarih:new Date().toISOString().slice(0,10)};
   if(!o.b||!o.e)return toast('Business ve ekonomi dizilimini yazın');if(o.last<=o.biz)return toast('Son sıra, business sıra sayısından büyük olmalı');
   let shared=false;if(TTH){try{await TTH.doc(t).set(o);shared=true}catch(e){}}
   D.TT=D.TT||{};D.TT[t]=o;TT[t]=o;reassign();save();closeSheet();render();toast(shared?'Kabin düzeni kaydedildi; tüm cihazlarda geçerli':'Kabin düzeni bu cihazda kaydedildi')},

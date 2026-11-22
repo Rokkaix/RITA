@@ -829,7 +829,7 @@
    "last": 23,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "320": {
    "ad": "Airbus A320",
@@ -841,7 +841,7 @@
    "last": 27,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "321": {
    "ad": "Airbus A321",
@@ -853,7 +853,7 @@
    "last": 32,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "333": {
    "ad": "Airbus A330-300",
@@ -887,8 +887,10 @@
    "last": 27,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
-   "x": "11 12"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
+   "x": "11 12",
+   "mt": "7 8 9",
+   "kn": "10 13 14 15 16"
   },
   "739": {
    "ad": "Boeing 737-900ER",
@@ -900,8 +902,7 @@
    "last": 30,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
-   "x": "11 12"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "789": {
    "ad": "Boeing 787-9",
@@ -924,7 +925,7 @@
    "last": 27,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "32N": {
    "ad": "Airbus A320neo",
@@ -936,7 +937,7 @@
    "last": 27,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "32Q": {
    "ad": "Airbus A321neo",
@@ -959,7 +960,7 @@
    "last": 32,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "73H": {
    "ad": "Boeing 737-800",
@@ -971,8 +972,10 @@
    "last": 27,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
-   "x": "11 12"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
+   "x": "11 12",
+   "mt": "7 8 9",
+   "kn": "10 13 14 15 16"
   },
   "73J": {
    "ad": "Boeing 737-900ER",
@@ -984,8 +987,7 @@
    "last": 30,
    "stub": 1,
    "tarih": "2026-11-22",
-   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
-   "x": "11 12"
+   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "77W": {
    "ad": "Boeing 777-300ER",
@@ -1009,8 +1011,7 @@
    "e": "ABC DEF",
    "last": 27,
    "stub": 1,
-   "tarih": "2026-11-16",
-   "x": "11 12"
+   "tarih": "2026-11-16"
   },
   "7M9": {
    "ad": "Boeing 737 MAX 9",
@@ -1021,8 +1022,7 @@
    "e": "ABC DEF",
    "last": 30,
    "stub": 1,
-   "tarih": "2026-11-16",
-   "x": "11 12"
+   "tarih": "2026-11-16"
   }
  },
  "hatlar": {},
