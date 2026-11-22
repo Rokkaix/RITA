@@ -71,6 +71,7 @@ td{border-bottom:1px solid var(--line);padding:6px;vertical-align:top}
 .kt.bloke::after,.kt.soft::after{content:"🔒";position:absolute;left:-4px;bottom:-5px;font-size:9px;line-height:1;filter:drop-shadow(0 0 1px #fff)}
 .kt.yeni{background:var(--vip);color:#1d1600;box-shadow:none}
 .kt.eski{background:var(--bos);color:#98a2b3;box-shadow:inset 0 0 0 1px #c4c4c4;text-decoration:line-through}
+.upy{color:#067647;font-weight:700}
 .blkac{display:inline-block;margin-left:4px;font-size:11px;font-weight:700;color:var(--warn)}
 .kt b{position:absolute;top:-6px;right:-6px;background:var(--oneri);color:#fff;border-radius:8px;font-size:9px;padding:0 4px}
 .lejant{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-top:8px}
@@ -112,7 +113,7 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:10px}
     </div>
     <div id="oneriNot"></div>
     <div class="tablo"><table>
-      <thead><tr><th>Sıra</th><th>Yolcu</th><th>Şu an</th><th>Öneri</th><th>Check-in</th><th>VIP notu</th></tr></thead>
+      <thead><tr><th>Sıra</th><th>Yolcu</th><th>Şu an</th><th>Öneri</th><th>Check-in</th><th>Upgrade notu</th><th>VIP notu</th></tr></thead>
       <tbody id="vipGovde"></tbody>
     </table></div>
     <p class="not">Öneriler yalnızca öneridir. Quick Check'e hiçbir şey yazılmaz; koltukları siz değiştirirsiniz.</p>
@@ -325,7 +326,7 @@ function kuralBul(not) {
 const oncelik = (not) => { const k = kuralBul(not); return k ? +k.oncelik : Infinity; };
 function sirali(U) {
   return U.sira.map((k, i) => ({ y: U.yolcular.get(k), i })).filter((x) => x.y)
-    .map((x) => { const k = kuralBul(x.y.not); return Object.assign(x, { p: k ? +k.oncelik : Infinity, biz: !!(k && k.biz) }); })
+    .map((x) => { const k = kuralBul(x.y.not); return Object.assign(x, { p: k ? +k.oncelik : Infinity, biz: !!(k && k.biz), kural: k ? k.kelime : "" }); })
     .sort((a, b) => a.p - b.p || a.i - b.i);
 }
 
@@ -403,11 +404,11 @@ function ucusSecCiz() {
 function vipCiz() {
   const g = $("vipGovde"), not = $("oneriNot"); bosalt(g); bosalt(not);
   const U = UCUSLAR.get(secili);
-  if (!U) { $("vipSay").textContent = ""; g.append(el("tr", {}, el("td", { colspan: 6, class: "not", text: "Uçuş seçilmedi." }))); return null; }
+  if (!U) { $("vipSay").textContent = ""; g.append(el("tr", {}, el("td", { colspan: 7, class: "not", text: "Uçuş seçilmedi." }))); return null; }
   const L = sirali(U), O = oneriler(U, L);
   $("vipSay").textContent = L.length + " VIP";
   if (!O.veriVar) not.append(el("div", { class: "uyari sari", text: "Koltuk haritası okunmadı: öneriler yalnız sıraya göre, koltuğun boş olduğu doğrulanmadan verildi." }));
-  if (!L.length) g.append(el("tr", {}, el("td", { colspan: 6, class: "not", text: "Bu uçuşta VIP yolcu okunmadı." })));
+  if (!L.length) g.append(el("tr", {}, el("td", { colspan: 7, class: "not", text: "Bu uçuşta VIP yolcu okunmadı." })));
   L.forEach((x, i) => {
     const y = x.y, o = O.sonuc.get(y.k);
     g.append(el("tr", {},
@@ -416,6 +417,7 @@ function vipCiz() {
       el("td", { class: "mono", text: y.koltuk || "—" }),
       el("td", {}, !o ? el("span", { class: "not", text: "boş koltuk yok" }) : o === y.koltuk ? el("span", { class: "ayni", text: "yerinde kalsın" }) : el("span", {}, el("span", { class: "oneri mono", title: (i + 1) + ". sıra → " + o, text: "→ " + o }), O.blk.has(o) ? el("span", { class: "blkac", text: "🔒 bloke kaldırılmalı" }) : null)),
       el("td", {}, el("span", { class: "etiket " + (y.ci ? "ci" : "yok"), text: y.ci ? "yapıldı" : "yok" })),
+      el("td", { class: "not" }, x.biz ? el("span", { class: "upy", text: "⬆ Business hakkı (kural: " + x.kural + ") · kontrol sizde" }) : el("span", { text: x.kural ? "⬇ Business hakkı yok (kural: " + x.kural + ") · ekonomi" : "⬇ Kural yok · ekonomi" })),
       el("td", { class: "not", text: y.not })
     ));
   });
