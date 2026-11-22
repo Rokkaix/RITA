@@ -65,6 +65,7 @@ td{border-bottom:1px solid var(--line);padding:6px;vertical-align:top}
 .kt.bos-son{background:var(--son);color:#fff;box-shadow:none}
 .kt.dolu{background:var(--dolu);color:#fff;box-shadow:none}
 .kt.bloke{background:var(--bloke);color:#fff;box-shadow:none}
+.kt.soft{background:#df7a1e;color:#fff;box-shadow:none}
 .kt.vip{background:var(--vip);color:#1d1600;box-shadow:none}
 .kt.on{outline:3px solid var(--oneri);outline-offset:1px}
 .kt b{position:absolute;top:-6px;right:-6px;background:var(--oneri);color:#fff;border-radius:8px;font-size:9px;padding:0 4px}
@@ -125,6 +126,7 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:10px}
       <span><i style="background:var(--son)"></i>Boş (en son verilecek)</span>
       <span><i style="background:var(--dolu)"></i>Dolu</span>
       <span><i style="background:var(--bloke)"></i>Bloke</span>
+      <span><i style="background:#df7a1e"></i>Soft bloke</span>
       <span><i style="background:var(--vip)"></i>VIP (şu anki koltuğu)</span>
       <span><i style="background:#fff;outline:2px solid var(--oneri)"></i>Öneri</span>
       <span><i style="background:repeating-linear-gradient(45deg,#f2f2f2,#f2f2f2 3px,#e0e0e0 3px,#e0e0e0 6px)"></i>Okunmadı</span>
@@ -198,6 +200,7 @@ let KURALLAR = VARSAYILAN_KURALLAR.map((k) => Object.assign({}, k));
 /* Uçak tipi düzenleri (yönetici değiştirebilir). Harf grupları arasındaki boşluk = koridor. */
 const DUZENLER = {
   "737-800": { biz: 4, b: "AB EF", e: "ABC DEF", son: 27 },
+  "A321 (32R, Quick Check TK2246)": { biz: 4, b: "AB EF", e: "ABC DEF", son: 33, atla: "5", yok: "8A 8F 21A 21F" },
   "737 MAX 9 / 737-900": { biz: 4, b: "AB EF", e: "ABC DEF", son: 30 },
   "A321": { biz: 5, b: "AB EF", e: "ABC DEF", son: 32 },
   "A320": { biz: 5, b: "AB EF", e: "ABC DEF", son: 27 },
@@ -208,7 +211,7 @@ let DUZEN = Object.assign({}, DUZENLER["737-800"]);
 /* ============================ Doğrulama ============================ */
 const TURLER = new Set(["merhaba", "tam", "fark", "nabiz", "baglantiKoptu", "kapandi"]);
 const FARK_TIPLERI = new Set(["eklendi", "cikti", "koltuk", "checkin", "not", "sinif", "sira", "koltukDurum"]);
-const KOLTUK_DURUM = new Set(["bos", "bos-son", "dolu", "bloke", "bilinmiyor", ""]);
+const KOLTUK_DURUM = new Set(["bos", "bos-son", "dolu", "bloke", "soft", "bilinmiyor", ""]);
 const kKoltuk = (s) => s === "" || /^\d{1,2}[A-K]$/.test(s);
 const kStr = (s, n) => typeof s === "string" && s.length <= n;
 function yolcuGecerli(y) {
@@ -315,12 +318,15 @@ function sirali(U) {
 }
 
 /* ============================ Koltuk düzeni ve öneri ============================ */
+const atlaSet = () => new Set(String(DUZEN.atla || "").split(/[^0-9]+/).filter(Boolean).map(Number));
+const yokSet = () => new Set(String(DUZEN.yok || "").toUpperCase().split(/[^0-9A-K]+/).filter(Boolean));
 const harfGrup = (s) => String(s || "").toUpperCase().replace(/[^A-K ]/g, "").trim().split(/\s+/).filter(Boolean);
 function koltukSirasi() {
   const L = [];
   for (let r = 1; r <= DUZEN.son; r++) {
+    if (atlaSet().has(r)) continue;
     const gruplar = harfGrup(r <= DUZEN.biz ? DUZEN.b : DUZEN.e);
-    for (const g of gruplar) for (const h of g) L.push({ k: r + h, biz: r <= DUZEN.biz });
+    for (const g of gruplar) for (const h of g) if (!yokSet().has(r + h)) L.push({ k: r + h, biz: r <= DUZEN.biz });
   }
   return L;
 }
@@ -333,7 +339,9 @@ function oneriler(U, liste) {
   const sonra = (k) => !vipKoltuk.has(k) && U.koltuklar[k] === "bos-son";
   const aday = hepsi.filter((s) => uygun(s.k)).concat(hepsi.filter((s) => sonra(s.k)));
   const kullan = new Set(), sonuc = new Map();
+  for (const x of liste) if (!Number.isFinite(x.p) && x.y.koltuk) { kullan.add(x.y.koltuk); sonuc.set(x.y.k, x.y.koltuk); }
   for (const x of liste) {
+    if (sonuc.has(x.y.k)) continue;
     /* business yalnız kuralında "Business" işaretli olanlara (maiyet / görevli / kuralı olmayan → ekonomi) */
     const s = aday.find((s) => !kullan.has(s.k) && (x.biz || !s.biz));
     if (!s) { sonuc.set(x.y.k, ""); continue; }
@@ -390,12 +398,15 @@ function kabinCiz(V) {
   const U = V && V.U, vipNo = new Map(), oneriNo = new Map();
   if (V) V.L.forEach((x, i) => { if (x.y.koltuk) vipNo.set(x.y.koltuk, i + 1); const o = V.O.sonuc.get(x.y.k); if (o && o !== x.y.koltuk) oneriNo.set(o, i + 1); });
   k.append(el("div", { class: "kbl", text: "BUSINESS" }));
+  let ekoYaz = false;
   for (let r = 1; r <= DUZEN.son; r++) {
-    if (r === DUZEN.biz + 1) k.append(el("div", { class: "kbl", text: "EKONOMİ" }));
+    if (atlaSet().has(r)) continue;
+    if (r > DUZEN.biz && !ekoYaz) { ekoYaz = true; k.append(el("div", { class: "kbl", text: "EKONOMİ" })); }
     const satir = el("div", { class: "ks" }, el("span", { class: "kn", text: String(r) }));
     harfGrup(r <= DUZEN.biz ? DUZEN.b : DUZEN.e).forEach((grup, gi) => {
       if (gi) satir.append(el("span", { class: "kr" }));
       for (const h of grup) {
+        if (yokSet().has(r + h)) { satir.append(el("span", { class: "kt", style: "visibility:hidden" })); continue; }
         const kod = r + h, d = U ? U.koltuklar[kod] : undefined;
         const sinif = vipNo.has(kod) ? "vip" : d && d !== "bilinmiyor" ? d : "";
         const t = el("span", { class: "kt " + sinif + (oneriNo.has(kod) ? " on" : ""), title: kod + (vipNo.has(kod) ? " · VIP " + vipNo.get(kod) + ". sıra" : "") + (oneriNo.has(kod) ? " · öneri: " + oneriNo.get(kod) + ". sıra" : ""), text: vipNo.has(kod) ? "#" + vipNo.get(kod) : kod });
@@ -461,7 +472,7 @@ function duzenAlanlari() { $("dBiz").value = DUZEN.biz; $("dB").value = DUZEN.b;
   for (const ad of Object.keys(DUZENLER)) s.append(el("option", { value: ad, text: ad }));
   s.addEventListener("change", () => { DUZEN = Object.assign({}, DUZENLER[s.value]); duzenAlanlari(); hepsiniCiz(); });
   const deg = () => {
-    DUZEN = { biz: Math.max(0, Math.min(15, parseInt($("dBiz").value, 10) || 0)), b: $("dB").value, e: $("dE").value, son: Math.max(2, Math.min(70, parseInt($("dSon").value, 10) || 27)) };
+    DUZEN = { biz: Math.max(0, Math.min(15, parseInt($("dBiz").value, 10) || 0)), b: $("dB").value, e: $("dE").value, son: Math.max(2, Math.min(70, parseInt($("dSon").value, 10) || 27)), atla: DUZEN.atla, yok: DUZEN.yok };
     s.value = "Özel"; hepsiniCiz();
   };
   ["dBiz", "dB", "dE", "dSon"].forEach((id) => $(id).addEventListener("input", deg));

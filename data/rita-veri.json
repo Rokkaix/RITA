@@ -954,13 +954,18 @@
    "ad": "Airbus A321",
    "b": "AB EF",
    "bblk": "",
-   "biz": 5,
+   "biz": 4,
    "dog": true,
    "e": "ABC DEF",
-   "last": 32,
-   "stub": 1,
+   "last": 33,
+   "stub": 0,
    "tarih": "2026-11-22",
-   "not": "Business Quick Check-in koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
+   "not": "Quick Check TK2246/22NOV koltuk görünümüne göre (kullanıcı ekranı)",
+   "atla": "5",
+   "yok": "8A 8F 21A 21F",
+   "x": "8 9 21 22",
+   "mt": "10 11 12",
+   "kn": "13 14 15 16 17 18 19"
   },
   "73H": {
    "ad": "Boeing 737-800",

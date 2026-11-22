@@ -153,7 +153,7 @@ const CONFIG = {
   function durumBul(rgb) {
     if (!rgb) return "bilinmiyor";
     const [r, g, b] = rgb, L = (r + g + b) / 3, sp = Math.max(r, g, b) - Math.min(r, g, b);
-    if (r > g * 1.4 && r > b * 2 && r > 110) return "bloke";          /* turuncu: soft bloke */
+    if (r > g * 1.4 && r > b * 2 && r > 110) return "soft";           /* turuncu: soft bloke */
     if (sp < 25 && L > 185) return "bos";
     if (sp < 25 && L > 90) return "bos-son";                           /* gri: en son verilecek boş */
     if (sp < 25) return "bloke";                                       /* koyu gri / siyah */

@@ -618,7 +618,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 20.0';let SURUM_YENI=false;
+const SURUM='RITA 20.1';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -714,7 +714,7 @@ const ACT={/* THY kabinleri — dar gövde business TROYA/QC "Koltuk Görünüm�
  '73H':{ad:'Boeing 737-800',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,x:'11 12',mt:'7 8 9',kn:'10 13 14 15 16'},'738':{ad:'Boeing 737-800',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,x:'11 12',mt:'7 8 9',kn:'10 13 14 15 16'},
  '7M8':{ad:'Boeing 737 MAX 8',b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1},'7M9':{ad:'Boeing 737 MAX 9',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1},
  '73J':{ad:'Boeing 737-900ER',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1},'739':{ad:'Boeing 737-900ER',b:'AB EF',biz:4,e:'ABC DEF',last:30,stub:1},
- '321':{ad:'Airbus A321',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:1},'32R':{ad:'Airbus A321',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:1},
+ '321':{ad:'Airbus A321',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:1},'32R':{ad:'Airbus A321',b:'AB EF',biz:4,e:'ABC DEF',last:33,stub:0,atla:'5',yok:'8A 8F 21A 21F',x:'8 9 21 22',mt:'10 11 12',kn:'13 14 15 16 17 18 19'}/* Quick Check TK2246 22NOV ekranı */,
  '32Q':{ad:'Airbus A321neo',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:0},'32B':{ad:'Airbus A321',b:'AB EF',biz:5,e:'ABC DEF',last:32,stub:1},
  '320':{ad:'Airbus A320',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},'32A':{ad:'Airbus A320',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},'32N':{ad:'Airbus A320neo',b:'AB EF',biz:5,e:'ABC DEF',last:27,stub:1},
  '319':{ad:'Airbus A319',b:'AB EF',biz:3,e:'ABC DEF',last:23,stub:0},
@@ -728,7 +728,7 @@ let TT={},TTH=null;/* yöneticinin doğruladığı tip düzenleri (ortak kayıt)
 const parseL=x=>{const l=[],a=[];String(x||'').toUpperCase().trim().split(/\s+/).forEach((g,gi)=>{if(gi)a.push(l.length);g.replace(/[^A-Z]/g,'').split('').forEach(ch=>l.push(ch))});return{l,a}};
 const ttGet=t=>{const b=ACT[t],o=Object.assign({},(D.TT||{})[t]||{},TT[t]||{});if(!b&&!o.b)return null;return Object.assign({b:'AB EF',biz:4,e:'ABC DEF',last:27,stub:1,bblk:''},b||{},o)};
 function typeCfg(t){const o=ttGet(t);if(!o)return null;const pb=parseL(o.b),pe=parseL(o.e);
-  return{biz:+o.biz||0,last:Math.max((+o.biz||0)+1,+o.last||27),stub:o.stub?1:0,stag:o.stag?1:0,bl:pb.l,ba:pb.a,el:pe.l,ea:pe.a,blk:String(o.bblk||'').toUpperCase(),x:String(o.x||'').split(/[^0-9]+/).filter(Boolean).map(Number),mt:String(o.mt||'').split(/[^0-9]+/).filter(Boolean).map(Number),kn:String(o.kn||'').split(/[^0-9]+/).filter(Boolean).map(Number),ac:t,dog:!!o.dog,type:1}}
+  return{biz:+o.biz||0,last:Math.max((+o.biz||0)+1,+o.last||27),stub:o.stub?1:0,stag:o.stag?1:0,bl:pb.l,ba:pb.a,el:pe.l,ea:pe.a,blk:String(o.bblk||'').toUpperCase(),x:String(o.x||'').split(/[^0-9]+/).filter(Boolean).map(Number),atla:String(o.atla||'').split(/[^0-9]+/).filter(Boolean).map(Number),yok:String(o.yok||'').toUpperCase().split(/[^0-9A-K]+/).filter(Boolean),mt:String(o.mt||'').split(/[^0-9]+/).filter(Boolean).map(Number),kn:String(o.kn||'').split(/[^0-9]+/).filter(Boolean).map(Number),ac:t,dog:!!o.dog,type:1}}
 const acCfg=t=>typeCfg(t);
 const flNo=f=>String(f).split(' ')[0];
 const acOf=f=>(D.AC||{})[flNo(f)];
@@ -737,7 +737,7 @@ const aisleAt=(r,i,L)=>{const c=cfg(),a=r<=c.biz?c.ba:c.ea;return a?a.includes(i
 const LET=r=>{const c=cfg();return r<=c.biz?(c.bl||['A','B','E','F']):(c.el||['A','B','C','D','E','F'])};
 const isBlk=(r,l)=>{const c=cfg();return r<=c.biz&&!!c.blk&&c.blk.includes(l)};
 const isStag=(r,l)=>{const c=cfg();if(!c.stag||r>c.biz)return false;const L=c.bl||[],m=L.length;if(m<6)return false;const i=L.indexOf(l);if(i<=0||i>=m-1)return false;const inner=i===Math.floor(m/2)-1||i===Math.floor(m/2);return r%2===1?!inner:inner};
-const exists=(r,l)=>{const c=cfg();if(c.stub&&r===c.last){const L=LET(r),a=(r<=c.biz?c.ba:c.ea)||[L.length/2],i=L.indexOf(l);if(i>=0&&i<a[0])return false}return !isBlk(r,l)&&!isStag(r,l)};
+const exists=(r,l)=>{const c=cfg();if((c.atla&&c.atla.includes(r))||(c.yok&&c.yok.includes(r+l)))return false;if(c.stub&&r===c.last){const L=LET(r),a=(r<=c.biz?c.ba:c.ea)||[L.length/2],i=L.indexOf(l);if(i>=0&&i<a[0])return false}return !isBlk(r,l)&&!isStag(r,l)};
 function photo(){const s={};'1D 2A 2C 2D 2F 3A 3C 3D 3F 7B 7E 8A 8B 9A 9B 9E 9F 12A 12B 12C 12D 12E 12F'.split(' ').forEach(k=>s[k]=1);'10A 10B 11A 11B 11C 10D 11D 11E 11F 7A 7C 7D 7F 8C 8D 8F 9C 9D'.split(' ').forEach(k=>s[k]=2);return s}
 const seats=()=>D.S[D.cur]||(D.S[D.cur]={});
 /* Koltuk durumları — Quick Check-in "SeatMapHelp" (checkin.thy.com) açıklamasıyla bire bir renkler.
@@ -820,7 +820,9 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
     const pick=[];near.forEach(k=>{if(pick.length<n&&!pick.includes(k))pick.push(k)});p.comp=(p.comp||[]).concat(pick.map(take))});
   /* 4) ekonomi: kalan herkes grup hâlinde, rical sırasıyla, en öndeki uygun yan yana bloğa */
   P.forEach(p=>{const need=(p.seat?0:1)+((p.pax||1)-1-p.comp.length);if(!need)return;
-    const nt=D.N[keyOf(p)],blk=need===1&&!p.seat?[prefPick(ord(range(c.biz+1,c.last).filter(free)),nt&&nt.sp)].filter(Boolean):(b=>b.length>=need?b:block(need,c,free))(block(need,c,freeOn));if(!blk.length)return;blk.forEach(take);
+    /* ilave VIP (ek): yalnız gerçekten boş koltuk — bloke / son verilecek verilmez */
+    const fr=p.ek?(k=>sBos(S[k])&&!son(k)&&!used.has(k)):free,frOn=p.ek?fr:freeOn;
+    const nt=D.N[keyOf(p)],blk=need===1&&!p.seat?[prefPick(ord(range(c.biz+1,c.last).filter(fr)),nt&&nt.sp)].filter(Boolean):(b=>b.length>=need?b:block(need,c,fr))(block(need,c,frOn));if(!blk.length)return;blk.forEach(take);
     if(!p.seat){p.seat=blk.shift()}p.comp=p.comp.concat(blk)});
   /* 5) maiyet ve korumalar: tüm rical yolcuları yerleştikten sonra EKONOMİYE (öne yakın, yan yana).
         Bloke koltuklar ricale ayrıldığı için maiyete verilmez. Yalnız "maiyet upgrade" notu varsa business'ta yer kalırsa oraya. */
@@ -835,7 +837,7 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
     p.cab=!p.seat?'':biz?'B':'E';
     if(!p.seat){p.why='Boş koltuk kalmadı';p.wc='w';return}
     if(sBlk(S[p.seat])&&!p.fixed){p.blk=[p.seat]}else p.blk=[];(p.comp||[]).forEach(k=>{if(sBlk(S[k]))p.blk.push(k)});
-    if(p.fixed){p.why='Koltuk elle sabitlendi'+(S[p.seat]&&!sBos(S[p.seat])?' (haritada dolu/bloke görünüyor)':'');p.wc='w'}
+    if(p.fixed&&p.canli){p.why='Quick Check’teki koltuğunda (canlı)';p.wc='n'}else if(p.fixed){p.why='Koltuk elle sabitlendi'+(S[p.seat]&&!sBos(S[p.seat])?' (haritada dolu/bloke görünüyor)':'');p.wc='w'}
     else if(biz){p.why='Business · '+p.up;p.wc='y'}
     else if(p.up){p.why='Upgrade hakkı var ('+p.up+') ancak business dolu, ekonomiye alındı';p.wc='w'}
     else{p.why='Upgrade hakkı yok, ekonomide sıradaki koltuk';p.wc='n'}
@@ -907,7 +909,7 @@ function paxHtml(){const O=ordered();if(!O.length)return'<p class="empty">Bu sef
 function qLegend(){const f=window._fr==null?'':String(window._fr),cur=f!==''?SSN[+f]:null;return'<details class="qdet"'+(cur?' open':'')+'><summary>🎨 Koltuk rengi seç (Quick Check-in renkleri)'+(cur?' · <b>'+esc(cur.kis)+'</b>':'')+'</summary>'+['Boş','Yolcu var','Bloke'].map(g=>'<div class="qlg">'+g+'</div><div class="qleg" role="group" aria-label="'+g+'">'+SST.filter(x=>x.g===g).map(x=>'<button type="button" data-a="firca" data-k="'+x.n+'" aria-pressed="'+(f===String(x.n))+'" title="'+esc(x.ad)+'"><i style=\"background:'+x.bg+';color:'+x.fg+(x.bd?';box-shadow:inset 0 0 0 2px '+x.bd:'')+'\">1A'+(x.ic?'<em>'+x.ic+'</em>':'')+'</i>'+esc(x.kis)+'</button>').join('')+'</div>').join('')+'</details>'+(f!==''?'<p class="note" style="margin:2px 0 6px">Seçili renk: <b>'+esc((SSN[+f]||{}).ad||'')+'</b> — koltuklara dokunun. Bitirince aynı renge tekrar basın.</p>':'')}
 function cabinHtml(){const S=seats(),c=cfg(),as={},a2={};ordered().forEach((p,i)=>{if(p.seat)as[p.seat]=i+1;(p.comp||[]).forEach(k=>a2[k]=i+1);(p.ms||[]).forEach(k=>a2[k]=i+1)});const swS=window._sw&&findP(window._sw)?findP(window._sw).seat:null;
   let h='<div class="cabin"><div class="cab-lbl">BUSINESS</div>';
-  for(let r=1;r<=c.last;r++){if(r===c.biz+1)h+='<div class="cab-lbl">EKONOMİ</div>';const L=LET(r),bz=r<=c.biz;const ex=(c.x||[]).includes(r),mk=ex?'X':(c.mt||[]).includes(r)?'E':(c.kn||[]).includes(r)?'W':'',M=SMK[mk],rn='<span class="rn'+(M?' mk':'')+'"'+(M?' style="background:'+M.bg+';color:'+M.fg+'" title="'+M.ad+'"':'')+'>'+(M?'<i>'+mk+'</i>':'')+r+'</span>';h+='<div class="srow'+(bz?' bz':'')+'">'+rn;
+  let ekoYaz=0;for(let r=1;r<=c.last;r++){if((c.atla||[]).includes(r))continue;if(r>c.biz&&!ekoYaz){ekoYaz=1;h+='<div class="cab-lbl">EKONOMİ</div>'}const L=LET(r),bz=r<=c.biz;const ex=(c.x||[]).includes(r),mk=ex?'X':(c.mt||[]).includes(r)?'E':(c.kn||[]).includes(r)?'W':'',M=SMK[mk],rn='<span class="rn'+(M?' mk':'')+'"'+(M?' style="background:'+M.bg+';color:'+M.fg+'" title="'+M.ad+'"':'')+'>'+(M?'<i>'+mk+'</i>':'')+r+'</span>';h+='<div class="srow'+(bz?' bz':'')+'">'+rn;
     L.forEach((l,i)=>{if(aisleAt(r,i,L))h+='<span class="aisle'+(bz?' mid':'')+'"></span>';const k=r+l;if(!exists(r,l)){h+=isBlk(r,l)?'<span class="seat k" title="Kapalı orta koltuk" aria-label="'+k+' kapalı">✕</span>':'<span class="seat ghost"></span>';return}const st=S[k]||0;
       const sd=st?SSN[st]||SSN[1]:null;h+='<button type="button" class="seat'+(as[k]?' a':a2[k]?' a2':st?' qs':'')+(k===swS?' sel':'')+'"'+(!as[k]&&!a2[k]&&sd?' style="background:'+sd.bg+';color:'+sd.fg+(sd.bd?';box-shadow:inset 0 0 0 2px '+sd.bd:ex?';box-shadow:inset 0 0 0 2px #d9822b':'')+'"':ex&&!as[k]&&!a2[k]?' style="box-shadow:inset 0 0 0 2px #d9822b"':'')+' data-a="seat" data-k="'+k+'" aria-label="'+k+(sd?' '+esc(sd.kis):'')+'" title="'+k+(sd?' · '+esc(sd.ad):'')+'">'+(as[k]?'#'+as[k]:a2[k]?'+'+a2[k]:k)+(sd&&sd.ic&&!as[k]&&!a2[k]?'<span class="sic">'+sd.ic+'</span>':'')+'</button>'});
     h+=rn+'</div>'}
@@ -1313,7 +1315,7 @@ function opxIsle(K){K=K||{};const V=OPX.map((o,i)=>[o,i]).filter(([o])=>o.rol===
   OPX.forEach(o=>{if(!(o.rol==='maiyet'||o.rol==='koruma'))return;const par=OPX[o.bag];if(par&&par.rol==='rical'&&par.m)return;
     const ad=o.soy?cap(o.soy)+((o.ad||o.ini)?' '+cap(o.ad||o.ini):''):(o.rol==='koruma'?'Koruma':'Maiyet');
     const not=(o.yakNot?o.yakNot+' · ':'')+cap(o.yorum||String(o.ham||'').replace(/^.*?VIP[!:]?/i,'').replace(/[|!]/g,' ').replace(/\s+/g,' ').trim()).slice(0,80);
-    o._pe='pe'+Date.now()+'-'+ek;ppl().push({key:norm(ad)+'-ek'+ek,id:o._pe,n:ad,sub:(o.rol==='koruma'?'Koruma / emniyet (ilave)':o.yak?'VIP yakını (ilave, rical değil)':'Maiyet / ilave VIP')+(not?' · '+not:''),rank:999,up:'',o:'',pax:1,ek:1,ektip:o.rol,koltuk:o.koltuk||'',t:Date.now()+ek,canli:K.canli?1:0});ek++;ekN++});
+    o._pe='pe'+Date.now()+'-'+ek;ppl().push({key:norm(ad)+'-ek'+ek,id:o._pe,n:ad,sub:(o.rol==='koruma'?'Koruma / emniyet (ilave)':o.yak?'VIP yakını (ilave, rical değil)':'Maiyet / ilave VIP')+(not?' · '+not:''),rank:999,up:'',o:'',pax:1,ek:1,ektip:o.rol,koltuk:o.koltuk||'',t:Date.now()+ek,canli:K.canli?1:0,...(K.canli&&o.koltuk?{fix:o.koltuk,qck:o.koltuk}:{})});ek++;ekN++});
   D.YL=D.YL||{};D.YL[D.cur]={t:new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16),l:OPX.map(o=>({soy:o.soy,ad:o.ad,ini:o.ini,koltuk:o.koltuk,rol:o.rol,vip:o.vip?1:0,yorum:o.yorum||'',sinif:o.sinif||'',vtip:o.vtip||'',ust:o.ust?1:0,bag:o.bag,mn:o.rol==='rical'&&o.m?o.m.x.n:'',mt:o.rol==='rical'&&o.m?o.m.x.t:'',mr:o.rol==='rical'&&o.m?o.m.x.r:null,pe:o._pe||''}))};
   if(K.canli){const L=D.YL[D.cur];if(L)L.canli=1}
   assign();save();return{yeni,gun,ekN,rical:V.length}}
@@ -1321,7 +1323,7 @@ function opxIsle(K){K=K||{};const V=OPX.map((o,i)=>[o,i]).filter(([o])=>o.rol===
    Eklentinin program.js'i veriyi window.postMessage ile gönderir. Yalnız bu pencere + aynı köken + kaynak:"eklenti" + doğrulanmış veri kabul edilir.
    Uçuş RITA listesinde varsa: VIP'ler rical rehberiyle eşleştirilip uçuşa eklenir, koltuk durumları işlenir, yerleşim kendiliğinden yapılır.
    Her otomatik işlem "Canlı günlük"e yazılır; veri kaydedilmez (sayfa kapanınca silinir). */
-const CKOL={bos:0,'bos-son':3,dolu:1,bloke:2};
+const CKOL={bos:0,'bos-son':3,dolu:1,bloke:2,soft:4};
 function canliGecerli(m){const st=(x,n)=>typeof x==='string'&&x.length<=n,kol=x=>x===''||/^\d{1,2}[A-K]$/.test(x);
   const yg=y=>y&&st(y.k,90)&&st(y.soyad,40)&&st(y.adBas,1)&&st(y.koltuk,3)&&kol(y.koltuk)&&typeof y.ci==='boolean'&&st(y.sinif,1)&&st(y.not,300);
   if(!m||!['merhaba','tam','fark','nabiz','baglantiKoptu','kapandi'].includes(m.tur))return false;
@@ -1346,9 +1348,9 @@ window.addEventListener('message',e=>{if(e.source!==window||e.origin!==location.
 function canliUygula(no){const d=QCK.durum[no];if(!d)return;const f=D.F.find(x=>flNo(x)===no);
   if(!f){if(!QCK.yok[no]){QCK.yok[no]=1;canliGunluk(no,no+' RITA uçuş listesinde yok (1–6 saat dışında olabilir); “+ Sefer” ile ekleyince otomatik işlenir.')}return}
   if(!QCK.oto)return;const eski=D.cur;D.cur=f;
-  try{const Y=d.sira.map(k=>d.yolcular.get(k)).filter(Boolean),imza=JSON.stringify(Y.map(y=>[y.soyad,y.adBas,y.not,y.sinif]));
+  try{const Y=d.sira.map(k=>d.yolcular.get(k)).filter(Boolean),imza=JSON.stringify(Y.map(y=>[y.soyad,y.adBas,y.not,y.sinif,y.koltuk]));
     /* koltuk durumları */
-    const KK=Object.keys(d.koltuklar);if(KK.length){const S=seats();KK.forEach(k=>{const v=CKOL[d.koltuklar[k]];if(v===undefined)return;if(v)S[k]=v;else delete S[k]});QCK.S.add(f)}
+    const KK=Object.keys(d.koltuklar);if(KK.length){const S=seats();KK.forEach(k=>{const v=CKOL[d.koltuklar[k]];if(v===undefined)return;if(v)S[k]=v;else delete S[k]});Y.forEach(y=>{if(y.koltuk)delete S[y.koltuk]});/* VIP'in kendi koltuğu ona açık */QCK.S.add(f)}
     if(QCK.imza[f]!==imza){/* yolcu listesi değişti: yeniden eşleştir ve yerleştir */
       OPX=Y.map((y,i)=>({soy:y.soyad,ad:'',ini:y.adBas,sinif:y.sinif,koltuk:y.koltuk,yorum:yorumAl(sadeTr(y.not))||'',vip:true,grup:'t'+i,ham:y.not,sira:''}));opxRoles();
       const r=opxIsle({canli:1});QCK.imza[f]=imza;
@@ -1735,10 +1737,10 @@ const A={
   '<label class="lbl" for="t-z">Business sıra sayısı</label><input class="field" id="t-z" type="number" min="0" max="15" value="'+esc(o.biz)+'">'+
   '<label class="lbl" for="t-e">Ekonomi dizilimi (örn. ABC DEF · ABC DEF HJK)</label><input class="field mono" id="t-e" value="'+esc(o.e)+'" autocapitalize="characters">'+
   '<label class="lbl" for="t-l">Son sıra numarası</label><input class="field" id="t-l" type="number" min="2" max="70" value="'+esc(o.last)+'">'+
-  '<label class="lbl" for="t-x">Çıkış (X) sıraları (örn. 11 12)</label><input class="field mono" id="t-x" value="'+esc(o.x||'')+'" inputmode="numeric">'+'<label class="lbl" for="t-mt">Motor (E) sıraları (örn. 7 8 9)</label><input class="field mono" id="t-mt" value="'+esc(o.mt||'')+'" inputmode="numeric">'+'<label class="lbl" for="t-kn">Kanat (W) sıraları (örn. 10 13 14 15 16)</label><input class="field mono" id="t-kn" value="'+esc(o.kn||'')+'" inputmode="numeric">'+'<label class="lbl"><input type="checkbox" id="t-s" '+(o.stub?'checked':'')+'> Son sırada yalnızca sağ taraf (D-E-F) var</label><label class="lbl"><input type="checkbox" id="t-g" '+(o.stag?'checked':'')+'> Business zikzak (1-2-1): tek sıralarda ortadaki iki koltuk, çift sıralarda dıştaki iki koltuk</label>'+
+  '<label class="lbl" for="t-x">Çıkış (X) sıraları (örn. 11 12)</label><input class="field mono" id="t-x" value="'+esc(o.x||'')+'" inputmode="numeric">'+'<label class="lbl" for="t-atla">Olmayan sıralar (örn. 5)</label><input class="field mono" id="t-atla" value="'+esc(o.atla||'')+'" inputmode="numeric">'+'<label class="lbl" for="t-yok">Olmayan koltuklar (örn. 8A 8F 21A 21F)</label><input class="field mono" id="t-yok" value="'+esc(o.yok||'')+'" autocapitalize="characters">'+'<label class="lbl" for="t-mt">Motor (E) sıraları (örn. 7 8 9)</label><input class="field mono" id="t-mt" value="'+esc(o.mt||'')+'" inputmode="numeric">'+'<label class="lbl" for="t-kn">Kanat (W) sıraları (örn. 10 13 14 15 16)</label><input class="field mono" id="t-kn" value="'+esc(o.kn||'')+'" inputmode="numeric">'+'<label class="lbl"><input type="checkbox" id="t-s" '+(o.stub?'checked':'')+'> Son sırada yalnızca sağ taraf (D-E-F) var</label><label class="lbl"><input type="checkbox" id="t-g" '+(o.stag?'checked':'')+'> Business zikzak (1-2-1): tek sıralarda ortadaki iki koltuk, çift sıralarda dıştaki iki koltuk</label>'+
   '<div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="ttSave" data-k="'+esc(t)+'" type="button">Doğrula ve kaydet</button>'+(TT[t]||(D.TT||{})[t]?'<button class="btn" data-a="ttReset" data-k="'+esc(t)+'" type="button">Varsayılana dön</button>':'')+'</div>')},
  async ttSave(d){const t=d.k,clean=v=>String(v||'').toUpperCase().replace(/[^A-Z ]/g,'').replace(/\s+/g,' ').trim();
-  const o={b:clean($('t-b').value),bblk:clean($('t-k').value).replace(/ /g,''),biz:Math.max(0,Math.min(15,parseInt($('t-z').value)||0)),e:clean($('t-e').value),last:Math.max(2,Math.min(70,parseInt($('t-l').value)||27)),stub:$('t-s').checked?1:0,stag:$('t-g').checked?1:0,x:String($('t-x').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),mt:String($('t-mt').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),kn:String($('t-kn').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),dog:true,ad:(ACT[t]||{}).ad||t,tarih:new Date().toISOString().slice(0,10)};
+  const o={b:clean($('t-b').value),bblk:clean($('t-k').value).replace(/ /g,''),biz:Math.max(0,Math.min(15,parseInt($('t-z').value)||0)),e:clean($('t-e').value),last:Math.max(2,Math.min(70,parseInt($('t-l').value)||27)),stub:$('t-s').checked?1:0,stag:$('t-g').checked?1:0,x:String($('t-x').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),atla:String($('t-atla').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),yok:String($('t-yok').value||'').toUpperCase().replace(/[^0-9A-K ]/g,' ').replace(/\s+/g,' ').trim(),mt:String($('t-mt').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),kn:String($('t-kn').value||'').replace(/[^0-9 ]/g,' ').replace(/\s+/g,' ').trim(),dog:true,ad:(ACT[t]||{}).ad||t,tarih:new Date().toISOString().slice(0,10)};
   if(!o.b||!o.e)return toast('Business ve ekonomi dizilimini yazın');if(o.last<=o.biz)return toast('Son sıra, business sıra sayısından büyük olmalı');
   let shared=false;if(TTH){try{await TTH.doc(t).set(o);shared=true}catch(e){}}
   D.TT=D.TT||{};D.TT[t]=o;TT[t]=o;reassign();save();closeSheet();render();toast(shared?'Kabin düzeni kaydedildi; tüm cihazlarda geçerli':'Kabin düzeni bu cihazda kaydedildi')},
