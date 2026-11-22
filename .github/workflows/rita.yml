@@ -98,7 +98,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy1.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -111,5 +111,15 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+      # GitHub bazen yüklenen dosyayı hemen göremiyor ("No artifacts named github-pages"): kısa bekle, olmazsa bir kez daha dene
+      - name: Yayın öncesi bekle
+        run: sleep 15
+      - id: deploy1
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - name: Yeniden denemeden önce bekle
+        if: steps.deploy1.outcome == 'failure'
+        run: sleep 45
       - id: deploy
+        if: steps.deploy1.outcome == 'failure'
         uses: actions/deploy-pages@v4
