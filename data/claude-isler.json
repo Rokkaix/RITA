@@ -40,6 +40,36 @@
    "durum": "yapilamadi",
    "sonuc": "Resmî kurum siteleri (anayasa.gov.tr, jandarma.gov.tr, tsk.tr) bu ortamdan erişilemiyor. Yönetim → VIP fotoğrafları'ndan resmî portreyi yükleyebilirsiniz ya da ağ izni verilirse bir sonraki turda eklenir.",
    "bitti": "2026-11-22T14:30"
+  },
+  {
+   "id": "cl20261122e",
+   "t": "2026-11-22T16:25",
+   "tur": "denetim",
+   "kisi": "Hakkı Susmaz, Erol Özvar",
+   "metin": "Cumhurbaşkanlığı Genel Sekreteri (rical 33) ve YÖK Başkanı (rical 13) için fotoğraf yoktu.",
+   "durum": "tamam",
+   "sonuc": "Resmî sayfalardaki portreler eklendi: tccb.gov.tr Genel Sekreter sayfası ve yok.gov.tr Başkan sayfası (ikisinde de ad yazılı).",
+   "bitti": "2026-11-22T16:25"
+  },
+  {
+   "id": "cl20261122f",
+   "t": "2026-11-22T16:25",
+   "tur": "denetim",
+   "kisi": "Berris Ekinci, Musa Kulaklıkaya, Levent Gümrükçü, Ali Özel",
+   "metin": "Dışişleri bakan yardımcılarının (rical 36) fotoğrafı yoktu.",
+   "durum": "tamam",
+   "sonuc": "Dışişleri Bakanlığı'nın resmî Bakan Yardımcıları sayfasındaki (mfa.gov.tr) adlı portreler eklendi.",
+   "bitti": "2026-11-22T16:25"
+  },
+  {
+   "id": "cl20261122g",
+   "t": "2026-11-22T16:25",
+   "tur": "denetim",
+   "kisi": "A. Berris Ekinci / Berris Ekinci; M. Bilal Macit / Muhammet Bilal Macit",
+   "metin": "Rehberde aynı kişi iki farklı yazımla iki kez kayıtlı.",
+   "durum": "yapilamadi",
+   "sonuc": "Onaylı rehber dosyası değiştirilmediği için birleştirilmedi; fotoğraf iki yazıma da bağlandı. Yönetim → Rehber'den fazla kaydı kaldırmanızı öneririm.",
+   "bitti": "2026-11-22T16:25"
   }
  ]
 }
