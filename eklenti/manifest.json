@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "RITA Quick Check Okuyucu",
+  "version": "1.0.0",
+  "description": "Quick Check'te açık uçuşun VIP yolcu listesini ve koltuk haritasını yalnızca OKUR, RITA Canlı sayfasına iletir. Hiçbir şey yazmaz, tıklamaz, giriş yapmaz.",
+  "minimum_chrome_version": "116",
+  "background": {
+    "service_worker": "arka.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://checkin.thy.com/V1/*"],
+      "exclude_matches": ["https://checkin.thy.com/V1/Pages/Login.aspx*"],
+      "js": ["quick.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://rokkaix.github.io/RITA/*"],
+      "js": ["program.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

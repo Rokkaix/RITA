@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>RITA · Canlı</title>
+<link rel="icon" href="../icons/rita.svg">
+<meta name="theme-color" content="#7f0f22">
+<!--
+  RITA Canlı — Quick Check okuyucu eklentisinden gelen VIP yolcu ve koltuk verisini gösterir,
+  protokol kural tablosuna göre sıralar ve koltuk ÖNERİSİ üretir.
+  GÜVENLİK: Veri yalnız bu sayfanın belleğinde durur. localStorage / sessionStorage / IndexedDB / çerez
+  KULLANILMAZ; sunucuya hiçbir şey gönderilmez; harici betik, CDN, analitik yoktur. Sayfa kapanınca veri silinir.
+  Ekrana yazılan her şey textContent ile yazılır (innerHTML yok).
+-->
+<style>
+:root{--crim:#8c1a2b;--crim2:#6d1020;--night:#18233f;--ink:#1d2433;--muted:#667085;--line:#e3e6ee;--soft:#f5f6fa;--card:#fff;
+  --dolu:#2f3a7a;--bos:#ebebeb;--bloke:#2a2a2a;--son:#8a8a8a;--vip:#c9a227;--oneri:#1f8a4c;--warn:#b54708;--bad:#b42318}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--soft)}
+header{background:linear-gradient(90deg,var(--crim),var(--crim2));color:#fff;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:5}
+header h1{margin:0;font-size:17px;letter-spacing:.18em;font-weight:800}
+header .alt{font-size:12px;opacity:.85}
+header .sp{flex:1}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;background:#ffffff22}
+.pill i{width:8px;height:8px;border-radius:50%;background:#bbb;display:inline-block}
+.pill.ok i{background:#4ade80}.pill.bekle i{background:#facc15}.pill.dur i{background:#f87171}
+header a{color:#fff;font-size:12px}
+main{max-width:1280px;margin:0 auto;padding:14px 16px 40px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:1000px){main{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}.genis{grid-column:1/-1}}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+h2{margin:0 0 10px;font-size:12px;letter-spacing:.12em;color:var(--muted);font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+h2 .sp{flex:1}
+.uyari{border-radius:10px;padding:9px 12px;font-size:13px;margin:0 0 10px;border:1px solid}
+.uyari.dur{background:#fdecea;border-color:#f1a9a0;color:#7a1212}.uyari.bilgi{background:#eef4ff;border-color:#b8ccf2;color:#1d3461}.uyari.sari{background:#fff6e0;border-color:#f0d58a;color:#5a4300}
+button,select,input{font:inherit}
+.btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 12px;font-weight:600;cursor:pointer;color:var(--ink)}
+.btn.pri{background:var(--night);color:#fff;border-color:var(--night)}
+.btn.sm{padding:4px 9px;font-size:12px}
+.btn[aria-pressed="true"]{outline:2px solid var(--crim);outline-offset:1px}
+.satirlar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+select,input[type=text],input[type=number],textarea{border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:#fff;color:var(--ink);max-width:100%}
+textarea{width:100%;min-height:90px;font-family:ui-monospace,monospace;font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:11px;letter-spacing:.05em;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line);padding:6px}
+td{border-bottom:1px solid var(--line);padding:6px;vertical-align:top}
+.tablo{overflow-x:auto}
+.mono{font-family:ui-monospace,monospace}
+.etiket{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;background:var(--soft);border:1px solid var(--line)}
+.etiket.ci{background:#e7f6ec;border-color:#a7dbb7;color:#17663a}.etiket.yok{background:#fff6e0;border-color:#f0d58a;color:#5a4300}
+.not{color:var(--muted);font-size:12px}
+.oneri{font-weight:800;color:var(--oneri);white-space:nowrap}
+.ayni{color:var(--muted)}
+/* koltuk planı */
+.plan{overflow-x:auto;padding:6px 0}
+.kabin{width:max-content;margin:0 auto;display:flex;flex-direction:column;gap:3px;padding:12px;border:1px solid var(--line);border-radius:60px 60px 18px 18px;background:var(--soft)}
+.kbl{text-align:center;font-size:10px;font-weight:800;letter-spacing:.14em;color:var(--muted);margin:4px 0}
+.ks{display:flex;gap:3px;align-items:center;justify-content:center}
+.kn{width:22px;text-align:center;font-size:10px;color:var(--muted);font-family:ui-monospace,monospace}
+.kr{width:14px}
+.kt{width:36px;height:28px;border-radius:6px 6px 3px 3px;font-size:10px;font-weight:700;font-family:ui-monospace,monospace;display:flex;align-items:center;justify-content:center;position:relative;
+  background:repeating-linear-gradient(45deg,#f2f2f2,#f2f2f2 4px,#e6e6e6 4px,#e6e6e6 8px);color:#98a2b3;box-shadow:inset 0 0 0 1px #d0d5dd}
+.kt.bos{background:var(--bos);color:#2a2f5c;box-shadow:inset 0 0 0 1px #c4c4c4}
+.kt.bos-son{background:var(--son);color:#fff;box-shadow:none}
+.kt.dolu{background:var(--dolu);color:#fff;box-shadow:none}
+.kt.bloke{background:var(--bloke);color:#fff;box-shadow:none}
+.kt.vip{background:var(--vip);color:#1d1600;box-shadow:none}
+.kt.on{outline:3px solid var(--oneri);outline-offset:1px}
+.kt b{position:absolute;top:-6px;right:-6px;background:var(--oneri);color:#fff;border-radius:8px;font-size:9px;padding:0 4px}
+.lejant{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-top:8px}
+.lejant i{display:inline-block;width:14px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+/* akış */
+.akis{max-height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
+.olay{display:grid;grid-template-columns:70px 1fr;gap:8px;font-size:13px;padding:6px 8px;border-radius:8px;background:var(--soft)}
+.olay .sa{font-family:ui-monospace,monospace;color:var(--muted);font-size:12px}
+.olay.yeni{animation:parla 1.6s ease-out}
+@keyframes parla{from{background:#fff3c4}to{background:var(--soft)}}
+.kural td input{width:100%}
+.gizli{display:none}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:10px}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>RITA</h1><div class="alt">Canlı · Quick Check okuyucu</div></div>
+  <span class="sp"></span>
+  <span id="durum" class="pill bekle"><i></i><span>Eklenti bekleniyor</span></span>
+  <button id="demoBtn" class="btn sm" type="button">Demo modu</button>
+  <a href="../">RITA ana sayfa</a>
+</header>
+
+<main>
+  <section class="genis">
+    <div id="akisUyari"></div>
+    <div class="satirlar">
+      <label for="ucusSec"><b>Uçuş</b></label>
+      <select id="ucusSec" aria-label="Uçuş seçimi"></select>
+      <span id="ucusBilgi" class="not"></span>
+    </div>
+  </section>
+
+  <section>
+    <h2>VIP LİSTESİ VE KOLTUK ÖNERİSİ <span class="sp"></span><span class="not" id="vipSay"></span></h2>
+    <div id="oneriNot"></div>
+    <div class="tablo"><table>
+      <thead><tr><th>Sıra</th><th>Yolcu</th><th>Şu an</th><th>Öneri</th><th>Check-in</th><th>VIP notu</th></tr></thead>
+      <tbody id="vipGovde"></tbody>
+    </table></div>
+    <p class="not">Öneriler yalnızca öneridir. Quick Check'e hiçbir şey yazılmaz; koltukları siz değiştirirsiniz.</p>
+  </section>
+
+  <section>
+    <h2>KOLTUK PLANI</h2>
+    <div class="satirlar" style="margin-bottom:8px">
+      <select id="duzenSec" aria-label="Uçak tipi"></select>
+      <label>Business sıra <input id="dBiz" type="number" min="0" max="15" style="width:60px"></label>
+      <label>Business harf <input id="dB" type="text" style="width:80px"></label>
+      <label>Ekonomi harf <input id="dE" type="text" style="width:90px"></label>
+      <label>Son sıra <input id="dSon" type="number" min="2" max="70" style="width:60px"></label>
+    </div>
+    <div class="plan"><div id="kabin" class="kabin"></div></div>
+    <div class="lejant">
+      <span><i style="background:var(--bos);box-shadow:inset 0 0 0 1px #c4c4c4"></i>Boş</span>
+      <span><i style="background:var(--son)"></i>Boş (en son verilecek)</span>
+      <span><i style="background:var(--dolu)"></i>Dolu</span>
+      <span><i style="background:var(--bloke)"></i>Bloke</span>
+      <span><i style="background:var(--vip)"></i>VIP (şu anki koltuğu)</span>
+      <span><i style="background:#fff;outline:2px solid var(--oneri)"></i>Öneri</span>
+      <span><i style="background:repeating-linear-gradient(45deg,#f2f2f2,#f2f2f2 3px,#e0e0e0 3px,#e0e0e0 6px)"></i>Okunmadı</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>DEĞİŞİKLİK AKIŞI <span class="sp"></span>
+      <label class="not"><input type="checkbox" id="sesAc"> Sesli uyarı</label>
+      <button id="akisTemizle" class="btn sm" type="button">Temizle</button></h2>
+    <div id="akis" class="akis"></div>
+  </section>
+
+  <section>
+    <h2>PROTOKOL KURAL TABLOSU <span class="sp"></span>
+      <button id="kuralEkle" class="btn sm" type="button">+ Kural</button>
+      <button id="kuralSifirla" class="btn sm" type="button">Varsayılana dön</button></h2>
+    <p class="not" style="margin-top:0">VIP notunda geçen anahtar kelime → öncelik (küçük sayı önce). "Business" işaretli kurallara business koltuk önerilir; diğerlerine (maiyet, görevli, kuralı olmayan) yalnız ekonomi. Birden fazla kelime eşleşirse en küçük sayı geçerli. Eşleşmeyen yolcular en sona. Kelimeler tam kelime olarak aranır, sonuna en çok 2 harf ek gelebilir ("BAKAN" → "BAKANI" tutar, "BAKANLIGI" tutmaz). Varsayılan değerler örnektir; kendi sıranıza göre düzenleyin.</p>
+    <div class="tablo"><table class="kural"><thead><tr><th>Anahtar kelime</th><th style="width:100px">Öncelik</th><th style="width:80px">Business</th><th style="width:50px"></th></tr></thead><tbody id="kuralGovde"></tbody></table></div>
+    <details style="margin-top:8px"><summary class="not">Kuralları sakla / geri yükle (bu sayfa hiçbir şeyi kendisi saklamaz)</summary>
+      <p class="not">Kopyalayın ve kendi bilgisayarınızda bir yerde saklayın; sonra buraya yapıştırıp "Yükle"ye basın.</p>
+      <textarea id="kuralMetin" aria-label="Kural tablosu metni"></textarea>
+      <div class="satirlar"><button id="kuralDisa" class="btn sm" type="button">Metni üret</button><button id="kuralYukle" class="btn sm pri" type="button">Yükle</button></div>
+    </details>
+  </section>
+</main>
+<footer>RITA Canlı · veriler yalnız bu pencerenin belleğinde · sayfa kapanınca silinir</footer>
+
+<script>
+"use strict";
+/* ============================ Yardımcılar ============================ */
+const $ = (id) => document.getElementById(id);
+/* DOM öğesi oluştur: yazılar her zaman textContent / metin düğümü olarak eklenir (innerHTML yok) */
+function el(tag, ozellik, ...cocuklar) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(ozellik || {})) {
+    if (v == null || v === false) continue;
+    if (k === "class") e.className = v;
+    else if (k === "text") e.textContent = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else e.setAttribute(k, v === true ? "" : String(v));
+  }
+  for (const c of cocuklar.flat()) if (c != null && c !== false) e.append(c instanceof Node ? c : document.createTextNode(String(c)));
+  return e;
+}
+const bosalt = (e) => { while (e.firstChild) e.removeChild(e.firstChild); };
+const saat = (ms) => new Date(ms).toLocaleTimeString("tr-TR", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+/* Türkçe → sade büyük harf, harf/rakam dışı boşluk */
+const sade = (t) => String(t || "").replace(/[iı]/g, (c) => (c === "i" ? "İ" : "I")).toUpperCase()
+  .replace(/İ/g, "I").replace(/Ş/g, "S").replace(/Ğ/g, "G").replace(/Ü/g, "U").replace(/Ö/g, "O").replace(/Ç/g, "C")
+  .replace(/[^A-Z0-9]+/g, " ").trim();
+
+/* ============================ Bellekteki durum ============================ */
+const UCUSLAR = new Map();     /* anahtar → { ucus, yolcular: Map(k→y), sira: [k], koltuklar: {}, zaman, sekme } */
+let secili = "";
+let akis = [];                 /* {zaman, metin, tur} — en yeni başta */
+let sonMesaj = 0, eklentiGeldi = false, baglantiKoptu = false;
+let sesAcik = false;
+const TARAMA_MS = 2000;
+
+/* Varsayılan kural tablosu: ÖRNEK. Gerçek isim yoktur; sırayı yönetici düzenler. */
+const VARSAYILAN_KURALLAR = [
+  { kelime: "BAKAN", oncelik: 10, biz: true },
+  { kelime: "BASKAN VEKILI", oncelik: 20, biz: true },
+  { kelime: "MILLETVEKILI", oncelik: 30, biz: true },
+  { kelime: "OZEL KALEM", oncelik: 40, biz: false },
+  { kelime: "PROTOKOL GOREVLISI", oncelik: 50, biz: false }
+];
+let KURALLAR = VARSAYILAN_KURALLAR.map((k) => Object.assign({}, k));
+
+/* Uçak tipi düzenleri (yönetici değiştirebilir). Harf grupları arasındaki boşluk = koridor. */
+const DUZENLER = {
+  "737-800": { biz: 4, b: "AB EF", e: "ABC DEF", son: 27 },
+  "737 MAX 9 / 737-900": { biz: 4, b: "AB EF", e: "ABC DEF", son: 30 },
+  "A321": { biz: 5, b: "AB EF", e: "ABC DEF", son: 32 },
+  "A320": { biz: 5, b: "AB EF", e: "ABC DEF", son: 27 },
+  "Özel": { biz: 4, b: "AB EF", e: "ABC DEF", son: 27 }
+};
+let DUZEN = Object.assign({}, DUZENLER["737-800"]);
+
+/* ============================ Doğrulama ============================ */
+const TURLER = new Set(["merhaba", "tam", "fark", "nabiz", "baglantiKoptu", "kapandi"]);
+const FARK_TIPLERI = new Set(["eklendi", "cikti", "koltuk", "checkin", "not", "sinif", "sira", "koltukDurum"]);
+const KOLTUK_DURUM = new Set(["bos", "bos-son", "dolu", "bloke", "bilinmiyor", ""]);
+const kKoltuk = (s) => s === "" || /^\d{1,2}[A-K]$/.test(s);
+const kStr = (s, n) => typeof s === "string" && s.length <= n;
+function yolcuGecerli(y) {
+  return y && typeof y === "object" && kStr(y.k, 90) && kStr(y.soyad, 40) && /^[A-ZÇĞİÖŞÜa-zçğıöşü' -]*$/.test(y.soyad) &&
+    kStr(y.adBas, 1) && kStr(y.koltuk, 3) && kKoltuk(y.koltuk) && typeof y.ci === "boolean" && kStr(y.sinif, 1) && kStr(y.not, 300);
+}
+function ucusGecerli(u) { return u === null || u === undefined || (u && kStr(u.no, 8) && /^TK\d{2,5}$/.test(u.no) && kStr(u.tarih, 6)); }
+function koltuklarGecerli(K) {
+  if (K === null || K === undefined) return true;
+  if (typeof K !== "object" || Array.isArray(K)) return false;
+  const anahtarlar = Object.keys(K);
+  return anahtarlar.length <= 600 && anahtarlar.every((k) => /^\d{1,2}[A-K]$/.test(k) && KOLTUK_DURUM.has(K[k]));
+}
+function farkGecerli(f) {
+  if (!f || !FARK_TIPLERI.has(f.tip)) return false;
+  if (f.tip === "eklendi") return kStr(f.k, 90) && yolcuGecerli(f.yolcu);
+  if (f.tip === "sira") return Array.isArray(f.sira) && f.sira.length <= 400 && f.sira.every((k) => kStr(k, 90));
+  if (f.tip === "koltukDurum") return /^\d{1,2}[A-K]$/.test(f.koltuk) && KOLTUK_DURUM.has(f.eski) && KOLTUK_DURUM.has(f.yeni);
+  if (!kStr(f.k, 90) || !kStr(f.soyad || "", 40)) return false;
+  if (f.tip === "koltuk" || f.tip === "cikti") return kKoltuk(f.eski || "") && kKoltuk(f.yeni || "");
+  if (f.tip === "checkin") return typeof f.eski === "boolean" && typeof f.yeni === "boolean";
+  return kStr(f.eski || "", 300) && kStr(f.yeni || "", 300);
+}
+function mesajGecerli(m) {
+  if (!m || typeof m !== "object" || m.kaynak !== "eklenti" || !TURLER.has(m.tur)) return false;
+  if (!ucusGecerli(m.ucus)) return false;
+  if (m.sekme !== undefined && !Number.isInteger(m.sekme)) return false;
+  if (m.tur === "tam") return (m.yolcular == null || (Array.isArray(m.yolcular) && m.yolcular.length <= 400 && m.yolcular.every(yolcuGecerli))) && koltuklarGecerli(m.koltuklar);
+  if (m.tur === "fark") return Array.isArray(m.farklar) && m.farklar.length <= 800 && m.farklar.every(farkGecerli);
+  return true;
+}
+
+/* ============================ Mesaj dinleyicisi ============================ */
+window.addEventListener("message", (e) => {
+  if (e.source !== window || e.origin !== location.origin) return;       /* yalnız bu pencere */
+  const m = e.data;
+  if (!m || m.kaynak !== "eklenti") return;
+  if (!mesajGecerli(m)) { console.warn("[RITA Canlı] geçersiz mesaj yok sayıldı", m && m.tur); return; }
+  isle(m);
+});
+
+function anahtar(m) { return m.ucus && m.ucus.no ? m.ucus.no + " / " + (m.ucus.tarih || "") : "Sekme " + m.sekme; }
+function ucusKaydi(m) {
+  const a = anahtar(m);
+  if (!UCUSLAR.has(a)) UCUSLAR.set(a, { ucus: m.ucus || null, yolcular: new Map(), sira: [], koltuklar: {}, zaman: 0, sekme: m.sekme });
+  return [a, UCUSLAR.get(a)];
+}
+
+function isle(m) {
+  const simdi = Date.now();
+  if (m.tur === "merhaba") { eklentiGeldi = true; baglantiKoptu = false; sonMesaj = simdi; durumCiz(); return; }
+  if (m.tur === "baglantiKoptu") { baglantiKoptu = true; durumCiz(); return; }
+  if (m.tur === "kapandi") {
+    for (const [a, u] of UCUSLAR) if (u.sekme === m.sekme && !u.demo) { UCUSLAR.delete(a); olay(simdi, a, "Quick Check sekmesi kapandı: " + a + " (veri silindi)", "bilgi"); }
+    if (!UCUSLAR.has(secili)) secili = "";
+    hepsiniCiz(); return;
+  }
+  if (m.sekme !== -1) { eklentiGeldi = true; baglantiKoptu = false; sonMesaj = simdi; }   /* -1 = demo */
+  const [a, U] = ucusKaydi(m);
+  U.zaman = m.zaman || simdi;
+  if (!secili) secili = a;
+  if (m.tur === "tam") {
+    if (Array.isArray(m.yolcular)) { U.yolcular = new Map(m.yolcular.map((y) => [y.k, y])); U.sira = m.yolcular.map((y) => y.k); }
+    if (m.koltuklar) U.koltuklar = Object.assign({}, m.koltuklar);
+  } else if (m.tur === "fark") {
+    let koltukSay = 0, ses = false;
+    for (const f of m.farklar) {
+      const y = U.yolcular.get(f.k);
+      const ad = (f.soyad || (y && y.soyad) || "?") + (y && y.adBas ? " " + y.adBas + "." : "");
+      if (f.tip === "eklendi") { U.yolcular.set(f.k, f.yolcu); if (!U.sira.includes(f.k)) U.sira.push(f.k); olay(simdi, a, "Yeni VIP: " + f.yolcu.soyad + (f.yolcu.koltuk ? " · " + f.yolcu.koltuk : ""), "ekle"); ses = true; }
+      else if (f.tip === "cikti") { U.yolcular.delete(f.k); U.sira = U.sira.filter((k) => k !== f.k); olay(simdi, a, "Listeden çıktı / iptal: " + ad + (f.eski ? " (" + f.eski + ")" : ""), "cik"); ses = true; }
+      else if (f.tip === "sira") U.sira = f.sira.filter((k) => U.yolcular.has(k));
+      else if (f.tip === "koltukDurum") { U.koltuklar[f.koltuk] = f.yeni; koltukSay++; }
+      else if (y) {
+        if (f.tip === "koltuk") { y.koltuk = f.yeni; olay(simdi, a, ad + ": " + (f.eski || "—") + " → " + (f.yeni || "—"), "koltuk"); ses = true; }
+        else if (f.tip === "checkin") { y.ci = f.yeni; olay(simdi, a, ad + ": " + (f.yeni ? "check-in yapıldı" : "check-in geri alındı"), "ci"); ses = true; }
+        else if (f.tip === "not") { y.not = f.yeni; olay(simdi, a, ad + ": VIP notu değişti", "not"); }
+        else if (f.tip === "sinif") { y.sinif = f.yeni; olay(simdi, a, ad + ": sınıf " + (f.eski || "—") + " → " + (f.yeni || "—"), "not"); }
+      }
+    }
+    if (koltukSay) olay(simdi, a, "Koltuk haritası: " + koltukSay + " koltuğun durumu değişti", "harita");
+    if (ses && sesAcik && a === secili) bip();
+  }
+  hepsiniCiz();
+}
+
+/* ============================ Protokol sırası ============================ */
+/* Kelime eşleşmesi: tam kelime + en çok 2 harf ek ("BAKAN" → "BAKANI" tutar, "BAKANLIGI" tutmaz) */
+function kuralBul(not) {
+  const n = " " + sade(not) + " ";
+  let en = null;
+  for (const k of KURALLAR) {
+    const kw = sade(k.kelime);
+    if (!kw || !Number.isFinite(+k.oncelik)) continue;
+    if (new RegExp(" " + kw.replace(/ /g, "[A-Z]{0,2} ") + "[A-Z]{0,2} ").test(n) && (!en || +k.oncelik < +en.oncelik)) en = k;
+  }
+  return en;
+}
+const oncelik = (not) => { const k = kuralBul(not); return k ? +k.oncelik : Infinity; };
+function sirali(U) {
+  return U.sira.map((k, i) => ({ y: U.yolcular.get(k), i })).filter((x) => x.y)
+    .map((x) => { const k = kuralBul(x.y.not); return Object.assign(x, { p: k ? +k.oncelik : Infinity, biz: !!(k && k.biz) }); })
+    .sort((a, b) => a.p - b.p || a.i - b.i);
+}
+
+/* ============================ Koltuk düzeni ve öneri ============================ */
+const harfGrup = (s) => String(s || "").toUpperCase().replace(/[^A-K ]/g, "").trim().split(/\s+/).filter(Boolean);
+function koltukSirasi() {
+  const L = [];
+  for (let r = 1; r <= DUZEN.son; r++) {
+    const gruplar = harfGrup(r <= DUZEN.biz ? DUZEN.b : DUZEN.e);
+    for (const g of gruplar) for (const h of g) L.push({ k: r + h, biz: r <= DUZEN.biz });
+  }
+  return L;
+}
+function oneriler(U, liste) {
+  const veriVar = Object.keys(U.koltuklar).length > 0;
+  const vipKoltuk = new Set(liste.map((x) => x.y.koltuk).filter(Boolean));
+  const hepsi = koltukSirasi();
+  /* aday: boş koltuklar + VIP'lerin şu anki koltukları (yer değiştirebilirler); "en son verilecek" koltuklar sona */
+  const uygun = (k) => vipKoltuk.has(k) || (veriVar ? U.koltuklar[k] === "bos" : true);
+  const sonra = (k) => !vipKoltuk.has(k) && U.koltuklar[k] === "bos-son";
+  const aday = hepsi.filter((s) => uygun(s.k)).concat(hepsi.filter((s) => sonra(s.k)));
+  const kullan = new Set(), sonuc = new Map();
+  for (const x of liste) {
+    /* business yalnız kuralında "Business" işaretli olanlara (maiyet / görevli / kuralı olmayan → ekonomi) */
+    const s = aday.find((s) => !kullan.has(s.k) && (x.biz || !s.biz));
+    if (!s) { sonuc.set(x.y.k, ""); continue; }
+    kullan.add(s.k); sonuc.set(x.y.k, s.k);
+  }
+  return { sonuc, veriVar };
+}
+
+/* ============================ Çizim ============================ */
+function durumCiz() {
+  const d = $("durum"), yazi = d.querySelector("span");
+  const eski = sonMesaj && Date.now() - sonMesaj > Math.max(6000, TARAMA_MS * 3);
+  d.className = "pill " + (demoAcik ? "ok" : !eklentiGeldi ? "bekle" : (eski || baglantiKoptu) ? "dur" : "ok");
+  yazi.textContent = demoAcik ? "Demo modu" : !eklentiGeldi ? "Eklenti bekleniyor" : (eski || baglantiKoptu) ? "Akış durdu" : "Canlı · " + saat(sonMesaj);
+  const u = $("akisUyari"); bosalt(u);
+  if (!demoAcik && eklentiGeldi && (eski || baglantiKoptu) && sonMesaj)
+    u.append(el("div", { class: "uyari dur", text: "Veri akışı durdu, son güncelleme: " + saat(sonMesaj) + ". Quick Check sayfası açık ve uçuş seçili mi kontrol edin." }));
+  else if (!demoAcik && !eklentiGeldi)
+    u.append(el("div", { class: "uyari bilgi", text: "Eklentiden veri bekleniyor. Chrome'da RITA eklentisi kurulu olmalı ve Quick Check'te bir uçuş açık olmalı. Denemek için sağ üstteki \"Demo modu\"." }));
+}
+
+function ucusSecCiz() {
+  const s = $("ucusSec"); bosalt(s);
+  if (!UCUSLAR.size) { s.append(el("option", { value: "", text: "— uçuş yok —" })); $("ucusBilgi").textContent = ""; return; }
+  for (const a of UCUSLAR.keys()) s.append(el("option", { value: a, text: a, selected: a === secili }));
+  const U = UCUSLAR.get(secili);
+  $("ucusBilgi").textContent = U ? U.yolcular.size + " VIP · " + Object.keys(U.koltuklar).length + " koltuk okundu · son veri " + saat(U.zaman) : "";
+}
+
+function vipCiz() {
+  const g = $("vipGovde"), not = $("oneriNot"); bosalt(g); bosalt(not);
+  const U = UCUSLAR.get(secili);
+  if (!U) { $("vipSay").textContent = ""; g.append(el("tr", {}, el("td", { colspan: 6, class: "not", text: "Uçuş seçilmedi." }))); return null; }
+  const L = sirali(U), O = oneriler(U, L);
+  $("vipSay").textContent = L.length + " VIP";
+  if (!O.veriVar) not.append(el("div", { class: "uyari sari", text: "Koltuk haritası okunmadı: öneriler yalnız sıraya göre, koltuğun boş olduğu doğrulanmadan verildi." }));
+  if (!L.length) g.append(el("tr", {}, el("td", { colspan: 6, class: "not", text: "Bu uçuşta VIP yolcu okunmadı." })));
+  L.forEach((x, i) => {
+    const y = x.y, o = O.sonuc.get(y.k);
+    g.append(el("tr", {},
+      el("td", {}, el("b", { text: String(i + 1) }), Number.isFinite(x.p) ? el("div", { class: "not", text: "öncelik " + x.p }) : el("div", { class: "not", text: "kural yok" })),
+      el("td", {}, el("b", { text: y.soyad }), y.adBas ? " " + y.adBas + "." : "", y.sinif ? el("div", { class: "not", text: y.sinif === "C" ? "Business (C)" : y.sinif === "Y" ? "Ekonomi (Y)" : "Sınıf " + y.sinif }) : null),
+      el("td", { class: "mono", text: y.koltuk || "—" }),
+      el("td", {}, !o ? el("span", { class: "not", text: "boş koltuk yok" }) : o === y.koltuk ? el("span", { class: "ayni", text: "yerinde kalsın" }) : el("span", { class: "oneri mono", title: (i + 1) + ". sıra → " + o, text: "→ " + o })),
+      el("td", {}, el("span", { class: "etiket " + (y.ci ? "ci" : "yok"), text: y.ci ? "yapıldı" : "yok" })),
+      el("td", { class: "not", text: y.not })
+    ));
+  });
+  return { U, L, O };
+}
+
+function kabinCiz(V) {
+  const k = $("kabin"); bosalt(k);
+  const U = V && V.U, vipNo = new Map(), oneriNo = new Map();
+  if (V) V.L.forEach((x, i) => { if (x.y.koltuk) vipNo.set(x.y.koltuk, i + 1); const o = V.O.sonuc.get(x.y.k); if (o && o !== x.y.koltuk) oneriNo.set(o, i + 1); });
+  k.append(el("div", { class: "kbl", text: "BUSINESS" }));
+  for (let r = 1; r <= DUZEN.son; r++) {
+    if (r === DUZEN.biz + 1) k.append(el("div", { class: "kbl", text: "EKONOMİ" }));
+    const satir = el("div", { class: "ks" }, el("span", { class: "kn", text: String(r) }));
+    harfGrup(r <= DUZEN.biz ? DUZEN.b : DUZEN.e).forEach((grup, gi) => {
+      if (gi) satir.append(el("span", { class: "kr" }));
+      for (const h of grup) {
+        const kod = r + h, d = U ? U.koltuklar[kod] : undefined;
+        const sinif = vipNo.has(kod) ? "vip" : d && d !== "bilinmiyor" ? d : "";
+        const t = el("span", { class: "kt " + sinif + (oneriNo.has(kod) ? " on" : ""), title: kod + (vipNo.has(kod) ? " · VIP " + vipNo.get(kod) + ". sıra" : "") + (oneriNo.has(kod) ? " · öneri: " + oneriNo.get(kod) + ". sıra" : ""), text: vipNo.has(kod) ? "#" + vipNo.get(kod) : kod });
+        if (oneriNo.has(kod)) t.append(el("b", { text: String(oneriNo.get(kod)) }));
+        satir.append(t);
+      }
+    });
+    satir.append(el("span", { class: "kn", text: String(r) }));
+    k.append(satir);
+  }
+}
+
+function akisCiz() {
+  const a = $("akis"); bosalt(a);
+  const L = akis.filter((o) => !o.ucus || o.ucus === secili).slice(0, 200);
+  if (!L.length) { a.append(el("div", { class: "not", text: "Henüz değişiklik yok. Koltuk değişimi, check-in, iptal ve yeni VIP burada en yeni üstte görünür." })); return; }
+  L.forEach((o, i) => a.append(el("div", { class: "olay" + (i === 0 && Date.now() - o.zaman < 2000 ? " yeni" : "") }, el("span", { class: "sa", text: saat(o.zaman) }), el("span", { text: o.metin }))));
+}
+
+function hepsiniCiz() { durumCiz(); ucusSecCiz(); const V = vipCiz(); kabinCiz(V); akisCiz(); }
+
+function olay(zaman, ucus, metin, tur) { akis.unshift({ zaman, metin, tur, ucus }); if (akis.length > 500) akis.length = 500; }
+
+/* Sesli uyarı: varsayılan kapalı; açıkken koltuk/check-in/iptal değişiminde kısa bip */
+let ses = null;
+function bip() {
+  try {
+    ses = ses || new (window.AudioContext || window.webkitAudioContext)();
+    const o = ses.createOscillator(), g = ses.createGain();
+    o.frequency.value = 880; o.connect(g); g.connect(ses.destination);
+    g.gain.setValueAtTime(0.15, ses.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ses.currentTime + 0.35);
+    o.start(); o.stop(ses.currentTime + 0.36);
+  } catch (e) { /* ses desteklenmiyor */ }
+}
+
+/* ============================ Kural tablosu ============================ */
+function kuralCiz() {
+  const g = $("kuralGovde"); bosalt(g);
+  KURALLAR.forEach((k, i) => {
+    g.append(el("tr", {},
+      el("td", {}, el("input", { type: "text", value: k.kelime, "aria-label": "Anahtar kelime", oninput: (e) => { KURALLAR[i].kelime = e.target.value.slice(0, 60); hepsiniCiz(); } })),
+      el("td", {}, el("input", { type: "number", value: k.oncelik, "aria-label": "Öncelik", oninput: (e) => { KURALLAR[i].oncelik = parseFloat(e.target.value); hepsiniCiz(); } })),
+      el("td", {}, el("input", { type: "checkbox", checked: !!k.biz, "aria-label": "Business önerilebilir", onchange: (e) => { KURALLAR[i].biz = e.target.checked; hepsiniCiz(); } })),
+      el("td", {}, el("button", { class: "btn sm", type: "button", "aria-label": "Kuralı sil", text: "✕", onclick: () => { KURALLAR.splice(i, 1); kuralCiz(); hepsiniCiz(); } }))
+    ));
+  });
+}
+$("kuralEkle").addEventListener("click", () => { KURALLAR.push({ kelime: "", oncelik: 100, biz: false }); kuralCiz(); });
+$("kuralSifirla").addEventListener("click", () => { KURALLAR = VARSAYILAN_KURALLAR.map((k) => Object.assign({}, k)); kuralCiz(); hepsiniCiz(); });
+$("kuralDisa").addEventListener("click", () => { $("kuralMetin").value = JSON.stringify(KURALLAR); });
+$("kuralYukle").addEventListener("click", () => {
+  try {
+    const L = JSON.parse($("kuralMetin").value);
+    if (!Array.isArray(L) || L.length > 200 || !L.every((k) => k && typeof k.kelime === "string" && k.kelime.length <= 60 && Number.isFinite(+k.oncelik))) throw 0;
+    KURALLAR = L.map((k) => ({ kelime: k.kelime, oncelik: +k.oncelik, biz: !!k.biz })); kuralCiz(); hepsiniCiz();
+  } catch (e) { alert("Metin okunamadı. \"Metni üret\" ile alınmış metni yapıştırın."); }
+});
+
+/* ============================ Düzen seçimi ============================ */
+function duzenAlanlari() { $("dBiz").value = DUZEN.biz; $("dB").value = DUZEN.b; $("dE").value = DUZEN.e; $("dSon").value = DUZEN.son; }
+(function () {
+  const s = $("duzenSec");
+  for (const ad of Object.keys(DUZENLER)) s.append(el("option", { value: ad, text: ad }));
+  s.addEventListener("change", () => { DUZEN = Object.assign({}, DUZENLER[s.value]); duzenAlanlari(); hepsiniCiz(); });
+  const deg = () => {
+    DUZEN = { biz: Math.max(0, Math.min(15, parseInt($("dBiz").value, 10) || 0)), b: $("dB").value, e: $("dE").value, son: Math.max(2, Math.min(70, parseInt($("dSon").value, 10) || 27)) };
+    s.value = "Özel"; hepsiniCiz();
+  };
+  ["dBiz", "dB", "dE", "dSon"].forEach((id) => $(id).addEventListener("input", deg));
+  duzenAlanlari();
+})();
+
+$("ucusSec").addEventListener("change", (e) => { secili = e.target.value; hepsiniCiz(); });
+$("sesAc").addEventListener("change", (e) => { sesAcik = e.target.checked; if (sesAcik) bip(); });
+$("akisTemizle").addEventListener("click", () => { akis = akis.filter((o) => o.ucus !== secili); akisCiz(); });
+
+/* ============================ Demo modu (uydurma veri) ============================ */
+let demoAcik = false, demoZaman = null;
+const DEMO = "TK0000 / DEMO";
+function demoBaslat() {
+  const notlar = ["!VIP! ORNEK BAKAN", "!VIP! TBMM BASKAN VEKILI", "!VIP! MILLETVEKILI", "!VIP! MILLETVEKILI", "!VIP! OZEL KALEM", "!VIP! PROTOKOL GOREVLISI", "!VIP! PROTOKOL GOREVLISI", "!VIP! ORNEK KURUM MISAFIRI"];
+  const hepsi = koltukSirasi().map((s) => s.k), koltuklar = {};
+  hepsi.forEach((k, i) => { const r = (i * 7919) % 100; koltuklar[k] = r < 55 ? "dolu" : r < 80 ? "bos" : r < 88 ? "bos-son" : "bloke"; });
+  const ekoBos = hepsi.filter((k) => parseInt(k, 10) > DUZEN.biz + 3);
+  const yolcular = notlar.map((n, i) => {
+    const k = ekoBos[i * 9 % ekoBos.length]; koltuklar[k] = "dolu";
+    return { k: "ORNEK" + (i + 1) + "|X|", soyad: "ORNEK" + (i + 1), adBas: String.fromCharCode(65 + i), koltuk: k, ci: i % 3 !== 0, sinif: "Y", not: n };
+  });
+  isle({ kaynak: "eklenti", tur: "tam", sekme: -1, ucus: { no: "TK0000", tarih: "DEMO" }, yolcular, koltuklar, zaman: Date.now() });
+  UCUSLAR.get(DEMO).demo = true; secili = DEMO; hepsiniCiz();
+  /* her 4 sn'de rastgele bir değişiklik: koltuk değişimi, check-in, koltuk durumu */
+  demoZaman = setInterval(() => {
+    const U = UCUSLAR.get(DEMO); if (!U) return;
+    const Y = [...U.yolcular.values()], y = Y[Math.floor(Math.random() * Y.length)], r = Math.random(), F = [];
+    if (r < 0.4) { const bos = Object.keys(U.koltuklar).filter((k) => U.koltuklar[k] === "bos"); const yeni = bos[Math.floor(Math.random() * bos.length)];
+      if (yeni) { F.push({ tip: "koltuk", k: y.k, soyad: y.soyad, eski: y.koltuk, yeni }); F.push({ tip: "koltukDurum", koltuk: yeni, eski: "bos", yeni: "dolu" }); if (y.koltuk) F.push({ tip: "koltukDurum", koltuk: y.koltuk, eski: "dolu", yeni: "bos" }); } }
+    else if (r < 0.7) F.push({ tip: "checkin", k: y.k, soyad: y.soyad, eski: y.ci, yeni: !y.ci });
+    else { const K = Object.keys(U.koltuklar), k = K[Math.floor(Math.random() * K.length)], ys = U.koltuklar[k] === "dolu" ? "bos" : "dolu"; if (![...U.yolcular.values()].some((v) => v.koltuk === k)) F.push({ tip: "koltukDurum", koltuk: k, eski: U.koltuklar[k], yeni: ys }); }
+    if (F.length) isle({ kaynak: "eklenti", tur: "fark", sekme: -1, ucus: { no: "TK0000", tarih: "DEMO" }, farklar: F, zaman: Date.now() });
+  }, 4000);
+}
+function demoDurdur() { clearInterval(demoZaman); demoZaman = null; UCUSLAR.delete(DEMO); akis = akis.filter((o) => o.ucus !== DEMO); if (secili === DEMO) secili = UCUSLAR.keys().next().value || ""; }
+$("demoBtn").addEventListener("click", () => {
+  demoAcik = !demoAcik; $("demoBtn").setAttribute("aria-pressed", String(demoAcik)); $("demoBtn").textContent = demoAcik ? "Demoyu kapat" : "Demo modu";
+  if (demoAcik) demoBaslat(); else demoDurdur();
+  if (!demoAcik && !eklentiGeldi) sonMesaj = 0;
+  hepsiniCiz();
+});
+
+/* Akış durdu mu? Her saniye kontrol (yalnız durum çubuğunu yeniler) */
+setInterval(durumCiz, 1000);
+kuralCiz();
+hepsiniCiz();
+</script>
+</body>
+</html>
