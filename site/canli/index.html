@@ -355,34 +355,40 @@ function koltukSirasi() {
    Business'ın hemen arkasında boş koltuk varken VIP asla daha geriye önerilmez (öndeki ilk uygun koltuk). */
 function oneriler(U, liste) {
   const veriVar = Object.keys(U.koltuklar).length > 0;
-  const vipKoltuk = new Set(liste.map((x) => x.y.koltuk).filter(Boolean));
+  /* VIP'in Quick Check koltuğu: check-in yapmışsa koltuğunda KALIR (yer değiştirme önerilmez); yapmamışsa yalnız kendisine açıktır
+     (başka VIP'e verilmez → VIP'ler arasında koltuk değiş tokuşu yok). C sınıfı (business bileti) ekonomiye alınmaz. */
+  const sahip = new Map(); liste.forEach((x) => { if (x.y.koltuk) sahip.set(x.y.koltuk, x.y.k); });
   const hepsi = koltukSirasi();
-  const durum = (k) => (vipKoltuk.has(k) ? "bos" : veriVar ? U.koltuklar[k] : "bos");
-  const kullan = new Set(), sonuc = new Map(), blk = new Set();
+  const durum = (k, x) => (sahip.has(k) ? (x && sahip.get(k) === x.y.k ? "bos" : "dolu") : veriVar ? U.koltuklar[k] : "bos");
+  const kullan = new Set(), sonuc = new Map(), blk = new Set(), alt = new Map(), ciYer = new Set();
   const ilk = (filtre) => { const s = hepsi.find((s) => !kullan.has(s.k) && filtre(s)); return s ? s.k : ""; };
-  const grup = (y) => String(y.k).split("|")[2] || "";
-  const satirlar = (n) => { const R = new Map(); hepsi.forEach((s) => { if (s.biz || kullan.has(s.k) || durum(s.k) !== "bos") return; const r = parseInt(s.k, 10); (R.get(r) || R.set(r, []).get(r)).push(s.k); }); for (const [r, L] of R) { const yan = harfGrup(DUZEN.e).map((g) => g.split("").map((h) => r + h).filter((k) => L.includes(k))).find((g) => g.length >= n); if (yan) return yan.slice(0, n); if (L.length >= n) return L.slice(0, n); } return null; };
-  /* sıra (kullanıcı kuralı): önce Business hakkı olanlar (business'ta yer yoksa ekonominin EN ÖNÜ = business arkası),
-     sonra diğerleri öncelik sırasıyla; aile/grup, sırası gelen ilk üyesinde birlikte yan yana yerleşir */
-  const sira = liste.filter((x) => x.biz).concat(liste.filter((x) => !x.biz));
+  const bizHak = (x) => x.biz || x.y.sinif === "C";
+  liste.forEach((x) => { if (x.y.ci && x.y.koltuk && hepsi.some((s) => s.k === x.y.koltuk)) { kullan.add(x.y.koltuk); sonuc.set(x.y.k, x.y.koltuk); ciYer.add(x.y.k); } });
+  const grup = (y) => String(y.k).split("|")[2].replace(/[#~].*$/, "") || "";
+  const satirlar = (n, aile) => { const R = new Map(); hepsi.forEach((s) => { if (s.biz || kullan.has(s.k) || !aile.some((z) => durum(s.k, z) === "bos")) return; const r = parseInt(s.k, 10); (R.get(r) || R.set(r, []).get(r)).push(s.k); }); for (const [r, L] of R) { const yan = harfGrup(DUZEN.e).map((g) => g.split("").map((h) => r + h).filter((k) => L.includes(k))).find((g) => g.length >= n); if (yan) return yan.slice(0, n); if (L.length >= n) return L.slice(0, n); } return null; };
+  const sira = liste.filter(bizHak).concat(liste.filter((x) => !bizHak(x)));
   for (const x of sira) {
     if (sonuc.has(x.y.k)) continue;
-    if (!x.biz && grup(x.y)) {
-      const aile = liste.filter((z) => !z.biz && !sonuc.has(z.y.k) && grup(z.y) === grup(x.y));
-      const blok = aile.length >= 2 ? satirlar(aile.length) : null;
+    if (!bizHak(x) && grup(x.y)) {
+      const aile = liste.filter((z) => !bizHak(z) && !sonuc.has(z.y.k) && grup(z.y) === grup(x.y));
+      const blok = aile.length >= 2 ? satirlar(aile.length, aile) : null;
       if (blok) { aile.forEach((z, i) => { kullan.add(blok[i]); sonuc.set(z.y.k, blok[i]); }); continue; }
     }
     let k = "";
-    if (x.biz) {
+    if (bizHak(x)) {
       /* business'ta bloke her zaman kaldırılır: boş / en son verilecek / soft / bloke eşit, en öndeki */
-      k = ilk((s) => s.biz && ["bos", "bos-son", "soft", "bloke"].includes(durum(s.k)));
-      if (k && (durum(k) === "soft" || durum(k) === "bloke")) blk.add(k);
+      k = ilk((s) => s.biz && ["bos", "bos-son", "soft", "bloke"].includes(durum(s.k, x)));
+      if (k && (durum(k, x) === "soft" || durum(k, x) === "bloke")) blk.add(k);
     }
-    if (!k) k = ilk((s) => !s.biz && durum(s.k) === "bos");
+    if (!k) k = ilk((s) => !s.biz && durum(s.k, x) === "bos");
     if (k) kullan.add(k);
     sonuc.set(x.y.k, k);
   }
-  return { sonuc, veriVar, blk };
+  /* check-in yapmış VIP: yalnız küçük not — ekonomide daha önde BOŞ koltuk varsa "isterse geçebilir" */
+  liste.forEach((x) => { if (!ciYer.has(x.y.k) || bizHak(x) && parseInt(x.y.koltuk, 10) <= DUZEN.biz) return; const r = parseInt(x.y.koltuk, 10), cb = r <= DUZEN.biz;
+    const hb = bizHak(x) && !cb;   /* business hakkı olup ekonomide oturan: business'taki boş koltuk */
+    const k = ilk((s) => (hb ? s.biz : s.biz === cb && parseInt(s.k, 10) < r) && ["bos"].concat(hb ? ["bos-son"] : []).includes(durum(s.k)) && ![...alt.values()].includes(s.k)); if (k) alt.set(x.y.k, k); });
+  return { sonuc, veriVar, blk, alt, ciYer };
 }
 
 /* ============================ Çizim ============================ */
@@ -420,9 +426,9 @@ function vipCiz() {
       el("td", {}, el("b", { text: String(i + 1) }), Number.isFinite(x.p) ? el("div", { class: "not", text: "öncelik " + x.p }) : el("div", { class: "not", text: "kural yok" })),
       el("td", {}, el("b", { text: y.soyad }), y.adBas ? " " + y.adBas + "." : "", y.sinif ? el("div", { class: "not", text: y.sinif === "C" ? "Business (C)" : y.sinif === "Y" ? "Ekonomi (Y)" : "Sınıf " + y.sinif }) : null),
       el("td", { class: "mono", text: y.koltuk || "—" }),
-      el("td", {}, !o ? el("span", { class: "not", text: "boş koltuk yok" }) : o === y.koltuk ? el("span", { class: "ayni", text: "yerinde kalsın" }) : el("span", {}, el("span", { class: "oneri mono", title: (i + 1) + ". sıra → " + o, text: "→ " + o }), O.blk.has(o) ? el("span", { class: "blkac", text: "🔒 bloke kaldırılmalı" }) : null)),
+      el("td", {}, !o ? el("span", { class: "not", text: "boş koltuk yok" }) : O.ciYer.has(y.k) ? el("span", {}, el("span", { class: "ayni", text: "yerinde · check-in ✔" }), O.alt.has(y.k) ? el("div", { class: "not", text: "isterse boş: " + O.alt.get(y.k) }) : null) : o === y.koltuk ? el("span", { class: "ayni", text: "yerinde kalsın" }) : el("span", {}, el("span", { class: "oneri mono", title: (i + 1) + ". sıra → " + o, text: "→ " + o }), O.blk.has(o) ? el("span", { class: "blkac", text: "🔒 bloke kaldırılmalı" }) : null)),
       el("td", {}, el("span", { class: "etiket " + (y.ci ? "ci" : "yok"), text: y.ci ? "yapıldı" : "yok" })),
-      el("td", { class: "not" }, x.biz ? el("span", { class: "upy", text: "⬆ Business hakkı (kural: " + x.kural + ") · kontrol sizde" }) : el("span", { text: x.kural ? "⬇ Business hakkı yok (kural: " + x.kural + ") · ekonomi" : "⬇ Kural yok · ekonomi" })),
+      el("td", { class: "not" }, x.biz || y.sinif === "C" ? el("span", { class: "upy", text: x.biz ? "⬆ Business hakkı (kural: " + x.kural + ") · kontrol sizde" : "⬆ Business bileti (C sınıfı) · kontrol sizde" }) : el("span", { text: x.kural ? "⬇ Business hakkı yok (kural: " + x.kural + ") · ekonomi" : "⬇ Kural yok · ekonomi" })),
       el("td", { class: "not", text: y.not })
     ));
   });

@@ -3,7 +3,7 @@
    tools/build_site.py bu dosyayı tek satıra indirip site/yerimi sayfasına "javascript:" bağlantısı olarak koyar.
    Kurallar: yalnız blok yorum, her deyim noktalı virgülle biter (tek satıra indirilebilsin). */
 (function () {
-  var SURUM = 2, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
+  var SURUM = 3, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
   var demo = location.origin === RITA && /\/RITA\/yerimi\/deneme/.test(location.pathname);
   if (location.hostname !== "checkin.thy.com" && !demo) { alert("RITA: Bu düğme yalnız Quick Check sayfasında çalışır."); return; }
   if (/Login\.aspx/i.test(location.href) || document.querySelector("input[type=password]")) { alert("RITA: Giriş sayfasında çalışmaz. Önce uçuşu açın."); return; }
@@ -44,6 +44,8 @@
           var ad = h.ad != null ? metin(td[h.ad]) : "", sn = h.s != null ? metin(td[h.s]).toUpperCase().slice(0, 1) : "", gk = h.gk != null ? metin(td[h.gk]).slice(0, 6) : "";
           var c = h.cl != null ? td[h.cl] : null, ci = !!c && (!!c.querySelector("img,svg,i") || /✔|✓|√|\bOK\b|^Y$/i.test(metin(c)));
           var y = { soyad: soyad.toUpperCase().slice(0, 40), adBas: ad ? ad.charAt(0).toUpperCase() : "", koltuk: kol(metin(td[h.klt])), ci: ci, sinif: /^[A-Z]$/.test(sn) ? sn : "", not: not.slice(0, 300) };
+          /* Quick Check satır numarası (1–10, 11–20…): sayfalar arası sıra ve sayfa ayrımı için; sayfa numarası okunamasa da çalışır */
+          for (var q = 0; q < Math.min(3, td.length); q++) { var sn2 = metin(td[q]); if (/^\d{1,3}$/.test(sn2)) { y.no = +sn2; break; } }
           y.k = [y.soyad, y.adBas, gk].join("|"); say[y.k] = (say[y.k] || 0) + 1; if (say[y.k] > 1) y.k += "#" + say[y.k];
           L.push(y);
         });
@@ -62,7 +64,10 @@
       if (n >= 12 && n > kn) { koltuklar = K; kn = n; }
     });
     if (!yolcular && !koltuklar) return null;
-    var msg = { kaynak: "yerimi", surum: SURUM, tur: "tam", demo: demo ? 1 : 0, ucus: ucus, yolcular: yolcular, koltuklar: koltuklar, sayfa: sy.sayfa, toplam: sy.toplam, zaman: Date.now() };
+    /* "Toplam 6 C 19 Y Yolcu" → listede beklenen VIP sayısı (eksik sayfa uyarısı için) */
+    var bek = 0; belgeTopla().forEach(function (b) { var t = String((b.body && b.body.innerText) || "").match(/Toplam\s*(\d{1,3})\s*C\s*(\d{1,3})\s*Y/i); if (t && !bek) bek = +t[1] + +t[2]; });
+    var ilkNo = 0; if (yolcular) yolcular.forEach(function (y) { if (y.no && (!ilkNo || y.no < ilkNo)) ilkNo = y.no; });
+    var msg = { kaynak: "yerimi", surum: SURUM, tur: "tam", demo: demo ? 1 : 0, ucus: ucus, yolcular: yolcular, koltuklar: koltuklar, sayfa: sy.sayfa, toplam: sy.toplam, ilkNo: ilkNo, beklenen: bek, zaman: Date.now() };
     var ozet = (ucus ? ucus.no + ": " : "") + (yolcular ? yolcular.length + " VIP" + (sy.sayfa ? " (sayfa " + sy.sayfa + (sy.toplam ? "/" + sy.toplam : "") + ")" : "") : "liste yok") + ", " + (koltuklar ? kn + " koltuk" : "koltuk haritası yok");
     return { msg: msg, ozet: ozet };
   };
