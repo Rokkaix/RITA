@@ -20,6 +20,26 @@
    "durum": "tamam",
    "sonuc": "Teyitli görev değişikliği olan kişilerde \"doğrulayın\" notu artık kendiliğinden kalkıyor. Kaynak: Resmî Gazete rektör atama kararları.",
    "bitti": "2026-11-22T12:25"
+  },
+  {
+   "id": "cl20261122c",
+   "t": "2026-11-22T14:30",
+   "tur": "denetim",
+   "kisi": "Zeki Yiğit",
+   "metin": "Danıştay Başkanı (rical 8) için fotoğraf yoktu; Vikipedi sayfasında resim bulunmuyordu.",
+   "durum": "tamam",
+   "sonuc": "Danıştay'ın resmî Başkan sayfasındaki (danistay.gov.tr/icerik/1, adı 'Zeki YİĞİT' olarak yazılı) makam portresi kırpılıp eklendi.",
+   "bitti": "2026-11-22T14:30"
+  },
+  {
+   "id": "cl20261122d",
+   "t": "2026-11-22T14:30",
+   "tur": "denetim",
+   "kisi": "Kadir Özkaya, Ali Çardakcı, Metin Tokel, Rafet Dalkıran",
+   "metin": "AYM Başkanı ve kuvvet komutanlarının (rical 6, 11) fotoğrafı yok; Vikipedi sayfalarında resim bulunmuyor.",
+   "durum": "yapilamadi",
+   "sonuc": "Resmî kurum siteleri (anayasa.gov.tr, jandarma.gov.tr, tsk.tr) bu ortamdan erişilemiyor. Yönetim → VIP fotoğrafları'ndan resmî portreyi yükleyebilirsiniz ya da ağ izni verilirse bir sonraki turda eklenir.",
+   "bitti": "2026-11-22T14:30"
   }
  ]
 }
