@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "RITA Quick Check Okuyucu",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Quick Check'te açık uçuşun VIP yolcu listesini ve koltuk haritasını yalnızca OKUR, RITA Canlı sayfasına iletir. Hiçbir şey yazmaz, tıklamaz, giriş yapmaz.",
   "minimum_chrome_version": "116",
   "background": {

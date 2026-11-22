@@ -49,6 +49,7 @@ chrome.runtime.onMessage.addListener((m, gonderen, yanitla) => {
   }
   d.zaman = m.zaman || Date.now();
 
+  if (m.tur === "tani" && m.bilgi && typeof m.bilgi === "object") { herkese({ tur: "tani", sekme: id, ucus: d.ucus, bilgi: m.bilgi, zaman: m.zaman }); yanitla({ ok: 1 }); return; }
   if (m.tur === "tam") {
     if (Array.isArray(m.yolcular)) { d.yolcular = {}; d.sira = []; m.yolcular.forEach((y) => { d.yolcular[y.k] = y; d.sira.push(y.k); }); }
     if (m.koltuklar) d.koltuklar = Object.assign({}, m.koltuklar);

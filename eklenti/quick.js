@@ -52,6 +52,32 @@ const CONFIG = {
 };
 /* ------------------------------ CONFIG SONU ------------------------------ */
 
+/* Uzaktan ayar: RITA sitesindeki data/eklenti-ayar.json yalnız aşağıdaki ALANLARI (veri, kod değil) değiştirebilir.
+   Böylece okuma tutmazsa Claude asistan bu dosyayı düzelterek sorunu, eklentiyi yeniden kurmadan giderebilir. */
+const AYAR_URL = "https://rokkaix.github.io/RITA/data/eklenti-ayar.json";
+const AYAR_TURLERI = {
+  ucusBaslikSecici: "string", satirSecici: "string", otomatikBaslik: "boolean", baslikAdlari: "baslik", sutunlar: "sutun",
+  enAzHucre: "sayi", yalnizVip: "boolean", vipIsareti: "string", checkinIsaretleri: "dizi", koltukHucreSecici: "string",
+  enAzKoltuk: "sayi", taramaMs: "sayi", hataAyikla: "boolean"
+};
+function ayarUygula(A) {
+  if (!A || typeof A !== "object") return 0;
+  let n = 0;
+  for (const [k, tur] of Object.entries(AYAR_TURLERI)) {
+    if (!(k in A)) continue;
+    const v = A[k];
+    const ok = tur === "string" ? typeof v === "string" && v.length <= 200 && !/[<>]/.test(v) && (k !== "satirSecici" && k !== "koltukHucreSecici" && k !== "ucusBaslikSecici" || (() => { try { if (v) document.querySelector(v); return true; } catch (e) { return false; } })())
+      : tur === "boolean" ? typeof v === "boolean"
+      : tur === "sayi" ? Number.isInteger(v) && v >= 0 && v <= 60000
+      : tur === "dizi" ? Array.isArray(v) && v.length <= 20 && v.every((x) => typeof x === "string" && x.length <= 10)
+      : tur === "sutun" ? v && typeof v === "object" && Object.values(v).every((x) => Number.isInteger(x) && x >= 0 && x < 60)
+      : tur === "baslik" ? v && typeof v === "object" && Object.values(v).every((x) => Array.isArray(x) && x.every((y) => typeof y === "string" && y.length <= 20))
+      : false;
+    if (ok) { CONFIG[k] = v; n++; }
+  }
+  return n;
+}
+
 (function () {
   "use strict";
 
@@ -110,7 +136,7 @@ const CONFIG = {
     const satirlar = Array.from(document.querySelectorAll(CONFIG.satirSecici));
     if (!satirlar.length) return null;
     const S = sutunBul(satirlar);
-    if (!S) { log("bu çerçevede yolcu listesi başlığı yok"); return null; }
+    if (!S) { log("bu çerçevede yolcu listesi başlığı yok"); if (/Yolcu Listesi|Soyad/i.test(document.body.innerText || "")) tani("liste-basligi-bulunamadi"); return null; }
     const h = S.harita, liste = [];
     const basla = S.baslik ? satirlar.indexOf(S.baslik) + 1 : 0;
     for (const tr of satirlar.slice(basla)) {
@@ -135,7 +161,7 @@ const CONFIG = {
       y.k = [y.soyad, y.adBas, gk].join("|");
       liste.push(y);
     }
-    if (!liste.length) uyar("Yolcu listesi başlığı bulundu ama VIP satır okunamadı. CONFIG.sutunlar / yalnizVip ayarını kontrol edin.");
+    if (!liste.length) { uyar("Yolcu listesi başlığı bulundu ama VIP satır okunamadı. CONFIG.sutunlar / yalnizVip ayarını kontrol edin."); if (/!VIP!/i.test(document.body.innerText || "")) tani("vip-satir-okunamadi"); }
     /* aynı kimlik iki kez gelirse sıra numarası ekle */
     const say = {};
     liste.forEach((y) => { say[y.k] = (say[y.k] || 0) + 1; if (say[y.k] > 1) y.k += "#" + say[y.k]; });
@@ -172,6 +198,7 @@ const CONFIG = {
       K[k] = durumBul(rgb);
       n++;
     }
+    if (n < CONFIG.enAzKoltuk && /Koltuk G[öo]r[üu]n[üu]m[üu]/i.test(document.body.innerText || "")) tani("koltuk-haritasi-okunamadi");
     return n >= CONFIG.enAzKoltuk ? K : null;
   }
 
@@ -234,9 +261,36 @@ const CONFIG = {
       }
       onceki = simdi;
     } catch (e) {
-      uyar("Okuma hatası: " + (e && e.message));
+      uyar("Okuma hatası: " + (e && e.message)); tani("okuma-hatasi: " + String(e && e.message).slice(0, 120));
     }
     calisiyor = false;
+  }
+
+  /* ---------------- Tanı: okuma tutmazsa RITA'ya (ve Claude asistana) yolcu bilgisi İÇERMEYEN rapor ---------------- */
+  const taniZaman = {};
+  function basliklar() {
+    /* yalnız sütun başlıkları (yolcu satırı ALINMAZ) */
+    const H = new Set();
+    for (const tr of Array.from(document.querySelectorAll("tr")).slice(0, 400)) {
+      const T = Array.from(tr.children).map((h) => hucreMetni(h));
+      if (T.length < 4 || T.length > 30) continue;
+      /* yalnız BAŞLIK satırı: en az 3 hücrede küçük harf var (yolcu satırları büyük harftir), rakam içeren hücre yok */
+      if (T.filter((t) => /[a-zçğıöşü]/.test(t)).length < 3 || T.some((t) => /\d/.test(t))) continue;
+      T.filter((t) => t && t.length <= 12).forEach((t) => H.add(t));
+      if (H.size > 30) break;
+    }
+    return Array.from(H).slice(0, 30);
+  }
+  function tani(uyari) {
+    const s = Date.now();
+    if (s - (taniZaman[uyari] || 0) < 10 * 60 * 1000) return;
+    taniZaman[uyari] = s;
+    const kod = Array.from(document.querySelectorAll(CONFIG.koltukHucreSecici)).filter((el) => koltukNormal(hucreMetni(el))).length;
+    gonder({ rita: 1, tur: "tani", zaman: s, bilgi: {
+      surum: chrome.runtime.getManifest().version, cerceve: location.pathname.slice(0, 80), uyari,
+      basliklar: basliklar(), tabloSay: document.querySelectorAll("table").length, satirSay: document.querySelectorAll(CONFIG.satirSecici).length,
+      koltukAday: kod, ayar: { satirSecici: CONFIG.satirSecici, otomatikBaslik: CONFIG.otomatikBaslik, koltukHucreSecici: CONFIG.koltukHucreSecici }
+    } });
   }
 
   /* ---------------- Akış: aralıklı okuma + MutationObserver ---------------- */
@@ -248,6 +302,6 @@ const CONFIG = {
   zamanlayici = setInterval(tara, Math.max(500, CONFIG.taramaMs));
   gozcu = new MutationObserver(() => { clearTimeout(bekle); bekle = setTimeout(tara, CONFIG.degisimBekleMs); });
   if (document.body) gozcu.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["class", "style"] });
-  setTimeout(tara, 800);
+  fetch(AYAR_URL, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).then((A) => { const n = ayarUygula(A); if (n) log("uzaktan ayar uygulandı:", n, "alan"); }).catch(() => {}).finally(() => setTimeout(tara, 300));
   log("başladı:", yer, location.href.startsWith(CONFIG.quickCheckUrl) ? "(yolcu sayfası)" : "(iframe)");
 })();

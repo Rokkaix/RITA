@@ -38,6 +38,14 @@ koltuk durumları işlenir ve yerleşim rical sırasına göre **kendiliğinden*
 "CANLI · QUICK CHECK EKLENTİSİ" panelinde her otomatik işlem saatiyle yazılır; "Otomatik uygula" kapatılabilir,
 "Canlı veriyi bu uçuştan kaldır" ile geri alınır. Üst düzey yolcular otomatik teyit edilmez. Canlı veri kaydedilmez.
 
+## Sorun olursa: kendiliğinden onarım
+
+Okuyucu bir şeyi okuyamazsa, içinde **yolcu bilgisi olmayan** kısa bir tanı raporu (uyarı, yalnız sütun başlıkları,
+satır/koltuk sayısı) RITA'ya gönderir. RITA ana sayfası yönetici girişiyle açıksa bu rapor Yönetim → Claude asistan'a
+iş olarak yazılır; Claude düzeltmeyi `data/eklenti-ayar.json` dosyasına yazar. Eklenti her açılışta bu dosyayı okur
+(yalnız izin verilen ayar alanları, kod değil), bu yüzden **yeniden kurmanız gerekmez** — Quick Check sekmesini
+yenilemeniz yeterli. Kodun kendisi değişirse Claude bunu iş sonucunda yazar; o zaman `chrome://extensions` → ↻.
+
 ## Kurulum (yalnız izinli bilgisayardaki Chrome)
 
 1. Bu depodaki `eklenti` klasörünü bilgisayara indirin (GitHub → Code → Download ZIP → `eklenti` klasörünü çıkarın).

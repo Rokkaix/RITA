@@ -1,0 +1,4 @@
+{
+ "aciklama": "RITA Quick Check okuyucu eklentisinin uzaktan ayarı. Yalnız eklenti/quick.js içindeki AYAR_TURLERI alanları geçerlidir (veri, kod değil). Boş = eklentideki varsayılanlar.",
+ "guncelleme": "2026-11-22"
+}
