@@ -610,7 +610,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 19.3';let SURUM_YENI=false;
+const SURUM='RITA 19.4';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1248,25 +1248,43 @@ function paxMatch(o){const soy=norm(o.soy),a1=norm(o.ad).split(' ')[0],ini=norm(
     if(sc>bs+0.02){two=bs;bs=sc;best=x}else if(sc>two)two=sc})});
   return bs>=0.55?{x:best,s:bs,cift:bs-two<0.05}:null}
 /* VIP yorumundan görev tipi: koruma/emniyet mi, maiyet/ilave personel mi */
-function opxTip(s){s=norm(s);if(/kardes|\besi\b|oglu|kizi|annesi|babasi|yakini|refakatci/.test(s)&&!/milletvekili esi ve/.test(s))return'yakin';if(/koruma|\bemn\b|emniyet|polis|\bprg\b/.test(s))return'koruma';if(/maiyet|\bmai\b|protokol|ozel kalem|katip|goruntu|musavir|danisman|sofor|sekreter|refakat|gorevli|ekibi|heyet|\bgazi\b|misafir|gn mud|genel mudur/.test(s))return'maiyet';return''}
-function opxRoles(){const L=OPX;L.forEach(o=>{o.m=paxMatch(o);o.vtip=opxTip(o.ham||'')});const vipG={};L.forEach((o,i)=>{if(o.m&&o.m.s>=0.65&&!(o.vtip&&!o.ad)&&o.vtip!=='yakin'){o.rol='rical';(vipG[o.grup]=vipG[o.grup]||[]).push(i)}});
+/* Yakınlık kuralı (kullanıcının listelerine göre, 22.11.2026):
+   • EŞİ: rical listesindeki bantlar "… ve Eşleri", CIC90/95-UPGRADE maddeleri "… ve eşi" → eşi, ricalin bandında (hemen ardından) ve upgrade hakkıyla.
+   • ÇOCUK / ANNE-BABA: yalnız rical 113. madde "Eski Cumhurbaşkanları ve Başbakanların Ana, Baba, Eş, Çocukları" → rical, upgrade YOK
+     (CIC90'da çocuk hakkı yalnız THY personeli maddelerinde). Diğer çocuklar rical değil.
+   • KARDEŞ / YAKINI: hiçbir listede yok → rical değil, upgrade yok (ilave VIP, ekonomi). */
+function yakinlik(s){const t=norm(s),m=t.match(/(.*?)\b(esi|kardesi|oglu|kizi|cocugu|annesi|babasi|yakini|refakatcisi)\b/);if(!m)return null;
+  const tur=m[2]==='esi'?'es':/oglu|kizi|cocugu/.test(m[2])?'cocuk':/annesi|babasi/.test(m[2])?'ebeveyn':m[2]==='kardesi'?'kardes':'yakin';
+  const W=m[1].replace(/['’]/g,' ').replace(/\b(sn|sayin|say|vip|in|nin|un|nun|ın|nın)\b/g,' ').split(/[^a-z]+/).filter(w=>w.length>1);let ref=null;
+  for(const n of[3,2]){if(W.length<n)continue;const c=W.slice(-n).join(' ');const H=people().filter(x=>!x.o&&x.r<300&&nk(x.n)===c).sort((a,b)=>a.r-b.r);if(H.length){ref=H[0];break}}
+  let grup=null;if(!ref){if(/milletvekili/.test(m[1]))grup={r:21,u:'CIC90 · TBMM üyeleri ve eşleri',t:'Milletvekili'};else if(/\bbakan(i|in)?\b/.test(m[1])&&!/yardimci/.test(m[1]))grup={r:9,u:'CIC90 · Bakanlar Kurulu üyeleri ve eşleri',t:'Bakan'}}
+  return{tur,ref,grup}}
+const eskiCbBb=x=>{if(!x)return false;const t=norm(x.t||'');return /eski/.test(t)&&/cumhurbaskan|basbakan/.test(t)&&!/yardimci|mustesar|danisman/.test(t)};
+function opxTip(s){s=norm(s);if(/kardes|\besi\b|oglu|kizi|cocugu|annesi|babasi|yakini|refakatcisi/.test(s))return'yakin';if(/koruma|\bemn\b|emniyet|polis|\bprg\b/.test(s))return'koruma';if(/maiyet|\bmai\b|protokol|ozel kalem|katip|goruntu|musavir|danisman|sofor|sekreter|refakat|gorevli|ekibi|heyet|\bgazi\b|misafir|gn mud|genel mudur/.test(s))return'maiyet';return''}
+function opxRoles(){const L=OPX;L.forEach(o=>{o.m=paxMatch(o);o.vtip=opxTip(o.yorum||o.ham||'');o.yak=o.vtip==='yakin'?yakinlik(o.yorum||o.ham||''):null});const vipG={};L.forEach((o,i)=>{if(o.m&&o.m.s>=0.65&&!(o.vtip&&!o.ad)&&o.vtip!=='yakin'){o.rol='rical';(vipG[o.grup]=vipG[o.grup]||[]).push(i)}});
   L.forEach(o=>{if(o.rol)return;const vs=vipG[o.grup];
-    if(vs&&vs.length){const v=L[vs[0]];o.bag=vs[0];o.rol=norm(o.soy)===norm(v.soy)||o.vtip==='yakin'?'es':(o.vtip==='koruma'?'koruma':'maiyet')}
+    if(vs&&vs.length){const v=L[vs[0]];o.bag=vs[0];o.rol=(norm(o.soy)===norm(v.soy)&&!(o.yak&&o.yak.tur!=='es'))||(o.yak&&o.yak.tur==='es')?'es':(o.vtip==='koruma'?'koruma':'maiyet')}
+    else if(o.yak){const y=o.yak,ri=y.ref?L.findIndex(z=>z.rol==='rical'&&z.m&&z.m.x===y.ref):-1;
+      if(y.tur==='es'&&ri>=0){o.rol='es';o.bag=ri}
+      else if(y.tur==='es'&&(y.ref||y.grup)){o.rol='esr';o.bag=-1}
+      else if((y.tur==='cocuk'||y.tur==='ebeveyn'||y.tur==='es')&&eskiCbBb(y.ref)){o.rol='r113';o.bag=-1}
+      else{o.rol='maiyet';o.bag=-1}
+      o.yakNot=y.tur==='es'?(y.ref||y.grup?'Eşi: rical bandında, CIC90 “ve eşi” upgrade hakkı':'Eşi — kimin eşi olduğu bulunamadı, rolü kontrol edin'):(y.tur==='cocuk'||y.tur==='ebeveyn')?(eskiCbBb(y.ref)?'Rical 113. madde (eski CB/BB yakını) · upgrade yok':'Çocuk/anne-baba: listelerde hakkı yok (113. madde yalnız eski CB/BB) · rical değil, upgrade yok'):'Kardeş/yakını: listelerde hakkı yok · rical değil, upgrade yok'}
     else if(o.vip||o.vtip){o.rol=o.vtip==='koruma'?'koruma':'maiyet';o.bag=-1}/* ismi rical listesinde olmayan ilave VIP: ekonomiye, ricallerden sonra */
     else o.rol='atla'});
   L.forEach((o,i)=>{if(o.rol==='rical')o.bag=i;else if(o.bag==null)o.bag=L.findIndex(x=>x.rol==='rical');o.ust=o.rol==='rical'&&o.m&&ustMu(o.m.x.r)?1:0})}
 /* üst düzey: rical 1–15 (Cumhurbaşkanı … bakanlar … TBMM başkanvekilleri, parti genel başkanları) — ayrıca teyit istenir */
 const UST_RANK=15,ustMu=r=>r!=null&&+r<UST_RANK+1;
-const ROLAD={rical:'Rical',es:'Eşi / refakat',maiyet:'Maiyet',koruma:'Koruma',atla:'Diğer yolcu'};
+const ROLAD={rical:'Rical',es:'Eşi / refakat',esr:'Ricalin eşi (rical bandında, upgrade’li)',r113:'Eski CB/Başbakan yakını (113. madde)',maiyet:'Maiyet',koruma:'Koruma',atla:'Diğer yolcu'};
 /* okunan yolcular rical sırasıyla: önce ricaller (rehber sırası), her ricalin altında eşi/maiyeti/koruması, sonra ilave VIP, en son diğerleri */
 function opxSirali(L){L=L||OPX;const rk=o=>o.rol==='rical'&&o.m?o.m.x.r:null;
   const key=(o,i)=>{const par=o.rol==='rical'?o:L[o.bag];const r=par&&par.rol==='rical'&&par.m?par.m.x.r:null;
-    if(r!=null)return[0,r,o.rol==='rical'?0:o.rol==='es'?1:o.rol==='maiyet'?2:3,i];return o.rol==='atla'?[2,0,0,i]:[1,0,o.rol==='maiyet'?0:1,i]};
+    if(r!=null)return[0,r,o.rol==='rical'?0:o.rol==='es'?1:o.rol==='maiyet'?2:3,i];const y=o.yak||{};if(o.rol==='esr')return[0,(y.ref?y.ref.r:y.grup?y.grup.r:500)+0.001,1,i];if(o.rol==='r113')return[0,113,1,i];return o.rol==='atla'?[2,0,0,i]:[1,0,o.rol==='maiyet'?0:1,i]};
   return L.map((o,i)=>({o,i,k:key(o,i)})).sort((a,b)=>{for(let j=0;j<4;j++)if(a.k[j]!==b.k[j])return a.k[j]-b.k[j];return 0})}
 const yAd=o=>(o.ad?o.ad+' ':o.ini?o.ini+'. ':'')+o.soy;
 function opxTablo(L,ritaKoltuk){const R=opxSirali(L);if(!R.length)return'';let n=0;
   return'<div style="overflow-x:auto"><table class="ytab"><thead><tr><th>#</th><th>Ad Soyad</th><th>Koltuk</th>'+(ritaKoltuk?'<th>RITA</th>':'')+'<th>Rol</th></tr></thead><tbody>'+R.map(({o})=>{const ri=o.rol==='rical';if(ri)n++;
-    return'<tr class="'+(ri?'ri':o.rol==='atla'?'dg':'')+'"><td>'+(ri?n:'')+'</td><td><b>'+esc(yAd(o))+'</b>'+(ri&&o.m?'<div class="ti">'+esc(o.m.x.n)+' · '+esc(o.m.x.t||'')+'</div>':'')+(o.yorum?'<div class="ti yor">'+esc(o.yorum)+'</div>':'')+'</td><td class="mono">'+esc(o.koltuk||'—')+(o.sinif?'<div class="ti" style="font-family:inherit;white-space:nowrap">'+(o.sinif==='C'?'Bus.':'Eko.')+'</div>':'')+'</td>'+(ritaKoltuk?'<td class="mono">'+esc(ritaKoltuk(o)||'—')+'</td>':'')+'<td>'+(o.ust?'<span class="tag" style="background:#b42318;color:#fff">ÜST DÜZEY</span> ':'')+esc(ROLAD[o.rol]||'')+(o.vtip==='yakin'?' (yakını)':'')+'</td></tr>'}).join('')+'</tbody></table></div>'}
+    return'<tr class="'+(ri?'ri':o.rol==='atla'?'dg':'')+'"><td>'+(ri?n:'')+'</td><td><b>'+esc(yAd(o))+'</b>'+(ri&&o.m?'<div class="ti">'+esc(o.m.x.n)+' · '+esc(o.m.x.t||'')+'</div>':'')+(o.yorum?'<div class="ti yor">'+esc(o.yorum)+'</div>':'')+'</td><td class="mono">'+esc(o.koltuk||'—')+(o.sinif?'<div class="ti" style="font-family:inherit;white-space:nowrap">'+(o.sinif==='C'?'Bus.':'Eko.')+'</div>':'')+'</td>'+(ritaKoltuk?'<td class="mono">'+esc(ritaKoltuk(o)||'—')+'</td>':'')+'<td>'+(o.ust?'<span class="tag" style="background:#b42318;color:#fff">ÜST DÜZEY</span> ':'')+esc(ROLAD[o.rol]||'')+(o.yakNot?'<div class="ti">'+esc(o.yakNot)+'</div>':'')+'</td></tr>'}).join('')+'</tbody></table></div>'}
 /* uçuşta rical varsa uyarı; üst düzey (rical 1–15) ayrıca vurgulanır ve teyit ettirilir */
 function ricalUyari(){const P=ppl().filter(p=>!p.ek&&p.rank!=null&&+p.rank<300);if(!P.length)return'';const T=(D.TEY||{})[D.cur]||{},U=P.filter(p=>ustMu(p.rank)),bek=U.filter(p=>!T[nk(p.n)]);
   return'<section class="panel" style="padding-top:12px">'+'<div class="uyari">⚠️ <b>Listede '+(P.length===1?'rical':P.length+' rical')+' bulunmaktadır.</b> '+[...P].sort((a,b)=>sortKey(a)-sortKey(b)).map(p=>esc(p.n)+(p.seat?' <span class="mono">('+esc(p.seat)+')</span>':'')).join(', ')+'</div>'
@@ -1285,7 +1303,7 @@ function opxHtml(){if(!OPX.length)return'<p class="note">Okunan metinde yolcu sa
    +'<label class="lbl" for="opxhedef">Yolcuların aktarılacağı uçuş</label><select class="field" id="opxhedef">'+D.F.map(f=>'<option value="'+esc(f)+'"'+(f===hedef?' selected':'')+'>'+esc(f)+(flNo(f)===hf?' ← fotoğraftaki':'')+'</option>').join('')+(D.F.includes(hedef)?'':'<option value="'+esc(hedef)+'" selected>'+esc(hedef)+'</option>')+'</select>'
    +'<h3 style="margin:12px 0 6px;font-size:13px">Okunan yolcular (rical sırasıyla)</h3>'+opxTablo(OPX)+'<p class="note" style="margin-top:10px"><b>'+OPX.length+' yolcu okundu · '+V.length+' rical eşleşti.</b> Rolleri kontrol edin: <b>Rical</b> business/ön sıraya; <b>Eşi/refakat</b> ricalin yanına; <b>Maiyet</b> ve <b>Koruma</b> her zaman ekonomiye (upgrade notu yoksa).</p>'+OPX.map((o,i)=>'<div class="li" style="display:block"><div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><b class="mono">'+esc(o.soy+(o.ad?'/'+o.ad:o.ini?' '+o.ini:''))+'</b><span class="ti">'+esc([o.koltuk,o.varis,o.grup&&!/^t\d/.test(o.grup)?'grup '+o.grup:''].filter(Boolean).join(' · '))+'</span>'+(o.vip?'<span class="tag up">VIP</span>':'')+'</div>'
     +(o.m?'<div class="ti">Rehber: <b>'+esc(o.m.x.n)+'</b> — '+esc(o.m.x.t)+' · madde '+Math.floor(o.m.x.r)+(o.m.s<0.9||o.m.cift?' <span class="tag stU">KONTROL EDİN</span>':' <span class="tag stG">EŞLEŞTİ</span>')+'</div>':'')
-    +'<div class="row-btns" style="margin-top:6px"><select class="field" style="max-width:190px" data-opx="rol" data-i="'+i+'">'+[['rical','Rical'],['es','Eşi / refakat'],['maiyet','Maiyet'],['koruma','Koruma'],['atla','Atla (rical değil)']].map(([k,l])=>'<option value="'+k+'"'+(o.rol===k?' selected':'')+(k==='rical'&&!o.m?' disabled':'')+'>'+l+'</option>').join('')+'</select>'
+    +'<div class="row-btns" style="margin-top:6px"><select class="field" style="max-width:190px" data-opx="rol" data-i="'+i+'">'+[['rical','Rical'],['es','Eşi / refakat (yanında)'],['esr','Ricalin eşi (tek başına)'],['r113','Eski CB/BB yakını (113)'],['maiyet','Maiyet / ilave'],['koruma','Koruma'],['atla','Atla (rical değil)']].map(([k,l])=>'<option value="'+k+'"'+(o.rol===k?' selected':'')+(k==='rical'&&!o.m?' disabled':'')+'>'+l+'</option>').join('')+'</select>'
     +(o.rol!=='rical'&&o.rol!=='atla'&&V.length?'<select class="field" style="max-width:220px" data-opx="bag" data-i="'+i+'">'+V.map(([v,j])=>'<option value="'+j+'"'+(o.bag===j?' selected':'')+'>'+esc(v.m.x.n)+'</option>').join('')+'</select>':'')+'</div></div>').join('')
     +'<label style="display:flex;gap:8px;align-items:center;margin-top:10px;font-size:14px"><input type="checkbox" id="opxup"> Maiyet/koruma için <b>upgrade notu</b> var (business’ta yer kalırsa)</label>'
     +'<div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="opxApply" type="button">✈️ Yolcuları uçuşa aktar ve rical sırasına göre yerleştir</button></div>'}
@@ -1420,7 +1438,7 @@ const A={
  ustTeyit(){D.TEY=D.TEY||{};const T=D.TEY[D.cur]=D.TEY[D.cur]||{};ppl().filter(p=>!p.ek&&ustMu(p.rank)).forEach(p=>T[nk(p.n)]=Date.now());save();render();toast('Üst düzey yolcu teyit edildi')},
  ricalDuzen(){if(!ppl().length)return toast('Önce yolcu ekleyin');const geri=JSON.stringify(D.P[D.cur]);ppl().forEach(p=>{delete p.over;delete p.fix;delete p.sw});assign();save();render();toast('Liste rical sırasına, koltuklar rical önceliğine göre yeniden ayarlandı',()=>{D.P[D.cur]=JSON.parse(geri);assign();save();render()})},
  ylSil(){if(D.YL)delete D.YL[D.cur];save();render()},
- opxApply(){const V=OPX.map((o,i)=>[o,i]).filter(([o])=>o.rol==='rical'&&o.m);if(!V.length&&!OPX.some(o=>o.rol==='maiyet'||o.rol==='koruma'))return toast('Rical ya da ilave VIP işaretli yolcu yok');
+ opxApply(){const V=OPX.map((o,i)=>[o,i]).filter(([o])=>o.rol==='rical'&&o.m);if(!V.length&&!OPX.some(o=>/^(maiyet|koruma|esr|r113)$/.test(o.rol)))return toast('Rical ya da ilave VIP işaretli yolcu yok');
   const U=OPX.filter(o=>o.ust);if(U.length&&!($('opxteyit')&&$('opxteyit').checked)){const b=$('opxteyit');if(b)b.closest('.uyari').scrollIntoView({behavior:'smooth',block:'center'});return toast('Üst düzey yolcuyu teyit edin (kutucuğu işaretleyin)')}
   const hd=$('opxhedef')&&$('opxhedef').value;if(hd&&hd!==D.cur){D.cur=hd;save()}
   D.P[D.cur]=ppl().filter(p=>!p.ek);
@@ -1429,12 +1447,17 @@ const A={
     let p=ppl().find(q=>nk(q.n)===nk(x.n));if(!p){p={key:norm(x.n),id:'p'+Date.now()+i,n:x.n,sub:x.t,rank:x.r,up:x.u||'',o:x.o||'',pax:1,t:Date.now()};ppl().push(p);yeni++}else gun++;
     p.pax=1+es;p.mai=mai.length;if(o.yorum)p.qc=o.yorum;if(o.koltuk)p.qck=o.koltuk;if(o.ust){D.TEY=D.TEY||{};(D.TEY[D.cur]=D.TEY[D.cur]||{})[nk(x.n)]=Date.now()}p.maiUp=!!up;p.mtur=kor&&kor===mai.length?'Koruma':kor?'Maiyet ve koruma':'Maiyet';
     if(o.varis&&dest&&o.varis!==dest&&o.varis!=='IST')p.bagDev=o.varis+' (devam uçuşu, numarasını kontrol edin)'});
+  /* ricalin tek başına uçan eşi: ricalin bandında hemen ardından, CIC90 "ve eşi" upgrade’i · eski CB/BB yakını: 113. madde, upgrade yok */
+  const capA=z=>String(z||'').toLowerCase().replace(/(^|[ -])([a-zçğıöşü])/g,(mm,a,bb)=>a+bb.toLocaleUpperCase('tr'));
+  OPX.forEach((o,i)=>{if(o.rol!=='esr'&&o.rol!=='r113')return;const y=o.yak||{},ref=y.ref,g=y.grup,ad=capA((o.ad||o.ini)?(o.ad||o.ini)+' '+o.soy:o.soy);
+    if(o.rol==='esr'){const r=ref?ref.r:g?g.r:999,u=ref?(ref.u||upFor(ref.t||'')):g?g.u:'';ppl().push({key:norm(ad)+'-es'+i,id:'pr'+Date.now()+'-'+i,n:ad,sub:(ref?'Sn '+ref.n+'’in eşi · '+(ref.t||''):g.t+' eşi')+(o.yorum?' · '+o.yorum:''),rank:r+0.001,up:u?'Eşi · '+u:'',o:'',pax:1,t:Date.now()+i,qc:o.yorum||'',qck:o.koltuk||''});yeni++}
+    else{ppl().push({key:norm(ad)+'-113'+i,id:'pr'+Date.now()+'-'+i,n:ad,sub:'Sn '+(ref?ref.n:'')+' yakını · Rical 113 (eski CB/BB ana, baba, eş, çocukları)'+(o.yorum?' · '+o.yorum:''),rank:113,up:'',o:'',pax:1,t:Date.now()+i,qc:o.yorum||'',qck:o.koltuk||''});yeni++}});
   /* ismi rical listesinde olmayan ilave VIP (protokol görevlisi, koruma, maiyet): ekonomiye, upgrade’siz, ricallerden sonra (rank 999) */
   const cap=s=>(t=>/[ÇĞİÖŞÜ]/.test(t)?t.toLocaleLowerCase('tr'):t.toLowerCase())(String(s||'')).replace(/(^|[ -])([a-zçğıöşü])/g,(mm,a,bb)=>a+bb.toLocaleUpperCase('tr'));let ek=0,ekN=0;
   OPX.forEach(o=>{if(!(o.rol==='maiyet'||o.rol==='koruma'))return;const par=OPX[o.bag];if(par&&par.rol==='rical'&&par.m)return;
     const ad=o.soy?cap(o.soy)+((o.ad||o.ini)?' '+cap(o.ad||o.ini):''):(o.rol==='koruma'?'Koruma':'Maiyet');
-    const not=cap(o.yorum||String(o.ham||'').replace(/^.*?VIP[!:]?/i,'').replace(/[|!]/g,' ').replace(/\s+/g,' ').trim()).slice(0,80);
-    o._pe='pe'+Date.now()+'-'+ek;ppl().push({key:norm(ad)+'-ek'+ek,id:o._pe,n:ad,sub:(o.rol==='koruma'?'Koruma / emniyet (ilave)':'Maiyet / ilave VIP')+(not?' · '+not:''),rank:999,up:'',o:'',pax:1,ek:1,ektip:o.rol,koltuk:o.koltuk||'',t:Date.now()+ek});ek++;ekN++});
+    const not=(o.yakNot?o.yakNot+' · ':'')+cap(o.yorum||String(o.ham||'').replace(/^.*?VIP[!:]?/i,'').replace(/[|!]/g,' ').replace(/\s+/g,' ').trim()).slice(0,80);
+    o._pe='pe'+Date.now()+'-'+ek;ppl().push({key:norm(ad)+'-ek'+ek,id:o._pe,n:ad,sub:(o.rol==='koruma'?'Koruma / emniyet (ilave)':o.yak?'VIP yakını (ilave, rical değil)':'Maiyet / ilave VIP')+(not?' · '+not:''),rank:999,up:'',o:'',pax:1,ek:1,ektip:o.rol,koltuk:o.koltuk||'',t:Date.now()+ek});ek++;ekN++});
   D.YL=D.YL||{};D.YL[D.cur]={t:new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16),l:OPX.map(o=>({soy:o.soy,ad:o.ad,ini:o.ini,koltuk:o.koltuk,rol:o.rol,vip:o.vip?1:0,yorum:o.yorum||'',sinif:o.sinif||'',vtip:o.vtip||'',ust:o.ust?1:0,bag:o.bag,mn:o.rol==='rical'&&o.m?o.m.x.n:'',mt:o.rol==='rical'&&o.m?o.m.x.t:'',mr:o.rol==='rical'&&o.m?o.m.x.r:null,pe:o._pe||''}))};
   assign();save();closeSheet();render();toast(yeni+' rical'+(ekN?' + '+ekN+' ilave VIP':'')+' eklendi'+(gun?', '+gun+' güncellendi':'')+' · koltuklar yerleştirildi')},
  opsSec(d){opsF=d.k;opsYon=gelisMi(d.k)?'gelis':'gidis';render();setTimeout(()=>{const e=$('ops-sec');if(e)e.scrollIntoView({behavior:'smooth'})},50)},
