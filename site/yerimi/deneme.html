@@ -1,0 +1,45 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deneme Quick Check</title><meta name="robots" content="noindex">
+<style>
+:root{--bg:#f2f2f2;--ink:#1d2433}
+body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.4 Arial,sans-serif}
+.ust{background:#7a1626;color:#fff;padding:10px 14px;font-weight:700}.ust small{font-weight:400;opacity:.85;display:block}
+main{padding:12px;max-width:1100px;margin:0 auto}
+.kutu{background:#fff;border:1px solid #ccc;border-radius:8px;padding:10px;margin-bottom:12px;overflow-x:auto}
+h3{margin:0 0 8px;font-size:14px}
+table.l{border-collapse:collapse;min-width:640px;width:100%}table.l th,table.l td{border:1px solid #ddd;padding:4px 6px;text-align:left;white-space:nowrap}table.l th{background:#e9eef7}
+table.k{border-collapse:separate;border-spacing:3px}table.k td{width:34px;height:26px;text-align:center;font-size:11px;border-radius:4px;color:#222}
+table.k td.bos{background:rgb(236,236,236)}table.k td.ci{background:rgb(31,58,120);color:#fff}table.k td.son{background:rgb(165,165,165)}table.k td.blk{background:rgb(60,60,60);color:#fff}table.k td.soft{background:rgb(242,150,60)}table.k td.yol{background:transparent;width:12px}table.k th{font-size:11px;color:#666;padding-right:4px}
+.bilgi{background:#fff7d6;border:1px solid #e8d27a;border-radius:8px;padding:10px;margin-bottom:12px}
+button{font:inherit;font-weight:700;padding:10px 14px;border-radius:8px;border:0;background:#14213d;color:#fff;min-height:40px;cursor:pointer}
+</style></head><body>
+<div class="ust">DENEME — Quick Check benzeri sayfa<small>Gerçek değildir · koltuklar uydurmadır · kişiler RITA'nın örnek uçuşundaki kamuya açık makamlardır</small></div>
+<main>
+<div class="bilgi">Yer imini kurduysanız şimdi ona dokunun. Kurmadıysanız: <button id="calistir" type="button">⭐ Yer imi gibi çalıştır</button></div>
+<div class="kutu"><b id="ucus"></b></div>
+<div class="kutu"><h3>VIP Commentli Yolcu Listesi</h3>
+<table class="l"><thead><tr><th>#</th><th>Pnr</th><th>GK</th><th>Klt</th><th>CT</th><th>Güv</th><th>CI</th><th>S</th><th>Yolcu Soyadı</th><th>Ad</th><th>C</th></tr></thead><tbody id="liste"></tbody></table></div>
+<div class="kutu"><h3>Koltuk Görünümü</h3><table class="k" id="harita"></table></div>
+</main>
+<script>
+var AY=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],d=new Date();
+document.getElementById("ucus").textContent="Uçuş: TK0001 / "+String(d.getDate()).padStart(2,"0")+AY[d.getMonth()]+"   IST → ESB   B738";
+var Y=[["DEMO01","","02A","","","✔","C","KURTULMUS","NUMAN","!VIP! TBMM BASKANI"],
+["DEMO02","","09D","","","","Y","SIMSEK","MEHMET","!VIP! HAZINE VE MALIYE BAKANI"],
+["DEMO03","","14C","","","✔","Y","FIDAN","HAKAN","!VIP! DISISLERI BAKANI"],
+["DEMO04","","18E","","","","Y","GULER","YASAR","!VIP! MILLI SAVUNMA BAKANI"],
+["DEMO05","","15A","","","✔","Y","ORNEKBIR","ALI","!VIP! TBMM BASKANI KORUMASI EMN"],
+["DEMO06","","16B","","","","Y","ORNEKIKI","AYSE","!VIP! OZEL KALEM MUDURU"],
+["DEMO07","","20F","","","✔","Y","ORNEKUC","VELI","NORMAL YOLCU"]];
+var tb=document.getElementById("liste");
+Y.forEach(function(r,i){var tr=document.createElement("tr");[String(i+1)].concat(r).forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td)});tb.appendChild(tr)});
+var dolu={"2A":"ci","9D":"ci","14C":"ci","18E":"ci","15A":"ci","16B":"ci","20F":"ci","1A":"ci","3E":"ci","5C":"ci","6D":"ci","7A":"ci","8F":"ci","10B":"ci","12A":"ci","12B":"ci",
+"1E":"blk","1F":"blk","4A":"soft","4B":"soft","11A":"son","11B":"son","11C":"son","11D":"son","11E":"son","11F":"son","19A":"blk","19B":"blk"};
+var h=document.getElementById("harita");
+for(var s=1;s<=20;s++){var tr=document.createElement("tr"),th=document.createElement("th");th.textContent=s;tr.appendChild(th);
+ var H=s<=3?["A","B","","E","F"]:["A","B","C","","D","E","F"];
+ H.forEach(function(L){var td=document.createElement("td");if(!L){td.className="yol";}else{var k=(s<10?"0":"")+s+L;td.textContent=k;td.className=dolu[s+L]||"bos";}tr.appendChild(td)});h.appendChild(tr)}
+document.getElementById("calistir").addEventListener("click",function(){(0,eval)(KOD)});
+var KOD=__YERIMI__;
+</script>
+</body></html>

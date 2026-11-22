@@ -44,6 +44,14 @@ open(os.path.join(OUT, "g", "index.html"), "w", encoding="utf-8").write('''<!doc
 <link rel="icon" href="../icons/rita.svg"><meta name="theme-color" content="#7f0f22">
 <style>body{margin:0;font:16px system-ui;background:#1d3461;color:#fff;display:flex;min-height:100vh;align-items:center;justify-content:center}</style></head>
 <body><p>Görev kartları açılıyor…</p><script>var id=location.search.slice(1).split('&')[0],k=location.hash.slice(1);location.replace('../#gk='+id+'.'+k)</script></body></html>''')
+# Yer imi (bookmarklet): tools/yerimi.js tek satıra indirilip yerimi/ sayfalarına gömülür
+import json
+_k = re.sub(r"/\*[\s\S]*?\*/", "", open(os.path.join(R, "tools", "yerimi.js"), encoding="utf-8").read())
+_k = " ".join(s.strip() for s in _k.splitlines() if s.strip())
+for _ad in ("index.html", "deneme.html"):
+    _y = os.path.join(OUT, "yerimi", _ad)
+    _s = open(_y, encoding="utf-8").read().replace("__YERIMI__", json.dumps(_k, ensure_ascii=False))
+    open(_y, "w", encoding="utf-8").write(_s)
 # Chrome eklentisi: tek tıkla indirilebilir ZIP (rokkaix.github.io/RITA/RITA-eklenti.zip)
 import zipfile
 with zipfile.ZipFile(os.path.join(OUT, "RITA-eklenti.zip"), "w", zipfile.ZIP_DEFLATED) as z:

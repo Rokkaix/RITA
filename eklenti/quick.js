@@ -189,8 +189,10 @@ function ayarUygula(A) {
   function koltuklariOku() {
     const K = {};
     let n = 0;
+    /* yolcu listesi tablosundaki "Klt" hücreleri koltuk haritası sayılmaz */
+    const S = sutunBul(Array.from(document.querySelectorAll(CONFIG.satirSecici))), liste = S && S.baslik ? S.baslik.closest("table") : null;
     for (const el of document.querySelectorAll(CONFIG.koltukHucreSecici)) {
-      if (el.children.length > 2) continue;
+      if (el.children.length > 2 || (liste && liste.contains(el))) continue;
       const k = koltukNormal(hucreMetni(el));
       if (!k) continue;
       let rgb = renkCoz(getComputedStyle(el).backgroundColor);

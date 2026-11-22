@@ -1,0 +1,90 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RITA Yer İmi</title><meta name="robots" content="noindex">
+<style>
+:root{--crim:#7a1626;--night:#14213d;--bg:#f5f3f0;--card:#fff;--ink:#1d2433;--muted:#5b6475;--line:#e3ded7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1524;--card:#18203a;--ink:#e8ebf2;--muted:#a3abbd;--line:#2a3352}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--crim);color:#fff;padding:14px 16px}header b{letter-spacing:.2em}header small{display:block;opacity:.85}
+main{max-width:760px;margin:0 auto;padding:16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px}
+h2{font-size:15px;margin:0 0 8px;color:var(--crim)}@media (prefers-color-scheme:dark){h2{color:#f19aa6}}
+ol{margin:0;padding-left:20px}li{margin:4px 0}.note{color:var(--muted);font-size:13px}
+.bm{display:inline-block;background:var(--night);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:10px;border:2px dashed #c9a227;cursor:grab}
+button,.btn{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 14px;border-radius:10px;cursor:pointer;min-height:40px;text-decoration:none;display:inline-block}
+.pri{background:var(--crim);color:#fff;border-color:var(--crim)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}.tabs button[aria-selected=true]{background:var(--night);color:#fff;border-color:var(--night)}
+code{background:rgba(127,127,127,.15);padding:1px 5px;border-radius:5px}
+textarea{width:100%;height:70px;font:12px ui-monospace,monospace;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink)}
+.ok{color:#1d7a46;font-weight:700}
+</style></head><body>
+<header><b>RITA</b><small>Quick Check yer imi · kurulum gerekmez</small></header>
+<main>
+<section>
+<h2>Ne işe yarar?</h2>
+<p>Quick Check'te uçuşun <b>VIP Commentli Yolcu Listesi</b> açıkken bu yer imine dokunursunuz; yer imi ekrandaki VIP'leri ve koltuk renklerini <b>yalnızca okur</b> ve RITA'ya gönderir. RITA rical sırasına göre yerleştirir. Fotoğraf okuma olmadığı için okuma hatası olmaz.</p>
+<p class="note">Quick Check'e hiçbir şey yazmaz, tıklamaz. Giriş sayfasında çalışmaz. Veri hiçbir sunucuya gitmez, RITA'da yalnız açık pencerede durur. Quick Check'te bir şey değişince yer imine tekrar dokunun.</p>
+</section>
+<div class="tabs" role="tablist">
+<button role="tab" data-t="pc" aria-selected="true">💻 Bilgisayar</button>
+<button role="tab" data-t="and" aria-selected="false">🤖 Android</button>
+<button role="tab" data-t="ios" aria-selected="false">🍎 iPhone</button>
+</div>
+<section data-p="pc">
+<h2>Bilgisayar (Chrome / Edge)</h2>
+<ol>
+<li>Yer imleri çubuğu görünmüyorsa <b>Ctrl + Shift + B</b>'ye basın.</li>
+<li>Aşağıdaki lacivert düğmeyi fareyle tutup <b>yer imleri çubuğuna sürükleyin</b>:<br><br><a class="bm" id="bm" href="#">⭐ RITA'ya gönder</a><br><br></li>
+<li>Quick Check'te uçuşun VIP listesini açın, yer imleri çubuğundaki <b>RITA'ya gönder</b>'e tıklayın.</li>
+<li>RITA sekmesi açılır, uçuş kendiliğinden düzenlenir.</li>
+</ol>
+</section>
+<section data-p="and" hidden>
+<h2>Android (Chrome)</h2>
+<ol>
+<li>Aşağıdaki <b>Kodu kopyala</b>'ya basın.</li>
+<li>Chrome'da sağ üstteki ⋮ → ☆ (yer imi) ile bu sayfayı yer imlerine ekleyin, ardından alttaki <b>Düzenle</b>'ye basın.</li>
+<li>Adı <code>RITA</code> yapın; <b>URL</b> kutusunu silip kopyaladığınız kodu yapıştırın, kaydedin.</li>
+<li>Quick Check'te uçuşun VIP listesi açıkken <b>adres çubuğuna</b> <code>RITA</code> yazın; çıkan önerilerde <b>yıldızlı RITA</b> satırına dokunun. (Yer imleri menüsünden açarsanız çalışmaz; adres çubuğundan dokunun.)</li>
+</ol>
+</section>
+<section data-p="ios" hidden>
+<h2>iPhone (Safari)</h2>
+<ol>
+<li>Aşağıdaki <b>Kodu kopyala</b>'ya basın.</li>
+<li>Paylaş düğmesi (□↑) → <b>Yer İşareti Ekle</b> → adı <code>RITA</code> yapıp kaydedin.</li>
+<li>Yer işaretleri (📖) → <b>Düzenle</b> → RITA → adres kutusunu silin, kopyaladığınız kodu yapıştırın, <b>Bitti</b>.</li>
+<li>Quick Check'te uçuşun VIP listesi açıkken yer işaretlerinden <b>RITA</b>'ya dokunun.</li>
+</ol>
+</section>
+<section>
+<h2>Kod (telefon için)</h2>
+<p><button class="pri" id="kopyala" type="button">📋 Kodu kopyala</button> <span id="kd" class="ok" aria-live="polite"></span></p>
+<textarea id="kod" readonly aria-label="Yer imi kodu"></textarea>
+</section>
+<section>
+<h2>Önce deneyin (gerçek veri olmadan)</h2>
+<p><a class="btn pri" href="deneme.html">Deneme Quick Check sayfasını aç</a></p>
+<p class="note">Deneme sayfası Quick Check'in VIP listesine ve koltuk haritasına benzer, uydurma koltuklarla dolu bir sayfadır. Orada kurduğunuz yer imine dokunun (ya da sayfadaki "Yer imi gibi çalıştır" düğmesine basın): RITA açılır, <b>TK0001</b> deneme uçuşu oluşur ve yolcular rical sırasıyla yerleşir.</p>
+</section>
+<section>
+<h2>Bir şey olmazsa</h2>
+<ul>
+<li><b>“Açılır pencere engellendi”</b> görünürse adres çubuğundaki uyarıdan bu siteye izin verin.</li>
+<li>Telefon RITA'yı ayrı açamazsa yer imi veriyi <b>kopyalar</b>: RITA'da uçuşa girip <b>📋 Quick Check’ten yapıştır</b>'a basın (bilgisayarda Ctrl+V da olur).</li>
+<li>“Bulunamadı” derse VIP Commentli Yolcu Listesi ekranda açık mı bakın.</li>
+</ul>
+</section>
+</main>
+<script>
+var KOD=__YERIMI__;
+var js="javascript:"+KOD;
+document.getElementById("bm").href=js;
+document.getElementById("kod").value=js;
+document.getElementById("bm").addEventListener("click",function(e){e.preventDefault();alert("Bu düğmeye burada tıklamayın: fareyle tutup yer imleri çubuğuna sürükleyin.");});
+document.getElementById("kopyala").addEventListener("click",function(){var t=document.getElementById("kod");var bitti=function(){document.getElementById("kd").textContent="Kopyalandı ✓";};
+ if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(js).then(bitti,function(){t.select();document.execCommand("copy");bitti();});else{t.select();document.execCommand("copy");bitti();}});
+var ua=navigator.userAgent,ilk=/Android/i.test(ua)?"and":/iPhone|iPad/i.test(ua)?"ios":"pc";
+function sec(t){document.querySelectorAll("[data-t]").forEach(function(b){b.setAttribute("aria-selected",b.dataset.t===t)});document.querySelectorAll("[data-p]").forEach(function(s){s.hidden=s.dataset.p!==t});}
+document.querySelectorAll("[data-t]").forEach(function(b){b.addEventListener("click",function(){sec(b.dataset.t)})});sec(ilk);
+</script>
+</body></html>
