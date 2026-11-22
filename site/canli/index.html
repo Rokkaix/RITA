@@ -68,6 +68,10 @@ td{border-bottom:1px solid var(--line);padding:6px;vertical-align:top}
 .kt.soft{background:#df7a1e;color:#fff;box-shadow:none}
 .kt.vip{background:var(--vip);color:#1d1600;box-shadow:none}
 .kt.on{outline:3px solid var(--oneri);outline-offset:1px}
+.kt.bloke::after,.kt.soft::after{content:"🔒";position:absolute;left:-4px;bottom:-5px;font-size:9px;line-height:1;filter:drop-shadow(0 0 1px #fff)}
+.kt.yeni{background:var(--vip);color:#1d1600;box-shadow:none}
+.kt.eski{background:var(--bos);color:#98a2b3;box-shadow:inset 0 0 0 1px #c4c4c4;text-decoration:line-through}
+.blkac{display:inline-block;margin-left:4px;font-size:11px;font-weight:700;color:var(--warn)}
 .kt b{position:absolute;top:-6px;right:-6px;background:var(--oneri);color:#fff;border-radius:8px;font-size:9px;padding:0 4px}
 .lejant{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:12px;color:var(--muted);margin-top:8px}
 .lejant i{display:inline-block;width:14px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
@@ -103,6 +107,9 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:10px}
 
   <section>
     <h2>VIP LİSTESİ VE KOLTUK ÖNERİSİ <span class="sp"></span><span class="not" id="vipSay"></span></h2>
+    <div class="satirlar" style="gap:14px;margin:0 0 8px">
+      <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="blokeAc" checked> Bloke koltuklar açılabilir <span class="not">(yalnız Business kuralı olan VIP'e, business'ta boş kalmadıysa; önce soft bloke 🔒)</span></label>
+    </div>
     <div id="oneriNot"></div>
     <div class="tablo"><table>
       <thead><tr><th>Sıra</th><th>Yolcu</th><th>Şu an</th><th>Öneri</th><th>Check-in</th><th>VIP notu</th></tr></thead>
@@ -120,13 +127,17 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:10px}
       <label>Ekonomi harf <input id="dE" type="text" style="width:90px"></label>
       <label>Son sıra <input id="dSon" type="number" min="2" max="70" style="width:60px"></label>
     </div>
+    <div class="satirlar" style="gap:14px;margin:0 0 8px" role="radiogroup" aria-label="Plan görünümü">
+      <label><input type="radio" name="planGor" value="simdi" checked> Şu anki durum (öneriler yeşil çerçeveli)</label>
+      <label><input type="radio" name="planGor" value="oto"> Otomatik yerleşim (öneriler uygulanmış hâli)</label>
+    </div>
     <div class="plan"><div id="kabin" class="kabin"></div></div>
     <div class="lejant">
       <span><i style="background:var(--bos);box-shadow:inset 0 0 0 1px #c4c4c4"></i>Boş</span>
       <span><i style="background:var(--son)"></i>Boş (en son verilecek)</span>
       <span><i style="background:var(--dolu)"></i>Dolu</span>
-      <span><i style="background:var(--bloke)"></i>Bloke</span>
-      <span><i style="background:#df7a1e"></i>Soft bloke</span>
+      <span><i style="background:var(--bloke)"></i>Bloke 🔒</span>
+      <span><i style="background:#df7a1e"></i>Soft bloke 🔒</span>
       <span><i style="background:var(--vip)"></i>VIP (şu anki koltuğu)</span>
       <span><i style="background:#fff;outline:2px solid var(--oneri)"></i>Öneri</span>
       <span><i style="background:repeating-linear-gradient(45deg,#f2f2f2,#f2f2f2 3px,#e0e0e0 3px,#e0e0e0 6px)"></i>Okunmadı</span>
@@ -331,18 +342,21 @@ function koltukSirasi() {
   }
   return L;
 }
+/* Koltuk önerisi — kademeli ve sıkı kural:
+   1) Business kuralı olan VIP (upgrade hakkı): business'ta önden arkaya BOŞ → en son verilecek → (bloke açılabilir ise) SOFT bloke → bloke;
+      business'ta hiç yer yoksa ekonomide öndeki ilk boş koltuk.
+   2) Diğerleri (maiyet, görevli, kuralı/upgrade hakkı olmayan): yalnız EKONOMİDE öndeki ilk BOŞ koltuk; bloke ve "en son verilecek" verilmez.
+      Aynı grup kodu (aile) yan yana. VIP'in şu anki koltuğu, daha önde boş yoksa ona açık sayılır.
+   Business'ın hemen arkasında boş koltuk varken VIP asla daha geriye önerilmez (öndeki ilk uygun koltuk). */
 function oneriler(U, liste) {
   const veriVar = Object.keys(U.koltuklar).length > 0;
   const vipKoltuk = new Set(liste.map((x) => x.y.koltuk).filter(Boolean));
-  const hepsi = koltukSirasi();
-  /* aday: boş koltuklar + VIP'lerin şu anki koltukları (yer değiştirebilirler); "en son verilecek" koltuklar sona */
-  const uygun = (k) => vipKoltuk.has(k) || (veriVar ? U.koltuklar[k] === "bos" : true);
-  const sonra = (k) => !vipKoltuk.has(k) && U.koltuklar[k] === "bos-son";
-  const aday = hepsi.filter((s) => uygun(s.k)).concat(hepsi.filter((s) => sonra(s.k)));
-  const kullan = new Set(), sonuc = new Map();
-  /* aynı grup kodu (GK / PNR grubu = aile) ve upgrade hakkı olmayanlar: ekonomide öndeki ilk boş yan yana blok */
+  const hepsi = koltukSirasi(), blokeAc = $("blokeAc") ? $("blokeAc").checked : true;
+  const durum = (k) => (vipKoltuk.has(k) ? "bos" : veriVar ? U.koltuklar[k] : "bos");
+  const kullan = new Set(), sonuc = new Map(), blk = new Set();
+  const ilk = (filtre) => { const s = hepsi.find((s) => !kullan.has(s.k) && filtre(s)); return s ? s.k : ""; };
   const grup = (y) => String(y.k).split("|")[2] || "";
-  const satirlar = (n) => { const R = new Map(); aday.forEach((s) => { if (s.biz || kullan.has(s.k)) return; const r = parseInt(s.k, 10); (R.get(r) || R.set(r, []).get(r)).push(s.k); }); for (const [r, L] of R) { const yan = harfGrup(DUZEN.e).map((g) => g.split("").map((h) => r + h).filter((k) => L.includes(k))).find((g) => g.length >= n); if (yan) return yan.slice(0, n); if (L.length >= n) return L.slice(0, n); } return null; };
+  const satirlar = (n) => { const R = new Map(); hepsi.forEach((s) => { if (s.biz || kullan.has(s.k) || durum(s.k) !== "bos") return; const r = parseInt(s.k, 10); (R.get(r) || R.set(r, []).get(r)).push(s.k); }); for (const [r, L] of R) { const yan = harfGrup(DUZEN.e).map((g) => g.split("").map((h) => r + h).filter((k) => L.includes(k))).find((g) => g.length >= n); if (yan) return yan.slice(0, n); if (L.length >= n) return L.slice(0, n); } return null; };
   for (const x of liste) {
     if (sonuc.has(x.y.k) || x.biz || !grup(x.y)) continue;
     const aile = liste.filter((z) => !z.biz && !sonuc.has(z.y.k) && grup(z.y) === grup(x.y));
@@ -352,12 +366,16 @@ function oneriler(U, liste) {
   }
   for (const x of liste) {
     if (sonuc.has(x.y.k)) continue;
-    /* business yalnız kuralında "Business" işaretli olanlara (maiyet / görevli / kuralı olmayan → ekonomi) */
-    const s = aday.find((s) => !kullan.has(s.k) && (x.biz || !s.biz));
-    if (!s) { sonuc.set(x.y.k, ""); continue; }
-    kullan.add(s.k); sonuc.set(x.y.k, s.k);
+    let k = "";
+    if (x.biz) {
+      k = ilk((s) => s.biz && durum(s.k) === "bos") || ilk((s) => s.biz && durum(s.k) === "bos-son");
+      if (!k && blokeAc) { k = ilk((s) => s.biz && durum(s.k) === "soft") || ilk((s) => s.biz && durum(s.k) === "bloke"); if (k) blk.add(k); }
+    }
+    if (!k) k = ilk((s) => !s.biz && durum(s.k) === "bos");
+    if (k) kullan.add(k);
+    sonuc.set(x.y.k, k);
   }
-  return { sonuc, veriVar };
+  return { sonuc, veriVar, blk };
 }
 
 /* ============================ Çizim ============================ */
@@ -395,7 +413,7 @@ function vipCiz() {
       el("td", {}, el("b", { text: String(i + 1) }), Number.isFinite(x.p) ? el("div", { class: "not", text: "öncelik " + x.p }) : el("div", { class: "not", text: "kural yok" })),
       el("td", {}, el("b", { text: y.soyad }), y.adBas ? " " + y.adBas + "." : "", y.sinif ? el("div", { class: "not", text: y.sinif === "C" ? "Business (C)" : y.sinif === "Y" ? "Ekonomi (Y)" : "Sınıf " + y.sinif }) : null),
       el("td", { class: "mono", text: y.koltuk || "—" }),
-      el("td", {}, !o ? el("span", { class: "not", text: "boş koltuk yok" }) : o === y.koltuk ? el("span", { class: "ayni", text: "yerinde kalsın" }) : el("span", { class: "oneri mono", title: (i + 1) + ". sıra → " + o, text: "→ " + o })),
+      el("td", {}, !o ? el("span", { class: "not", text: "boş koltuk yok" }) : o === y.koltuk ? el("span", { class: "ayni", text: "yerinde kalsın" }) : el("span", {}, el("span", { class: "oneri mono", title: (i + 1) + ". sıra → " + o, text: "→ " + o }), O.blk.has(o) ? el("span", { class: "blkac", text: "🔒 bloke açılmalı" }) : null)),
       el("td", {}, el("span", { class: "etiket " + (y.ci ? "ci" : "yok"), text: y.ci ? "yapıldı" : "yok" })),
       el("td", { class: "not", text: y.not })
     ));
@@ -406,7 +424,10 @@ function vipCiz() {
 function kabinCiz(V) {
   const k = $("kabin"); bosalt(k);
   const U = V && V.U, vipNo = new Map(), oneriNo = new Map();
-  if (V) V.L.forEach((x, i) => { if (x.y.koltuk) vipNo.set(x.y.koltuk, i + 1); const o = V.O.sonuc.get(x.y.k); if (o && o !== x.y.koltuk) oneriNo.set(o, i + 1); });
+  const oto = (document.querySelector('input[name="planGor"]:checked') || {}).value === "oto", yeniNo = new Map(), eskiK = new Set();
+  if (V) V.L.forEach((x, i) => { const o = V.O.sonuc.get(x.y.k);
+    if (oto) { if (o) yeniNo.set(o, i + 1); if (x.y.koltuk && x.y.koltuk !== o) eskiK.add(x.y.koltuk); }
+    else { if (x.y.koltuk) vipNo.set(x.y.koltuk, i + 1); if (o && o !== x.y.koltuk) oneriNo.set(o, i + 1); } });
   k.append(el("div", { class: "kbl", text: "BUSINESS" }));
   let ekoYaz = false;
   for (let r = 1; r <= DUZEN.son; r++) {
@@ -418,8 +439,8 @@ function kabinCiz(V) {
       for (const h of grup) {
         if (yokSet().has(r + h)) { satir.append(el("span", { class: "kt", style: "visibility:hidden" })); continue; }
         const kod = r + h, d = U ? U.koltuklar[kod] : undefined;
-        const sinif = vipNo.has(kod) ? "vip" : d && d !== "bilinmiyor" ? d : "";
-        const t = el("span", { class: "kt " + sinif + (oneriNo.has(kod) ? " on" : ""), title: kod + (vipNo.has(kod) ? " · VIP " + vipNo.get(kod) + ". sıra" : "") + (oneriNo.has(kod) ? " · öneri: " + oneriNo.get(kod) + ". sıra" : ""), text: vipNo.has(kod) ? "#" + vipNo.get(kod) : kod });
+        const sinif = yeniNo.has(kod) ? "yeni" : eskiK.has(kod) && !yeniNo.has(kod) ? "eski" : vipNo.has(kod) ? "vip" : d && d !== "bilinmiyor" ? d : "";
+        const t = el("span", { class: "kt " + sinif + (oneriNo.has(kod) ? " on" : ""), title: kod + (yeniNo.has(kod) ? " · otomatik yerleşim: " + yeniNo.get(kod) + ". sıra" + (V.O.blk.has(kod) ? " (bloke açılmalı)" : "") : "") + (eskiK.has(kod) && !yeniNo.has(kod) ? " · VIP buradan taşınacak (boşalır)" : "") + (vipNo.has(kod) ? " · VIP " + vipNo.get(kod) + ". sıra" : "") + (oneriNo.has(kod) ? " · öneri: " + oneriNo.get(kod) + ". sıra" : "") + (d === "bloke" || d === "soft" ? " · bloke" : ""), text: yeniNo.has(kod) ? "#" + yeniNo.get(kod) : vipNo.has(kod) ? "#" + vipNo.get(kod) : kod });
         if (oneriNo.has(kod)) t.append(el("b", { text: String(oneriNo.get(kod)) }));
         satir.append(t);
       }
@@ -490,6 +511,8 @@ function duzenAlanlari() { $("dBiz").value = DUZEN.biz; $("dB").value = DUZEN.b;
 })();
 
 $("ucusSec").addEventListener("change", (e) => { secili = e.target.value; hepsiniCiz(); });
+$("blokeAc").addEventListener("change", hepsiniCiz);
+document.querySelectorAll('input[name="planGor"]').forEach((r) => r.addEventListener("change", hepsiniCiz));
 $("sesAc").addEventListener("change", (e) => { sesAcik = e.target.checked; if (sesAcik) bip(); });
 $("akisTemizle").addEventListener("click", () => { akis = akis.filter((o) => o.ucus !== secili); akisCiz(); });
 
