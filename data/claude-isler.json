@@ -1,4 +1,25 @@
 {
  "aciklama": "Yöneticinin Claude asistana verdiği işler. Claude arka planda işler, durum ve sonucu yazar.",
- "isler": []
+ "isler": [
+  {
+   "id": "cl20261122a",
+   "t": "2026-11-22T12:25",
+   "tur": "denetim",
+   "kisi": "Mehmet Çelik",
+   "metin": "Konya Teknik Üniversitesi Rektörü ataması (Resmî Gazete), rehberdeki adaşı Aydıncık Kaymakamı Mehmet Çelik ile tek kişi gibi birleşmişti.",
+   "durum": "tamam",
+   "sonuc": "Ayrıldı: rektör ataması artık akademik geçmişi olmayan adaşla (kaymakam, vali vb.) birleştirilmiyor; iki ayrı kişi olarak görünüyor. Kaynak: Resmî Gazete rektör atama kararı (degisiklikler).",
+   "bitti": "2026-11-22T12:25"
+  },
+  {
+   "id": "cl20261122b",
+   "t": "2026-11-22T12:25",
+   "tur": "denetim",
+   "kisi": "Adnan Özcan, Yılmaz Çatal, Recep Bentli, Zafer Tatlı",
+   "metin": "Resmî Gazete ile teyit edilmiş rektör atamalarında rehberde hâlâ \"doğrulayın\" notu duruyordu.",
+   "durum": "tamam",
+   "sonuc": "Teyitli görev değişikliği olan kişilerde \"doğrulayın\" notu artık kendiliğinden kalkıyor. Kaynak: Resmî Gazete rektör atama kararları.",
+   "bitti": "2026-11-22T12:25"
+  }
+ ]
 }

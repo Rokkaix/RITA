@@ -639,7 +639,11 @@ function chShared(L){const EM=(D.R.findIndex(t=>/Görevlerden Emekliler/.test(t)
     if(c.yeni&&!c.eski&&/(Başkanı|Genel Müdürü|Rektörü|Valisi|Büyükelçisi|Başsavcısı|Genel Sekreteri|Komutanı)$/.test(c.makam)&&!/Üyesi|Yardımcısı|Başkanvekili|İkinci Başkanı/.test(c.makam)){const mk=norm(c.makam);
       L.forEach(o=>{if(nk(o.n)===nk(c.yeni)||(o.alias&&nk(o.alias)===nk(c.yeni)))return;const sg=String(o.t).split(' · ');const hit=sg.findIndex(q=>!/^(Eski|Emekli)\b/.test(q)&&norm(q.replace(/\s*\([^)]*\)/g,''))===mk);if(hit<0)return;
         const rest=sg.filter((q,i)=>i!==hit&&!/doğrulayın/.test(q));const act=rest.filter(q=>!/^(Eski|Emekli)\b/.test(q));o.t=act.concat(['Eski '+c.makam+' ('+yr+')'],rest.filter(q=>/^(Eski|Emekli)\b/.test(q))).join(' · ');if(!act.length&&o.r<300)o.r=Math.round((EM+Math.min(o.r,299)/1000)*1e4)/1e4;o.chg=1})}
-    if(c.yeni){const xy=find(c.yeni);if(xy){if(!norm(xy.t.split(' · ')[0]).includes(norm(c.makam))){const rest=xy.t.split(' · ').filter(q=>!/doğrulayın/.test(q)&&!norm(q).includes(norm(c.makam)));xy.t=[c.makam].concat(rest).join(' · ');xy.r=Math.min(r,xy.r);const u=upFor(c.makam);if(u&&!xy.u)xy.u=u;xy.chg=1}}
+    if(c.yeni){let xy=find(c.yeni);
+      /* adaş koruması: rektör ataması akademik olmayan (kaymakam, vali vb.) adaşla birleştirilmez */
+      if(xy&&/Rektörü$/.test(c.makam)&&!/rektör|üniversite|dekan|prof|akademi/i.test(xy.t)&&!(c.eski&&nk(c.eski)===nk(c.yeni)))xy=null;
+      if(xy&&norm(xy.t.split(' · ')[0]).includes(norm(c.makam))&&/doğrulayın/.test(xy.t)){xy.t=xy.t.split(' · ').filter(q=>!/doğrulayın/.test(q)).join(' · ');xy.chg=1}/* teyitli değişiklik: "doğrulayın" notu kalkar */
+      if(xy){if(!norm(xy.t.split(' · ')[0]).includes(norm(c.makam))){const rest=xy.t.split(' · ').filter(q=>!/doğrulayın/.test(q)&&!norm(q).includes(norm(c.makam)));xy.t=[c.makam].concat(rest).join(' · ');xy.r=Math.min(r,xy.r);const u=upFor(c.makam);if(u&&!xy.u)xy.u=u;xy.chg=1}}
       else L.push({n:c.yeni,t:c.makam,r,u:upFor(c.makam),v:1,o:'',c:'',chg:1})}})}
 function chFor(n){const k=nk(n);return allCh().filter(c=>c.durum!=='yoksayildi'&&((c.eski&&nk(c.eski)===k)||(c.yeni&&nk(c.yeni)===k))&&(new Date()-new Date(String(c.tarih).length===4?c.tarih+'-07-01':c.tarih))<120*864e5)}
 function alerts(){const C=allCh(),pend=C.filter(c=>c.durum==='beklemede');
