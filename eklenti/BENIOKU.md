@@ -30,6 +30,14 @@ Veri yolu: `quick.js` (Quick Check, her iframe) → `chrome.runtime.sendMessage`
 bağlantı (port) → `program.js` → `window.postMessage` → RITA Canlı. RITA Canlı yalnız
 `e.source === window`, aynı köken ve `kaynak === "eklenti"` olan, doğrulamadan geçen mesajları kabul eder.
 
+## Ana RITA'ya otomatik aktarım
+
+RITA ana sayfası (https://rokkaix.github.io/RITA/) açıksa eklenti verisi oraya da gider:
+Quick Check'te açık uçuş RITA'nın uçuş listesinde varsa VIP'ler **rical rehberiyle** eşleştirilip uçuşa eklenir,
+koltuk durumları işlenir ve yerleşim rical sırasına göre **kendiliğinden** yapılır. Uçuş ekranındaki
+"CANLI · QUICK CHECK EKLENTİSİ" panelinde her otomatik işlem saatiyle yazılır; "Otomatik uygula" kapatılabilir,
+"Canlı veriyi bu uçuştan kaldır" ile geri alınır. Üst düzey yolcular otomatik teyit edilmez. Canlı veri kaydedilmez.
+
 ## Kurulum (yalnız izinli bilgisayardaki Chrome)
 
 1. Bu depodaki `eklenti` klasörünü bilgisayara indirin (GitHub → Code → Download ZIP → `eklenti` klasörünü çıkarın).
