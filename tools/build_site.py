@@ -44,4 +44,9 @@ open(os.path.join(OUT, "g", "index.html"), "w", encoding="utf-8").write('''<!doc
 <link rel="icon" href="../icons/rita.svg"><meta name="theme-color" content="#7f0f22">
 <style>body{margin:0;font:16px system-ui;background:#1d3461;color:#fff;display:flex;min-height:100vh;align-items:center;justify-content:center}</style></head>
 <body><p>Görev kartları açılıyor…</p><script>var id=location.search.slice(1).split('&')[0],k=location.hash.slice(1);location.replace('../#gk='+id+'.'+k)</script></body></html>''')
+# Chrome eklentisi: tek tıkla indirilebilir ZIP (rokkaix.github.io/RITA/RITA-eklenti.zip)
+import zipfile
+with zipfile.ZipFile(os.path.join(OUT, "RITA-eklenti.zip"), "w", zipfile.ZIP_DEFLATED) as z:
+    for ad in sorted(os.listdir(os.path.join(R, "eklenti"))):
+        z.write(os.path.join(R, "eklenti", ad), "RITA-eklenti/" + ad)
 print("site hazır:", OUT, "sürüm", ver)
