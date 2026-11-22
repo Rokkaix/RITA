@@ -610,7 +610,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 19.4';let SURUM_YENI=false;
+const SURUM='RITA 19.5';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -915,7 +915,7 @@ function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 clas
   '<div class="stats" style="margin-top:10px"><div class="stat"><b>'+n.bf+'/'+n.bt+'</b><span>Business boş</span></div><div class="stat"><b>'+n.ef+'/'+n.et+'</b><span>Ekonomi boş</span></div><div class="stat"><b>'+ppl().reduce((s,p)=>s+(p.pax||1),0)+'</b><span>Listedeki kişi</span></div></div></section>'+
   ricalUyari()+'<section class="panel"><h2 class="h">YOLCU EKLE</h2><input class="field" id="q-add" data-q="add" placeholder="İsim, unvan veya kurum yazın" value="'+esc(q.add)+'" autocomplete="off"><div id="res">'+resHtml()+'</div><p class="note">Türkçe/İngilizce harf fark etmez. <button class="btn sm" data-a="manual" type="button">Listede yok, elle ekle</button></p></section>'+
   '<section class="panel"><h2 class="h">RİCAL SIRASI VE KOLTUKLAR</h2><div id="pax">'+paxHtml()+'</div>'+(ppl().length?'<div class="row-btns" style="margin-top:12px"><button class="btn gold" data-a="ricalDuzen" type="button">Rical ve koltuk sıralamasına göre ayarla</button><button class="btn" data-a="yazdir" type="button">Yazdır / PDF</button><button class="btn" data-a="copy" type="button">Özeti kopyala</button><button class="btn dng" data-a="clearAll" type="button">Listeyi temizle</button></div>':'')+'<p class="note">Liste rical sırasındadır: en üstte en yüksek rical. Business ve ekonomi ayrı ayrı, en önden başlayarak ve boşluk bırakmadan doldurulur (1A, 1B, 1E, 1F, 2A…; ekonomide 5A, 5B, 5C…). Ailesiyle uçan yolcunun kişi sayısını artırın. ▲ ▼ ile sırayı elle değiştirin. İki yolcunun yerini değiştirmek için önce birinin koltuğuna, sonra diğerininkine dokunun.</p>'+ucAtamaHtml()+'</section>'+ylHtml()+
-  '<section class="panel"><h2 class="h">KOLTUK HARİTASI<span class="sp"></span>'+'<button class="btn sm pri" data-a="ocrOpen" type="button">Fotoğraftan doldur</button><button class="btn sm pri" data-a="opxOpen" type="button">Yolcu listesinden rical bul</button>'+(OLAST&&OLAST.cur===D.cur?'<button class="btn sm" data-a="ocrLast" type="button">Okunanı göster</button>':'')+adm('<button class="btn sm" data-a="cabinCfg" type="button">Kabin düzeni</button>')+'</h2>'+qLegend()+'<div class="cabin-scroll">'+cabinHtml()+'</div><div class="legend"><span><i style="background:var(--gold)"></i>Rical yolcusu (#sıra)</span><span><i style="background:#f2b8bc"></i>Refakat / maiyet (+sıra)</span>'+Object.keys(SMK).map(k=>'<span><i style="background:'+SMK[k].bg+'"></i><b>'+k+'</b>&nbsp;'+SMK[k].ad+'</span>').join('')+'<span><i style="background:#b9b3e8"></i>Koridor</span><span><i style="background:#ebebeb;box-shadow:inset 0 0 0 2px #d9822b"></i>Exit koltuk (diz mesafeli)</span>'+SST.map(x=>'<span><i style="background:'+x.bg+(x.bd?';box-shadow:inset 0 0 0 1.5px '+x.bd:'')+'"></i>'+esc(x.ad)+'</span>').join('')+''+'<label style="display:flex;gap:6px;align-items:center;width:100%;margin-top:4px"><input type="checkbox" data-a="useBlk" '+(D.useBlk!==0?'checked':'')+'> Bloke koltuklar açılabilir (sıradaki koltuk blokeyse rical yolcusu oraya yerleşir; “bloke açılmalı” uyarısı çıkar)</label></div>'+'<p class="note"><b>Koltuk işaretleme:</b> Renkler Quick Check-in koltuk açıklamasıyla (SeatMapHelp) aynıdır; sıra numarasının yanındaki E / W / X Quick Check-in’deki gibi motor, kanat ve çıkış sıralarıdır. <b>Üstteki renklerden birini seçip</b> koltuklara dokunun: koltuk o duruma geçer, aynı renkle ikinci dokunuş boşaltır. Renk seçili değilken bir dokunuş → Check-in yapılmış, iki dokunuş → Bloke, üç dokunuş → boş. Ricale yalnız <b>boş</b> koltuk verilir; <b>en son verilecek</b> ve <b>özel ücretli ön</b> koltuklar en sona kalır; bloke ve soft bloke koltuklar “Bloke koltuklar açılabilir” işaretliyse kullanılır. “Yolcu var” grubundaki koltuklar doludur.</p></section>'+legal()}
+  '<section class="panel"><h2 class="h">KOLTUK HARİTASI<span class="sp"></span>'+'<button class="btn sm pri" data-a="opxOpen" type="button">📷 Fotoğraf ekle (yolcu listesi)</button><button class="btn sm" data-a="ocrOpen" type="button">Koltuk haritası fotoğrafı</button>'+(OLAST&&OLAST.cur===D.cur?'<button class="btn sm" data-a="ocrLast" type="button">Okunanı göster</button>':'')+adm('<button class="btn sm" data-a="cabinCfg" type="button">Kabin düzeni</button>')+'</h2>'+qLegend()+'<div class="cabin-scroll">'+cabinHtml()+'</div><div class="legend"><span><i style="background:var(--gold)"></i>Rical yolcusu (#sıra)</span><span><i style="background:#f2b8bc"></i>Refakat / maiyet (+sıra)</span>'+Object.keys(SMK).map(k=>'<span><i style="background:'+SMK[k].bg+'"></i><b>'+k+'</b>&nbsp;'+SMK[k].ad+'</span>').join('')+'<span><i style="background:#b9b3e8"></i>Koridor</span><span><i style="background:#ebebeb;box-shadow:inset 0 0 0 2px #d9822b"></i>Exit koltuk (diz mesafeli)</span>'+SST.map(x=>'<span><i style="background:'+x.bg+(x.bd?';box-shadow:inset 0 0 0 1.5px '+x.bd:'')+'"></i>'+esc(x.ad)+'</span>').join('')+''+'<label style="display:flex;gap:6px;align-items:center;width:100%;margin-top:4px"><input type="checkbox" data-a="useBlk" '+(D.useBlk!==0?'checked':'')+'> Bloke koltuklar açılabilir (sıradaki koltuk blokeyse rical yolcusu oraya yerleşir; “bloke açılmalı” uyarısı çıkar)</label></div>'+'<p class="note"><b>Koltuk işaretleme:</b> Renkler Quick Check-in koltuk açıklamasıyla (SeatMapHelp) aynıdır; sıra numarasının yanındaki E / W / X Quick Check-in’deki gibi motor, kanat ve çıkış sıralarıdır. <b>Üstteki renklerden birini seçip</b> koltuklara dokunun: koltuk o duruma geçer, aynı renkle ikinci dokunuş boşaltır. Renk seçili değilken bir dokunuş → Check-in yapılmış, iki dokunuş → Bloke, üç dokunuş → boş. Ricale yalnız <b>boş</b> koltuk verilir; <b>en son verilecek</b> ve <b>özel ücretli ön</b> koltuklar en sona kalır; bloke ve soft bloke koltuklar “Bloke koltuklar açılabilir” işaretliyse kullanılır. “Yolcu var” grubundaki koltuklar doludur.</p></section>'+legal()}
 function segHtml(key,opts){return'<div class="seg">'+opts.map(([k,l])=>'<button type="button" data-a="seg" data-t="'+key+'" data-k="'+k+'" aria-pressed="'+(seg[key]===k)+'">'+l+'</button>').join('')+'</div>'}
 function personList(R,key){window['_pl_'+key]=R.list;return'<p class="note" style="margin:0 0 4px">'+R.n+' kayıt · rical sırasına göre</p>'+(R.list.map((x,i)=>'<button type="button" class="li" data-a="person" data-k="'+key+'" data-i="'+i+'">'+rkHtml(x.r,x.o)+'<span class="tx"><span class="nm">'+esc(x.n)+'</span><br><span class="ti">'+esc(x.t)+'</span>'+(x.u?'<div class="why y">Upgrade: '+esc(x.u)+'</div>':'')+noteLine(x.n)+'</span>'+tagsHtml(x)+'</button>').join('')||'<p class="empty">Bu aramayla eşleşen kayıt yok.</p>')+(R.n>R.list.length?'<div style="padding-top:10px"><button class="btn" data-a="more" data-k="'+key+'" type="button">Daha fazla göster</button></div>':'')}
 function riList(){return personList(find(q.ri,{corp:0,cat:riCat,limit:lim.ri}),'ri')}
@@ -1234,19 +1234,25 @@ function paxParse(txt){const out=[];
     if(pn&&st&&!yor){const tail=L.slice(L.lastIndexOf(st[1])+st[1].length).replace(UNVAN_TR,' ').split(' ').filter(w=>/^[A-ZÇĞİÖŞÜ]{2,}$/.test(w)&&!PSTOP.test(w));
       if(tail.length>=2){out.push({soy:tail[tail.length-2],ad:tail[tail.length-1],ini:'',koltuk:st[1],varis:'',grup:pn[1],vip:vipL,ham:line.trim()});return}}
     /* Quick Check-in yolcu listesi satırı: [sıra] PNR [GK] KOLTUK [CT] [Güv] [S] SOYAD AD !VIP! yorum */
-    const st2=L.match(/(?:^|\s)(\d{1,2}[A-K])(?=\s|$)/);
+    const st2=L.match(/(?:^|\s)(\d{1,2}[A-K]|--)(?=\s|$)/);
     if(st2&&(pn||vipL||yor||/^\d{1,3}\s/.test(L))){let tail=L.slice(L.indexOf(st2[1],st2.index)+st2[1].length);const ci=tail.search(/[!*]/);if(ci>=0)tail=tail.slice(0,ci);
       const w=tail.replace(UNVAN_TR,' ').split(' ').filter(x=>/^[A-ZÇĞİÖŞÜ]+$/.test(x)&&!PSTOP.test(x)),i=w.findIndex(x=>x.length>=2);
-      if(i>=0){const nx=w[i+1]||'',sn=w[i-1]==='C'||w[i-1]==='Y'?w[i-1]:'';out.push({soy:w[i],ad:nx.length>=2?nx:'',ini:nx.length===1?nx:'',sinif:sn,koltuk:st2[1],varis:'',grup:pn?pn[1]:'t'+out.length,vip:vipL,yorum:yorumAl(L),ham:line.trim()});return}}
+      if(i>=0){const nx=w[i+1]||'',sn=w[i-1]==='C'||w[i-1]==='Y'?w[i-1]:'';out.push({soy:w[i],ad:nx.length>=2?nx:'',ini:nx.length===1?nx:'',sinif:sn,koltuk:st2[1]==='--'?'':st2[1],varis:'',grup:pn?pn[1]:'t'+out.length,vip:vipL,yorum:yorumAl(L),ham:line.trim()});return}}
     /* yorumun alt satıra taşan devamı (ör. "VEKILI.28.DONEM ISTANBUL") */
     const son=out[out.length-1];if(son&&son.yorum!=null&&!/\d{1,2}[A-K]\b/.test(L)&&(L.match(/[A-ZÇĞİÖŞÜ]{2,}/g)||[]).length>=1&&!/PNR|SOYAD|LISTE|TOPLAM|UCUS|KOLTUK/.test(L)){son.yorum=(son.yorum+' '+yorumAl(L,1)).trim();son.ham+=' '+line.trim()}});
   return out}
+/* soyad + Quick Check-in açıklamasındaki görev ile rehber eşleşmesi (ad çoğu zaman yazmaz ya da tek harftir) */
+const YSTOP=new Set(['vip','sayin','ozel','kalem','gorevlisi','gorevli','donem','resmi','heyet','uyesi','ekibi','protokol','katip','emn','prg','sn','ve','ile']);
+const lev1=(a,b)=>{if(a===b)return 0;if(Math.abs(a.length-b.length)>1)return 2;let i=0;while(i<a.length&&a[i]===b[i])i++;const r=(x,y)=>x.slice(i+1)===y.slice(i+1)?1:x.slice(i+1)===y.slice(i)?1:x.slice(i)===y.slice(i+1)?1:2;return r(a,b)};
 function paxMatch(o){const soy=norm(o.soy),a1=norm(o.ad).split(' ')[0],ini=norm(o.ini);let best=null,bs=0,two=0;
-  people().forEach(x=>{if(x.o||x.r>=300||x.act===false)return;[nk(x.n),x.alias?nk(x.alias):''].filter(Boolean).forEach(full=>{const w=full.split(' ');if(w.length<2)return;
-    const si=w.lastIndexOf(soy);if(si<1&&!(w.length>2&&w[w.length-2]===soy))return;const first=w.slice(0,Math.max(1,si)).join(' ');
+  const yt=norm(o.yorum||'').replace(/[^a-z ]/g,' ').split(/\s+/).filter(t=>t.length>=4&&!YSTOP.has(t));
+  people().forEach(x=>{if(x.o||x.r>=300||x.act===false)return;const tt=norm(x.t||'').replace(/[^a-z]/g,''),tm=yt.filter(t=>tt.includes(t.slice(0,Math.min(6,t.length)))).length;
+    [nk(x.n),x.alias?nk(x.alias):''].filter(Boolean).forEach(full=>{const w=full.split(' ');if(w.length<2)return;
+    let si=w.lastIndexOf(soy),bulanik=0;if(si<1&&!(w.length>2&&w[w.length-2]===soy)){if(tm>=2&&soy.length>=5&&lev1(w[w.length-1],soy)<=1){si=w.length-1;bulanik=1}else return}const first=w.slice(0,Math.max(1,si)).join(' ');
     let sc=a1?(first.split(' ').includes(a1)?1:first.startsWith(a1.slice(0,3))?0.75:0.3):ini?(first.startsWith(ini)?0.7:0.2):0.5;sc-=Math.min(x.r,299)/2000;
+    if(yt.length){sc+=tm>=2?0.35:tm===1?0.15:(a1?0:-0.15)}if(bulanik)sc-=0.2;
     if(sc>bs+0.02){two=bs;bs=sc;best=x}else if(sc>two)two=sc})});
-  return bs>=0.55?{x:best,s:bs,cift:bs-two<0.05}:null}
+  return bs>=0.55?{x:best,s:Math.min(1,bs),cift:bs-two<0.05}:null}
 /* VIP yorumundan görev tipi: koruma/emniyet mi, maiyet/ilave personel mi */
 /* Yakınlık kuralı (kullanıcının listelerine göre, 22.11.2026):
    • EŞİ: rical listesindeki bantlar "… ve Eşleri", CIC90/95-UPGRADE maddeleri "… ve eşi" → eşi, ricalin bandında (hemen ardından) ve upgrade hakkıyla.
@@ -1307,24 +1313,93 @@ function opxHtml(){if(!OPX.length)return'<p class="note">Okunan metinde yolcu sa
     +(o.rol!=='rical'&&o.rol!=='atla'&&V.length?'<select class="field" style="max-width:220px" data-opx="bag" data-i="'+i+'">'+V.map(([v,j])=>'<option value="'+j+'"'+(o.bag===j?' selected':'')+'>'+esc(v.m.x.n)+'</option>').join('')+'</select>':'')+'</div></div>').join('')
     +'<label style="display:flex;gap:8px;align-items:center;margin-top:10px;font-size:14px"><input type="checkbox" id="opxup"> Maiyet/koruma için <b>upgrade notu</b> var (business’ta yer kalırsa)</label>'
     +'<div class="row-btns" style="margin-top:12px"><button class="btn pri" data-a="opxApply" type="button">✈️ Yolcuları uçuşa aktar ve rical sırasına göre yerleştir</button></div>'}
-function opxRun(txt){const fm=String(txt).toUpperCase().match(/\bTK\s?0*(\d{1,4})\s*\/\s*\d{1,2}[A-Z]{3}/);window._opxF=fm?'TK'+fm[1]:'';if(window._opxF&&!window._opxHedef){const f=D.F.find(x=>flNo(x)===window._opxF);if(f)window._opxHedef=f}const raw=paxParse(txt),seen={};OPX=[];raw.forEach(o=>{if(o.koltuk)o.koltuk=o.koltuk.replace(/^0+/,'')});
+function opxRun(txt){const T0=String(txt).toUpperCase(),fm=T0.match(/\bTK\s?0*(\d{1,4})\s*\/\s*\d{1,2}[A-Z]{3}/)||T0.match(/^UCUS:\s*TK\s?0*(\d{1,4})/m);window._opxF=fm?'TK'+fm[1]:'';if(window._opxF&&!window._opxHedef){const f=D.F.find(x=>flNo(x)===window._opxF);if(f)window._opxHedef=f}const raw=paxParse(txt),seen={};OPX=[];raw.forEach(o=>{if(o.koltuk)o.koltuk=o.koltuk.replace(/^0+/,'')});
   raw.forEach(o=>{const k=norm(o.soy)+'|'+norm(o.ad||o.ini)+'|'+(o.koltuk||'');const p=seen[k];
     if(p){if(o.vip)p.vip=1;if(!p.koltuk&&o.koltuk)p.koltuk=o.koltuk;if((o.ham||'').length>(p.ham||'').length)p.ham=o.ham;return}seen[k]=o;OPX.push(o)});
   opxRoles();const r=$('opxr');if(r)r.innerHTML=opxHtml()}
 document.addEventListener('change',e=>{const t=e.target;if(!t.dataset||!t.dataset.opx)return;const o=OPX[+t.dataset.i];if(!o)return;
   if(t.dataset.opx==='rol'){o.rol=t.value;if(o.rol==='rical')o.bag=+t.dataset.i;else if(OPX[o.bag]?.rol!=='rical')o.bag=OPX.findIndex(x=>x.rol==='rical')}else o.bag=+t.value;OPX.forEach(z=>z.ust=z.rol==='rical'&&z.m&&ustMu(z.m.x.r)?1:0);$('opxr').innerHTML=opxHtml()});
-async function opxImage(files){files=[].concat(files);const pe=$('opxp');try{
-  pe.textContent='Okuma aracı yükleniyor (ilk seferde biraz sürer)…';const w=await ocrWorker(m=>{if(m.status==='recognizing text')pe.textContent='Okunuyor %'+Math.round((m.progress||0)*100)});
-  await w.setParameters({tessedit_pageseg_mode:'6',tessedit_char_whitelist:'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789./@-*: '});
-  let hep='';for(let fi=0;fi<files.length;fi++){pe.textContent='Fotoğraf '+(fi+1)+'/'+files.length+' hazırlanıyor…';
+async function opxImage(files){files=[].concat(files);const pe=$('opxp'),t0s=Date.now();try{
+  pe.textContent='Okuma aracı hazırlanıyor (ilk seferde biraz sürer)…';const w=await ocrWorker();
+  let hep='',ucus='',bas=0;try{bas=($('opxt').value.match(/^\d+ PNR /gm)||[]).length}catch(e){}
+  for(let fi=0;fi<files.length;fi++){const on='Fotoğraf '+(fi+1)+'/'+files.length+': ';pe.textContent=on+'hazırlanıyor…';
     const img=await new Promise((ok,no)=>{const u=URL.createObjectURL(files[fi]),im=new Image();im.onload=()=>{URL.revokeObjectURL(u);ok(im)};im.onerror=no;im.src=u});
-    const sc=Math.min(3,2400/Math.max(img.width,1)),cv=document.createElement('canvas');cv.width=Math.round(img.width*sc);cv.height=Math.round(img.height*sc);const g=cv.getContext('2d');g.drawImage(img,0,0,cv.width,cv.height);
-    const d=g.getImageData(0,0,cv.width,cv.height),a=d.data;let sum=0;for(let i=0;i<a.length;i+=4)sum+=0.3*a[i]+0.59*a[i+1]+0.11*a[i+2];const dark=sum/(a.length/4)<110;
-    for(let i=0;i<a.length;i+=4){let y=Math.max(a[i],a[i+1],a[i+2]);if(!dark)y=0.3*a[i]+0.59*a[i+1]+0.11*a[i+2];if(dark)y=255-y;y=y<150?0:255;a[i]=a[i+1]=a[i+2]=y}g.putImageData(d,0,0);
-    pe.textContent='Fotoğraf '+(fi+1)+'/'+files.length+' okunuyor…';const r=await w.recognize(cv);hep+=(hep?'\n':'')+r.data.text}
-  const t0=$('opxt').value.trim(),top=(t0?t0+'\n':'')+hep;$('opxt').value=top;window._opxN=(window._opxN||0)+files.length;opxRun(top);const ek=$('opxfl');if(ek)ek.textContent='📷 Bir sayfa daha ekle ('+window._opxN+' okundu)';pe.textContent='Toplam '+window._opxN+' fotoğraf okundu. Başka sayfa varsa “Bir sayfa daha ekle”ye basın; bitince rolleri kontrol edip uygulayın.'}catch(e){pe.textContent='Okunamadı: fotoğrafı yeniden çekin ya da metni yapıştırın.'}}
+    /* gri tonlu, 1800 px: hızlı ve Quick Check-in'in gri satırlarında eşiklemeden daha iyi */
+    const sc=Math.min(3,1800/Math.max(img.width,1)),cv=document.createElement('canvas');cv.width=Math.round(img.width*sc);cv.height=Math.round(img.height*sc);const g=cv.getContext('2d');g.drawImage(img,0,0,cv.width,cv.height);
+    const d=g.getImageData(0,0,cv.width,cv.height),a=d.data;let sum=0;for(let i=0;i<a.length;i+=4){const y=0.3*a[i]+0.59*a[i+1]+0.11*a[i+2];sum+=y;a[i]=a[i+1]=a[i+2]=y}g.putImageData(d,0,0);
+    pe.textContent=on+'liste okunuyor…';const q=await qcOku(cv,w,m=>pe.textContent=on+m);
+    const fm=String(q.metin).toUpperCase().match(/\bTK\s?0*(\d{2,5})/);if(fm&&!ucus){const dd=fm[1];ucus=[dd.slice(0,4),dd.slice(0,3)].map(x=>'TK'+x).find(x=>D.F.some(f=>flNo(f)===x))||('TK'+dd.slice(0,4))}
+    if(q.rows&&q.rows.length){hep+=(hep?'\n':'')+qcMetin(q.rows,bas);bas+=q.rows.length;continue}
+    /* Quick Check-in başlığı yoksa: koltuk haritası mı? */
+    const kod=(String(q.metin).match(/\b\d{2}[A-K]\b/g)||[]).length;if(kod>=25&&!/V[I1]P|SOYAD/i.test(q.metin)){pe.innerHTML='Bu fotoğraf bir <b>koltuk haritası</b>; koltuk okumaya geçiliyor…';window._ocrDosya=files;setTimeout(()=>{A.ocrOpen();ocrDosyalar(window._ocrDosya)},400);return}
+    /* TROYA PAX BY GROUP (koyu ekran): eski yöntem — eşikle, gerekirse ters çevir */
+    const dark=sum/(a.length/4)<110;for(let i=0;i<a.length;i+=4){let y=a[i];if(dark)y=255-y;y=y<150?0:255;a[i]=a[i+1]=a[i+2]=y}g.putImageData(d,0,0);
+    await w.setParameters({tessedit_pageseg_mode:'6',tessedit_char_whitelist:'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789./@-*:! '});pe.textContent=on+'TROYA listesi okunuyor…';const r=await w.recognize(cv);hep+=(hep?'\n':'')+r.data.text}
+  if(ucus)hep='Ucus: '+ucus+' / '+'\n'+hep;
+  const t0=$('opxt').value.trim(),top=(t0?t0+'\n':'')+hep;$('opxt').value=top;window._opxN=(window._opxN||0)+files.length;opxRun(top);const ek=$('opxfl');if(ek)ek.textContent='📷 Bir sayfa daha ekle ('+window._opxN+' okundu)';
+  pe.textContent='Toplam '+window._opxN+' fotoğraf okundu ('+Math.round((Date.now()-t0s)/1000)+' sn). İsimleri tabloda kontrol edin; yanlış okunan harfleri “Okunan metin”de düzeltip “Metni oku”ya basabilirsiniz. Başka sayfa varsa “Bir sayfa daha ekle”.'}catch(e){pe.textContent='Okunamadı: fotoğrafı yeniden çekin ya da metni yapıştırın.'}}
 document.addEventListener('change',e=>{if(e.target.id==='opxhedef'){window._opxHedef=e.target.value;return}});
 document.addEventListener('change',e=>{if(e.target.id==='opxf'&&e.target.files&&e.target.files.length){const f=[...e.target.files];e.target.value='';opxImage(f)}});
+/* ---------- Quick Check-in yolcu listesi: sütun konumlarıyla okuma (RITA 19.5) ----------
+   1) tam görüntü bir kez okunur → başlık satırı (Pnr · GK · Klt · S · Soyad · Ad · C) bulunur
+   2) her yolcu satırı, açıklama sütunundaki !VIP! başlangıçlarından ayrılır
+   3) koltuk, soyad ve ad sütunları ayrı ayrı büyütülüp yeniden okunur (yalnız izinli harflerle) */
+function qcSeat(t){t=String(t||'').toUpperCase().replace(/[^A-Z0-9]/g,'');if(t.length<2)return'';
+  const m=t.match(/([0-9OIDLSZB]{1,2})([A-K0-9])$/)||t.match(/^([0-9OIDLSZB]{1,2})([A-K0-9])/);if(!m)return'';
+  const n=m[1].replace(/[OD]/g,'0').replace(/[IL]/g,'1').replace(/S/g,'5').replace(/Z/g,'2').replace(/B/g,'8'),L=m[2];
+  const l=/[A-HJK]/.test(L)?L:({'4':'A','8':'B','0':'D','6':'G'})[L]||'';const r=parseInt(n,10);if(!l||!r||r>60)return'';return r+l}
+function qcGeo(words){
+  const W=words.filter(w=>w.t&&w.t.trim()).map(w=>({t:w.t.trim(),x0:w.x0,x1:w.x1,y0:w.y0,y1:w.y1,xc:(w.x0+w.x1)/2,yc:(w.y0+w.y1)/2}));
+  const ayni=(a,w)=>Math.abs(w.yc-a.yc)<(a.y1-a.y0)*1.6;
+  const ad0=W.filter(w=>/^soyad/i.test(w.t)).map(a=>({a,n:W.filter(w=>ayni(a,w)&&/^(p[nra][rn]|gk|ct|g[uü]v|ci|klt|kit|ad.?|s)$/i.test(w.t)).length})).sort((p,q)=>q.n-p.n);
+  if(!ad0.length||ad0[0].n<2)return null;const so=ad0[0].a,hdr=W.filter(w=>ayni(so,w));
+  const pnr=hdr.find(w=>/^p[nra][rn]$/i.test(w.t)&&w.x1<so.x0),kl=hdr.find(w=>/^(k[il1|]t)$/i.test(w.t)&&w.x1<so.x0),s=hdr.filter(w=>/^s$/i.test(w.t)&&w.x1<so.x0+5).pop(),ad=hdr.find(w=>/^ad/i.test(w.t)&&w.x0>so.x1-5);
+  const hp=hdr.filter(w=>w.x1<so.x1+400);let b=0;if(hp.length>=3){const n=hp.length,mx=hp.reduce((q,w)=>q+w.xc,0)/n,my=hp.reduce((q,w)=>q+w.yc,0)/n;let nu=0,de=0;hp.forEach(w=>{nu+=(w.xc-mx)*(w.yc-my);de+=(w.xc-mx)**2});b=de?nu/de:0;if(Math.abs(b)>0.15)b=0}
+  const Y=w=>w.yc-b*w.xc,h=so.y1-so.y0,rowH=h*2.2,top=Y(so)+h*0.6,below=W.filter(w=>Y(w)>top);
+  const vipW=below.filter(w=>/V[I1L|!]P/i.test(w.t)&&w.x0>so.x0);const xc=vipW.length?Math.min(...vipW.map(w=>w.x0)):(ad?ad.x1+20:so.x1+200);
+  const st=[];vipW.filter(w=>w.x0<xc+(so.x1-so.x0)*0.8).map(Y).sort((a,b)=>a-b).forEach(y=>{if(!st.length||y-st[st.length-1]>rowH*0.45)st.push(y)});
+  if(!st.length)return null;
+  const xS=s?s.xc:so.x0-(so.x1-so.x0)*0.5,xAd=ad?ad.x0-6:so.x1+(xc-so.x1)*0.55,px=pnr?pnr.xc:Math.max(0,xS-(so.x1-so.x0)*7);
+  const xK=kl?kl.xc:px+(xS-px)*0.49,kw=Math.max(kl?(kl.x1-kl.x0):(so.x1-so.x0)*0.5,(so.x1-so.x0)*0.45);
+  const xR=xc+(xc-so.x0)*2.5,last=st[st.length-1],bot=Math.min(Math.max(...below.map(w=>w.y1)),last+b*so.xc+rowH*2.6);
+  return{W:below,Y,b,h,rowH,st,xS,xAd,xc,xK,kw,xR,top:so.y1+2,bot}}
+function qcSatir(G,ws,i){const y0=G.st[i],yA=y0-G.rowH*0.35,yB=i+1<G.st.length?G.st[i+1]-G.rowH*0.35:y0+G.rowH*2.2;return ws.filter(w=>{const y=(w.y0+w.y1)/2-G.b*(w.x0+w.x1)/2;return y>=yA&&y<yB})}
+async function qcOku(cv,w,ilerle){
+  await w.setParameters({tessedit_pageseg_mode:'6',tessedit_char_whitelist:'',preserve_interword_spaces:'1'});
+  const r=await w.recognize(cv),A=r.data.words.map(x=>({t:x.text,x0:x.bbox.x0,y0:x.bbox.y0,x1:x.bbox.x1,y1:x.bbox.y1}));
+  const G=qcGeo(A);if(!G)return{metin:r.data.text,rows:null};
+  const kes=async(x0,x1,wl,k)=>{x0=Math.max(0,Math.round(x0));x1=Math.min(cv.width,Math.round(x1));const y0=Math.max(0,Math.round(G.top)),y1=Math.min(cv.height,Math.round(G.bot));
+    if(!(x1-x0>4&&y1-y0>4))return[];k=Math.min(k,3000/Math.max(x1-x0,y1-y0));const c=document.createElement('canvas');c.width=Math.round((x1-x0)*k);c.height=Math.round((y1-y0)*k);const g=c.getContext('2d');g.imageSmoothingQuality='high';g.drawImage(cv,x0,y0,x1-x0,y1-y0,0,0,c.width,c.height);
+    await w.setParameters({tessedit_pageseg_mode:'6',tessedit_char_whitelist:wl});const q=await w.recognize(c);return q.data.words.map(x=>({t:x.text,x0:x.bbox.x0/k+x0,x1:x.bbox.x1/k+x0,y0:x.bbox.y0/k+y0,y1:x.bbox.y1/k+y0}))};
+  ilerle&&ilerle('Koltuk numaraları okunuyor…');const K=await kes(G.xK-G.kw*0.6,G.xK+G.kw*0.95,'0123456789ABCDEFGHJK',2.5);
+  ilerle&&ilerle('İsimler okunuyor…');const S=await kes(G.xS-G.h*0.8,G.xAd,'ABCDEFGHIJKLMNOPQRSTUVWXYZ',2.5),N=await kes(G.xAd,G.xc-3,'ABCDEFGHIJKLMNOPQRSTUVWXYZ',2.5);
+  const B=new Set();try{people().forEach(x=>{if(x.r<300){const p=nk(x.n).split(' ');const z=p[p.length-1].toUpperCase();if(z.length>=3)B.add(z)}})}catch(e){}
+  const makul=t=>t.length>=3&&new Set(t).size>=3&&/[AEIOUÖÜ]/.test(t)&&!/(.)\1\1/.test(t)&&!/^[EHILRST]+$/.test(t);
+  const har=t=>String(t).toUpperCase().replace(/[^A-ZÇĞİÖŞÜ]/g,'');
+  const rows=[];G.st.forEach((_,i)=>{const R=qcSatir(G,G.W,i),srt=a=>a.slice().sort((p,q)=>p.x0-q.x0);
+    const yor=R.filter(w=>w.x0>=G.xc-8&&w.x0<G.xR).sort((a,b)=>(Math.round((G.Y(a)-G.Y(b))/(G.rowH*0.3))||0)||a.x0-b.x0).map(w=>w.t).join(' ');
+    /* koltuk: büyütülmüş sütun ve ilk okuma oylanır */
+    const kc=[...srt(qcSatir(G,K,i)).map(x=>qcSeat(x.t)),...R.filter(w=>Math.abs((w.x0+w.x1)/2-G.xK)<G.kw*1.2).map(x=>qcSeat(x.t))].filter(Boolean);
+    const say={};kc.forEach(k=>say[k]=(say[k]||0)+1);const seat=kc.sort((a,b)=>say[b]-say[a])[0]||'';
+    /* sınıf + soyad */
+    let sinif='';const sa=srt(qcSatir(G,S,i)).map(x=>({t:har(x.t),x0:x.x0})).filter(x=>x.t);
+    sa.forEach(x=>{if(x.x0<G.xS+G.h*0.6&&x.x0>G.xS-G.h*0.9&&/^[CY]/.test(x.t)&&x.t.length>=4&&!B.has(x.t)){sinif=sinif||x.t[0];x.t=x.t.slice(1);x.x0=G.xS}else if(/^[CY]$/.test(x.t)&&x.x0<G.xS+G.h*0.6){sinif=sinif||x.t;x.t=''}});
+    const kT=sa.filter(x=>x.x0>G.xS-G.h*0.35||x.x0<G.xS+G.h*0.6&&x.t.length>=3&&false).map(x=>x.t).filter(t=>t.length>=2),ilk=srt(R.filter(w=>(w.x0+w.x1)/2>G.xS+8&&(w.x0+w.x1)/2<G.xAd&&w.x0<G.xc-5)).map(w=>har(w.t.split('!')[0])).filter(t=>t.length>=2);
+    const enUzun=L=>L.filter(makul).sort((a,b)=>b.length-a.length)[0];
+    const birl=[kT.join(''),ilk.join(''),...kT.slice(0,-1).map((t,j)=>t+kT[j+1]),...ilk.slice(0,-1).map((t,j)=>t+ilk[j+1])],tum=[...kT,...ilk,...birl,...birl.map(t=>t.slice(0,-1)),...[...kT,...ilk].map(t=>t.slice(0,-1))].filter(t=>t.length>=3);
+    const soy=tum.find(t=>B.has(t))||(()=>{const k=enUzun(kT),f=enUzun(ilk);if(k&&f&&(k.includes(f)||f.includes(k)))return k.length<=f.length+1?k:f;return k||f||kT[0]||ilk[0]||''})();
+    const aday=[...kT,...ilk];
+    const adT=har(srt(qcSatir(G,N,i)).map(x=>x.t).join(' '))||har(R.filter(w=>(w.x0+w.x1)/2>=G.xAd&&w.x1<G.xc+8).map(w=>w.t).join(''));
+    if(!sinif){const c=R.filter(w=>Math.abs((w.x0+w.x1)/2-G.xS)<G.h).map(w=>w.t.slice(-1).toUpperCase()).find(c=>c==='C'||c==='Y');if(c)sinif=c}
+    if(!soy&&!seat){if(rows.length&&yor)rows[rows.length-1].yorumH+=' '+yor;return}
+    rows.push({soy,adT:adT.length===1||makul(adT)&&adT.length>=3?adT:'',sinif,koltuk:seat,yorumH:yor})});
+  return{metin:r.data.text,rows}}
+
+/* OCR yorum temizliği: gürültüyü at, !VIP! işaretlerini düzelt, sondaki I→T karışmasını düzelt (DISISLERT→DISISLERI) */
+function qcYorumTemiz(t){return String(t||'').split(/\s+/).map(x=>x.replace(/^[|'"(\[{]+|[|'")\]}:;,.]+$/g,'')).map(x=>/^[!I1lW|A]?V[I1L|]P[!I1l|]?$/i.test(x)||/^[A-Z!|]{0,2}[IV1]P!$/.test(x)?'!VIP!':x)
+  .filter(x=>x==='!VIP!'||/^\*\*/.test(x)||/[A-ZÇĞİÖŞÜ]{2,}/.test(x)&&/^[A-ZÇĞİÖŞÜ0-9.\-\/!*]+$/.test(x)).map(x=>x.replace(/^([A-ZÇĞİÖŞÜ]{3,}[LSRGNK])T$/,'$1I')).join(' ').replace(/\s+/g,' ').trim()}
+/* okunan satırları düzenlenebilir metne çevir (Quick Check-in satır biçimi) */
+function qcMetin(rows,bas){return rows.map((r,i)=>(bas+i+1)+' PNR '+(r.koltuk||'--')+' L '+(r.sinif||'Y')+' '+(r.soy||'?')+(r.adT?' '+r.adT:'')+' '+(qcYorumTemiz(r.yorumH)||'!VIP!')).join('\n')}
 function ldScript(src){return new Promise((ok,no)=>{if(window.Tesseract)return ok();const e=document.createElement('script');e.src=src;e.onload=ok;e.onerror=no;document.head.appendChild(e)})}
 async function ocrWorker(prog){if(OCRW)return OCRW;await ldScript('vendor/ocr/tesseract.min.js');
   OCRW=await Tesseract.createWorker('eng',1,{workerPath:'vendor/ocr/worker.min.js',corePath:'vendor/ocr/',langPath:'vendor/ocr',gzip:true,logger:m=>prog&&prog(m)});
@@ -1431,7 +1506,7 @@ const A={
   +adm('<div class="row-btns" style="margin-top:10px"><button class="btn" data-a="noteEdit" data-n="'+esc(p.n)+'" data-t="'+esc(p.sub||'')+'" type="button">'+(noteOf(p.n)?'Kişi notunu düzenle':'Kişi notu ekle')+'</button></div>')+'<div class="row-btns" style="margin-top:10px;align-items:center"><span class="note" style="margin:0">Listede elle sıra:</span><button class="btn sm" data-a="mvUp" data-id="'+p.id+'" type="button">▲ Öne al</button><button class="btn sm" data-a="mvDn" data-id="'+p.id+'" type="button">▼ Geri al</button></div></details>'
   +'<div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="paxSave" data-id="'+p.id+'" type="button">Kaydet</button><button class="btn dng" data-a="paxDel" data-id="'+p.id+'" type="button">Listeden çıkar</button></div>')},
  paxSave(d){const p=findP(d.id);if(isAdmin()){if(!p.o&&$('f-r'))p.rank=parseFloat($('f-r').value)||999;if($('f-up'))p.up=$('f-up').value.trim()}p.fix=$('f-fix').value.trim().toUpperCase()||null;delete p.sw;p.fn=$('f-fn2').value.trim();p.mai=Math.max(0,parseInt($('f-mai').value)||0);if($('f-pax'))p.pax=Math.min(9,Math.max(1,parseInt($('f-pax').value)||1));p.bagN=Math.max(0,parseInt($('f-bn').value)||0);{const r=n=>(document.querySelector('input[name="'+n+'"]:checked')||{}).value;p.silah=r('f-sl')==='var';p.bebek=r('f-bb')==='var';window._bs=r('f-bs')}p.maiUp=$('f-mup').checked;p.bag=$('f-bag').value.trim();p.bagEt=bagEtOku($('f-bet').value);p.bagDev=(window._bs==='dev'||(!window._bs&&$('f-bd').value.trim()))?($('f-bd').value.trim()||'Devam uçuşu (belirtilmedi)'):'';{const u=$('f-ft').value.trim();D.FOTO=D.FOTO||{};if(/^https:\/\//.test(u))D.FOTO[nk(p.n)]=u;else delete D.FOTO[nk(p.n)]}reassign();save();closeSheet();render();toast('Kaydedildi')},
- opxOpen(){if(!D.cur)return toast('Önce bir uçuş seçin');OPX=[];window._opxN=0;window._opxF='';window._opxHedef='';if(window.RITA_STANDALONE)ocrWorker().catch(()=>{});sheet('<h2>Yolcu listesinden rical bul</h2><p class="sub">'+esc(D.cur)+' · TROYA yolcu listesinin (PAX BY GROUP ya da Quick Check-in yolcu listesi) fotoğrafını çekin. İsimler rical rehberiyle eşleştirilir; aynı gruptaki diğer yolcular eş, maiyet ya da koruma olarak önerilir. Fotoğraf yalnızca bu cihazda okunur.</p>'+
+ opxOpen(){if(!D.cur)return toast('Önce bir uçuş seçin');OPX=[];window._opxN=0;window._opxF='';window._opxHedef='';if(window.RITA_STANDALONE)ocrWorker().catch(()=>{});sheet('<h2>Fotoğraftan yolcu ekle</h2><p class="sub">'+esc(D.cur)+' · Quick Check-in <b>VIP Commentli Yolcu Listesi</b> (ya da TROYA PAX BY GROUP) ekranını çekin. <b>Klt</b> (koltuk), <b>S</b> (sınıf), <b>Soyad</b>, <b>Ad</b> ve açıklama (görev) okunur; ad yazmasa da soyad + görevden rical bulunur. Ekranı yakından ve düz çekin; yalnız liste kısmını kırparsanız daha hızlı okunur. Koltuk haritası fotoğrafı seçerseniz koltuk okumaya kendiliğinden geçer. Fotoğraf yalnız bu cihazda okunur.</p>'+
   (window.RITA_STANDALONE?'<label class="btn pri" id="opxfl" for="opxf" style="display:inline-block;text-align:center;width:100%;padding:13px">📷 Yolcu listesi fotoğraf(lar)ı çek / seç</label><input id="opxf" type="file" accept="image/*" multiple style="display:none"><p class="note" style="margin:8px 0 0">Liste birden fazla sayfaysa (1, 2, 3…) <b>tüm ekran görüntülerini</b> seçin. iPhone tek fotoğraf seçtirirse: okunduktan sonra <b>“Bir sayfa daha ekle”</b>ye basın — sayfalar birleştirilir, aynı yolcu iki kez eklenmez.</p><p class="note" id="opxp" style="margin:8px 0 0"></p>':'')+
   '<label class="lbl" for="opxt">Okunan metin (yapıştırabilir ya da düzeltebilirsiniz)</label><textarea class="field mono" id="opxt" placeholder="1.KURTULMUS/NUMAN MR  ESB Y @ AA3 02A"></textarea><div class="row-btns" style="margin-top:8px"><button class="btn" data-a="opxRead" type="button">Metni oku</button></div><div id="opxr"></div>')},
  opxRead(){opxRun($('opxt').value)},
@@ -1615,14 +1690,20 @@ const A={
 function removePerson(x){if(!x)return;const j=D.add.findIndex(a=>a[0]===x.n&&a[1]===x.t);if(j>=0)D.add.splice(j,1);else D.del.push(x.n+'|'+x.t)}
 document.addEventListener('click',e=>{if(e.target.id==='veil')return closeSheet();const el=e.target.closest('[data-a]');if(!el||!role)return;const a=el.dataset.a;if(ADMIN_ONLY.has(a)&&!isAdmin())return toast('Bu işlem için yönetici girişi gerekir');const f=A[a];if(f&&el.tagName!=='SELECT')f(el.dataset,el)});
 document.addEventListener('change',e=>{if(e.target.id==='f-o'&&$('f-rk')){const o=e.target.value;$('f-rk').innerHTML=rankField(o?tlRank('S2M'):999,o)}});
-document.addEventListener('change',async e=>{if(e.target.id!=='ocrf'||!e.target.files||!e.target.files.length)return;const pe=$('ocrp'),files=[...e.target.files];
+document.addEventListener('change',e=>{if(e.target.id!=='ocrf'||!e.target.files||!e.target.files.length)return;const f=[...e.target.files];e.target.value='';ocrDosyalar(f)});
+async function ocrDosyalar(files){const pe=$('ocrp');if(!pe)return;
   try{pe.textContent='Okuma aracı yükleniyor… (ilk seferde biraz sürer)';const w=await ocrWorker(m=>{if(m.status==='recognizing text')pe.textContent='Okunuyor… %'+Math.round(m.progress*100)});
-    const oku=async(img)=>{const sc=Math.min(2.5,3600/Math.max(img.naturalWidth,img.naturalHeight));
+    /* önce küçük ve hızlı bir okuma: bu bir yolcu listesiyse (Soyad / !VIP!) yolcu listesi okumasına geç */
+    if(!(window._ocrAcc&&window._ocrAcc.n)){pe.textContent='Fotoğraf türü anlaşılıyor…';const u0=URL.createObjectURL(files[0]),i0=new Image();await new Promise((ok,no)=>{i0.onload=ok;i0.onerror=no;i0.src=u0});URL.revokeObjectURL(u0);
+      const k0=Math.min(1,1100/Math.max(i0.naturalWidth,1)),c0=document.createElement('canvas');c0.width=Math.round(i0.naturalWidth*k0);c0.height=Math.round(i0.naturalHeight*k0);c0.getContext('2d').drawImage(i0,0,0,c0.width,c0.height);
+      await w.setParameters({tessedit_pageseg_mode:'6',tessedit_char_whitelist:''});const r0=await w.recognize(c0);
+      if(/SOYAD|V[I1]P!|PNR YOLCU|YOLCU L[I1]STE/i.test(r0.data.text)){pe.innerHTML='Bu fotoğraf bir <b>yolcu listesi</b>; yolcu okumaya geçiliyor…';setTimeout(()=>{A.opxOpen();opxImage(files)},300);return}}
+    const oku=async(img)=>{const sc=Math.min(2.5,2600/Math.max(img.naturalWidth,img.naturalHeight));
       const pass=async inv=>{const g=document.createElement('canvas');g.width=Math.round(img.naturalWidth*sc);g.height=Math.round(img.naturalHeight*sc);const gx=g.getContext('2d');gx.drawImage(img,0,0,g.width,g.height);
         const gd=gx.getImageData(0,0,g.width,g.height),q=gd.data;for(let i=0;i<q.length;i+=4){const mn=Math.min(q[i],q[i+1],q[i+2]),M=Math.max(q[i],q[i+1],q[i+2]),m=inv?(M<90?255-M:mn):mn;q[i]=q[i+1]=q[i+2]=m}gx.putImageData(gd,0,0);
         const r=await w.recognize(g);return r.data.words.map(x=>({text:x.text,bbox:{x0:x.bbox.x0/sc,x1:x.bbox.x1/sc,y0:x.bbox.y0/sc,y1:x.bbox.y1/sc}}))};
       await w.setParameters({tessedit_pageseg_mode:'11',tessedit_char_whitelist:'0123456789ABCDEFGHJK'});return (await pass(0)).concat(await pass(1))};
-    const acc=window._ocrAcc&&window._ocrAcc.cur===D.cur?window._ocrAcc:(window._ocrAcc={cur:D.cur,m:{},n:0}),merge=acc.m;let okCount=0,allSure=acc.n===0,sonCv=null;e.target.value='';
+    const acc=window._ocrAcc&&window._ocrAcc.cur===D.cur?window._ocrAcc:(window._ocrAcc={cur:D.cur,m:{},n:0}),merge=acc.m;let okCount=0,allSure=acc.n===0,sonCv=null;
     for(let fi=0;fi<files.length;fi++){pe.textContent='Fotoğraf '+(fi+1)+'/'+files.length+' hazırlanıyor…';
       const url=URL.createObjectURL(files[fi]),img=new Image();await new Promise((ok,no)=>{img.onload=ok;img.onerror=no;img.src=url});sonCv=ocrPrep(img);URL.revokeObjectURL(url);
       pe.textContent='Fotoğraf '+(fi+1)+'/'+files.length+' okunuyor…';const words=await oku(img);const g=gridFit(words,img);
@@ -1633,7 +1714,7 @@ document.addEventListener('change',async e=>{if(e.target.id!=='ocrf'||!e.target.
       if(OGRID.sure){const L=gridSeats(),blk=new Set(OGRID.seats.filter(o=>o.c==='gri').map(o=>o.k));ocrAuto(L,blk,OGRID.seats.map(o=>o.k));return}
       $('ocrt').value='';pe.innerHTML='<b>Toplam '+acc.n+' fotoğraf okundu</b> · '+seatsArr.length+' koltuk birleştirildi. Başka sayfa varsa “Bir fotoğraf daha ekle”ye basın; bitince renkleri kontrol edip uygulayın.';ocrShow();return}
     OGRID=null;await w.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});const r=await w.recognize(sonCv);$('ocrt').value=r.data.text;const L=parseSeats(r.data.text),tot=range(1,cfg().last).length;
-    if(L.length&&L.length<0.85*tot){ocrAuto(L,null);return}pe.textContent=L.length?'Neredeyse tüm koltuklar okundu; bu bir koltuk haritası olabilir. Kontrol edip uygulayın.':'Koltuk bulunamadı. Fotoğrafı daha yakından ve düz çekin.';ocrShow()}catch(err){pe.textContent='Fotoğraf okunamadı. Tekrar deneyin ya da metni elle yazın.'}});
+    if(L.length&&L.length<0.85*tot){ocrAuto(L,null);return}pe.textContent=L.length?'Neredeyse tüm koltuklar okundu; bu bir koltuk haritası olabilir. Kontrol edip uygulayın.':'Koltuk bulunamadı. Fotoğrafı daha yakından ve düz çekin.';ocrShow()}catch(err){pe.textContent='Fotoğraf okunamadı. Tekrar deneyin ya da metni elle yazın.'}}
 addEventListener('input',e=>{if(e.target.id==='ocrt'){OGRID=null;ocrShow();return}if(e.target.dataset&&e.target.dataset.ocat){const C=ocrCats();C[e.target.dataset.ocat]=e.target.checked?1:0;try{localStorage.setItem('rita-ocr-cat2',JSON.stringify(C))}catch(x){}gridShow();return}if(e.target.id==='flq'){flFind(e.target.value);return}const k=e.target.dataset&&e.target.dataset.q;if(!k)return;const val=e.target.value;q[k]=val;
   clearTimeout(window._qT);window._qT=setTimeout(()=>{
   if(k==='add')$('res')&&($('res').innerHTML=resHtml());else if(k==='ri'){lim.ri=60;$('list-ri')&&($('list-ri').innerHTML=riList())}else if(k==='ku'){lim.ku=60;$('list-ku')&&($('list-ku').innerHTML=kuList())}else if(k==='rl')$('list-rl')&&($('list-rl').innerHTML=rlList());else if(k==='up')$('list-up')&&($('list-up').innerHTML=upList());else if(k==='nt')$('list-nt')&&($('list-nt').innerHTML=ntList());else if(k==='km')$('list-km')&&($('list-km').innerHTML=kmList());else if(k==='c9')$('list-c9')&&($('list-c9').innerHTML=c9Body());else if(k==='ops'){opsQ=val;$('ops-fl')&&($('ops-fl').innerHTML=opsFlHtml())}else if(k==='per'){perQ=val;$('per-l')&&($('per-l').innerHTML=perListe())}},130)});
