@@ -70,6 +70,16 @@
    "durum": "yapilamadi",
    "sonuc": "Onaylı rehber dosyası değiştirilmediği için birleştirilmedi; fotoğraf iki yazıma da bağlandı. Yönetim → Rehber'den fazla kaydı kaldırmanızı öneririm.",
    "bitti": "2026-11-22T16:25"
+  },
+  {
+   "id": "cl1763825100000",
+   "t": "2026-11-22 18:25",
+   "tur": "denetim",
+   "kisi": "telefon",
+   "metin": "Günlük telefon denetimi (iPhone SE, iPhone 13, Pixel 5; yönetici ve personel; tüm sekmeler, örnek uçuş, fotoğraf penceresi, Atama). Küçük dokunma hedefleri (Düzenle, bloke kutusu) ve iPhone'da yakınlaştırma yapan Atama tarih kutusu bulundu.",
+   "durum": "tamam",
+   "sonuc": "RITA 20.4'te düzeltildi; yeni yer imi sayfaları (yerimi/) dahil yatay taşma ve sayfa hatası yok.",
+   "bitti": "2026-11-22 18:25"
   }
  ]
 }
