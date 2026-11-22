@@ -15,7 +15,7 @@ button{font:inherit;font-weight:700;padding:10px 14px;border-radius:8px;border:0
 </style></head><body>
 <div class="ust">DENEME — Quick Check benzeri sayfa<small>Gerçek değildir · koltuklar uydurmadır · kişiler RITA'nın örnek uçuşundaki kamuya açık makamlardır</small></div>
 <main>
-<div class="bilgi">Yer imini kurduysanız şimdi ona dokunun. Kurmadıysanız: <button id="calistir" type="button">⭐ Yer imi gibi çalıştır</button></div>
+<div class="bilgi">Yer imini kurduysanız şimdi ona dokunun. Kurmadıysanız: <button id="calistir" type="button">⭐ Yer imi gibi çalıştır</button><br><small>Liste 3 sayfadır. Yer imine bir kez dokunduktan sonra listenin altındaki <b>2</b> ve <b>3</b>’e tıklayın: o sayfalar RITA’ya kendiliğinden gider.</small></div>
 <div class="kutu"><b id="ucus"></b></div>
 <div class="kutu"><h3>VIP Commentli Yolcu Listesi</h3>
 <table class="l"><thead><tr><th>#</th><th>Pnr</th><th>GK</th><th>Klt</th><th>CT</th><th>Güv</th><th>CI</th><th>S</th><th>Yolcu Soyadı</th><th>Ad</th><th>C</th></tr></thead><tbody id="liste"></tbody></table></div>
@@ -24,15 +24,21 @@ button{font:inherit;font-weight:700;padding:10px 14px;border-radius:8px;border:0
 <script>
 var AY=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"],d=new Date();
 document.getElementById("ucus").textContent="Uçuş: TK0001 / "+String(d.getDate()).padStart(2,"0")+AY[d.getMonth()]+"   IST → ESB   B738";
-var Y=[["DEMO01","","02A","","","✔","C","KURTULMUS","NUMAN","!VIP! TBMM BASKANI"],
+/* 3 sayfalı VIP listesi (Quick Check gibi: altta 1 2 3 sayfalayıcı) */
+var SY=[[["DEMO01","","02A","","","✔","C","KURTULMUS","NUMAN","!VIP! TBMM BASKANI"],
 ["DEMO02","","09D","","","","Y","SIMSEK","MEHMET","!VIP! HAZINE VE MALIYE BAKANI"],
 ["DEMO03","","14C","","","✔","Y","FIDAN","HAKAN","!VIP! DISISLERI BAKANI"],
-["DEMO04","","18E","","","","Y","GULER","YASAR","!VIP! MILLI SAVUNMA BAKANI"],
-["DEMO05","","15A","","","✔","Y","ORNEKBIR","ALI","!VIP! TBMM BASKANI KORUMASI EMN"],
-["DEMO06","","16B","","","","Y","ORNEKIKI","AYSE","!VIP! OZEL KALEM MUDURU"],
-["DEMO07","","20F","","","✔","Y","ORNEKUC","VELI","NORMAL YOLCU"]];
-var tb=document.getElementById("liste");
-Y.forEach(function(r,i){var tr=document.createElement("tr");[String(i+1)].concat(r).forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td)});tb.appendChild(tr)});
+["DEMO07","","20F","","","✔","Y","ORNEKUC","VELI","NORMAL YOLCU"]],
+[["DEMO04","","18E","","","","Y","GULER","YASAR","!VIP! MILLI SAVUNMA BAKANI"],
+["DEMO05","","15A","","","✔","Y","ORNEKBIR","ALI","!VIP! TBMM BASKANI KORUMASI EMN"]],
+[["DEMO06","","16B","","","","Y","ORNEKIKI","AYSE","!VIP! OZEL KALEM MUDURU"]]];
+var tb=document.getElementById("liste"),SAY=SY.length;
+function sayfaGoster(n){while(tb.firstChild)tb.removeChild(tb.firstChild);var bas=0;for(var i=0;i<n-1;i++)bas+=SY[i].length;
+ SY[n-1].forEach(function(r,i){var tr=document.createElement("tr");[String(bas+i+1)].concat(r).forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td)});tb.appendChild(tr)});
+ var pt=document.createElement("tr"),pc=document.createElement("td");pc.colSpan=11;pc.style.textAlign="center";var it=document.createElement("table");it.style.margin="0 auto";var ir=document.createElement("tr");
+ for(var k=1;k<=SAY;k++){var c=document.createElement("td");c.style.border="0";c.style.padding="4px 10px";if(k===n){var s=document.createElement("span");s.textContent=k;s.style.color="#b42318";s.style.fontWeight="700";c.appendChild(s)}else{var a=document.createElement("a");a.href="javascript:void('Page$"+k+"')";a.textContent=k;a.dataset.p=k;a.addEventListener("click",function(e){e.preventDefault();sayfaGoster(+this.dataset.p)});c.appendChild(a)}ir.appendChild(c)}
+ it.appendChild(ir);pc.appendChild(it);pt.appendChild(pc);tb.appendChild(pt)}
+sayfaGoster(1);
 var dolu={"2A":"ci","9D":"ci","14C":"ci","18E":"ci","15A":"ci","16B":"ci","20F":"ci","1A":"ci","3E":"ci","5C":"ci","6D":"ci","7A":"ci","8F":"ci","10B":"ci","12A":"ci","12B":"ci",
 "1E":"blk","1F":"blk","4A":"soft","4B":"soft","11A":"son","11B":"son","11C":"son","11D":"son","11E":"son","11F":"son","19A":"blk","19B":"blk"};
 var h=document.getElementById("harita");

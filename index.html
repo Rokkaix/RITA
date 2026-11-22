@@ -521,7 +521,8 @@ const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const norm=s=>(s||'').replace(/[İIı]/g,'i').toLowerCase().replace(/ş/g,'s').replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ö/g,'o').replace(/ç/g,'c').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
 const toks=s=>norm(s).split(' ').filter(Boolean);
 const GEN=new Set(['ve','esi','esleri','esler','cocuk','cocuklari','eski','sn','dr','prof','baskani','uyeleri']);
-const stems=s=>new Set(toks(s).filter(w=>!GEN.has(w)).map(w=>w.length>5?w.replace(/(leri|lari|ler|lar|si|i)$/,''):w));
+/* hız (RITA 21.1): kök kümeleri önbellekte — best() aynı listeyi her çağrıda yeniden ayrıştırmasın */
+const _STM=new Map();const stems=s=>{let v=_STM.get(s);if(!v){v=new Set(toks(s).filter(w=>!GEN.has(w)).map(w=>w.length>5?w.replace(/(leri|lari|ler|lar|si|i)$/,''):w));if(_STM.size>30000)_STM.clear();_STM.set(s,v)}return v};
 function best(text,list){const A=stems(text);let bi=-1,bs=0;if(!A.size)return{i:-1,s:0};list.forEach((t,i)=>{const B=stems(t);let k=0;A.forEach(w=>{if(B.has(w))k++});const j=k/(A.size+B.size-k);if(k&&j>bs){bs=j;bi=i}});return{i:bi,s:bs}}
 const TLC={};TL.forEach(r=>TLC[r[0]]=r[1]);
 const tlRank=c=>Math.round((300+(TLC[c]||24)/100)*100)/100;
@@ -623,7 +624,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){if(window.RITA_STANDALONE)return RDB;if(!window.claude||!claude.use)return null;return await claude.use('db')}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 21.0';let SURUM_YENI=false;
+const SURUM='RITA 21.2';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -709,7 +710,7 @@ const KORGS=[['all','Tümü'],['THY','THY'],['TGS','TGS'],['TSS','TSS'],['DOCO',
 function find(text,{corp,cat,org,limit}){const T=toks(text);let L=people().filter(x=>corp?x.o:!x.o);
   if(cat&&cat!=='all')L=L.filter(x=>catOf(x)===cat);if(org&&org!=='all')L=L.filter(x=>x.o===org);
   if(T.length)L=L.filter(x=>T.every(w=>x.s.includes(w)));
-  L=L.slice().sort((a,b)=>eff(a.r)-eff(b.r)||(b.act-a.act)||(esMi(a)-esMi(b))||nameCmp(a,b)||a.n.localeCompare(b.n,'tr'));return{n:L.length,list:limit?L.slice(0,limit):L}}
+  L=L.slice().sort((a,b)=>eff(a.r)-eff(b.r)||(b.act-a.act)||(esMi(a)-esMi(b))||nameCmp(a,b)||_TRC.compare(a.n,b.n));return{n:L.length,list:limit?L.slice(0,limit):L}}
 
 /* ---------- uçuş ve koltuk ---------- */
 /* THY uçak tipleri (FlightStats IATA kodu). Koltuk düzenleri yaklaşık; yönetici Kabin düzeni ile düzeltir. */
@@ -794,7 +795,8 @@ function baseKey(p){const e=eff(p.rank),nt=D.N[keyOf(p)];return nt&&nt.pr?Math.m
 const sortKey=p=>p.over!=null?p.over:baseKey(p);
 /* aynı sıradaki kişiler A’dan Z’ye (unvan önekleri yok sayılır) */
 const sortName=n=>String(n||'').replace(/^((Prof|Doç|Dr|Av|Op|Uzm|Öğr|Gör|Sn)\.?\s*)+/i,'').trim();
-const esMi=x=>/(['’]n[ıi]n|nın|nin) eşi|\beşi\b|^Eşi\b/i.test(String(x.t||''))?1:0,nameCmp=(a,b)=>sortName(a.n).localeCompare(sortName(b.n),'tr',{sensitivity:'base'});
+const esMi=x=>/(['’]n[ıi]n|nın|nin) eşi|\beşi\b|^Eşi\b/i.test(String(x.t||''))?1:0,_TRB=new Intl.Collator('tr',{sensitivity:'base'}),_SNM=new Map(),snC=n=>{let v=_SNM.get(n);if(v===undefined){v=sortName(n);if(_SNM.size>40000)_SNM.clear();_SNM.set(n,v)}return v},nameCmp=(a,b)=>_TRB.compare(snC(a.n),snC(b.n));/* hız (RITA 21.1): sıralamada hazır karşılaştırıcı + ad anahtarı önbelleği */
+const _TRC=new Intl.Collator('tr');
 const isRet=p=>/^(Eski|Emekli)\b/.test(p.sub||'')||/\(Eski\)/.test(p.sub||'');
 const byRank=()=>[...ppl()].sort((a,b)=>sortKey(a)-sortKey(b)||(isRet(a)-isRet(b))||nameCmp(a,b)||(a.t||0)-(b.t||0));
 function prefPick(list,sp){if(!list.length)return null;const want=sp==='pencere'?'p':sp==='koridor'?'k':'';if(!want)return list[0];const r=parseInt(list[0],10);return list.find(k=>parseInt(k,10)===r&&want===seatKind(k))||list[0]}
@@ -927,7 +929,9 @@ function tagsHtml(x){let h='';if(x.up||x.u)h+='<span class="tag up">UPG</span>';
 function resHtml(){const R=window._res=addResults(q.add);if(!toks(q.add).length)return'';
   if(!R.length)return'<div class="results"><p class="empty">Sonuç yok. Listede olmayan kişiyi aşağıdan elle ekleyebilirsiniz.</p></div>';
   return'<div class="results">'+R.map((x,i)=>'<button type="button" class="li" data-a="pick" data-i="'+i+'">'+rkHtml(x.rank,x.o)+'<span class="tx"><span class="nm">'+esc(x.n)+'</span><br><span class="ti">'+esc(x.sub)+'</span></span>'+tagsHtml(x)+'</button>').join('')+'</div>'}
-function c9of(p){const x=people().find(y=>nk(y.n)===nk(p.n)&&y.c9);if(x)return x.c9[0];if(/^CIC90/.test(p.up||'')){const sc=c9secs().find(s=>'CIC90 · '+s.t===p.up);return sc?sc.id:'✓'}return''}
+/* hız (RITA 21.1): her çizimde tüm rehberi taramak yerine ad→CIC90 dizini (rehber değişince yenilenir) */
+const _C9M=new WeakMap();
+function c9of(p){const P=people();let m=_C9M.get(P);if(!m){m=new Map();P.forEach(y=>{if(y.c9){const k=nk(y.n);if(!m.has(k))m.set(k,y.c9[0])}});_C9M.set(P,m)}const x=m.get(nk(p.n));if(x)return x;if(/^CIC90/.test(p.up||'')){const sc=c9secs().find(s=>'CIC90 · '+s.t===p.up);return sc?sc.id:'✓'}return''}
 function paxHtml(){const O=ordered();if(!O.length)return'<p class="empty">Bu seferde henüz yolcu yok. Yukarıdan isim veya unvan yazarak ekleyin.</p>';
   const any=assigned();let g=-1,h='';
   if(window._sw){const a=findP(window._sw);if(a)h+='<div class="swapbar"><span><b>Yer değiştirme:</b> '+esc(a.n)+' ('+esc(a.seat)+') seçildi. Diğer yolcunun koltuğuna ya da haritada boş bir koltuğa dokunun.</span><button class="btn sm" data-a="swapCancel" type="button">Vazgeç</button></div>'}
@@ -1398,11 +1402,18 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
   const imza=JSON.stringify([m.ucus,m.yolcular,m.koltuklar]);if(ack)ack();if(imza===YERIMI_SON)return true;YERIMI_SON=imza;
   if(!m.ucus||!m.ucus.no){toast('Quick Check sayfasında uçuş numarası bulunamadı');return false}
   const no=m.ucus.no;
+  /* Çok sayfalı VIP listesi: her sayfa ayrı saklanır, sayfa sırasıyla birleştirilir (sayfa 2/3'e geçince yalnız o sayfa gelir) */
+  const sf=Number.isInteger(m.sayfa)&&m.sayfa>0&&m.sayfa<=50?m.sayfa:0,tp=Number.isInteger(m.toplam)&&m.toplam>0&&m.toplam<=50?m.toplam:0;
+  if(Array.isArray(m.yolcular)){QCK.sy=QCK.sy||{};let s=QCK.sy[no];if(!s||s.tarih!==m.ucus.tarih)s=QCK.sy[no]={tarih:m.ucus.tarih,p:{},top:0};
+    s.p[sf||1]=m.yolcular;s.top=Math.max(s.top,tp,sf);
+    const seen=new Map(),all=[];Object.keys(s.p).map(Number).sort((a,b)=>a-b).forEach(n=>s.p[n].forEach(y=>{let k=y.k;const e=seen.get(k);if(e&&e!==n)k=k+'~'+n;if(seen.has(k)&&seen.get(k)===n)return;seen.set(k,n);all.push(k===y.k?y:Object.assign({},y,{k}))}));
+    m=Object.assign({},m,{yolcular:all});s.son=sf||1}
   if(m.demo===1&&!D.F.some(f=>flNo(f)===no)){const sa=new Date(Date.now()+2*3600e3),key=no+' IST-ESB '+String(sa.getHours()).padStart(2,'0')+':'+String(sa.getMinutes()).padStart(2,'0');D.F.unshift(key);D.FA=D.FA||{};D.FA[key]=Date.now();D.AC=D.AC||{};D.AC[no]={tip:'73H',ad:'Boeing 737-800',tarih:new Date().toISOString().slice(0,10),kaynak:'deneme'};save()}
   QCK.oto=true;canliMesaj(m);QCK.ym=QCK.son;
-  canliGunluk(no,'Yer imi: Quick Check’ten '+(m.yolcular?m.yolcular.length+' VIP':'liste yok')+', '+Object.keys(m.koltuklar||{}).length+' koltuk okundu');
+  {const s=(QCK.sy||{})[no],eks=s&&s.top?Array.from({length:s.top},(_,i)=>i+1).filter(n=>!s.p[n]):[];
+   canliGunluk(no,(m.takip?'Takip':'Yer imi')+': Quick Check’ten '+(s&&s.top>1?'sayfa '+s.son+'/'+s.top+' · ':'')+(m.yolcular?'toplam '+m.yolcular.length+' VIP':'liste yok')+', '+Object.keys(m.koltuklar||{}).length+' koltuk'+(eks.length?' · EKSİK SAYFA: '+eks.join(', ')+' (Quick Check’te o sayfaya geçin; takip açıksa kendiliğinden gelir)':s&&s.top>1?' · tüm sayfalar alındı ✓':''))}
   const f=D.F.find(x=>flNo(x)===no);
-  if(f){D.cur=f;tab='ucus';setTimeout(()=>{D.cur=f;if(role){render();toast('Quick Check okundu: '+no)}},900)}else toast(no+' RITA uçuş listesinde yok');
+  if(f){D.cur=f;tab='ucus';setTimeout(()=>{D.cur=f;if(role){render();if(!m.takip)toast('Quick Check okundu: '+no)}},900)}else toast(no+' RITA uçuş listesinde yok');
   return true}
 function yerimiMetin(t){if(!/^\s*\{[\s\S]*"kaynak"\s*:\s*"yerimi"/.test(t||''))return false;let m;try{m=JSON.parse(t)}catch(e){return false}
   const ok=yerimiAl(m);try{navigator.clipboard&&navigator.clipboard.writeText('')}catch(e){}return ok}
@@ -1447,7 +1458,7 @@ setInterval(canliDurumYaz,1000);
 function canliPanel(){if(!QCK.son&&!QCK.gunluk.length)return'';const no=flNo(D.cur),L=QCK.gunluk.filter(g=>g.f===no).slice(0,15),bu=QCK.durum[no];
   return'<section class="panel"><h2 class="h">CANLI · QUICK CHECK<span class="sp"></span><span id="canliDurum" class="tag">'+esc(canliDurumMetni())+'</span></h2>'
    +'<label style="display:flex;gap:8px;align-items:center;font-size:13px"><input type="checkbox" data-a="canliOto" '+(QCK.oto?'checked':'')+'> Otomatik uygula (VIP’leri rical rehberiyle eşleştir, koltukları işle, yerleştir)</label>'
-   +(bu?'<p class="note" style="margin:6px 0">Bu uçuş için canlı veri: <b>'+bu.yolcular.size+'</b> VIP · <b>'+Object.keys(bu.koltuklar).length+'</b> koltuk. Veri yalnız bu açık pencerede durur, kaydedilmez.</p>':'<p class="note" style="margin:6px 0">Bu uçuş Quick Check’te açık değil.</p>')
+   +(bu?'<p class="note" style="margin:6px 0">Bu uçuş için canlı veri: <b>'+bu.yolcular.size+'</b> VIP · <b>'+Object.keys(bu.koltuklar).length+'</b> koltuk. Veri yalnız bu açık pencerede durur, kaydedilmez.</p>'+(s=>s&&s.top>1?'<p class="note" style="margin:0 0 6px"><b>Quick Check VIP listesi sayfaları:</b> '+Array.from({length:s.top},(_,i)=>i+1).map(n=>s.p[n]?'<span class="tag stG">'+n+' ✓</span>':'<span class="tag stU">'+n+' eksik</span>').join(' ')+(Array.from({length:s.top},(_,i)=>i+1).some(n=>!s.p[n])?' — Quick Check’te eksik sayfaya geçin (yer imi takipteyse kendiliğinden gelir) ya da o sayfada yer imine dokunun.':'')+'</p>':'')((QCK.sy||{})[no]):'<p class="note" style="margin:6px 0">Bu uçuş Quick Check’te açık değil.</p>')
    +(L.length?'<div style="display:grid;gap:4px;max-height:220px;overflow:auto">'+L.map(g=>'<div class="ti" style="display:flex;gap:8px"><span class="mono" style="color:var(--muted);white-space:nowrap;flex:none">'+esc(new Date(g.t).toLocaleTimeString('tr-TR'))+'</span><span>'+esc(g.m)+'</span></div>').join('')+'</div>':'')
    +(bu?'<div class="row-btns" style="margin-top:8px"><button class="btn sm dng" data-a="canliKaldir" type="button">Canlı veriyi bu uçuştan kaldır</button><a class="btn sm" href="canli/" target="_blank" rel="noopener">RITA Canlı</a></div>':'')+'</section>'}
 function opxSirali(L){L=L||OPX;const rk=o=>o.rol==='rical'&&o.m?o.m.x.r:null;
@@ -1927,7 +1938,9 @@ let lockT;function bump(){clearTimeout(lockT);if(role)lockT=setTimeout(logout,(D
 ['click','keydown','touchstart'].forEach(ev=>document.addEventListener(ev,bump,{passive:true}));
 function showLogin(){role=null;closeSheet();$('app').hidden=true;$('login').hidden=false;$('lg-p').value='';$('lgerr').textContent=''}
 function logout(){cekmeceKapat();if(PK){if(!confirm('Bu telefonun Görevlerim bağlantısı kaldırılsın mı? Tekrar bağlamak için kurulum bağlantısı gerekir.'))return;try{localStorage.removeItem('rita-pk')}catch(e){}PK=null;PKES=null;clearTimeout(PKT);history.replaceState(null,'',location.pathname)}showLogin()}
-function enter(r){role=r;$('login').hidden=true;$('app').hidden=false;tab='ucus';bump();render()}
+function enter(r){role=r;$('login').hidden=true;$('app').hidden=false;tab='ucus';bump();render();
+  /* hız: ilk aramada donma olmasın — rical upgrade eşleştirmesi ve rehber dizini boşta önceden hazırlanır */
+  const bos=window.requestIdleCallback||(f=>setTimeout(f,300));bos(()=>{try{ricalUp();c9of({n:''})}catch(e){}})}
 $('lgform').addEventListener('submit',async e=>{e.preventDefault();const u=$('lg-u').value.trim().toLowerCase(),p=$('lg-p').value;
   if(!u||!p){$('lgerr').textContent='Kullanıcı adı ve şifreyi girin.';return}
   let h='';try{h=await sha('ubay|'+u+'|'+p)}catch(err){$('lgerr').textContent='Bu tarayıcı güvenli girişi desteklemiyor.';return}
