@@ -821,36 +821,39 @@
  "ucaktipleri": {
   "319": {
    "ad": "Airbus A319",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 3,
    "dog": true,
    "e": "ABC DEF",
    "last": 23,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "320": {
    "ad": "Airbus A320",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 5,
    "dog": true,
    "e": "ABC DEF",
    "last": 27,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "321": {
    "ad": "Airbus A321",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 5,
    "dog": true,
    "e": "ABC DEF",
    "last": 32,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "333": {
    "ad": "Airbus A330-300",
@@ -876,25 +879,29 @@
   },
   "738": {
    "ad": "Boeing 737-800",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 4,
    "dog": true,
    "e": "ABC DEF",
    "last": 27,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
+   "x": "11 12"
   },
   "739": {
    "ad": "Boeing 737-900ER",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 4,
    "dog": true,
    "e": "ABC DEF",
-   "last": 27,
+   "last": 30,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
+   "x": "11 12"
   },
   "789": {
    "ad": "Boeing 787-9",
@@ -909,25 +916,27 @@
   },
   "32A": {
    "ad": "Airbus A320",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 5,
    "dog": true,
    "e": "ABC DEF",
    "last": 27,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "32N": {
    "ad": "Airbus A320neo",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 5,
    "dog": true,
    "e": "ABC DEF",
    "last": 27,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "32Q": {
    "ad": "Airbus A321neo",
@@ -942,36 +951,41 @@
   },
   "32R": {
    "ad": "Airbus A321",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 5,
    "dog": true,
    "e": "ABC DEF",
    "last": 32,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)"
   },
   "73H": {
    "ad": "Boeing 737-800",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 4,
    "dog": true,
    "e": "ABC DEF",
    "last": 27,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
+   "x": "11 12"
   },
   "73J": {
    "ad": "Boeing 737-900ER",
-   "b": "AC DF",
+   "b": "AB EF",
    "bblk": "",
    "biz": 4,
    "dog": true,
    "e": "ABC DEF",
-   "last": 27,
+   "last": 30,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-22",
+   "not": "Business TROYA/QC koltuk görünümüne göre A B | E F (TK2150/TK2122, 22.11.2026)",
+   "x": "11 12"
   },
   "77W": {
    "ad": "Boeing 777-300ER",
@@ -995,7 +1009,8 @@
    "e": "ABC DEF",
    "last": 27,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-16",
+   "x": "11 12"
   },
   "7M9": {
    "ad": "Boeing 737 MAX 9",
@@ -1006,14 +1021,11 @@
    "e": "ABC DEF",
    "last": 30,
    "stub": 1,
-   "tarih": "2026-11-16"
+   "tarih": "2026-11-16",
+   "x": "11 12"
   }
  },
- "hatlar": {
-  "IST-ESB": {
-   "eklendi": "2026-11-16"
-  }
- },
+ "hatlar": {},
  "dogrulama": {
   "dg-20261116": {
    "tarih": "2026-11-16",
