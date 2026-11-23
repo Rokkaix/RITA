@@ -739,7 +739,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 24.3';let SURUM_YENI=false;
+const SURUM='RITA 24.4';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -940,9 +940,9 @@ function assign(){const f=D.cur,P=ppl(),rd=!!(D.RD||{})[f],ci=P.some(p=>p.canli&
   P.forEach(p=>{p.rs='';p.rdYer=0;const i=ideal.get(p.id);if(!i||!i.seat||!p.seat||i.seat===p.seat)return;
     /* öneri yalnız anlamlıysa: rical daha öne geçmeli; check-in yapmış VIP kendinden önce gelen ricale yer açmalı; ilave VIP'e önde BOŞ koltuk */
     const ow=sahipI.get(p.seat),yer=p.ciYer&&ow&&ow!==p&&rical(ow)&&+ow.rank<=+p.rank;
-    if(!((ustMu(p.rank)&&!p.ek)||(rical(p)?(dahaOn(i.seat,p.seat)||yer):(yer||(p.ciYer&&dahaOn(i.seat,p.seat)&&bosMu(i.seat))))))return;
+    if(!(dahaOn(i.seat,p.seat)&&(rical(p)||bosMu(i.seat))))return;
     const o=kim.get(i.seat);p.rs=i.seat;p.alt='';p.hedef='';
-    p.why=p.why.replace(/ · VIP olarak olması gereken koltuk: [0-9A-K]+ \((boş|dolu)\)/,'')+' · Rical sırasına göre olması gereken koltuk: '+i.seat+(o&&o!==p?' (şu an '+o.n+')':' (boş)');p.rsKim=o&&o!==p?o.n:''});
+    p.why=p.why.replace(/ · VIP olarak olması gereken koltuk: [0-9A-K]+ \((boş|dolu)\)/,'')+' · (rical sırasına göre: '+i.seat+')';p.rsKim=''});
   save()}
 function assign0(IDEAL){if(D.ACX)delete D.ACX[D.cur];
   const S=seats(),c=cfg(),used=new Set(),P=byRank(),ub=D.useBlk!==0,free=k=>(sBos(S[k])||(ub&&sBlk(S[k])))&&!used.has(k),son=k=>sTur(S[k])==='son'?1:0,/* kademe: 0 boş · 1 en son verilecek · 2 soft bloke · 3 diğer bloke — her kademe içinde önden arkaya */tier=k=>{const t=sTur(S[k]);return t==='bos'?0:t==='son'?1:S[k]===4?2:3},ord=A=>A.map((k,i)=>[k,i]).sort((a,b)=>tier(a[0])-tier(b[0])||a[1]-b[1]).map(x=>x[0]),freeOn=k=>free(k)&&!son(k),take=k=>{used.add(k);return k};
@@ -1074,12 +1074,12 @@ function bilgiKatla(kok){kok.querySelectorAll('p.note').forEach(n=>{if(n.closest
 function upKaynak(u){u=String(u||'');return/^Business bileti/.test(u)?'Quick Check':/^CIC90/.test(u)?'CIC90 / 95-UPGRADE':/^THY Upgrade/.test(u)?'THY Upgrade Sıralaması':/^Eşi ·/.test(u)?'Eşi hakkı':'Rical upgrade listesi'}
 const bkOk=p=>{const m=(D.BK||{})[D.cur]||{};return!!p.seat&&m[p.key]===p.seat};
 function whyKisa(p,any){if(!any)return p.up?'':'Upgrade hakkı yok';let w=p.why||'';const kes=a=>{if(w.startsWith(a)){w=w.slice(a.length).replace(/^ · /,'');return 1}};
-  kes('Business · '+p.up)||kes('Upgrade hakkı var ('+p.up+') ancak business dolu, ekonomiye alındı');return w.replace(/ ?·? ?VIP olarak olması gereken koltuk: [0-9A-K]+ \((dolu|boş)\)/,'').replace(/ ?·? ?Rical sırasına göre olması gereken koltuk: [0-9A-K]+ \([^)]*\)/,'').replace(/^ · /,'')}
+  kes('Business · '+p.up)||kes('Upgrade hakkı var ('+p.up+') ancak business dolu, ekonomiye alındı');return w.replace(/ ?·? ?VIP olarak olması gereken koltuk: [0-9A-K]+ \((dolu|boş)\)/,'').replace(/ ?·? ?\(rical sırasına göre: [0-9A-K]+\)/,'').replace(/^ · /,'')}
 function upNot(p){if(p.ek||!p.up)return'';const biz=p.cab==='B',t=String(p.up||'').replace(/^CIC90 · |^Eşi · /,'');
   return'<div class="upn"><span class="y">Upgrade</span><span class="m">'+esc(upKaynak(p.up))+' · '+esc(t)+'</span>'
     +(biz?(bkOk(p)?'<button type="button" class="bk ok" data-a="bkOk" data-id="'+p.id+'">Kontrol edildi ✓</button>':'<button type="button" class="bk" data-a="bkOk" data-id="'+p.id+'">Business kontrolü · Onayla</button>')
       :p.seat?'<span class="w">business dolu, ekonomide</span>':'')+'</div>'}
-function pxOzet(p,n){const c=[];if(p.qck)c.push([p.ciYer?'QC '+p.qck+' ✔ check-in · yerinde':p.seat&&p.seat!==p.qck?'QC '+p.qck+' → '+p.seat:p.seat===p.qck?'QC '+p.qck+' (yerinde)':'QC '+p.qck,'qk']);if(p.rs)c.push([(ustMu(p.rank)&&!p.ek?'ÜST DÜZEY · '+(rowOf(p.rs)<=cfg().biz?'Business’ta olması gereken: ':'Olması gereken: '):'Rical sırasına göre: ')+p.rs+(p.rsKim?' (şu an '+p.rsKim+')':' (boş)'),ustMu(p.rank)&&!p.ek?'rsu':'rs']);if(p.alt)c.push(['Olması gereken: '+p.alt+' (boş)','qk']);if(p.hedef)c.push(['Olması gereken: '+p.hedef+' (dolu)','qk']);if(n>1)c.push(['+'+(n-1)+' refakat','']);if(p.bagN)c.push(['Bagaj '+p.bagN,'']);if(p.silah)c.push(['SİLAH','r']);if(p.bebek)c.push(['Bebek arabası','o']);if(p.mai)c.push([(p.mtur||'Maiyet')+' '+p.mai,'']);
+function pxOzet(p,n){const c=[];if(p.qck)c.push([p.ciYer?'QC '+p.qck+' ✔ check-in · yerinde':p.seat&&p.seat!==p.qck?'QC '+p.qck+' → '+p.seat:p.seat===p.qck?'QC '+p.qck+' (yerinde)':'QC '+p.qck,'qk']);if(p.rs)c.push([(ustMu(p.rank)&&!p.ek?'ÜST DÜZEY ':'')+'(rical sırasına göre: '+p.rs+(rowOf(p.rs)<=cfg().biz&&p.cab!=='B'?' · business':'')+')',ustMu(p.rank)&&!p.ek?'rsu':'rs']);if(p.alt)c.push(['Olması gereken: '+p.alt+' (boş)','qk']);if(p.hedef)c.push(['Olması gereken: '+p.hedef+' (dolu)','qk']);if(n>1)c.push(['+'+(n-1)+' refakat','']);if(p.bagN)c.push(['Bagaj '+p.bagN,'']);if(p.silah)c.push(['SİLAH','r']);if(p.bebek)c.push(['Bebek arabası','o']);if(p.mai)c.push([(p.mtur||'Maiyet')+' '+p.mai,'']);
   return '<span class="pxoz">'+c.map(([t,k])=>'<i class="'+k+'">'+esc(t)+'</i>').join('')+'<button type="button" class="pxdz" data-a="pax" data-id="'+p.id+'">Düzenle ›</button></span>'}
 function zatenVar(n){const p=ppl().find(q=>nk(q.n)===nk(n));if(!p)return false;toast(n+' bu uçuşta zaten ekli'+(p.seat?' · koltuk '+p.seat:''));return true}
 const rkHtml=(r,o,alt)=>'<span class="rk'+(alt?' alt':r>=300&&r<900?' c':'')+'">'+esc(lab(r,o))+'</span>';
@@ -1724,7 +1724,7 @@ function opxTablo(L,ritaKoltuk){const R=opxSirali(L);if(!R.length)return'';let n
 function ricalUyari(){const P=ppl().filter(p=>!p.ek&&p.rank!=null&&+p.rank<300);if(!P.length)return'';const T=(D.TEY||{})[D.cur]||{},U=P.filter(p=>ustMu(p.rank)).sort((a,b)=>sortKey(a)-sortKey(b)),bek=U.filter(p=>!T[nk(p.n)]);
   return'<div class="uyari ru'+(bek.length?' kirmizi':'')+'"><div><b>Listede '+(P.length===1?'rical':P.length+' rical')+' bulunmaktadır.</b>'+(U.length?' Üst düzey ('+U.length+'): '+U.map(p=>'<b>'+esc(p.n)+'</b>'+(T[nk(p.n)]?' ✓':'')).join(', ')+(bek.length?' · <span class="tag stU">'+bek.length+' TEYİT BEKLİYOR</span>':' · <span class="tag stG">TEYİT EDİLDİ</span>'):'')+'</div>'
    +(bek.length?'<button class="btn pri sm" data-a="ustTeyit" type="button">Uçuşta olduklarını teyit ediyorum</button>':'')+'</div>'
-   +(L=>L.length?'<div class="uyari kirmizi ru" style="margin-top:8px"><div><b>Üst düzey yerleşimi:</b> '+L.map(p=>'<b>'+esc(p.n)+'</b> '+esc(p.seat||'—')+' → <b>'+esc(p.rs)+'</b>'+(p.rsKim?' (şu an '+esc(p.rsKim)+')':' (boş)')).join(' · ')+'</div></div>':'')(U.filter(p=>p.rs))}
+   +(L=>L.length?'<div class="uyari kirmizi ru" style="margin-top:8px"><div><b>Üst düzey · rical sırasına göre yerleri:</b> '+L.map(p=>'<b>'+esc(p.n)+'</b> '+esc(p.seat||'—')+' (rical sırasına göre: <b>'+esc(p.rs)+'</b>)').join(' · ')+'</div></div>':'')(U.filter(p=>p.rs))}
 function ylHtml(){const Y=(D.YL||{})[D.cur];if(!Y||!Y.l||!Y.l.length)return'';const P=ppl(),kim=o=>o&&o.rol==='rical'&&o.mn?P.find(p=>nk(p.n)===nk(o.mn)):o&&o.pe?P.find(p=>p.id===o.pe):null,say={};
   const pr=o=>{const x=kim(o);if(x)return x.seat;const par=Y.l[o.bag],px=par&&par.rol==='rical'?kim(par):null;if(!px)return'';const t=o.rol==='es'?'comp':'ms',k=o.bag+t,i=say[k]=(say[k]||0);say[k]++;return(px[t]||[])[i]||''};
   const L=Y.l.map(o=>Object.assign({},o,{m:o.mn?{x:{n:o.mn,t:o.mt,r:o.mr}}:null}));
@@ -1985,7 +1985,7 @@ const A={
   '<label class="lbl" for="opxt">Okunan metin (yapıştırabilir ya da düzeltebilirsiniz)</label><textarea class="field mono" id="opxt" placeholder="1.KURTULMUS/NUMAN MR  ESB Y @ AA3 02A"></textarea><div class="row-btns" style="margin-top:8px"><button class="btn" data-a="opxRead" type="button">Metni oku</button></div><div id="opxr"></div>')},
  opxRead(){opxRun($('opxt').value)},
  ustTeyit(){D.TEY=D.TEY||{};const T=D.TEY[D.cur]=D.TEY[D.cur]||{};ppl().filter(p=>!p.ek&&ustMu(p.rank)).forEach(p=>T[nk(p.n)]=Date.now());save();render();toast('Üst düzey yolcu teyit edildi')},
- ricalDuzen(){if(!ppl().length)return toast('Önce yolcu ekleyin');const f=D.cur,geri=JSON.stringify(D.P[f]),rd0=(D.RD||{})[f];ppl().forEach(p=>{delete p.over;delete p.fix;delete p.sw});D.RD=D.RD||{};D.RD[f]=1;assign();save();render();toast('Koltuklar rical sırasına göre ayarlandı (check-in yapmış VIP\'ler için yeni koltuk gösterilir)',()=>{D.P[f]=JSON.parse(geri);if(rd0)D.RD[f]=1;else delete D.RD[f];assign();save();render()})},
+ ricalDuzen(){if(!ppl().length)return toast('Önce yolcu ekleyin');const f=D.cur,geri=JSON.stringify(D.P[f]),rd0=(D.RD||{})[f];ppl().forEach(p=>{delete p.over;delete p.fix;delete p.sw});D.RD=D.RD||{};delete D.RD[f];assign();save();render();toast('Liste rical sırasına, koltuklar rical önceliğine göre yeniden ayarlandı (check-in yapanlar yerinde)',()=>{D.P[f]=JSON.parse(geri);if(rd0)D.RD[f]=1;else delete D.RD[f];assign();save();render()})},
  async isGonder(){const tur=$('is-tur').value,m=$('is-m').value.trim(),k=$('is-kisi').value.trim();if(!m&&!k)return toast('Ne yapılacağını yazın');try{await isEkle(tur,m,k);render();toast('Gönderildi; 2 saat içinde işlenir')}catch(e){toast('Gönderilemedi: '+e.message)}},
  async isYenile(){await islerOku();render();toast('Güncellendi')},
  canliOto(){QCK.oto=!QCK.oto;canliGunluk(flNo(D.cur),'Otomatik uygulama '+(QCK.oto?'açıldı':'kapatıldı'));if(QCK.oto){QCK.imza={};Object.keys(QCK.durum).forEach(canliUygula)}render()},
