@@ -18,6 +18,10 @@ on:
         description: 'Günleri gerçekten işle (evet) ya da yalnız dene (boş)'
         required: false
         default: ''
+      foto:
+        description: 'Fotoğraf taramasını da çalıştır (evet; ~50 dk sürer)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -57,7 +61,7 @@ jobs:
       - name: Doğrulanmış portre fotoğrafları (günde iki kez; TBMM + görevi doğrulanan Vikipedi)
         continue-on-error: true
         run: |
-          if [ "${{ github.event.schedule }}" = "14 2,14 * * *" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ github.event.schedule }}" = "14 2,14 * * *" ] || [ "${{ github.event.inputs.foto }}" = "evet" ]; then
             timeout 50m python tools/fotolar.py --tbmm --kurum --vali --viki 3000 --kaymakam 150
           fi
       - name: Kaydet
