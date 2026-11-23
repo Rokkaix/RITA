@@ -90,6 +90,16 @@
    "durum": "yapilamadi",
    "sonuc": "Kabin düzeni yönetici onayıyla değişir; öneri: '737' tipini 737-800 (73H) düzeniyle tanımlamak. Bu uçuşta Quick Check verisi yer imiyle gelirse RITA gerçek düzeni zaten haritadan öğrenir (RITA 21.0).",
    "bitti": "2026-11-22 22:18"
+  },
+  {
+   "id": "cl1763875100000",
+   "t": "2026-11-23 08:18",
+   "tur": "denetim",
+   "kisi": "telefon",
+   "metin": "Günlük telefon denetimi (iPhone SE, iPhone 13, Pixel 5; yönetici ve personel; tüm sekmeler, örnek uçuş, Quick Check görünümlü koltuk haritası): sayfa hatası, yatay taşma ve iPhone yakınlaştırması yapan kutu yok.",
+   "durum": "tamam",
+   "sonuc": "Düzeltme gerekmedi. Tek küçük hedef 'Bloke açılabilir' kutusu (22 px), yazısıyla birlikte dokunulabildiği için bırakıldı.",
+   "bitti": "2026-11-23 08:18"
   }
  ]
 }
