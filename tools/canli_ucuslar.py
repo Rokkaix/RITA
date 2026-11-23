@@ -1,6 +1,6 @@
 """İstanbul Havalimanı'ndan (IST) kalkan VE İstanbul'a gelen TÜM THY uçuşlarını (iç + dış hat) FlightStats'ten toplar.
 Yakın uçuşlar için canlı durum (planlandı/havada/indi/iptal), gecikme, tahmini saat, kapı ve bagaj bandı da alınır.
-Şu andan 3 saat öncesi ile 8 saat sonrası arasını tutar; uçak tipini uçuş yaklaştıkça yeniler.
+Şu andan 3 saat öncesi ile 12 saat sonrası arasını tutar; uçak tipini uçuş yaklaştıkça yeniler.
 Sonucu data/ucuslar.json dosyasına yazar. Her 30 dakikada bir GitHub'da çalışır."""
 import json, os, sys, time, datetime
 from zoneinfo import ZoneInfo
@@ -21,7 +21,7 @@ except Exception:
 def buckets():
     seen = []
     t = now - datetime.timedelta(hours=1)
-    end = now + datetime.timedelta(hours=8)
+    end = now + datetime.timedelta(hours=12)
     while t <= end + datetime.timedelta(hours=6):
         b = (t.date(), (t.hour // 6) * 6)
         if b not in seen:
@@ -58,7 +58,7 @@ for yon, sayfa in (("gidis", "departures"), ("gelis", "arrivals")):
     time.sleep(0.5)
 
 DURUM = {"S": "Planlandı", "A": "Havada", "L": "İndi", "C": "İptal", "D": "Yönlendirildi", "R": "Yönlendirildi", "U": "Bilinmiyor", "NO": "Uçmadı"}
-lo, hi = now - datetime.timedelta(hours=3), now + datetime.timedelta(hours=8)
+lo, hi = now - datetime.timedelta(hours=3), now + datetime.timedelta(hours=12)
 out, checked = {}, 0
 # önce kalkmamış ve en yakın uçuşlar
 order = sorted(found.items(), key=lambda kv: (datetime.datetime.fromisoformat(kv[1]["zaman"]) < now, kv[1]["zaman"]))
@@ -73,7 +73,7 @@ for fid, f in order:
             rec[k] = o[k]
     last = datetime.datetime.fromisoformat(o["kontrol"]) if o.get("kontrol") else None
     lastd = datetime.datetime.fromisoformat(o["durum_zaman"]) if o.get("durum_zaman") else None
-    due_tip = dep > now and ((last is None) or (dep - now < datetime.timedelta(hours=7) and now - last > datetime.timedelta(minutes=110)))
+    due_tip = dep > now and ((last is None) or (dep - now < datetime.timedelta(hours=12) and now - last > datetime.timedelta(minutes=110)))
     # canlı durum: -2 saat .. +4 saat penceresindeki uçuşlar, en geç 12 dakikada bir
     due_dr = (now - datetime.timedelta(hours=2) <= dep <= now + datetime.timedelta(hours=4)) and (lastd is None or now - lastd > datetime.timedelta(minutes=12))
     if (due_tip or due_dr) and f.get("url") and checked < 260:
