@@ -500,6 +500,19 @@ body{background:var(--bg)}
 #login .lg-card{box-shadow:0 18px 40px rgba(0,0,0,.25);border:0}
 @media (min-width:900px){#app>.tabs{background:linear-gradient(180deg,var(--night2),var(--night))}#app>.tabs::before{color:#fff}.tabs button{color:#b8c4dc}.tabs button[aria-selected="true"]{background:rgba(255,255,255,.08);color:#fff}.hb{display:none}}
 
+/* sakin görünüm: açık yüzeyler, düz yazı, az renk */
+.hero{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none;min-height:0;border-radius:12px}
+.hero-i{padding:14px 16px}.hero-s{color:var(--muted);opacity:1;font-size:12px}.hero-t{font-size:17px;font-weight:700;letter-spacing:0}
+.hero-ara{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13.5px}.hero-ara svg{color:var(--muted);width:16px;height:16px}
+.hero-c{margin-top:10px}.hc,.hc.uy{background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:6px 10px}.hc b{font-family:inherit;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}.hc span{opacity:1;color:var(--muted)}.hc.uy{border-color:#f0c4c9}.hc.uy b{color:var(--crim)}
+.fchip{background:#fff;border-radius:10px;padding:7px 11px;min-height:0}.fchip b,.fchip span{font-family:inherit;font-variant-numeric:tabular-nums}.fchip b{font-size:14px;font-weight:700}.fchip span{font-size:11px}
+.fchip[aria-pressed="true"]{background:var(--navy-soft);border-color:var(--navy);color:var(--navy);box-shadow:inset 0 -2px 0 var(--navy)}.fchip[aria-pressed="true"] span{color:var(--navy)}
+.acline{background:var(--soft);color:var(--ink);border:1px solid var(--line)}.acline>svg{display:none}.acline span{color:var(--muted)}.acline .tag{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.stat{background:#fff}.stat b{font-family:inherit;font-variant-numeric:tabular-nums;font-size:15px}
+.seatbadge{background:#fff;color:var(--crim);box-shadow:inset 0 0 0 1.5px var(--crim);font-family:inherit;font-variant-numeric:tabular-nums}.seatbadge.e{background:#fff;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy)}.seatbadge.none{box-shadow:none}
+.pxcik{background:#fff;border-color:var(--line);color:var(--muted);font-weight:600}.pxcik:hover{color:#b42318;border-color:#f1a9a0}
+.upn .y,.upn .n{font-weight:600}.upn .bk{background:none;border:0;padding:4px 0;min-height:0;color:#b54708;text-decoration:underline;text-underline-offset:2px}.upn .bk.ok{color:#067647;text-decoration:none}
+.mn-o svg{width:17px;height:17px;opacity:.6}.mn-o{gap:11px}.mn-u span{font-family:inherit}
 </style>
 
 <div id="login" class="gut" hidden>
@@ -652,7 +665,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 21.8';let SURUM_YENI=false;
+const SURUM='RITA 21.9';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -2279,7 +2292,7 @@ function kimAd(){return isAdmin()?'Yakup':''}
 function heroHtml(){const bugun=new Date().toISOString().slice(0,10),now=new Date(),dk=f=>{const m=/(\d{1,2}):(\d{2})$/.exec(f);if(!m)return 1e9;const t=new Date();t.setHours(+m[1],+m[2],0,0);let d=Math.round((t-now)/6e4);if(d<-180)d+=1440;return d};
   const V=D.F.filter(f=>(D.P[f]||[]).length),bek=V.filter(f=>!GOR().some(a=>a.f===f&&a.gun===bugun)).length,sira=V.map(f=>[f,dk(f)]).filter(x=>x[1]>-20).sort((a,b)=>a[1]-b[1])[0];
   const kalan=sira?(sira[1]<=0?'şimdi':sira[1]<60?sira[1]+' dk':Math.floor(sira[1]/60)+' sa '+(sira[1]%60)+' dk'):'';
-  return '<section class="hero"><svg class="hero-art" viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1a31"/><stop offset="1" stop-color="#1b2a4a"/></linearGradient><pattern id="hp" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M18 0H0V18" fill="none" stroke="#fff" stroke-opacity=".035" stroke-width="1"/></pattern></defs><rect width="400" height="160" fill="url(#hg)"/><rect width="400" height="160" fill="url(#hp)"/><path d="M250 175 Q 330 60 420 20" fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="1"/><path d="M290 175 Q 360 90 430 60" fill="none" stroke="#fff" stroke-opacity=".05" stroke-width="1"/></svg>'
+  return '<section class="hero">'
    +'<div class="hero-i"><div class="hero-s">'+esc(selam())+(kimAd()?', '+esc(kimAd()):'')+'</div><div class="hero-t">'+(V.length?'Bugün '+V.length+' VIP’li uçuş':'Bugün VIP’li uçuş yok')+'</div>'
    +'<button type="button" class="hero-ara" data-a="heroAra"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>İsim, unvan ya da il ara…</span></button>'
    +'<div class="hero-c">'+(isAdmin()&&V.length?'<button type="button" class="hc'+(bek?' uy':'')+'" data-a="tab" data-k="ops"><b>'+bek+'</b><span>atama bekliyor</span></button>':'')
