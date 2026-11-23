@@ -5,6 +5,9 @@ on:
     branches: ["claude/bn-depo-usage-issue-3ucip6"]
   schedule:
     - cron: "7,22,37,52 * * * *"   # her 15 dakikada bir (uçuş durumu, kapı, gecikme)
+    - cron: "44 */2 * * *"         # Resmî Gazete (2 saatte bir; gecikse de atlanmaz)
+    - cron: "29 1-23/3 * * *"      # TBMM listesi (3 saatte bir)
+    - cron: "14 2,14 * * *"        # doğrulanmış fotoğraflar (günde iki kez)
   workflow_dispatch:
     inputs:
       rg_gunler:
@@ -39,21 +42,21 @@ jobs:
       - name: TBMM milletvekili listesi (3 saatte bir)
         continue-on-error: true
         run: |
-          if [ $(( 10#$(date -u +%H) % 3 )) -eq 0 ] && [ $(( 10#$(date -u +%M) )) -lt 15 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ github.event.schedule }}" = "29 1-23/3 * * *" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             python tools/canli_tbmm.py
           fi
-      - name: Resmî Gazete atama kararları (2 saatte bir; teyitliler otomatik işlenir)
+      - name: Resmî Gazete atama kararları (2 saatte bir; teyitliler otomatik işlenir; son 3 gün)
         continue-on-error: true
         run: |
-          if [ $(( 10#$(date -u +%H) % 2 )) -eq 1 ] && [ $(( 10#$(date -u +%M) )) -lt 15 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ github.event.schedule }}" = "44 */2 * * *" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             pip install --quiet pypdf
             sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-tur poppler-utils >/dev/null
             RG_GUNLER="${{ github.event.inputs.rg_gunler }}" RG_KURU="${{ github.event.inputs.rg_yaz != 'evet' && github.event.inputs.rg_gunler || '' }}" python tools/resmi_gazete.py
           fi
-      - name: Doğrulanmış portre fotoğrafları (günde bir; TBMM + görevi doğrulanan Vikipedi)
+      - name: Doğrulanmış portre fotoğrafları (günde iki kez; TBMM + görevi doğrulanan Vikipedi)
         continue-on-error: true
         run: |
-          if [ $(( 10#$(date -u +%H) )) -eq 2 ] && [ $(( 10#$(date -u +%M) )) -lt 15 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ github.event.schedule }}" = "14 2,14 * * *" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             timeout 50m python tools/fotolar.py --tbmm --kurum --vali --viki 3000 --kaymakam 150
           fi
       - name: Kaydet
