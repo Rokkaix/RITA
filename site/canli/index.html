@@ -347,8 +347,7 @@ function koltukSirasi() {
   return L;
 }
 /* Koltuk önerisi — kademeli ve sıkı kural:
-   1) Business kuralı olan VIP (upgrade hakkı): business'ta EN ÖNDEKİ koltuk — boş, en son verilecek ya da bloke fark etmez
-      (kullanıcı kuralı: business'ta bloke her zaman kaldırılır, rical önemli); business'ta hiç yer yoksa ekonomide öndeki ilk boş koltuk.
+   1) Business kuralı olan VIP (upgrade hakkı): business'ta EN ÖNDEKİ koltuk — boş, en son verilecek ya da bloke fark etmez; business'ta hiç yer yoksa ekonomide öndeki ilk boş koltuk.
    2) Diğerleri (maiyet, görevli, kuralı/upgrade hakkı olmayan): Business hakkı olanlardan SONRA, yalnız EKONOMİDE öndeki ilk BOŞ koltuk;
       bloke ve "en son verilecek" verilmez.
       Aynı grup kodu (aile) yan yana. VIP'in şu anki koltuğu, daha önde boş yoksa ona açık sayılır.

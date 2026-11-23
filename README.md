@@ -1,24 +1,26 @@
 # RITA — Rical Takip Asistanı
 
-THY seferleri için rical sırası, upgrade ve koltuk yönetimi.
+Protokol (rical) yolcularının resmî öncelik sırasına göre dizilmesi ve uçağın kabin düzenine göre koltuk planlaması için web uygulaması.
 
-**Uygulama adresi:** https://rokkaix.github.io/RITA/
+**Adres:** https://rokkaix.github.io/RITA/
 
-## Telefona / bilgisayara yükleme
-- **iPhone:** Safari'de adresi açın → Paylaş → **Ana Ekrana Ekle**
-- **Android:** Chrome'da açın → çıkan **Yükle** düğmesi (ya da ⋮ → Uygulamayı yükle)
-- **Bilgisayar:** Chrome/Edge'de açın → adres çubuğundaki **Yükle** simgesi
+## Özellikler
+- Rical sırası: Başkent Protokol Listesi ve THY rical listesi; upgrade hakkı kontrolü (rical listesi, CIC90/95-UPGRADE)
+- Koltuk planı: uçak tipine ve Quick Check koltuk haritasına göre business ve ekonomi yerleşimi
+- Quick Check aktarımı: yer imi, tarayıcı eklentisi ya da ekran görüntüsü ile VIP listesi ve koltuk durumu
+- Canlı uçuş listesi, görev değişikliği takibi, personel ataması ve bildirimler
 
-## Nasıl güncellenir
-- **Her gün 05:43:** GitHub, takip edilen hatlardaki THY seferlerini (Yönetim → Takip edilen hatlar) ve uçak tiplerini toplar (`tools/gunluk_seferler.py`) ve `data/rita-veri.json` dosyasına **onay bekleyen** kayıt olarak yazar.
-- **Her pazartesi:** Resmî Gazete görev değişiklikleri onay bekleyen kayıt olarak eklenir.
-- Yönetici uygulamada **Yönetim** sekmesinden onaylar. Onaylanmadan hiçbir şey değişmez.
-- Her değişiklikte site kendiliğinden yeniden yayınlanır (`.github/workflows/rita.yml`).
+## Kurulum
+- **iPhone:** Safari → Paylaş → Ana Ekrana Ekle
+- **Android:** Chrome → ⋮ → Uygulamayı yükle
+- **Bilgisayar:** Chrome/Edge → adres çubuğundaki Yükle simgesi
 
-## Dosyalar
+## Yapı
 - `index.html` — uygulama
-- `data/rita-veri.json` — ortak veriler (seferler, görev değişiklikleri, uçak tipi kabin düzenleri)
-- `site/` — simgeler, manifest, çevrimdışı çalışma (service worker), yükleme uyarısı
-- `tools/` — sefer toplayıcı ve site kurucu
+- `site/` — manifest, service worker, RITA Canlı, yer imi sayfaları
+- `data/` — ortak veriler (uçuşlar, rehber, görev değişiklikleri, kabin düzenleri)
+- `eklenti/` — Quick Check okuyucu tarayıcı eklentisi
+- `tools/` — veri toplayıcılar ve site derleyici
+- `worker/` — bildirim sunucusu
 
 © 2026 Yakup KAYABAŞ · Tüm hakları saklıdır.
