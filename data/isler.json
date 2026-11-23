@@ -1,5 +1,5 @@
 {
- "aciklama": "Yöneticinin Claude asistana verdiği işler. Claude arka planda işler, durum ve sonucu yazar.",
+ "aciklama": "Yöneticinin arka plan asistanına verdiği işler. Arka planda işlenir; durum ve sonuç yazılır.",
  "isler": [
   {
    "id": "cl20261122a",

@@ -276,7 +276,7 @@ function isle(m) {
   const simdi = Date.now();
   if (m.tur === "merhaba") { eklentiGeldi = true; baglantiKoptu = false; sonMesaj = simdi; durumCiz(); return; }
   if (m.tur === "baglantiKoptu") { baglantiKoptu = true; durumCiz(); return; }
-  if (m.tur === "tani") { const b = m.bilgi || {}; olay(simdi, secili, "Eklenti okuma sorunu: " + String(b.uyari || "").slice(0, 120) + " (ana RITA açıksa Claude asistana iletilir)", "tani"); akisCiz(); return; }
+  if (m.tur === "tani") { const b = m.bilgi || {}; olay(simdi, secili, "Eklenti okuma sorunu: " + String(b.uyari || "").slice(0, 120) + " (ana RITA açıksa denetime iletilir)", "tani"); akisCiz(); return; }
   if (m.tur === "kapandi") {
     for (const [a, u] of UCUSLAR) if (u.sekme === m.sekme && !u.demo) { UCUSLAR.delete(a); olay(simdi, a, "Quick Check sekmesi kapandı: " + a + " (veri silindi)", "bilgi"); }
     if (!UCUSLAR.has(secili)) secili = "";

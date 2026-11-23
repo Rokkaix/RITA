@@ -53,7 +53,7 @@ const CONFIG = {
 /* ------------------------------ CONFIG SONU ------------------------------ */
 
 /* Uzaktan ayar: RITA sitesindeki data/eklenti-ayar.json yalnız aşağıdaki ALANLARI (veri, kod değil) değiştirebilir.
-   Böylece okuma tutmazsa Claude asistan bu dosyayı düzelterek sorunu, eklentiyi yeniden kurmadan giderebilir. */
+   Böylece okuma tutmazsa arka plan denetimi bu dosyayı düzelterek sorunu, eklentiyi yeniden kurmadan giderebilir. */
 const AYAR_URL = "https://rokkaix.github.io/RITA/data/eklenti-ayar.json";
 const AYAR_TURLERI = {
   ucusBaslikSecici: "string", satirSecici: "string", otomatikBaslik: "boolean", baslikAdlari: "baslik", sutunlar: "sutun",
@@ -268,7 +268,7 @@ function ayarUygula(A) {
     calisiyor = false;
   }
 
-  /* ---------------- Tanı: okuma tutmazsa RITA'ya (ve Claude asistana) yolcu bilgisi İÇERMEYEN rapor ---------------- */
+  /* ---------------- Tanı: okuma tutmazsa RITA'ya (ve arka plan denetimine) yolcu bilgisi İÇERMEYEN rapor ---------------- */
   const taniZaman = {};
   function basliklar() {
     /* yalnız sütun başlıkları (yolcu satırı ALINMAZ) */
