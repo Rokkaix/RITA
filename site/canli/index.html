@@ -230,7 +230,7 @@ function yolcuGecerli(y) {
   return y && typeof y === "object" && kStr(y.k, 90) && kStr(y.soyad, 40) && /^[A-ZÇĞİÖŞÜa-zçğıöşü' -]*$/.test(y.soyad) &&
     kStr(y.adBas, 1) && kStr(y.koltuk, 3) && kKoltuk(y.koltuk) && typeof y.ci === "boolean" && kStr(y.sinif, 1) && kStr(y.not, 300);
 }
-function ucusGecerli(u) { return u === null || u === undefined || (u && kStr(u.no, 8) && /^TK\d{2,5}$/.test(u.no) && kStr(u.tarih, 6)); }
+function ucusGecerli(u) { return u === null || u === undefined || (u && kStr(u.no, 8) && /^TK\d{1,5}$/.test(u.no) && kStr(u.tarih, 6)); }
 function koltuklarGecerli(K) {
   if (K === null || K === undefined) return true;
   if (typeof K !== "object" || Array.isArray(K)) return false;

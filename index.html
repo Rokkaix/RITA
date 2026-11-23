@@ -732,7 +732,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 23.8';let SURUM_YENI=false;
+const SURUM='RITA 23.9';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -846,6 +846,8 @@ function cfgFrom(o,t){if(!o)return null;const pb=parseL(o.b),pe=parseL(o.e);
   return{biz:+o.biz||0,last:Math.max((+o.biz||0)+1,+o.last||27),stub:o.stub?1:0,stag:o.stag?1:0,bl:pb.l,ba:pb.a,el:pe.l,ea:pe.a,blk:String(o.bblk||'').toUpperCase(),x:String(o.x||'').split(/[^0-9]+/).filter(Boolean).map(Number),atla:String(o.atla||'').split(/[^0-9]+/).filter(Boolean).map(Number),yok:String(o.yok||'').toUpperCase().split(/[^0-9A-K]+/).filter(Boolean),mt:String(o.mt||'').split(/[^0-9]+/).filter(Boolean).map(Number),kn:String(o.kn||'').split(/[^0-9]+/).filter(Boolean).map(Number),ac:t,dog:!!o.dog,ogr:!!o.ogr,type:1}}
 const acCfg=t=>typeCfg(t);
 const flNo=f=>String(f).split(' ')[0];
+/* Quick Check uçuş numarasını başı sıfırlı yazar (TK0056); RITA'daki karşılığı TK56 */
+const tkNo=s=>{const m=/^TK0*(\d{1,4})$/i.exec(String(s||'').replace(/\s+/g,''));return m?'TK'+m[1]:String(s||'')};
 const acOf=f=>(D.AC||{})[flNo(f)];
 const cfg=()=>{const m=D.C[D.cur];if(m&&m.manual)return m;const kd=(D.KD||{})[D.cur];if(kd){if(!kd._c||kd._s!==JSON.stringify([kd.b,kd.e,kd.biz,kd.last,kd.atla,kd.yok,kd.x,kd.mt,kd.kn])){kd._s=JSON.stringify([kd.b,kd.e,kd.biz,kd.last,kd.atla,kd.yok,kd.x,kd.mt,kd.kn]);kd._c=cfgFrom(Object.assign({ogr:1,dog:1},kd),(acOf(D.cur)||{}).tip||'')}return kd._c}const t=acOf(D.cur),c=t&&typeCfg(t.tip);if(c)return c;if(m&&!m.type)return m;return D.C[D.cur]={biz:4,last:27,stub:1}};
 const aisleAt=(r,i,L)=>{const c=cfg(),a=r<=c.biz?c.ba:c.ea;return a?a.includes(i):i===L.length/2};
@@ -1313,7 +1315,7 @@ function copyText(txt){const fb=()=>sheet('<h2>Özeti kopyalayın</h2><p class="
 const reassign=()=>{if(assigned())assign()};
 const findP=id=>ppl().find(x=>x.id===id);
 
-function flFind(v){const d=String(v).toUpperCase().replace(/\s/g,'').replace(/^(TK|THY)/,'');const m=$('flmsg');if(!m)return;
+function flFind(v){const d=String(v).toUpperCase().replace(/\s/g,'').replace(/^(TK|THY)/,'').replace(/^0+(?=\d)/,'');const m=$('flmsg');if(!m)return;
   if(!/^\d{1,4}$/.test(d)){const t=String(v).trim(),prev=window._hq||'';window._hq=t.length>=2?t:'';if(window._hq!==prev){if(window._hq&&!fOK(D.cur)){const f=D.F.find(fOK);if(f){D.cur=f;save()}}render();const i=$('flq');i.value=v;i.focus()}const mm=$('flmsg');if(mm)mm.textContent=window._hq?D.F.filter(fOK).length+' uçuş: '+window._hq:'';return}
   if(d.length<2){m.textContent='';return}
   const f=D.F.find(x=>flNo(x)==='TK'+d);
@@ -1516,7 +1518,7 @@ function canliGecerli(m){const st=(x,n)=>typeof x==='string'&&x.length<=n,kol=x=
   const yg=y=>y&&st(y.k,90)&&st(y.soyad,40)&&st(y.adBas,1)&&st(y.koltuk,3)&&kol(y.koltuk)&&typeof y.ci==='boolean'&&st(y.sinif,1)&&st(y.not,300);
   if(!m||!['merhaba','tam','fark','nabiz','baglantiKoptu','kapandi','tani'].includes(m.tur))return false;
   if(m.tur==='tani'){const b=m.bilgi;return!!b&&typeof b==='object'&&st(b.uyari,160)&&st(b.cerceve||'',80)&&(!b.basliklar||(Array.isArray(b.basliklar)&&b.basliklar.length<=30&&b.basliklar.every(x=>st(x,12))))}
-  if(m.ucus!=null&&!(m.ucus&&/^TK\d{2,5}$/.test(m.ucus.no)&&st(m.ucus.tarih,6)))return false;
+  if(m.ucus!=null&&!(m.ucus&&/^TK\d{1,5}$/.test(m.ucus.no)&&st(m.ucus.tarih,6)))return false;
   if(m.tur==='tam')return(m.yolcular==null||(Array.isArray(m.yolcular)&&m.yolcular.length<=400&&m.yolcular.every(yg)))&&(m.koltuklar==null||(typeof m.koltuklar==='object'&&Object.keys(m.koltuklar).length<=600&&Object.entries(m.koltuklar).every(([k,v])=>/^\d{1,2}[A-K]$/.test(k)&&v in CKOL||v==='bilinmiyor')));
   if(m.tur==='fark')return Array.isArray(m.farklar)&&m.farklar.length<=800&&m.farklar.every(f=>f&&typeof f.tip==='string'&&(f.tip!=='eklendi'||yg(f.yolcu)));
   return true}
@@ -1531,6 +1533,7 @@ function canliTani(m){const b=m.bilgi,no=(m.ucus&&m.ucus.no)||'?',d=QCK.durum[no
   isEkle('eklenti','Quick Check okuyucu okuyamadı (yolcu bilgisi yok, yalnız teknik tanı). data/eklenti-ayar.json ile düzelt: '+JSON.stringify(ozet).slice(0,1300),'').catch(()=>{})}
 function canliGunluk(f,metin){QCK.gunluk.unshift({t:Date.now(),f,m:metin});if(QCK.gunluk.length>300)QCK.gunluk.length=300}
 function canliMesaj(m){
+  if(m&&m.ucus&&m.ucus.no)m=Object.assign({},m,{ucus:Object.assign({},m.ucus,{no:tkNo(m.ucus.no)})});
   if(m.tur==='tani'){canliTani(m);return}
   if(m.tur==='merhaba'||m.tur==='baglantiKoptu'){if(m.tur==='merhaba')QCK.son=Date.now();canliDurumYaz();return}
   if(!m.ucus||!m.ucus.no)return;QCK.son=Date.now();const no=m.ucus.no,d=QCK.durum[no]=QCK.durum[no]||{yolcular:new Map(),sira:[],koltuklar:{}};
@@ -1565,6 +1568,7 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
   const imza=JSON.stringify([m.ucus,m.yolcular,m.koltuklar]);if(ack)ack();if(imza===YERIMI_SON)return true;YERIMI_SON=imza;
   if(!m.ucus||!m.ucus.no){toast('Quick Check sayfasında uçuş numarası bulunamadı');return false}
   if(!(+m.surum>=4)&&!window._ymEski){window._ymEski=1;setTimeout(()=>toast('Yer imi eski sürüm: rokkaix.github.io/RITA/yerimi sayfasından bir kez yeniden kurun'),1600)}
+  if(tkNo(m.ucus.no)!==m.ucus.no)m=Object.assign({},m,{ucus:Object.assign({},m.ucus,{no:tkNo(m.ucus.no)})});
   const no=m.ucus.no;
   /* Çok sayfalı VIP listesi: Quick Check'in satır numarası (1–10, 11–20…) esas — sayfa numarası okunamasa da
      sayfalar birbirinin yerine YAZILMAZ. Yeni gelen parça yalnız kendi satır aralığını yeniler; "Toplam 6 C 19 Y" → beklenen sayı. */
@@ -2443,7 +2447,7 @@ Object.assign(A,{
    const a={id:'g'+Date.now(),f,yon:gelisMi(f)?'gelis':'gidis',per:pid,gun:opsGun,not:'',t:Date.now()};GOR().push(a);save();const c=cakisma(pid,f,opsGun);render();A.opsWa({k:a.id});
    if(c)toast('Dikkat: bu personelin '+c.f.split(' ').pop()+' uçuşuyla saati çakışıyor');else if(gunSay(pid,opsGun)>6)toast('Dikkat: bu personele bugün '+gunSay(pid,opsGun)+' uçuş atandı')}
 });
-dbInit();sfInit();load();if(D.F.some(f=>/^ÖRNEK/.test(f)))ornekKaldir();if(D.rmig){Object.values(D.P).forEach(L=>L.forEach(p=>{const x=people().find(y=>nk(y.n)===nk(p.n));if(x){p.rank=x.r;if(!p.up&&x.u)p.up=x.u}}));delete D.rmig;save()}if(!location.hash){try{const h=localStorage.getItem('rita-pk');if(h)history.replaceState(null,'',location.pathname+h)}catch(e){}}if(!gorevAc())showLogin();window.addEventListener('hashchange',()=>{if(/^#(gk?|p)=/.test(location.hash))gorevAc()});
+dbInit();sfInit();load();if(D.F.some(f=>/^ÖRNEK/.test(f)))ornekKaldir();{const pad=D.F.filter(f=>/^TK0\d/.test(flNo(f)));if(pad.length){pad.forEach(f=>{['P','S','C','FA','FT','SH','KD','ACX'].forEach(x=>{if(D[x])delete D[x][f]});if(D.AC)delete D.AC[flNo(f)]});D.F=D.F.filter(f=>!pad.includes(f));if(pad.includes(D.cur))D.cur=D.F[0]||'';save()}}if(D.rmig){Object.values(D.P).forEach(L=>L.forEach(p=>{const x=people().find(y=>nk(y.n)===nk(p.n));if(x){p.rank=x.r;if(!p.up&&x.u)p.up=x.u}}));delete D.rmig;save()}if(!location.hash){try{const h=localStorage.getItem('rita-pk');if(h)history.replaceState(null,'',location.pathname+h)}catch(e){}}if(!gorevAc())showLogin();window.addEventListener('hashchange',()=>{if(/^#(gk?|p)=/.test(location.hash))gorevAc()});
 
 </script>
 

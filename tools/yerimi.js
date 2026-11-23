@@ -3,7 +3,7 @@
    tools/build_site.py bu dosyayı tek satıra indirip site/yerimi sayfasına "javascript:" bağlantısı olarak koyar.
    Kurallar: yalnız blok yorum, her deyim noktalı virgülle biter (tek satıra indirilebilsin). */
 (function () {
-  var SURUM = 5, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
+  var SURUM = 6, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
   var demo = location.origin === RITA && /\/RITA\/yerimi\/deneme/.test(location.pathname);
   if (location.hostname !== "checkin.thy.com" && !demo) { alert("RITA: Bu düğme yalnız Quick Check sayfasında çalışır."); return; }
   if (/Login\.aspx/i.test(location.href) || document.querySelector("input[type=password]")) { alert("RITA: Giriş sayfasında çalışmaz. Önce uçuşu açın."); return; }
@@ -27,7 +27,7 @@
     var ucus = null, yolcular = null, koltuklar = null, kn = 0, sy = { sayfa: 0, toplam: 0 };
     belgeTopla().forEach(function (b) {
       var gm = String((b.body && (b.body.innerText || b.body.textContent)) || "").match(/U[çc]u[şs]\s*:\s*(TK\s?\d{2,5})\s*\/\s*(\d{1,2}[A-ZĞÜŞİÖÇ]{3})/i);
-      if (gm && !ucus) ucus = { no: gm[1].replace(/\s+/g, "").toUpperCase(), tarih: gm[2].toUpperCase() };
+      if (gm && !ucus) ucus = { no: "TK" + String(parseInt(gm[1].replace(/\D/g, ""), 10)), tarih: gm[2].toUpperCase() };
       var S = Array.prototype.slice.call(b.querySelectorAll("tr")), h = null, bi = -1, liste = null;
       for (var i = 0; i < S.length && !h; i++) {
         var H = Array.prototype.map.call(S[i].children, function (x) { return sade(metin(x)).toLowerCase(); });
