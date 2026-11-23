@@ -3,7 +3,7 @@
    tools/build_site.py bu dosyayı tek satıra indirip site/yerimi sayfasına "javascript:" bağlantısı olarak koyar.
    Kurallar: yalnız blok yorum, her deyim noktalı virgülle biter (tek satıra indirilebilsin). */
 (function () {
-  var SURUM = 6, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
+  var SURUM = 7, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
   var demo = location.origin === RITA && /\/RITA\/yerimi\/deneme/.test(location.pathname);
   if (location.hostname !== "checkin.thy.com" && !demo) { alert("RITA: Bu düğme yalnız Quick Check sayfasında çalışır."); return; }
   if (/Login\.aspx/i.test(location.href) || document.querySelector("input[type=password]")) { alert("RITA: Giriş sayfasında çalışmaz. Önce uçuşu açın."); return; }
@@ -27,7 +27,7 @@
     var ucus = null, yolcular = null, koltuklar = null, kn = 0, sy = { sayfa: 0, toplam: 0 };
     belgeTopla().forEach(function (b) {
       var gm = String((b.body && (b.body.innerText || b.body.textContent)) || "").match(/U[çc]u[şs]\s*:\s*(TK\s?\d{2,5})\s*\/\s*(\d{1,2}[A-ZĞÜŞİÖÇ]{3})/i);
-      if (gm && !ucus) ucus = { no: "TK" + String(parseInt(gm[1].replace(/\D/g, ""), 10)), tarih: gm[2].toUpperCase() };
+      if (gm && !ucus) { ucus = { no: "TK" + String(parseInt(gm[1].replace(/\D/g, ""), 10)), tarih: gm[2].toUpperCase() }; var kp = String((b.body && (b.body.innerText || b.body.textContent)) || "").match(/Kap[ıi]\s*:\s*([A-Z0-9]{1,6})\b/i); if (kp) ucus.kapi = kp[1].toUpperCase(); }
       var S = Array.prototype.slice.call(b.querySelectorAll("tr")), h = null, bi = -1, liste = null;
       for (var i = 0; i < S.length && !h; i++) {
         var H = Array.prototype.map.call(S[i].children, function (x) { return sade(metin(x)).toLowerCase(); });
@@ -64,8 +64,8 @@
       if (n >= 12 && n > kn) { koltuklar = K; kn = n; }
     });
     if (!yolcular && !koltuklar) return null;
-    /* "Toplam 6 C 19 Y Yolcu" → listede beklenen VIP sayısı (eksik sayfa uyarısı için) */
-    var bek = 0; belgeTopla().forEach(function (b) { var t = String((b.body && b.body.innerText) || "").match(/Toplam\s*(\d{1,3})\s*C\s*(\d{1,3})\s*Y/i); if (t && !bek) bek = +t[1] + +t[2]; });
+    /* "Toplam 6 C 19 Y Yolcu" ya da "Toplam 3 Y Yolcu" → listede beklenen VIP sayısı */
+    var bek = 0; belgeTopla().forEach(function (b) { var tx = String((b.body && b.body.innerText) || ""), t = tx.match(/Toplam\s*(\d{1,3})\s*C\s*(\d{1,3})\s*Y/i), t2 = tx.match(/Toplam\s*(\d{1,3})\s*[CY]\s*Yolcu/i); if (!bek && t) bek = +t[1] + +t[2]; else if (!bek && t2) bek = +t2[1]; });
     /* Birikim: Quick Check sayfa değiştirirken kendini yenilese de önceki sayfalar kaybolmasın diye, bu sekmede görülen satırlar
        sekmenin kendi belleğinde (window.name) tutulur ve her gönderimde HEPSİ gider. Diske yazılmaz; sekme kapanınca silinir.
        Başka bir uçuşa geçilince ya da 3 saat sonra sıfırlanır. window.name başka bir amaçla doluysa kullanılmaz. */
@@ -78,6 +78,7 @@
         var yeniK = {}; yolcular.forEach(function (y) { yeniK[y.k] = y.no; });
         Object.keys(o.r).forEach(function (n) { var e = o.r[n]; if (yeniK[e.k] != null && yeniK[e.k] !== e.no) delete o.r[n]; });
         yolcular.forEach(function (y) { o.r[y.no] = y; });
+        if (bek) Object.keys(o.r).forEach(function (n) { if (+n > bek) delete o.r[n]; });
         o.t = Date.now();
         try { window.name = BK + JSON.stringify(o); } catch (e) {}
         yolcular = Object.keys(o.r).map(function (n) { return o.r[n]; }).sort(function (a, b) { return a.no - b.no; }).slice(0, 400);

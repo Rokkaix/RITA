@@ -737,7 +737,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 24.0';let SURUM_YENI=false;
+const SURUM='RITA 24.1';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1104,8 +1104,10 @@ function cabinHtml(){if(D.qcg!==0)return cabinHtmlQC();const S=seats(),c=cfg(),a
   return h+'</div>'}
 function acLine(){const t=acOf(D.cur),c=cfg(),a=c.ac&&ACT[c.ac];
   const IC='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 13l18-7-7 18-2.5-8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
-  if(!t)return'<div class="acline none">'+IC+'<div><b>Uçak tipi henüz yok</b><span>Günlük sefer bilgisi onaylanınca burada görünür.</span></div></div>';
-  const x=(D.ACX||{})[D.cur];return(x?'<div class="acline" style="background:var(--bad)">'+IC+'<div><b>Uçak değişti</b><span>Önceki: '+esc((ACT[x.eski]||{}).ad||x.eski)+'. Koltuklar yeni düzene göre boşaltıldı; Koltuk ata ile yeniden atayın.</span></div></div>':'')+'<div class="acline">'+IC+'<div><b>'+esc(t.ad||((ACT[t.tip]||{}).ad)||t.tip)+'<span class="tag">'+esc(t.tip)+'</span>'+((lr=>lr&&lr.tescil?'<span class="tag">'+esc(lr.tescil)+'</span>':'')(liveRec(D.cur)))+'</b><span>'+(c.type?'Business '+range(1,c.biz).length+' ('+esc(ttGet(c.ac).b)+(c.blk?', orta kapalı':'')+') · Ekonomi '+range(c.biz+1,c.last).length+' · ':'')+'Kaynak: '+esc(t.kaynak||'FlightStats')+' · '+esc(fmtD(t.tarih))+(c.ogr?' · kabin düzeni Quick Check haritasından alındı':c.type&&!c.dog?' · kabin düzeni doğrulanmadı':'')+'</span></div></div>'}
+  const kd=(D.KD||{})[D.cur],kp=((QCK.kapi||{})[flNo(D.cur)]),kpH=kp?' · Kapı '+esc(kp)+' (Quick Check)':'',top=c.biz?range(1,c.biz).length+range(c.biz+1,c.last).length:0;
+  if(!t&&kd)return'<div class="acline">'+IC+'<div><b>Kabin düzeni Quick Check’ten</b><span>Business '+range(1,c.biz).length+' ('+esc(kd.b)+') · Ekonomi '+range(c.biz+1,c.last).length+' ('+esc(kd.e)+') · toplam '+top+' koltuk'+kpH+'</span></div></div>';
+  if(!t)return'<div class="acline none">'+IC+'<div><b>Uçak tipi henüz yok</b><span>Quick Check’te yer imine dokununca kabin düzeni haritadan alınır.'+kpH+'</span></div></div>';
+  const x=(D.ACX||{})[D.cur];return(x?'<div class="acline" style="background:var(--bad)">'+IC+'<div><b>Uçak değişti</b><span>Önceki: '+esc((ACT[x.eski]||{}).ad||x.eski)+'. Koltuklar yeni düzene göre boşaltıldı; Koltuk ata ile yeniden atayın.</span></div></div>':'')+'<div class="acline">'+IC+'<div><b>'+esc(t.ad||((ACT[t.tip]||{}).ad)||t.tip)+'<span class="tag">'+esc(t.tip)+'</span>'+((lr=>lr&&lr.tescil?'<span class="tag">'+esc(lr.tescil)+'</span>':'')(liveRec(D.cur)))+'</b><span>'+(c.type?'Business '+range(1,c.biz).length+' ('+esc(kd?kd.b:ttGet(c.ac).b)+(c.blk?', orta kapalı':'')+') · Ekonomi '+range(c.biz+1,c.last).length+' · ':'')+'Kaynak: '+esc(t.kaynak||'FlightStats')+' · '+esc(fmtD(t.tarih))+(c.ogr?' · kabin düzeni Quick Check haritasından alındı':c.type&&!c.dog?' · kabin düzeni doğrulanmadı':'')+kpH+'</span></div></div>'}
 function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 class="h">SEFER</h2><p style="margin:0 0 6px;font-weight:700">'+(LIVE?'Önümüzdeki 12 saatte listelenecek uçuş yok':'Henüz sefer listesi yok')+'</p><p class="note" style="margin-top:0">THY seferleri ve uçak tipleri her sabah otomatik toplanır (İstanbul’dan kalkan ve gelen tüm THY uçuşları). '+(isAdmin()?'Yönetim sekmesindeki “Günlük sefer bilgisi”ni onayladığınızda seferler burada görünür.':'Yönetici günlük sefer bilgisini onayladığında seferler burada görünür.')+'</p>'+(isAdmin()?'<div class="row-btns" style="margin-top:10px"><button class="btn pri" data-a="flightAdd" type="button">+ Sefer ekle</button><button class="btn" data-a="tab" data-k="ayar" type="button">Yönetim’e git</button></div>':'')+'</section>'+legal();return}
   const c=cfg(),n=counts();
   $('view').innerHTML=
@@ -1594,7 +1596,8 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
     else if(sf){for(const [k,y] of s.r)if(y._sf===sf)s.r.delete(k)}else s.r.clear();
     {const yeni=new Map(L.map(y=>[y.k,y.no]));for(const [k,y] of s.r)if(yeni.has(y.k)&&yeni.get(y.k)!==y.no)s.r.delete(k)}
     L.forEach(y=>{const k=y.no?'n'+y.no:'k'+y.k;s.r.set(k,Object.assign({},y,{_sf:sf}))});
-    s.top=Math.max(s.top,tp,sf);s.bek=bk||s.bek;s.ps=Math.max(s.ps,L.length);s.son=sf||(nos.length?Math.ceil(Math.min(...nos)/Math.max(1,s.ps)):1);
+    s.top=Math.max(s.top,tp,sf);s.bek=bk||s.bek;if(bk)for(const [k,y] of s.r)if(y.no&&y.no>bk)s.r.delete(k);
+    if(m.ucus.kapi&&/^[A-Z0-9]{1,6}$/.test(m.ucus.kapi)){QCK.kapi=QCK.kapi||{};QCK.kapi[no]=m.ucus.kapi}s.ps=Math.max(s.ps,L.length);s.son=sf||(nos.length?Math.ceil(Math.min(...nos)/Math.max(1,s.ps)):1);
     const all=[...s.r.values()].sort((x,y)=>(x.no||1e4)-(y.no||1e4)),kk=new Set();
     m=Object.assign({},m,{yolcular:all.map(y=>{let k=y.k;if(kk.has(k))k=k+'~'+(y.no||kk.size);kk.add(k);const o=Object.assign({},y,{k});delete o._sf;return o})})}
   /* diğer açık RITA sekmeleri de aynı veriyi alsın (yalnız bellek, BroadcastChannel; kaydedilmez) */
@@ -1606,7 +1609,7 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
   const f=D.F.find(x=>flNo(x)===no);
   const yeniUcus=window._qcSonNo!==no;window._qcSonNo=no;
   if(f){if((!m.takip||yeniUcus)&&!m._bc){D.cur=f;tab='ucus';setTimeout(()=>{D.cur=f;if(role){render();toast('Quick Check okundu: '+no)}},900)}
-    else if(role&&D.cur===f&&tab==='ucus'&&!document.querySelector('#veil:not([hidden])'))render()}else if(!m.takip)toast(no+' RITA uçuş listesinde yok');
+    else if(role&&D.cur===f&&tab==='ucus'&&!document.querySelector('#veil:not([hidden])'))render()}else if((!m.takip||yeniUcus)&&!m._bc){/* uçuş listede yoktu: Quick Check'ten eklenince ona geç */let n=0;const bak=()=>{const f2=D.F.find(x=>flNo(x)===no);if(f2){D.cur=f2;tab='ucus';if(role){render();toast('Quick Check okundu: '+no)}}else if(++n<10)setTimeout(bak,300)};setTimeout(bak,300)}
   return true}
 function yerimiMetin(t){if(!/^\s*\{[\s\S]*"kaynak"\s*:\s*"yerimi"/.test(t||''))return false;let m;try{m=JSON.parse(t)}catch(e){return false}
   const ok=yerimiAl(m);try{navigator.clipboard&&navigator.clipboard.writeText('')}catch(e){}return ok}
