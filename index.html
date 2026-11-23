@@ -676,7 +676,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 23.2';let SURUM_YENI=false;
+const SURUM='RITA 23.3';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1944,15 +1944,6 @@ const A={
  qcSayfa(d){QCK.ls=QCK.ls||{};QCK.ls[flNo(D.cur)]=+d.k||1;render()},
  yerimiYapistir(){if(!navigator.clipboard||!navigator.clipboard.readText){toast('Bu tarayıcı panoyu okuyamıyor; Ctrl+V ile yapıştırın');return}navigator.clipboard.readText().then(t=>{if(!yerimiMetin(t))toast('Panoda Quick Check verisi yok. Önce Quick Check’te RITA yer imine dokunun.')},()=>toast('Pano izni verilmedi'))},
  useBlk(d,el){D.useBlk=el.checked?1:0;if(assigned())assign();save();render();toast(el.checked?'Bloke koltuklar rical için kullanılabilir':'Bloke koltuklar kullanılmayacak')},
- demo(){const P=people(),find=n=>P.find(x=>x.n===n);
-  const key='ÖRNEK IST-ESB 18:00';D.FA=D.FA||{};D.FA[key]=Date.now();D.AC=D.AC||{};D.AC['ÖRNEK']={tip:'73H',ad:'Boeing 737-800',tarih:new Date().toISOString().slice(0,10),kaynak:'örnek'};
-  if(!D.F.includes(key))D.F.unshift(key);D.cur=key;delete D.C[key];
-  /* check-in'li (mavi) ve bloke (gri) koltuklar: örnek */
-  const S=D.S[key]={};/* mavi: check-in'li */['1A','2D','3C','5A','5B','5C','6D','6E','7A','8F','9B'].forEach(k=>S[k]=1);/* gri: bloke (gerekirse açılır) */['1C','1F','4A','4C','5D','5E','5F','10A','10B','10D','11A','11B','11C','11D','11E','11F'].forEach(k=>S[k]=2);
-  const L=[['Abdullah Gül',1],['Hakan Fidan',1],['Numan Kurtulmuş',2],['Mehmet Şimşek',1],['Selçuk Bayraktaroğlu',1],['Yaşar Güler',2],['Özgür Özel',1]].map(([n,pax])=>[find(n),pax]).filter(a=>a[0]);
-  const noUp=P.find(x=>!x.u&&!x.o&&x.r>=40&&x.r<300&&isActive(x.t));if(noUp)L.push([noUp,1]);
-  D.P[key]=L.slice(0,8).map(([x,pax],i)=>({key:norm(x.n),id:'d'+i+Date.now(),n:x.n,sub:x.t,rank:x.r||999,up:x.u||'',o:x.o||'',pax,t:Date.now()+i}));
-  tab='ucus';assign();save();render();toast('Örnek senaryo hazır: 8 rical yolcusu yerleştirildi')},
  ocrLast(){if(!OLAST||OLAST.cur!==D.cur)return toast('Bu uçuş için okunmuş fotoğraf yok');OGRID=OLAST.g;sheet('<h2>Okunan fotoğraf</h2><p class="sub">'+esc(D.cur)+' · Renkleri kontrol edin; değiştirirseniz yeniden uygulayın.</p><div id="ocrr"></div>');gridShow()},
  async htAdd(){const v=($('htn').value||'').toUpperCase().replace(/\s/g,'');if(!/^[A-Z]{3}-[A-Z]{3}$/.test(v))return toast('Hat kodunu IST-ADB biçiminde yazın');if(hatlar().includes(v))return toast('Bu hat zaten takipte');
   if(!HTH)return toast('Ortak kayıt yok');try{if(!Object.keys(HT).length&&!(RSTORE&&RSTORE.hatlar))await HTH.doc('IST-ESB').set({eklendi:new Date().toISOString().slice(0,10)});await HTH.doc(v).set({eklendi:new Date().toISOString().slice(0,10)})}catch(e){return toast(window.RITA_STANDALONE&&!ghTok()?'Önce Yönetim → Ortak kayıt anahtarı girin':'Kaydedilemedi')}
@@ -2178,7 +2169,7 @@ function durumHtml2(){let H=[];try{H=JSON.parse(localStorage.getItem(HATA_K)||'[
   return '<section class="panel"><h2 class="h">SİSTEM DURUMU</h2><dl class="kv">'+sat('Sürüm',esc(SURUM))+sat('Canlı uçuşlar',LIVE&&LIVE.guncelleme?esc(String(LIVE.guncelleme).replace('T',' ').slice(0,16))+' güncellendi':'bağlantı yok')
    +sat('TBMM listesi',TBL&&TBL.alindi?esc(String(TBL.alindi).replace('T',' ').slice(0,16)):'—')+sat('VIP fotoğrafları',fs.var+' / '+fs.tum+' kişi')+sat('Ortak kayıt',dbOk?'bağlı':'yalnız bu cihaz')+sat('Hata kaydı',H.length?H.length+' kayıt':'temiz')+'</dl>'
    +(H.length?'<details class="bilgi"><summary>Hata kayıtlarını göster</summary>'+H.map(h=>'<div class="ti" style="padding:4px 0;border-bottom:1px solid var(--line)"><span class="mono">'+esc(h.t.replace('T',' ').slice(0,16))+'</span> · '+esc(h.m)+'</div>').join('')+'<div class="row-btns" style="margin-top:8px"><button class="btn sm" data-a="hataSil" type="button">Kayıtları temizle</button></div></details>':'')
-   +'<div class="row-btns" style="margin-top:10px">'+(D.ADMB?'<span class="ani ok" style="margin:0">✓ Bu cihaza uçuş bildirimleri açık</span>':'<button class="btn sm gold" data-a="adminBildirim" type="button">Bu cihaza da uçuş bildirimleri gelsin</button>')+(D.F.some(f=>/^ÖRNEK/.test(f))?'<button class="btn sm dng" data-a="ornekSil" type="button">Örnek uçuşu sil</button>':'')+'</div></section>'}
+   +'<div class="row-btns" style="margin-top:10px">'+(D.ADMB?'<span class="ani ok" style="margin:0">✓ Bu cihaza uçuş bildirimleri açık</span>':'<button class="btn sm gold" data-a="adminBildirim" type="button">Bu cihaza da uçuş bildirimleri gelsin</button>')+(false?'':'')+'</div></section>'}
 Object.assign(A,{
  yazdir(){if(!ppl().length)return toast('Listede yolcu yok');let el=$('prt');if(!el){el=document.createElement('div');el.id='prt';document.body.appendChild(el)}el.innerHTML=yazdirHtml();setTimeout(()=>window.print(),50)},
  hataSil(){try{localStorage.removeItem(HATA_K)}catch(e){}render();toast('Hata kayıtları temizlendi')}
@@ -2363,7 +2354,7 @@ Object.assign(A,{
 });
 /* Atama → seçili uçuş: yön uçuştan gelir; önce atama, sonra düzenlenebilir VIP listesi, sonra elle bilgi */
 function opsSecHtml(f,V){const ge=gelisMi(f);opsYon=ge?'gelis':'gidis';const G=GOR().filter(a=>a.f===f&&a.gun===opsGun),P=PER(),ornek=/^ÖRNEK/.test(f);
-  return '<section class="panel" id="ops-sec"><div class="os-b"><div><div class="os-n mono">'+esc(f.split(' ')[0])+' · '+esc(rotaAd(f)||hatOf(f)||'')+'</div><span class="os-y '+(ge?'gelis':'gidis')+'">'+(ge?'GELİŞ · KARŞILAMA':'GİDİŞ · UĞURLAMA')+'</span>'+(ornek?' <span class="tag old">ÖRNEK</span>':'')+'</div><button class="btn sm" data-a="opsKapat" type="button" aria-label="Kapat">✕</button></div>'
+  return '<section class="panel" id="ops-sec"><div class="os-b"><div><div class="os-n mono">'+esc(f.split(' ')[0])+' · '+esc(rotaAd(f)||hatOf(f)||'')+'</div><span class="os-y '+(ge?'gelis':'gidis')+'">'+(ge?'GELİŞ · KARŞILAMA':'GİDİŞ · UĞURLAMA')+'</span>'+'</div><button class="btn sm" data-a="opsKapat" type="button" aria-label="Kapat">✕</button></div>'
    +saatSatir(f,opsGun)
    +'<div class="os-t">PERSONEL</div>'
    +(G.length?G.map(a=>{const per=P.find(x=>x.id===a.per)||{};return '<div class="uca-r"><span class="uca-a"><b>'+esc(per.ad||'—')+'</b><span>'+(a.gon?'Gönderildi '+new Date(a.gon).toTimeString().slice(0,5):'Gönderilmedi')+'</span></span><button class="btn sm" data-a="opsWa" data-k="'+a.id+'" type="button">Tekrar gönder</button><button class="btn sm dng" data-a="opsSil" data-k="'+a.id+'" type="button" aria-label="Atamayı kaldır">×</button></div>'}).join(''):'<p class="note" style="margin:2px 0 6px">Henüz personel atanmadı.</p>')
@@ -2373,13 +2364,13 @@ function opsSecHtml(f,V){const ge=gelisMi(f);opsYon=ge?'gelis':'gidis';const G=G
    +(V.length?V.map(p=>'<button type="button" class="li" data-a="opsPax" data-id="'+p.id+'"><span class="seatbadge'+(p.seat?(p.cab==='E'?' e':''):' none')+'" style="min-width:42px;padding:6px 4px;font-size:12.5px">'+esc(p.seat||'—')+'</span><span class="tx"><span class="nm">'+esc(p.n)+'</span><br><span class="ti">'+esc(String(p.sub||'').split(' · ')[0])+'</span>'+pxOzet(p,p.pax||1).replace(/<button[^>]*>Düzenle ›<\/button>/,'')+'</span><span class="pxdz">Düzenle ›</span></button>').join('')
      :'<p class="note">Bu uçuşta VIP yok. “Uçuş ekranında aç” ile ekleyin.</p>')
    +elleHtml(f)
-   +'<div class="row-btns" style="margin-top:12px"><button class="btn sm" data-a="opsOnizle" type="button">Personel kartını önizle</button>'+(ornek?'<button class="btn sm dng" data-a="ornekSil" type="button">Örnek uçuşu sil</button>':'<button class="btn sm dng" data-a="opsTemizle" type="button">Bu uçuşun VIP listesini temizle</button>')+'</div></section>'}
+   +'<div class="row-btns" style="margin-top:12px"><button class="btn sm" data-a="opsOnizle" type="button">Personel kartını önizle</button>'+('<button class="btn sm dng" data-a="opsTemizle" type="button">Bu uçuşun VIP listesini temizle</button>')+'</div></section>'}
 function ornekKaldir(){const k=D.F.filter(f=>/^ÖRNEK/.test(f));k.forEach(f=>{delete D.P[f];delete (D.S||{})[f];delete (D.FA||{})[f];D.GOR=GOR().filter(a=>a.f!==f)});D.F=D.F.filter(f=>!/^ÖRNEK/.test(f));if(D.AC)delete D.AC['ÖRNEK'];if(/^ÖRNEK/.test(D.cur||''))D.cur=D.F[0]||'';if(/^ÖRNEK/.test(opsF))opsF='';save()}
 Object.assign(A,{
  opsPax(d){if(D.cur!==opsF){D.cur=opsF;save()}A.pax({id:d.id})},
  opsUcusAc(){D.cur=opsF;save();tab='ucus';render();document.querySelector('main').scrollTop=0},
  opsKapat(){opsF='';render()},
- ornekSil(){if(!confirm('Örnek uçuş ve ona bağlı atamalar silinsin mi?'))return;ornekKaldir();render();toast('Örnek uçuş silindi')},
+
  opsTemizle(){if(!confirm(opsF.split(' ')[0]+' uçuşunun VIP listesi temizlensin mi?'))return;D.P[opsF]=[];save();render();toast('VIP listesi temizlendi')}
 });
 Object.assign(A,{
@@ -2389,7 +2380,7 @@ Object.assign(A,{
    const a={id:'g'+Date.now(),f,yon:gelisMi(f)?'gelis':'gidis',per:pid,gun:opsGun,not:'',t:Date.now()};GOR().push(a);save();const c=cakisma(pid,f,opsGun);render();A.opsWa({k:a.id});
    if(c)toast('Dikkat: bu personelin '+c.f.split(' ').pop()+' uçuşuyla saati çakışıyor');else if(gunSay(pid,opsGun)>6)toast('Dikkat: bu personele bugün '+gunSay(pid,opsGun)+' uçuş atandı')}
 });
-dbInit();sfInit();load();if(!D.m17){if(typeof ornekKaldir==='function')ornekKaldir();D.m17=1;save()}if(D.rmig){Object.values(D.P).forEach(L=>L.forEach(p=>{const x=people().find(y=>nk(y.n)===nk(p.n));if(x){p.rank=x.r;if(!p.up&&x.u)p.up=x.u}}));delete D.rmig;save()}if(!location.hash){try{const h=localStorage.getItem('rita-pk');if(h)history.replaceState(null,'',location.pathname+h)}catch(e){}}if(!gorevAc())showLogin();window.addEventListener('hashchange',()=>{if(/^#(gk?|p)=/.test(location.hash))gorevAc()});
+dbInit();sfInit();load();if(D.F.some(f=>/^ÖRNEK/.test(f)))ornekKaldir();if(D.rmig){Object.values(D.P).forEach(L=>L.forEach(p=>{const x=people().find(y=>nk(y.n)===nk(p.n));if(x){p.rank=x.r;if(!p.up&&x.u)p.up=x.u}}));delete D.rmig;save()}if(!location.hash){try{const h=localStorage.getItem('rita-pk');if(h)history.replaceState(null,'',location.pathname+h)}catch(e){}}if(!gorevAc())showLogin();window.addEventListener('hashchange',()=>{if(/^#(gk?|p)=/.test(location.hash))gorevAc()});
 
 </script>
 
