@@ -12,9 +12,13 @@
   var off=function(){try{return localStorage.getItem('rita-kur-x')==='1'}catch(e){return false}};
   if(inApp||off())return;
   var ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
-  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();ev=e;box.hidden=false});
-  if(ios){t.textContent='Safari’de Paylaş düğmesine, sonra “Ana Ekrana Ekle”ye dokunun.';b.hidden=true;box.hidden=false}
+  /* yalnız girişten sonra ve bir kez gösterilir; 15 sn sonra kendiliğinden kapanır */
+  var hazir=false,kapat=function(){box.hidden=true;try{localStorage.setItem('rita-kur-x','1')}catch(e){}};
+  var goster=function(){var app=document.getElementById('app');if(!hazir||!app||app.hidden||off()||!box.hidden)return;box.hidden=false;try{localStorage.setItem('rita-kur-x','1')}catch(e){}setTimeout(function(){box.hidden=true},15000)};
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();ev=e;hazir=true;goster()});
+  if(ios){t.textContent='Safari’de Paylaş düğmesine, sonra “Ana Ekrana Ekle”ye dokunun.';b.hidden=true;hazir=true}
+  var app=document.getElementById('app');if(app)new MutationObserver(function(){setTimeout(goster,1500)}).observe(app,{attributes:true,attributeFilter:['hidden']});
   b.onclick=function(){if(ev){ev.prompt();ev.userChoice.then(function(){box.hidden=true})}};
-  x.onclick=function(){box.hidden=true;try{localStorage.setItem('rita-kur-x','1')}catch(e){}};
+  x.onclick=kapat;
 })();
 </script>
