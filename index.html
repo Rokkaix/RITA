@@ -580,6 +580,11 @@ button,a,.li,.chip,.fchip,.seat,.qs,label{touch-action:manipulation;-webkit-tap-
  .stats .stat b{font-size:14px;font-family:inherit;font-variant-numeric:tabular-nums}.stats .stat span{font-size:12px;color:var(--muted)}
  .acline{padding:8px 12px}.flfind .field{padding:9px 12px;font-size:14px}
 }
+.flres{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden;margin-top:6px;max-height:340px;overflow-y:auto;box-shadow:0 6px 18px rgba(15,27,51,.08)}
+.flr{display:grid;grid-template-columns:52px 62px minmax(0,1fr) auto auto;gap:8px;align-items:center;border:0;border-bottom:1px solid var(--line);background:#fff;padding:9px 12px;text-align:left;font:inherit;font-size:13px;color:var(--ink);cursor:pointer;min-height:42px}
+.flr:last-child{border-bottom:0}.flr:hover,.flr:focus-visible{background:var(--navy-soft)}.flr.on{background:#eef3ff}
+.flr b{font-variant-numeric:tabular-nums}.flr .n{font-weight:700;color:var(--navy)}.flr .s{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.flr small{color:var(--muted);font-size:11.5px}
+.flr i{font-style:normal;font-size:10.5px;font-weight:700;border-radius:999px;padding:1px 7px}.flr i.g{background:#e7f6ee;color:#067647}.flr i.v{background:#fbeef0;color:var(--crim)}
 </style>
 
 <div id="login" class="gut" hidden>
@@ -732,7 +737,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 23.9';let SURUM_YENI=false;
+const SURUM='RITA 24.0';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1108,7 +1113,7 @@ function vUcus(){if(!D.cur){$('view').innerHTML='<section class="panel"><h2 clas
     const B=(k,l)=>'<button type="button" class="chip" data-a="hatF" data-k="'+esc(k)+'" aria-pressed="'+(hf===k)+'">'+l+'</button>';
     return(LIVE?'<p class="note" style="margin:0 0 8px">İstanbul THY uçuşları · şimdi ve önümüzdeki 12 saat · <b>'+n+'</b> uçuş'+(LIVE.guncelleme?' · güncellendi '+esc(String(LIVE.guncelleme).slice(11,16)):'')+'</p>':'')+
     '<div class="chips" style="margin-bottom:6px"><button type="button" class="chip" data-a="yonSec" data-k="gidis" aria-pressed="'+((window._yon||'gidis')==='gidis')+'">Gidiş</button><button type="button" class="chip" data-a="yonSec" data-k="gelis" aria-pressed="'+(window._yon==='gelis')+'">Geliş</button></div><div class="chips" style="margin-bottom:8px">'+B('','Tümü')+fav.map(h=>B(h,esc(aptAd(h.split('-')[1])))).join('')+B('ic','İç hat')+B('dis','Dış hat')+'</div>'})()+'<div class="strip">'+(D.F.filter(fOK).length?'':'<p class="note" style="margin:6px 0">Bu süzgeçte uçuş yok.</p>')+D.F.filter(fOK).map(f=>{const a=f.split(' '),t=acOf(f);return'<button type="button" class="fchip" data-a="flight" data-f="'+esc(f)+'" aria-pressed="'+(f===D.cur)+'"><b>'+esc(a[a.length-1])+'</b><span>'+esc(a[0])+'</span><span class="ac">'+esc(sehirOf(f))+(t?' · '+esc(t.tip):'')+'</span>'+(u=>u&&u.durum&&(u.durum_kod!=='S'||(u.gecikme||0)>=15)?'<span class="ac dur '+durumRenk(u)+'">'+esc(u.durum_kod==='S'?'+'+u.gecikme+' dk':u.durum)+'</span>':'')(liveRec(f))+'</button>'}).join('')+'</div>'+
-  '<div class="flfind"><input class="field" id="flq" placeholder="Uçuş no ya da şehir (örn. 2122, Londra)" autocomplete="off" aria-label="Sefer numarası ile ara"></div><div class="note" id="flmsg" style="margin-top:6px"></div>'+acLine()+(durumHtml(D.cur)?'<div style="margin-top:6px">'+durumHtml(D.cur)+'</div>':'')+
+  '<div class="flfind"><input class="field" id="flq" placeholder="Uçuş no ya da şehir (örn. 56, 2122, Londra, ESB)" autocomplete="off" aria-label="Sefer numarası ile ara"></div><div class="note" id="flmsg" style="margin-top:6px"></div>'+acLine()+(durumHtml(D.cur)?'<div style="margin-top:6px">'+durumHtml(D.cur)+'</div>':'')+
   '<div class="stats" style="margin-top:10px"><div class="stat"><b>'+n.bf+'/'+n.bt+'</b><span>Business boş</span></div><div class="stat"><b>'+n.ef+'/'+n.et+'</b><span>Ekonomi boş</span></div><div class="stat"><b>'+ppl().reduce((s,p)=>s+(p.pax||1),0)+'</b><span>Listedeki kişi</span></div></div></section>'+
   '<div class="ucols"><div class="ucol">'+ricalUyari()+canliPanel()+qcListe()+'<section class="panel"><h2 class="h">YOLCU EKLE</h2><input class="field" id="q-add" data-q="add" placeholder="İsim, unvan veya kurum yazın" value="'+esc(q.add)+'" autocomplete="off"><div id="res">'+resHtml()+'</div><p class="note">Türkçe/İngilizce harf fark etmez. <button class="btn sm" data-a="manual" type="button">Listede yok, elle ekle</button></p></section>'+
   '<section class="panel"><h2 class="h">RİCAL SIRASI VE KOLTUKLAR</h2><div id="pax">'+paxHtml()+'</div>'+(ppl().length?'<div class="row-btns" style="margin-top:12px"><button class="btn gold" data-a="ricalDuzen" type="button">Rical ve koltuk sıralamasına göre ayarla</button><button class="btn" data-a="yazdir" type="button">Yazdır / PDF</button><button class="btn" data-a="copy" type="button">Özeti kopyala</button><button class="btn dng" data-a="clearAll" type="button">Listeyi temizle</button></div>':'')+'<p class="note">Liste rical sırasındadır. Koltuklar her kabinde önden arkaya verilir. İki yolcunun yerini değiştirmek için sırayla iki koltuğa dokunun.</p>'+ucAtamaHtml()+'</section></div><div class="ucol">'+
@@ -1315,16 +1320,26 @@ function copyText(txt){const fb=()=>sheet('<h2>Özeti kopyalayın</h2><p class="
 const reassign=()=>{if(assigned())assign()};
 const findP=id=>ppl().find(x=>x.id===id);
 
-function flFind(v){const d=String(v).toUpperCase().replace(/\s/g,'').replace(/^(TK|THY)/,'').replace(/^0+(?=\d)/,'');const m=$('flmsg');if(!m)return;
-  if(!/^\d{1,4}$/.test(d)){const t=String(v).trim(),prev=window._hq||'';window._hq=t.length>=2?t:'';if(window._hq!==prev){if(window._hq&&!fOK(D.cur)){const f=D.F.find(fOK);if(f){D.cur=f;save()}}render();const i=$('flq');i.value=v;i.focus()}const mm=$('flmsg');if(mm)mm.textContent=window._hq?D.F.filter(fOK).length+' uçuş: '+window._hq:'';return}
-  if(d.length<2){m.textContent='';return}
-  const f=D.F.find(x=>flNo(x)==='TK'+d);
-  if(f){if(f!==D.cur){D.cur=f;q.add='';save();render();const i=$('flq');i.value='TK'+d;i.focus()}const mm=$('flmsg');if(mm)mm.innerHTML='<b style="color:var(--ok)">TK'+d+'</b> · '+esc(f.split(' ').pop())+(acOf(f)?' · '+esc(acOf(f).ad||acOf(f).tip):'');}
-  else{/* listede yok: günün TÜM uçuşlarında (data/ucuslar.json) ara, bulunursa listeye ekle ve aç */
-    const now=Date.now(),U=Object.values((LIVE&&LIVE.ucuslar)||{}).filter(u=>u.no==='TK'+d&&u.hat&&u.kalkis).sort((a,b)=>Math.abs(Date.parse(a.zaman)-now)-Math.abs(Date.parse(b.zaman)-now)),u=U[0];
-    if(u){const key=u.no+' '+u.hat+' '+u.kalkis;if(!D.F.includes(key)){D.F.push(key);D.F.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()))}D.FA=D.FA||{};D.FA[key]=now;if(u.tip){D.AC=D.AC||{};D.AC[u.no]={tip:u.tip,ad:(ACT[u.tip]||{}).ad||u.ad||u.tip,tarih:String(u.zaman).slice(0,10),kaynak:'FlightStats'}}
-      window._hf='';window._yon=u.yon==='gelis'?'gelis':'gidis';D.cur=key;q.add='';save();render();const i=$('flq');if(i){i.value='TK'+d;i.focus()}const mm=$('flmsg');if(mm)mm.innerHTML='<b style="color:var(--ok)">TK'+esc(d)+'</b> · '+esc(u.hat)+' '+esc(u.kalkis)+' · 6 saatten uzak olduğu için listeye eklendi';return}
-    m.innerHTML='<b style="color:var(--warn)">TK'+esc(d)+'</b> bugünkü THY uçuşlarında bulunamadı. <button class="btn sm" data-a="flightAddNo" data-k="TK'+esc(d)+'" type="button">Elle sefer ekle</button>'}}
+/* uçuş arama: numara ("56", "0056", "TK56", "tk 56"), şehir ya da havalimanı kodu; Türkçe/İngilizce harf farkı yok.
+   Sonuçlar arama kutusunun altında tıklanabilir liste olarak çıkar (ekran baştan çizilmez); günün tüm uçuşlarında aranır. */
+function flAday(v){const ham=String(v||'').trim();if(!ham)return[];const now=Date.now(),U=Object.values((LIVE&&LIVE.ucuslar)||{}).filter(u=>u.no&&u.hat&&u.kalkis);
+  const dm=/^(?:tk|thy)?\s*0*(\d{1,4})$/i.exec(ham.replace(/\s+/g,'')),T=toks(ham),out=[],gor=new Set();
+  const sayi=f=>flNo(f).replace(/^TK/,''),uyar=x=>{if(dm)return x.replace(/^TK/,'').startsWith(dm[1]);const W=norm(x).split(/[^a-z0-9]+/);return T.length&&T.every(w=>W.some(y=>y.startsWith(w)))};
+  const metF=f=>flNo(f)+' '+hatOf(f)+' '+sehirOf(f)+' '+((D.SH||{})[f]||'')+' '+hatOf(f).split('-').map(aptAd).join(' ')+' '+((acOf(f)||{}).tip||'');
+  const metU=u=>u.no+' '+u.hat+' '+(u.sehir||'')+' '+u.hat.split('-').map(aptAd).join(' ')+' '+(CTR[u.sehir]||'')+' '+(u.tip||'');
+  D.F.forEach(f=>{if(dm?uyar(flNo(f)):uyar(metF(f))){out.push({f,no:flNo(f),t:flT(f)||0,tam:dm&&sayi(f)===dm[1]});gor.add(flNo(f)+'|'+f.split(' ').pop())}});
+  U.forEach(u=>{const k=u.no+'|'+u.kalkis;if(gor.has(k))return;if(dm?uyar(u.no):uyar(metU(u))){gor.add(k);out.push({u,no:u.no,t:Date.parse(u.zaman)||0,tam:dm&&u.no.replace(/^TK/,'')===dm[1]})}});
+  return out.sort((a,b)=>(b.tam-a.tam)||(Math.abs(a.t-now)-Math.abs(b.t-now))).slice(0,12)}
+function flFind(v){const m=$('flmsg');if(!m)return;const L=window._flL=flAday(v);
+  if(!String(v||'').trim()){m.innerHTML='';return}
+  if(!L.length){const d=(/(\d{1,4})/.exec(v)||[])[1];m.innerHTML='<span style="color:var(--warn)">Bugünkü THY uçuşlarında bulunamadı.</span>'+(d?' <button class="btn sm" data-a="flightAddNo" data-k="TK'+esc(String(+d))+'" type="button">TK'+esc(String(+d))+' elle ekle</button>':'');return}
+  m.innerHTML='<div class="flres" role="listbox">'+L.map((x,i)=>{const f=x.f,u=x.u,saat=f?f.split(' ').pop():u.kalkis,hat=f?hatOf(f):u.hat,sh=f?sehirOf(f):(c=>APT[c]||CTR[u.sehir]||u.sehir||c)(u.yon==='gelis'?u.hat.split('-')[0]:u.hat.split('-')[1]),tp=f?(acOf(f)||{}).tip:u.tip,vp=f?(D.P[f]||[]).length:0,ge=f?gelisMi(f):u.yon==='gelis';
+    return'<button type="button" class="flr'+(f&&f===D.cur?' on':'')+'" data-a="flSec" data-i="'+i+'"><b>'+esc(saat)+'</b><span class="n">'+esc(x.no)+'</span><span class="s">'+esc(sh)+' <small>'+esc(hat.replace('-',' → '))+(tp?' · '+esc(tp):'')+'</small></span>'+(ge?'<i class="g">geliş</i>':'')+(vp?'<i class="v">'+vp+' VIP</i>':'')+'</button>'}).join('')+'</div>'}
+function flSecAc(x){if(!x)return;let key=x.f;
+  if(!key){const u=x.u;key=u.no+' '+u.hat+' '+u.kalkis;if(!D.F.includes(key)){D.F.push(key);D.F.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()))}D.FA=D.FA||{};D.FA[key]=Date.now();
+    if(u.tip){D.AC=D.AC||{};D.AC[u.no]={tip:u.tip,ad:(ACT[u.tip]||{}).ad||u.ad||u.tip,tarih:String(u.zaman).slice(0,10),kaynak:'FlightStats'}}D.FT=D.FT||{};D.FT[key]=u.zaman;D.SH=D.SH||{};D.SH[key]=u.sehir||''}
+  window._hf='';window._hq='';window._yon=gelisMi(key)?'gelis':'gidis';D.cur=key;q.add='';save();render();toast(flNo(key)+' açıldı');
+  setTimeout(()=>{const c=document.querySelector('.fchip[aria-pressed="true"]');if(c)c.scrollIntoView({block:'nearest',inline:'center'})},50)}
 /* ---------- hatlar ---------- */
 const APT={IST:'İstanbul',SAW:'İstanbul SAW',ESB:'Ankara',ADB:'İzmir',AYT:'Antalya',DLM:'Dalaman',BJV:'Bodrum',TZX:'Trabzon',DIY:'Diyarbakır',GZT:'Gaziantep',ERZ:'Erzurum',VAN:'Van',KYA:'Konya',ASR:'Kayseri',SZF:'Samsun',COV:'Adana-Mersin',ADA:'Adana',HTY:'Hatay',MLX:'Malatya',EZS:'Elazığ',GNY:'Şanlıurfa',MQM:'Mardin',BAL:'Batman',KSY:'Kars',ERC:'Erzincan',VAS:'Sivas',DNZ:'Denizli',EDO:'Balıkesir',BZI:'Balıkesir',NAV:'Kapadokya',KCM:'Kahramanmaraş',AJI:'Ağrı',MSR:'Muş',BGG:'Bingöl',IGD:'Iğdır',NOP:'Sinop',ONQ:'Zonguldak',KFS:'Kastamonu',TJK:'Tokat',OGU:'Ordu-Giresun',RZV:'Rize-Artvin',GZP:'Gazipaşa',USQ:'Uşak',KZR:'Zafer',ISE:'Isparta',YEI:'Bursa',CKZ:'Çanakkale',ECN:'Lefkoşa'};
 const aptAd=c=>APT[c]||c;
@@ -1602,10 +1617,19 @@ function yerimiMetin(t){if(!/^\s*\{[\s\S]*"kaynak"\s*:\s*"yerimi"/.test(t||''))r
 function kabinOgren(K,tip){const R={};Object.keys(K).forEach(k=>{const m=/^(\d{1,2})([A-K])$/.exec(k);if(m)(R[+m[1]]=R[+m[1]]||new Set()).add(m[2])});
   const rows=Object.keys(R).map(Number).sort((a,b)=>a-b);if(rows.length<20)return null;
   const all=new Set();rows.forEach(r=>R[r].forEach(l=>all.add(l)));
-  if([...all].some(l=>'ABCDEF'.indexOf(l)<0)){/* GENİŞ GÖVDE: harf/koridor dizilimi uçak tipinden; business sıra sayısı, son sıra, olmayan sıra/koltuklar haritadan */
-    const t=ttGet(tip||'');if(!t)return null;const BL=parseL(t.b).l,EL=parseL(t.e).l;if([...all].some(l=>BL.indexOf(l)<0&&EL.indexOf(l)<0))return null;
+  if([...all].some(l=>'ABCDEF'.indexOf(l)<0)){/* GENİŞ GÖVDE: harf/koridor dizilimi uçak tipinden; business sıra sayısı, son sıra, olmayan sıra/koltuklar haritadan.
+       Tip bilinmiyorsa ya da harita tiple uyuşmuyorsa (uçak değişmiş) düzen DOĞRUDAN haritadan çıkarılır. */
+    const genis=()=>{const mx=Math.max(...rows.map(r=>R[r].size)),EL=[...new Set(rows.filter(r=>R[r].size===mx).flatMap(r=>[...R[r]]))].sort();
+      let biz=0;for(const r of rows){if(R[r].size<mx*0.8)biz=r;else break}
+      const BL=[...new Set(rows.filter(r=>r<=biz).flatMap(r=>[...R[r]]))].sort();
+      const grup=L=>[L.filter(l=>l<='C'),L.filter(l=>l>='D'&&l<='G'),L.filter(l=>l>='H')].filter(g=>g.length).map(g=>g.join('')).join(' ');
+      const last=rows[rows.length-1],atla=[],yok=[];
+      for(let r=1;r<=last;r++){if(!R[r]){atla.push(r);continue}for(const l of (r<=biz?BL:EL))if(!R[r].has(l))yok.push(r+l)}
+      return{b:biz?grup(BL):grup(EL),e:grup(EL),biz,last,stub:0,atla:atla.join(' '),yok:yok.join(' '),t:Date.now()}};
+    const t=ttGet(tip||'');if(!t)return genis();const BL=parseL(t.b).l,EL=parseL(t.e).l;if([...all].some(l=>BL.indexOf(l)<0&&EL.indexOf(l)<0))return genis();
+    {const mx=Math.max(...rows.map(r=>R[r].size)),ES=new Set(rows.filter(r=>R[r].size===mx).flatMap(r=>[...R[r]]));if(ES.size!==EL.length||EL.some(l=>!ES.has(l)))return genis()}
     let biz=0;for(const r of rows){const L=[...R[r]];if(L.length&&L.every(l=>BL.includes(l))&&L.length<EL.length)biz=r;else break}
-    if(!biz)return null;const last=rows[rows.length-1],atla=[],yok=[];
+    if(!biz)return genis();const last=rows[rows.length-1],atla=[],yok=[];
     for(let r=1;r<=last;r++){if(!R[r]){atla.push(r);continue}for(const l of (r<=biz?BL:EL))if(!R[r].has(l))yok.push(r+l)}
     const mk=+t.biz===biz&&+t.last===last;const o={b:t.b,e:t.e,biz,last,stub:0,atla:atla.join(' '),yok:yok.join(' '),t:Date.now()};if(mk){o.x=t.x||'';o.mt=t.mt||'';o.kn=t.kn||''}return o}
   const ls=r=>[...R[r]].sort().join('');let biz=0,pat='';
@@ -1899,6 +1923,7 @@ const A={
  seg(d){seg[d.t]=d.k;render()},
  lock(){logout()},close(){closeSheet()},
  flight(d){D.cur=d.f;q.add='';save();render()},
+ flSec(d){flSecAc((window._flL||[])[+d.i])},
  flightAdd(){sheet('<h2>Sefer ekle</h2><label class="lbl" for="f-fn">Sefer numarası</label><input class="field" id="f-fn" placeholder="TK2190"><label class="lbl" for="f-rt">Hat</label><input class="field" id="f-rt" value="'+esc(hatOf(D.cur)||'IST-ESB')+'" placeholder="IST-ESB" autocapitalize="characters"><label class="lbl" for="f-tm">Saat</label><input class="field" id="f-tm" placeholder="18:00"><div class="row-btns" style="margin-top:14px"><button class="btn pri" data-a="flightSave" type="button">Ekle</button><button class="btn dng" data-a="flightDel" type="button">Seçili seferi sil</button></div>')},
  flightSave(){const fn=$('f-fn').value.trim().toUpperCase(),rt=$('f-rt').value.trim().toUpperCase(),tm=$('f-tm').value.trim();if(!fn||!tm)return toast('Sefer numarası ve saat gerekli');const f=fn+' '+(rt||'IST-ESB')+' '+tm;if(D.F.indexOf(f)<0)D.F.push(f);D.FA=D.FA||{};D.FA[f]=Date.now();D.F.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()));D.cur=f;save();closeSheet();render();toast('Sefer eklendi')},
  flightDel(){if(!D.F.length)return toast('Silinecek sefer yok');const f=D.cur;D.F=D.F.filter(x=>x!==f);delete D.S[f];delete D.P[f];delete D.C[f];D.cur=D.F[0]||'';save();closeSheet();render();toast(f.split(' ')[0]+' silindi')},
@@ -2122,11 +2147,11 @@ async function ocrDosyalar(files){const pe=$('ocrp');if(!pe)return;
       $('ocrt').value='';pe.innerHTML='<b>Toplam '+acc.n+' fotoğraf okundu</b> · '+seatsArr.length+' koltuk birleştirildi. Başka sayfa varsa “Bir fotoğraf daha ekle”ye basın; bitince renkleri kontrol edip uygulayın.';ocrShow();return}
     OGRID=null;await w.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});const r=await w.recognize(sonCv);$('ocrt').value=r.data.text;const L=parseSeats(r.data.text),tot=range(1,cfg().last).length;
     if(L.length&&L.length<0.85*tot){ocrAuto(L,null);return}pe.textContent=L.length?'Neredeyse tüm koltuklar okundu; bu bir koltuk haritası olabilir. Kontrol edip uygulayın.':'Koltuk bulunamadı. Fotoğrafı daha yakından ve düz çekin.';ocrShow()}catch(err){pe.textContent='Fotoğraf okunamadı. Tekrar deneyin ya da metni elle yazın.'}}
-addEventListener('input',e=>{if(e.target.id==='ocrt'){OGRID=null;ocrShow();return}if(e.target.dataset&&e.target.dataset.ocat){const C=ocrCats();C[e.target.dataset.ocat]=e.target.checked?1:0;try{const o={};Object.keys(C).forEach(k=>o[k]=C[k]);localStorage.setItem('rita-ocr-cat3',JSON.stringify(o))}catch(x){}gridShow();return}if(e.target.id==='flq'){const v=e.target.value;clearTimeout(window._flT);window._flT=setTimeout(()=>flFind(v),/^\s*(tk|thy)?\s*\d/i.test(v)?70:200);return}const k=e.target.dataset&&e.target.dataset.q;if(!k)return;const val=e.target.value;q[k]=val;
+addEventListener('input',e=>{if(e.target.id==='ocrt'){OGRID=null;ocrShow();return}if(e.target.dataset&&e.target.dataset.ocat){const C=ocrCats();C[e.target.dataset.ocat]=e.target.checked?1:0;try{const o={};Object.keys(C).forEach(k=>o[k]=C[k]);localStorage.setItem('rita-ocr-cat3',JSON.stringify(o))}catch(x){}gridShow();return}if(e.target.id==='flq'){const v=e.target.value;clearTimeout(window._flT);window._flT=setTimeout(()=>flFind(v),90);return}const k=e.target.dataset&&e.target.dataset.q;if(!k)return;const val=e.target.value;q[k]=val;
   clearTimeout(window._qT);window._qT=setTimeout(()=>{
   if(k==='add')$('res')&&($('res').innerHTML=resHtml());else if(k==='ri'){lim.ri=60;$('list-ri')&&($('list-ri').innerHTML=riList())}else if(k==='ku'){lim.ku=60;$('list-ku')&&($('list-ku').innerHTML=kuList())}else if(k==='rl')$('list-rl')&&($('list-rl').innerHTML=rlList());else if(k==='up')$('list-up')&&($('list-up').innerHTML=upList());else if(k==='nt')$('list-nt')&&($('list-nt').innerHTML=ntList());else if(k==='km')$('list-km')&&($('list-km').innerHTML=kmList());else if(k==='c9')$('list-c9')&&($('list-c9').innerHTML=c9Body());else if(k==='ops'){opsQ=val;$('ops-fl')&&($('ops-fl').innerHTML=opsFlHtml())}else if(k==='per'){perQ=val;$('per-l')&&($('per-l').innerHTML=perListe())}},80)});
 document.addEventListener('change',e=>{if(e.target.id==='ops-d'&&e.target.value){opsGun=e.target.value;render()}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('veil').hidden)closeSheet()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('veil').hidden)closeSheet();if(e.key==='Enter'&&e.target&&e.target.id==='flq'){e.preventDefault();clearTimeout(window._flT);window._flL=flAday(e.target.value);flSecAc(window._flL[0])}});
 
 /* ---------- giriş ---------- */
 let lockT;function bump(){clearTimeout(lockT);if(role)lockT=setTimeout(logout,(D.lock||10)*60000)}
