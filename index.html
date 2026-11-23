@@ -551,6 +551,35 @@ button,a,.li,.chip,.fchip,.seat,.qs,label{touch-action:manipulation;-webkit-tap-
 #pax .li.pr .pxdz{display:none}#pax .li.pr .pxoz:not(:has(i)){display:none}
 #pax .li.pr .hit .nm::after{content:" ›";color:#98a2b3;font-weight:600}
 #pax .li.pr .upn{display:block;line-height:1.5}#pax .li.pr .upn .y{margin-right:6px}#pax .li.pr .upn .bk{display:inline-block;margin-top:3px}#pax .li.pr .upn .w{margin-left:6px}#pax .li.pr .hit{padding-bottom:0}
+/* açılır kartlar (yolcu kartı vb.): sade ve küçük */
+#sheet{font-size:13.5px;line-height:1.45}#sheet h2{font-size:16px;font-weight:700;letter-spacing:0}#sheet .sub{font-size:12.5px;color:var(--muted)}
+#sheet .note{font-size:12px}#sheet .lbl{font-size:11.5px;font-weight:600;color:var(--muted);margin:10px 0 4px}
+#sheet .field{padding:8px 11px;min-height:38px;border-radius:9px}
+#sheet .btn{padding:8px 14px;font-size:13px;min-height:36px;border-radius:9px}#sheet .btn.sm{padding:5px 10px;font-size:12px;min-height:30px}
+#sheet .pft{width:56px;height:70px;border-radius:10px;flex:none}
+.opsk{border:1px solid var(--line);border-radius:12px;padding:10px 12px 12px;margin-top:12px;background:var(--soft)}
+.opsk-b{font:700 10px var(--ui);letter-spacing:.1em;color:var(--muted);margin-bottom:2px}
+.stp{gap:6px;margin-top:8px}.stp span{font-weight:600;font-size:13px}
+.stp button{width:32px;height:32px;border-radius:8px;font-size:16px;font-weight:600;color:var(--ink);line-height:1}
+.stp input{width:40px;height:32px;font-size:14px;font-weight:700;border-radius:8px;background:#fff}
+.vy{gap:4px;margin-top:8px}.vy>span{font-weight:600;font-size:13px;min-width:100px}
+.vy label{padding:5px 11px;border-radius:8px;font-weight:600;font-size:12.5px;gap:5px;background:#fff;min-height:32px;cursor:pointer}
+.vy label input{width:13px;height:13px;margin:0}
+.vy label:has(input:checked){background:var(--navy,#1d3461);color:#fff}
+.opsk .lbl{margin-top:10px}.opsk .field{background:#fff}
+.digr{margin-top:12px}.digr summary{font-size:12.5px;font-weight:600}
+@media (max-width:600px){#sheet .field{font-size:16px}.stp input{font-size:16px}}
+@media (min-width:900px){#veil{align-items:center}#sheet{border-radius:14px;max-height:86vh;max-width:620px;padding:20px 22px;box-shadow:0 20px 50px rgba(15,26,46,.25)}
+ .opsk{display:grid;grid-template-columns:1fr 1fr;column-gap:22px}.opsk>.opsk-b{grid-column:1/3}.opsk>.lbl,.opsk>.field,.opsk>.vy:has(input[name="f-bs"]){grid-column:1/3}}
+/* masaüstü sunum düzeni */
+.hc b{font-family:inherit}
+@media (min-width:900px){
+ #view>section.panel:first-child>.chips{display:inline-flex;margin:0 10px 10px 0!important;vertical-align:middle}
+ #view>section.panel:first-child>.note:first-of-type{margin-bottom:10px}
+ .stats{display:flex;gap:8px;flex-wrap:wrap}.stats .stat{display:flex;align-items:baseline;gap:6px;padding:6px 12px;border-radius:9px;background:#fff}
+ .stats .stat b{font-size:14px;font-family:inherit;font-variant-numeric:tabular-nums}.stats .stat span{font-size:12px;color:var(--muted)}
+ .acline{padding:8px 12px}.flfind .field{padding:9px 12px;font-size:14px}
+}
 </style>
 
 <div id="login" class="gut" hidden>
@@ -703,7 +732,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 23.6';let SURUM_YENI=false;
+const SURUM='RITA 23.7';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1012,7 +1041,7 @@ function bilgiKatla(kok){kok.querySelectorAll('p.note').forEach(n=>{if(n.closest
 function upKaynak(u){u=String(u||'');return/^Business bileti/.test(u)?'Quick Check':/^CIC90/.test(u)?'CIC90 / 95-UPGRADE':/^THY Upgrade/.test(u)?'THY Upgrade Sıralaması':/^Eşi ·/.test(u)?'Eşi hakkı':'Rical upgrade listesi'}
 const bkOk=p=>{const m=(D.BK||{})[D.cur]||{};return!!p.seat&&m[p.key]===p.seat};
 function whyKisa(p,any){if(!any)return p.up?'':'Upgrade hakkı yok';let w=p.why||'';const kes=a=>{if(w.startsWith(a)){w=w.slice(a.length).replace(/^ · /,'');return 1}};
-  kes('Business · '+p.up)||kes('Upgrade hakkı var ('+p.up+') ancak business dolu, ekonomiye alındı');return w}
+  kes('Business · '+p.up)||kes('Upgrade hakkı var ('+p.up+') ancak business dolu, ekonomiye alındı');return w.replace(/ ?·? ?VIP olarak olması gereken koltuk: [0-9A-K]+ \((dolu|boş)\)/,'').replace(/^ · /,'')}
 function upNot(p){if(p.ek||!p.up)return'';const biz=p.cab==='B',t=String(p.up||'').replace(/^CIC90 · |^Eşi · /,'');
   return'<div class="upn"><span class="y">Upgrade</span><span class="m">'+esc(upKaynak(p.up))+' · '+esc(t)+'</span>'
     +(biz?(bkOk(p)?'<button type="button" class="bk ok" data-a="bkOk" data-id="'+p.id+'">Kontrol edildi ✓</button>':'<button type="button" class="bk" data-a="bkOk" data-id="'+p.id+'">Business kontrolü · Onayla</button>')
