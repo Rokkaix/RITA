@@ -68,7 +68,7 @@ td{border-bottom:1px solid var(--line);padding:6px;vertical-align:top}
 .kt.soft{background:#df7a1e;color:#fff;box-shadow:none}
 .kt.vip{background:var(--vip);color:#1d1600;box-shadow:none}
 .kt.on{outline:3px solid var(--oneri);outline-offset:1px}
-.kt.bloke::after,.kt.soft::after{content:"🔒";position:absolute;left:-4px;bottom:-5px;font-size:9px;line-height:1;filter:drop-shadow(0 0 1px #fff)}
+.kt.bloke::after,.kt.soft::after{content:"";width:6px;height:6px;border-radius:1px;background:#f5c542;box-shadow:0 0 0 1px #5a4500;position:absolute;left:-2px;bottom:-5px;font-size:9px;line-height:1;filter:drop-shadow(0 0 1px #fff)}
 .kt.yeni{background:var(--vip);color:#1d1600;box-shadow:none}
 .kt.eski{background:var(--bos);color:#98a2b3;box-shadow:inset 0 0 0 1px #c4c4c4;text-decoration:line-through}
 .upy{color:#067647;font-weight:700}
@@ -109,7 +109,7 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:10px}
   <section>
     <h2>VIP LİSTESİ VE KOLTUK ÖNERİSİ <span class="sp"></span><span class="not" id="vipSay"></span></h2>
     <div class="satirlar" style="gap:14px;margin:0 0 8px">
-      <span class="not">🔒 <b>Business'ta bloke her zaman kaldırılır:</b> Business kuralı olan VIP, boş ya da bloke fark etmeksizin business'ta en öndeki koltuğa önerilir ("bloke kaldırılmalı"). Diğerlerine ekonomide yalnız boş koltuk.</span>
+      <span class="not"><b>Business'ta bloke her zaman kaldırılır:</b> Business kuralı olan VIP, boş ya da bloke fark etmeksizin business'ta en öndeki koltuğa önerilir ("bloke kaldırılmalı"). Diğerlerine ekonomide yalnız boş koltuk.</span>
     </div>
     <div id="oneriNot"></div>
     <div class="tablo"><table>
@@ -137,8 +137,8 @@ footer{text-align:center;color:var(--muted);font-size:11px;padding:10px}
       <span><i style="background:var(--bos);box-shadow:inset 0 0 0 1px #c4c4c4"></i>Boş</span>
       <span><i style="background:var(--son)"></i>Boş (en son verilecek)</span>
       <span><i style="background:var(--dolu)"></i>Dolu</span>
-      <span><i style="background:var(--bloke)"></i>Bloke 🔒</span>
-      <span><i style="background:#df7a1e"></i>Soft bloke 🔒</span>
+      <span><i style="background:var(--bloke)"></i>Bloke</span>
+      <span><i style="background:#df7a1e"></i>Soft bloke</span>
       <span><i style="background:var(--vip)"></i>VIP (şu anki koltuğu)</span>
       <span><i style="background:#fff;outline:2px solid var(--oneri)"></i>Öneri</span>
       <span><i style="background:repeating-linear-gradient(45deg,#f2f2f2,#f2f2f2 3px,#e0e0e0 3px,#e0e0e0 6px)"></i>Okunmadı</span>
@@ -426,9 +426,9 @@ function vipCiz() {
       el("td", {}, el("b", { text: String(i + 1) }), Number.isFinite(x.p) ? el("div", { class: "not", text: "öncelik " + x.p }) : el("div", { class: "not", text: "kural yok" })),
       el("td", {}, el("b", { text: y.soyad }), y.adBas ? " " + y.adBas + "." : "", y.sinif ? el("div", { class: "not", text: y.sinif === "C" ? "Business (C)" : y.sinif === "Y" ? "Ekonomi (Y)" : "Sınıf " + y.sinif }) : null),
       el("td", { class: "mono", text: y.koltuk || "—" }),
-      el("td", {}, !o ? el("span", { class: "not", text: "boş koltuk yok" }) : O.ciYer.has(y.k) ? el("span", {}, el("span", { class: "ayni", text: "yerinde · check-in ✔" }), O.alt.has(y.k) ? el("div", { class: "not", text: "olması gereken: " + O.alt.get(y.k) }) : null) : o === y.koltuk ? el("span", { class: "ayni", text: "yerinde kalsın" }) : el("span", {}, el("span", { class: "oneri mono", title: (i + 1) + ". sıra → " + o, text: "→ " + o }), O.blk.has(o) ? el("span", { class: "blkac", text: "🔒 bloke kaldırılmalı" }) : null)),
+      el("td", {}, !o ? el("span", { class: "not", text: "boş koltuk yok" }) : O.ciYer.has(y.k) ? el("span", {}, el("span", { class: "ayni", text: "yerinde · check-in ✔" }), O.alt.has(y.k) ? el("div", { class: "not", text: "olması gereken: " + O.alt.get(y.k) }) : null) : o === y.koltuk ? el("span", { class: "ayni", text: "yerinde kalsın" }) : el("span", {}, el("span", { class: "oneri mono", title: (i + 1) + ". sıra → " + o, text: "→ " + o }), O.blk.has(o) ? el("span", { class: "blkac", text: "bloke kaldırılmalı" }) : null)),
       el("td", {}, el("span", { class: "etiket " + (y.ci ? "ci" : "yok"), text: y.ci ? "yapıldı" : "yok" })),
-      el("td", { class: "not" }, x.biz || y.sinif === "C" ? el("span", { class: "upy", text: x.biz ? "⬆ Business hakkı (kural: " + x.kural + ") · kontrol sizde" : "⬆ Business bileti (C sınıfı) · kontrol sizde" }) : el("span", { text: x.kural ? "⬇ Business hakkı yok (kural: " + x.kural + ") · ekonomi" : "⬇ Kural yok · ekonomi" })),
+      el("td", { class: "not" }, x.biz || y.sinif === "C" ? el("span", { class: "upy", text: x.biz ? "Business hakkı var (kural: " + x.kural + ") · kontrol sizde" : "Business bileti (C sınıfı) · kontrol sizde" }) : el("span", { text: x.kural ? "Business hakkı yok (kural: " + x.kural + ") · ekonomi" : "Kural yok · ekonomi" })),
       el("td", { class: "not", text: y.not })
     ));
   });
