@@ -544,13 +544,13 @@ $("akisTemizle").addEventListener("click", () => { akis = akis.filter((o) => o.u
 let demoAcik = false, demoZaman = null;
 const DEMO = "TK0000 / DEMO";
 function demoBaslat() {
-  const notlar = ["!VIP! ORNEK BAKAN", "!VIP! TBMM BASKAN VEKILI", "!VIP! MILLETVEKILI", "!VIP! MILLETVEKILI", "!VIP! OZEL KALEM", "!VIP! PROTOKOL GOREVLISI", "!VIP! PROTOKOL GOREVLISI", "!VIP! ORNEK KURUM MISAFIRI"];
+  const notlar = ["!VIP! DENEME BAKAN", "!VIP! TBMM BASKAN VEKILI", "!VIP! MILLETVEKILI", "!VIP! MILLETVEKILI", "!VIP! OZEL KALEM", "!VIP! PROTOKOL GOREVLISI", "!VIP! PROTOKOL GOREVLISI", "!VIP! ORNEK KURUM MISAFIRI"];
   const hepsi = koltukSirasi().map((s) => s.k), koltuklar = {};
   hepsi.forEach((k, i) => { const r = (i * 7919) % 100; koltuklar[k] = r < 55 ? "dolu" : r < 80 ? "bos" : r < 88 ? "bos-son" : "bloke"; });
   const ekoBos = hepsi.filter((k) => parseInt(k, 10) > DUZEN.biz + 3);
   const yolcular = notlar.map((n, i) => {
     const k = ekoBos[i * 9 % ekoBos.length]; koltuklar[k] = "dolu";
-    return { k: "ORNEK" + (i + 1) + "|X|", soyad: "ORNEK" + (i + 1), adBas: String.fromCharCode(65 + i), koltuk: k, ci: i % 3 !== 0, sinif: "Y", not: n };
+    return { k: "DENEME" + (i + 1) + "|X|", soyad: "DENEME" + (i + 1), adBas: String.fromCharCode(65 + i), koltuk: k, ci: i % 3 !== 0, sinif: "Y", not: n };
   });
   isle({ kaynak: "eklenti", tur: "tam", sekme: -1, ucus: { no: "TK0000", tarih: "DEMO" }, yolcular, koltuklar, zaman: Date.now() });
   UCUSLAR.get(DEMO).demo = true; secili = DEMO; hepsiniCiz();

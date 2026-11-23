@@ -13,7 +13,7 @@ table.k td.bos{background:rgb(236,236,236)}table.k td.ci{background:rgb(31,58,12
 .bilgi{background:#fff7d6;border:1px solid #e8d27a;border-radius:8px;padding:10px;margin-bottom:12px}
 button{font:inherit;font-weight:700;padding:10px 14px;border-radius:8px;border:0;background:#14213d;color:#fff;min-height:40px;cursor:pointer}
 </style></head><body>
-<div class="ust">DENEME — Quick Check benzeri sayfa<small>Gerçek değildir · koltuklar uydurmadır · kişiler RITA'nın örnek uçuşundaki kamuya açık makamlardır</small></div>
+<div class="ust">DENEME — Quick Check benzeri sayfa<small>Gerçek değildir · koltuklar uydurmadır · kişiler kamuya açık makamlardır</small></div>
 <main>
 <div class="bilgi">Yer imini kurduysanız şimdi ona dokunun. Kurmadıysanız: <button id="calistir" type="button">Yer imi gibi çalıştır</button><br><small>Liste 3 sayfadır. Yer imine bir kez dokunduktan sonra listenin altındaki <b>2</b> ve <b>3</b>’e tıklayın: o sayfalar RITA’ya kendiliğinden gider.</small></div>
 <div class="kutu"><b id="ucus"></b></div>
@@ -28,10 +28,10 @@ document.getElementById("ucus").textContent="Uçuş: TK0001 / "+String(d.getDate
 var SY=[[["DEMO01","","02A","","","✔","C","KURTULMUS","NUMAN","!VIP! TBMM BASKANI"],
 ["DEMO02","","09D","","","","Y","SIMSEK","MEHMET","!VIP! HAZINE VE MALIYE BAKANI"],
 ["DEMO03","","14C","","","✔","Y","FIDAN","HAKAN","!VIP! DISISLERI BAKANI"],
-["DEMO07","","20F","","","✔","Y","ORNEKUC","VELI","NORMAL YOLCU"]],
+["DEMO07","","20F","","","✔","Y","DENEMEUC","VELI","NORMAL YOLCU"]],
 [["DEMO04","","18E","","","","Y","GULER","YASAR","!VIP! MILLI SAVUNMA BAKANI"],
-["DEMO05","","15A","","","✔","Y","ORNEKBIR","ALI","!VIP! TBMM BASKANI KORUMASI EMN"]],
-[["DEMO06","","16B","","","","Y","ORNEKIKI","AYSE","!VIP! OZEL KALEM MUDURU"]]];
+["DEMO05","","15A","","","✔","Y","DENEMEBIR","ALI","!VIP! TBMM BASKANI KORUMASI EMN"]],
+[["DEMO06","","16B","","","","Y","DENEMEIKI","AYSE","!VIP! OZEL KALEM MUDURU"]]];
 var tb=document.getElementById("liste"),SAY=SY.length;
 function sayfaGoster(n){while(tb.firstChild)tb.removeChild(tb.firstChild);var bas=0;for(var i=0;i<n-1;i++)bas+=SY[i].length;
  SY[n-1].forEach(function(r,i){var tr=document.createElement("tr");[String(bas+i+1)].concat(r).forEach(function(v){var td=document.createElement("td");td.textContent=v;tr.appendChild(td)});tb.appendChild(tr)});

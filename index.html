@@ -703,7 +703,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 23.5';let SURUM_YENI=false;
+const SURUM='RITA 23.6';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1533,6 +1533,7 @@ try{if(!window.name)window.name='rita_qc'}catch(e){}
 function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Check verisi okunamadı');return false}const m0=m;
   const imza=JSON.stringify([m.ucus,m.yolcular,m.koltuklar]);if(ack)ack();if(imza===YERIMI_SON)return true;YERIMI_SON=imza;
   if(!m.ucus||!m.ucus.no){toast('Quick Check sayfasında uçuş numarası bulunamadı');return false}
+  if(!(+m.surum>=4)&&!window._ymEski){window._ymEski=1;setTimeout(()=>toast('Yer imi eski sürüm: rokkaix.github.io/RITA/yerimi sayfasından bir kez yeniden kurun'),1600)}
   const no=m.ucus.no;
   /* Çok sayfalı VIP listesi: Quick Check'in satır numarası (1–10, 11–20…) esas — sayfa numarası okunamasa da
      sayfalar birbirinin yerine YAZILMAZ. Yeni gelen parça yalnız kendi satır aralığını yeniler; "Toplam 6 C 19 Y" → beklenen sayı. */
@@ -1541,6 +1542,7 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
     const L=m.yolcular.filter(y=>!(y.no!=null&&!(Number.isInteger(y.no)&&y.no>0&&y.no<1000))),nos=L.map(y=>y.no).filter(Boolean);
     if(nos.length){const a=Math.min(...nos),b=Math.max(...nos);for(const [k,y] of s.r)if(y.no&&y.no>=a&&y.no<=b)s.r.delete(k)}
     else if(sf){for(const [k,y] of s.r)if(y._sf===sf)s.r.delete(k)}else s.r.clear();
+    {const yeni=new Map(L.map(y=>[y.k,y.no]));for(const [k,y] of s.r)if(yeni.has(y.k)&&yeni.get(y.k)!==y.no)s.r.delete(k)}
     L.forEach(y=>{const k=y.no?'n'+y.no:'k'+y.k;s.r.set(k,Object.assign({},y,{_sf:sf}))});
     s.top=Math.max(s.top,tp,sf);s.bek=bk||s.bek;s.ps=Math.max(s.ps,L.length);s.son=sf||(nos.length?Math.ceil(Math.min(...nos)/Math.max(1,s.ps)):1);
     const all=[...s.r.values()].sort((x,y)=>(x.no||1e4)-(y.no||1e4)),kk=new Set();
@@ -1552,7 +1554,8 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
   {const s=(QCK.sy||{})[no],n=m.yolcular?m.yolcular.length:0,bek=s&&s.bek||0,eks=qcEksik(s);
    canliGunluk(no,(m._bc?'Diğer RITA sekmesinden':m.takip?'Takip':'Yer imi')+': Quick Check’ten '+(m.yolcular?n+(bek?' / '+bek:'')+' VIP':'liste yok')+', '+Object.keys(m.koltuklar||{}).length+' koltuk'+(eks?' · EKSİK: '+eks+' (Quick Check’te o sayfaya geçin; gelmezse o sayfadayken yer imine dokunun)':bek&&n>=bek?' · tüm liste alındı ✓':''))}
   const f=D.F.find(x=>flNo(x)===no);
-  if(f){D.cur=f;tab='ucus';setTimeout(()=>{D.cur=f;if(role){render();if(!m.takip)toast('Quick Check okundu: '+no)}},900)}else toast(no+' RITA uçuş listesinde yok');
+  if(f){if(!m.takip&&!m._bc){D.cur=f;tab='ucus';setTimeout(()=>{D.cur=f;if(role){render();toast('Quick Check okundu: '+no)}},900)}
+    else if(role&&D.cur===f&&tab==='ucus'&&!document.querySelector('#veil:not([hidden])'))render()}else if(!m.takip)toast(no+' RITA uçuş listesinde yok');
   return true}
 function yerimiMetin(t){if(!/^\s*\{[\s\S]*"kaynak"\s*:\s*"yerimi"/.test(t||''))return false;let m;try{m=JSON.parse(t)}catch(e){return false}
   const ok=yerimiAl(m);try{navigator.clipboard&&navigator.clipboard.writeText('')}catch(e){}return ok}

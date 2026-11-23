@@ -64,7 +64,7 @@ sonra Quick Check sekmesini bir kez yenileyin.
 
 1. https://rokkaix.github.io/RITA/canli/ adresini açın (eklenti gerekmez).
 2. Sağ üstte **Demo modu**na basın.
-3. "TK0000 / DEMO" uçuşunda ORNEK1…ORNEK8 adlı uydurma yolcular görünür; her 4 saniyede rastgele bir değişiklik
+3. "TK0000 / DEMO" uçuşunda DENEME1…DENEME8 adlı uydurma yolcular görünür; her 4 saniyede rastgele bir değişiklik
    (koltuk değişimi, check-in, koltuk durumu) olur ve **Değişiklik akışı**na en yeni üstte düşer.
 4. **Protokol kural tablosu**nda bir önceliği değiştirin: sıralama ve öneriler hemen değişir.
 5. **Koltuk planı**nda uçak tipini değiştirin ya da harf/sıra alanlarını düzenleyin.

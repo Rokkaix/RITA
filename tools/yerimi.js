@@ -3,7 +3,7 @@
    tools/build_site.py bu dosyayı tek satıra indirip site/yerimi sayfasına "javascript:" bağlantısı olarak koyar.
    Kurallar: yalnız blok yorum, her deyim noktalı virgülle biter (tek satıra indirilebilsin). */
 (function () {
-  var SURUM = 3, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
+  var SURUM = 4, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
   var demo = location.origin === RITA && /\/RITA\/yerimi\/deneme/.test(location.pathname);
   if (location.hostname !== "checkin.thy.com" && !demo) { alert("RITA: Bu düğme yalnız Quick Check sayfasında çalışır."); return; }
   if (/Login\.aspx/i.test(location.href) || document.querySelector("input[type=password]")) { alert("RITA: Giriş sayfasında çalışmaz. Önce uçuşu açın."); return; }
@@ -66,6 +66,23 @@
     if (!yolcular && !koltuklar) return null;
     /* "Toplam 6 C 19 Y Yolcu" → listede beklenen VIP sayısı (eksik sayfa uyarısı için) */
     var bek = 0; belgeTopla().forEach(function (b) { var t = String((b.body && b.body.innerText) || "").match(/Toplam\s*(\d{1,3})\s*C\s*(\d{1,3})\s*Y/i); if (t && !bek) bek = +t[1] + +t[2]; });
+    /* Birikim: Quick Check sayfa değiştirirken kendini yenilese de önceki sayfalar kaybolmasın diye, bu sekmede görülen satırlar
+       sekmenin kendi belleğinde (window.name) tutulur ve her gönderimde HEPSİ gider. Diske yazılmaz; sekme kapanınca silinir.
+       Başka bir uçuşa geçilince ya da 3 saat sonra sıfırlanır. window.name başka bir amaçla doluysa kullanılmaz. */
+    if (yolcular && ucus && yolcular.length && yolcular.every(function (y) { return y.no; })) {
+      var BK = "__rita_qc:", o = null, wn = String(window.name || "");
+      if (!wn || wn.indexOf(BK) === 0) {
+        try { o = wn ? JSON.parse(wn.slice(BK.length)) : null; } catch (e) { o = null; }
+        var uk = ucus.no + "/" + ucus.tarih;
+        if (!o || o.u !== uk || Date.now() - (o.t || 0) > 3 * 3600 * 1000) o = { u: uk, t: Date.now(), r: {} };
+        var yeniK = {}; yolcular.forEach(function (y) { yeniK[y.k] = y.no; });
+        Object.keys(o.r).forEach(function (n) { var e = o.r[n]; if (yeniK[e.k] != null && yeniK[e.k] !== e.no) delete o.r[n]; });
+        yolcular.forEach(function (y) { o.r[y.no] = y; });
+        o.t = Date.now();
+        try { window.name = BK + JSON.stringify(o); } catch (e) {}
+        yolcular = Object.keys(o.r).map(function (n) { return o.r[n]; }).sort(function (a, b) { return a.no - b.no; }).slice(0, 400);
+      }
+    }
     var ilkNo = 0; if (yolcular) yolcular.forEach(function (y) { if (y.no && (!ilkNo || y.no < ilkNo)) ilkNo = y.no; });
     var msg = { kaynak: "yerimi", surum: SURUM, tur: "tam", demo: demo ? 1 : 0, ucus: ucus, yolcular: yolcular, koltuklar: koltuklar, sayfa: sy.sayfa, toplam: sy.toplam, ilkNo: ilkNo, beklenen: bek, zaman: Date.now() };
     var ozet = (ucus ? ucus.no + ": " : "") + (yolcular ? yolcular.length + " VIP" + (sy.sayfa ? " (sayfa " + sy.sayfa + (sy.toplam ? "/" + sy.toplam : "") + ")" : "") : "liste yok") + ", " + (koltuklar ? kn + " koltuk" : "koltuk haritası yok");
