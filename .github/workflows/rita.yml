@@ -25,7 +25,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: rita-ana
+  # kod güncellemesi (push) uzun veri taramasının (fotoğraf vb.) arkasında beklemesin
+  group: rita-${{ github.event_name == 'push' && 'yayin' || 'tarama' }}
   cancel-in-progress: false
 
 jobs:
