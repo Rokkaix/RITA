@@ -732,7 +732,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 23.7';let SURUM_YENI=false;
+const SURUM='RITA 23.8';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -985,7 +985,9 @@ function assign(){if(D.ACX)delete D.ACX[D.cur];
      Önündeki koltuklar dolu (check-in) ise bu da not edilir; dolu koltuktaki yolcunun yeri asla önerilmez. */
   {const ALT=new Set(),bos=k=>sTur(S[k])==='bos'&&!used.has(k),bz=k=>rowOf(k)<=c.biz;
    P.forEach(p=>{if(!p.seat)return;const ent=p.up&&!p.ek?BIZ:range(c.biz+1,c.last);
-     if(p.ciYer&&!(p.up&&!p.ek&&bz(p.seat))){const cur=p.seat,daha=ent.find(k=>bos(k)&&!ALT.has(k)&&(p.up&&!p.ek&&!bz(cur)?bz(k):rowOf(k)<rowOf(cur)&&bz(k)===bz(cur)));if(daha){p.alt=daha;ALT.add(daha)}}
+     if(p.ciYer){const cur=p.seat,ileri=k=>bos(k)&&!ALT.has(k)&&rowOf(k)<rowOf(cur)&&bz(k)===bz(cur);
+       /* önce: upgrade hakkı olup ekonomide oturana business'taki boş koltuk; sonra aynı kabinde daha öndeki boş koltuk */
+       const daha=(p.up&&!p.ek&&!bz(cur)?BIZ.find(k=>bos(k)&&!ALT.has(k)):null)||(bz(cur)?BIZ:range(c.biz+1,c.last)).find(ileri);if(daha){p.alt=daha;ALT.add(daha)}}
      else if(!p.fixed&&!bz(p.seat)&&sTur(S[p.seat])==='bos'){const r=rowOf(p.seat),cab=false;p.onDolu=range(cab?1:c.biz+1,r-1).some(k=>sTur(S[k])==='dolu'&&!used.has(k))?1:0}});}
   /* hedef koltuk doluysa (VIP olmayan yolcu oturuyor) yalnız not: hiçbir yolcunun yeri değiştirilmez */
   {const vip=new Set();P.forEach(p=>{p.hedef='';[p.seat,...(p.comp||[])].forEach(k=>k&&vip.add(k))});
@@ -1583,7 +1585,8 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
   {const s=(QCK.sy||{})[no],n=m.yolcular?m.yolcular.length:0,bek=s&&s.bek||0,eks=qcEksik(s);
    canliGunluk(no,(m._bc?'Diğer RITA sekmesinden':m.takip?'Takip':'Yer imi')+': Quick Check’ten '+(m.yolcular?n+(bek?' / '+bek:'')+' VIP':'liste yok')+', '+Object.keys(m.koltuklar||{}).length+' koltuk'+(eks?' · EKSİK: '+eks+' (Quick Check’te o sayfaya geçin; gelmezse o sayfadayken yer imine dokunun)':bek&&n>=bek?' · tüm liste alındı ✓':''))}
   const f=D.F.find(x=>flNo(x)===no);
-  if(f){if(!m.takip&&!m._bc){D.cur=f;tab='ucus';setTimeout(()=>{D.cur=f;if(role){render();toast('Quick Check okundu: '+no)}},900)}
+  const yeniUcus=window._qcSonNo!==no;window._qcSonNo=no;
+  if(f){if((!m.takip||yeniUcus)&&!m._bc){D.cur=f;tab='ucus';setTimeout(()=>{D.cur=f;if(role){render();toast('Quick Check okundu: '+no)}},900)}
     else if(role&&D.cur===f&&tab==='ucus'&&!document.querySelector('#veil:not([hidden])'))render()}else if(!m.takip)toast(no+' RITA uçuş listesinde yok');
   return true}
 function yerimiMetin(t){if(!/^\s*\{[\s\S]*"kaynak"\s*:\s*"yerimi"/.test(t||''))return false;let m;try{m=JSON.parse(t)}catch(e){return false}

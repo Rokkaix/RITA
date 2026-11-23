@@ -3,7 +3,7 @@
    tools/build_site.py bu dosyayı tek satıra indirip site/yerimi sayfasına "javascript:" bağlantısı olarak koyar.
    Kurallar: yalnız blok yorum, her deyim noktalı virgülle biter (tek satıra indirilebilsin). */
 (function () {
-  var SURUM = 4, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
+  var SURUM = 5, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
   var demo = location.origin === RITA && /\/RITA\/yerimi\/deneme/.test(location.pathname);
   if (location.hostname !== "checkin.thy.com" && !demo) { alert("RITA: Bu düğme yalnız Quick Check sayfasında çalışır."); return; }
   if (/Login\.aspx/i.test(location.href) || document.querySelector("input[type=password]")) { alert("RITA: Giriş sayfasında çalışmaz. Önce uçuşu açın."); return; }
@@ -98,13 +98,13 @@
      Hiçbir şeye tıklanmaz; yalnız sayfa değişimi izlenir (MutationObserver). Saat gibi küçük değişiklikler yok sayılır,
      taramalar en az 1,5 sn arayla ve yalnız sayfa sakinleşince (0,7 sn) yapılır; aynı veri tekrar gönderilmez → Quick Check yavaşlamaz. */
   var takipBaslat = function (w, imza0) {
-    var son = imza0, zam = null, sonT = 0, bas = Date.now(), izlenen = [];
+    var son = imza0, zam = null, sonT = 0, bas = Date.now(), izlenen = [], dokunus = 0;
     var gonder = function () {
       zam = null;
       if (w.closed || Date.now() - bas > 6 * 3600 * 1000) { dur(); return; }
       var r = tara(); if (!r) return;
       var imza = JSON.stringify([r.msg.ucus, r.msg.sayfa, r.msg.yolcular, r.msg.koltuklar]); if (imza === son) return;
-      son = imza; r.msg.takip = 1; sonT = Date.now();
+      son = imza; if (dokunus) dokunus = 0; else r.msg.takip = 1; sonT = Date.now();
       try { w.postMessage(r.msg, RITA); } catch (e) {}
     };
     var planla = function () { if (zam) return; zam = setTimeout(gonder, Math.max(700, 1500 - (Date.now() - sonT))); };
@@ -114,7 +114,7 @@
     var aralik = setInterval(function () { if (w.closed) { dur(); return; } izlenen = izlenen.filter(function (x) { return !(x && x.defaultView === null); }); bagla(); }, 3000);
     var dur = function () { clearInterval(aralik); clearTimeout(zam); izlenen.forEach(function (x) { if (x && x.disconnect) x.disconnect(); }); izlenen = []; window.__ritaTakip = null; };
     bagla();
-    window.__ritaTakip = { w: w, simdi: function () { son = ""; clearTimeout(zam); gonder(); }, dur: dur };
+    window.__ritaTakip = { w: w, simdi: function () { son = ""; clearTimeout(zam); dokunus = 1; gonder(); }, dur: dur };
   };
   var w = null; try { w = window.open(ADRES, "rita_qc"); } catch (e) {}
   var tamam = 0, n2 = 0;
