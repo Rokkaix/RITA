@@ -1,6 +1,6 @@
 {
  "surum": 1,
- "guncelleme": "2026-11-22T09:43:44.684Z",
+ "guncelleme": "2026-11-23T07:52",
  "seferler": {
   "gun-2026-11-16": {
    "alindi": "2026-11-16T08:59",
@@ -816,6 +816,48 @@
    "ekleyen": "resmi-gazete",
    "eklendi": "2026-11-21T08:01:52+03:00",
    "r": 0
+  },
+  "rg-20261121-cbs-genel-muduru-aydemir": {
+   "durum": "otomatik",
+   "eklendi": "2026-11-22T07:35:00+03:00",
+   "ekleyen": "claude-gunluk",
+   "eski": "Ömer Alan",
+   "kaynak": "Resmî Gazete 21.11.2026, sayı 33437 – https://www.takvim.com.tr/guncel/2026/11/20/baskan-erdoganin-imzasiyla-4-isim-gorevden-alindi-3-atama-yapildi",
+   "makam": "Coğrafi Bilgi Sistemleri Genel Müdürü (Çevre, Şehircilik ve İklim Değişikliği Bakanlığı)",
+   "r": 0,
+   "sebep": "Cumhurbaşkanı kararı 2026/390 (20.11.2026); Ömer Alan görevden alındı",
+   "tarih": "2026-11-21",
+   "teyit": "Resmî Gazete kararı (33437), birden fazla haber kaynağında aynı",
+   "tur": "atama",
+   "yeni": "Selçuk Aydemir"
+  },
+  "rg-20261121-kentsel-donusum-tkg-genel-muduru-basturk": {
+   "durum": "otomatik",
+   "eklendi": "2026-11-22T07:35:00+03:00",
+   "ekleyen": "claude-gunluk",
+   "eski": "Oğuzhan Yaylacı",
+   "kaynak": "Resmî Gazete 21.11.2026, sayı 33437 – https://www.habergazetesi.com.tr/21-kasim-resmi-gazete-atama-kararlari-kimler-gorevden-alindi-kimler-atandi",
+   "makam": "Taşınmaz ve Kaynak Geliştirme Genel Müdürü (Kentsel Dönüşüm Başkanlığı)",
+   "r": 0,
+   "sebep": "Cumhurbaşkanı kararı 2026/391 (20.11.2026); Oğuzhan Yaylacı görevden alındı",
+   "tarih": "2026-11-21",
+   "teyit": "Resmî Gazete kararı (33437), birden fazla haber kaynağında aynı",
+   "tur": "atama",
+   "yeni": "Dursun Baştürk"
+  },
+  "rg-20261121-yasayan-miras-genel-muduru-terzi": {
+   "durum": "otomatik",
+   "eklendi": "2026-11-22T07:35:00+03:00",
+   "ekleyen": "claude-gunluk",
+   "eski": "Selim Terzi",
+   "kaynak": "Resmî Gazete 21.11.2026, sayı 33437 – https://www.takvim.com.tr/guncel/2026/11/20/baskan-erdoganin-imzasiyla-4-isim-gorevden-alindi-3-atama-yapildi",
+   "makam": "Yaşayan Miras ve Kültürel Etkinlikler Genel Müdürü (Kültür ve Turizm Bakanlığı)",
+   "r": 0,
+   "sebep": "Cumhurbaşkanı kararı 2026/392 (20.11.2026); yerine atama yapılmadı",
+   "tarih": "2026-11-21",
+   "teyit": "Resmî Gazete kararı (33437), birden fazla haber kaynağında aynı",
+   "tur": "gorevden_alma",
+   "yeni": ""
   }
  },
  "ucaktipleri": {
