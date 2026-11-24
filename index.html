@@ -741,7 +741,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 24.6';let SURUM_YENI=false;
+const SURUM='RITA 24.7';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1638,9 +1638,20 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
    canliGunluk(no,(m._bc?'Diğer RITA sekmesinden':m.takip?'Takip':'Yer imi')+': Quick Check’ten '+(m.yolcular?n+(bek?' / '+bek:'')+' VIP':'liste yok')+', '+Object.keys(m.koltuklar||{}).length+' koltuk'+(eks?' · EKSİK: '+eks+' (Quick Check’te o sayfaya geçin; gelmezse o sayfadayken yer imine dokunun)':bek&&n>=bek?' · tüm liste alındı ✓':''))}
   const f=D.F.find(x=>flNo(x)===no);
   const yeniUcus=window._qcSonNo!==no;window._qcSonNo=no;
-  if(f){if((!m.takip||yeniUcus)&&!m._bc){D.cur=f;tab='ucus';setTimeout(()=>{D.cur=f;if(role){render();toast('Quick Check okundu: '+no)}},900)}
-    else if(role&&D.cur===f&&tab==='ucus'&&!document.querySelector('#veil:not([hidden])'))render()}else if((!m.takip||yeniUcus)&&!m._bc){/* uçuş listede yoktu: Quick Check'ten eklenince ona geç */let n=0;const bak=()=>{const f2=D.F.find(x=>flNo(x)===no);if(f2){D.cur=f2;tab='ucus';if(role){render();toast('Quick Check okundu: '+no)}}else if(++n<10)setTimeout(bak,300)};setTimeout(bak,300)}
+  if(f){if((!m.takip||yeniUcus)&&!m._bc){qcAc(f);setTimeout(()=>{qcAc(D.F.find(x=>flNo(x)===no)||f);if(role){render();toast('Quick Check okundu: '+no)}},900)}
+    else if(role&&D.cur===f&&tab==='ucus'&&!document.querySelector('#veil:not([hidden])'))render()}else if((!m.takip||yeniUcus)&&!m._bc){/* uçuş listede yoktu: Quick Check'ten eklenince ona geç */let n=0;const bak=()=>{const f2=D.F.find(x=>flNo(x)===no);if(f2){qcAc(f2);if(role){render();toast('Quick Check okundu: '+no)}}else if(++n<10)setTimeout(bak,300)};setTimeout(bak,300)}
   return true}
+/* Quick Check'ten açılan uçuş: geliş/gidiş süzgeci uçuşa göre ayarlanır (geliş uçuşu listede gizli kalmasın) */
+function qcAc(f){if(!f)return;D.cur=f;tab='ucus';window._yon=gelisMi(f)?'gelis':'gidis';window._hf='';window._hq=''}
+/* uçuş anahtarını değiştir (hat ve saat sonradan öğrenilince); uçuşa bağlı tüm kayıtlar taşınır */
+function flRename(a,b){if(!a||!b||a===b||D.F.includes(b))return false;D.F=D.F.map(x=>x===a?b:x);Object.keys(D).forEach(x=>{const o=D[x];if(o&&typeof o==='object'&&!Array.isArray(o)&&Object.prototype.hasOwnProperty.call(o,a)){o[b]=o[a];delete o[a]}});
+  if(D.cur===a)D.cur=b;D.F.sort((x,y)=>x.split(' ').pop().localeCompare(y.split(' ').pop()));return true}
+/* uçuş verisinde olmayan uçuşun hattını ve saatini (gidiş ya da İstanbul'a geliş) canlı uçuş servisinden tamamla */
+function qcUcusTamamla(no,key){if(typeof BILDIRIM_URL==='undefined'||!BILDIRIM_URL)return;const gun=new Date(Date.now()+3*36e5).toISOString().slice(0,10);
+  fetch(BILDIRIM_URL+'/ucus?no='+encodeURIComponent(no)+'&gun='+gun+'&yon=gidis').then(r=>r.ok?r.json():null).then(d=>{if(!d||d.hata||!d.kalkis||!d.inis)return;const dep=d.kalkis.apt,arr=d.inis.apt;if(!/^[A-Z]{3}$/.test(dep)||!/^[A-Z]{3}$/.test(arr))return;
+    const gel=arr==='IST'&&dep!=='IST',saat=String((gel?d.inis.plan:d.kalkis.plan)||'');if(!/^\d{1,2}:\d{2}$/.test(saat))return;const hh=saat.padStart(5,'0'),yeni=no+' '+dep+'-'+arr+' '+hh;
+    if(!D.F.includes(key)||!flRename(key,yeni))return;if(D.cur===yeni)window._yon=gel?'gelis':'gidis';
+    canliGunluk(no,'Hat ve saat canlı uçuş bilgisinden alındı: '+dep+' → '+arr+' '+hh+(gel?' (iniş)':''));save();if(role&&!busy())render()}).catch(()=>{})}
 function yerimiMetin(t){if(!/^\s*\{[\s\S]*"kaynak"\s*:\s*"yerimi"/.test(t||''))return false;let m;try{m=JSON.parse(t)}catch(e){return false}
   const ok=yerimiAl(m);try{navigator.clipboard&&navigator.clipboard.writeText('')}catch(e){}return ok}
 /* Kabin düzenini Quick Check koltuk haritasından ÖĞREN.
@@ -1680,7 +1691,8 @@ function canliUygula(no){const d=QCK.durum[no];if(!d)return;const f=D.F.find(x=>
   if(!f){/* RITA listesinde yok (dış hat, 6 saatten uzak vb.): Quick Check'te açık uçuş kendiliğinden eklenir */
     const u=Object.values((LIVE&&LIVE.ucuslar)||{}).find(x=>x.no===no),key=no+' '+(u&&u.hat?u.hat+' ':'')+(u&&u.kalkis?u.kalkis:new Date().toTimeString().slice(0,5));
     D.F.push(key);D.FA=D.FA||{};D.FA[key]=Date.now();D.F.sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop()));if(u&&u.tip){D.AC=D.AC||{};D.AC[no]=D.AC[no]||{tip:u.tip,ad:u.ad,tarih:new Date().toISOString().slice(0,10),kaynak:'FlightStats'}}
-    canliGunluk(no,no+' RITA listesinde yoktu; Quick Check’te açık olduğu için uçuş listesine eklendi'+(u?'':' (hat/saat bilinmiyor)'));save();return canliUygula(no)}
+    if(u&&u.sehir){D.SH=D.SH||{};D.SH[key]=u.sehir}
+    canliGunluk(no,no+' RITA listesinde yoktu; Quick Check’te açık olduğu için uçuş listesine eklendi'+(u?'':' (hat ve saat sorgulanıyor)'));save();if(!u)qcUcusTamamla(no,key);return canliUygula(no)}
   if(!QCK.oto)return;const eski=D.cur;D.cur=f;
   try{const Y=d.sira.map(k=>d.yolcular.get(k)).filter(Boolean),imza0=JSON.stringify(Y.map(y=>[y.soyad,y.adBas,y.not,y.sinif,y.koltuk])),duz=kabinOgrenUygula(f,no,d.koltuklar),imza=imza0+(duz?'|duzen'+Date.now():'');
     /* koltuk durumları */
