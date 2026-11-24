@@ -1212,6 +1212,19 @@
    },
    "onay": "2026-11-16T22:36:19+03:00",
    "teyit": "Resmî kurum siteleri ve haberlerle teyitli kayıtlar işlenir; \"doğrulayın\" etiketliler teyit bekler"
+  },
+  "rh-2026-11-24": {
+   "tarih": "2026-11-24",
+   "durum": "otomatik",
+   "ekleyen": "arastirma",
+   "dosya": "data/rehber-3.json",
+   "ozet": {
+    "ekle": 7,
+    "guncelle": 0,
+    "eskit": 0
+   },
+   "onay": "2026-11-24T05:45:00+03:00",
+   "teyit": "Sayıştay resmî sitesi (Bölüm Başkanları sayfası)"
   }
  },
  "foto": {
@@ -1267,6 +1280,174 @@
    "u": "data/foto/erol-ozvar-yok.jpg",
    "d": "2026-11-22",
    "k": "yok.gov.tr/tr/page/baskan-7Uzak (resmî sayfa)"
+  },
+  "cevdet erkan": {
+   "n": "Cevdet Erkan",
+   "u": "data/foto/cevdet-erkan-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/2 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "hasan guzeler": {
+   "n": "Hasan Güzeler",
+   "u": "data/foto/hasan-guzeler-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/84 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "mahmut vural": {
+   "n": "Mahmut Vural",
+   "u": "data/foto/mahmut-vural-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/85 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "rasim aytin": {
+   "n": "Rasim Aytin",
+   "u": "data/foto/rasim-aytin-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/234 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "ercan ahi": {
+   "n": "Ercan Ahi",
+   "u": "data/foto/ercan-ahi-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/235 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "hanifi dogan": {
+   "n": "Hanifi Doğan",
+   "u": "data/foto/hanifi-dogan-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/117 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "enver kaya": {
+   "n": "Enver Kaya",
+   "u": "data/foto/enver-kaya-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/128 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "fethi aslan": {
+   "n": "Fethi Aslan",
+   "u": "data/foto/fethi-aslan-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/138 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "emin sinmaz": {
+   "n": "Emin Sınmaz",
+   "u": "data/foto/emin-sinmaz-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/148 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "hamit umit aksoy": {
+   "n": "Hamit Ümit Aksoy",
+   "u": "data/foto/hamit-umit-aksoy-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/158 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "ismail hakki sayin": {
+   "n": "İsmail Hakkı Sayın",
+   "u": "data/foto/ismail-hakki-sayin-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/167 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "abdurrahman gencbay": {
+   "n": "Abdurrahman Gençbay",
+   "u": "data/foto/abdurrahman-gencbay-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/181 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "ibrahim topuz": {
+   "n": "İbrahim Topuz",
+   "u": "data/foto/ibrahim-topuz-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/190 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "mahmut dogan": {
+   "n": "Mahmut Doğan",
+   "u": "data/foto/mahmut-dogan-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/236 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "hasan gul": {
+   "n": "Hasan Gül",
+   "u": "data/foto/hasan-gul-danistay.jpg",
+   "d": "2026-11-24",
+   "k": "danistay.gov.tr/icerik/209 (resmî sayfa)",
+   "t": "Danıştay"
+  },
+  "mehmet bozkurt": {
+   "n": "Mehmet Bozkurt",
+   "u": "data/foto/mehmet-bozkurt-sayistay.jpg",
+   "d": "2026-11-24",
+   "k": "sayistay.gov.tr/pages/50-bolum-baskanlari (resmî sayfa)",
+   "t": "Sayıştay"
+  },
+  "arif zencirci": {
+   "n": "Arif Zencirci",
+   "u": "data/foto/arif-zencirci-sayistay.jpg",
+   "d": "2026-11-24",
+   "k": "sayistay.gov.tr/pages/50-bolum-baskanlari (resmî sayfa)",
+   "t": "Sayıştay"
+  },
+  "yasar yolcu": {
+   "n": "Yaşar Yolcu",
+   "u": "data/foto/yasar-yolcu-sayistay.jpg",
+   "d": "2026-11-24",
+   "k": "sayistay.gov.tr/pages/50-bolum-baskanlari (resmî sayfa)",
+   "t": "Sayıştay"
+  },
+  "haci omer kose": {
+   "n": "Hacı Ömer Köse",
+   "u": "data/foto/haci-omer-kose-sayistay.jpg",
+   "d": "2026-11-24",
+   "k": "sayistay.gov.tr/pages/50-bolum-baskanlari (resmî sayfa)",
+   "t": "Sayıştay"
+  },
+  "mehmet demir": {
+   "n": "Mehmet Demir",
+   "u": "data/foto/mehmet-demir-sayistay.jpg",
+   "d": "2026-11-24",
+   "k": "sayistay.gov.tr/pages/50-bolum-baskanlari (resmî sayfa)",
+   "t": "Sayıştay"
+  },
+  "murat akkaya": {
+   "n": "Murat Akkaya",
+   "u": "data/foto/murat-akkaya-sayistay.jpg",
+   "d": "2026-11-24",
+   "k": "sayistay.gov.tr/pages/50-bolum-baskanlari (resmî sayfa)",
+   "t": "Sayıştay"
+  },
+  "ozgur kirmizikarli": {
+   "n": "Özgür Kırmızıkarlı",
+   "u": "data/foto/ozgur-kirmizikarli-sayistay.jpg",
+   "d": "2026-11-24",
+   "k": "sayistay.gov.tr/pages/50-bolum-baskanlari (resmî sayfa)",
+   "t": "Sayıştay"
+  },
+  "orhan yasa": {
+   "n": "Orhan Yaşa",
+   "u": "data/foto/orhan-yasa-sayistay.jpg",
+   "d": "2026-11-24",
+   "k": "sayistay.gov.tr/pages/49-baskan-yardimcilari (resmî sayfa)",
+   "t": "Sayıştay"
+  },
+  "ahmet tezcan": {
+   "n": "Ahmet Tezcan",
+   "u": "data/foto/ahmet-tezcan-sayistay.jpg",
+   "d": "2026-11-24",
+   "k": "sayistay.gov.tr/pages/49-baskan-yardimcilari (resmî sayfa)",
+   "t": "Sayıştay"
   }
  }
 }

@@ -677,7 +677,7 @@ const isAdmin=()=>role==='admin';
 /* ---------- kişiler ---------- */
 const KB=K0.map(x=>({n:x[0],t:x[1],r:x[2],u:x[3],v:x[4],o:x[5],c:x[6]}));
 let PC=null;
-let REH=null,REHS={};const REHF=['data/rehber.json','data/rehber-2.json'];
+let REH=null,REHS={};const REHF=['data/rehber.json','data/rehber-2.json','data/rehber-3.json'];
 const rehDocs=()=>(typeof RSTORE!=='undefined'&&RSTORE&&RSTORE.rehber)||{};
 const rehPkg=id=>REHS[id]||(REH&&(REH.id===id||(!REH.id&&rehDocs()[id]&&rehDocs()[id].tarih===REH.tarih))?REH:null);
 const REH_OK=d=>d.durum==='onaylandi'||d.durum==='otomatik';
@@ -710,8 +710,8 @@ function kisaEk(s){let e='';KISA.forEach(([k,l])=>{const hk=new RegExp('(^| )'+k
 /* doğrulanmış portreler (data/fotolar.json: TBMM resmî sayfası ya da görevi doğrulanmış Vikipedi) */
 let FOTOLAR={},FOTT=0;async function fotoLoad(){if(!window.RITA_STANDALONE||Date.now()-FOTT<60*60000)return;FOTT=Date.now();try{const r=await fetch('data/fotolar.json?t='+Date.now(),{cache:'no-store'});if(r.ok){FOTOLAR=await r.json()}}catch(e){}}
 /* öncelik: bu cihazda yöneticinin girdiği > ortak yönetici fotoğrafı (rita-veri.json → foto) > doğrulanmış otomatik. '-' = otomatik fotoğraf hatalı, gösterme */
-function fotoOf(n,sub){const k=nk(n||'');const a=(D.FOTO||{})[k];if(a)return a==='-'?null:{u:a,k:'Yönetici'};const y=((RSTORE||{}).foto||{})[k];if(y&&y.u)return y.u==='-'?null:{u:y.u,k:'Yönetici'};
-  const f=FOTOLAR[k];if(f&&f.u)return f;const g=String(sub||'').match(/Görevli: ([^·]+)/);return g?fotoOf(g[1].trim()):null}
+function fotoOf(n,sub){const k=nk(n||'');const a=(D.FOTO||{})[k];if(a)return a==='-'?null:{u:a,k:'Yönetici'};const y=((RSTORE||{}).foto||{})[k];if(y&&y.u&&!(y.t&&!norm(String(sub||'')).includes(norm(y.t))))return y.u==='-'?null:{u:y.u,k:y.k?'Resmî kurum sayfası':'Yönetici'};
+  const f=FOTOLAR[k];if(f&&f.u&&!(f.k==='TBMM'&&/\b(TGS|THY|TSS|DO&CO)\b|Yolcu Hizmetleri|Sayıştay|Danıştay|Yargıtay/.test(String(sub||''))&&!/Milletvekil/.test(String(sub||''))))return f;const g=String(sub||'').match(/Görevli: ([^·]+)/);return g?fotoOf(g[1].trim()):null}
 /* fotoğrafı olmayanlar için unvana göre kurumsal avatar */
 const AVK=[[/ba[sş]bakan/i,'BAŞBAKANLIK','#7c2128'],[/cumhurba[sş]kan/i,'CUMHURBAŞKANLIĞI','#8c1d24'],[/milletvekil|tbmm|meclis/i,'TBMM','#7a2333'],[/bakan/i,'BAKANLIK','#1d3461'],[/vali|kaymakam/i,'MÜLKİ İDARE','#284b63'],
   [/general|amiral|komutan|genelkurmay|tsk|kuvvet/i,'TSK','#3d4a2c'],[/yarg[ıi]tay|dan[ıi][sş]tay|anayasa|sav[cç][ıi]|hakim|say[ıi][sş]tay|mahkeme/i,'YARGI','#4b2e5e'],
@@ -741,7 +741,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 24.5';let SURUM_YENI=false;
+const SURUM='RITA 24.6';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
