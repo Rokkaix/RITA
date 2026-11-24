@@ -3,7 +3,7 @@
    tools/build_site.py bu dosyayı tek satıra indirip site/yerimi sayfasına "javascript:" bağlantısı olarak koyar.
    Kurallar: yalnız blok yorum, her deyim noktalı virgülle biter (tek satıra indirilebilsin). */
 (function () {
-  var SURUM = 7, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
+  var SURUM = 8, RITA = "https://rokkaix.github.io", ADRES = RITA + "/RITA/#qc";
   var demo = location.origin === RITA && /\/RITA\/yerimi\/deneme/.test(location.pathname);
   if (location.hostname !== "checkin.thy.com" && !demo) { alert("RITA: Bu düğme yalnız Quick Check sayfasında çalışır."); return; }
   if (/Login\.aspx/i.test(location.href) || document.querySelector("input[type=password]")) { alert("RITA: Giriş sayfasında çalışmaz. Önce uçuşu açın."); return; }
@@ -114,6 +114,13 @@
     var bagla = function () { belgeTopla().forEach(function (b) { if (izlenen.indexOf(b) >= 0 || !b.body) return; izlenen.push(b); try { var o = new b.defaultView.MutationObserver(gozcu); o.observe(b.body, { childList: true, subtree: true, characterData: true }); izlenen.push(o); } catch (e) {} }); };
     var aralik = setInterval(function () { if (w.closed) { dur(); return; } izlenen = izlenen.filter(function (x) { return !(x && x.defaultView === null); }); bagla(); }, 3000);
     var dur = function () { clearInterval(aralik); clearTimeout(zam); izlenen.forEach(function (x) { if (x && x.disconnect) x.disconnect(); }); izlenen = []; window.__ritaTakip = null; };
+    /* NABIZ: takip açıkken 15 sn'de bir RITA'ya "canlıyım" sinyali (yalnız uçuş no, yolcu bilgisi yok); sayfa kapanır ya da yenilenirse "kapandı" haberi.
+       RITA böylece takibin açık olup olmadığını gösterir; durduysa yer imine bir kez dokunmanız gerektiğini söyler. */
+    var nabizNo = function () { var r = tara(); return r && r.msg.ucus ? r.msg.ucus.no : (msg.ucus ? msg.ucus.no : ""); };
+    var nabiz = setInterval(function () { if (w.closed) { dur(); return; } try { w.postMessage({ kaynak: "yerimi", surum: SURUM, tur: "nabiz", demo: demo ? 1 : 0, ucus: { no: nabizNo() } }, RITA); } catch (e) {} }, 15000);
+    var kapan = function () { try { if (!w.closed) w.postMessage({ kaynak: "yerimi", surum: SURUM, tur: "kapandi", demo: demo ? 1 : 0, ucus: { no: msg.ucus ? msg.ucus.no : "" } }, RITA); } catch (e) {} };
+    window.addEventListener("pagehide", kapan);
+    var dur0 = dur; dur = function () { clearInterval(nabiz); window.removeEventListener("pagehide", kapan); dur0(); };
     bagla();
     window.__ritaTakip = { w: w, simdi: function () { son = ""; clearTimeout(zam); dokunus = 1; gonder(); }, dur: dur };
   };

@@ -742,7 +742,7 @@ const RDB={collection:c=>({onSnapshot(cb){RL[c]=cb;if(RSTORE)rEmit(c);else rLoad
   add:d=>rWrite(c,'y'+Date.now().toString(36),d,'set')})};
 async function ritaDb(){return window.RITA_STANDALONE?RDB:null}
 /* yeni sürüm denetimi: açılışta, uygulama öne gelince ve 10 dakikada bir; yeni sürüm varsa yenilenir */
-const SURUM='RITA 24.8';let SURUM_YENI=false;
+const SURUM='RITA 24.9';let SURUM_YENI=false;
 async function surumBak(){if(!window.RITA_STANDALONE)return;try{const r=await fetch('./?sv='+Date.now(),{cache:'no-store'});if(!r.ok)return;const t=await r.text();const m=t.match(/const SURUM='([^']+)'/);
   if(m&&m[1]!==SURUM&&!SURUM_YENI){SURUM_YENI=true;try{const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}catch(e){}
     const kos=()=>{if(!busy()){location.reload()}else setTimeout(kos,4000)};const b=document.createElement('div');b.className='surum-bar';b.innerHTML='<span>Yeni sürüm hazır ('+m[1]+'). Yenileniyor…</span><button type="button">Şimdi yenile</button>';b.querySelector('button').onclick=()=>location.reload();document.body.appendChild(b);setTimeout(kos,2500)}}catch(e){}}
@@ -1598,6 +1598,7 @@ function canliMesaj(m){
 window.addEventListener('message',e=>{const m=e.data;if(!m||typeof m!=='object')return;
   if(e.source===window&&e.origin===location.origin){if(m.kaynak==='eklenti'&&canliGecerli(m))canliMesaj(m);return}
   /* RITA yer imi (bookmarklet): Quick Check sekmesinden tek dokunuşla gelen okuma. Yalnız checkin.thy.com (ya da kendi deneme sayfamız) kabul edilir. */
+  if(m.kaynak==='yerimi'&&(m.tur==='nabiz'||m.tur==='kapandi')&&(e.origin==='https://checkin.thy.com'||(e.origin===location.origin&&m.demo===1))){ymNabiz(m);return}
   if(m.kaynak==='yerimi'&&e.source&&(e.origin==='https://checkin.thy.com'||(e.origin===location.origin&&m.demo===1)))yerimiAl(m,()=>{try{e.source.postMessage({kaynak:'rita',tur:'alindi'},e.origin)}catch(x){}})});
 /* Yer imi verisi: postMessage ile ya da (tarayıcı pencereyi ayırırsa) panodan "Quick Check'ten yapıştır" ile gelir. Eklentiyle aynı yoldan işlenir, kaydedilmez. */
 let YERIMI_SON='';
@@ -1613,9 +1614,10 @@ if(RBC){RBC.onmessage=e=>{const m=e.data;if(!m||typeof m!=='object')return;
   try{RBC.postMessage({tur:'iste'})}catch(e){}}
 try{if(!window.name)window.name='rita_qc'}catch(e){}
 function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Check verisi okunamadı');return false}const m0=m;
+  if(+m.surum>=8&&!m._bc){QCK.ymN=Date.now();QCK.ymK=0;QCK.ymUyar=0;if(m.ucus&&m.ucus.no)QCK.ymNo=tkNo(m.ucus.no)}
   const imza=JSON.stringify([m.ucus,m.yolcular,m.koltuklar]);if(ack)ack();if(imza===YERIMI_SON)return true;YERIMI_SON=imza;
   if(!m.ucus||!m.ucus.no){toast('Quick Check sayfasında uçuş numarası bulunamadı');return false}
-  if(!(+m.surum>=4)&&!window._ymEski){window._ymEski=1;setTimeout(()=>toast('Yer imi eski sürüm: rokkaix.github.io/RITA/yerimi sayfasından bir kez yeniden kurun'),1600)}
+  if(!(+m.surum>=8)&&!window._ymEski){window._ymEski=1;setTimeout(()=>toast('Yer imi eski sürüm: rokkaix.github.io/RITA/yerimi sayfasından bir kez yeniden kurun'),1600)}
   if(tkNo(m.ucus.no)!==m.ucus.no)m=Object.assign({},m,{ucus:Object.assign({},m.ucus,{no:tkNo(m.ucus.no)})});
   const no=m.ucus.no;
   /* Çok sayfalı VIP listesi: Quick Check'in satır numarası (1–10, 11–20…) esas — sayfa numarası okunamasa da
@@ -1645,7 +1647,7 @@ function yerimiAl(m,ack){if(!m||m.tur!=='tam'||!canliGecerli(m)){toast('Quick Ch
 /* Quick Check'te sırayla açılan uçuşlar RITA'da birikir (1., 2., 3. uçuş); şeritten aralarında geçilir. Yalnız uçuş anahtarı saklanır, yolcu bilgisi değil. */
 function qcuKaydet(f){if(!f)return;const now=Date.now();D.QCU=(D.QCU||[]).filter(x=>D.F.includes(x.f)&&now-x.t<12*36e5);const o=D.QCU.find(x=>x.f===f);if(o)o.t=now;else D.QCU.push({f,t:now})}
 function qcBar(){const L=(D.QCU||[]).filter(x=>D.F.includes(x.f));if(!L.length)return'';
-  return'<section class="panel qcbar"><h2 class="h">QUICK CHECK UÇUŞLARI<span class="sp"></span><span class="qcn">'+L.length+' uçuş</span></h2><div class="qcus">'+L.map((x,i)=>{const no=flNo(x.f),d=QCK.durum[no],v=d?d.yolcular.size:(D.P[x.f]||[]).length,h=hatOf(x.f);
+  return'<section class="panel qcbar"><h2 class="h">QUICK CHECK UÇUŞLARI<span class="sp"></span>'+(QCK.ymN?'<span id="qcCanli" class="tag '+(ymDurum()==='dur'?'stU':'stG')+'">'+esc(canliDurumMetni())+'</span>':'<span class="qcn">'+L.length+' uçuş</span>')+'</h2><div class="qcus">'+L.map((x,i)=>{const no=flNo(x.f),d=QCK.durum[no],v=d?d.yolcular.size:(D.P[x.f]||[]).length,h=hatOf(x.f);
     return'<span class="qcu'+(x.f===D.cur?' on':'')+'"><button type="button" data-a="qcuAc" data-k="'+esc(x.f)+'" aria-pressed="'+(x.f===D.cur)+'"><b>'+(i+1)+'. '+esc(no)+'</b><small>'+(h?esc(h.replace('-',' → '))+' · ':'')+esc(x.f.split(' ').pop())+(gelisMi(x.f)?' iniş':'')+(v?' · '+v+' VIP':'')+'</small></button><button type="button" class="x" data-a="qcuKapat" data-k="'+esc(x.f)+'" aria-label="'+esc(no)+' şeritten kaldır" title="Şeritten kaldır">✕</button></span>'}).join('')+'</div></section>'}
 /* Quick Check'ten açılan uçuş: geliş/gidiş süzgeci uçuşa göre ayarlanır (geliş uçuşu listede gizli kalmasın) */
 function qcAc(f){if(!f)return;D.cur=f;tab='ucus';window._yon=gelisMi(f)?'gelis':'gidis';window._hf='';window._hq=''}
@@ -1711,8 +1713,13 @@ function canliUygula(no){const d=QCK.durum[no];if(!d)return;const f=D.F.find(x=>
   finally{D.cur=eski}
   if(tab==='ucus'&&!document.querySelector('#veil:not([hidden])'))render()}
 const sadeTr=t=>String(t||'').toLocaleUpperCase('tr').replace(/İ/g,'I').replace(/Ş/g,'S').replace(/Ğ/g,'G').replace(/Ü/g,'U').replace(/Ö/g,'O').replace(/Ç/g,'C');
-function canliDurumMetni(){if(!QCK.son)return'';if(QCK.ym===QCK.son)return'Yer imi · '+new Date(QCK.son).toLocaleTimeString('tr-TR');const eski=Date.now()-QCK.son>8000;return eski?'Veri akışı durdu, son güncelleme: '+new Date(QCK.son).toLocaleTimeString('tr-TR'):'Canlı · '+new Date(QCK.son).toLocaleTimeString('tr-TR')}
-function canliDurumYaz(){const e=$('canliDurum');if(e){e.textContent=canliDurumMetni();e.className='tag '+(QCK.ym!==QCK.son&&Date.now()-QCK.son>8000?'stU':'stG')}}
+/* yer imi takibinin nabzı: açıksa 15 sn'de bir sinyal gelir; Quick Check sayfası yenilenince ya da kapanınca "kapandı" gelir */
+function ymNabiz(m){const no=tkNo(String((m.ucus||{}).no||'')),t=Date.now();if(m.tur==='nabiz'){QCK.ymN=t;QCK.ymK=0;QCK.ymNo=/^TK\d{1,5}$/.test(no)?no:QCK.ymNo;QCK.ymUyar=0}else{QCK.ymK=t}canliDurumYaz()}
+const ymDurum=()=>!QCK.ymN?'':QCK.ymK>=QCK.ymN||Date.now()-QCK.ymN>40000?'dur':'acik';
+function canliDurumMetni(){const y=ymDurum();if(y==='acik')return'Canlı takip açık'+(QCK.ymNo?' · '+QCK.ymNo:'')+(QCK.son?' · son veri '+new Date(QCK.son).toLocaleTimeString('tr-TR'):'');if(y==='dur')return'Takip durdu · Quick Check’te yer imine bir kez dokunun';if(!QCK.son)return'';if(QCK.ym===QCK.son)return'Yer imi · '+new Date(QCK.son).toLocaleTimeString('tr-TR');const eski=Date.now()-QCK.son>8000;return eski?'Veri akışı durdu, son güncelleme: '+new Date(QCK.son).toLocaleTimeString('tr-TR'):'Canlı · '+new Date(QCK.son).toLocaleTimeString('tr-TR')}
+function canliDurumYaz(){const y=ymDurum(),k='tag '+(y==='dur'||(!y&&QCK.ym!==QCK.son&&Date.now()-QCK.son>8000)?'stU':'stG');['canliDurum','qcCanli'].forEach(id=>{const e=$(id);if(e){e.textContent=canliDurumMetni();e.className=k}});
+  if(y==='dur'&&!QCK.ymUyar){QCK.ymUyar=1;toast('Quick Check takibi durdu: Quick Check’te yer imine bir kez dokunun')}}
+setInterval(()=>{if(QCK.ymN)canliDurumYaz()},10000);
 setInterval(canliDurumYaz,1000);
 /* Quick Check görünümü: Quick Check'teki "VIP Commentli Yolcu Listesi"nin RITA içindeki kopyası — 10'arlı sayfalar (1 2 3),
    aynı sütunlar (#, Klt, CI, S, Soyad, Ad, Açıklama) + RITA'nın önerdiği koltuk. Alınmayan satırlar "alınmadı" diye görünür. Veri yalnız bellekte. */
@@ -1731,7 +1738,7 @@ function qcListe(){const no=flNo(D.cur),d=QCK.durum[no],s=(QCK.sy||{})[no];if(!d
    +'</tbody></table></div><div class="qcpgs">'+pg+'</div>'
    +(s&&qcEksik(s)?'<p class="note" style="margin:6px 0 0">Kırmızı sayfa = eksik. Quick Check’te o sayfaya geçin (yer imi takipteyse kendiliğinden gelir; gelmezse o sayfadayken yer imine dokunun).</p>':'')+'</section>'}
 function canliPanel(){if(!QCK.son&&!QCK.gunluk.length)return'';const no=flNo(D.cur),L=QCK.gunluk.filter(g=>g.f===no).slice(0,15),bu=QCK.durum[no];
-  return'<section class="panel"><h2 class="h">CANLI · QUICK CHECK<span class="sp"></span><span id="canliDurum" class="tag">'+esc(canliDurumMetni())+'</span></h2>'
+  return'<section class="panel"><h2 class="h">CANLI · QUICK CHECK<span class="sp"></span><span id="canliDurum" class="tag '+(ymDurum()==='dur'?'stU':'stG')+'">'+esc(canliDurumMetni())+'</span></h2>'
    +'<label style="display:flex;gap:8px;align-items:center;font-size:13px"><input type="checkbox" data-a="canliOto" '+(QCK.oto?'checked':'')+'> Otomatik uygula (VIP’leri rical rehberiyle eşleştir, koltukları işle, yerleştir)</label>'
    +(bu?'<p class="note" style="margin:6px 0">Bu uçuş için canlı veri: <b>'+bu.yolcular.size+'</b> VIP · <b>'+Object.keys(bu.koltuklar).length+'</b> koltuk. Veri yalnız bu açık pencerede durur, kaydedilmez.</p>'+(s=>{if(!s)return'';const n=s.r.size,eks=qcEksik(s);return'<p class="note" style="margin:0 0 6px"><b>Quick Check VIP listesi:</b> '+n+(s.bek?' / '+s.bek:'')+' VIP alındı '+(eks?'<span class="tag stU">eksik '+esc(eks)+'</span> — Quick Check’te o sayfaya geçin; gelmezse o sayfadayken yer imine dokunun.':s.bek&&n>=s.bek?'<span class="tag stG">tamamı ✓</span>':'')+'</p>'})((QCK.sy||{})[no]):'<p class="note" style="margin:6px 0">Bu uçuş Quick Check’te açık değil.</p>')
    +(L.length?'<div style="display:grid;gap:4px;max-height:220px;overflow:auto">'+L.map(g=>'<div class="ti" style="display:flex;gap:8px"><span class="mono" style="color:var(--muted);white-space:nowrap;flex:none">'+esc(new Date(g.t).toLocaleTimeString('tr-TR'))+'</span><span>'+esc(g.m)+'</span></div>').join('')+'</div>':'')
