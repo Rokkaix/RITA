@@ -1,326 +1,8 @@
 {
-"guncelleme": "2026-11-26T05:06+03:00",
+"guncelleme": "2026-11-26T05:33+03:00",
 "kaynak": "FlightStats",
 "kalkis": "IST",
 "ucuslar": {
-"TK338-20261126": {
-"no": "TK338",
-"yon": "gidis",
-"hat": "IST-GYD",
-"sehir": "Baku",
-"kalkis": "02:10",
-"inis": "06:05",
-"zaman": "2026-11-26T02:10+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-26T02:30+03:00",
-"durum": "Havada",
-"durum_kod": "A",
-"gecikme": 4,
-"tahmini": "02:14",
-"kapi": "B12A",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:30+03:00"
-},
-"TK814-20261126": {
-"no": "TK814",
-"yon": "gidis",
-"hat": "IST-AMM",
-"sehir": "Amman",
-"kalkis": "02:10",
-"inis": "04:40",
-"zaman": "2026-11-26T02:10+03:00",
-"tip": "7M9",
-"ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T02:30+03:00",
-"durum": "Havada",
-"durum_kod": "A",
-"gecikme": 2,
-"tahmini": "02:12",
-"kapi": "D2",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:30+03:00"
-},
-"TK88-20261126": {
-"no": "TK88",
-"yon": "gidis",
-"hat": "IST-PEK",
-"sehir": "Beijing",
-"kalkis": "02:10",
-"inis": "16:15",
-"zaman": "2026-11-26T02:10+03:00",
-"tip": "77W",
-"ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T02:30+03:00",
-"durum": "Havada",
-"durum_kod": "A",
-"gecikme": 2,
-"tahmini": "02:12",
-"kapi": "B17",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:30+03:00"
-},
-"TK2240-20261126": {
-"no": "TK2240",
-"yon": "gidis",
-"hat": "IST-GZT",
-"sehir": "Gaziantep",
-"kalkis": "02:10",
-"inis": "04:00",
-"zaman": "2026-11-26T02:10+03:00",
-"tip": "320",
-"ad": "Airbus A320",
-"kontrol": "2026-11-26T02:30+03:00",
-"durum": "Havada",
-"durum_kod": "A",
-"gecikme": 0,
-"tahmini": "02:09",
-"kapi": "G9B",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:30+03:00"
-},
-"TK692-20261126": {
-"no": "TK692",
-"yon": "gidis",
-"hat": "IST-CAI",
-"sehir": "Cairo",
-"kalkis": "02:15",
-"inis": "03:40",
-"zaman": "2026-11-26T02:15+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-26T02:30+03:00",
-"durum": "Havada",
-"durum_kod": "A",
-"gecikme": 0,
-"tahmini": "02:13",
-"kapi": "F6B",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:30+03:00"
-},
-"TK164-20261126": {
-"no": "TK164",
-"yon": "gidis",
-"hat": "IST-HAN",
-"sehir": "Hanoi",
-"kalkis": "02:15",
-"inis": "15:25",
-"zaman": "2026-11-26T02:15+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
-"kontrol": "2026-11-26T02:30+03:00",
-"durum": "Havada",
-"durum_kod": "A",
-"gecikme": 0,
-"tahmini": "02:13",
-"kapi": "D17",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:30+03:00"
-},
-"TK376-20261126": {
-"no": "TK376",
-"yon": "gidis",
-"hat": "IST-TBS",
-"sehir": "Tbilisi",
-"kalkis": "02:20",
-"inis": "05:40",
-"zaman": "2026-11-26T02:20+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "02:10",
-"kapi": "F12B",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK56-20261126": {
-"no": "TK56",
-"yon": "gidis",
-"hat": "IST-CGK",
-"sehir": "Jakarta",
-"kalkis": "02:20",
-"inis": "18:00",
-"zaman": "2026-11-26T02:20+03:00",
-"tip": "359",
-"ad": "Airbus A350-900",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "02:20",
-"kapi": "F17",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK419-20261126": {
-"no": "TK419",
-"yon": "gidis",
-"hat": "IST-VKO",
-"sehir": "Moscow",
-"kalkis": "02:20",
-"inis": "06:25",
-"zaman": "2026-11-26T02:20+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 15,
-"tahmini": "02:35",
-"kapi": "B12B",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK90-20261126": {
-"no": "TK90",
-"yon": "gidis",
-"hat": "IST-ICN",
-"sehir": "Seoul",
-"kalkis": "02:20",
-"inis": "18:20",
-"zaman": "2026-11-26T02:20+03:00",
-"tip": "77W",
-"ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "02:20",
-"kapi": "A4A",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK162-20261126": {
-"no": "TK162",
-"yon": "gidis",
-"hat": "IST-SGN",
-"sehir": "Ho Chi Minh City",
-"kalkis": "02:25",
-"inis": "16:30",
-"zaman": "2026-11-26T02:25+03:00",
-"tip": "359",
-"ad": "Airbus A350-900",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "02:25",
-"kapi": "F13",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK86-20261126": {
-"no": "TK86",
-"yon": "gidis",
-"hat": "IST-KIX",
-"sehir": "Osaka",
-"kalkis": "02:25",
-"inis": "19:10",
-"zaman": "2026-11-26T02:25+03:00",
-"tip": "77W",
-"ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "02:25",
-"kapi": "D11",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK310-20261126": {
-"no": "TK310",
-"yon": "gidis",
-"hat": "IST-DPS",
-"sehir": "Denpasar",
-"kalkis": "02:25",
-"inis": "20:05",
-"zaman": "2026-11-26T02:25+03:00",
-"tip": "789",
-"ad": "Boeing 787-9",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "02:25",
-"kapi": "D16",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK734-20261126": {
-"no": "TK734",
-"yon": "gidis",
-"hat": "IST-MLE",
-"sehir": "Male",
-"kalkis": "02:25",
-"inis": "12:35",
-"zaman": "2026-11-26T02:25+03:00",
-"tip": "359",
-"ad": "Airbus A350-900",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "02:25",
-"kapi": "D7",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK198-20261126": {
-"no": "TK198",
-"yon": "gidis",
-"hat": "IST-HND",
-"sehir": "Tokyo",
-"kalkis": "02:30",
-"inis": "19:45",
-"zaman": "2026-11-26T02:30+03:00",
-"tip": "77W",
-"ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "02:20",
-"kapi": "A1G",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK846-20261126": {
-"no": "TK846",
-"yon": "gidis",
-"hat": "IST-DAM",
-"sehir": "Damascus",
-"kalkis": "02:30",
-"inis": "04:40",
-"zaman": "2026-11-26T02:30+03:00",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "İptal",
-"durum_kod": "C",
-"gecikme": 0,
-"tahmini": "",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
 "TK114-20261126": {
 "no": "TK114",
 "yon": "gidis",
@@ -731,15 +413,17 @@
 "zaman": "2026-11-26T05:35+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 37,
 "tahmini": "06:12",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "16",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LGJ",
+"tahmini_tur": "Estimated"
 },
 "TK849-G-20261126": {
 "no": "TK849",
@@ -752,15 +436,17 @@
 "zaman": "2026-11-26T05:35+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
-"durum": "Havada",
-"durum_kod": "A",
+"kontrol": "2026-11-26T05:33+03:00",
+"durum": "İndi",
+"durum_kod": "L",
 "gecikme": 0,
-"tahmini": "05:14",
+"tahmini": "05:09",
 "kapi": "",
 "terminal": "",
-"bant": "23B",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "23A",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JYB",
+"tahmini_tur": "Actual"
 },
 "TK67-G-20261126": {
 "no": "TK67",
@@ -773,15 +459,17 @@
 "zaman": "2026-11-26T05:40+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:00+03:00",
-"durum": "Havada",
-"durum_kod": "A",
+"kontrol": "2026-11-26T05:33+03:00",
+"durum": "İndi",
+"durum_kod": "L",
 "gecikme": 0,
-"tahmini": "05:34",
+"tahmini": "05:18",
 "kapi": "",
 "terminal": "",
 "bant": "18A",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LHJ",
+"tahmini_tur": "Actual"
 },
 "TK137-G-20261126": {
 "no": "TK137",
@@ -794,15 +482,17 @@
 "zaman": "2026-11-26T05:40+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 37,
-"tahmini": "06:17",
+"gecikme": 31,
+"tahmini": "06:11",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "8",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LPA",
+"tahmini_tur": "Estimated"
 },
 "TK813-G-20261126": {
 "no": "TK813",
@@ -815,17 +505,19 @@
 "zaman": "2026-11-26T05:40+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "onceki_tip": "73J",
 "degisti": "2026-11-26T03:38+03:00",
-"durum": "Havada",
-"durum_kod": "A",
+"durum": "İndi",
+"durum_kod": "L",
 "gecikme": 0,
-"tahmini": "05:32",
+"tahmini": "05:24",
 "kapi": "",
 "terminal": "",
 "bant": "15",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JVP",
+"tahmini_tur": "Actual"
 },
 "TK199-G-20261126": {
 "no": "TK199",
@@ -838,15 +530,17 @@
 "zaman": "2026-11-26T05:45+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 12,
-"tahmini": "05:57",
+"gecikme": 15,
+"tahmini": "06:00",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "17",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LJF",
+"tahmini_tur": "Estimated"
 },
 "TK85-G-20261126": {
 "no": "TK85",
@@ -859,15 +553,17 @@
 "zaman": "2026-11-26T05:45+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 4,
-"tahmini": "05:49",
+"gecikme": 30,
+"tahmini": "06:15",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "11",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LJC",
+"tahmini_tur": "Estimated"
 },
 "TK158-G-20261126": {
 "no": "TK158",
@@ -880,15 +576,17 @@
 "zaman": "2026-11-26T05:45+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 6,
-"tahmini": "05:51",
+"gecikme": 16,
+"tahmini": "06:01",
 "kapi": "",
 "terminal": "",
 "bant": "15",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LLT",
+"tahmini_tur": "Estimated"
 },
 "TK317-G-20261126": {
 "no": "TK317",
@@ -901,15 +599,17 @@
 "zaman": "2026-11-26T05:45+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
-"durum": "Havada",
-"durum_kod": "A",
-"gecikme": 12,
-"tahmini": "05:57",
+"kontrol": "2026-11-26T05:33+03:00",
+"durum": "İndi",
+"durum_kod": "L",
+"gecikme": 0,
+"tahmini": "05:31",
 "kapi": "",
 "terminal": "",
 "bant": "9",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LCI",
+"tahmini_tur": "Actual"
 },
 "TK687-G-20261126": {
 "no": "TK687",
@@ -922,15 +622,17 @@
 "zaman": "2026-11-26T05:45+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
-"durum": "Havada",
-"durum_kod": "A",
+"kontrol": "2026-11-26T05:33+03:00",
+"durum": "İndi",
+"durum_kod": "L",
 "gecikme": 0,
-"tahmini": "05:37",
+"tahmini": "05:23",
 "kapi": "",
 "terminal": "",
 "bant": "21A",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LRH",
+"tahmini_tur": "Actual"
 },
 "TK276-G-20261126": {
 "no": "TK276",
@@ -943,15 +645,17 @@
 "zaman": "2026-11-26T05:45+03:00",
 "tip": "7M9",
 "ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
-"durum": "Havada",
-"durum_kod": "A",
+"kontrol": "2026-11-26T05:33+03:00",
+"durum": "İndi",
+"durum_kod": "L",
 "gecikme": 0,
-"tahmini": "05:40",
+"tahmini": "05:21",
 "kapi": "",
 "terminal": "",
-"bant": "20A",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "20B",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LYA",
+"tahmini_tur": "Actual"
 },
 "TK87-G-20261126": {
 "no": "TK87",
@@ -964,15 +668,17 @@
 "zaman": "2026-11-26T05:50+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 54,
 "tahmini": "06:44",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "24",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LLO",
+"tahmini_tur": "Estimated"
 },
 "TK25-G-20261126": {
 "no": "TK25",
@@ -985,15 +691,17 @@
 "zaman": "2026-11-26T05:50+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 16,
-"tahmini": "06:06",
+"gecikme": 33,
+"tahmini": "06:23",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "21A",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LLU",
+"tahmini_tur": "Estimated"
 },
 "TK57-G-20261126": {
 "no": "TK57",
@@ -1006,15 +714,17 @@
 "zaman": "2026-11-26T05:50+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 29,
-"tahmini": "06:19",
+"gecikme": 33,
+"tahmini": "06:23",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "17",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LGY",
+"tahmini_tur": "Estimated"
 },
 "TK55-G-20261126": {
 "no": "TK55",
@@ -1027,15 +737,17 @@
 "zaman": "2026-11-26T05:50+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 11,
-"tahmini": "06:01",
+"gecikme": 0,
+"tahmini": "05:47",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "20A",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LGC",
+"tahmini_tur": "Estimated"
 },
 "TK91-G-20261126": {
 "no": "TK91",
@@ -1048,15 +760,17 @@
 "zaman": "2026-11-26T05:55+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 16,
-"tahmini": "06:11",
+"gecikme": 10,
+"tahmini": "06:05",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "25",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LJG",
+"tahmini_tur": "Estimated"
 },
 "TK73-G-20261126": {
 "no": "TK73",
@@ -1069,15 +783,17 @@
 "zaman": "2026-11-26T05:55+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 36,
 "tahmini": "06:31",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "12",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LJK",
+"tahmini_tur": "Estimated"
 },
 "TK69-G-20261126": {
 "no": "TK69",
@@ -1090,7 +806,7 @@
 "zaman": "2026-11-26T05:55+03:00",
 "tip": "333",
 "ad": "Airbus A330-300",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 44,
@@ -1098,7 +814,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "10",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JOB",
+"tahmini_tur": "Estimated"
 },
 "TK227-G-20261126": {
 "no": "TK227",
@@ -1111,15 +829,17 @@
 "zaman": "2026-11-26T05:55+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 27,
 "tahmini": "06:22",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "24",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LLJ",
+"tahmini_tur": "Estimated"
 },
 "TK43-G-20261126": {
 "no": "TK43",
@@ -1132,7 +852,7 @@
 "zaman": "2026-11-26T05:55+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 146,
@@ -1140,7 +860,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LGU",
+"tahmini_tur": "Estimated"
 },
 "TK2445-G-20261126": {
 "no": "TK2445",
@@ -1153,15 +875,17 @@
 "zaman": "2026-11-26T05:55+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 4,
-"tahmini": "05:59",
+"gecikme": 0,
+"tahmini": "05:50",
 "kapi": "",
 "terminal": "",
 "bant": "2A",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JYP",
+"tahmini_tur": "Estimated"
 },
 "TK2704-20261126": {
 "no": "TK2704",
@@ -1173,7 +897,7 @@
 "zaman": "2026-11-26T06:00+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -1181,7 +905,8 @@
 "kapi": "G1G",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK303-G-20261126": {
 "no": "TK303",
@@ -1194,15 +919,17 @@
 "zaman": "2026-11-26T06:00+03:00",
 "tip": "32B",
 "ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 8,
-"tahmini": "06:08",
+"gecikme": 2,
+"tahmini": "06:02",
 "kapi": "",
 "terminal": "",
 "bant": "10",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JTI",
+"tahmini_tur": "Estimated"
 },
 "TK965-G-20261126": {
 "no": "TK965",
@@ -1215,15 +942,17 @@
 "zaman": "2026-11-26T06:05+03:00",
 "tip": "319",
 "ad": "Airbus A319",
-"kontrol": "2026-11-26T05:00+03:00",
-"durum": "Havada",
-"durum_kod": "A",
+"kontrol": "2026-11-26T05:33+03:00",
+"durum": "İndi",
+"durum_kod": "L",
 "gecikme": 0,
-"tahmini": "05:54",
+"tahmini": "05:23",
 "kapi": "",
 "terminal": "",
 "bant": "12",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JLZ",
+"tahmini_tur": "Actual"
 },
 "TK61-G-20261126": {
 "no": "TK61",
@@ -1236,15 +965,17 @@
 "zaman": "2026-11-26T06:10+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "05:46",
+"tahmini": "05:58",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "25",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LHG",
+"tahmini_tur": "Estimated"
 },
 "TK27-G-20261126": {
 "no": "TK27",
@@ -1257,7 +988,7 @@
 "zaman": "2026-11-26T06:10+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 10,
@@ -1265,7 +996,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "15",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JJU",
+"tahmini_tur": "Estimated"
 },
 "TK71-G-20261126": {
 "no": "TK71",
@@ -1278,15 +1011,17 @@
 "zaman": "2026-11-26T06:10+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 15,
 "tahmini": "06:25",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "21A",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JJS",
+"tahmini_tur": "Estimated"
 },
 "TK286-G-20261126": {
 "no": "TK286",
@@ -1299,15 +1034,17 @@
 "zaman": "2026-11-26T06:10+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
 "tahmini": "06:10",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "12",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JHS",
+"tahmini_tur": "Estimated"
 },
 "TK387-G-20261126": {
 "no": "TK387",
@@ -1320,15 +1057,17 @@
 "zaman": "2026-11-26T06:10+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 27,
-"tahmini": "06:37",
+"gecikme": 29,
+"tahmini": "06:39",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "18B",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JZH",
+"tahmini_tur": "Estimated"
 },
 "TK404-G-20261126": {
 "no": "TK404",
@@ -1341,15 +1080,17 @@
 "zaman": "2026-11-26T06:15+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "05:58",
+"tahmini": "05:59",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "8",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JHM",
+"tahmini_tur": "Estimated"
 },
 "TK2475-G-20261126": {
 "no": "TK2475",
@@ -1362,15 +1103,17 @@
 "zaman": "2026-11-26T06:15+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "06:05",
+"tahmini": "06:06",
 "kapi": "",
 "terminal": "",
 "bant": "2B",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JHZ",
+"tahmini_tur": "Estimated"
 },
 "TK412-G-20261126": {
 "no": "TK412",
@@ -1383,7 +1126,7 @@
 "zaman": "2026-11-26T06:15+03:00",
 "tip": "333",
 "ad": "Airbus A330-300",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "İptal",
 "durum_kod": "C",
 "gecikme": 0,
@@ -1391,7 +1134,8 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK773-G-20261126": {
 "no": "TK773",
@@ -1404,15 +1148,17 @@
 "zaman": "2026-11-26T06:25+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "06:02",
+"tahmini": "05:55",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "23A",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LTA",
+"tahmini_tur": "Estimated"
 },
 "TK89-G-20261126": {
 "no": "TK89",
@@ -1425,15 +1171,17 @@
 "zaman": "2026-11-26T06:25+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 15,
 "tahmini": "06:40",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "18A",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JJF",
+"tahmini_tur": "Estimated"
 },
 "TK4-G-20261126": {
 "no": "TK4",
@@ -1446,15 +1194,17 @@
 "zaman": "2026-11-26T06:25+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 23,
-"tahmini": "06:48",
+"gecikme": 15,
+"tahmini": "06:40",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "17",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LJE",
+"tahmini_tur": "Estimated"
 },
 "TK323-G-20261126": {
 "no": "TK323",
@@ -1467,15 +1217,17 @@
 "zaman": "2026-11-26T06:30+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 32,
 "tahmini": "07:02",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "10",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LPG",
+"tahmini_tur": "Estimated"
 },
 "TK95-G-20261126": {
 "no": "TK95",
@@ -1488,7 +1240,7 @@
 "zaman": "2026-11-26T06:30+03:00",
 "tip": "332",
 "ad": "Airbus A330-200",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "onceki_tip": "789",
 "degisti": "2026-11-26T02:30+03:00",
 "durum": "Havada",
@@ -1498,7 +1250,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JIO",
+"tahmini_tur": "Estimated"
 },
 "TK337-G-20261126": {
 "no": "TK337",
@@ -1511,15 +1265,17 @@
 "zaman": "2026-11-26T06:30+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 16,
 "tahmini": "06:46",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "20A",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LTE",
+"tahmini_tur": "Estimated"
 },
 "TK626-G-20261126": {
 "no": "TK626",
@@ -1532,15 +1288,17 @@
 "zaman": "2026-11-26T06:35+03:00",
 "tip": "333",
 "ad": "Airbus A330-300",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "06:20",
+"tahmini": "05:55",
 "kapi": "",
 "terminal": "",
 "bant": "9",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LNC",
+"tahmini_tur": "Estimated"
 },
 "TK624-G-20261126": {
 "no": "TK624",
@@ -1553,15 +1311,17 @@
 "zaman": "2026-11-26T06:35+03:00",
 "tip": "333",
 "ad": "Airbus A330-300",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "06:08",
+"tahmini": "05:55",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "23B",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JOE",
+"tahmini_tur": "Estimated"
 },
 "TK355-G-20261126": {
 "no": "TK355",
@@ -1574,7 +1334,7 @@
 "zaman": "2026-11-26T06:35+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 25,
@@ -1582,7 +1342,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LTO",
+"tahmini_tur": "Estimated"
 },
 "TK781-G-20261126": {
 "no": "TK781",
@@ -1595,15 +1357,17 @@
 "zaman": "2026-11-26T06:35+03:00",
 "tip": "7M9",
 "ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "06:35",
+"tahmini": "06:05",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "11",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LYD",
+"tahmini_tur": "Estimated"
 },
 "TK141-G-20261126": {
 "no": "TK141",
@@ -1616,15 +1380,17 @@
 "zaman": "2026-11-26T06:35+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 3,
 "tahmini": "06:38",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "23A",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JYF",
+"tahmini_tur": "Estimated"
 },
 "TK829-G-20261126": {
 "no": "TK829",
@@ -1637,15 +1403,17 @@
 "zaman": "2026-11-26T06:35+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
 "tahmini": "06:33",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "21B",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LSS",
+"tahmini_tur": "Estimated"
 },
 "TK2241-G-20261126": {
 "no": "TK2241",
@@ -1658,15 +1426,17 @@
 "zaman": "2026-11-26T06:40+03:00",
 "tip": "320",
 "ad": "Airbus A320",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "06:40",
+"tahmini": "06:34",
 "kapi": "",
 "terminal": "",
 "bant": "1A",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JPL",
+"tahmini_tur": "Estimated"
 },
 "TK677-G-20261126": {
 "no": "TK677",
@@ -1679,15 +1449,17 @@
 "zaman": "2026-11-26T06:50+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "06:48",
+"tahmini": "06:28",
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LCG",
+"tahmini_tur": "Estimated"
 },
 "TK630-G-20261126": {
 "no": "TK630",
@@ -1700,7 +1472,7 @@
 "zaman": "2026-11-26T06:55+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
@@ -1708,7 +1480,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "9",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LCB",
+"tahmini_tur": "Estimated"
 },
 "TK347-G-20261126": {
 "no": "TK347",
@@ -1721,7 +1495,7 @@
 "zaman": "2026-11-26T06:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 50,
@@ -1729,7 +1503,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LUP",
+"tahmini_tur": "Estimated"
 },
 "TK775-G-20261126": {
 "no": "TK775",
@@ -1742,7 +1518,7 @@
 "zaman": "2026-11-26T06:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
@@ -1750,7 +1526,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "16",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LPU",
+"tahmini_tur": "Estimated"
 },
 "TK255-G-20261126": {
 "no": "TK255",
@@ -1763,7 +1541,7 @@
 "zaman": "2026-11-26T06:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 38,
@@ -1771,7 +1549,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LPI",
+"tahmini_tur": "Estimated"
 },
 "TK761-G-20261126": {
 "no": "TK761",
@@ -1784,7 +1564,7 @@
 "zaman": "2026-11-26T06:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 8,
@@ -1792,7 +1572,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LPR",
+"tahmini_tur": "Estimated"
 },
 "TK422-G-20261126": {
 "no": "TK422",
@@ -1805,7 +1587,7 @@
 "zaman": "2026-11-26T06:55+03:00",
 "tip": "321",
 "ad": "Airbus A321",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "onceki_tip": "32B",
 "degisti": "2026-11-26T03:38+03:00",
 "durum": "Havada",
@@ -1815,7 +1597,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JRP",
+"tahmini_tur": "Estimated"
 },
 "TK697-G-20261126": {
 "no": "TK697",
@@ -1828,15 +1612,17 @@
 "zaman": "2026-11-26T06:55+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
-"gecikme": 0,
-"tahmini": "06:55",
+"gecikme": 13,
+"tahmini": "07:08",
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LCP",
+"tahmini_tur": "Estimated"
 },
 "TK2536-20261126": {
 "no": "TK2536",
@@ -1848,7 +1634,7 @@
 "zaman": "2026-11-26T07:00+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -1856,7 +1642,8 @@
 "kapi": "G10A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2310-20261126": {
 "no": "TK2310",
@@ -1868,7 +1655,7 @@
 "zaman": "2026-11-26T07:00+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -1876,7 +1663,8 @@
 "kapi": "G11A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2826-20261126": {
 "no": "TK2826",
@@ -1888,15 +1676,16 @@
 "zaman": "2026-11-26T07:00+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "07:00",
-"kapi": "G6B",
+"kapi": "G3E",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2122-20261126": {
 "no": "TK2122",
@@ -1908,7 +1697,7 @@
 "zaman": "2026-11-26T07:00+03:00",
 "tip": "321",
 "ad": "Airbus A321",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -1916,7 +1705,8 @@
 "kapi": "G1H",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK451-G-20261126": {
 "no": "TK451",
@@ -1929,7 +1719,7 @@
 "zaman": "2026-11-26T07:00+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 89,
@@ -1937,7 +1727,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LTF",
+"tahmini_tur": "Estimated"
 },
 "TK869-G-20261126": {
 "no": "TK869",
@@ -1950,15 +1742,17 @@
 "zaman": "2026-11-26T07:00+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
 "tahmini": "07:00",
 "kapi": "",
 "terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"bant": "8",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LCF",
+"tahmini_tur": "Estimated"
 },
 "TK2220-20261126": {
 "no": "TK2220",
@@ -1970,7 +1764,7 @@
 "zaman": "2026-11-26T07:05+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -1978,7 +1772,8 @@
 "kapi": "G2B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2452-20261126": {
 "no": "TK2452",
@@ -1990,7 +1785,7 @@
 "zaman": "2026-11-26T07:05+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -1998,7 +1793,8 @@
 "kapi": "G3G",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2032-20261126": {
 "no": "TK2032",
@@ -2010,7 +1806,7 @@
 "zaman": "2026-11-26T07:05+03:00",
 "tip": "320",
 "ad": "Airbus A320",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2018,7 +1814,8 @@
 "kapi": "G11B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK186-G-20261126": {
 "no": "TK186",
@@ -2031,15 +1828,17 @@
 "zaman": "2026-11-26T07:10+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 0,
-"tahmini": "07:09",
+"tahmini": "07:05",
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LLZ",
+"tahmini_tur": "Estimated"
 },
 "TK188-G-20261126": {
 "no": "TK188",
@@ -2052,7 +1851,7 @@
 "zaman": "2026-11-26T07:10+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 4,
@@ -2060,7 +1859,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LLM",
+"tahmini_tur": "Estimated"
 },
 "TK371-G-20261126": {
 "no": "TK371",
@@ -2073,7 +1874,7 @@
 "zaman": "2026-11-26T07:10+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 60,
@@ -2081,7 +1882,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LTP",
+"tahmini_tur": "Estimated"
 },
 "TK816-20261126": {
 "no": "TK816",
@@ -2091,7 +1894,7 @@
 "kalkis": "07:15",
 "inis": "09:40",
 "zaman": "2026-11-26T07:15+03:00",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "İptal",
 "durum_kod": "C",
 "gecikme": 0,
@@ -2099,7 +1902,8 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2806-20261126": {
 "no": "TK2806",
@@ -2111,15 +1915,16 @@
 "zaman": "2026-11-26T07:25+03:00",
 "tip": "7M9",
 "ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "07:25",
+"tahmini": "07:15",
 "kapi": "G1F",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2674-20261126": {
 "no": "TK2674",
@@ -2131,7 +1936,7 @@
 "zaman": "2026-11-26T07:25+03:00",
 "tip": "32A",
 "ad": "Airbus A320 (sharklets)",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2139,7 +1944,8 @@
 "kapi": "G10B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK851-20261126": {
 "no": "TK851",
@@ -2151,7 +1957,7 @@
 "zaman": "2026-11-26T07:25+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2159,7 +1965,8 @@
 "kapi": "A1D",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2848-20261126": {
 "no": "TK2848",
@@ -2171,15 +1978,16 @@
 "zaman": "2026-11-26T07:30+03:00",
 "tip": "32N",
 "ad": "Airbus A320neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "07:30",
+"tahmini": "07:20",
 "kapi": "G4A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK690-20261126": {
 "no": "TK690",
@@ -2191,7 +1999,7 @@
 "zaman": "2026-11-26T07:30+03:00",
 "tip": "333",
 "ad": "Airbus A330-300",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2199,7 +2007,8 @@
 "kapi": "B4",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2000-20261126": {
 "no": "TK2000",
@@ -2211,7 +2020,7 @@
 "zaman": "2026-11-26T07:30+03:00",
 "tip": "32B",
 "ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2219,7 +2028,8 @@
 "kapi": "G1E",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2602-20261126": {
 "no": "TK2602",
@@ -2231,7 +2041,7 @@
 "zaman": "2026-11-26T07:30+03:00",
 "tip": "32B",
 "ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2239,7 +2049,8 @@
 "kapi": "G1G",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2242-20261126": {
 "no": "TK2242",
@@ -2251,15 +2062,16 @@
 "zaman": "2026-11-26T07:30+03:00",
 "tip": "32A",
 "ad": "Airbus A320 (sharklets)",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "07:30",
+"tahmini": "07:20",
 "kapi": "G5A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2408-20261126": {
 "no": "TK2408",
@@ -2271,7 +2083,7 @@
 "zaman": "2026-11-26T07:35+03:00",
 "tip": "321",
 "ad": "Airbus A321",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2279,7 +2091,8 @@
 "kapi": "G8A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2010-20261126": {
 "no": "TK2010",
@@ -2291,7 +2104,7 @@
 "zaman": "2026-11-26T07:35+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2299,7 +2112,8 @@
 "kapi": "G3H",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK185-20261126": {
 "no": "TK185",
@@ -2311,7 +2125,7 @@
 "zaman": "2026-11-26T07:35+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2319,7 +2133,8 @@
 "kapi": "D8",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2504-20261126": {
 "no": "TK2504",
@@ -2331,15 +2146,16 @@
 "zaman": "2026-11-26T07:40+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "07:40",
+"tahmini": "07:30",
 "kapi": "G3J",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK960-20261126": {
 "no": "TK960",
@@ -2351,15 +2167,16 @@
 "zaman": "2026-11-26T07:40+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "07:40",
+"tahmini": "07:30",
 "kapi": "A2A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2552-20261126": {
 "no": "TK2552",
@@ -2371,36 +2188,16 @@
 "zaman": "2026-11-26T07:45+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "07:45",
+"tahmini": "07:35",
 "kapi": "G2A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
-},
-"TK2345-G-20261126": {
-"no": "TK2345",
-"yon": "gelis",
-"hat": "ADB-IST",
-"sehir": "Izmir",
-"kalkis": "07:45",
-"dep_saat": "06:30",
-"inis": "07:45",
-"zaman": "2026-11-26T07:45+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "07:45",
-"kapi": "",
-"terminal": "",
-"bant": "1B",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2191-G-20261126": {
 "no": "TK2191",
@@ -2413,7 +2210,7 @@
 "zaman": "2026-11-26T07:45+03:00",
 "tip": "32N",
 "ad": "Airbus A320neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2421,7 +2218,30 @@
 "kapi": "",
 "terminal": "",
 "bant": "1A",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
+},
+"TK2345-G-20261126": {
+"no": "TK2345",
+"yon": "gelis",
+"hat": "ADB-IST",
+"sehir": "Izmir",
+"kalkis": "07:45",
+"dep_saat": "06:30",
+"inis": "07:45",
+"zaman": "2026-11-26T07:45+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-26T05:33+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "07:45",
+"kapi": "",
+"terminal": "",
+"bant": "1B",
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1857-20261126": {
 "no": "TK1857",
@@ -2433,15 +2253,16 @@
 "zaman": "2026-11-26T07:55+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "07:55",
+"tahmini": "07:45",
 "kapi": "B15",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1369-20261126": {
 "no": "TK1369",
@@ -2453,7 +2274,7 @@
 "zaman": "2026-11-26T07:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2461,7 +2282,8 @@
 "kapi": "C3",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK764-20261126": {
 "no": "TK764",
@@ -2473,7 +2295,7 @@
 "zaman": "2026-11-26T07:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2481,7 +2303,8 @@
 "kapi": "B8A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK830-20261126": {
 "no": "TK830",
@@ -2493,15 +2316,16 @@
 "zaman": "2026-11-26T07:55+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "07:55",
+"tahmini": "07:45",
 "kapi": "A4A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1975-20261126": {
 "no": "TK1975",
@@ -2513,15 +2337,16 @@
 "zaman": "2026-11-26T07:55+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "07:55",
-"kapi": "F9A",
+"kapi": "F1A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK283-20261126": {
 "no": "TK283",
@@ -2533,7 +2358,7 @@
 "zaman": "2026-11-26T07:55+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2541,7 +2366,8 @@
 "kapi": "F3B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1449-20261126": {
 "no": "TK1449",
@@ -2553,15 +2379,16 @@
 "zaman": "2026-11-26T07:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "07:55",
+"tahmini": "07:45",
 "kapi": "F2",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK378-20261126": {
 "no": "TK378",
@@ -2573,7 +2400,7 @@
 "zaman": "2026-11-26T07:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2581,7 +2408,8 @@
 "kapi": "A1F",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1821-20261126": {
 "no": "TK1821",
@@ -2593,7 +2421,7 @@
 "zaman": "2026-11-26T07:55+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2601,7 +2429,8 @@
 "kapi": "D16",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2126-20261126": {
 "no": "TK2126",
@@ -2613,7 +2442,7 @@
 "zaman": "2026-11-26T08:00+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2621,7 +2450,8 @@
 "kapi": "G1D",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1767-20261126": {
 "no": "TK1767",
@@ -2633,15 +2463,16 @@
 "zaman": "2026-11-26T08:00+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "08:00",
+"tahmini": "07:50",
 "kapi": "B3A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1867-20261126": {
 "no": "TK1867",
@@ -2653,15 +2484,16 @@
 "zaman": "2026-11-26T08:00+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "08:00",
+"tahmini": "07:50",
 "kapi": "E4",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1523-20261126": {
 "no": "TK1523",
@@ -2673,15 +2505,16 @@
 "zaman": "2026-11-26T08:00+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "08:00",
-"kapi": "F12B",
+"kapi": "F9A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1381-20261126": {
 "no": "TK1381",
@@ -2693,7 +2526,7 @@
 "zaman": "2026-11-26T08:00+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2701,7 +2534,8 @@
 "kapi": "A2B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK179-20261126": {
 "no": "TK179",
@@ -2713,7 +2547,7 @@
 "zaman": "2026-11-26T08:00+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2721,7 +2555,8 @@
 "kapi": "D9",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK2312-20261126": {
 "no": "TK2312",
@@ -2733,7 +2568,7 @@
 "zaman": "2026-11-26T08:00+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2741,7 +2576,8 @@
 "kapi": "G1C",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK801-20261126": {
 "no": "TK801",
@@ -2753,7 +2589,7 @@
 "zaman": "2026-11-26T08:05+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2761,7 +2597,8 @@
 "kapi": "D7",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1981-20261126": {
 "no": "TK1981",
@@ -2773,7 +2610,7 @@
 "zaman": "2026-11-26T08:05+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2781,7 +2618,8 @@
 "kapi": "F7A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1061-20261126": {
 "no": "TK1061",
@@ -2793,15 +2631,16 @@
 "zaman": "2026-11-26T08:05+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "08:05",
-"kapi": "A11A",
+"kapi": "B12B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK3-20261126": {
 "no": "TK3",
@@ -2813,7 +2652,7 @@
 "zaman": "2026-11-26T08:05+03:00",
 "tip": "77W",
 "ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2821,7 +2660,8 @@
 "kapi": "D10",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK608-G-20261126": {
 "no": "TK608",
@@ -2834,7 +2674,7 @@
 "zaman": "2026-11-26T08:05+03:00",
 "tip": "332",
 "ad": "Airbus A330-200",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 1,
@@ -2842,7 +2682,9 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-JNE",
+"tahmini_tur": "Estimated"
 },
 "TK841-G-20261126": {
 "no": "TK841",
@@ -2853,7 +2695,7 @@
 "dep_saat": "06:10",
 "inis": "08:05",
 "zaman": "2026-11-26T08:05+03:00",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "İptal",
 "durum_kod": "C",
 "gecikme": 0,
@@ -2861,7 +2703,8 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1843-20261126": {
 "no": "TK1843",
@@ -2873,7 +2716,7 @@
 "zaman": "2026-11-26T08:10+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2881,7 +2724,8 @@
 "kapi": "F17",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1873-20261126": {
 "no": "TK1873",
@@ -2893,7 +2737,7 @@
 "zaman": "2026-11-26T08:10+03:00",
 "tip": "333",
 "ad": "Airbus A330-300",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "onceki_tip": "359",
 "degisti": "2026-11-26T05:00+03:00",
 "durum": "Planlandı",
@@ -2903,7 +2747,9 @@
 "kapi": "A1B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LOD",
+"tahmini_tur": "Estimated"
 },
 "TK1265-20261126": {
 "no": "TK1265",
@@ -2915,15 +2761,16 @@
 "zaman": "2026-11-26T08:10+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "08:10",
-"kapi": "F4B",
+"kapi": "F6A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1035-20261126": {
 "no": "TK1035",
@@ -2935,15 +2782,16 @@
 "zaman": "2026-11-26T08:10+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "08:10",
+"tahmini": "08:00",
 "kapi": "A7A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1081-20261126": {
 "no": "TK1081",
@@ -2955,7 +2803,7 @@
 "zaman": "2026-11-26T08:10+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2963,7 +2811,8 @@
 "kapi": "B8B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1343-20261126": {
 "no": "TK1343",
@@ -2975,7 +2824,7 @@
 "zaman": "2026-11-26T08:10+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -2983,7 +2832,8 @@
 "kapi": "F8A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1073-20261126": {
 "no": "TK1073",
@@ -2995,15 +2845,16 @@
 "zaman": "2026-11-26T08:10+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "08:10",
+"tahmini": "08:00",
 "kapi": "A8A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1587-20261126": {
 "no": "TK1587",
@@ -3015,7 +2866,7 @@
 "zaman": "2026-11-26T08:10+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3023,7 +2874,9 @@
 "kapi": "F5A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LTG",
+"tahmini_tur": "Estimated"
 },
 "TK1807-20261126": {
 "no": "TK1807",
@@ -3035,15 +2888,16 @@
 "zaman": "2026-11-26T08:15+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "08:15",
-"kapi": "F6B",
+"kapi": "F4B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1993-20261126": {
 "no": "TK1993",
@@ -3055,7 +2909,7 @@
 "zaman": "2026-11-26T08:15+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3063,7 +2917,8 @@
 "kapi": "F8B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1053-20261126": {
 "no": "TK1053",
@@ -3075,7 +2930,7 @@
 "zaman": "2026-11-26T08:15+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3083,7 +2938,8 @@
 "kapi": "B12A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1881-20261126": {
 "no": "TK1881",
@@ -3095,7 +2951,7 @@
 "zaman": "2026-11-26T08:15+03:00",
 "tip": "32N",
 "ad": "Airbus A320neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3103,7 +2959,8 @@
 "kapi": "A1G",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1783-20261126": {
 "no": "TK1783",
@@ -3115,15 +2972,16 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "08:20",
+"tahmini": "08:10",
 "kapi": "C4",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK651-20261126": {
 "no": "TK651",
@@ -3135,7 +2993,7 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "7M9",
 "ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3143,7 +3001,8 @@
 "kapi": "A1E",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK332-20261126": {
 "no": "TK332",
@@ -3155,15 +3014,16 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "08:20",
+"tahmini": "08:10",
 "kapi": "F9B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1085-20261126": {
 "no": "TK1085",
@@ -3175,15 +3035,16 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "08:20",
-"kapi": "F6A",
+"kapi": "F12B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1883-20261126": {
 "no": "TK1883",
@@ -3195,7 +3056,7 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3203,7 +3064,8 @@
 "kapi": "C1",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1027-20261126": {
 "no": "TK1027",
@@ -3215,7 +3077,7 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "32B",
 "ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "onceki_tip": "321",
 "degisti": "2026-11-26T05:00+03:00",
 "durum": "Planlandı",
@@ -3225,7 +3087,8 @@
 "kapi": "E3",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1043-20261126": {
 "no": "TK1043",
@@ -3237,7 +3100,7 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3245,7 +3108,8 @@
 "kapi": "B10",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1661-20261126": {
 "no": "TK1661",
@@ -3257,7 +3121,7 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3265,7 +3129,8 @@
 "kapi": "D5",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1553-20261126": {
 "no": "TK1553",
@@ -3277,7 +3142,7 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3285,7 +3150,8 @@
 "kapi": "D3",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1917-20261126": {
 "no": "TK1917",
@@ -3297,7 +3163,7 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3305,7 +3171,8 @@
 "kapi": "B1B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1331-20261126": {
 "no": "TK1331",
@@ -3317,15 +3184,16 @@
 "zaman": "2026-11-26T08:20+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "08:20",
-"kapi": "E2",
+"kapi": "A3B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1755-20261126": {
 "no": "TK1755",
@@ -3337,7 +3205,7 @@
 "zaman": "2026-11-26T08:25+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3345,7 +3213,8 @@
 "kapi": "A10A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1389-20261126": {
 "no": "TK1389",
@@ -3357,7 +3226,7 @@
 "zaman": "2026-11-26T08:25+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3365,7 +3234,8 @@
 "kapi": "F5B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1721-20261126": {
 "no": "TK1721",
@@ -3377,15 +3247,17 @@
 "zaman": "2026-11-26T08:25+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "08:25",
+"tahmini": "08:15",
 "kapi": "A5A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tescil": "TC-LSK",
+"tahmini_tur": "Estimated"
 },
 "TK1751-20261126": {
 "no": "TK1751",
@@ -3397,7 +3269,7 @@
 "zaman": "2026-11-26T08:30+03:00",
 "tip": "7M9",
 "ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3405,7 +3277,8 @@
 "kapi": "F13A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK269-20261126": {
 "no": "TK269",
@@ -3417,7 +3290,7 @@
 "zaman": "2026-11-26T08:30+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3425,7 +3298,8 @@
 "kapi": "E1",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK413-20261126": {
 "no": "TK413",
@@ -3437,7 +3311,7 @@
 "zaman": "2026-11-26T08:30+03:00",
 "tip": "333",
 "ad": "Airbus A330-300",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3445,7 +3319,8 @@
 "kapi": "F15",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1017-20261126": {
 "no": "TK1017",
@@ -3457,7 +3332,7 @@
 "zaman": "2026-11-26T08:30+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3465,7 +3340,8 @@
 "kapi": "B9A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1757-20261126": {
 "no": "TK1757",
@@ -3477,7 +3353,7 @@
 "zaman": "2026-11-26T08:30+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:00+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3485,7 +3361,8 @@
 "kapi": "A11B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:00+03:00"
+"durum_zaman": "2026-11-26T05:33+03:00",
+"tahmini_tur": "Estimated"
 },
 "TK1701-20261126": {
 "no": "TK1701",
@@ -3497,15 +3374,15 @@
 "zaman": "2026-11-26T08:30+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "08:30",
-"kapi": "B2",
+"kapi": "F12A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1303-20261126": {
@@ -3518,7 +3395,7 @@
 "zaman": "2026-11-26T08:30+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3526,7 +3403,7 @@
 "kapi": "A1C",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1761-20261126": {
@@ -3539,7 +3416,7 @@
 "zaman": "2026-11-26T08:35+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3547,7 +3424,7 @@
 "kapi": "B6B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK108-20261126": {
@@ -3560,7 +3437,7 @@
 "zaman": "2026-11-26T08:35+03:00",
 "tip": "333",
 "ad": "Airbus A330-300",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3568,7 +3445,7 @@
 "kapi": "F18",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1923-20261126": {
@@ -3581,7 +3458,7 @@
 "zaman": "2026-11-26T08:40+03:00",
 "tip": "32B",
 "ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3589,7 +3466,7 @@
 "kapi": "B5A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tescil": "TC-JSP",
 "tahmini_tur": "Estimated"
 },
@@ -3603,7 +3480,9 @@
 "zaman": "2026-11-26T08:40+03:00",
 "tip": "7M9",
 "ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
+"onceki_tip": "7M8",
+"degisti": "2026-11-26T05:06+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3611,9 +3490,7 @@
 "kapi": "A7B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"onceki_tip": "7M8",
-"degisti": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tescil": "TC-LYB",
 "tahmini_tur": "Estimated"
 },
@@ -3627,7 +3504,7 @@
 "zaman": "2026-11-26T08:45+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3635,7 +3512,7 @@
 "kapi": "D12",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1407-20261126": {
@@ -3648,7 +3525,7 @@
 "zaman": "2026-11-26T08:50+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3656,7 +3533,7 @@
 "kapi": "D1",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1813-20261126": {
@@ -3669,7 +3546,7 @@
 "zaman": "2026-11-26T08:50+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3677,7 +3554,7 @@
 "kapi": "B18A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1301-20261126": {
@@ -3690,7 +3567,7 @@
 "zaman": "2026-11-26T08:50+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3698,7 +3575,7 @@
 "kapi": "C2",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1241-20261126": {
@@ -3711,7 +3588,7 @@
 "zaman": "2026-11-26T08:50+03:00",
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3719,7 +3596,7 @@
 "kapi": "B7B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK693-G-20261126": {
@@ -3733,7 +3610,7 @@
 "zaman": "2026-11-26T08:50+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3741,7 +3618,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1907-20261126": {
@@ -3754,7 +3631,9 @@
 "zaman": "2026-11-26T08:55+03:00",
 "tip": "32B",
 "ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
+"onceki_tip": "32Q",
+"degisti": "2026-11-26T05:06+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3762,9 +3641,7 @@
 "kapi": "A1H",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"onceki_tip": "32Q",
-"degisti": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tescil": "TC-JTR",
 "tahmini_tur": "Estimated"
 },
@@ -3778,7 +3655,7 @@
 "zaman": "2026-11-26T08:55+03:00",
 "tip": "359",
 "ad": "Airbus A350-900",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3786,7 +3663,7 @@
 "kapi": "B17",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK661-20261126": {
@@ -3799,7 +3676,7 @@
 "zaman": "2026-11-26T08:55+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3807,7 +3684,7 @@
 "kapi": "F1B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK639-20261126": {
@@ -3820,7 +3697,7 @@
 "zaman": "2026-11-26T08:55+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3828,7 +3705,7 @@
 "kapi": "E2",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1365-20261126": {
@@ -3841,7 +3718,7 @@
 "zaman": "2026-11-26T08:55+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3849,7 +3726,7 @@
 "kapi": "F1A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK815-G-20261126": {
@@ -3863,7 +3740,7 @@
 "zaman": "2026-11-26T08:55+03:00",
 "tip": "7M9",
 "ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3871,7 +3748,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1861-20261126": {
@@ -3884,7 +3761,7 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "333",
 "ad": "Airbus A330-300",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3892,7 +3769,7 @@
 "kapi": "B14",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK641-20261126": {
@@ -3905,7 +3782,7 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3913,7 +3790,7 @@
 "kapi": "A8B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2134-20261126": {
@@ -3926,7 +3803,7 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "320",
 "ad": "Airbus A320",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "İptal",
 "durum_kod": "C",
 "gecikme": 0,
@@ -3934,7 +3811,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1309-20261126": {
@@ -3947,7 +3824,7 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "7M9",
 "ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "onceki_tip": "73H",
 "degisti": "2026-11-26T02:37+03:00",
 "durum": "Planlandı",
@@ -3957,7 +3834,7 @@
 "kapi": "F7B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK92-20261126": {
@@ -3970,7 +3847,7 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3978,7 +3855,7 @@
 "kapi": "A4B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK429-20261126": {
@@ -3991,7 +3868,7 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "738",
 "ad": "Boeing 737-800 Passenger",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -3999,7 +3876,7 @@
 "kapi": "D4",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1503-20261126": {
@@ -4012,7 +3889,7 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "738",
 "ad": "Boeing 737-800 Passenger",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4020,7 +3897,7 @@
 "kapi": "A1A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1629-20261126": {
@@ -4033,15 +3910,15 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "09:00",
-"kapi": "A3A",
+"kapi": "B1A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1937-20261126": {
@@ -4054,7 +3931,7 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4062,7 +3939,7 @@
 "kapi": "A6A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK401-20261126": {
@@ -4075,7 +3952,7 @@
 "zaman": "2026-11-26T09:00+03:00",
 "tip": "321",
 "ad": "Airbus A321",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4083,7 +3960,7 @@
 "kapi": "A6B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1831-20261126": {
@@ -4096,7 +3973,7 @@
 "zaman": "2026-11-26T09:05+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4104,7 +3981,7 @@
 "kapi": "A1F",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2433-G-20261126": {
@@ -4118,7 +3995,7 @@
 "zaman": "2026-11-26T09:05+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4126,7 +4003,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "1B",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1853-20261126": {
@@ -4139,7 +4016,7 @@
 "zaman": "2026-11-26T09:10+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4147,7 +4024,7 @@
 "kapi": "A5B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK1321-20261126": {
@@ -4160,7 +4037,7 @@
 "zaman": "2026-11-26T09:10+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4168,7 +4045,7 @@
 "kapi": "F3A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2630-20261126": {
@@ -4181,15 +4058,15 @@
 "zaman": "2026-11-26T09:10+03:00",
 "tip": "32A",
 "ad": "Airbus A320 (sharklets)",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
-"tahmini": "09:10",
+"tahmini": "09:00",
 "kapi": "G3H",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2004-20261126": {
@@ -4202,7 +4079,7 @@
 "zaman": "2026-11-26T09:10+03:00",
 "tip": "321",
 "ad": "Airbus A321",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4210,7 +4087,7 @@
 "kapi": "G7B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2642-20261126": {
@@ -4223,15 +4100,15 @@
 "zaman": "2026-11-26T09:10+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "09:10",
-"kapi": "G4A",
+"kapi": "G5A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2746-20261126": {
@@ -4244,7 +4121,7 @@
 "zaman": "2026-11-26T09:10+03:00",
 "tip": "321",
 "ad": "Airbus A321",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4252,7 +4129,7 @@
 "kapi": "G1G",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2252-20261126": {
@@ -4265,7 +4142,7 @@
 "zaman": "2026-11-26T09:10+03:00",
 "tip": "73J",
 "ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4273,7 +4150,7 @@
 "kapi": "G3J",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2410-20261126": {
@@ -4286,15 +4163,15 @@
 "zaman": "2026-11-26T09:10+03:00",
 "tip": "789",
 "ad": "Boeing 787-9",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
 "tahmini": "09:10",
-"kapi": "G3E",
+"kapi": "G11",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2582-20261126": {
@@ -4307,7 +4184,7 @@
 "zaman": "2026-11-26T09:15+03:00",
 "tip": "320",
 "ad": "Airbus A320",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4315,7 +4192,7 @@
 "kapi": "G5B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2658-20261126": {
@@ -4328,7 +4205,7 @@
 "zaman": "2026-11-26T09:15+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4336,7 +4213,7 @@
 "kapi": "G4B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2652-20261126": {
@@ -4349,7 +4226,7 @@
 "zaman": "2026-11-26T09:15+03:00",
 "tip": "319",
 "ad": "Airbus A319",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4357,7 +4234,7 @@
 "kapi": "G6A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2200-20261126": {
@@ -4370,7 +4247,7 @@
 "zaman": "2026-11-26T09:15+03:00",
 "tip": "319",
 "ad": "Airbus A319",
-"kontrol": "2026-11-26T05:06+03:00",
+"kontrol": "2026-11-26T05:33+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4378,7 +4255,7 @@
 "kapi": "G1H",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
+"durum_zaman": "2026-11-26T05:33+03:00",
 "tahmini_tur": "Estimated"
 },
 "TK2012-20261126": {
@@ -4399,8 +4276,7 @@
 "kapi": "G1E",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2828-20261126": {
 "no": "TK2828",
@@ -4420,8 +4296,7 @@
 "kapi": "G1F",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2576-20261126": {
 "no": "TK2576",
@@ -4441,8 +4316,7 @@
 "kapi": "G7A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK974-20261126": {
 "no": "TK974",
@@ -4462,8 +4336,7 @@
 "kapi": "B5B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2454-20261126": {
 "no": "TK2454",
@@ -4483,8 +4356,7 @@
 "kapi": "G8B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2222-20261126": {
 "no": "TK2222",
@@ -4504,8 +4376,7 @@
 "kapi": "G3G",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2214-20261126": {
 "no": "TK2214",
@@ -4525,8 +4396,7 @@
 "kapi": "G9A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK373-G-20261126": {
 "no": "TK373",
@@ -4547,9 +4417,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LST",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK803-G-20261126": {
 "no": "TK803",
@@ -4570,8 +4438,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK847-G-20261126": {
 "no": "TK847",
@@ -4590,8 +4457,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK365-G-20261126": {
 "no": "TK365",
@@ -4612,9 +4478,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LSJ",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK120-20261126": {
 "no": "TK120",
@@ -4632,8 +4496,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": ""
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK15-20261126": {
 "no": "TK15",
@@ -4653,8 +4516,7 @@
 "kapi": "D17",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2138-20261126": {
 "no": "TK2138",
@@ -4674,8 +4536,7 @@
 "kapi": "G1D",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK493-20261126": {
 "no": "TK493",
@@ -4695,8 +4556,7 @@
 "kapi": "F1A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2318-20261126": {
 "no": "TK2318",
@@ -4716,8 +4576,7 @@
 "kapi": "G10B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK339-G-20261126": {
 "no": "TK339",
@@ -4738,8 +4597,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2311-G-20261126": {
 "no": "TK2311",
@@ -4760,8 +4618,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK377-G-20261126": {
 "no": "TK377",
@@ -4782,8 +4639,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2123-G-20261126": {
 "no": "TK2123",
@@ -4804,8 +4660,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK99-G-20261126": {
 "no": "TK99",
@@ -4826,8 +4681,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK361-G-20261126": {
 "no": "TK361",
@@ -4848,8 +4702,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK715-G-20261126": {
 "no": "TK715",
@@ -4870,9 +4723,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LOA",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK711-G-20261126": {
 "no": "TK711",
@@ -4893,9 +4744,7 @@
 "kapi": "",
 "terminal": "I",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LOC",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK408-G-20261126": {
 "no": "TK408",
@@ -4916,8 +4765,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK406-G-20261126": {
 "no": "TK406",
@@ -4931,6 +4779,8 @@
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
 "kontrol": "2026-11-26T05:06+03:00",
+"onceki_tip": "321",
+"degisti": "2026-11-26T05:06+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
 "gecikme": 0,
@@ -4938,11 +4788,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"onceki_tip": "321",
-"degisti": "2026-11-26T05:06+03:00",
-"tescil": "TC-JVD",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1823-20261126": {
 "no": "TK1823",
@@ -4962,8 +4808,7 @@
 "kapi": "A1E",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1357-20261126": {
 "no": "TK1357",
@@ -4983,8 +4828,7 @@
 "kapi": "F2",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK709-G-20261126": {
 "no": "TK709",
@@ -5005,9 +4849,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LNE",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK351-G-20261126": {
 "no": "TK351",
@@ -5021,6 +4863,8 @@
 "tip": "7M8",
 "ad": "Boeing 737MAX 8 Passenger",
 "kontrol": "2026-11-26T05:06+03:00",
+"onceki_tip": "73H",
+"degisti": "2026-11-26T05:06+03:00",
 "durum": "Havada",
 "durum_kod": "A",
 "gecikme": 54,
@@ -5028,11 +4872,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"onceki_tip": "73H",
-"degisti": "2026-11-26T05:06+03:00",
-"tescil": "TC-LCH",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2033-G-20261126": {
 "no": "TK2033",
@@ -5053,8 +4893,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2412-20261126": {
 "no": "TK2412",
@@ -5074,8 +4913,7 @@
 "kapi": "G3J",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK184-G-20261126": {
 "no": "TK184",
@@ -5096,9 +4934,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LMD",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK145-G-20261126": {
 "no": "TK145",
@@ -5117,8 +4953,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK97-G-20261126": {
 "no": "TK97",
@@ -5139,8 +4974,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2142-20261126": {
 "no": "TK2142",
@@ -5160,8 +4994,7 @@
 "kapi": "G9B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2320-20261126": {
 "no": "TK2320",
@@ -5181,8 +5014,7 @@
 "kapi": "G1G",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2456-20261126": {
 "no": "TK2456",
@@ -5202,8 +5034,7 @@
 "kapi": "G4B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK566-G-20261126": {
 "no": "TK566",
@@ -5224,9 +5055,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LCE",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2705-G-20261126": {
 "no": "TK2705",
@@ -5247,8 +5076,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK325-G-20261126": {
 "no": "TK325",
@@ -5269,8 +5097,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2001-G-20261126": {
 "no": "TK2001",
@@ -5291,8 +5118,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2505-G-20261126": {
 "no": "TK2505",
@@ -5313,8 +5139,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2453-G-20261126": {
 "no": "TK2453",
@@ -5335,8 +5160,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2409-G-20261126": {
 "no": "TK2409",
@@ -5357,8 +5181,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2807-G-20261126": {
 "no": "TK2807",
@@ -5379,8 +5202,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2553-G-20261126": {
 "no": "TK2553",
@@ -5401,8 +5223,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK243-G-20261126": {
 "no": "TK243",
@@ -5423,8 +5244,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2011-G-20261126": {
 "no": "TK2011",
@@ -5445,8 +5265,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK557-G-20261126": {
 "no": "TK557",
@@ -5467,9 +5286,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LCC",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK717-G-20261126": {
 "no": "TK717",
@@ -5490,9 +5307,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LJH",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2827-G-20261126": {
 "no": "TK2827",
@@ -5513,8 +5328,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2221-G-20261126": {
 "no": "TK2221",
@@ -5535,8 +5349,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK976-20261126": {
 "no": "TK976",
@@ -5556,8 +5369,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1957-20261126": {
 "no": "TK1957",
@@ -5577,8 +5389,7 @@
 "kapi": "C3",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1041-20261126": {
 "no": "TK1041",
@@ -5598,8 +5409,7 @@
 "kapi": "B3B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1991-20261126": {
 "no": "TK1991",
@@ -5619,8 +5429,7 @@
 "kapi": "F3B",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1362-G-20261126": {
 "no": "TK1362",
@@ -5641,8 +5450,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1933-20261126": {
 "no": "TK1933",
@@ -5662,8 +5470,7 @@
 "kapi": "F5A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1788-G-20261126": {
 "no": "TK1788",
@@ -5684,8 +5491,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1728-G-20261126": {
 "no": "TK1728",
@@ -5706,9 +5512,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-JTJ",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1890-G-20261126": {
 "no": "TK1890",
@@ -5729,8 +5533,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1665-20261126": {
 "no": "TK1665",
@@ -5750,8 +5553,7 @@
 "kapi": "A11A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK617-20261126": {
 "no": "TK617",
@@ -5771,8 +5573,7 @@
 "kapi": "A9",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1411-20261126": {
 "no": "TK1411",
@@ -5812,8 +5613,7 @@
 "kapi": "B7A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1847-20261126": {
 "no": "TK1847",
@@ -5833,8 +5633,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK216-G-20261126": {
 "no": "TK216",
@@ -6292,6 +6091,27 @@
 "bant": "",
 "durum_zaman": "2026-11-26T03:38+03:00"
 },
+"TK1882-G-20261126": {
+"no": "TK1882",
+"yon": "gelis",
+"hat": "SKG-IST",
+"sehir": "Thessaloniki",
+"kalkis": "12:00",
+"dep_saat": "09:30",
+"inis": "12:00",
+"zaman": "2026-11-26T12:00+03:00",
+"tip": "32N",
+"ad": "Airbus A320neo",
+"kontrol": "2026-11-26T03:38+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "12:00",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T03:38+03:00"
+},
 "TK1028-G-20261126": {
 "no": "TK1028",
 "yon": "gelis",
@@ -6313,27 +6133,6 @@
 "kapi": "",
 "terminal": "",
 "bant": "2",
-"durum_zaman": "2026-11-26T03:38+03:00"
-},
-"TK1882-G-20261126": {
-"no": "TK1882",
-"yon": "gelis",
-"hat": "SKG-IST",
-"sehir": "Thessaloniki",
-"kalkis": "12:00",
-"dep_saat": "09:30",
-"inis": "12:00",
-"zaman": "2026-11-26T12:00+03:00",
-"tip": "32N",
-"ad": "Airbus A320neo",
-"kontrol": "2026-11-26T03:38+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "12:00",
-"kapi": "",
-"terminal": "",
-"bant": "",
 "durum_zaman": "2026-11-26T03:38+03:00"
 },
 "TK1852-G-20261126": {
@@ -6734,6 +6533,46 @@
 "bant": "",
 "durum_zaman": "2026-11-26T03:38+03:00"
 },
+"TK1943-20261126": {
+"no": "TK1943",
+"yon": "gidis",
+"hat": "IST-BRU",
+"sehir": "Brussels",
+"kalkis": "12:45",
+"inis": "14:15",
+"zaman": "2026-11-26T12:45+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-26T03:38+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "12:45",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T03:38+03:00"
+},
+"TK1885-20261126": {
+"no": "TK1885",
+"yon": "gidis",
+"hat": "IST-VIE",
+"sehir": "Vienna",
+"kalkis": "12:45",
+"inis": "13:05",
+"zaman": "2026-11-26T12:45+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-26T03:38+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "12:45",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T03:38+03:00"
+},
 "TK1633-20261126": {
 "no": "TK1633",
 "yon": "gidis",
@@ -6761,26 +6600,6 @@
 "sehir": "Zurich",
 "kalkis": "12:45",
 "inis": "13:45",
-"zaman": "2026-11-26T12:45+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-26T03:38+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "12:45",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T03:38+03:00"
-},
-"TK1943-20261126": {
-"no": "TK1943",
-"yon": "gidis",
-"hat": "IST-BRU",
-"sehir": "Brussels",
-"kalkis": "12:45",
-"inis": "14:15",
 "zaman": "2026-11-26T12:45+03:00",
 "tip": "32Q",
 "ad": "Airbus A321neo",
@@ -6830,26 +6649,6 @@
 "gecikme": 0,
 "tahmini": "12:45",
 "kapi": "A3B",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T03:38+03:00"
-},
-"TK1885-20261126": {
-"no": "TK1885",
-"yon": "gidis",
-"hat": "IST-VIE",
-"sehir": "Vienna",
-"kalkis": "12:45",
-"inis": "13:05",
-"zaman": "2026-11-26T12:45+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-26T03:38+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "12:45",
-"kapi": "",
 "terminal": "",
 "bant": "",
 "durum_zaman": "2026-11-26T03:38+03:00"
@@ -6979,66 +6778,6 @@
 "bant": "",
 "durum_zaman": "2026-11-26T03:38+03:00"
 },
-"TK2150-20261126": {
-"no": "TK2150",
-"yon": "gidis",
-"hat": "IST-ESB",
-"sehir": "Ankara",
-"kalkis": "13:00",
-"inis": "14:10",
-"zaman": "2026-11-26T13:00+03:00",
-"tip": "32B",
-"ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T03:38+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "13:00",
-"kapi": "G1G",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T03:38+03:00"
-},
-"TK1033-20261126": {
-"no": "TK1033",
-"yon": "gidis",
-"hat": "IST-BUD",
-"sehir": "Budapest",
-"kalkis": "13:00",
-"inis": "13:00",
-"zaman": "2026-11-26T13:00+03:00",
-"tip": "32B",
-"ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T03:38+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "13:00",
-"kapi": "A1G",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T03:38+03:00"
-},
-"TK2416-20261126": {
-"no": "TK2416",
-"yon": "gidis",
-"hat": "IST-AYT",
-"sehir": "Antalya",
-"kalkis": "13:00",
-"inis": "14:20",
-"zaman": "2026-11-26T13:00+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T03:38+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "13:00",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T03:38+03:00"
-},
 "TK4900-20261126": {
 "no": "TK4900",
 "yon": "gidis",
@@ -7119,6 +6858,66 @@
 "bant": "",
 "durum_zaman": "2026-11-26T03:38+03:00"
 },
+"TK1033-20261126": {
+"no": "TK1033",
+"yon": "gidis",
+"hat": "IST-BUD",
+"sehir": "Budapest",
+"kalkis": "13:00",
+"inis": "13:00",
+"zaman": "2026-11-26T13:00+03:00",
+"tip": "32B",
+"ad": "Airbus A321 (sharklets)",
+"kontrol": "2026-11-26T03:38+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "13:00",
+"kapi": "A1G",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T03:38+03:00"
+},
+"TK2416-20261126": {
+"no": "TK2416",
+"yon": "gidis",
+"hat": "IST-AYT",
+"sehir": "Antalya",
+"kalkis": "13:00",
+"inis": "14:20",
+"zaman": "2026-11-26T13:00+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-26T03:38+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "13:00",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T03:38+03:00"
+},
+"TK2150-20261126": {
+"no": "TK2150",
+"yon": "gidis",
+"hat": "IST-ESB",
+"sehir": "Ankara",
+"kalkis": "13:00",
+"inis": "14:10",
+"zaman": "2026-11-26T13:00+03:00",
+"tip": "32B",
+"ad": "Airbus A321 (sharklets)",
+"kontrol": "2026-11-26T03:38+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "13:00",
+"kapi": "G1G",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T03:38+03:00"
+},
 "TK2005-G-20261126": {
 "no": "TK2005",
 "yon": "gelis",
@@ -7160,27 +6959,6 @@
 "bant": "",
 "durum_zaman": "2026-11-26T03:38+03:00"
 },
-"TK1989-20261126": {
-"no": "TK1989",
-"yon": "gidis",
-"hat": "IST-LHR",
-"sehir": "London",
-"kalkis": "13:10",
-"inis": "14:15",
-"zaman": "2026-11-26T13:10+03:00",
-"tip": "32Q",
-"ad": "Airbus A321neo",
-"kontrol": "2026-11-26T05:06+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "13:10",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
-},
 "TK824-20261126": {
 "no": "TK824",
 "yon": "gidis",
@@ -7197,8 +6975,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1771-20261126": {
 "no": "TK1771",
@@ -7218,29 +6995,7 @@
 "kapi": "F4A",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
-},
-"TK1323-20261126": {
-"no": "TK1323",
-"yon": "gidis",
-"hat": "IST-BLQ",
-"sehir": "Bologna",
-"kalkis": "13:10",
-"inis": "13:50",
-"zaman": "2026-11-26T13:10+03:00",
-"tip": "73J",
-"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
-"kontrol": "2026-11-26T05:06+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "13:10",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1865-20261126": {
 "no": "TK1865",
@@ -7260,8 +7015,47 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
+},
+"TK1989-20261126": {
+"no": "TK1989",
+"yon": "gidis",
+"hat": "IST-LHR",
+"sehir": "London",
+"kalkis": "13:10",
+"inis": "14:15",
+"zaman": "2026-11-26T13:10+03:00",
+"tip": "32Q",
+"ad": "Airbus A321neo",
+"kontrol": "2026-11-26T05:06+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "13:10",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T05:06+03:00"
+},
+"TK1323-20261126": {
+"no": "TK1323",
+"yon": "gidis",
+"hat": "IST-BLQ",
+"sehir": "Bologna",
+"kalkis": "13:10",
+"inis": "13:50",
+"zaman": "2026-11-26T13:10+03:00",
+"tip": "73J",
+"ad": "Boeing 737-900 (winglets) Passenger/BBJ3",
+"kontrol": "2026-11-26T05:06+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "13:10",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2013-G-20261126": {
 "no": "TK2013",
@@ -7282,8 +7076,25 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
+},
+"TK1871-20261126": {
+"no": "TK1871",
+"yon": "gidis",
+"hat": "IST-VCE",
+"sehir": "Venice",
+"kalkis": "13:15",
+"inis": "13:50",
+"zaman": "2026-11-26T13:15+03:00",
+"kontrol": "2026-11-26T05:06+03:00",
+"durum": "İptal",
+"durum_kod": "C",
+"gecikme": 0,
+"tahmini": "",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2716-20261126": {
 "no": "TK2716",
@@ -7303,27 +7114,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
-},
-"TK1871-20261126": {
-"no": "TK1871",
-"yon": "gidis",
-"hat": "IST-VCE",
-"sehir": "Venice",
-"kalkis": "13:15",
-"inis": "13:50",
-"zaman": "2026-11-26T13:15+03:00",
-"kontrol": "2026-11-26T05:06+03:00",
-"durum": "İptal",
-"durum_kod": "C",
-"gecikme": 0,
-"tahmini": "",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK713-G-20261126": {
 "no": "TK713",
@@ -7344,9 +7135,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-JNR",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2139-G-20261126": {
 "no": "TK2139",
@@ -7367,8 +7156,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK82-G-20261126": {
 "no": "TK82",
@@ -7389,9 +7177,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LGI",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2319-G-20261126": {
 "no": "TK2319",
@@ -7412,29 +7198,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
-},
-"TK1451-20261126": {
-"no": "TK1451",
-"yon": "gidis",
-"hat": "IST-OPO",
-"sehir": "Porto",
-"kalkis": "13:25",
-"inis": "15:25",
-"zaman": "2026-11-26T13:25+03:00",
-"tip": "7M9",
-"ad": "Boeing 737MAX 9 Passenger",
-"kontrol": "2026-11-26T05:06+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "13:25",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2830-20261126": {
 "no": "TK2830",
@@ -7454,8 +7218,7 @@
 "kapi": "G1F",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2226-20261126": {
 "no": "TK2226",
@@ -7475,8 +7238,27 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
+},
+"TK1451-20261126": {
+"no": "TK1451",
+"yon": "gidis",
+"hat": "IST-OPO",
+"sehir": "Porto",
+"kalkis": "13:25",
+"inis": "15:25",
+"zaman": "2026-11-26T13:25+03:00",
+"tip": "7M9",
+"ad": "Boeing 737MAX 9 Passenger",
+"kontrol": "2026-11-26T05:06+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "13:25",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK36-G-20261126": {
 "no": "TK36",
@@ -7497,9 +7279,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tescil": "TC-LLY",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK564-G-20261126": {
 "no": "TK564",
@@ -7520,8 +7300,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK369-G-20261126": {
 "no": "TK369",
@@ -7540,8 +7319,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": ""
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1988-G-20261126": {
 "no": "TK1988",
@@ -7562,8 +7340,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1930-G-20261126": {
 "no": "TK1930",
@@ -7584,8 +7361,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK1036-G-20261126": {
 "no": "TK1036",
@@ -7606,8 +7382,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK831-G-20261126": {
 "no": "TK831",
@@ -7628,8 +7403,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2659-G-20261126": {
 "no": "TK2659",
@@ -7650,8 +7424,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2583-G-20261126": {
 "no": "TK2583",
@@ -7672,8 +7445,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2668-20261126": {
 "no": "TK2668",
@@ -7693,8 +7465,7 @@
 "kapi": "G1H",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2694-20261126": {
 "no": "TK2694",
@@ -7714,8 +7485,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2730-20261126": {
 "no": "TK2730",
@@ -7735,8 +7505,7 @@
 "kapi": "G3H",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2455-G-20261126": {
 "no": "TK2455",
@@ -7757,8 +7526,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2411-G-20261126": {
 "no": "TK2411",
@@ -7779,8 +7547,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK382-20261126": {
 "no": "TK382",
@@ -7800,8 +7567,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK606-G-20261126": {
 "no": "TK606",
@@ -7822,8 +7588,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK759-G-20261126": {
 "no": "TK759",
@@ -7844,8 +7609,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2201-G-20261126": {
 "no": "TK2201",
@@ -7866,8 +7630,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2418-20261126": {
 "no": "TK2418",
@@ -7887,8 +7650,7 @@
 "kapi": "",
 "terminal": "",
 "bant": "",
-"durum_zaman": "2026-11-26T05:06+03:00",
-"tahmini_tur": "Estimated"
+"durum_zaman": "2026-11-26T05:06+03:00"
 },
 "TK2720-20261126": {
 "no": "TK2720",
@@ -7993,26 +7755,6 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
 },
-"TK9-20261126": {
-"no": "TK9",
-"yon": "gidis",
-"hat": "IST-LAX",
-"sehir": "Los Angeles",
-"kalkis": "13:50",
-"inis": "16:35",
-"zaman": "2026-11-26T13:50+03:00",
-"tip": "77W",
-"ad": "Boeing 777-300ER",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "13:50",
-"kapi": "D14",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
 "TK1345-20261126": {
 "no": "TK1345",
 "yon": "gidis",
@@ -8029,6 +7771,26 @@
 "gecikme": 0,
 "tahmini": "13:50",
 "kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T02:19+03:00"
+},
+"TK9-20261126": {
+"no": "TK9",
+"yon": "gidis",
+"hat": "IST-LAX",
+"sehir": "Los Angeles",
+"kalkis": "13:50",
+"inis": "16:35",
+"zaman": "2026-11-26T13:50+03:00",
+"tip": "77W",
+"ad": "Boeing 777-300ER",
+"kontrol": "2026-11-26T02:19+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "13:50",
+"kapi": "D14",
 "terminal": "",
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
@@ -8240,46 +8002,6 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
 },
-"TK392-20261126": {
-"no": "TK392",
-"yon": "gidis",
-"hat": "IST-BUS",
-"sehir": "Batumi",
-"kalkis": "13:55",
-"inis": "16:50",
-"zaman": "2026-11-26T13:55+03:00",
-"tip": "32B",
-"ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "13:55",
-"kapi": "A1F",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK1039-20261126": {
-"no": "TK1039",
-"yon": "gidis",
-"hat": "IST-OTP",
-"sehir": "Bucharest",
-"kalkis": "13:55",
-"inis": "14:15",
-"zaman": "2026-11-26T13:55+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "13:55",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
 "TK1317-20261126": {
 "no": "TK1317",
 "yon": "gidis",
@@ -8300,16 +8022,16 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
 },
-"TK273-20261126": {
-"no": "TK273",
+"TK1039-20261126": {
+"no": "TK1039",
 "yon": "gidis",
-"hat": "IST-KIV",
-"sehir": "Chisinau",
+"hat": "IST-OTP",
+"sehir": "Bucharest",
 "kalkis": "13:55",
-"inis": "14:25",
+"inis": "14:15",
 "zaman": "2026-11-26T13:55+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"tip": "333",
+"ad": "Airbus A330-300",
 "kontrol": "2026-11-26T02:19+03:00",
 "durum": "Planlandı",
 "durum_kod": "S",
@@ -8356,6 +8078,46 @@
 "gecikme": 0,
 "tahmini": "13:55",
 "kapi": "D11",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T02:19+03:00"
+},
+"TK273-20261126": {
+"no": "TK273",
+"yon": "gidis",
+"hat": "IST-KIV",
+"sehir": "Chisinau",
+"kalkis": "13:55",
+"inis": "14:25",
+"zaman": "2026-11-26T13:55+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-26T02:19+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "13:55",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T02:19+03:00"
+},
+"TK392-20261126": {
+"no": "TK392",
+"yon": "gidis",
+"hat": "IST-BUS",
+"sehir": "Batumi",
+"kalkis": "13:55",
+"inis": "16:50",
+"zaman": "2026-11-26T13:55+03:00",
+"tip": "32B",
+"ad": "Airbus A321 (sharklets)",
+"kontrol": "2026-11-26T02:19+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "13:55",
+"kapi": "A1F",
 "terminal": "",
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
@@ -8444,26 +8206,6 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
 },
-"TK2326-20261126": {
-"no": "TK2326",
-"yon": "gidis",
-"hat": "IST-ADB",
-"sehir": "Izmir",
-"kalkis": "14:00",
-"inis": "15:10",
-"zaman": "2026-11-26T14:00+03:00",
-"tip": "73H",
-"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "14:00",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
 "TK2154-20261126": {
 "no": "TK2154",
 "yon": "gidis",
@@ -8524,6 +8266,46 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
 },
+"TK2326-20261126": {
+"no": "TK2326",
+"yon": "gidis",
+"hat": "IST-ADB",
+"sehir": "Izmir",
+"kalkis": "14:00",
+"inis": "15:10",
+"zaman": "2026-11-26T14:00+03:00",
+"tip": "73H",
+"ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
+"kontrol": "2026-11-26T02:19+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "14:00",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T02:19+03:00"
+},
+"TK2610-20261126": {
+"no": "TK2610",
+"yon": "gidis",
+"hat": "IST-DIY",
+"sehir": "Diyarbakir",
+"kalkis": "14:05",
+"inis": "16:05",
+"zaman": "2026-11-26T14:05+03:00",
+"tip": "32B",
+"ad": "Airbus A321 (sharklets)",
+"kontrol": "2026-11-26T02:19+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "14:05",
+"kapi": "G1G",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T02:19+03:00"
+},
 "TK2538-20261126": {
 "no": "TK2538",
 "yon": "gidis",
@@ -8560,26 +8342,6 @@
 "gecikme": 0,
 "tahmini": "14:05",
 "kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:19+03:00"
-},
-"TK2610-20261126": {
-"no": "TK2610",
-"yon": "gidis",
-"hat": "IST-DIY",
-"sehir": "Diyarbakir",
-"kalkis": "14:05",
-"inis": "16:05",
-"zaman": "2026-11-26T14:05+03:00",
-"tip": "32B",
-"ad": "Airbus A321 (sharklets)",
-"kontrol": "2026-11-26T02:19+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "14:05",
-"kapi": "G1G",
 "terminal": "",
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
@@ -8647,13 +8409,13 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
 },
-"TK2014-20261126": {
-"no": "TK2014",
+"TK2460-20261126": {
+"no": "TK2460",
 "yon": "gidis",
-"hat": "IST-ASR",
-"sehir": "Kayseri",
+"hat": "IST-COV",
+"sehir": "Mersin",
 "kalkis": "14:10",
-"inis": "15:40",
+"inis": "15:45",
 "zaman": "2026-11-26T14:10+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
@@ -8667,13 +8429,13 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:19+03:00"
 },
-"TK2460-20261126": {
-"no": "TK2460",
+"TK2014-20261126": {
+"no": "TK2014",
 "yon": "gidis",
-"hat": "IST-COV",
-"sehir": "Mersin",
+"hat": "IST-ASR",
+"sehir": "Kayseri",
 "kalkis": "14:10",
-"inis": "15:45",
+"inis": "15:40",
 "zaman": "2026-11-26T14:10+03:00",
 "tip": "73H",
 "ad": "Boeing 737-800 (winglets) Passenger/BBJ2",
@@ -8979,26 +8741,6 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:30+03:00"
 },
-"TK191-20261126": {
-"no": "TK191",
-"yon": "gidis",
-"hat": "IST-DFW",
-"sehir": "Dallas",
-"kalkis": "14:25",
-"inis": "18:25",
-"zaman": "2026-11-26T14:25+03:00",
-"tip": "789",
-"ad": "Boeing 787-9",
-"kontrol": "2026-11-26T02:30+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "14:25",
-"kapi": "D15",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:30+03:00"
-},
 "TK1849-20261126": {
 "no": "TK1849",
 "yon": "gidis",
@@ -9015,6 +8757,26 @@
 "gecikme": 0,
 "tahmini": "14:25",
 "kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T02:30+03:00"
+},
+"TK191-20261126": {
+"no": "TK191",
+"yon": "gidis",
+"hat": "IST-DFW",
+"sehir": "Dallas",
+"kalkis": "14:25",
+"inis": "18:25",
+"zaman": "2026-11-26T14:25+03:00",
+"tip": "789",
+"ad": "Boeing 787-9",
+"kontrol": "2026-11-26T02:30+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "14:25",
+"kapi": "D15",
 "terminal": "",
 "bant": "",
 "durum_zaman": "2026-11-26T02:30+03:00"
@@ -9061,26 +8823,6 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:30+03:00"
 },
-"TK503-20261126": {
-"no": "TK503",
-"yon": "gidis",
-"hat": "IST-DSS",
-"sehir": "Dakar",
-"kalkis": "14:30",
-"inis": "19:20",
-"zaman": "2026-11-26T14:30+03:00",
-"tip": "333",
-"ad": "Airbus A330-300",
-"kontrol": "2026-11-26T02:30+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "14:30",
-"kapi": "",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:30+03:00"
-},
 "TK1995-20261126": {
 "no": "TK1995",
 "yon": "gidis",
@@ -9097,26 +8839,6 @@
 "gecikme": 0,
 "tahmini": "14:30",
 "kapi": "A1J",
-"terminal": "",
-"bant": "",
-"durum_zaman": "2026-11-26T02:30+03:00"
-},
-"TK2006-20261126": {
-"no": "TK2006",
-"yon": "gidis",
-"hat": "IST-NAV",
-"sehir": "Nevsehir",
-"kalkis": "14:30",
-"inis": "15:50",
-"zaman": "2026-11-26T14:30+03:00",
-"tip": "32R",
-"ad": "Airbus A320 Short Range",
-"kontrol": "2026-11-26T02:30+03:00",
-"durum": "Planlandı",
-"durum_kod": "S",
-"gecikme": 0,
-"tahmini": "14:30",
-"kapi": "G3H",
 "terminal": "",
 "bant": "",
 "durum_zaman": "2026-11-26T02:30+03:00"
@@ -9141,6 +8863,46 @@
 "bant": "",
 "durum_zaman": "2026-11-26T02:30+03:00"
 },
+"TK503-20261126": {
+"no": "TK503",
+"yon": "gidis",
+"hat": "IST-DSS",
+"sehir": "Dakar",
+"kalkis": "14:30",
+"inis": "19:20",
+"zaman": "2026-11-26T14:30+03:00",
+"tip": "333",
+"ad": "Airbus A330-300",
+"kontrol": "2026-11-26T02:30+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "14:30",
+"kapi": "",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T02:30+03:00"
+},
+"TK2006-20261126": {
+"no": "TK2006",
+"yon": "gidis",
+"hat": "IST-NAV",
+"sehir": "Nevsehir",
+"kalkis": "14:30",
+"inis": "15:50",
+"zaman": "2026-11-26T14:30+03:00",
+"tip": "32R",
+"ad": "Airbus A320 Short Range",
+"kontrol": "2026-11-26T02:30+03:00",
+"durum": "Planlandı",
+"durum_kod": "S",
+"gecikme": 0,
+"tahmini": "14:30",
+"kapi": "G3H",
+"terminal": "",
+"bant": "",
+"durum_zaman": "2026-11-26T02:30+03:00"
+},
 "TK2034-20261126": {
 "no": "TK2034",
 "yon": "gidis",
@@ -9160,6 +8922,15 @@
 "terminal": "",
 "bant": "",
 "durum_zaman": "2026-11-26T02:30+03:00"
+},
+"TK968-20261126": {
+"no": "TK968",
+"yon": "gidis",
+"hat": "IST-ECN",
+"sehir": "Ercan",
+"kalkis": "14:40",
+"inis": "15:20",
+"zaman": "2026-11-26T14:40+03:00"
 },
 "TK1969-20261126": {
 "no": "TK1969",
@@ -9186,15 +8957,6 @@
 "sehir": "Kahramanmaras",
 "kalkis": "14:40",
 "inis": "16:25",
-"zaman": "2026-11-26T14:40+03:00"
-},
-"TK968-20261126": {
-"no": "TK968",
-"yon": "gidis",
-"hat": "IST-ECN",
-"sehir": "Ercan",
-"kalkis": "14:40",
-"inis": "15:20",
 "zaman": "2026-11-26T14:40+03:00"
 },
 "TK2420-20261126": {
@@ -9370,13 +9132,13 @@
 "inis": "15:15",
 "zaman": "2026-11-26T15:15+03:00"
 },
-"TK126-20261126": {
-"no": "TK126",
+"TK22-20261126": {
+"no": "TK22",
 "yon": "gidis",
-"hat": "IST-JED",
-"sehir": "Jeddah",
+"hat": "IST-SIN",
+"sehir": "Singapore",
 "kalkis": "15:20",
-"inis": "19:00",
+"inis": "06:50",
 "zaman": "2026-11-26T15:20+03:00"
 },
 "TK1-20261126": {
@@ -9388,15 +9150,6 @@
 "inis": "18:20",
 "zaman": "2026-11-26T15:20+03:00"
 },
-"TK22-20261126": {
-"no": "TK22",
-"yon": "gidis",
-"hat": "IST-SIN",
-"sehir": "Singapore",
-"kalkis": "15:20",
-"inis": "06:50",
-"zaman": "2026-11-26T15:20+03:00"
-},
 "TK663-20261126": {
 "no": "TK663",
 "yon": "gidis",
@@ -9404,6 +9157,15 @@
 "sehir": "Tunis",
 "kalkis": "15:20",
 "inis": "16:25",
+"zaman": "2026-11-26T15:20+03:00"
+},
+"TK126-20261126": {
+"no": "TK126",
+"yon": "gidis",
+"hat": "IST-JED",
+"sehir": "Jeddah",
+"kalkis": "15:20",
+"inis": "19:00",
 "zaman": "2026-11-26T15:20+03:00"
 },
 "TK625-20261126": {
@@ -9464,24 +9226,6 @@
 "inis": "19:45",
 "zaman": "2026-11-26T15:25+03:00"
 },
-"TK1953-20261126": {
-"no": "TK1953",
-"yon": "gidis",
-"hat": "IST-AMS",
-"sehir": "Amsterdam",
-"kalkis": "15:25",
-"inis": "17:05",
-"zaman": "2026-11-26T15:25+03:00"
-},
-"TK583-20261126": {
-"no": "TK583",
-"yon": "gidis",
-"hat": "IST-NKC",
-"sehir": "Nouakchott",
-"kalkis": "15:25",
-"inis": "20:00",
-"zaman": "2026-11-26T15:25+03:00"
-},
 "TK1971-20261126": {
 "no": "TK1971",
 "yon": "gidis",
@@ -9491,13 +9235,22 @@
 "inis": "16:20",
 "zaman": "2026-11-26T15:25+03:00"
 },
-"TK17-20261126": {
-"no": "TK17",
+"TK1313-20261126": {
+"no": "TK1313",
 "yon": "gidis",
-"hat": "IST-YYZ",
-"sehir": "Toronto",
+"hat": "IST-VLC",
+"sehir": "Valencia",
 "kalkis": "15:25",
-"inis": "18:20",
+"inis": "17:25",
+"zaman": "2026-11-26T15:25+03:00"
+},
+"TK583-20261126": {
+"no": "TK583",
+"yon": "gidis",
+"hat": "IST-NKC",
+"sehir": "Nouakchott",
+"kalkis": "15:25",
+"inis": "20:00",
 "zaman": "2026-11-26T15:25+03:00"
 },
 "TK50-20261126": {
@@ -9527,6 +9280,15 @@
 "inis": "18:00",
 "zaman": "2026-11-26T15:25+03:00"
 },
+"TK1953-20261126": {
+"no": "TK1953",
+"yon": "gidis",
+"hat": "IST-AMS",
+"sehir": "Amsterdam",
+"kalkis": "15:25",
+"inis": "17:05",
+"zaman": "2026-11-26T15:25+03:00"
+},
 "TK1753-20261126": {
 "no": "TK1753",
 "yon": "gidis",
@@ -9536,13 +9298,13 @@
 "inis": "17:25",
 "zaman": "2026-11-26T15:25+03:00"
 },
-"TK1313-20261126": {
-"no": "TK1313",
+"TK17-20261126": {
+"no": "TK17",
 "yon": "gidis",
-"hat": "IST-VLC",
-"sehir": "Valencia",
+"hat": "IST-YYZ",
+"sehir": "Toronto",
 "kalkis": "15:25",
-"inis": "17:25",
+"inis": "18:20",
 "zaman": "2026-11-26T15:25+03:00"
 },
 "TK118-20261126": {
@@ -9554,20 +9316,20 @@
 "inis": "18:55",
 "zaman": "2026-11-26T15:30+03:00"
 },
-"TK1855-20261126": {
-"no": "TK1855",
-"yon": "gidis",
-"hat": "IST-BCN",
-"sehir": "Barcelona",
-"kalkis": "15:30",
-"inis": "17:05",
-"zaman": "2026-11-26T15:30+03:00"
-},
 "TK1827-20261126": {
 "no": "TK1827",
 "yon": "gidis",
 "hat": "IST-CDG",
 "sehir": "Paris",
+"kalkis": "15:30",
+"inis": "17:15",
+"zaman": "2026-11-26T15:30+03:00"
+},
+"TK1795-20261126": {
+"no": "TK1795",
+"yon": "gidis",
+"hat": "IST-ARN",
+"sehir": "Stockholm",
 "kalkis": "15:30",
 "inis": "17:15",
 "zaman": "2026-11-26T15:30+03:00"
@@ -9590,13 +9352,13 @@
 "inis": "21:25",
 "zaman": "2026-11-26T15:30+03:00"
 },
-"TK1795-20261126": {
-"no": "TK1795",
+"TK1855-20261126": {
+"no": "TK1855",
 "yon": "gidis",
-"hat": "IST-ARN",
-"sehir": "Stockholm",
+"hat": "IST-BCN",
+"sehir": "Barcelona",
 "kalkis": "15:30",
-"inis": "17:15",
+"inis": "17:05",
 "zaman": "2026-11-26T15:30+03:00"
 },
 "TK1805-20261126": {
@@ -9618,15 +9380,6 @@
 "inis": "15:30",
 "zaman": "2026-11-26T15:30+03:00"
 },
-"TK5-20261126": {
-"no": "TK5",
-"yon": "gidis",
-"hat": "IST-ORD",
-"sehir": "Chicago",
-"kalkis": "15:35",
-"inis": "18:20",
-"zaman": "2026-11-26T15:35+03:00"
-},
 "TK1367-20261126": {
 "no": "TK1367",
 "yon": "gidis",
@@ -9643,6 +9396,15 @@
 "sehir": "Entebbe",
 "kalkis": "15:35",
 "inis": "22:20",
+"zaman": "2026-11-26T15:35+03:00"
+},
+"TK5-20261126": {
+"no": "TK5",
+"yon": "gidis",
+"hat": "IST-ORD",
+"sehir": "Chicago",
+"kalkis": "15:35",
+"inis": "18:20",
 "zaman": "2026-11-26T15:35+03:00"
 },
 "TK1527-20261126": {
@@ -9712,24 +9474,6 @@
 "inis": "17:05",
 "zaman": "2026-11-26T15:40+03:00"
 },
-"TK264-20261126": {
-"no": "TK264",
-"yon": "gidis",
-"hat": "IST-MNL",
-"sehir": "Manila",
-"kalkis": "15:40",
-"inis": "08:05",
-"zaman": "2026-11-26T15:40+03:00"
-},
-"TK2422-20261126": {
-"no": "TK2422",
-"yon": "gidis",
-"hat": "IST-AYT",
-"sehir": "Antalya",
-"kalkis": "15:40",
-"inis": "17:00",
-"zaman": "2026-11-26T15:40+03:00"
-},
 "TK1939-20261126": {
 "no": "TK1939",
 "yon": "gidis",
@@ -9737,15 +9481,6 @@
 "sehir": "Brussels",
 "kalkis": "15:40",
 "inis": "17:15",
-"zaman": "2026-11-26T15:40+03:00"
-},
-"TK77-20261126": {
-"no": "TK77",
-"yon": "gidis",
-"hat": "IST-MIA",
-"sehir": "Miami",
-"kalkis": "15:40",
-"inis": "20:35",
 "zaman": "2026-11-26T15:40+03:00"
 },
 "TK2228-20261126": {
@@ -9757,6 +9492,33 @@
 "inis": "17:25",
 "zaman": "2026-11-26T15:40+03:00"
 },
+"TK2422-20261126": {
+"no": "TK2422",
+"yon": "gidis",
+"hat": "IST-AYT",
+"sehir": "Antalya",
+"kalkis": "15:40",
+"inis": "17:00",
+"zaman": "2026-11-26T15:40+03:00"
+},
+"TK264-20261126": {
+"no": "TK264",
+"yon": "gidis",
+"hat": "IST-MNL",
+"sehir": "Manila",
+"kalkis": "15:40",
+"inis": "08:05",
+"zaman": "2026-11-26T15:40+03:00"
+},
+"TK77-20261126": {
+"no": "TK77",
+"yon": "gidis",
+"hat": "IST-MIA",
+"sehir": "Miami",
+"kalkis": "15:40",
+"inis": "20:35",
+"zaman": "2026-11-26T15:40+03:00"
+},
 "TK35-20261126": {
 "no": "TK35",
 "yon": "gidis",
@@ -9766,11 +9528,20 @@
 "inis": "18:00",
 "zaman": "2026-11-26T15:45+03:00"
 },
-"TK1785-20261126": {
-"no": "TK1785",
+"TK966-20261126": {
+"no": "TK966",
 "yon": "gidis",
-"hat": "IST-CPH",
-"sehir": "Copenhagen",
+"hat": "IST-ECN",
+"sehir": "Ercan",
+"kalkis": "15:45",
+"inis": "16:30",
+"zaman": "2026-11-26T15:45+03:00"
+},
+"TK1809-20261126": {
+"no": "TK1809",
+"yon": "gidis",
+"hat": "IST-LYS",
+"sehir": "Lyon",
 "kalkis": "15:45",
 "inis": "17:10",
 "zaman": "2026-11-26T15:45+03:00"
@@ -9793,20 +9564,11 @@
 "inis": "17:10",
 "zaman": "2026-11-26T15:45+03:00"
 },
-"TK966-20261126": {
-"no": "TK966",
+"TK1785-20261126": {
+"no": "TK1785",
 "yon": "gidis",
-"hat": "IST-ECN",
-"sehir": "Ercan",
-"kalkis": "15:45",
-"inis": "16:30",
-"zaman": "2026-11-26T15:45+03:00"
-},
-"TK1809-20261126": {
-"no": "TK1809",
-"yon": "gidis",
-"hat": "IST-LYS",
-"sehir": "Lyon",
+"hat": "IST-CPH",
+"sehir": "Copenhagen",
 "kalkis": "15:45",
 "inis": "17:10",
 "zaman": "2026-11-26T15:45+03:00"
@@ -9979,11 +9741,11 @@
 "inis": "15:55",
 "zaman": "2026-11-26T15:55+03:00"
 },
-"TK2162-20261126": {
-"no": "TK2162",
+"TK2330-20261126": {
+"no": "TK2330",
 "yon": "gidis",
-"hat": "IST-ESB",
-"sehir": "Ankara",
+"hat": "IST-ADB",
+"sehir": "Izmir",
 "kalkis": "16:00",
 "inis": "17:10",
 "zaman": "2026-11-26T16:00+03:00"
@@ -10006,11 +9768,11 @@
 "inis": "17:20",
 "zaman": "2026-11-26T16:00+03:00"
 },
-"TK2330-20261126": {
-"no": "TK2330",
+"TK2162-20261126": {
+"no": "TK2162",
 "yon": "gidis",
-"hat": "IST-ADB",
-"sehir": "Izmir",
+"hat": "IST-ESB",
+"sehir": "Ankara",
 "kalkis": "16:00",
 "inis": "17:10",
 "zaman": "2026-11-26T16:00+03:00"
@@ -10219,15 +9981,6 @@
 "inis": "17:55",
 "zaman": "2026-11-26T16:25+03:00"
 },
-"TK2578-20261126": {
-"no": "TK2578",
-"yon": "gidis",
-"hat": "IST-DNZ",
-"sehir": "Denizli",
-"kalkis": "16:35",
-"inis": "17:50",
-"zaman": "2026-11-26T16:35+03:00"
-},
 "TK362-20261126": {
 "no": "TK362",
 "yon": "gidis",
@@ -10235,6 +9988,15 @@
 "sehir": "Tashkent",
 "kalkis": "16:35",
 "inis": "23:20",
+"zaman": "2026-11-26T16:35+03:00"
+},
+"TK2578-20261126": {
+"no": "TK2578",
+"yon": "gidis",
+"hat": "IST-DNZ",
+"sehir": "Denizli",
+"kalkis": "16:35",
+"inis": "17:50",
 "zaman": "2026-11-26T16:35+03:00"
 },
 "TK739-G-20261126": {
@@ -10287,15 +10049,6 @@
 "inis": "16:40",
 "zaman": "2026-11-26T16:40+03:00"
 },
-"TK1909-20261126": {
-"no": "TK1909",
-"yon": "gidis",
-"hat": "IST-ZRH",
-"sehir": "Zurich",
-"kalkis": "16:45",
-"inis": "17:45",
-"zaman": "2026-11-26T16:45+03:00"
-},
 "TK2424-20261126": {
 "no": "TK2424",
 "yon": "gidis",
@@ -10303,6 +10056,15 @@
 "sehir": "Antalya",
 "kalkis": "16:45",
 "inis": "18:05",
+"zaman": "2026-11-26T16:45+03:00"
+},
+"TK1909-20261126": {
+"no": "TK1909",
+"yon": "gidis",
+"hat": "IST-ZRH",
+"sehir": "Zurich",
+"kalkis": "16:45",
+"inis": "17:45",
 "zaman": "2026-11-26T16:45+03:00"
 },
 "TK171-G-20261126": {
@@ -10354,6 +10116,15 @@
 "inis": "23:25",
 "zaman": "2026-11-26T16:55+03:00"
 },
+"TK1723-20261126": {
+"no": "TK1723",
+"yon": "gidis",
+"hat": "IST-BER",
+"sehir": "Berlin",
+"kalkis": "16:55",
+"inis": "17:45",
+"zaman": "2026-11-26T16:55+03:00"
+},
 "TK1705-20261126": {
 "no": "TK1705",
 "yon": "gidis",
@@ -10370,15 +10141,6 @@
 "sehir": "Nice",
 "kalkis": "16:55",
 "inis": "18:05",
-"zaman": "2026-11-26T16:55+03:00"
-},
-"TK1723-20261126": {
-"no": "TK1723",
-"yon": "gidis",
-"hat": "IST-BER",
-"sehir": "Berlin",
-"kalkis": "16:55",
-"inis": "17:45",
 "zaman": "2026-11-26T16:55+03:00"
 },
 "TK2332-20261126": {
@@ -10457,15 +10219,6 @@
 "inis": "21:00",
 "zaman": "2026-11-26T17:05+03:00"
 },
-"TK20-20261126": {
-"no": "TK20",
-"yon": "gidis",
-"hat": "IST-ICN",
-"sehir": "Seoul",
-"kalkis": "17:05",
-"inis": "08:55",
-"zaman": "2026-11-26T17:05+03:00"
-},
 "TK1077-20261126": {
 "no": "TK1077",
 "yon": "gidis",
@@ -10473,6 +10226,15 @@
 "sehir": "Tirana",
 "kalkis": "17:05",
 "inis": "16:55",
+"zaman": "2026-11-26T17:05+03:00"
+},
+"TK20-20261126": {
+"no": "TK20",
+"yon": "gidis",
+"hat": "IST-ICN",
+"sehir": "Seoul",
+"kalkis": "17:05",
+"inis": "08:55",
 "zaman": "2026-11-26T17:05+03:00"
 },
 "TK1762-G-20261126": {
@@ -10514,6 +10276,149 @@
 "dep_saat": "11:35",
 "inis": "17:05",
 "zaman": "2026-11-26T17:05+03:00"
+},
+"TK1409-20261126": {
+"no": "TK1409",
+"yon": "gidis",
+"hat": "IST-VNO",
+"sehir": "Vilnius",
+"kalkis": "17:10",
+"inis": "19:05",
+"zaman": "2026-11-26T17:10+03:00"
+},
+"TK2752-20261126": {
+"no": "TK2752",
+"yon": "gidis",
+"hat": "IST-VAN",
+"sehir": "Van",
+"kalkis": "17:10",
+"inis": "19:15",
+"zaman": "2026-11-26T17:10+03:00"
+},
+"TK1887-20261126": {
+"no": "TK1887",
+"yon": "gidis",
+"hat": "IST-VIE",
+"sehir": "Vienna",
+"kalkis": "17:15",
+"inis": "17:35",
+"zaman": "2026-11-26T17:15+03:00"
+},
+"TK62-20261126": {
+"no": "TK62",
+"yon": "gidis",
+"hat": "IST-KUL",
+"sehir": "Kuala Lumpur",
+"kalkis": "17:15",
+"inis": "08:30",
+"zaman": "2026-11-26T17:15+03:00"
+},
+"TK209-G-20261126": {
+"no": "TK209",
+"yon": "gelis",
+"hat": "SIN-IST",
+"sehir": "Singapore",
+"kalkis": "17:15",
+"dep_saat": "10:25",
+"inis": "17:15",
+"zaman": "2026-11-26T17:15+03:00"
+},
+"TK202-G-20261126": {
+"no": "TK202",
+"yon": "gelis",
+"hat": "DEN-IST",
+"sehir": "Denver",
+"kalkis": "17:15",
+"dep_saat": "19:30",
+"inis": "17:15",
+"zaman": "2026-11-26T17:15+03:00"
+},
+"TK109-G-20261126": {
+"no": "TK109",
+"yon": "gelis",
+"hat": "MED-IST",
+"sehir": "Madinah",
+"kalkis": "17:15",
+"dep_saat": "13:20",
+"inis": "17:15",
+"zaman": "2026-11-26T17:15+03:00"
+},
+"TK1390-G-20261126": {
+"no": "TK1390",
+"yon": "gelis",
+"hat": "BOD-IST",
+"sehir": "Bordeaux",
+"kalkis": "17:15",
+"dep_saat": "11:25",
+"inis": "17:15",
+"zaman": "2026-11-26T17:15+03:00"
+},
+"TK2155-G-20261126": {
+"no": "TK2155",
+"yon": "gelis",
+"hat": "ESB-IST",
+"sehir": "Ankara",
+"kalkis": "17:15",
+"dep_saat": "15:55",
+"inis": "17:15",
+"zaman": "2026-11-26T17:15+03:00"
+},
+"TK168-20261126": {
+"no": "TK168",
+"yon": "gidis",
+"hat": "IST-SIN",
+"sehir": "Singapore",
+"kalkis": "17:20",
+"inis": "08:45",
+"zaman": "2026-11-26T17:20+03:00"
+},
+"TK2832-20261126": {
+"no": "TK2832",
+"yon": "gidis",
+"hat": "IST-TZX",
+"sehir": "Trabzon",
+"kalkis": "17:20",
+"inis": "19:10",
+"zaman": "2026-11-26T17:20+03:00"
+},
+"TK192-G-20261126": {
+"no": "TK192",
+"yon": "gelis",
+"hat": "DFW-IST",
+"sehir": "Dallas",
+"kalkis": "17:20",
+"dep_saat": "20:20",
+"inis": "17:20",
+"zaman": "2026-11-26T17:20+03:00"
+},
+"TK2327-G-20261126": {
+"no": "TK2327",
+"yon": "gelis",
+"hat": "ADB-IST",
+"sehir": "Izmir",
+"kalkis": "17:20",
+"dep_saat": "15:55",
+"inis": "17:20",
+"zaman": "2026-11-26T17:20+03:00"
+},
+"TK555-20261126": {
+"no": "TK555",
+"yon": "gidis",
+"hat": "IST-ABJ",
+"sehir": "Abidjan",
+"kalkis": "17:25",
+"inis": "22:10",
+"zaman": "2026-11-26T17:25+03:00"
+},
+"TK2419-G-20261126": {
+"no": "TK2419",
+"yon": "gelis",
+"hat": "AYT-IST",
+"sehir": "Antalya",
+"kalkis": "17:30",
+"dep_saat": "15:55",
+"inis": "17:30",
+"zaman": "2026-11-26T17:30+03:00"
 }
 }
 }
